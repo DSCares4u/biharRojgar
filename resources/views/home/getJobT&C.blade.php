@@ -1,7 +1,7 @@
 @extends('home.homebase')
 @section('content')
-    <div class="container mx-auto">
-        <div class="bg-gray-100 p-6 rounded-lg">
+    <div class="container mx-auto flex">
+        <div class="bg-gray-100 p-6 rounded-lg w-8/12">
             <h2 class="text-lg font-bold mb-4">Terms and Conditions</h2>
             <ul class="list-disc list-inside mb-4">
                 <li class="mb-2">
@@ -29,6 +29,16 @@
                     Proceed Now
                 </button>
             </a>
+        </div>
+        <div class="w-4/12">
+            <div class=" mt-10 w-[80%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
+                <div class="price mt-2 mb-4">
+                    <h3 class="text-lg font-semibold">Our Services</h3>
+                    <div class="line bg-orange-500">
+                    <hr class="h-1">
+                </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
