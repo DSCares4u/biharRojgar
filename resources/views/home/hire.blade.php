@@ -11,8 +11,8 @@
                         class="shadow appearance-none border py-1 px-2 w-full" required>
                 </div>
                 <div class="gap-3 mb-3 ">
-                    <label for="time" class="text-gray-700 text-sm mb-2 flex-1 ">Job Types</label>
-                    <div class="grid lg:flex-[3] lg:grid-cols-10 sm:grid-cols-5 grid-cols-4 justify-start gap-1">
+                    {{-- <label for="time" class="text-gray-700 text-sm mb-2 flex-1 ">Job Types</label> --}}
+                    {{-- <div class="grid lg:flex-[3] lg:grid-cols-10 sm:grid-cols-5 grid-cols-4 justify-start gap-1">
                         @php
                             $time = ['Accountant', 'Tellecaller', 'Sales', 'Communication'];
                         @endphp
@@ -28,7 +28,14 @@
                                 </label>
                             </div>
                         @endforeach
-                    </div>
+                    </div> --}}
+                    {{-- <select name="select" style="Width:30em" multiple >
+                        <option>Select</option>
+                        <option>Accountant</option>
+                        <option>Telecaller</option>
+                        <option>Sales</option>
+                        <option>Communication</option>
+                    </select> --}}
                 </div>
                 <div class="mb-3  items-center">
                     <label for="name" class="block text-gray-700 text-sm mb-2 ">Role</label>
@@ -227,6 +234,7 @@
             </div>
         </div>
         <script>
+
             $(document).ready(function() {
                 //insert new call request
 
@@ -249,4 +257,5 @@
                 })
             })
         </script>
+        
     @endsection

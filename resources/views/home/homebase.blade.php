@@ -8,8 +8,7 @@
 </head>
 
 <body>
-
-
+    
     <nav class="bg-yellow-500 p-1">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
