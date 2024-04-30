@@ -31,3 +31,11 @@ Route::get('/hire/t&c', function () {
 Route::get('/hire', function () {
     return view('home.hire');
 });
+
+Route::get('/sarkari-job', function () {
+    return view('home.sarkariJob');
+});
+
+Route::get('/sarkari-job-form', function () {
+    return view('home.sarkariJobForm');
+});

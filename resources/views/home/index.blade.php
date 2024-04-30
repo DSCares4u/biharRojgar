@@ -7,11 +7,12 @@
     </div>
 
     <div class="button flex justify-center gap-5">
-        <a href="/hire/t&c">
-            <button class="text-white bg-yellow-500 p-2 rounded-lg shadow-lg hover:bg-yellow-600 px-12 text-xl">Hire now</button>
-        </a>
         <a href="/get-job/t&c">
             <button class="text-white bg-yellow-500 p-2 rounded-lg shadow-lg hover:bg-yellow-600 px-12 text-xl">Get a job</button>
         </a>
+        <a href="/hire/t&c">
+            <button class="text-white bg-yellow-500 p-2 rounded-lg shadow-lg hover:bg-yellow-600 px-12 text-xl">Hire now</button>
+        </a>
+       
     </div>
 @endsection

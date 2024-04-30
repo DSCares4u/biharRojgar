@@ -16,7 +16,7 @@
                 <!-- Add your logo here if you have one -->
             </div>
             <marquee behavior="scroll" direction="left" scrollamount="10" onmouseover="this.stop()"
-                onmouseout="this.start()" scrollDelay="10"><a href="">Click Here For Any Sarkari Jobs</a></marquee>
+                onmouseout="this.start()" scrollDelay="10"><a href="/sarkari-job">Click Here For Any Sarkari Jobs</a></marquee>
             <div class="hidden md:block">
                 <ul class="flex space-x-4">
                     <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
