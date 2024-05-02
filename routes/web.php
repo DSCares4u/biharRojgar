@@ -39,3 +39,10 @@ Route::get('/sarkari-job', function () {
 Route::get('/sarkari-job-form', function () {
     return view('home.sarkariJobForm');
 });
+
+Route::get('/address', function () {
+    return view('home.address');
+});
+Route::get('/documents', function () {
+    return view('home.documents');
+});
