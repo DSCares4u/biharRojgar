@@ -46,3 +46,11 @@ Route::get('/address', function () {
 Route::get('/documents', function () {
     return view('home.documents');
 });
+
+Route::get('/sarkari-yojna', function () {
+    return view('home.sarkariYojna');
+});
+
+Route::get('/private-job', function () {
+    return view('home.privateJob');
+});

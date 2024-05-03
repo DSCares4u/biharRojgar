@@ -10,41 +10,38 @@
                         <div class="mt-2">
                             <div class="mb-2 items-center">
                                 <label for="name" class="block text-sm mb-2 ">Upload Your Photo</label>
-                                <input type="file" id="name" name="name"
-                                    class="shadow appearance-none border py-1 px-2 w-full" required>
+                                <input type="file" id="name" name="name" required>
                             </div>
                             <div class="mb-2 items-center">
                                 <label for="name" class="block text-sm mb-2 ">Upload Your Signature</label>
-                                <input type="file" id="name" name="name"
-                                    class="shadow appearance-none border py-1 px-2 w-full" required>
+                                <input type="file" id="name" name="name" required>
                             </div>
-                            <div class="mb-2 items-center">
-                                <label for="name" class="block text-sm mb-2 ">Choose Id Proof</label>
-                                <select name=""id="" class="border py-2 px-5 w-full rounded" required>
-                                    <option value="">Select</option>
-                                    <option value="">Aadhar Card</option>
-                                    <option value="">Pan Card</option>
-                                    <option value="">Driving Licence</option>
-                                    <option value="">Voter Id Card</option>
-                                </select>
-                            </div>
-                            <div class="mb-2 items-center">
-                                <label for="name" class="block text-sm mb-2 ">Upload Selected Id</label>
-                                <input type="file" id="name" name="name"
-                                    class="shadow appearance-none border py-1 px-2 w-full" required>
+                            <div class="flex ">
+                                <div class="mb-2 items-center">
+                                    <label for="name" class="block text-sm mb-2 ">Choose Id Proof</label>
+                                    <select name=""id="" class="border py-2 px-5 w-1/2 rounded" required>
+                                        <option value="">Select</option>
+                                        <option value="">Aadhar Card</option>
+                                        <option value="">Pan Card</option>
+                                        <option value="">Driving Licence</option>
+                                        <option value="">Voter Id Card</option>
+                                    </select>
+                                </div>
+                                <div class="mb-2 items-center">
+                                    <label for="name" class="block text-sm mb-2 ">Upload Selected Id</label>
+                                    <input type="file" id="name" name="name" required>
+                                </div>
                             </div>
                             <div class="mb-2 items-center">
                                 <label for="name" class="block text-sm mb-2 ">Upload Your Latest Qualification
                                     Certificate</label>
-                                <input type="file" id="name" name="name"
-                                    class="shadow appearance-none border py-1 px-2 w-full" required>
+                                <input type="file" id="name" name="name" required>
                             </div>
                             <div class="mb-2 items-center">
                                 <h4 for="name" class="text-sm mb-2 flex">Any Other Certificate <p class="text-sm">(i.e.
                                         Computer Certificate, Skill Certificate, etc)</p>
                                 </h4>
-                                <input type="file" id="name" name="name"
-                                    class="shadow appearance-none border py-1 px-2 w-full" required>
+                                <input type="file" id="name" name="name" required>
                             </div>
                         </div>
                     </div>
