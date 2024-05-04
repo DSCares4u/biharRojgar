@@ -45,9 +45,9 @@
                             class="shadow appearance-none border py-1 px-2 w-full" required>
                     </div>
                 </div>
-                <div class="mb-3 flex justify-center">
+                <div class="mb-3 flex justify-center mt-5">
                     <button type="submit"
-                        class="bg-yellow-400 hover:bg-yellow-500 font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
+                        class="bg-yellow-400 hover:bg-yellow-500 font-semibold py-2 px-5 rounded focus:outline-none focus:shadow-outline text-black">
                         Apply Now
                     </button>
                 </div>

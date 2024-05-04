@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite('resources/css/app.css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -16,16 +17,16 @@
                 <!-- Add your logo here if you have one -->
             </div>
             <marquee behavior="scroll" direction="left" scrollamount="10" onmouseover="this.stop()"
-                onmouseout="this.start()" scrollDelay="10"><a href="/sarkari-job">Click Here For Any Sarkari Jobs</a></marquee>
+                onmouseout="this.start()" scrollDelay="10"><a href="/sarkari-yojna">Click Here For Any Sarkari Yojna</a></marquee>
             <div class="hidden md:block">
                 <ul class="flex space-x-4">
                     <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
                     <li><a href="/get-job/t&c" class="text-white hover:text-gray-300">Jobs</a></li>
                     <li><a href="/private-job" class="text-white hover:text-gray-300">Private Jobs</a></li>
-                    <li><a href="/sarkari-yojna" class="text-white hover:text-gray-300">Sarkari Jobs</a></li>
+                    <li><a href="/sarkari-job" class="text-white hover:text-gray-300">Sarkari Jobs</a></li>
                     <li><a href="/hire/t&c" class="text-white hover:text-gray-300">Hire</a></li>
                     <li><a href="#" class="text-white hover:text-gray-300">About</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">Contact</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300"><button id="openApplyJobBtn">Contact</button></a></li>
                     <!-- Add more navbar items as needed -->
                 </ul>
             </div>

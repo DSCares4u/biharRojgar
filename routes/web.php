@@ -32,8 +32,11 @@ Route::get('/hire', function () {
     return view('home.hire');
 });
 
-Route::get('/sarkari-job', function () {
-    return view('home.sarkariJob');
+Route::get('/sarkari-yojna', function () {
+    return view('home.sarkariYojna');
+});
+Route::get('/sarkari-yojna-form', function () {
+    return view('home.sarkariYojnaForm');
 });
 
 Route::get('/sarkari-job-form', function () {
@@ -51,6 +54,18 @@ Route::get('/sarkari-yojna', function () {
     return view('home.sarkariYojna');
 });
 
+Route::get('/sarkari-job', function () {
+    return view('home.sarkariJob');
+});
+
 Route::get('/private-job', function () {
     return view('home.privateJob');
+});
+
+Route::get('/job-app-forms', function () {
+    return view('home.jobAppForms');
+});
+
+Route::get('/sarkari-job-apply-form', function () {
+    return view('home.sarkariJobApplyForm');
 });

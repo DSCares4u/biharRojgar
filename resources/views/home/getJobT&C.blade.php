@@ -41,13 +41,6 @@
                         application.</label>
                 </li>
                 <li class="mb-2">
-                    <label for="term1">You must be legally eligible to work in the specified country.</label>
-                </li>
-                <li class="mb-2">
-                    <label for="term2">You agree to undergo any necessary background checks as part of the hiring
-                        process.</label>
-                </li>
-                <li class="mb-2">
                     <label for="term3">You agree to abide by the company's code of conduct and policies.</label>
                 </li>
                 <li class="mb-2">

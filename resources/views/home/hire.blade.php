@@ -204,7 +204,7 @@
             </form>
 
         </div>
-        <div class="w-4/12">
+        <div class="w-4/12 ">
                 <div class=" mt-10 w-[80%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
                     <div class="price mt-2 mb-4">
                         <h3 class="text-lg font-semibold">Job Posting Service</h3>

@@ -19,13 +19,6 @@
                         employment.</label>
                 </li>
                 <li class="mb-2">
-                    <label for="term5">You consent to the processing of your personal data for the purpose of this job
-                        application.</label>
-                </li>
-                <li class="mb-2">
-                    <label for="term1">You must be legally eligible to work in the specified country.</label>
-                </li>
-                <li class="mb-2">
                     <label for="term2">You agree to undergo any necessary background checks as part of the hiring
                         process.</label>
                 </li>
