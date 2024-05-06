@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,24 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home.index');
-});
+Route::get('/',[HomeController::class,'index']);
 
-Route::get('/get-job/t&c', function () {
-    return view('home.getJobT&C');
-});
+Route::get('/get-job',[HomeController::class,'getJob']);
+Route::get('/get-job/t&c',[HomeController::class,'getJobTC']);
 
-Route::get('/get-job', function () {
-    return view('home.getJob');
-});
-
-Route::get('/hire/t&c', function () {
-    return view('home.hireT&C');
-});
-Route::get('/hire', function () {
-    return view('home.hire');
-});
+Route::get('/hire',[HomeController::class,'hire']);
+Route::get('/hire/t&c',[HomeController::class,'hireTC']);
 
 Route::get('/sarkari-yojna', function () {
     return view('home.sarkariYojna');
@@ -69,3 +61,7 @@ Route::get('/job-app-forms', function () {
 Route::get('/sarkari-job-apply-form', function () {
     return view('home.sarkariJobApplyForm');
 });
+
+Route::get('/admin',[AdminController::class,'dashboard']);
+Route::get('/admin/manage-job',[AdminController::class,'manageJob']);
+Route::get('/admin/manage-job/insert',[AdminController::class,'insertJob']);

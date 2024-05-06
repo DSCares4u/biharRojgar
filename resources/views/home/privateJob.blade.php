@@ -29,21 +29,21 @@
                             <p>Rs. 15000</p> -<p>Rs. 25000</p>monthly*
                         </h5>
                     </div>
-                    <div class="main flex justify-evenly text-gray-500 mt-6">
+                    <div class="main flex justify-start text-gray-500 mt-6">
                         <div class="mb-3">
-                            <h5 class="text-sm font-normal">Fixed</h5>
+                            <h5 class="text-sm font-normal">Salary</h5>
                             <h5 class="flex gap-1 font-semibold text-gray-500 text-sm mt-2">
                                 <p>Rs. 15000</p> -<p>Rs. 25000</p>
                             </h5>
                         </div>
-                        <div class="mb-3">
+                        {{-- <div class="mb-3">
                             <h5 class="text-sm font-normal">Average Incentives*</h5>
                             <h5 class="flex gap-1 font-semibold text-gray-500 text-sm mt-2">Rs. 25000</h5>
-                        </div>
-                        <div class="mb-3">
+                        </div> --}}
+                        {{-- <div class="mb-3">
                             <h5 class="text-sm font-normal">Earning Potential</h5>
                             <h5 class="flex gap-1 font-semibold text-gray-500 text-sm mt-2">Rs. 40000</h5>
-                        </div>
+                        </div> --}}
                     </div>
                     <hr class="bg-gray-500">
                     <div class="footer flex gap-6 font-medium mt-5 text-gray-500 text-sm">

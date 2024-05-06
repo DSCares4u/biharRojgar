@@ -28,9 +28,56 @@ class JobController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3',
+            'dob' => 'required',
+            'mother' => 'required|string|min:3',
+            'father' => 'required|string|min:3',
+            'gender' => 'required',
             'mobile' => 'required',
-            'address' => 'required|string', 
+            'marital' => 'required',
+            'email' => 'required|email|min:3',
+            'id_mark1' => 'required|string|min:3',
+            'id_mark2' => 'required|string|min:3',
+            'lang_of_exam' => 'required',
+            'religion' => 'required|string|min:3',
+            'community' => 'required',
+            'village' => 'required|string|min:3',
+            'landmark' => 'required|string|min:3',
+            'city' => 'required|string|min:3',
+            'state' => 'required|string|min:3',
+            'pincode' => 'required',
+            'qualification' => 'required|string|min:3',
+            'q_state' => 'required|string|min:3',
+            'q_district' => 'required|string|min:3',
+            'board' => 'required|string|min:3',
+            'roll_no' => 'required',
+            'date_of_passing' => 'required',
+            'experience' => 'required|string',
+            'skills' => 'required|string',
+            'salary_exept' => 'required',
+            'id_proof_type' => 'required',            
+            'photo' => 'required',            
+            'signature' => 'required',            
+            'id_proof' => 'required',            
+            'quali_certificate' => 'required',            
         ]);
+
+        // image & pdf Work 
+
+        $photo = time() . "." . $request->photo->extension();        //upload on public/photo/image/filename
+        $request->image->move(public_path("image/photo"), $photo);
+
+        $signature = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
+        $request->image->move(public_path("image/signature"), $signature);
+
+        $id_proof = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
+        $request->image->move(public_path("image/id_proof"), $id_proof);
+
+        $quali_certificate = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
+        $request->image->move(public_path("image/quali_certificate"), $quali_certificate);
+
+        $other_certificate = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
+        $request->image->move(public_path("image/other_certificate"), $other_certificate);
+
 
         if ($validator->fails()) {
             return response()->json([
@@ -41,8 +88,38 @@ class JobController extends Controller
 
             $job = Job::create([
                 'name' => $request->name,
+                'dob' => $request->dob,
+                'mother' => $request->mother,
+                'father' => $request->father,
+                'gender' => $request->gender,
                 'mobile' => $request->mobile,
-                'address' => $request->address,              
+                'marital' => $request->marital,
+                'email' => $request->email,
+                'id_mark1' => $request->id_mark1,
+                'id_mark2' => $request->id_mark2,
+                'lang_of_exam' => $request->lang_of_exam,
+                'religion' => $request->religion,
+                'community' => $request->community,
+                'village' => $request->village,
+                'landmark' => $request->landmark,
+                'city' => $request->city,
+                'state' => $request->state,
+                'pincode' => $request->pincode,
+                'qualification' => $request->qualification,
+                'q_state' => $request->q_state,
+                'q_district' => $request->q_district,
+                'board' => $request->board,
+                'roll_no' => $request->roll_no,
+                'date_of_passing' => $request->date_of_passing,
+                'experience' => $request->experience,
+                'skills' => $request->skills,
+                'salary_exept' => $request->salary_exept,
+                'id_proof_type' => $request->id_proof_type,
+                'photo'=>$photo,
+                'signature'=>$signature,
+                'id_proof'=>$id_proof,
+                'quali_certificate'=>$quali_certificate,
+                'other_certificate'=>$other_certificate                              
             ]);
     
             if ($job) {
