@@ -42,6 +42,8 @@ class HireController extends Controller
             'name' => 'required|string|min:3',
             'mobile' => 'required',
             'address' => 'required|string', 
+            'inputs.*.name'=> 'required',
+            'inputs.*.email'=> 'required'
         ]);
 
         if ($validator->fails()) {

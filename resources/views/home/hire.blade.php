@@ -38,9 +38,36 @@
                     </select> --}}
                 </div>
                 <div class="mb-3  items-center">
-                    <label for="name" class="block text-gray-700 text-sm mb-2 ">Role</label>
-                    <input type="text" id="name" name="name" placeholder="Type a Role"
-                        class="shadow appearance-none border py-1 px-2 w-1/2 " required>
+                    {{-- <label for="name" class="block text-gray-700 text-sm mb-2 ">Role</label>
+                    <table class="table table-bordered" id="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="inputs[0]['name']" placeholder="Enter Your Name"
+                                    class="form-control"></td>
+                            <td><button type="button"name='add' id="add"
+                                    class="bg-green-500 px-1 rounded">Add</button></td>
+                        </tr>
+                    </table> --}}
+
+                    <label for="name" class="block text-gray-700 text-sm mb-2">Role</label>
+                    <table class="table table-bordered" id="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="inputs[0]['name']" placeholder="Enter Your Name" class="form-control"></td>
+                            <td><input type="email" name="inputs[0]['email']" placeholder="Enter Your email" class="form-control"></td>
+                            <td><input type="number" name="inputs[0]['roll']" placeholder="Enter Your roll" class="form-control"></td>
+                            <td><button type="button" name='add' class="add bg-green-500 px-1 rounded">Add</button>
+                            </td>
+                        </tr>
+                    </table>
+                    {{-- <input type="text" id="name" name="name" placeholder="Type a Role"
+                        class="shadow appearance-none border py-1 px-2 w-1/2 " required> --}}
                 </div>
                 <div class="mb-3  items-center">
                     <label for="name" class="block text-gray-700 text-sm mb-2 ">Gender</label>
@@ -205,36 +232,35 @@
 
         </div>
         <div class="w-4/12 ">
-                <div class=" mt-10 w-[80%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
-                    <div class="price mt-2 mb-4">
-                        <h3 class="text-lg font-semibold">Job Posting Service</h3>
-                    </div>
-                    <ul>
-                        <li class="flex justify-between text-base text-gray-500">
-                            <p>Free Localities</p>
-                            <p class="font-bold">Rs. 500</p>
-                        </li>
-                        <li class="flex justify-between text-base text-gray-500">
-                            <p>Gold Job</p>
-                            <p class="font-bold">Rs. 500</p>
-                        </li>
-                        <hr>
-                        <li class="flex justify-between text-base text-gray-500">
-                            <p>Total Payment</p>
-                            <p class="font-bold">Rs. 1000</p>
-                        </li>
-                    </ul>
-                    <div class=" flex justify-center items-center">
-                        <button type="submit"
-                            class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
-                            Post Job
-                        </button>
-                    </div>
-                
+            <div class=" mt-10 w-[80%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
+                <div class="price mt-2 mb-4">
+                    <h3 class="text-lg font-semibold">Job Posting Service</h3>
+                </div>
+                <ul>
+                    <li class="flex justify-between text-base text-gray-500">
+                        <p>Free Localities</p>
+                        <p class="font-bold">Rs. 500</p>
+                    </li>
+                    <li class="flex justify-between text-base text-gray-500">
+                        <p>Gold Job</p>
+                        <p class="font-bold">Rs. 500</p>
+                    </li>
+                    <hr>
+                    <li class="flex justify-between text-base text-gray-500">
+                        <p>Total Payment</p>
+                        <p class="font-bold">Rs. 1000</p>
+                    </li>
+                </ul>
+                <div class=" flex justify-center items-center">
+                    <button type="submit"
+                        class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
+                        Post Job
+                    </button>
+                </div>
+
             </div>
         </div>
         <script>
-
             $(document).ready(function() {
                 //insert new call request
 
@@ -257,5 +283,38 @@
                 })
             })
         </script>
-        
+
+      
+
+        <script>
+            $(document).ready(function() {
+                var i = 0;
+
+                // Add new row
+                $('#table').on('click', '.add', function() {
+                    ++i;
+                    $('#table').append(
+                        `<tr>
+                    <td>
+                        <input type="text" name="inputs[${i}][name]" placeholder="Enter Your Name" class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="email" name="inputs[${i}][email]" placeholder="Enter Your email" class="form-control"/>
+                    </td>
+                    <td>
+                        <input type="number" name="inputs[${i}][roll]" placeholder="Enter Your roll" class="form-control"/>
+                    </td>
+                    <td>
+                        <button type="button" class="remove bg-red-500 px-1 rounded">Remove</button>
+                    </td>
+                </tr>`
+                    );
+                });
+
+                // Remove row
+                $('#table').on('click', '.remove', function() {
+                    $(this).closest('tr').remove();
+                });
+            });
+        </script>
     @endsection
