@@ -63,5 +63,5 @@ Route::get('/sarkari-job-apply-form', function () {
 });
 
 Route::get('/admin',[AdminController::class,'dashboard']);
-Route::get('/admin/manage-job',[AdminController::class,'manageJob']);
-Route::get('/admin/manage-job/insert',[AdminController::class,'insertJob']);
+Route::get('/admin/manage-candidate',[AdminController::class,'manageCandidate']);
+Route::get('/admin/manage-candidate/insert',[AdminController::class,'insertCandidate']);

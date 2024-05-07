@@ -10,11 +10,11 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function manageJob(){
-        return view('admin.manageJob');
+    public function manageCandidate(){
+        return view('admin.manageCandidate');
     }
 
-    public function insertJob(){
+    public function insertCandidate(){
         return view('admin.insertCandidate');
     }
 }

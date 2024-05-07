@@ -10,82 +10,47 @@
                         name="name"placeholder="Eg. Sales executives needed urgently for ..."
                         class="shadow appearance-none border py-1 px-2 w-full" required>
                 </div>
-                <div class="gap-3 mb-3 ">
-                    {{-- <label for="time" class="text-gray-700 text-sm mb-2 flex-1 ">Job Types</label> --}}
-                    {{-- <div class="grid lg:flex-[3] lg:grid-cols-10 sm:grid-cols-5 grid-cols-4 justify-start gap-1">
-                        @php
-                            $time = ['Accountant', 'Tellecaller', 'Sales', 'Communication'];
-                        @endphp
-                        @foreach ($time as $item)
-                            <div class="flex md:flex-col md:items-start">
-                                <input id="{{ $loop->index }}" type="radio" class="hidden peer" name="preferred_time"
-                                    value="{{ $item }}">
-                                <label for="{{ $loop->index }}"
-                                    class="inline-flex items-center rounded-2xl justify-between py-1 px-2 font-medium tracking-tight border border-slate-200 cursor-pointer bg-brand-light text-brand-black border-slate-200-green-700 peer-checked:border border-slate-200-green-400 peer-checked:bg-green-700 peer-checked:text-white">
-                                    <div class="flex items-center justify-center md:w-full">
-                                        <div class="text-xs text-brand-black text-nowrap">{{ $item }}</div>
-                                    </div>
-                                </label>
-                            </div>
-                        @endforeach
-                    </div> --}}
-                    {{-- <select name="select" style="Width:30em" multiple >
-                        <option>Select</option>
-                        <option>Accountant</option>
-                        <option>Telecaller</option>
-                        <option>Sales</option>
-                        <option>Communication</option>
-                    </select> --}}
-                </div>
-                <div class="mb-3  items-center">
-                    {{-- <label for="name" class="block text-gray-700 text-sm mb-2 ">Role</label>
-                    <table class="table table-bordered" id="table">
-                        <tr>
-                            <th>Name</th>
-                            <th>Action</th>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="inputs[0]['name']" placeholder="Enter Your Name"
-                                    class="form-control"></td>
-                            <td><button type="button"name='add' id="add"
-                                    class="bg-green-500 px-1 rounded">Add</button></td>
-                        </tr>
-                    </table> --}}
-
-                    <label for="name" class="block text-gray-700 text-sm mb-2">Role</label>
-                    <table class="table table-bordered" id="table">
-                        <tr>
-                            <th>Name</th>
-                            <th>Action</th>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="inputs[0]['name']" placeholder="Enter Your Name" class="form-control"></td>
-                            <td><input type="email" name="inputs[0]['email']" placeholder="Enter Your email" class="form-control"></td>
-                            <td><input type="number" name="inputs[0]['roll']" placeholder="Enter Your roll" class="form-control"></td>
-                            <td><button type="button" name='add' class="add bg-green-500 px-1 rounded">Add</button>
-                            </td>
-                        </tr>
+                <div class="mb-3 flex items-center border rounded border-gray-300">
+                    <table class="table-auto border-collapse " id="table">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th class="px-4 py-1 text-sm font-normal">Profile</th>
+                                <th class="px-4 py-1 text-sm font-normal">No. Of Post</th>
+                                <th class="px-4 py-1 text-sm font-normal">Experience</th>
+                                <th class="px-4 py-1 text-sm font-normal">Gender</th>
+                                <th class="px-4 py-1 text-sm font-normal">Preferred language</th>
+                                <th class="px-4 py-1 text-sm font-normal">Type</th>
+                                <th class="px-4 py-1 text-sm font-normal">Salary</th>
+                                <th class="px-4 py-1 text-sm font-normal">Qualification</th>
+                                <th class="px-4 py-1 text-sm font-normal">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class=" py-1"><input type="text" name="inputs[0]['profile']"
+                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class=" py-1"><input type="number" min="1" name="inputs[0]['no_of_post']"
+                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class=" py-1"><input type="text" name="inputs[0]['experience']"
+                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class=" py-1"><input type="text" name="inputs[0]['gender']"
+                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class=" py-1"><input type="text" name="inputs[0]['preferred_lang']"
+                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class=" py-1"><input type="text" name="inputs[0]['type']"
+                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class=" py-1"><input type="text" name="inputs[0]['salary']"
+                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class=" py-1"><input type="text" name="inputs[0]['qualification']"
+                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class=" py-2 flex justify-center">
+                                    <button type="button" name="add"
+                                        class="add bg-green-500 px-3 py-1 rounded text-white"><i
+                                            class="fa-solid fa-user-plus"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
-                    {{-- <input type="text" id="name" name="name" placeholder="Type a Role"
-                        class="shadow appearance-none border py-1 px-2 w-1/2 " required> --}}
-                </div>
-                <div class="mb-3  items-center">
-                    <label for="name" class="block text-gray-700 text-sm mb-2 ">Gender</label>
-                    <input type="radio" name="gender" id="" class="mr-2">Male
-                    <input type="radio" name="gender" id="" class="mr-2">Female
-                    <input type="radio" name="gender" id="" class="mr-2">Any
-                </div>
-                <div class="mb-3 flex gap-2">
-                    <div class="mb-3  items-center w-1/2">
-                        <label for="name" class="block text-gray-700 text-sm mb-2 ">Monthly Salary</label>
-                        <input type="text" id="name" name="name"
-                            class="shadow appearance-none border py-1 px-2 w-full"placeholder="Rs.15000" required>
-                    </div>
-                    <div class="mb-3  items-center w-1/2">
-                        <label for="name" class="block text-gray-700 text-sm mb-2 ">Experience</label>
-                        <input type="text" id="name" name="name"
-                            class="shadow appearance-none border py-1 px-2 w-full"placeholder="5 Years" required>
-                    </div>
                 </div>
                 <div class="mb-3 flex gap-2">
                     <div class="mb-3  items-center w-1/2">
@@ -284,7 +249,7 @@
             })
         </script>
 
-      
+
 
         <script>
             $(document).ready(function() {
@@ -295,18 +260,25 @@
                     ++i;
                     $('#table').append(
                         `<tr>
-                    <td>
-                        <input type="text" name="inputs[${i}][name]" placeholder="Enter Your Name" class="form-control"/>
-                    </td>
-                    <td>
-                        <input type="email" name="inputs[${i}][email]" placeholder="Enter Your email" class="form-control"/>
-                    </td>
-                    <td>
-                        <input type="number" name="inputs[${i}][roll]" placeholder="Enter Your roll" class="form-control"/>
-                    </td>
-                    <td>
-                        <button type="button" class="remove bg-red-500 px-1 rounded">Remove</button>
-                    </td>
+                            <td class="py-1"><input type="text" name="inputs[${i}]['profile']"
+                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class="py-1"><input type="number" min="1"
+                                        name="inputs[0]['no_of_post']" placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class="py-1"><input type="text" name="inputs[${i}]['experience']"
+                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class="py-1"><input type="text" name="inputs[${i}]['gender']"
+                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class="py-1"><input type="text" name="inputs[${i}]['preferred_lang']"
+                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class="py-1"><input type="text" name="inputs[${i}]['type']"
+                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class="py-1"><input type="text" name="inputs[${i}]['salary']"
+                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class="py-1"><input type="text" name="inputs[${i}]['qualification']"
+                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                <td class="py-2 flex justify-center">
+                                    <button type="button" class="remove bg-red-500 px-3 py-1 rounded text-white"><i class="fa-solid fa-user-xmark"></i></button>
+                                </td>
                 </tr>`
                     );
                 });

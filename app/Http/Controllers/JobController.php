@@ -35,9 +35,8 @@ class JobController extends Controller
             'mobile' => 'required',
             'marital' => 'required',
             'email' => 'required|email|min:3',
-            'id_mark1' => 'required|string|min:3',
-            'id_mark2' => 'required|string|min:3',
-            'lang_of_exam' => 'required',
+            'id_mark' => 'required|string|min:3',
+            'preferred_lang' => 'required',
             'religion' => 'required|string|min:3',
             'community' => 'required',
             'village' => 'required|string|min:3',
@@ -47,38 +46,38 @@ class JobController extends Controller
             'pincode' => 'required',
             'qualification' => 'required|string|min:3',
             'q_state' => 'required|string|min:3',
-            'q_district' => 'required|string|min:3',
             'board' => 'required|string|min:3',
-            'roll_no' => 'required',
-            'date_of_passing' => 'required',
+            'passing_year' => 'required',
             'experience' => 'required|string',
             'skills' => 'required|string',
-            'salary_exept' => 'required',
             'id_proof_type' => 'required',            
-            'photo' => 'required',            
-            'signature' => 'required',            
-            'id_proof' => 'required',            
-            'quali_certificate' => 'required',            
+            'image' => 'required',            
+            // 'signature' => 'required',            
+            // 'id_proof' => 'required',            
+            // 'quali_certificate' => 'required',            
         ]);
 
         // image & pdf Work 
 
-        $photo = time() . "." . $request->photo->extension();        //upload on public/photo/image/filename
-        $request->image->move(public_path("image/photo"), $photo);
+        // $filename = time() . "." . $request->image->extension();        //upload on public/doctor/image/filename
+        // $request->image->move(public_path("image/doctor"), $filename);
 
-        $signature = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
-        $request->image->move(public_path("image/signature"), $signature);
+        $filename = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
+        $request->image->move(public_path("image/photo"), $filename);
 
-        $id_proof = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
-        $request->image->move(public_path("image/id_proof"), $id_proof);
+        // $signature = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
+        // $request->image->move(public_path("image/signature"), $signature);
 
-        $quali_certificate = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
-        $request->image->move(public_path("image/quali_certificate"), $quali_certificate);
+        // $id_proof = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
+        // $request->image->move(public_path("image/id_proof"), $id_proof);
 
-        $other_certificate = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
-        $request->image->move(public_path("image/other_certificate"), $other_certificate);
+        // $quali_certificate = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
+        // $request->image->move(public_path("image/quali_certificate"), $quali_certificate);
 
+        // $other_certificate = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
+        // $request->image->move(public_path("image/other_certificate"), $other_certificate);
 
+        dd($filename);
         if ($validator->fails()) {
             return response()->json([
                 'status' => 422,
@@ -95,9 +94,8 @@ class JobController extends Controller
                 'mobile' => $request->mobile,
                 'marital' => $request->marital,
                 'email' => $request->email,
-                'id_mark1' => $request->id_mark1,
-                'id_mark2' => $request->id_mark2,
-                'lang_of_exam' => $request->lang_of_exam,
+                'id_mark' => $request->id_mark,
+                'preferred_lang' => $request->preferred_lang,
                 'religion' => $request->religion,
                 'community' => $request->community,
                 'village' => $request->village,
@@ -107,19 +105,16 @@ class JobController extends Controller
                 'pincode' => $request->pincode,
                 'qualification' => $request->qualification,
                 'q_state' => $request->q_state,
-                'q_district' => $request->q_district,
                 'board' => $request->board,
-                'roll_no' => $request->roll_no,
-                'date_of_passing' => $request->date_of_passing,
+                'passing_year' => $request->passing_year,
                 'experience' => $request->experience,
                 'skills' => $request->skills,
-                'salary_exept' => $request->salary_exept,
                 'id_proof_type' => $request->id_proof_type,
-                'photo'=>$photo,
-                'signature'=>$signature,
-                'id_proof'=>$id_proof,
-                'quali_certificate'=>$quali_certificate,
-                'other_certificate'=>$other_certificate                              
+                'image' => $filename, 
+                // 'signature'=>$signature,
+                // 'id_proof'=>$id_proof,
+                // 'quali_certificate'=>$quali_certificate,
+                // 'other_certificate'=>$other_certificate                              
             ]);
     
             if ($job) {
