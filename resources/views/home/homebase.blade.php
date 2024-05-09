@@ -11,7 +11,7 @@
 
 <body>
     
-    <nav class="bg-yellow-500 p-1">
+    <nav class="bg-yellow-500 px-6 py-1">
         <div class="container mx-auto flex justify-between items-center">
             <div class="flex items-center">
                 <a href="/" class="text-white text-lg font-semibold">JobHire</a>

@@ -18,7 +18,7 @@
                                 <th class="px-4 py-1 text-sm font-normal">No. Of Post</th>
                                 <th class="px-4 py-1 text-sm font-normal">Experience</th>
                                 <th class="px-4 py-1 text-sm font-normal">Gender</th>
-                                <th class="px-4 py-1 text-sm font-normal">Preferred language</th>
+                                <th class="px-4 py-1 text-sm font-normal">Preferred Language</th>
                                 <th class="px-4 py-1 text-sm font-normal">Type</th>
                                 <th class="px-4 py-1 text-sm font-normal">Salary</th>
                                 <th class="px-4 py-1 text-sm font-normal">Qualification</th>
@@ -28,21 +28,21 @@
                         <tbody>
                             <tr>
                                 <td class=" py-1"><input type="text" name="inputs[0]['profile']"
-                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class=" py-1"><input type="number" min="1" name="inputs[0]['no_of_post']"
-                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class=" py-1"><input type="text" name="inputs[0]['experience']"
-                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class=" py-1"><input type="text" name="inputs[0]['gender']"
-                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class=" py-1"><input type="text" name="inputs[0]['preferred_lang']"
-                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class=" py-1"><input type="text" name="inputs[0]['type']"
-                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class=" py-1"><input type="text" name="inputs[0]['salary']"
-                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class=" py-1"><input type="text" name="inputs[0]['qualification']"
-                                    placeholder="Enter"    class="appearance-none border py-2 px-2 w-full"></td>
+                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class=" py-2 flex justify-center">
                                     <button type="button" name="add"
                                         class="add bg-green-500 px-3 py-1 rounded text-white"><i
@@ -261,21 +261,21 @@
                     $('#table').append(
                         `<tr>
                             <td class="py-1"><input type="text" name="inputs[${i}]['profile']"
-                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class="py-1"><input type="number" min="1"
-                                        name="inputs[0]['no_of_post']" placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                        name="inputs[0]['no_of_post']" placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class="py-1"><input type="text" name="inputs[${i}]['experience']"
-                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class="py-1"><input type="text" name="inputs[${i}]['gender']"
-                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class="py-1"><input type="text" name="inputs[${i}]['preferred_lang']"
-                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class="py-1"><input type="text" name="inputs[${i}]['type']"
-                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class="py-1"><input type="text" name="inputs[${i}]['salary']"
-                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class="py-1"><input type="text" name="inputs[${i}]['qualification']"
-                                        placeholder="Enter" class="appearance-none border py-2 px-2 w-full"></td>
+                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class="py-2 flex justify-center">
                                     <button type="button" class="remove bg-red-500 px-3 py-1 rounded text-white"><i class="fa-solid fa-user-xmark"></i></button>
                                 </td>

@@ -3,7 +3,7 @@
     <div class="container mx-auto mt-8">
         <div class="w-full lg:w-2/3 md:w-8/12 sm:w-11/12 mx-auto">
             <div class="bg-white shadow-lg rounded-lg">
-                <div class="bg-gray-200 px-4 py-2 rounded-t-lg ">
+                <div class="bg-gray-200 px-4 py-2 rounded-t-lg mt-2">
                     <h3 class="text-xl font-semibold mt-2">Request New Candidate</h3>
                 </div>
                 <form class="p-4 flex flex-col" id="applyJob">
@@ -184,7 +184,7 @@
                     <div class="border border-gray mt-3 p-4">
                         <h2 class="text-lg font-semibold mb-2  ">Essential Qualification</h2>
                         <hr class="h-1 rounded bg-gray-600 mb-4">
-                        <div class="flex justify-evenly mt-8 gap-3">
+                        <div class="flex justify-evenly gap-3">
                             <div class="mb-3 items-center">
                                 <label for="qualification" class="block text-sm mb-2 ">Qualification</label>
                                 <input type="text" id="qualification"
