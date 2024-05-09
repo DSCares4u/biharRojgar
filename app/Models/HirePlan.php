@@ -4,16 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Hire extends Model
+class HirePlan extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    public function plan(): HasOne
+    public function book_plans(): HasMany
     {
-        return $this->HasOne(HirePlan::class, 'id', 'hire_plan_id');
-    }
+        return $this->hasMany(Hire::class);
+    }   
 
 }

@@ -51,33 +51,31 @@ class JobController extends Controller
             'experience' => 'required|string',
             'skills' => 'required|string',
             'id_proof_type' => 'required',            
-            'image' => 'required',            
+            // 'image' => 'required|string',            
             // 'signature' => 'required',            
             // 'id_proof' => 'required',            
             // 'quali_certificate' => 'required',            
         ]);
 
-        // image & pdf Work 
+        // image & pdf Work  
 
-        // $filename = time() . "." . $request->image->extension();        //upload on public/doctor/image/filename
-        // $request->image->move(public_path("image/doctor"), $filename);
+        $randomNumber = mt_rand(1000,9999); // Generate a random number
 
-        $filename = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
+        $filename = "DO". time() . $randomNumber . "." . $request->image->extension();        //upload on public/photo/image/filename
         $request->image->move(public_path("image/photo"), $filename);
 
-        // $signature = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
-        // $request->image->move(public_path("image/signature"), $signature);
+        $signature = "SI". time() . $randomNumber . "." . $request->signature->extension();        //upload on public/photo/image/filename
+        $request->signature->move(public_path("image/signature"), $signature);
 
-        // $id_proof = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
-        // $request->image->move(public_path("image/id_proof"), $id_proof);
+        $id_proof = "ID". time() . $randomNumber . "." . $request->id_proof->extension();        //upload on public/photo/image/filename
+        $request->id_proof->move(public_path("image/id_proof"), $id_proof);
 
-        // $quali_certificate = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
-        // $request->image->move(public_path("image/quali_certificate"), $quali_certificate);
+        $quali_certificate = "QU". time() . $randomNumber . "." . $request->quali_certificate->extension();        //upload on public/photo/image/filename
+        $request->quali_certificate->move(public_path("image/quali_certificate"), $quali_certificate);
 
-        // $other_certificate = time() . "." . $request->image->extension();        //upload on public/photo/image/filename
-        // $request->image->move(public_path("image/other_certificate"), $other_certificate);
+        $other_certificate = "OT". time() . $randomNumber . "." . $request->other_certificate->extension();        //upload on public/photo/image/filename
+        $request->other_certificate->move(public_path("image/other_certificate"), $other_certificate);
 
-        dd($filename);
         if ($validator->fails()) {
             return response()->json([
                 'status' => 422,
@@ -110,11 +108,11 @@ class JobController extends Controller
                 'experience' => $request->experience,
                 'skills' => $request->skills,
                 'id_proof_type' => $request->id_proof_type,
-                'image' => $filename, 
-                // 'signature'=>$signature,
-                // 'id_proof'=>$id_proof,
-                // 'quali_certificate'=>$quali_certificate,
-                // 'other_certificate'=>$other_certificate                              
+                'image' => $filename,
+                'signature'=>$signature,
+                'id_proof'=>$id_proof,
+                'quali_certificate'=>$quali_certificate,
+                'other_certificate'=>$other_certificate                              
             ]);
     
             if ($job) {

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HireController;
+use App\Http\Controllers\HirePlanController;
 use App\Http\Controllers\JobController;
 
 /*
@@ -26,6 +27,12 @@ Route::get('/hire',[HireController::class,'index'])->name('hire.index');
 Route::get('/hire/view/{id}',[HireController::class,'show']);
 Route::put('/hire/edit/{id}',[HireController::class,'update']);
 Route::delete('/hire/delete/{id}',[HireController::class,'destroy']);
+
+Route::post('/hire-plan',[HirePlanController::class,'store'])->name('hire.plan.store');
+Route::get('/hire-plan',[HirePlanController::class,'index'])->name('hire.plan.index');
+Route::get('/hire-plan/view/{id}',[HirePlanController::class,'show']);
+Route::put('/hire-plan/edit/{id}',[HirePlanController::class,'update']);
+Route::delete('/hire-plan/delete/{id}',[HirePlanController::class,'destroy']);
 
 Route::post('/job',[JobController::class,'store'])->name('job.store');
 Route::get('/job',[JobController::class,'index'])->name('job.index');

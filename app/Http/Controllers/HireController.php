@@ -15,7 +15,7 @@ class HireController extends Controller
      */
     public function index()
     {
-        $hire = Hire::orderBy('created_at', 'desc')->get();
+        $hire = Hire::with("hire_plan")->orderBy('created_at', 'desc')->get();
         if ($hire->count() > 0) {
             return response()->json([
                 'status' => 200,
@@ -27,6 +27,20 @@ class HireController extends Controller
                 'data' => "No Records found"
             ], 404);
         }
+
+
+        // $hire = Hire::orderBy('created_at', 'desc')->get();
+        // if ($hire->count() > 0) {
+        //     return response()->json([
+        //         'status' => 200,
+        //         'data' => $hire
+        //     ], 200);
+        // } else {
+        //     return response()->json([
+        //         'status' => 404,
+        //         'data' => "No Records found"
+        //     ], 404);
+        // }
     }
 
 
@@ -40,23 +54,53 @@ class HireController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3',
-            'mobile' => 'required',
-            'address' => 'required|string', 
-            'inputs.*.name'=> 'required',
-            'inputs.*.email'=> 'required'
+            'inputs.*.profile'=> 'required',
+            'inputs.*.no_of_post'=> 'required',
+            'inputs.*.experience'=> 'required',
+            'inputs.*.gender'=> 'required',
+            'inputs.*.preferred_lang'=> 'required',
+            'inputs.*.type'=> 'required',
+            'inputs.*.salary'=> 'required',
+            'inputs.*.qualification'=> 'required',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'description' => 'required|string',
+            'company_name' => 'required|string',
+            'website' => 'required|string',
+            'mobile' => 'required|string',
+            'alt_mobile' => 'required|string',
+            'email' => 'required|string',
+            'plan_id'=>'required'
         ]);
 
+        dd($validator);
         if ($validator->fails()) {
             return response()->json([
                 'status' => 422,
                 'error' => $validator->messages()
             ], 422);
         } else {
+            foreach ($request->inputs as $key =>$value)
 
             $hire = Hire::create([
-                'name' => $request->name,
-                'mobile' => $request->mobile,
-                'address' => $request->address,              
+                'name' => $request->name, 
+                'profile' => $value, 
+                // 'no_of_post' => $request->no_of_post, 
+                // 'experience' => $request->experience, 
+                // 'gender' => $request->gender, 
+                // 'preferred_lang' => $request->preferred_lang, 
+                // 'type' => $request->type, 
+                // 'salary' => $request->salary, 
+                // 'qualification' => $request->qualification, 
+                'city' => $request->city,          
+                'state' => $request->state,          
+                'description' => $request->description,          
+                'company_name' => $request->company_name,          
+                'website' => $request->website,          
+                'mobile' => $request->mobile,          
+                'alt_mobile' => $request->alt_mobile,          
+                'email' => $request->email,          
+                'hire_plan_id' => $request->plan_id,          
             ]);
     
             if ($hire) {

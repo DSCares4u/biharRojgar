@@ -4,7 +4,7 @@
         <div class="w-full lg:w-2/3 md:w-8/12 sm:w-11/12 mx-auto">
             <div class="bg-white shadow-lg rounded-lg">
                 <div class="bg-gray-200 px-4 py-2 rounded-t-lg mt-2">
-                    <h3 class="text-xl font-semibold mt-2">Request New Candidate</h3>
+                    <h3 class="text-xl font-semibold mt-2">Add New Candidate</h3>
                 </div>
                 <form class="p-4 flex flex-col" id="applyJob">
                     <div class="border p-4 border-gray mt-2">
