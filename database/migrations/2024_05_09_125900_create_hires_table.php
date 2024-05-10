@@ -16,14 +16,7 @@ return new class extends Migration
         Schema::create('hires', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('profile');
-            $table->string('no_of_post');
-            $table->string('experience');
-            $table->string('gender');
-            $table->string('preferred_lang');
-            $table->string('type');
-            $table->string('salary');
-            $table->string('qualification');
+            $table->json('roles');
             $table->string('city');
             $table->string('state');
             $table->string('description');
@@ -32,6 +25,8 @@ return new class extends Migration
             $table->string('mobile');
             $table->string('alt_mobile');
             $table->string('email');
+            $table->string('logo');
+            $table->string('document');
             $table->foreignId('hire_plan_id')->constrained()->onDelete("cascade");
             $table->timestamps();
         });

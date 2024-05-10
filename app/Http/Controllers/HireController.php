@@ -54,14 +54,6 @@ class HireController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3',
-            'inputs.*.profile'=> 'required',
-            'inputs.*.no_of_post'=> 'required',
-            'inputs.*.experience'=> 'required',
-            'inputs.*.gender'=> 'required',
-            'inputs.*.preferred_lang'=> 'required',
-            'inputs.*.type'=> 'required',
-            'inputs.*.salary'=> 'required',
-            'inputs.*.qualification'=> 'required',
             'city' => 'required|string',
             'state' => 'required|string',
             'description' => 'required|string',
@@ -73,25 +65,32 @@ class HireController extends Controller
             'plan_id'=>'required'
         ]);
 
-        dd($validator);
+
+        // Image & Document Work
+        
+        $logo = time() .  "." . $request->logo->extension();        //upload on public/photo/image/filename
+        $request->logo->move(public_path("image/company/logo"), $logo);
+
+        $document = time() . "." . $request->document->extension();       
+        $request->document->move(public_path("image/company/document"), $document);
+
+        $roles = [];
+        foreach ($request->inputs as $input) {
+            $roles[] = $input;
+        }
+
+
         if ($validator->fails()) {
             return response()->json([
                 'status' => 422,
                 'error' => $validator->messages()
             ], 422);
         } else {
-            foreach ($request->inputs as $key =>$value)
 
+          $rolesJson = json_encode($roles);  
             $hire = Hire::create([
                 'name' => $request->name, 
-                'profile' => $value, 
-                // 'no_of_post' => $request->no_of_post, 
-                // 'experience' => $request->experience, 
-                // 'gender' => $request->gender, 
-                // 'preferred_lang' => $request->preferred_lang, 
-                // 'type' => $request->type, 
-                // 'salary' => $request->salary, 
-                // 'qualification' => $request->qualification, 
+                'roles' => json_encode($rolesJson), 
                 'city' => $request->city,          
                 'state' => $request->state,          
                 'description' => $request->description,          
@@ -100,7 +99,9 @@ class HireController extends Controller
                 'mobile' => $request->mobile,          
                 'alt_mobile' => $request->alt_mobile,          
                 'email' => $request->email,          
-                'hire_plan_id' => $request->plan_id,          
+                'hire_plan_id' => $request->plan_id, 
+                'document'=>$document,         
+                'logo'=>$logo,         
             ]);
     
             if ($hire) {
