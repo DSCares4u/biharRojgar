@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('alt_mobile');
             $table->string('email');
             $table->string('logo');
-            $table->string('document');
             $table->foreignId('hire_plan_id')->constrained()->onDelete("cascade");
             $table->timestamps();
         });

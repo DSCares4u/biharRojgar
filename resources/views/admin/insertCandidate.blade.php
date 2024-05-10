@@ -229,7 +229,7 @@
                         <div class="mt-2 mb-2">
                             <div class="mb-4 items-center">
                                 <label for="photo" class="block text-sm mb-2 ">Upload Your Photo</label>
-                                <input type="file" id="photo" name="image" required>
+                                <input type="file" id="photo" name="photo" required>
                             </div>
                             <div class="mb-4 items-center">
                                 <label for="signature" class="block text-sm mb-2 ">Upload Your Signature</label>
@@ -278,7 +278,6 @@
     </div>
 
     <script>
-
         $(document).ready(function() {
             //insert application details
 
@@ -300,6 +299,6 @@
                     }
                 })
             })
-        })
+        });
     </script>
 @endsection

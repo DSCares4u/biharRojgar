@@ -61,8 +61,8 @@ class JobController extends Controller
 
         $randomNumber = mt_rand(1000,9999); // Generate a random number
 
-        $filename = "DO". time() . $randomNumber . "." . $request->image->extension();        //upload on public/photo/image/filename
-        $request->image->move(public_path("image/photo"), $filename);
+        $photo = "DO". time() . $randomNumber . "." . $request->photo->extension();        //upload on public/photo/image/filename
+        $request->photo->move(public_path("image/photo"), $photo);
 
         $signature = "SI". time() . $randomNumber . "." . $request->signature->extension();        //upload on public/photo/image/filename
         $request->signature->move(public_path("image/signature"), $signature);
@@ -108,7 +108,7 @@ class JobController extends Controller
                 'experience' => $request->experience,
                 'skills' => $request->skills,
                 'id_proof_type' => $request->id_proof_type,
-                'image' => $filename,
+                'photo' => $photo,
                 'signature'=>$signature,
                 'id_proof'=>$id_proof,
                 'quali_certificate'=>$quali_certificate,

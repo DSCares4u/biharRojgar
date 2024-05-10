@@ -27,22 +27,25 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class=" py-1"><input type="text" name="inputs[0]['profile']"
-                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
+                                <td class=" py-1"><input type="text" name="inputs[0]['profile']" placeholder="Enter"
+                                        class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class=" py-1"><input type="number" min="1" name="inputs[0]['no_of_post']"
-                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class=" py-1"><input type="text" name="inputs[0]['experience']"
-                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class=" py-1"><input type="text" name="inputs[0]['gender']"
-                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
+                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full">
+                                </td>
+                                <td class=" py-1"><input type="text" name="inputs[0]['experience']" placeholder="Enter"
+                                        class="appearance-none border text-center py-2 px-2 w-full"></td>
+                                <td class=" py-1"><input type="text" name="inputs[0]['gender']" placeholder="Enter"
+                                        class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class=" py-1"><input type="text" name="inputs[0]['preferred_lang']"
-                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class=" py-1"><input type="text" name="inputs[0]['type']"
-                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class=" py-1"><input type="text" name="inputs[0]['salary']"
-                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
+                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full">
+                                </td>
+                                <td class=" py-1"><input type="text" name="inputs[0]['type']" placeholder="Enter"
+                                        class="appearance-none border text-center py-2 px-2 w-full"></td>
+                                <td class=" py-1"><input type="text" name="inputs[0]['salary']" placeholder="Enter"
+                                        class="appearance-none border text-center py-2 px-2 w-full"></td>
                                 <td class=" py-1"><input type="text" name="inputs[0]['qualification']"
-                                    placeholder="Enter"    class="appearance-none border text-center py-2 px-2 w-full"></td>
+                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full">
+                                </td>
                                 <td class=" py-2 flex justify-center">
                                     <button type="button" name="add"
                                         class="add bg-green-500 px-3 py-1 rounded text-white"><i
@@ -54,19 +57,19 @@
                 </div>
                 <div class="mb-3 flex gap-2">
                     <div class="mb-3  items-center w-1/2">
-                        <label for="name" class="block text-gray-700 text-sm mb-2 ">City</label>
-                        <input type="text" id="name" name="name"
+                        <label for="city" class="block text-gray-700 text-sm mb-2 ">City</label>
+                        <input type="text" id="city" name="city"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="Purnea" required>
                     </div>
                     <div class="mb-3  items-center w-1/2">
-                        <label for="name" class="block text-gray-700 text-sm mb-2 ">State</label>
-                        <input type="text" id="name" name="name"
+                        <label for="state" class="block text-gray-700 text-sm mb-2 ">State</label>
+                        <input type="text" id="state" name="state"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="Bihar" required>
                     </div>
                 </div>
                 <div class="mb-3  items-center">
-                    <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Description</label>
-                    <textarea name="" id="" cols="20" rows="2"placeholder="Type Or Details Of Job Here"
+                    <label for="description" class="block text-gray-700 text-sm mb-2 ">Job Description</label>
+                    <textarea name="description" id="description" cols="20" rows="2"placeholder="Type Or Details Of Job Here"
                         class="shadow appearance-none border py-1 px-2 w-full"></textarea>
                 </div>
                 <div class="mb-3 flex items-center">
@@ -75,40 +78,43 @@
                 </div>
                 <div class="mb-3 flex gap-2">
                     <div class="mb-3 items-center w-1/2">
-                        <label for="" class="block text-gray-700 text-sm mb-2 ">Hiring for (Company name)</label>
-                        <input type="text" id="name" name="name"
+                        <label for="company_name" class="block text-gray-700 text-sm mb-2 ">Hiring for (Company
+                            name)</label>
+                        <input type="text" id="company_name" name="company_name"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="Abc Pvt. Ltd." required>
                     </div>
                     <div class="mb-3  items-center w-1/2">
-                        <label for="name" class="block text-gray-700 text-sm mb-2 ">Company's Website (if any)</label>
-                        <input type="text" id="name" name="name"
+                        <label for="website" class="block text-gray-700 text-sm mb-2 ">Company's Website (if any)</label>
+                        <input type="text" id="website" name="website"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="abc.com" required>
                     </div>
                 </div>
                 <div class="mb-3 flex gap-2">
                     <div class="mb-3  items-center w-1/2">
-                        <label for="name" class="block text-gray-700 text-sm mb-2 ">Phone</label>
-                        <input type="tel" id="name" name="name"
+                        <label for="mobile" class="block text-gray-700 text-sm mb-2 ">Phone</label>
+                        <input type="tel" id="mobile" name="mobile"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" required>
                     </div>
                     <div class="mb-3  items-center w-1/2">
-                        <label for="name" class="block text-gray-700 text-sm mb-2 ">Alternate Phone</label>
-                        <input type="tel" id="name" name="name"
+                        <label for="alt_mobile" class="block text-gray-700 text-sm mb-2 ">Alternate Phone</label>
+                        <input type="tel" id="alt_mobile" name="alt_mobile"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" required>
                     </div>
                 </div>
-                <div class="mb-3  items-center w-1/2">
-                    <label for="name" class="block text-gray-700 text-sm mb-2 ">Email</label>
-                    <input type="email" id="name" name="name"
-                        class="shadow appearance-none border py-1 px-2 w-full"placeholder="roni@gmail.com" required>
-                </div>
-                <div class="mb-4  items-center">
-                    <label for="name" class="block text-gray-700 text-sm mb-2 ">Any Document</label>
-                    <input type="file" id="name" name="name" required>
+                <div class="flex gap-2 items-center">
+                    <div class="mb-3  items-center w-1/2">
+                        <label for="email" class="block text-gray-700 text-sm mb-2 ">Email</label>
+                        <input type="email" id="email" name="email"
+                            class="shadow appearance-none border py-1 px-2 w-full" placeholder="roni@gmail.com" required>
+                    </div>
+                    <div class="mb-3 items-center w-1/2">
+                        <label for="logo" class="block text-gray-700 text-sm mb-2 ">Company's Logo / Image</label>
+                        <input type="file" id="logo" name="logo" class="py-1 px-2 w-full" required>
+                    </div>
                 </div>
 
                 {{-- Option card --}}
-                <div class="mb-4 flex gap-2">
+                <div class="mb-4 flex gap-2" id="plan_card">
                     <div
                         class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
                         <div class="price flex justify-between">
@@ -124,7 +130,7 @@
                                     src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Limited applications</li>
                         </ul>
                     </div>
-                    <div
+                    {{-- <div
                         class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
                         <div class="price flex justify-between">
                             <h3 class="text-lg font-semibold">Gold</h3>
@@ -174,17 +180,17 @@
                             <li class="flex font-medium text-[13px] mt-2 "><img
                                     src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Limited applications</li>
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                     <label for="name" class="block font-semibold text-sm mb-2 ">Can this job be done remotely
                         ?</label>
                     <div class="btn text-gray-700 text-sm items-center">
                         <input type="radio" class="ml-2 mr-1 form-radio h-3 w-3" name="type" id="">Yes
                         <input type="radio"class="ml-10 mr-1 form-radio h-3 w-3" name="type" id="">No
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="mb-3 flex justify-center">
                     <button type="submit"
@@ -222,34 +228,8 @@
                         Post Job
                     </button>
                 </div>
-
             </div>
         </div>
-        <script>
-            $(document).ready(function() {
-                //insert new call request
-
-                $("#requestCall").submit(function(e) {
-                    e.preventDefault();
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ route('job.store') }}",
-                        data: new FormData(this),
-                        dataType: "JSON",
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success: function(response) {
-                            swal("Success", response.message, "success");
-                            $("#requestCall").trigger("reset");
-                            window.open("/", "_self")
-                        }
-                    })
-                })
-            })
-        </script>
-
-
 
         <script>
             $(document).ready(function() {
@@ -260,25 +240,25 @@
                     ++i;
                     $('#table').append(
                         `<tr>
-                            <td class="py-1"><input type="text" name="inputs[${i}]['profile']"
-                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class="py-1"><input type="number" min="1"
-                                        name="inputs[0]['no_of_post']" placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class="py-1"><input type="text" name="inputs[${i}]['experience']"
-                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class="py-1"><input type="text" name="inputs[${i}]['gender']"
-                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class="py-1"><input type="text" name="inputs[${i}]['preferred_lang']"
-                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class="py-1"><input type="text" name="inputs[${i}]['type']"
-                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class="py-1"><input type="text" name="inputs[${i}]['salary']"
-                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class="py-1"><input type="text" name="inputs[${i}]['qualification']"
-                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                <td class="py-2 flex justify-center">
-                                    <button type="button" class="remove bg-red-500 px-3 py-1 rounded text-white"><i class="fa-solid fa-user-xmark"></i></button>
-                                </td>
+                <td class="py-1"><input type="text" name="inputs[${i}]['profile']"
+                            placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
+                    <td class="py-1"><input type="number" min="1"
+                            name="inputs[${i}]['no_of_post']" placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
+                    <td class="py-1"><input type="text" name="inputs[${i}]['experience']"
+                            placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
+                    <td class="py-1"><input type="text" name="inputs[${i}]['gender']"
+                            placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
+                    <td class="py-1"><input type="text" name="inputs[${i}]['preferred_lang']"
+                            placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
+                    <td class="py-1"><input type="text" name="inputs[${i}]['type']"
+                            placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
+                    <td class="py-1"><input type="text" name="inputs[${i}]['salary']"
+                            placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
+                    <td class="py-1"><input type="text" name="inputs[${i}]['qualification']"
+                            placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
+                    <td class="py-2 flex justify-center">
+                        <button type="button" class="remove bg-red-500 px-3 py-1 rounded text-white"><i class="fa-solid fa-user-xmark"></i></button>
+                    </td>
                 </tr>`
                     );
                 });
@@ -288,5 +268,103 @@
                     $(this).closest('tr').remove();
                 });
             });
+
+            $(document).ready(function() {
+                //insert application details
+
+                $("#addHirer").submit(function(e) {
+                    e.preventDefault();
+                    var formData = new FormData(this);
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('hire.store') }}",
+                        data: formData,
+                        dataType: "JSON",
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function(response) {
+                            swal("Success", response.message, "success");
+                            $("#addHirer").trigger("reset");
+                            window.open("/admin/manage-hire", "_self")
+                        }
+                    })
+                });
+
+                // $.ajax({
+                //     type: "GET",
+                //     url: "{{ route('hire.plan.index') }}",
+                //     success: function(response) {
+                //         let select = $("#plan_card");
+                //         select.empty();
+                //         response.data.forEach((plan) => {
+                //             select.append(`
+        //             <div class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
+        //                 <div class="price flex justify-between">
+        //                     <h3 class="text-lg font-semibold">${plan.name}</h3>
+        //                     <h3 class="text-lg font-semibold">Rs. ${plan.price}</h3>
+        //                 </div>
+        //                 <div class="line bg-orange-500 mt-20">
+        //                     <hr class="h-2">
+        //                 </div>
+        //                 <ul class="mt-3">
+        //                     <li class="flex font-medium text-[13px] mt-2 "><img src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">${plan.features}</li>
+        //                     <li class="flex font-medium text-[13px] mt-2 "><img src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">${plan.features}</li>
+        //                     <li class="flex font-medium text-[13px] mt-2 "><img src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">${plan.features}</li>
+        //                     <li class="flex font-medium text-[13px] mt-2 "><img src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">${plan.features}</li>
+        //                     <li class="flex font-medium text-[13px] mt-2 "><img src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">${plan.features}</li>
+        //                 </ul>
+        //             </div>
+        //             `);
+                //         });
+                //     }
+                // });
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('hire.plan.index') }}",
+                    success: function(response) {
+                        let select = $("#plan_card");
+                        select.empty();
+                        response.data.forEach((plan) => {
+                            // Split the features string by newline character
+                            let featuresArray = plan.features[0].split('\n');
+
+                            // Generate list items for each feature
+                            let listItems = featuresArray.map(feature => {
+                                return `<li class="flex font-medium text-[13px] mt-2"><img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="">${feature}</li>`;
+                            }).join('');
+
+                            select.append(`
+                            
+                            <div class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700">
+                                <div class="price flex justify-between">
+                                    <h3 class="text-lg font-semibold">${plan.name}</h3>
+                                    <h3 class="text-lg font-semibold">Rs. ${plan.price}</h3>
+                                </div>
+                                <div class="line bg-orange-500 mt-20">
+                                    <hr class="h-2">
+                                </div>
+                                <ul class="mt-3">
+                                    ${listItems}
+                                </ul>
+                            </div>
+                            `);
+                        });
+                    }
+                });
+
+
+                // $('#callingPlans').change(function() {
+                //     let selectedPlan = $(this).children("option:selected");
+                //     let PlanFee = selectedPlan.data('plan-charge');
+
+                //     // Update the fee display
+                //     $('#planCharge').html(
+                //         `<input  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        // <label  class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Plan Charge Rs. ${PlanFee}</label>`
+                //     );
+                // });
+            })
         </script>
     @endsection

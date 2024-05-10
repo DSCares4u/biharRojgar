@@ -33,4 +33,12 @@ class AdminController extends Controller
     public function manageHirePlan(){
         return view('admin.manageHirePlan');
     }
+
+    public function manageYojna(){
+        return view('admin.manageYojna');
+    }
+
+    public function insertYojna(){
+        return view('admin.insertYojna');
+    }
 }

@@ -62,7 +62,7 @@ class HireController extends Controller
             'mobile' => 'required|string',
             'alt_mobile' => 'required|string',
             'email' => 'required|string',
-            'plan_id'=>'required'
+            'plan_id'=>'required',
         ]);
 
 
@@ -70,9 +70,6 @@ class HireController extends Controller
         
         $logo = time() .  "." . $request->logo->extension();        //upload on public/photo/image/filename
         $request->logo->move(public_path("image/company/logo"), $logo);
-
-        $document = time() . "." . $request->document->extension();       
-        $request->document->move(public_path("image/company/document"), $document);
 
         $roles = [];
         foreach ($request->inputs as $input) {
@@ -100,7 +97,6 @@ class HireController extends Controller
                 'alt_mobile' => $request->alt_mobile,          
                 'email' => $request->email,          
                 'hire_plan_id' => $request->plan_id, 
-                'document'=>$document,         
                 'logo'=>$logo,         
             ]);
     

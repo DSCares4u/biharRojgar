@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HireController;
 use App\Http\Controllers\HirePlanController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\YojnaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,9 @@ Route::get('/job',[JobController::class,'index'])->name('job.index');
 Route::get('/job/view/{id}',[JobController::class,'show']);
 Route::put('/job/edit/{id}',[JobController::class,'update']);
 Route::delete('/job/delete/{id}',[JobController::class,'destroy']);
+
+Route::post('/yojna',[YojnaController::class,'store'])->name('yojna.store');
+Route::get('/yojna',[YojnaController::class,'index'])->name('yojna.index');
+Route::get('/yojna/view/{id}',[YojnaController::class,'show']);
+Route::put('/yojna/edit/{id}',[YojnaController::class,'update']);
+Route::delete('/yojna/delete/{id}',[YojnaController::class,'destroy']);

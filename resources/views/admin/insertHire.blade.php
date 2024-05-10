@@ -115,15 +115,10 @@
                                 required>
                         </div>
                         <div class="mb-3 items-center w-1/2">
-                            <label for="name" class="block text-gray-700 text-sm mb-2 ">Company's Logo</label>
+                            <label for="logo" class="block text-gray-700 text-sm mb-2 ">Company's Logo / Image</label>
                             <input type="file" id="logo" name="logo"  class="py-1 px-2 w-full"  required>
                         </div>
                     </div>
-                    <div class="mb-4  items-center">
-                        <label for="name" class="block text-gray-700 text-sm mb-2 ">Any Document</label>
-                        <input type="file" id="document" name="document" required>
-                    </div>
-
                     <div class="mb-4">
                         <select name="plan_id" id="callingPlans">
                             <option value="">Select Plan</option>
@@ -132,86 +127,6 @@
                     <div class="mb-4">
                         <div id="planCharge"></div>
                     </div>
-
-                    {{-- Option card --}}
-                    {{-- <div class="mb-4 flex gap-2">
-                            <div
-                                class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
-                                <div class="price flex justify-between">
-                                    <h3 class="text-lg font-semibold">Free</h3>
-                                    <h3 class="text-lg font-semibold">Rs. 0</h3>
-                                </div>
-                                <div class="line bg-orange-500 mt-20">
-                                    <hr class="h-2">
-                                </div>
-                                <ul class="mt-3">
-                                    <li class="font-gray-600 text-[13px]">Normal x applications</li>
-                                    <li class="flex font-medium text-[13px] mt-2 "><img
-                                            src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Limited applications</li>
-                                </ul>
-                            </div>
-                            <div
-                                class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
-                                <div class="price flex justify-between">
-                                    <h3 class="text-lg font-semibold">Gold</h3>
-                                    <h3 class="text-lg font-semibold">Rs. 999</h3>
-                                </div>
-                                <div class="line bg-orange-500 mt-20">
-                                    <hr class="h-2">
-                                </div>
-                                <ul class="mt-3">
-                                    <li class="flex font-medium text-[13px] mt-2 "><img
-                                            src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Top of page promotion
-                                    </li>
-                                    <li class="flex font-medium text-[13px] mt-2 "><img
-                                            src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Unlimited applications
-                                    </li>
-                                    <li class="flex font-medium text-[13px] mt-2 "><img
-                                            src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Highlighted as 'Gold'
-                                    </li>
-                                </ul>
-                            </div>
-                            <div
-                                class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
-                                <div class="price flex justify-between">
-                                    <h3 class="text-lg font-semibold">Rapid Hire</h3>
-                                    <h3 class="text-lg font-semibold">Rs. 1299</h3>
-                                </div>
-                                <div class="line bg-orange-500 mt-20">
-                                    <hr class="h-2">
-                                </div>
-                                <ul class="mt-3">
-                                    <li class="font-gray-600 text-[13px]">Normal x applications</li>
-                                    <li class="flex font-medium text-[13px] mt-2 "><img
-                                            src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Limited applications</li>
-                                </ul>
-                            </div>
-                            <div
-                                class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
-                                <div class="price flex justify-between">
-                                    <h3 class="text-lg font-semibold">Spotlight</h3>
-                                    <h3 class="text-lg font-semibold">Rs. 999</h3>
-                                </div>
-                                <div class="line bg-orange-500 mt-20">
-                                    <hr class="h-2">
-                                </div>
-                                <ul class="mt-3">
-                                    <li class="font-gray-600 text-[13px]">Normal x applications</li>
-                                    <li class="flex font-medium text-[13px] mt-2 "><img
-                                            src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Limited applications</li>
-                                </ul>
-                            </div>
-                        </div> --}}
-
-                    {{-- <div class="mb-3">
-                            <label for="name" class="block font-semibold text-sm mb-2 ">Can this job be done remotely
-                                ?</label>
-                            <div class="btn text-gray-700 text-sm items-center">
-                                <input type="radio" class="ml-2 mr-1 form-radio h-3 w-3" name="type" id="">Yes
-                                <input type="radio"class="ml-10 mr-1 form-radio h-3 w-3" name="type" id="">No
-                            </div>
-                        </div> --}}
-
                     <div class="mb-3 flex justify-center">
                         <button type="submit"
                             class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
@@ -224,28 +139,6 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            //insert application details
-
-            $("#addHirer").submit(function(e) {
-                e.preventDefault();
-                var formData = new FormData(this);
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('hire.store') }}",
-                    data: formData,
-                    dataType: "JSON",
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    success: function(response) {
-                        swal("Success", response.message, "success");
-                        $("#addHirer").trigger("reset");
-                        window.open("/admin/manage-hire", "_self")
-                    }
-                })
-            })
-        });
         $(document).ready(function() {
             var i = 0;
 
