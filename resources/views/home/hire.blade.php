@@ -58,13 +58,13 @@
                                         <option value="other" class=" border w-full text-sm">Others</option>
                                     </select>
                                 </td>
-                                <td class=" py-1"><select name="inputs[0]['qualification']"
+                                <td class=" py-1"><select name="inputs[0]['type']"
                                     class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
                                     id="preferred_lang">
                                     <option value="" class="appearance-none border text-center w-full  ">Select
                                     </option>
                                     <option value="full-time" class=" border  w-full text-sm">Full-Time</option>
-                                    <option value="parr-time" class=" border  w-full text-sm">Part-Time</option>
+                                    <option value="part-time" class=" border  w-full text-sm">Part-Time</option>
                                     <option value="temporary" class=" border  w-full text-sm">Temporary</option>
                                 </select>
                             </td>
@@ -83,7 +83,8 @@
                                     </select>
                                 </td>
                                 <td class=" py-1"><input type="text" name="inputs[0]['salary']"
-                                        placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full">
+                                    placeholder="5000-10000"
+                                    class="appearance-none border text-center py-2  w-full  text-xs">
                                 </td>
                                 <td class=" py-2 flex justify-center">
                                     <button type="button" name="add"
