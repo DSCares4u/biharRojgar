@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthOtpController;
+use App\Http\Controllers\JobController;
 
 
 /*
@@ -19,7 +20,7 @@ use App\Http\Controllers\AuthOtpController;
 
 Route::get('/',[HomeController::class,'index']);
 
-Route::get('/get-job',[HomeController::class,'getJob']);
+Route::get('/get-job',[HomeController::class,'getJob'])->name('get.start');
 Route::get('/get-job/t&c',[HomeController::class,'getJobTC']);
 
 Route::get('/hire',[HomeController::class,'hire']);
@@ -31,8 +32,11 @@ Route::get('/login',[HomeController::class,'login']);
 Route::controller(AuthOtpController::class)->group(function(){
 
     Route::get('/otp/login','login')->name('otp.login');
-    Route::post('/otp/generate','generate')->name('otp.generate');
+    Route::post('/generate-otp', 'generate')->name('generate.otp');
+    Route::post('/verify-otp', 'verify')->name('verify.otp');
 });
+
+Route::get('/get-district-and-state', [JobController::class, 'getDistrictAndState']);
 
 // Route::get('/otp-login', [AuthOtpController::class, 'login'])->name('otp.login');
 // Route::post('/generate-otp', [AuthOtpController::class, 'generate'])->name('otp.generate');

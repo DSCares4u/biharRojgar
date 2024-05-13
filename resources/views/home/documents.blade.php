@@ -3,56 +3,71 @@
     <div class="container mx-auto font-sans ">
         <div class="flex">
             <div class="bg-gray-100 mx-4 w-8/12">
-                <form class="p-5 flex flex-col">
-                    <div class="border border-gray mt-2 p-4">
-                        <h2 class="text-lg font-semibold mb-2  ">Essential Qualification</h2>
-                        <hr class="h-1 rounded bg-gray-600 mb-2">
-                        <div class="mt-2">
-                            <div class="mb-2 items-center">
-                                <label for="name" class="block text-sm mb-2 ">Upload Your Photo</label>
-                                <input type="file" id="name" name="name" required>
-                            </div>
-                            <div class="mb-2 items-center">
-                                <label for="name" class="block text-sm mb-2 ">Upload Your Signature</label>
-                                <input type="file" id="name" name="name" required>
-                            </div>
-                            <div class="flex ">
-                                <div class="mb-2 items-center">
-                                    <label for="name" class="block text-sm mb-2 ">Choose Id Proof</label>
-                                    <select name=""id="" class="border py-2 px-5 w-1/2 rounded" required>
-                                        <option value="">Select</option>
-                                        <option value="">Aadhar Card</option>
-                                        <option value="">Pan Card</option>
-                                        <option value="">Driving Licence</option>
-                                        <option value="">Voter Id Card</option>
-                                    </select>
+                <form class="p-5 flex flex-col" id="addDocument">
+                    <div class="container mx-auto font-sans ">
+
+                        <div class="p-5 flex flex-col">
+                            <div class="border border-gray mt-2 p-4">
+                                <h2 class="text-lg font-semibold mb-2  ">Essential Qualification</h2>
+                                <hr class="h-1 rounded bg-gray-600 mb-2">
+                                <div class="mt-2">
+                                    <div class="mb-4 items-center">
+                                        <label for="photo" class="block text-sm mb-3 ">Upload Your
+                                            Photo</label>
+                                        <input type="file" id="photo" name="photo">
+                                    </div>
+                                    <div class="mb-4 items-center">
+                                        <label for="signature" class="block text-sm mb-3 ">Upload Your
+                                            Signature</label>
+                                        <input type="file" id="signature" name="signature">
+                                    </div>
+                                    <div class="flex gap-3">
+                                        <div class="mb-4 items-center">
+                                            <label for="id_proof_type" class="block text-sm mb-3 ">Choose Id
+                                                Proof</label>
+                                            <select name="id_proof_type"id="id_proof_type"
+                                                class="border py-2 px-5 w-full rounded">
+                                                <option value="">Select</option>
+                                                <option value="aadhar">Aadhar Card</option>
+                                                <option value="pan">Pan Card</option>
+                                                <option value="dl">Driving Licence</option>
+                                                <option value="voter-id">Voter Id Card</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-4 items-center">
+                                            <label for="id_proof" class="block text-sm mb-3 ">Upload Selected
+                                                Id</label>
+                                            <input type="file" id="id_proof" name="id_proof">
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 items-center">
+                                        <label for="quali_certificate" class="block text-sm mb-3 ">Upload Your Latest
+                                            Qualification
+                                            Certificate</label>
+                                        <input type="file" id="quali_certificate" name="quali_certificate">
+                                    </div>
+                                    <div class="mb-4 items-center">
+                                        <h4 for="other_certificate" class="text-sm mb-3 flex">Any Other Certificate <p
+                                                class="text-sm">(i.e.
+                                                Computer Certificate, Skill Certificate, etc)</p>
+                                        </h4>
+                                        <input type="file" id="other_certificate" name="other_certificate">
+                                    </div>
                                 </div>
-                                <div class="mb-2 items-center">
-                                    <label for="name" class="block text-sm mb-2 ">Upload Selected Id</label>
-                                    <input type="file" id="name" name="name" required>
+                            </div>
+                            <div class="button flex justify-between ml-10 mt-2">
+                                <div class="previous">
+                                    <div class="previous">
+                                        <a href="/address"class="bg-[#1B9CFC] hover:bg-[#57aff7] rounded px-3 py-1 text-white">Previous</a>
+                                    </div>
+                                </div>
+                                <div class="next">
+                                    <button type="submit"
+                                        class="bg-green-500 hover:bg-green-600 rounded px-3 py-1 text-white">Submit</button>
                                 </div>
                             </div>
-                            <div class="mb-2 items-center">
-                                <label for="name" class="block text-sm mb-2 ">Upload Your Latest Qualification
-                                    Certificate</label>
-                                <input type="file" id="name" name="name" required>
-                            </div>
-                            <div class="mb-2 items-center">
-                                <h4 for="name" class="text-sm mb-2 flex">Any Other Certificate <p class="text-sm">(i.e.
-                                        Computer Certificate, Skill Certificate, etc)</p>
-                                </h4>
-                                <input type="file" id="name" name="name" required>
-                            </div>
                         </div>
-                    </div>
-                    <div class="button flex justify-between ml-10 mt-2">
-                        <div class="previous">
-                            <button class="bg-[#1B9CFC] hover:bg-[#57aff7] rounded px-3 py-1 text-white">Previous</button>
-                        </div>
-                        <div class="next">
-                            <button class="bg-[#EA2027] hover:bg-[#ff4747] rounded px-3 py-1 text-white">Save &
-                                Next</button>
-                        </div>
+
                     </div>
                 </form>
             </div>
@@ -97,11 +112,11 @@
         $(document).ready(function() {
             //insert new call request
 
-            $("#requestCall").submit(function(e) {
+            $("#addDocument").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "{{ route('job.store') }}",
+                    url: "{{ route('document.store') }}",
                     data: new FormData(this),
                     dataType: "JSON",
                     contentType: false,
@@ -109,11 +124,12 @@
                     processData: false,
                     success: function(response) {
                         swal("Success", response.message, "success");
-                        $("#requestCall").trigger("reset");
+                        $("#addDocument").trigger("reset");
                         window.open("/", "_self")
                     }
                 })
             })
         })
+        
     </script>
 @endsection

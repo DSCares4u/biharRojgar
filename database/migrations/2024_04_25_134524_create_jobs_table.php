@@ -32,18 +32,6 @@ return new class extends Migration
             $table->integer('pincode');
             $table->string('city');
             $table->string('state');
-            $table->string('qualification');
-            $table->string('q_state');
-            $table->string('board');
-            $table->string('passing_year');
-            $table->string('experience');
-            $table->string('skills');
-            $table->string('id_proof_type');
-            $table->string('photo');
-            $table->string('signature');
-            $table->string('id_proof');
-            $table->string('quali_certificate');
-            $table->string('other_certificate');
             $table->timestamps();
         });
     }

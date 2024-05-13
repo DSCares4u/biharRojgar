@@ -417,9 +417,6 @@
 
     <hr class="bg-gray-300 h-1 rounded-xl">
 
-
-
-
     <div id="myModal" class="modal  fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
         <div class="modal-content bg-white p-8 rounded shadow-md w-1/2">
             <span id="closeBtn" class="absolute text-3xl text-gray-600 cursor-pointer right-96">&times;</span>

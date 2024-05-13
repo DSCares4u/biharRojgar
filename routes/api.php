@@ -7,6 +7,8 @@ use App\Http\Controllers\HirePlanController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\YojnaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AddressController;
+use App\Http\Controllers\DocumentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +50,18 @@ Route::get('/job',[JobController::class,'index'])->name('job.index');
 Route::get('/job/view/{id}',[JobController::class,'show']);
 Route::put('/job/edit/{id}',[JobController::class,'update']);
 Route::delete('/job/delete/{id}',[JobController::class,'destroy']);
+
+Route::post('/address',[AddressController::class,'store'])->name('address.store');
+Route::get('/address',[AddressController::class,'index'])->name('address.index');
+Route::get('/address/view/{id}',[AddressController::class,'show']);
+Route::put('/address/edit/{id}',[AddressController::class,'update']);
+Route::delete('/address/delete/{id}',[AddressController::class,'destroy']);
+
+Route::post('/document',[DocumentController::class,'store'])->name('document.store');
+Route::get('/document',[DocumentController::class,'index'])->name('document.index');
+Route::get('/document/view/{id}',[DocumentController::class,'show']);
+Route::put('/document/edit/{id}',[DocumentController::class,'update']);
+Route::delete('/document/delete/{id}',[DocumentController::class,'destroy']);
 
 Route::post('/yojna',[YojnaController::class,'store'])->name('yojna.store');
 Route::get('/yojna',[YojnaController::class,'index'])->name('yojna.index');
