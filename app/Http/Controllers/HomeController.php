@@ -14,6 +14,14 @@ class HomeController extends Controller
         return view('home.getJob');
     }
 
+    public function register(){
+        return view('home.register');
+    }
+
+    public function login(){
+        return view('home.login');
+    }
+
     public function getJobTC(){
         return view('home.getJobT&C');
     }

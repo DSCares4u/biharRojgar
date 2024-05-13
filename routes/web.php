@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthOtpController;
 
 
 /*
@@ -23,6 +24,19 @@ Route::get('/get-job/t&c',[HomeController::class,'getJobTC']);
 
 Route::get('/hire',[HomeController::class,'hire']);
 Route::get('/hire/t&c',[HomeController::class,'hireTC']);
+
+Route::get('/register',[HomeController::class,'register']);
+Route::get('/login',[HomeController::class,'login']);
+
+Route::controller(AuthOtpController::class)->group(function(){
+
+    Route::get('/otp/login','login')->name('otp.login');
+    Route::post('/otp/generate','generate')->name('otp.generate');
+});
+
+// Route::get('/otp-login', [AuthOtpController::class, 'login'])->name('otp.login');
+// Route::post('/generate-otp', [AuthOtpController::class, 'generate'])->name('otp.generate');
+// Route::get('/otp-verification', [AuthOtpController::class, 'verification'])->name('otp.verification');
 
 Route::get('/sarkari-yojna', function () {
     return view('home.sarkariYojna');
