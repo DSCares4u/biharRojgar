@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\VerificationCode;
 use Carbon\Carbon;
@@ -17,58 +18,25 @@ class AuthOtpController extends Controller
 
     public function generate(Request $request)
     {
-        // $request->validate([
-        //     'mobile' => 'required|exists:users,mobile'
-        // ]);
-    
-        // // Find the user
-        // $user = User::where('mobile', $request->mobile)->firstOrFail();
-    
-        // // Generate OTP
-        // $verificationCode = $this->generateOtp($user);
-    
-        // // Flash OTP message
-        // $message = "Your OTP is: " . $verificationCode->otp;
-    
-        // return redirect()->route("otp.login")->with('success', $message);
-
-
         $request->validate([
             'mobile' => 'required|exists:users,mobile'
         ]);
     
         // Generate OTP
         $verificationCode = $this->generateOtp($request->mobile);
+
+                // // Flash OTP message
+
+        $message = "Your OTP is: " . $verificationCode->otp;
     
         // Redirect to OTP verification page with mobile number
-        return redirect()->route('verify.otp', ['mobile' => $request->mobile]);
+        return redirect()->route('otp.verification', ['user_id' => $verificationCode->user_id])->with('success',$message);
     
 
     }
     
-    public function generateOtp($user)
-    {
-        // Check if there's a valid OTP for the user
-    //     $verificationCode = VerificationCode::where('user_id', $user->id)
-    //         ->latest()
-    //         ->first();
-    
-    //     $now = Carbon::now();
-    
-    //     if ($verificationCode && $now->isBefore($verificationCode->expire_at)) {
-    //         return $verificationCode;
-    //     }
-    
-    //     // Generate new OTP
-    //     $otp = rand(111111, 999999);
-    
-    //     // Save OTP to the database
-    //     return VerificationCode::create([
-    //         'user_id' => $user->id,
-    //         'otp' => $otp,
-    //         'expire_at' => Carbon::now()->addMinutes(10)
-    //     ]);
-    
+    public function generateOtp($mobile)
+    {    
         $user = User::where('mobile', $mobile)->firstOrFail(); // This line ensures that the user exists
     
         $verificationCode = VerificationCode::where('user_id', $user->id)->latest()->first();
@@ -86,36 +54,39 @@ class AuthOtpController extends Controller
         ]);
     }
     
-
-
-    // In YourController.php
-
-public function verify(Request $request)
-{
-    $request->validate([
-        'mobile' => 'required|exists:users,mobile',
-        'otp' => 'required'
-    ]);
-
-    $user = User::where('mobile', $request->mobile)->first();
-    $verificationCode = VerificationCode::where('user_id', $user->id)
-        ->where('otp', $request->otp)
-        ->where('expire_at', '>', now())
-        ->latest()
-        ->first();
-
-    if ($verificationCode) {
-        // Perform login or other actions upon successful OTP verification
-        return redirect()->route('dashboard')->with('success', 'OTP verified successfully.');
+    public function verification($user_id){
+        return view('home.otp-verification')->with([
+            'user_id' => $user_id
+        ]);
     }
 
-    return back()->withErrors(['otp' => 'Invalid OTP. Please try again.']);
-}
+    public function loginWithOtp(Request $request){
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'otp' => 'required'
+        ]);
 
-public function showVerificationPage($mobile)
-{
-    return view('verification', compact('mobile'));
-}
+        $verificationCode = VerificationCode::where('user_id',$request->user_id)->where('otp',$request->otp)->first();
 
-    
+        $now = Carbon::now();
+        if(!$verificationCode){
+            return redirect()->back()->with('error','Your Otp Is Not Correct');
+        }elseif($verificationCode && $now->isAfter($verificationCode->expire_at)){
+            return redirect()->route('otp.login')->with('error','Your Otp Has been Expired');
+        }
+
+        $user = User::whereId($request->user_id)->first();
+
+        if($user){
+
+            $verificationCode->update([
+                'expire_at'=>Carbon::now()
+            ]);
+
+            Auth::login($user);
+            return redirect('/get-job');
+        }
+
+        return redirect()->route('otp.login')->with('error','Your Otp is not Correct');
+    }    
 }

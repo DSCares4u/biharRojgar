@@ -5,8 +5,9 @@
 
 <div class="flex justify-center items-center mt-10">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-md">
+
         <h1 class="text-2xl font-bold mb-4 text-center">Login</h1>
-        <form method="POST" id="otp-form" action="{{ route('generate.otp') }}">
+        <form method="POST" id="otp-form" action="{{ route('otp.generate') }}">
             @csrf
 
             <div class="mb-4">
@@ -28,58 +29,91 @@
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+// $(document).ready(function() {
+//     $('#otp-form').submit(function(e) {
+//         e.preventDefault();
+
+//         var mobile = $('#mobile').val();
+
+//         $.ajax({
+//             type: 'POST',
+//             url: "{{ route('otp.generate') }}",
+//             data: {
+//                 mobile: mobile,
+//                 _token: '{{ csrf_token() }}'
+//             },
+//             alert('generated');
+            // success: function(response) {
+            //     if(response.success) {
+            //         // Show OTP on the screen
+            //         $('#otp-message').html('<div class="bg-green-500 text-white">Your OTP is: ' + response.otp + '</div>');
+            //     } else {
+            //         $('#otp-message').html('<div class="bg-red-500 text-white">Error: Unable to generate OTP</div>');
+            //     }
+            // },
+            // error: function(xhr, status, error) {
+            //     $('#otp-message').html('<div class="bg-red-500 text-white">Error: ' + error + '</div>');
+            // }
+        });
+    });
+});
+</>
+
+
 {{-- 
 <script>
-    $(document).ready(function() {
-        $('#otp-form').submit(function(event) {
-            event.preventDefault();
-            var formData = $(this).serialize();
+//     $(document).ready(function() {
+//         $('#otp-form').submit(function(event) {
+//             event.preventDefault();
+//             var formData = $(this).serialize();
 
-            $.ajax({
-                url: $(this).attr('action'),
-                type: 'POST',
-                data: formData,
-                success: function(response) {
-                    $('#otp-message').html('<div class="alert alert-success">' + response.message + '</div>');
-                },
-                error: function(xhr, status, error) {
-                    var errors = xhr.responseJSON.error;
-                    $.each(errors, function(key, value) {
-                        $("#" + key + "-error").text(value[0]).removeClass("hidden");
-                    });
-                }
-            });
-        });
+//             $.ajax({
+//                 url: $(this).attr('action'),
+//                 type: 'POST',
+//                 data: formData,
+//                 success: function(response) {
+//                     $('#otp-message').html('<div class="alert alert-success">' + response.message + '</div>');
+//                 },
+//                 error: function(xhr, status, error) {
+//                     var errors = xhr.responseJSON.error;
+//                     $.each(errors, function(key, value) {
+//                         $("#" + key + "-error").text(value[0]).removeClass("hidden");
+//                     });
+//                 }
+//             });
+//         });
+//     });
+// </script> --}}
+    
+// {{-- <script>
+//     $(document).ready(function() {
+//         $('#otp-form').submit(function(event) {
+//             event.preventDefault();
+//             var formData = $(this).serialize();
+
+//             $.ajax({
+//                 url: $(this).attr('action'),
+//                 type: 'POST',
+//                 data: formData,
+//                 success: function(response) {
+//                     // Log the OTP to the console
+//                     console.log(response.otp);
+
+//                     // Display the OTP message on the page
+//                     $('#otp-message').html('<div class="alert alert-success">OTP generated: ' + response.otp + '</div>');
+//                 },
+//                 error: function(xhr, status, error) {
+//                     var errors = xhr.responseJSON.error;
+//                     $.each(errors, function(key, value) {
+//                         $("#" + key + "-error").text(value[0]).removeClass("hidden");
+//                     });
+//                 }
+//             });
+//         });
     });
 </script> --}}
-    
-<script>
-    $(document).ready(function() {
-        $('#otp-form').submit(function(event) {
-            event.preventDefault();
-            var formData = $(this).serialize();
-
-            $.ajax({
-                url: $(this).attr('action'),
-                type: 'POST',
-                data: formData,
-                success: function(response) {
-                    // Log the OTP to the console
-                    console.log(response.otp);
-
-                    // Display the OTP message on the page
-                    $('#otp-message').html('<div class="alert alert-success">OTP generated: ' + response.otp + '</div>');
-                },
-                error: function(xhr, status, error) {
-                    var errors = xhr.responseJSON.error;
-                    $.each(errors, function(key, value) {
-                        $("#" + key + "-error").text(value[0]).removeClass("hidden");
-                    });
-                }
-            });
-        });
-    });
-</script>
 
 
 @endsection
