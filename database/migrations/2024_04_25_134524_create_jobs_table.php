@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete("cascade");
             $table->string('name');
             $table->string('dob');
             $table->string('email')->unique();
@@ -30,6 +31,7 @@ return new class extends Migration
             $table->string('village');
             $table->string('landmark');
             $table->integer('pincode');
+            $table->integer('area');
             $table->string('city');
             $table->string('state');
             $table->timestamps();

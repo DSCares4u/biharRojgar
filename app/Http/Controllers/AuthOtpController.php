@@ -31,13 +31,11 @@ class AuthOtpController extends Controller
     
         // Redirect to OTP verification page with mobile number
         return redirect()->route('otp.verification', ['user_id' => $verificationCode->user_id])->with('success',$message);
-    
-
     }
     
     public function generateOtp($mobile)
     {    
-        $user = User::where('mobile', $mobile)->firstOrFail(); // This line ensures that the user exists
+        $user = User::where('mobile', $mobile)->first(); // This line ensures that the user exists
     
         $verificationCode = VerificationCode::where('user_id', $user->id)->latest()->first();
     
@@ -50,7 +48,7 @@ class AuthOtpController extends Controller
         return VerificationCode::create([
             'user_id'=>$user->id,
             'otp' => rand(111111,999999),
-            'expire_at'=>Carbon::now()->addMinutes(10)
+            'expire_at'=>Carbon::now()->addMinutes(1)
         ]);
     }
     
@@ -71,6 +69,7 @@ class AuthOtpController extends Controller
         $now = Carbon::now();
         if(!$verificationCode){
             return redirect()->back()->with('error','Your Otp Is Not Correct');
+
         }elseif($verificationCode && $now->isAfter($verificationCode->expire_at)){
             return redirect()->route('otp.login')->with('error','Your Otp Has been Expired');
         }

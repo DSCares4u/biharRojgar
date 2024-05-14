@@ -6,6 +6,7 @@ use App\Models\Job;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -42,6 +43,7 @@ class JobController extends Controller
             'community' => 'required',
             'village' => 'required|string|min:3',
             'landmark' => 'required|string|min:3',
+            'area' => 'required|string',
             'city' => 'required|string|min:3',
             'state' => 'required|string|min:3',
             'pincode' => 'required',          
@@ -69,9 +71,11 @@ class JobController extends Controller
                 'community' => $request->community,
                 'village' => $request->village,
                 'landmark' => $request->landmark,
+                'area' => $request->area,
                 'city' => $request->city,
                 'state' => $request->state,
-                'pincode' => $request->pincode,                      
+                'pincode' => $request->pincode, 
+                'user_id' => $request->user_id,                     
             ]);
     
             if ($job) {
@@ -103,7 +107,7 @@ class JobController extends Controller
 
             return response()->json([
                 'district' => $district,
-                'state' => $state
+                'state' => $state,
             ]);
         } else {
             return response()->json([
@@ -112,23 +116,53 @@ class JobController extends Controller
         }
     }
 
-    public function show($id)
-    {
-        $job = Job::find($id);
-        if($job){
+    // public function show($id)
+    // {
+    //     $job = Job::find($id);
+    //     if($job){
+    //         return response()->json([
+    //             'status' => 200,
+    //             'data' => $job
+    //         ], 200);
+    //     }
+    //     else{
+    //         return response()->json([
+    //             'status' => 404,
+    //             'message' => "No call Found"
+    //         ], 404);
+    //     }
+    // }
+
+    public function show()
+{
+    // Get the currently authenticated user
+    $user = Auth::user();
+
+    dd($user);
+    
+    // Check if the user is authenticated
+    if ($user) {
+        // Retrieve jobs associated with the authenticated user
+        $jobs = $user->jobs()->get(); // Assuming you have defined a 'jobs' relationship in your User model
+        
+        if ($jobs->isNotEmpty()) {
             return response()->json([
                 'status' => 200,
-                'data' => $job
+                'data' => $jobs
             ], 200);
-        }
-        else{
+        } else {
             return response()->json([
                 'status' => 404,
-                'message' => "No call Found"
+                'message' => "No jobs found for the user"
             ], 404);
         }
+    } else {
+        return response()->json([
+            'status' => 401,
+            'message' => "Unauthenticated"
+        ], 401);
     }
-
+}
     public function update(Request $request, int $id)
     {
         $validator = Validator::make($request->all(), [
@@ -147,6 +181,7 @@ class JobController extends Controller
             'village' => 'required|string|min:3',
             'landmark' => 'required|string|min:3',
             'city' => 'required|string|min:3',
+            'area' => 'required|string',
             'state' => 'required|string|min:3',
             'pincode' => 'required',                      
         ]);
@@ -174,6 +209,7 @@ class JobController extends Controller
                     'community' => $request->community,
                     'village' => $request->village,
                     'landmark' => $request->landmark,
+                    'area' => $request->area,
                     'city' => $request->city,
                     'state' => $request->state,
                     'pincode' => $request->pincode,  

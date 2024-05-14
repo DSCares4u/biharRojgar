@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete("cascade");
             $table->string('id_proof_type');
             $table->string('photo');
             $table->string('signature');

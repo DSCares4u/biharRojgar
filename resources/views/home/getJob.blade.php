@@ -8,6 +8,8 @@
                     <hr class="h-1 rounded bg-gray-600 mb-4">
                     <div class="flex gap-5">
                         <div class="w-1/3">
+                            {{-- <input type="hidden" name="user_id" value="{{$user_id}}"> --}}
+                            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
                             <div class="mb-3  items-center">
                                 <label for="name" class="block text-gray-700 text-sm mb-2 ">Full Name as recorded in
                                     Matriculation(10th class) Certificate/Marks list</label>
@@ -147,6 +149,12 @@
 
                             </div>
                             <div class="mb-3 items-center">
+                                <label for="area" class="block text-gray-700 text-sm mb-2">Area</label>
+                                <input type="text" id="area" name="area"
+                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
+                                <p id="area-error" class="text-red-500 text-xs italic hidden"></p>
+                            </div>
+                            <div class="mb-3 items-center">
                                 <label for="pincode" class="block text-gray-700 text-sm mb-2">Pincode</label>
                                 <input type="number" id="pincode" name="pincode" placeholder="Eg. 789456"
                                     class="shadow appearance-none border py-1 px-2 w-1/2 bg-gray-300 rounded"
@@ -156,15 +164,13 @@
                             <div class="flex gap-5">
                                 <div class="mb-3 w-1/2 items-center">
                                     <label for="city" class="block text-gray-700 text-sm mb-2">City</label>
-                                    <input type="text" id="city" name="city" disabled
-                                        placeholder="Eg. abc chowk ..."
+                                    <input type="text" id="city" name="city" placeholder="Eg. abc chowk ..."
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                     <p id="city-error" class="text-red-500 text-xs italic hidden"></p>
                                 </div>
                                 <div class="mb-3 w-1/2 items-center">
                                     <label for="state" class="block text-gray-700 text-sm mb-2">State</label>
-                                    <input type="text" id="state" name="state" disabled
-                                        placeholder="Eg. abc chowk ..."
+                                    <input type="text" id="state" name="state" placeholder="Eg. abc chowk ..."
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                     <p id="state-error" class="text-red-500 text-xs italic hidden"></p>
                                 </div>
@@ -172,7 +178,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="button flex justify-end ml-10 mt-8">
+                <div class="button flex gap-5 justify-end ml-10 mt-8">
+                    <div class="next">
+                        <a class="editBtn bg-[#316fb6] hover:bg-[#2f5081] rounded px-3 py-1 text-white">Edit</a>
+                    </div>
                     <div class="next">
                         <button class="bg-[#EA2027] hover:bg-[#ff4747] rounded px-3 py-1 text-white">Save &
                             Next</button>
@@ -214,35 +223,56 @@
         });
 
         $(document).on('click', '.editBtn', function() {
-            let planId = $(this).data('id');
+            // Get the user ID from the logged-in session
+            let userId = {{ auth()->user()->id }};
+
+            // Now, proceed with your AJAX request
             $.ajax({
                 type: 'GET',
-                url: `/api/admin/manage-plan/edit/${planId}`,
+                url: `/api/job/view`,
                 success: function(response) {
-                    $('#editPlanId').val(response.data.id);
-                    $('#editPlanName').val(response.data.name);
+                    // Populate form fields with response data
+                    $('#id').val(response.data.id);
+                    $('#name').val(response.data.name);
+                    $('#gender').val(response.data.gender);
+                    $('#marital').val(response.data.marital);
+                    $('#preferred_lang').val(response.data.preferred_lang);
+                    $('#dob').val(response.data.dob);
+                    $('#father').val(response.data.father);
+                    $('#email').val(response.data.email);
+                    $('#religion').val(response.data.religion);
+                    $('#mother').val(response.data.mother);
+                    $('#mobile').val(response.data.mobile);
+                    $('#id_mark').val(response.data.id_mark);
                     $('#default-modal').removeClass('hidden');
                 },
                 error: function(xhr, status, error) {
-                    console.error('Error fetching Plan details for editing:', error);
+                    console.error('Error fetching Job details for editing:', error);
                 }
             });
         });
 
-        $('#editPlanBookingForm').submit(function(e) {
+        $('#applyJob').submit(function(e) {
             e.preventDefault();
-            let planId = $('#editPlanId').val();
+            let userId = {{ auth()->user()->id }};
             let formData = {
-                name: $('#editPatientName').val(),
-                image: $('#editPlanImage').val(),
+                name: $('#name').val(),
+                gender: $('#gender').val(),
+                marital: $('#marital').val(),
+                preferred_lang: $('#preferred_lang').val(),
+                dob: $('#dob').val(),
+                father: $('#father').val(),
+                email: $('#email').val(),
+                religion: $('#religion').val(),
+                mother: $('#mother').val(),
+                mobile: $('#mobile').val(),
+                id_mark: $('#id_mark').val(),
             };
             $.ajax({
                 type: 'PUT',
-                url: `/api/admin/manage-plan/edit/${planId}`,
+                url: `/api/job/edit/${userId}`,
                 data: formData,
                 success: function(response) {
-                    swal("Success", response.message, "message");
-                    $('#default-modal').addClass('hidden');
                     swal("Success", response.message, "message");
                 },
                 error: function(xhr, status, error) {
@@ -260,6 +290,7 @@
                 .then(data => {
                     document.getElementById('city').value = data.district;
                     document.getElementById('state').value = data.state;
+                    // document.getElementById('name').value = data.name;
                 })
                 .catch(error => console.error('Error:', error));
         }

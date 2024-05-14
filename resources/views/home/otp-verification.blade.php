@@ -15,6 +15,7 @@
         <h1 class="text-2xl font-bold mb-4 text-center">Enter Otp</h1>
         <form method="POST" action="{{route('otp.getlogin')}}">
             @csrf
+            <input type="hidden" name="user_id" value="{{$user_id}}">
 
             <div class="mb-4">
                 <label for="otp" class="block text-gray-700 text-sm font-bold mb-2">Otp</label>

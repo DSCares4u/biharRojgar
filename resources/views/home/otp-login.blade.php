@@ -6,6 +6,14 @@
 <div class="flex justify-center items-center mt-10">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-md">
 
+        @if (session('success'))
+        <div class="bg-green-500 text-white" role="alert">{{session('success')}}</div>
+        @endif
+
+        @if (session('error'))
+        <div class="bg-red-500 text-white" role="alert">{{session('error')}}</div>
+        @endif
+
         <h1 class="text-2xl font-bold mb-4 text-center">Login</h1>
         <form method="POST" id="otp-form" action="{{ route('otp.generate') }}">
             @csrf
@@ -29,7 +37,6 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 // $(document).ready(function() {
 //     $('#otp-form').submit(function(e) {
@@ -59,11 +66,10 @@
         });
     });
 });
-</>
 
 
-{{-- 
-<script>
+
+// <script>
 //     $(document).ready(function() {
 //         $('#otp-form').submit(function(event) {
 //             event.preventDefault();
@@ -85,9 +91,9 @@
 //             });
 //         });
 //     });
-// </script> --}}
+// </script>
     
-// {{-- <script>
+ <script>
 //     $(document).ready(function() {
 //         $('#otp-form').submit(function(event) {
 //             event.preventDefault();
@@ -112,8 +118,8 @@
 //                 }
 //             });
 //         });
-    });
-</script> --}}
+//     });
+</script> 
 
 
 @endsection
