@@ -230,6 +230,9 @@
             $.ajax({
                 type: 'GET',
                 url: `/api/job/view`,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 success: function(response) {
                     // Populate form fields with response data
                     $('#id').val(response.data.id);
