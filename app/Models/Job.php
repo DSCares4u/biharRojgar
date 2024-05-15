@@ -4,15 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use illuminate\Database\Eloquent\Relations\HasOne;
+
 
 class Job extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    public function user()
+    public function users(): HasOne
     {
-        return $this->belongsTo(User::class);
+        return $this->HasOne(User::class, 'id', 'user_id');
     }
 
 }

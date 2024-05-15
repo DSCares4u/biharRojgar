@@ -47,7 +47,7 @@ Route::delete('/hire-plan/delete/{id}',[HirePlanController::class,'destroy']);
 
 Route::post('/job',[JobController::class,'store'])->name('job.store');
 Route::get('/job',[JobController::class,'index'])->name('job.index');
-// Route::get('/job/view/{id}',[JobController::class,'show']);
+Route::get('/job/view/{id}',[JobController::class,'show']);
 Route::put('/job/edit/{id}',[JobController::class,'update']);
 Route::delete('/job/delete/{id}',[JobController::class,'destroy']);
 Route::get('/job/view',[JobController::class,'show'])->middleware('auth');
@@ -70,15 +70,15 @@ Route::get('/yojna/view/{id}',[YojnaController::class,'show']);
 Route::put('/yojna/edit/{id}',[YojnaController::class,'update']);
 Route::delete('/yojna/delete/{id}',[YojnaController::class,'destroy']);
 
-Route::get('/job/view', function () {
-    $id = auth()->id();
-    $controller = app()->make('App\Http\Controllers\StudentApiController');
-    return $controller->show($id);
-})->middleware('auth');
+// Route::get('/job/view', function () {
+//     $id = auth()->id();
+//     $controller = app()->make('App\Http\Controllers\JobController');
+//     return $controller->show($id);
+// })->middleware('auth');
 
 
-Route::put('/job/edit', function (Request $req) {
-    $id = auth()->id();
-    $controller = app()->make('App\Http\Controllers\StudentApiController');
-    return $controller->upgrade($req,$id);
-})->middleware('auth');
+// Route::put('/job/edit', function (Request $req) {
+//     $id = auth()->id();
+//     $controller = app()->make('App\Http\Controllers\JobController');
+//     return $controller->upgrade($req,$id);
+// })->middleware('auth');

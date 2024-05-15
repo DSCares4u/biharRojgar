@@ -1,8 +1,8 @@
 @extends('home.homebase')
 @section('content')
-    <div class="container mx-auto font-sans flex">
+    <div class="container font-sans flex ">
         <div class="bg-gray-100 mx-12 border border-gray mt-3 w-8/12">
-            <form class="p-5 flex flex-col">
+            <form class="p-5 flex flex-col" id="addHirer">
                 <h2 class="text-lg font-semibold mb-2  ">Post a job</h2>
                 <div class="mb-3  items-center">
                     <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Title</label>
@@ -39,9 +39,9 @@
                                 <td class="py-1 text-center">
                                     <div class="text-xs text-gray-400">
                                         Min: <input type="number" min="0" name="inputs[0]['min_experience']" placeholder="0"
-                                            class="appearance-none border px-2 w-1/2 text-sm">
-                                        Max: <input type="number" max="1" name="inputs[0]['max_experience']" placeholder="5y"
-                                            class="appearance-none  px-2 border w-1/2 text-sm">
+                                            class="appearance-none border text-black px-2 w-1/2 text-sm">
+                                        Max: <input type="number" min="0" name="inputs[0]['max_experience']" placeholder="5y"
+                                            class="appearance-none text-black  px-2 border w-1/2 text-sm">
                                     </div>
                                 </td>
 
@@ -49,7 +49,7 @@
                                     <select name="inputs[0]['gender']"
                                         class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
                                         id="gender">
-                                        <option value="" class="appearance-none border text-center w-full  ">Select
+                                        <option value="" class="appearance-none  border text-center w-full  ">Select
                                         </option>
                                         <option value="male" class=" border  w-full text-sm">Male</option>
                                         <option value="female" class=" border  w-full text-sm">Female</option>
@@ -169,6 +169,13 @@
                         <input type="file" id="logo" name="logo" class="py-1 px-2 w-full" required>
                     </div>
                 </div>
+                {{-- only for testing purpose  --}}
+
+                <div class="mb-4">
+                    <select name="plan_id" id="callingPlans">
+                        <option value="">Select Plan</option>
+                    </select>
+                </div>
 
                 {{-- Option card --}}
                 <div class="mb-4 flex gap-2" id="plan_card">
@@ -240,7 +247,7 @@
                     </div> --}}
                 </div>
 
-                <div class="mb-3 flex justify-center">
+                <div id="payBtn1" class="mb-3 flex justify-center">
                     <button type="submit"
                         class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
                         Post Job
@@ -250,12 +257,12 @@
             </form>
 
         </div>
-        <div class="w-4/12 ">
-            <div class=" mt-10 w-[80%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
+        <div class="w-3/12 fixed right-3">
+            <div class=" mt-10 w-[95%] bg-white border p-3 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
                 <div class="price mt-2 mb-4">
                     <h3 class="text-lg font-semibold">Job Posting Service</h3>
                 </div>
-                <ul>
+                <ul id="planCharge">
                     <li class="flex justify-between text-base text-gray-500">
                         <p>Free Localities</p>
                         <p class="font-bold">Rs. 500</p>
@@ -270,8 +277,8 @@
                         <p class="font-bold">Rs. 1000</p>
                     </li>
                 </ul>
-                <div class=" flex justify-center items-center">
-                    <button type="submit"
+                <div id="payBtn2" class=" flex justify-center items-center">
+                    <button  type="submit"
                         class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
                         Post Job
                     </button>
@@ -297,9 +304,9 @@
                                 <td class="py-1 text-center">
                                     <div class="text-sm text-gray-400">
                                         Min: <input type="number" min="0" name="inputs[${i}]['min_experience']" placeholder="0"
-                                            class="appearance-none border px-2 w-1/2 text-sm">
-                                        Max: <input type="number" max="1" name="inputs[${i}]['max_experience']" placeholder="5y"
-                                            class="appearance-none px-2 border w-1/2 text-sm">
+                                            class="appearance-none text-black border px-2 w-1/2 text-sm">
+                                        Max: <input type="number" min="0" name="inputs[${i}]['max_experience']" placeholder="5y"
+                                            class="appearance-none text-black px-2 border w-1/2 text-sm">
                                     </div>
                                 </td>
 
@@ -454,16 +461,62 @@
                 });
 
 
-                // $('#callingPlans').change(function() {
-                //     let selectedPlan = $(this).children("option:selected");
-                //     let PlanFee = selectedPlan.data('plan-charge');
+               $.ajax({
+                type: "GET",
+                url: "{{ route('hire.plan.index') }}",
+                success: function(response) {
+                    let select = $("#callingPlans");
+                    select.empty();
+                    select.append(`<option value="">Select Plan</option>`)
+                    response.data.forEach((plan) => {
+                        select.append(`
+                    <option value="${plan.id}" data-plan-name="${plan.name}"  data-plan-charge="${plan.price}">${plan.name}</option>
+                    `);
+                    });
+                }
+            });
 
-                //     // Update the fee display
-                //     $('#planCharge').html(
-                //         `<input  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-        // <label  class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Plan Charge Rs. ${PlanFee}</label>`
-                //     );
-                // });
+            $('#callingPlans').change(function() {
+                let selectedPlan = $(this).children("option:selected");
+                let PlanFee = selectedPlan.data('plan-charge');
+                let PlanName = selectedPlan.data('plan-name');
+
+                // Update the fee display
+                $('#planCharge').html(
+                    `<li class="flex justify-between text-base text-gray-500">
+                        <p>${PlanName}</p>
+                        <p class="font-bold">Rs. ${PlanFee}</p>
+                    </li>
+                    <li class="flex justify-between text-base text-gray-500">
+                        <p>PlatForm Fees</p>
+                        <p class="font-bold">Rs. 200</p>
+                    </li>
+                    <hr>
+                    <li class="flex justify-between text-base text-gray-500">
+                        <p>Total Payment</p>
+                        <p class="font-bold">Rs. ${PlanFee + 200}</p>
+                    </li>
+                    `
+                );
+                
+
+                $('#payBtn1').html(
+                    `<button type="submit"
+                        class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
+                        Pay Rs. ${PlanFee + 200} &
+                        Post Job</button>
+                    `
+                );
+
+                $('#payBtn2').html(
+                    `<button  type="submit"
+                        class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full"> Pay Rs. ${PlanFee + 200} &
+                        Post Job
+                    </button>
+                    `
+                );
+            });
+
             })
         </script>
     @endsection

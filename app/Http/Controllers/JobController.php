@@ -133,67 +133,71 @@ class JobController extends Controller
     //     }
     // }
     
-//     public function show()
-// {
-//     // Get the currently authenticated user
-//     $user = Auth::user();
 
-//     dd($user);
-    
-//     // Check if the user is authenticated
-//     if ($user) {
-//         // Retrieve jobs associated with the authenticated user
-//         $jobs = $user->jobs()->get(); // Assuming you have defined a 'jobs' relationship in your User model
-        
-//         if ($jobs->isNotEmpty()) {
-//             return response()->json([
-//                 'status' => 200,
-//                 'data' => $jobs
-//             ], 200);
-//         } else {
-//             return response()->json([
-//                 'status' => 404,
-//                 'message' => "No jobs found for the user"
-//             ], 404);
-//         }
-//     } else {
-//         return response()->json([
-//             'status' => 401,
-//             'message' => "Unauthenticated"
-//         ], 401);
-//     }
-// }
-    public function update(Request $request, int $id)
+    public function show()
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|min:3',
-            'dob' => 'required',
-            'mother' => 'required|string|min:3',
-            'father' => 'required|string|min:3',
-            'gender' => 'required',
-            'mobile' => 'required',
-            'marital' => 'required',
-            'email' => 'required|email|unique:users',
-            'id_mark' => 'required|string|min:3',
-            'preferred_lang' => 'required',
-            'religion' => 'required|string|min:3',
-            'community' => 'required',
-            'village' => 'required|string|min:3',
-            'landmark' => 'required|string|min:3',
-            'city' => 'required|string|min:3',
-            'area' => 'required|string',
-            'state' => 'required|string|min:3',
-            'pincode' => 'required',                      
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 422,
-                'error' => $validator->messages()
-            ], 422);
+        if (Auth::check()) {
+            // User is authenticated
+            $userId = Auth::id();
+    
+            // Retrieve job details for the authenticated user
+            $job = Job::where('user_id', $userId)->first();
+    
+            if ($job) {
+                return response()->json([
+                    'status' => 200,
+                    'data' => $job
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => 404,
+                    'message' => "No job Found for the logged-in user"
+                ], 404);
+            }
         } else {
+            // User is not authenticated
+            return response()->json([
+                'status' => 401,
+                'message' => "Unauthorized"
+            ], 401);
+        }
+    }
+    
+    
+    public function update(Request $request, int $id)
+{
+    $validator = Validator::make($request->all(), [
+        'name' => 'required|string|min:3',
+        'dob' => 'required',
+        'mother' => 'required|string|min:3',
+        'father' => 'required|string|min:3',
+        'gender' => 'required',
+        'mobile' => 'required',
+        'marital' => 'required',
+        'email' => 'required|email|unique:jobs,email,'.$id,
+        'id_mark' => 'required|string|min:3',
+        'preferred_lang' => 'required',
+        'religion' => 'required|string|min:3',
+        'community' => 'required',
+        'village' => 'required|string|min:3',
+        'landmark' => 'required|string|min:3',
+        'city' => 'required|string|min:3',
+        'area' => 'required|string',
+        'state' => 'required|string|min:3',
+        'pincode' => 'required',                      
+    ]);
+
+    if ($validator->fails()) {
+        return response()->json([
+            'status' => 422,
+            'error' => $validator->messages()
+        ], 422);
+    } else {
+        if ($id) {
+            // Check if job exists
             $job = Job::find($id);
             if ($job) {
+                // Update existing job
                 $job->update([
                     'name' => $request->name,
                     'dob' => $request->dob,
@@ -213,51 +217,46 @@ class JobController extends Controller
                     'city' => $request->city,
                     'state' => $request->state,
                     'pincode' => $request->pincode,  
+                    'user_id' => $request->user_id,                     
                 ]);
 
                 return response()->json([
                     'status' => 200,
                     'message' => "Job Updated Successfully"
                 ], 200);
-            } else {
-                return response()->json([
-                    'status' => 500,
-                    'message' => "No Job Found"
-                ], 500);
             }
         }
-    }
 
-    public function show($id){
-        $user = User::where("id", $id)
-    ->with(["courses", "courses.payments" => function ($query) use ($id) {
-        $query->where("user_id", $id);
-    }])
-    ->first();
-
-    return response()->json($user);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $user = User::findOrFail($id);
-
-        $user->id = $request->id; // Adjusting to match the input name
-        $user->name = $request->name; // Adjusting to match the input name
-        $user->email = $request->email; 
-        $user->mobile_no = $request->mobile_no; 
-        $user->status = $request->status; 
-        $user->f_name = $request->f_name; 
-        $user->address = $request->address; 
-        $user->gender = $request->gender; 
-        $user->save();
+        // Create new job
+        $newJob = Job::create([
+            'name' => $request->name,
+            'dob' => $request->dob,
+            'mother' => $request->mother,
+            'father' => $request->father,
+            'gender' => $request->gender,
+            'mobile' => $request->mobile,
+            'marital' => $request->marital,
+            'email' => $request->email,
+            'id_mark' => $request->id_mark,
+            'preferred_lang' => $request->preferred_lang,
+            'religion' => $request->religion,
+            'community' => $request->community,
+            'village' => $request->village,
+            'landmark' => $request->landmark,
+            'area' => $request->area,
+            'city' => $request->city,
+            'state' => $request->state,
+            'pincode' => $request->pincode,  
+            'user_id' => $request->user_id,                     
+        ]);
 
         return response()->json([
-            'user' => $user,
-            'success' => true,
-            'msg' => 'Student updated successfully'
-        ]);
+            'status' => 200,
+            'message' => "Job Created Successfully",
+            'job' => $newJob
+        ], 200);
     }
+}
 
     public function destroy($id)
     {

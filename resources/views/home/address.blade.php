@@ -11,6 +11,7 @@
                                     <hr class="h-1 rounded bg-gray-600 mb-4">
                                     <div class="flex justify-evenly mt-10">
                                         <div class="mb-3 items-center">
+                                            <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}">
                                             <label for="qualification" class="block text-sm mb-2 ">Qualification</label>
                                             <input type="text" id="qualification"
                                             name="qualification"placeholder="Eg. abc chowk ..."
@@ -89,5 +90,63 @@
                 })
             })
         })
+
+
+        $(document).on('click', '.editBtn', function() {
+            // Get the user ID from the logged-in session
+            let userId = {{ auth()->user()->id }};
+
+            // Now, proceed with your AJAX request
+            $.ajax({
+                type: 'GET',
+                // url: `/api/job/view/`+ userId,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    // Populate form fields with response data
+                    $('#id').val(response.data.id);
+                    $('#qualification').val(response.data.qualification);
+                    $('#q_state').val(response.data.q_state);
+                    $('#board').val(response.data.board);
+                    $('#passing_year').val(response.data.passing_year);
+                    $('#experience').val(response.data.experience);
+                    $('#skills').val(response.data.skills);
+                   
+                },
+                error: function(xhr, status, error) {
+                    alert("No Data Found")
+                    console.error('Error fetching Job details for editing:', error);
+                }
+            });
+        });
+
+        $('#applyJob').submit(function(e) {
+            e.preventDefault();
+            let userId = {{ auth()->user()->id }};
+            let formData = {
+                user_id: $('#id').val(),
+                qualification: $('#qualification').val(),
+                q_state: $('#q_state').val(),
+                board: $('#board').val(),
+                passing_year: $('#passing_year').val(),
+                experience: $('#experience').val(),
+                skills: $('#skills').val(),                
+            };
+            $.ajax({
+                type: 'PUT',
+                url: `/api/job/edit/${userId}`,
+                data: formData,
+                success: function(response) {
+                    swal("Success", response.message, "message");
+                    $("#applyJob").trigger("reset");
+                    window.open("/documents", "_self")
+
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error updating Plan Details:', error);
+                }
+            });
+        });
     </script>
 @endsection

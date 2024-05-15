@@ -12,6 +12,7 @@
                                 <hr class="h-1 rounded bg-gray-600 mb-2">
                                 <div class="mt-2">
                                     <div class="mb-4 items-center">
+                                        <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}">
                                         <label for="photo" class="block text-sm mb-3 ">Upload Your
                                             Photo</label>
                                         <input type="file" id="photo" name="photo">
@@ -130,6 +131,62 @@
                 })
             })
         })
+
+        $(document).on('click', '.editBtn', function() {
+            // Get the user ID from the logged-in session
+            let userId = {{ auth()->user()->id }};
+
+            // Now, proceed with your AJAX request
+            $.ajax({
+                type: 'GET',
+                url: `/api/job/view/`+ userId,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    // Populate form fields with response data
+                    $('#id').val(response.data.id);
+                    $('#photo').val(response.data.photo);
+                    $('#signature').val(response.data.signature);
+                    $('#id_proof_type').val(response.data.id_proof_type);
+                    $('#id_proof').val(response.data.id_proof);
+                    $('#quali_certificate').val(response.data.quali_certificate);
+                    $('#other_certificate').val(response.data.other_certificate);
+                },
+                error: function(xhr, status, error) {
+                    alert("No Data Found")
+                    console.error('Error fetching Job details for editing:', error);
+                }
+            });
+        });
+
+        $('#applyJob').submit(function(e) {
+            e.preventDefault();
+            let userId = {{ auth()->user()->id }};
+            let formData = {
+                user_id: $('#id').val(),
+                photo: $('#photo').val(),
+                signature: $('#signature').val(),
+                id_proof_type: $('#id_proof_type').val(),
+                id_proof: $('#id_proof').val(),
+                quali_certificate: $('#quali_certificate').val(),
+                other_certificate: $('#other_certificate').val(),
+            };
+            $.ajax({
+                type: 'PUT',
+                url: `/api/job/edit/${userId}`,
+                data: formData,
+                success: function(response) {
+                    swal("Success", response.message, "message");
+                    $("#applyJob").trigger("reset");
+                    window.open("/", "_self")
+
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error updating Plan Details:', error);
+                }
+            });
+        });
         
     </script>
 @endsection

@@ -9,7 +9,7 @@
                     <div class="flex gap-5">
                         <div class="w-1/3">
                             {{-- <input type="hidden" name="user_id" value="{{$user_id}}"> --}}
-                            <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                            <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}">
                             <div class="mb-3  items-center">
                                 <label for="name" class="block text-gray-700 text-sm mb-2 ">Full Name as recorded in
                                     Matriculation(10th class) Certificate/Marks list</label>
@@ -192,35 +192,35 @@
         </div>
     </div>
     <script>
-        $(document).ready(function() {
-            //insert application details
+        // $(document).ready(function() {
+        //     //insert application details
 
-            $("#applyJob").submit(function(e) {
-                e.preventDefault();
-                var formData = new FormData(this);
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('job.store') }}",
-                    data: formData,
-                    dataType: "JSON",
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    success: function(response) {
-                        swal("success", response.message, "success");
-                        $("#applyJob").trigger("reset");
-                        window.open("/address", "_self")
-                    },
-                    error: function(xhr, status, error) {
-                        var errors = xhr.responseJSON.error;
-                        $.each(errors, function(key, value) {
-                            $("#" + key + "-error").text(value[0]).removeClass(
-                                "hidden");
-                        });
-                    }
-                })
-            })
-        });
+        //     $("#applyJob").submit(function(e) {
+        //         e.preventDefault();
+        //         var formData = new FormData(this);
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "{{ route('job.store') }}",
+        //             data: formData,
+        //             dataType: "JSON",
+        //             contentType: false,
+        //             cache: false,
+        //             processData: false,
+        //             success: function(response) {
+        //                 swal("success", response.message, "success");
+        //                 $("#applyJob").trigger("reset");
+        //                 window.open("/address", "_self")
+        //             },
+        //             error: function(xhr, status, error) {
+        //                 var errors = xhr.responseJSON.error;
+        //                 $.each(errors, function(key, value) {
+        //                     $("#" + key + "-error").text(value[0]).removeClass(
+        //                         "hidden");
+        //                 });
+        //             }
+        //         })
+        //     })
+        // });
 
         $(document).on('click', '.editBtn', function() {
             // Get the user ID from the logged-in session
@@ -229,7 +229,7 @@
             // Now, proceed with your AJAX request
             $.ajax({
                 type: 'GET',
-                url: `/api/job/view`,
+                url: `/api/job/view/`+ userId,
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -246,10 +246,18 @@
                     $('#religion').val(response.data.religion);
                     $('#mother').val(response.data.mother);
                     $('#mobile').val(response.data.mobile);
+                    $('#community').val(response.data.community);
+                    $('#village').val(response.data.village);
+                    $('#landmark').val(response.data.landmark);
+                    $('#area').val(response.data.area);
+                    $('#pincode').val(response.data.pincode);
+                    $('#state').val(response.data.state);
+                    $('#city').val(response.data.city);
                     $('#id_mark').val(response.data.id_mark);
                     $('#default-modal').removeClass('hidden');
                 },
                 error: function(xhr, status, error) {
+                    alert("No Data Found")
                     console.error('Error fetching Job details for editing:', error);
                 }
             });
@@ -259,6 +267,7 @@
             e.preventDefault();
             let userId = {{ auth()->user()->id }};
             let formData = {
+                user_id: $('#id').val(),
                 name: $('#name').val(),
                 gender: $('#gender').val(),
                 marital: $('#marital').val(),
@@ -269,6 +278,13 @@
                 religion: $('#religion').val(),
                 mother: $('#mother').val(),
                 mobile: $('#mobile').val(),
+                community: $('#community').val(),
+                village: $('#village').val(),
+                landmark: $('#landmark').val(),
+                area: $('#area').val(),
+                pincode: $('#pincode').val(),
+                state: $('#state').val(),
+                city: $('#city').val(),
                 id_mark: $('#id_mark').val(),
             };
             $.ajax({
@@ -277,6 +293,9 @@
                 data: formData,
                 success: function(response) {
                     swal("Success", response.message, "message");
+                    $("#applyJob").trigger("reset");
+                    window.open("/address", "_self")
+
                 },
                 error: function(xhr, status, error) {
                     console.error('Error updating Plan Details:', error);
@@ -299,7 +318,7 @@
         }
     </script>
 
-<script>
+    {{-- <script>
     $(document).ready(function() {
         var token = localStorage.getItem('token');
         if (token) {
@@ -472,5 +491,5 @@
 
 
     });
-</script>
+</script> --}}
 @endsection
