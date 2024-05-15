@@ -132,42 +132,37 @@ class JobController extends Controller
     //         ], 404);
     //     }
     // }
-
-    public function __construct()
-    {
-        $this->middleware('auth'); // Apply 'auth' middleware to all methods in the controller
-    }
     
-    public function show()
-{
-    // Get the currently authenticated user
-    $user = Auth::user();
+//     public function show()
+// {
+//     // Get the currently authenticated user
+//     $user = Auth::user();
 
-    dd($user);
+//     dd($user);
     
-    // Check if the user is authenticated
-    if ($user) {
-        // Retrieve jobs associated with the authenticated user
-        $jobs = $user->jobs()->get(); // Assuming you have defined a 'jobs' relationship in your User model
+//     // Check if the user is authenticated
+//     if ($user) {
+//         // Retrieve jobs associated with the authenticated user
+//         $jobs = $user->jobs()->get(); // Assuming you have defined a 'jobs' relationship in your User model
         
-        if ($jobs->isNotEmpty()) {
-            return response()->json([
-                'status' => 200,
-                'data' => $jobs
-            ], 200);
-        } else {
-            return response()->json([
-                'status' => 404,
-                'message' => "No jobs found for the user"
-            ], 404);
-        }
-    } else {
-        return response()->json([
-            'status' => 401,
-            'message' => "Unauthenticated"
-        ], 401);
-    }
-}
+//         if ($jobs->isNotEmpty()) {
+//             return response()->json([
+//                 'status' => 200,
+//                 'data' => $jobs
+//             ], 200);
+//         } else {
+//             return response()->json([
+//                 'status' => 404,
+//                 'message' => "No jobs found for the user"
+//             ], 404);
+//         }
+//     } else {
+//         return response()->json([
+//             'status' => 401,
+//             'message' => "Unauthenticated"
+//         ], 401);
+//     }
+// }
     public function update(Request $request, int $id)
     {
         $validator = Validator::make($request->all(), [
@@ -231,6 +226,37 @@ class JobController extends Controller
                 ], 500);
             }
         }
+    }
+
+    public function show($id){
+        $user = User::where("id", $id)
+    ->with(["courses", "courses.payments" => function ($query) use ($id) {
+        $query->where("user_id", $id);
+    }])
+    ->first();
+
+    return response()->json($user);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->id = $request->id; // Adjusting to match the input name
+        $user->name = $request->name; // Adjusting to match the input name
+        $user->email = $request->email; 
+        $user->mobile_no = $request->mobile_no; 
+        $user->status = $request->status; 
+        $user->f_name = $request->f_name; 
+        $user->address = $request->address; 
+        $user->gender = $request->gender; 
+        $user->save();
+
+        return response()->json([
+            'user' => $user,
+            'success' => true,
+            'msg' => 'Student updated successfully'
+        ]);
     }
 
     public function destroy($id)

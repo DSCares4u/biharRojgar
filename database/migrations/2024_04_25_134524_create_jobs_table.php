@@ -31,7 +31,7 @@ return new class extends Migration
             $table->string('village');
             $table->string('landmark');
             $table->integer('pincode');
-            $table->integer('area');
+            $table->string('area');
             $table->string('city');
             $table->string('state');
             $table->timestamps();

@@ -298,4 +298,179 @@
                 .catch(error => console.error('Error:', error));
         }
     </script>
+
+<script>
+    $(document).ready(function() {
+        var token = localStorage.getItem('token');
+        if (token) {
+            let callingProfile = () => {
+                $.ajax({
+                    type: "GET",
+                    url: "/api/user-profile",
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    },
+                    success: function(response) {
+                        if (response.hasOwnProperty('name')) {
+                            $("#calling_name").text(response.name);
+                            if (response.hasOwnProperty('f_name')) {
+                                $("#calling_user_fname").text(response.f_name);
+                                if (response.hasOwnProperty('email')) {
+                                    $("#calling_user_email").text(response.email);
+                                    if (response.hasOwnProperty('mobile_no')) {
+                                        $("#calling_user_phone").text(response.mobile_no);
+                                        if (response.hasOwnProperty('gender')) {
+                                            $("#calling_user_gender").text(response.gender);
+                                            if (response.hasOwnProperty('address')) {
+                                                $("#calling_user_address").text(response
+                                                    .address);
+
+                                                if (response.hasOwnProperty(
+                                                    'email_verified_at') && response.email_verified_at == null) {
+                                                    $("#verify").html("<button id='verify_mail' class=' text-green-500' data-id='"+response.email+"'>Verify Now</button>");
+                                                } else {
+                                                    $("#verify").html("Verified");
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            callingProfile();
+
+            //email verification
+
+            $(document).on('click',"#verify_mail",function(){
+                var email = $(this).attr('data-id');
+                $.ajax({
+                    url:"/api/send-verify-mail/"+email,
+                    type:"get",
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    },
+                    success:function(data){
+                        $('.result').text(data.msg);
+                    }
+
+                });
+            });
+
+
+            // edit profile work
+            let editStudent = () => {
+                $('#edit_student').click(function() {
+                    $.ajax({
+                        type: "GET",
+                        url: `/api/user-profile`,
+                        headers: {
+                            'Authorization': 'Bearer' + token
+                        },
+                        success: function(response) {
+                            $('#editStudentId').val(response.id);
+                            $('#editStudentName').val(response.name);
+                            $('#editStudentEmail').val(response.email);
+                            $('#editStudentMobile_no').val(response.mobile_no);
+                            $('#editStudentfName').val(response.f_name);
+                            $('#editStudentAddress').val(response.address);
+                            $('#editStudentGender').val(response.gender);
+                            $('#default-modal').removeClass('hidden');
+
+                            // console.log("Edit student form oFpened");
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching student details for editing:',
+                                error);
+                        }
+                    });
+                });
+
+                $('#editStudentForm').submit(function(e) {
+                    e.preventDefault();
+                    var formData = {
+                        name: $('#editStudentName').val(),
+                        email: $('#editStudentEmail').val(),
+                        mobile_no: $('#editStudentMobile_no').val(),
+                        f_name: $('#editStudentfName').val(),
+                        address: $('#editStudentAddress').val(),
+                        gender: $('#editStudentGender').val(),
+                    };
+                    $.ajax({
+                        type: 'PUT',
+                        url: `/api/user-profile/edit`,
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        },
+                        data: formData,
+                        success: function(response) {
+                            swal("Success", response.msg, "msg");
+                            $('#default-modal').addClass('hidden');
+                            callingProfile();
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error updating student:', error);
+                        }
+                    });
+                });
+            };
+
+            editStudent();
+
+            // Cancel edit student button click handler
+            $('#cancelEditStudent').click(function() {
+                $('#default-modal').addClass('hidden');
+            });
+
+        } else {
+            window.open('/', '_self');
+        }
+
+        $('#logouting').click(function(e) {
+            e.preventDefault();
+
+            // Display a confirmation dialog
+            swal({
+                title: "Are you sure you want to logout?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willLogout) => {
+                if (willLogout) {
+                    // Proceed with logout
+                    $.ajax({
+                        url: '/api/logout',
+                        type: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer ' + localStorage.getItem('token')
+                        },
+                        success: function(response) {
+                            // Remove the token from localStorage
+                            localStorage.removeItem('token');
+                            // Redirect to the login page after successful logout
+                            swal("Logout Successfully!", {
+                                icon: "success",
+                            }).then(() => {
+                                window.location.href =
+                                    '{{ route('login') }}';
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            // Handle error
+                            console.log(xhr.responseText);
+                        }
+                    });
+                } else {
+                    // Cancelled logout
+                    swal("Logout Cancelled", "You are still login", "info");
+                }
+            });
+        });
+
+
+
+    });
+</script>
 @endsection

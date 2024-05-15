@@ -69,3 +69,16 @@ Route::get('/yojna',[YojnaController::class,'index'])->name('yojna.index');
 Route::get('/yojna/view/{id}',[YojnaController::class,'show']);
 Route::put('/yojna/edit/{id}',[YojnaController::class,'update']);
 Route::delete('/yojna/delete/{id}',[YojnaController::class,'destroy']);
+
+Route::get('/job/view', function () {
+    $id = auth()->id();
+    $controller = app()->make('App\Http\Controllers\StudentApiController');
+    return $controller->show($id);
+})->middleware('auth');
+
+
+Route::put('/job/edit', function (Request $req) {
+    $id = auth()->id();
+    $controller = app()->make('App\Http\Controllers\StudentApiController');
+    return $controller->upgrade($req,$id);
+})->middleware('auth');

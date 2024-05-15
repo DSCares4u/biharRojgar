@@ -174,7 +174,7 @@
                 success: function(response) {
                     swal("Success", response.message, "success");
                     $("#registerUser").trigger("reset");
-                    window.open("/get-job", "_self")
+                    window.open("/otp/login", "_self")
                 },
                 error: function(xhr, status, error) {
                     var errors = xhr.responseJSON.error;
