@@ -59,7 +59,8 @@
                             <div class="button flex justify-between ml-10 mt-2">
                                 <div class="previous">
                                     <div class="previous">
-                                        <a href="/address"class="bg-[#1B9CFC] hover:bg-[#57aff7] rounded px-3 py-1 text-white">Previous</a>
+                                        <a
+                                            href="/address"class="bg-[#1B9CFC] hover:bg-[#57aff7] rounded px-3 py-1 text-white">Previous</a>
                                     </div>
                                 </div>
                                 <div class="next">
@@ -130,37 +131,41 @@
                     }
                 })
             })
-        })
+        });
 
-        $(document).on('click', '.editBtn', function() {
-            // Get the user ID from the logged-in session
-            let userId = {{ auth()->user()->id }};
+        $(document).ready(function() {
 
-            // Now, proceed with your AJAX request
-            $.ajax({
-                type: 'GET',
-                url: `/api/job/view/`+ userId,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(response) {
-                    // Populate form fields with response data
-                    $('#id').val(response.data.id);
+            function fetchJobDetailsAndOpenModal() {
+                let userId = {{ auth()->user()->id }};
+
+                $.ajax({
+                    type: 'GET',
+                    url: `/api/document/view/` + userId,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        $('#id').val(response.data.id);
                     $('#photo').val(response.data.photo);
                     $('#signature').val(response.data.signature);
                     $('#id_proof_type').val(response.data.id_proof_type);
                     $('#id_proof').val(response.data.id_proof);
                     $('#quali_certificate').val(response.data.quali_certificate);
                     $('#other_certificate').val(response.data.other_certificate);
-                },
-                error: function(xhr, status, error) {
-                    alert("No Data Found")
-                    console.error('Error fetching Job details for editing:', error);
-                }
-            });
+                    },
+                    error: function(xhr, status, error) {
+                        alert("No Data Found")
+                        console.error('Error fetching Job details for editing:', error);
+                    }
+                });
+            }
+
+            // Auto-execute the function when the page loads
+            fetchJobDetailsAndOpenModal();
+
         });
 
-        $('#applyJob').submit(function(e) {
+        $('#addDocument').submit(function(e) {
             e.preventDefault();
             let userId = {{ auth()->user()->id }};
             let formData = {
@@ -174,11 +179,11 @@
             };
             $.ajax({
                 type: 'PUT',
-                url: `/api/job/edit/${userId}`,
+                url: `/api/documents/edit/${userId}`,
                 data: formData,
                 success: function(response) {
                     swal("Success", response.message, "message");
-                    $("#applyJob").trigger("reset");
+                    $("#addDocument").trigger("reset");
                     window.open("/", "_self")
 
                 },
@@ -187,6 +192,5 @@
                 }
             });
         });
-        
     </script>
 @endsection

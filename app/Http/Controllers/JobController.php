@@ -133,8 +133,8 @@ class JobController extends Controller
         }
     }
     
-    public function update(Request $request, int $id)
-{
+    public function update(Request $request, int $id){
+        
     $validator = Validator::make($request->all(), [
         'name' => 'required|string|min:3',
         'dob' => 'required',

@@ -260,12 +260,10 @@
         // });
 
         $(document).ready(function() {
-    // Define a function to handle the AJAX request
-    function fetchJobDetailsAndOpenModal() {
-        // Get the user ID from the logged-in session
+
+        function fetchJobDetailsAndOpenModal() {
         let userId = {{ auth()->user()->id }};
 
-        // Proceed with your AJAX request
         $.ajax({
             type: 'GET',
             url: `/api/job/view/` + userId,
@@ -273,7 +271,6 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function(response) {
-                // Populate form fields with response data
                 $('#id').val(response.data.id);
                 $('#name').val(response.data.name);
                 $('#gender').val(response.data.gender);
@@ -305,7 +302,7 @@
     // Auto-execute the function when the page loads
     fetchJobDetailsAndOpenModal();
 
-});
+    });
 
 
         $('#applyJob').submit(function(e) {

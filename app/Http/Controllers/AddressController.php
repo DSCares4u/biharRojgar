@@ -43,7 +43,8 @@ class AddressController extends Controller
                 'board' => $request->board,
                 'passing_year' => $request->passing_year,
                 'experience' => $request->experience,
-                'skills' => $request->skills,                            
+                'skills' => $request->skills, 
+                'user_id' => $request->user_id,                                 
             ]);
     
             if ($address) {
@@ -60,48 +61,67 @@ class AddressController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Address  $address
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Address $address)
+    public function show($id)
     {
-        //
+        $address = Address::find($id);
+        if($address){
+            return response()->json([
+                'status' => 200,
+                'data' => $address
+            ], 200);
+        }
+        else{
+            return response()->json([
+                'status' => 404,
+                'message' => "No call Found"
+            ], 404);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Address  $address
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Address $address)
+    public function update(Request $request, int $id)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateAddressRequest  $request
-     * @param  \App\Models\Address  $address
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateAddressRequest $request, Address $address)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Address  $address
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Address $address)
-    {
-        //
+        $validator = Validator::make($request->all(), [
+            'qualification' => 'required|string|min:3',
+            'q_state' => 'required|string|min:3',
+            'board' => 'required|string|min:3',
+            'passing_year' => 'required',
+            'experience' => 'required|string',
+            'skills' => 'required|string',                    
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'error' => $validator->messages()
+            ], 422);
+        } else {
+            if ($id) {
+                // Check if job exists
+                $job = Address::find($id);
+                if ($job) {
+                    // Update existing job
+                    $job->update([
+                        'qualification' => $request->qualification,
+                        'q_state' => $request->q_state,
+                        'board' => $request->board,
+                        'passing_year' => $request->passing_year,
+                        'experience' => $request->experience,
+                        'skills' => $request->skills,
+                        'user_id' => $request->user_id,                            
+                    ]);
+    
+                    return response()->json([
+                        'status' => 200,
+                        'message' => "Job Updated Successfully"
+                    ], 200);
+                }
+            }
+    
+            return response()->json([
+                'status' => 200,
+                'message' => "Job Created Successfully",
+                'job' => $newJob
+            ], 200);
+        }
     }
 }
