@@ -88,4 +88,14 @@ class AuthOtpController extends Controller
 
         return redirect()->route('otp.login')->with('error','Your Otp is not Correct');
     }    
+
+     protected function createNewToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth()->factory()->getTTL() * 60,
+            'user' => auth()->user()
+        ]);
+    }
 }

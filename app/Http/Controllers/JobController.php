@@ -116,53 +116,22 @@ class JobController extends Controller
         }
     }
 
-    // public function show($id)
-    // {
-    //     $job = Job::find($id);
-    //     if($job){
-    //         return response()->json([
-    //             'status' => 200,
-    //             'data' => $job
-    //         ], 200);
-    //     }
-    //     else{
-    //         return response()->json([
-    //             'status' => 404,
-    //             'message' => "No call Found"
-    //         ], 404);
-    //     }
-    // }
-    
-
-    public function show()
+    public function show($id)
     {
-        if (Auth::check()) {
-            // User is authenticated
-            $userId = Auth::id();
-    
-            // Retrieve job details for the authenticated user
-            $job = Job::where('user_id', $userId)->first();
-    
-            if ($job) {
-                return response()->json([
-                    'status' => 200,
-                    'data' => $job
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => 404,
-                    'message' => "No job Found for the logged-in user"
-                ], 404);
-            }
-        } else {
-            // User is not authenticated
+        $job = Job::find($id);
+        if($job){
             return response()->json([
-                'status' => 401,
-                'message' => "Unauthorized"
-            ], 401);
+                'status' => 200,
+                'data' => $job
+            ], 200);
+        }
+        else{
+            return response()->json([
+                'status' => 404,
+                'message' => "No call Found"
+            ], 404);
         }
     }
-    
     
     public function update(Request $request, int $id)
 {

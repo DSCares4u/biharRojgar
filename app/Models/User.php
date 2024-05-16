@@ -10,9 +10,10 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use illuminate\Database\Eloquent\Relations\HasOne;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -51,4 +52,12 @@ class User extends Authenticatable
     {
         return $this->HasOne(JOB::class, 'id', 'job_id');
     }
+
+    public function getJWTIdentifier() {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims() {
+        return [];
+    }  
 }

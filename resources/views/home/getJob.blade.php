@@ -178,13 +178,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="button flex gap-5 justify-end ml-10 mt-8">
+                <div class="button flex justify-end ml-10 mt-8">
                     <div class="next">
-                        <a class="editBtn bg-[#316fb6] hover:bg-[#2f5081] rounded px-3 py-1 text-white">Edit</a>
-                    </div>
-                    <div class="next">
-                        <button class="bg-[#EA2027] hover:bg-[#ff4747] rounded px-3 py-1 text-white">Save &
-                            Next</button>
+                        <button class="bg-[#EA2027] hover:bg-[#ff4747] rounded px-3 py-1 text-white">Save & Next</button>
                     </div>
                 </div>
             </form>
@@ -192,76 +188,125 @@
         </div>
     </div>
     <script>
-        // $(document).ready(function() {
-        //     //insert application details
+        $(document).ready(function() {
+            //insert application details
 
-        //     $("#applyJob").submit(function(e) {
-        //         e.preventDefault();
-        //         var formData = new FormData(this);
-        //         $.ajax({
-        //             type: "POST",
-        //             url: "{{ route('job.store') }}",
-        //             data: formData,
-        //             dataType: "JSON",
-        //             contentType: false,
-        //             cache: false,
-        //             processData: false,
-        //             success: function(response) {
-        //                 swal("success", response.message, "success");
-        //                 $("#applyJob").trigger("reset");
-        //                 window.open("/address", "_self")
-        //             },
-        //             error: function(xhr, status, error) {
-        //                 var errors = xhr.responseJSON.error;
-        //                 $.each(errors, function(key, value) {
-        //                     $("#" + key + "-error").text(value[0]).removeClass(
-        //                         "hidden");
-        //                 });
-        //             }
-        //         })
-        //     })
+            $("#applyJob").submit(function(e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('job.store') }}",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response) {
+                        swal("success", response.message, "success");
+                        $("#applyJob").trigger("reset");
+                        window.open("/address", "_self")
+                    },
+                    error: function(xhr, status, error) {
+                        var errors = xhr.responseJSON.error;
+                        $.each(errors, function(key, value) {
+                            $("#" + key + "-error").text(value[0]).removeClass(
+                                "hidden");
+                        });
+                    }
+                })
+            })
+        });
+
+        // $(document).on('click', '.editBtn', function() {
+        //     // Get the user ID from the logged-in session
+        //     let userId = {{ auth()->user()->id }};
+
+        //     // Now, proceed with your AJAX request
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: `/api/job/view/`+ userId,
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         success: function(response) {
+        //             // Populate form fields with response data
+        //             $('#id').val(response.data.id);
+        //             $('#name').val(response.data.name);
+        //             $('#gender').val(response.data.gender);
+        //             $('#marital').val(response.data.marital);
+        //             $('#preferred_lang').val(response.data.preferred_lang);
+        //             $('#dob').val(response.data.dob);
+        //             $('#father').val(response.data.father);
+        //             $('#email').val(response.data.email);
+        //             $('#religion').val(response.data.religion);
+        //             $('#mother').val(response.data.mother);
+        //             $('#mobile').val(response.data.mobile);
+        //             $('#community').val(response.data.community);
+        //             $('#village').val(response.data.village);
+        //             $('#landmark').val(response.data.landmark);
+        //             $('#area').val(response.data.area);
+        //             $('#pincode').val(response.data.pincode);
+        //             $('#state').val(response.data.state);
+        //             $('#city').val(response.data.city);
+        //             $('#id_mark').val(response.data.id_mark);
+        //             $('#default-modal').removeClass('hidden');
+        //         },
+        //         error: function(xhr, status, error) {
+        //             alert("No Data Found")
+        //             console.error('Error fetching Job details for editing:', error);
+        //         }
+        //     });
         // });
 
-        $(document).on('click', '.editBtn', function() {
-            // Get the user ID from the logged-in session
-            let userId = {{ auth()->user()->id }};
+        $(document).ready(function() {
+    // Define a function to handle the AJAX request
+    function fetchJobDetailsAndOpenModal() {
+        // Get the user ID from the logged-in session
+        let userId = {{ auth()->user()->id }};
 
-            // Now, proceed with your AJAX request
-            $.ajax({
-                type: 'GET',
-                url: `/api/job/view/`+ userId,
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                success: function(response) {
-                    // Populate form fields with response data
-                    $('#id').val(response.data.id);
-                    $('#name').val(response.data.name);
-                    $('#gender').val(response.data.gender);
-                    $('#marital').val(response.data.marital);
-                    $('#preferred_lang').val(response.data.preferred_lang);
-                    $('#dob').val(response.data.dob);
-                    $('#father').val(response.data.father);
-                    $('#email').val(response.data.email);
-                    $('#religion').val(response.data.religion);
-                    $('#mother').val(response.data.mother);
-                    $('#mobile').val(response.data.mobile);
-                    $('#community').val(response.data.community);
-                    $('#village').val(response.data.village);
-                    $('#landmark').val(response.data.landmark);
-                    $('#area').val(response.data.area);
-                    $('#pincode').val(response.data.pincode);
-                    $('#state').val(response.data.state);
-                    $('#city').val(response.data.city);
-                    $('#id_mark').val(response.data.id_mark);
-                    $('#default-modal').removeClass('hidden');
-                },
-                error: function(xhr, status, error) {
-                    alert("No Data Found")
-                    console.error('Error fetching Job details for editing:', error);
-                }
-            });
+        // Proceed with your AJAX request
+        $.ajax({
+            type: 'GET',
+            url: `/api/job/view/` + userId,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response) {
+                // Populate form fields with response data
+                $('#id').val(response.data.id);
+                $('#name').val(response.data.name);
+                $('#gender').val(response.data.gender);
+                $('#marital').val(response.data.marital);
+                $('#preferred_lang').val(response.data.preferred_lang);
+                $('#dob').val(response.data.dob);
+                $('#father').val(response.data.father);
+                $('#email').val(response.data.email);
+                $('#religion').val(response.data.religion);
+                $('#mother').val(response.data.mother);
+                $('#mobile').val(response.data.mobile);
+                $('#community').val(response.data.community);
+                $('#village').val(response.data.village);
+                $('#landmark').val(response.data.landmark);
+                $('#area').val(response.data.area);
+                $('#pincode').val(response.data.pincode);
+                $('#state').val(response.data.state);
+                $('#city').val(response.data.city);
+                $('#id_mark').val(response.data.id_mark);
+                $('#default-modal').removeClass('hidden');
+            },
+            error: function(xhr, status, error) {
+                alert("No Data Found")
+                console.error('Error fetching Job details for editing:', error);
+            }
         });
+    }
+
+    // Auto-execute the function when the page loads
+    fetchJobDetailsAndOpenModal();
+
+});
+
 
         $('#applyJob').submit(function(e) {
             e.preventDefault();
@@ -318,178 +363,4 @@
         }
     </script>
 
-    {{-- <script>
-    $(document).ready(function() {
-        var token = localStorage.getItem('token');
-        if (token) {
-            let callingProfile = () => {
-                $.ajax({
-                    type: "GET",
-                    url: "/api/user-profile",
-                    headers: {
-                        'Authorization': 'Bearer ' + token
-                    },
-                    success: function(response) {
-                        if (response.hasOwnProperty('name')) {
-                            $("#calling_name").text(response.name);
-                            if (response.hasOwnProperty('f_name')) {
-                                $("#calling_user_fname").text(response.f_name);
-                                if (response.hasOwnProperty('email')) {
-                                    $("#calling_user_email").text(response.email);
-                                    if (response.hasOwnProperty('mobile_no')) {
-                                        $("#calling_user_phone").text(response.mobile_no);
-                                        if (response.hasOwnProperty('gender')) {
-                                            $("#calling_user_gender").text(response.gender);
-                                            if (response.hasOwnProperty('address')) {
-                                                $("#calling_user_address").text(response
-                                                    .address);
-
-                                                if (response.hasOwnProperty(
-                                                    'email_verified_at') && response.email_verified_at == null) {
-                                                    $("#verify").html("<button id='verify_mail' class=' text-green-500' data-id='"+response.email+"'>Verify Now</button>");
-                                                } else {
-                                                    $("#verify").html("Verified");
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            }
-            callingProfile();
-
-            //email verification
-
-            $(document).on('click',"#verify_mail",function(){
-                var email = $(this).attr('data-id');
-                $.ajax({
-                    url:"/api/send-verify-mail/"+email,
-                    type:"get",
-                    headers: {
-                        'Authorization': 'Bearer ' + token
-                    },
-                    success:function(data){
-                        $('.result').text(data.msg);
-                    }
-
-                });
-            });
-
-
-            // edit profile work
-            let editStudent = () => {
-                $('#edit_student').click(function() {
-                    $.ajax({
-                        type: "GET",
-                        url: `/api/user-profile`,
-                        headers: {
-                            'Authorization': 'Bearer' + token
-                        },
-                        success: function(response) {
-                            $('#editStudentId').val(response.id);
-                            $('#editStudentName').val(response.name);
-                            $('#editStudentEmail').val(response.email);
-                            $('#editStudentMobile_no').val(response.mobile_no);
-                            $('#editStudentfName').val(response.f_name);
-                            $('#editStudentAddress').val(response.address);
-                            $('#editStudentGender').val(response.gender);
-                            $('#default-modal').removeClass('hidden');
-
-                            // console.log("Edit student form oFpened");
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error fetching student details for editing:',
-                                error);
-                        }
-                    });
-                });
-
-                $('#editStudentForm').submit(function(e) {
-                    e.preventDefault();
-                    var formData = {
-                        name: $('#editStudentName').val(),
-                        email: $('#editStudentEmail').val(),
-                        mobile_no: $('#editStudentMobile_no').val(),
-                        f_name: $('#editStudentfName').val(),
-                        address: $('#editStudentAddress').val(),
-                        gender: $('#editStudentGender').val(),
-                    };
-                    $.ajax({
-                        type: 'PUT',
-                        url: `/api/user-profile/edit`,
-                        headers: {
-                            'Authorization': 'Bearer ' + token
-                        },
-                        data: formData,
-                        success: function(response) {
-                            swal("Success", response.msg, "msg");
-                            $('#default-modal').addClass('hidden');
-                            callingProfile();
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error updating student:', error);
-                        }
-                    });
-                });
-            };
-
-            editStudent();
-
-            // Cancel edit student button click handler
-            $('#cancelEditStudent').click(function() {
-                $('#default-modal').addClass('hidden');
-            });
-
-        } else {
-            window.open('/', '_self');
-        }
-
-        $('#logouting').click(function(e) {
-            e.preventDefault();
-
-            // Display a confirmation dialog
-            swal({
-                title: "Are you sure you want to logout?",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            }).then((willLogout) => {
-                if (willLogout) {
-                    // Proceed with logout
-                    $.ajax({
-                        url: '/api/logout',
-                        type: 'POST',
-                        headers: {
-                            'Authorization': 'Bearer ' + localStorage.getItem('token')
-                        },
-                        success: function(response) {
-                            // Remove the token from localStorage
-                            localStorage.removeItem('token');
-                            // Redirect to the login page after successful logout
-                            swal("Logout Successfully!", {
-                                icon: "success",
-                            }).then(() => {
-                                window.location.href =
-                                    '{{ route('login') }}';
-                            });
-                        },
-                        error: function(xhr, status, error) {
-                            // Handle error
-                            console.log(xhr.responseText);
-                        }
-                    });
-                } else {
-                    // Cancelled logout
-                    swal("Logout Cancelled", "You are still login", "info");
-                }
-            });
-        });
-
-
-
-    });
-</script> --}}
 @endsection
