@@ -11,7 +11,7 @@ class Hire extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function plan(): HasOne
+    public function hire_plan(): HasOne
     {
         return $this->HasOne(HirePlan::class, 'id', 'hire_plan_id');
     }

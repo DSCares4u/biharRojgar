@@ -11,7 +11,7 @@ class HirePlan extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function book_plans(): HasMany
+    public function hires(): HasMany
     {
         return $this->hasMany(Hire::class);
     }   

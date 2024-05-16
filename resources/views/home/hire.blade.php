@@ -33,15 +33,12 @@
                                         placeholder="Number"
                                         class="appearance-none border py-2 px-2 w-full text-xs">
                                 </td>
-                                {{-- <td class=" py-1"><input type="number" name="inputs[0]['experience']"
-                                        placeholder="Experience"
-                                        class="appearance-none border text-center py-2 px-2 w-full  text-sm"></td> --}}
                                 <td class="py-1 text-center">
                                     <div class="text-xs text-gray-400">
-                                        Min: <input type="number" min="0" name="inputs[0]['min_experience']" placeholder="0"
-                                            class="appearance-none border text-black px-2 w-1/2 text-sm">
-                                        Max: <input type="number" min="0" name="inputs[0]['max_experience']" placeholder="5y"
-                                            class="appearance-none text-black  px-2 border w-1/2 text-sm">
+                                        Min: <input type="text" min="0" name="inputs[0]['min_experience']" placeholder="0"
+                                            class="appearance-none border text-black px-1 w-1/4 text-xs">
+                                        Max: <input type="text" min="0" name="inputs[0]['max_experience']" placeholder="5y"
+                                            class="appearance-none text-black  px-1 border w-1/4 text-xs">
                                     </div>
                                 </td>
 
@@ -91,18 +88,14 @@
                                         <option value="others" class=" border  w-full text-sm">Others</option>
                                     </select>
                                 </td>
-                                <td class=" py-1"><input type="number" name="inputs[0]['salary']"
-                                        placeholder="5000-10000"
-                                        class="appearance-none border py-2 px-1  w-full  text-xs">
-                                </td>
-                                {{-- <td class="py-1 text-center">
-                                    <div class="text-sm text-gray-400">
-                                        Min: <input type="number" name="inputs[0]['min_salary']" placeholder="0"
+                                <td class="py-1 text-center">
+                                    <div class="text-xs text-gray-400 flex gap-1">
+                                        Min: <input type="text" name="inputs[0]['min_salary']" placeholder="From"
                                             class="appearance-none border py-1 px-2 w-1/2 text-sm">
-                                        Max: <input type="number" name="inputs[0]['max_salary']" placeholder="5y"
+                                        Max: <input type="text" name="inputs[0]['max_salary']" placeholder="To"
                                             class="appearance-none py-1 px-2 border w-1/2 text-sm">
                                     </div>
-                                </td> --}}
+                                </td>
                                 <td class=" py-2 flex justify-center">
                                     <button type="button" name="add"
                                         class="add bg-green-500 px-3 py-1 rounded text-white"><i
@@ -433,14 +426,7 @@
                         let select = $("#plan_card");
                         select.empty();
                         response.data.forEach((plan) => {
-                            // Split the features string by newline character
-                            let featuresArray = plan.features[0].split('\n');
-
-                            // Generate list items for each feature
-                            let listItems = featuresArray.map(feature => {
-                                return `<li class="flex font-medium text-[13px] mt-2"><img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="">${feature}</li>`;
-                            }).join('');
-
+                            let features = plan.features.split(',').map(feature => `<li class="flex font-medium text-[13px] mt-2"><img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="">${feature}</li>`).join('');
                             select.append(`
                             
                             <div class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700">
@@ -452,7 +438,7 @@
                                     <hr class="h-2">
                                 </div>
                                 <ul class="mt-3">
-                                    ${listItems}
+                                    ${features}
                                 </ul>
                             </div>
                             `);

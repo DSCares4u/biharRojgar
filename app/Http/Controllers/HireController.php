@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hire;
+use App\Models\HirePlan;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -84,10 +85,9 @@ class HireController extends Controller
             ], 422);
         } else {
 
-          $rolesJson = json_encode($roles);  
             $hire = Hire::create([
                 'name' => $request->name, 
-                'roles' => json_encode($rolesJson), 
+                'roles' => json_encode($roles), 
                 'city' => $request->city,          
                 'state' => $request->state,          
                 'description' => $request->description,          
@@ -98,8 +98,7 @@ class HireController extends Controller
                 'email' => $request->email,          
                 'hire_plan_id' => $request->plan_id, 
                 'logo'=>$logo,         
-            ]);
-    
+            ]);    
             if ($hire) {
                 return response()->json([
                     'status' => 200,
