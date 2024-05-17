@@ -163,36 +163,8 @@
                         <input type="file" id="logo" name="logo" class="py-1 px-2 w-full" required>
                     </div>
                 </div>
-                {{-- only for testing purpose  --}}
-
-                <div class="mb-4">
-                    <select name="plan_id" id="callingPlans">
-                        <option value="">Select Plan</option>
-                    </select>
-                </div>
-
                 {{-- Option card --}}
-                {{-- <div class="mb-4 flex gap-2" id="plan_car">
-                    <label for="" class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
-                        <input name="address_id" class="radio" type="radio" value="" checked>
-                        
-                            <div class="price flex justify-between">
-                                <h3 class="text-lg font-semibold">Free</h3>
-                                <h3 class="text-lg font-semibold">Rs. 0</h3>
-                            </div>
-                            <div class="line bg-orange-500 mt-20">
-                                <hr class="h-2">
-                            </div>
-                            <ul class="mt-3">
-                                <li class="font-gray-600 text-[13px]">Normal x applications</li>
-                                <li class="flex font-medium text-[13px] mt-2 "><img
-                                        src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Limited applications
-                                </li>
-                            </ul>
-                    </label>
-                   
-
-                </div> --}}
+                
                 <div class="mb-4 flex gap-2" id="plan_card">
                     <label
                         class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
@@ -213,20 +185,6 @@
                         </ul>
                     </label>
                 </div>
-
-                <script>
-                    document.querySelectorAll('#plan_card label').forEach(label => {
-                        label.addEventListener('click', () => {
-                            document.querySelectorAll('#plan_car label').forEach(l => l.classList.remove(
-                                'border-orange-500'));
-                            label.classList.add('border-orange-500');
-                            label.querySelector('input[type="radio"]').checked = true;
-                        });
-                    });
-                </script>
-
-
-
                 <div id="payBtn1" class="mb-3 flex justify-center">
                     <button type="submit"
                         class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
@@ -269,7 +227,7 @@
         <script>
             $(document).ready(function() {
                 var i = 0;
-                
+
                 // Add new row
                 $('#table').on('click', '.add', function() {
                     ++i;
@@ -376,7 +334,7 @@
                         success: function(response) {
                             swal("Success", response.message, "success");
                             $("#addHirer").trigger("reset");
-                            window.open("/admin/manage-hire", "_self")
+                            window.open("/", "_self")
                         }
                     })
                 });
@@ -395,7 +353,7 @@
                             ).join('');
                             select.append(`
                     <label class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
-                        <input type="radio" name="address_id" value="${plan.id}" data-plan-name="${plan.name}" data-plan-charge="${plan.price}" class="hidden" />
+                        <input type="radio" name="plan_id" value="${plan.id}" data-plan-name="${plan.name}" data-plan-charge="${plan.price}" class="hidden" />
                         <div class="price flex justify-between">
                             <h3 class="text-lg font-semibold">${plan.name}</h3>
                             <h3 class="text-lg font-semibold">Rs. ${plan.price}</h3>
