@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HireController;
 use App\Http\Controllers\HirePlanController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\SarkariJobController;
 use App\Http\Controllers\YojnaController;
+use App\Http\Controllers\YojnaCategoryController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\DocumentController;
@@ -70,15 +72,14 @@ Route::get('/yojna/view/{id}',[YojnaController::class,'show']);
 Route::put('/yojna/edit/{id}',[YojnaController::class,'update']);
 Route::delete('/yojna/delete/{id}',[YojnaController::class,'destroy']);
 
-// Route::get('/job/view', function () {
-//     $id = auth()->id();
-//     $controller = app()->make('App\Http\Controllers\JobController');
-//     return $controller->show($id);
-// })->middleware('auth');
+Route::post('/admin/yojna/category',[YojnaCategoryController::class,'store'])->name('yojna.category.store');
+Route::get('/admin/yojna/category',[YojnaCategoryController::class,'index'])->name('yojna.category.index');
+Route::get('/admin/yojna/category/view/{id}',[YojnaCategoryController::class,'show']);
+Route::put('/admin/yojna/category/edit/{id}',[YojnaCategoryController::class,'update']);
+Route::delete('/admin/yojna/category/delete/{id}',[YojnaCategoryController::class,'destroy']);
 
-
-// Route::put('/job/edit', function (Request $req) {
-//     $id = auth()->id();
-//     $controller = app()->make('App\Http\Controllers\JobController');
-//     return $controller->upgrade($req,$id);
-// })->middleware('auth');
+Route::post('/admin/sarkari-job',[SarkariJobController::class,'store'])->name('sarkari-job.store');
+Route::get('/admin/sarkari-job',[SarkariJobController::class,'index'])->name('sarkari-job.index');
+Route::get('/admin/sarkari-job/view/{id}',[SarkariJobController::class,'show']);
+Route::put('/admin/sarkari-job/edit/{id}',[SarkariJobController::class,'update']);
+Route::delete('/admin/sarkari-job/delete/{id}',[SarkariJobController::class,'destroy']);

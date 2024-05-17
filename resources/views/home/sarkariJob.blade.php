@@ -10,9 +10,9 @@
                 application much before the last date. RRBs shall not be responsible if applicants are not able to submit
                 their online application including payment of fee within the last date for any reason whatsoever.</p>
         </div>
-        <div class="card">
-            <a href="/get-job"
-                class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        <div class="card" id="callingData">
+            {{-- <a href="/get-job"
+                class="block max-w-full mt-4 p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                 <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">
                     CENTRALISED EMPLOYMENT NOTICE (CEN) No.RPF 01/2024 Sub-Inspector (Executive)</h5>
                 <div class="details flex mt-4">
@@ -58,7 +58,7 @@
                 </div>
                 
                 
-            </a>
+            </a> --}}
         </div>
     </div>
     <div class="w-1/4">
@@ -99,5 +99,76 @@
         </div>
     </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+           // Function to fetch and display appointment
+           let callingSarkariJobs = () => {
+               $.ajax({
+                   type: "GET",
+                   url: "{{ route('sarkari-job.index') }}",
+                   success: function(response) {
+                       let table = $("#callingData");
+                       table.empty();
+                       let data = response.data;
+
+                       console.log(data);
+
+                       data.forEach((data) => {
+                           table.append(`
+                           <a href="/get-job"
+                                class="block max-w-full mt-4 p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                                <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${data.name}</h5>
+                                <div class="details flex mt-4">
+                                    <div class="logo w-2/12">
+                                        <img src="/image/sarkari/logo/${data.logo}" class="rounded-full w-20" alt="">
+                                    </div>
+                                    <div class="w-10/12 mb-1">
+                                        <div class="flex justify-between text-blue-500 font-bold">
+                                            <h5>CEN No. RPF 01/2024</h5>
+                                            <h5>Important Instruction</h5>
+                                        </div>
+                                        <div class="mt-1 flex justify-between">
+                                            <div class="mt">
+                                                <h5 class="text-sm text-gray-500 font-semibold"> No. Of Post : ${data.no_of_post}</h5>
+                                                <div class="mt-1">
+                                                    <h5 class="text-sm text-gray-500 font-semibold">Age : ${data.min_age} - ${data.max_age} Years</h5>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <h5 class="text-gray-500 font-semibold">Opening Date : ${data.opening_date}</h5>
+                                                <h5 class="text-gray-500 font-semibold">Closing Date : ${data.closing_date}</h5>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="mt-1">
+                                            <h5 class="text-sm text-gray-500 font-semibold">Qualification : ${data.qualification}</h5>
+                                        </div>
+                                        <div class="mt-1">
+                                            <h5 class="text-sm text-gray-500 font-semibold">Skills req : ${data.skills}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between ml-1">
+                                    <div class="fees mt-2 ml-36 flex">
+                                        <h5 class=" font-semibold text-red-700 w-32 rounded text-base">Fees : Rs. ${data.fees}</h5>
+                                        <p class="text-[12px]">(Including gov. fees)</p>
+                                    </div>
+                                    <div class="button">
+                                        <button class="bg-green-600 rounded text-white px-1 py-1">Apply Now</button>
+                                    </div>
+                                </div>
+                            </a>
+                       `);
+                       });
+                   },
+                   error: function(xhr, status, error) {
+                       console.error('Error:', error);
+                   }
+               });
+           }
+           callingSarkariJobs();
+       });
+   </script>
     
 @endsection

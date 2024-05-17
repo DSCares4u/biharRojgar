@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('yojnas', function (Blueprint $table) {
             $table->id();
+            $table->string('hname');
+            $table->string('ename');
+            $table->string('logo');
+            $table->foreignId('yojna_category_id')->constrained()->onDelete("cascade");
             $table->timestamps();
         });
     }

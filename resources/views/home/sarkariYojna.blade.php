@@ -1,95 +1,14 @@
 @extends('home.homebase')
 @section('content')
-    {{-- <div class="container mx-auto p-6 bg-gray-100 rounded-lg shadow-lg">
-        <div class="heading text-center mb-6">
-            <h2 class="text-2xl font-semibold">Bihar Sarkari Jobs</h2>
-        </div>
-        <div class="main flex flex-wrap">
-            <a href="/sarkari-job-form" class="forms w-3/12 mt-4 mb-4">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-blue-600 rounded-full h-12 w-12" width="50" alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-lg font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-base">Civil Court Case</h3>
-                </div>
-            </a>
-            <a href="/sarkari-job-form" class="forms w-3/12 mt-4 mb-4">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-blue-600 rounded-full h-12 w-12" width="50" alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-lg font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-base">Civil Court Case</h3>
-                </div>
-            </a>
-            <a href="/sarkari-job-form" class="forms w-3/12 mt-4 mb-4">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-blue-600 rounded-full h-12 w-12" width="50" alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-lg font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-base">Land Parcel Map</h3>
-                </div>
-            </a>
-            <a href="/sarkari-job-form" class="forms w-3/12 mt-4 mb-4">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-blue-600 rounded-full h-12 w-12" width="50" alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-lg font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-base">Land Parcel Map</h3>
-                </div>
-            </a>
-            <a href="/sarkari-job-form" class="forms w-3/12 mt-4 mb-4">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-blue-600 rounded-full h-12 w-12" width="50" alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-lg font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-base">Land Parcel Map</h3>
-                </div>
-            </a>
-            <a href="/sarkari-job-form" class="forms w-3/12 mt-4 mb-4">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-blue-600 rounded-full h-12 w-12" width="50" alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-lg font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-base">Land Parcel Map</h3>
-                </div>
-            </a>
-            <a href="/sarkari-job-form" class="forms w-3/12 mt-4 mb-4">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-blue-600 rounded-full h-12 w-12" width="50" alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-lg font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-base">Land Parcel Map</h3>
-                </div>
-            </a>
-            <a href="/sarkari-job-form" class="forms w-3/12 mt-4 mb-4">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-blue-600 rounded-full h-12 w-12" width="50" alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-lg font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-base">Land Parcel Map</h3>
-                </div>
-            </a>
-
-        </div>
-    </div> --}}
-
-    <button id="openFormBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Open
-        Form</button>
+    {{-- <button id="openFormBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Open
+        Form</button> --}}
     <div class="container mx-auto p-6 rounded-lg">
         <div class="heading text-center mb-6 flex justify-center">
             <h2 class="text-xl rounded-full px-4 py-1 font-bold bg-green-600 text-white">Registration & Tax Filling Services
             </h2>
         </div>
-        <div class="main flex flex-wrap gap-4 justify-center">
-            <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white py-5 px-2">
+        <div class="main flex flex-wrap gap-4 justify-center" id="callingYojna">
+            {{-- <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white py-5 px-2">
                 <div class="image flex justify-center mb-2">
                     <img src="/sarkari/court.png" class="border border-solid rounded-full h-16 w-16" width="50"
                         alt="">
@@ -98,89 +17,7 @@
                     <h3 class="text-base font-semibold">व्यवहार न्याय प्रकरण</h3>
                     <h3 class="text-sm">Civil Court Case</h3>
                 </div>
-            </a>
-            <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white py-5 px-2">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-solid rounded-full h-16 w-16" width="50"
-                        alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-base font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-sm">Civil Court Case</h3>
-                </div>
-            </a>
-            <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white py-5 px-2">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-solid rounded-full h-16 w-16" width="50"
-                        alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-base font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-sm">Civil Court Case</h3>
-                </div>
-            </a>
-            <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white py-5 px-2">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-solid rounded-full h-16 w-16" width="50"
-                        alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-base font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-sm">Civil Court Case</h3>
-                </div>
-            </a>
-            <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white py-5 px-2">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-solid rounded-full h-16 w-16" width="50"
-                        alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-base font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-sm">Civil Court Case</h3>
-                </div>
-            </a>
-            <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white py-5 px-2">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-solid rounded-full h-16 w-16" width="50"
-                        alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-base font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-sm">Civil Court Case</h3>
-                </div>
-            </a>
-            <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white py-5 px-2">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-solid rounded-full h-16 w-16" width="50"
-                        alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-base font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-sm">Civil Court Case</h3>
-                </div>
-            </a>
-            <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white py-5 px-2">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-solid rounded-full h-16 w-16" width="50"
-                        alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-base font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-sm">Civil Court Case</h3>
-                </div>
-            </a>
-            <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white py-5 px-2">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-solid rounded-full h-16 w-16" width="50"
-                        alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-base font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-sm">Civil Court Case</h3>
-                </div>
-            </a>
-
-
+            </a> --}}
         </div>
     </div>
 
@@ -417,7 +254,7 @@
 
     <hr class="bg-gray-300 h-1 rounded-xl">
 
-    <div id="myModal" class="modal  fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+    {{-- <div id="myModal" class="modal  fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
         <div class="modal-content bg-white p-8 rounded shadow-md w-1/2">
             <span id="closeBtn" class="absolute text-3xl text-gray-600 cursor-pointer right-96">&times;</span>
             <!-- Form content as provided -->
@@ -471,9 +308,9 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
-    <script>
+    {{-- <script>
         // Get the modal
         const modal = document.getElementById("myModal");
 
@@ -499,5 +336,42 @@
                 modal.classList.add("hidden");
             }
         });
-    </script>
+    </script> --}}
+
+
+    <script>
+        $(document).ready(function() {
+           // Function to fetch and display appointment
+           let callingYojna = () => {
+               $.ajax({
+                   type: "GET",
+                   url: "{{ route('yojna.index') }}",
+                   success: function(response) {
+                       let table = $("#callingYojna");
+                       table.empty();
+                       let data = response.data;
+
+                       data.forEach((data) => {
+                           table.append(`
+                           <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white w-[13%] py-5">
+                                <div class="image flex justify-center mb-2">
+                                    <img src="/image/yojna/${data.logo}" class="border border-solid rounded-full h-20 w-20" width="50"
+                                        alt="">
+                                </div>
+                                <div class="title text-center">
+                                    <h3 class="text-base font-semibold">${data.hname}</h3>
+                                    <h3 class="text-sm">${data.ename}</h3>
+                                </div>
+                            </a>   
+                       `);
+                       });
+                   },
+                   error: function(xhr, status, error) {
+                       console.error('Error:', error);
+                   }
+               });
+           }
+           callingYojna();
+       });
+   </script>
 @endsection

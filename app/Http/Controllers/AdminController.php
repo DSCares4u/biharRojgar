@@ -41,4 +41,20 @@ class AdminController extends Controller
     public function insertYojna(){
         return view('admin.insertYojna');
     }
+
+    public function manageYojnaCategory(){
+        return view('admin.manageYojnaCategory');
+    }
+
+    public function insertYojnaCategory(){
+        return view('admin.insertYojnaCategory');
+    }
+
+    public function manageSarkariJob(){
+        return view('admin.manageSarkariJob');
+    }
+
+    public function insertSarkariJob(){
+        return view('admin.insertSarkariJob');
+    }
 }

@@ -167,7 +167,7 @@
                                     <a href="/get-job/t&c" class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                         <div class="upper flex gap-5">
                                             <div class="logo mt-2">
-                                                <img src="/sarkari/private.png" class="rounded w-18" alt="">
+                                                <img src="/image/company/logo/${item.logo}" class="rounded w-18" alt="">
                                             </div>
                                             <div class="name">
                                                 <h5 class="font-semibold text-black">${item.name}</h5>

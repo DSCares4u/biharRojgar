@@ -10,21 +10,26 @@
             <div class="p-3">
                 <form id="addYojna">
                     <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Yojna English Name</label>
+                        <label for="ename" class="block text-sm font-medium text-gray-700">Yojna English Name</label>
                         <input type="text" id="ename" name="ename"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             required>
                     </div>
                     <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium text-gray-700">Yojna Hindi Name</label>
+                        <label for="hname" class="block text-sm font-medium text-gray-700">Yojna Hindi Name</label>
                         <input type="text" id="hname" name="hname"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             required>
                     </div>
+                    <div class="mb-4">
+                        <label for="" class="block text-sm font-medium text-gray-700">Select Category</label>
+                        <select name="yojna_category_id" id="callingPlans"  class="w-1/2 shadow-sm sm:text-sm rounded-md"
+                        required></select>
+                    </div>
                         <div class="mb-4 w-1/2">
                             <label for="logo" class="block text-sm font-medium text-gray-700">Image</label>
-                            <input type="number" id="logo" name="logo"
-                                class="w-full shadow-sm sm:text-sm rounded-md"
+                            <input type="file" id="logo" name="logo"
+                                class=""
                                 required >
                         </div>
                     <div class="">
@@ -58,6 +63,21 @@
                 }
             })
         })
+
+        $.ajax({
+                type: "GET",
+                url: "{{ route('yojna.category.index') }}",
+                success: function(response) {
+                    let select = $("#callingPlans");
+                    select.empty();
+                    select.append(`<option value="">Select Plan</option>`)
+                    response.data.forEach((plan) => {
+                        select.append(`
+                    <option value="${plan.id}">${plan.name}</option>
+                    `);
+                    });
+                }
+            });
     });
 </script>
 
