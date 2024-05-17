@@ -30,14 +30,15 @@
                                 <td class=" py-1"><input type="text" name="inputs[0]['profile']" placeholder="Job Name"
                                         class="appearance-none border py-2 px-2 w-full text-xs"></td>
                                 <td class=" py-1"><input type="" min="1" name="inputs[0]['no_of_post']"
-                                        placeholder="Number"
-                                        class="appearance-none border py-2 px-2 w-full text-xs">
+                                        placeholder="Number" class="appearance-none border py-2 px-2 w-full text-xs">
                                 </td>
                                 <td class="py-1 text-center">
                                     <div class="text-xs text-gray-400">
-                                        Min: <input type="text" min="0" name="inputs[0]['min_experience']" placeholder="0"
+                                        Min: <input type="text" min="0" name="inputs[0]['min_experience']"
+                                            placeholder="0"
                                             class="appearance-none border text-black px-1 py-1 w-1/4 text-xs">
-                                        Max: <input type="text" min="0" name="inputs[0]['max_experience']" placeholder="5y"
+                                        Max: <input type="text" min="0" name="inputs[0]['max_experience']"
+                                            placeholder="5y"
                                             class="appearance-none text-black  px-1 border py-1 w-1/4 text-xs">
                                     </div>
                                 </td>
@@ -171,9 +172,32 @@
                 </div>
 
                 {{-- Option card --}}
+                {{-- <div class="mb-4 flex gap-2" id="plan_car">
+                    <label for="" class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
+                        <input name="address_id" class="radio" type="radio" value="" checked>
+                        
+                            <div class="price flex justify-between">
+                                <h3 class="text-lg font-semibold">Free</h3>
+                                <h3 class="text-lg font-semibold">Rs. 0</h3>
+                            </div>
+                            <div class="line bg-orange-500 mt-20">
+                                <hr class="h-2">
+                            </div>
+                            <ul class="mt-3">
+                                <li class="font-gray-600 text-[13px]">Normal x applications</li>
+                                <li class="flex font-medium text-[13px] mt-2 "><img
+                                        src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Limited applications
+                                </li>
+                            </ul>
+                    </label>
+                   
+
+                </div> --}}
                 <div class="mb-4 flex gap-2" id="plan_card">
-                    <div
-                        class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
+                    <label
+                        class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
+                        data-plan="free">
+                        <input type="radio" name="address_id" value="1" class="hidden" />
                         <div class="price flex justify-between">
                             <h3 class="text-lg font-semibold">Free</h3>
                             <h3 class="text-lg font-semibold">Rs. 0</h3>
@@ -182,63 +206,26 @@
                             <hr class="h-2">
                         </div>
                         <ul class="mt-3">
-                            <li class="font-gray-600 text-[13px]">Normal x applications</li>
-                            <li class="flex font-medium text-[13px] mt-2 "><img
-                                    src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Limited applications</li>
-                        </ul>
-                    </div>
-                    {{-- <div
-                        class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
-                        <div class="price flex justify-between">
-                            <h3 class="text-lg font-semibold">Gold</h3>
-                            <h3 class="text-lg font-semibold">Rs. 999</h3>
-                        </div>
-                        <div class="line bg-orange-500 mt-20">
-                            <hr class="h-2">
-                        </div>
-                        <ul class="mt-3">
-                            <li class="flex font-medium text-[13px] mt-2 "><img
-                                    src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Top of page promotion
-                            </li>
-                            <li class="flex font-medium text-[13px] mt-2 "><img
-                                    src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Unlimited applications
-                            </li>
-                            <li class="flex font-medium text-[13px] mt-2 "><img
-                                    src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Highlighted as 'Gold'
+                            <li class="text-gray-600 text-[13px]">Normal x applications</li>
+                            <li class="flex font-medium text-[13px] mt-2">
+                                <img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="" />Limited applications
                             </li>
                         </ul>
-                    </div>
-                    <div
-                        class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
-                        <div class="price flex justify-between">
-                            <h3 class="text-lg font-semibold">Rapid Hire</h3>
-                            <h3 class="text-lg font-semibold">Rs. 1299</h3>
-                        </div>
-                        <div class="line bg-orange-500 mt-20">
-                            <hr class="h-2">
-                        </div>
-                        <ul class="mt-3">
-                            <li class="font-gray-600 text-[13px]">Normal x applications</li>
-                            <li class="flex font-medium text-[13px] mt-2 "><img
-                                    src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Limited applications</li>
-                        </ul>
-                    </div>
-                    <div
-                        class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
-                        <div class="price flex justify-between">
-                            <h3 class="text-lg font-semibold">Spotlight</h3>
-                            <h3 class="text-lg font-semibold">Rs. 999</h3>
-                        </div>
-                        <div class="line bg-orange-500 mt-20">
-                            <hr class="h-2">
-                        </div>
-                        <ul class="mt-3">
-                            <li class="font-gray-600 text-[13px]">Normal x applications</li>
-                            <li class="flex font-medium text-[13px] mt-2 "><img
-                                    src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">Limited applications</li>
-                        </ul>
-                    </div> --}}
+                    </label>
                 </div>
+
+                <script>
+                    document.querySelectorAll('#plan_card label').forEach(label => {
+                        label.addEventListener('click', () => {
+                            document.querySelectorAll('#plan_car label').forEach(l => l.classList.remove(
+                                'border-orange-500'));
+                            label.classList.add('border-orange-500');
+                            label.querySelector('input[type="radio"]').checked = true;
+                        });
+                    });
+                </script>
+
+
 
                 <div id="payBtn1" class="mb-3 flex justify-center">
                     <button type="submit"
@@ -271,7 +258,7 @@
                     </li>
                 </ul>
                 <div id="payBtn2" class=" flex justify-center items-center">
-                    <button  type="submit"
+                    <button type="submit"
                         class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
                         Post Job
                     </button>
@@ -282,7 +269,7 @@
         <script>
             $(document).ready(function() {
                 var i = 0;
-
+                
                 // Add new row
                 $('#table').on('click', '.add', function() {
                     ++i;
@@ -394,34 +381,7 @@
                     })
                 });
 
-                // $.ajax({
-                //     type: "GET",
-                //     url: "{{ route('hire.plan.index') }}",
-                //     success: function(response) {
-                //         let select = $("#plan_card");
-                //         select.empty();
-                //         response.data.forEach((plan) => {
-                //             select.append(`
-        //             <div class=" w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 ">
-        //                 <div class="price flex justify-between">
-        //                     <h3 class="text-lg font-semibold">${plan.name}</h3>
-        //                     <h3 class="text-lg font-semibold">Rs. ${plan.price}</h3>
-        //                 </div>
-        //                 <div class="line bg-orange-500 mt-20">
-        //                     <hr class="h-2">
-        //                 </div>
-        //                 <ul class="mt-3">
-        //                     <li class="flex font-medium text-[13px] mt-2 "><img src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">${plan.features}</li>
-        //                     <li class="flex font-medium text-[13px] mt-2 "><img src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">${plan.features}</li>
-        //                     <li class="flex font-medium text-[13px] mt-2 "><img src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">${plan.features}</li>
-        //                     <li class="flex font-medium text-[13px] mt-2 "><img src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">${plan.features}</li>
-        //                     <li class="flex font-medium text-[13px] mt-2 "><img src="/icons/correct.png"class="h-4 mr-2 mt-1" alt="">${plan.features}</li>
-        //                 </ul>
-        //             </div>
-        //             `);
-                //         });
-                //     }
-                // });
+                // plan card calling work
 
                 $.ajax({
                     type: "GET",
@@ -429,84 +389,75 @@
                     success: function(response) {
                         let select = $("#plan_card");
                         select.empty();
-                        response.data.forEach((plan) => {
-                            let features = plan.features.split(',').map(feature => `<li class="flex font-medium text-[13px] mt-2"><img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="">${feature}</li>`).join('');
+                        response.data.forEach((plan, index) => {
+                            let features = plan.features.split(',').map(feature =>
+                                `<li class="flex font-medium text-[13px] mt-2"><img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="">${feature}</li>`
+                            ).join('');
                             select.append(`
-                            
-                            <div class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700">
-                                <div class="price flex justify-between">
-                                    <h3 class="text-lg font-semibold">${plan.name}</h3>
-                                    <h3 class="text-lg font-semibold">Rs. ${plan.price}</h3>
-                                </div>
-                                <div class="line bg-orange-500 mt-20">
-                                    <hr class="h-2">
-                                </div>
-                                <ul class="mt-3">
-                                    ${features}
-                                </ul>
-                            </div>
-                            `);
+                    <label class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+                        <input type="radio" name="address_id" value="${plan.id}" data-plan-name="${plan.name}" data-plan-charge="${plan.price}" class="hidden" />
+                        <div class="price flex justify-between">
+                            <h3 class="text-lg font-semibold">${plan.name}</h3>
+                            <h3 class="text-lg font-semibold">Rs. ${plan.price}</h3>
+                        </div>
+                        <div class="line bg-orange-500 mt-20">
+                            <hr class="h-2">
+                        </div>
+                        <ul class="mt-3">
+                            <li class="text-gray-600 text-[13px]">Normal x applications</li>
+                            ${features}
+                        </ul>
+                    </label>
+                    `);
+                });
+
+                        // Add click event listener to the dynamically added labels
+                        document.querySelectorAll('#plan_card label').forEach(label => {
+                            label.addEventListener('click', () => {
+                                document.querySelectorAll('#plan_card label').forEach(l => l
+                                    .classList.remove('border-orange-500'));
+                                label.classList.add('border-orange-500');
+                                label.querySelector('input[type="radio"]').checked = true;
+                                updatePlanDetails(label);
+                            });
                         });
                     }
                 });
 
+                function updatePlanDetails(label) {
+                    let selectedPlan = label.querySelector('input[type="radio"]');
+                    let PlanFee = parseInt(selectedPlan.dataset.planCharge);
+                    let PlanName = selectedPlan.dataset.planName;
 
-               $.ajax({
-                type: "GET",
-                url: "{{ route('hire.plan.index') }}",
-                success: function(response) {
-                    let select = $("#callingPlans");
-                    select.empty();
-                    select.append(`<option value="">Select Plan</option>`)
-                    response.data.forEach((plan) => {
-                        select.append(`
-                    <option value="${plan.id}" data-plan-name="${plan.name}"  data-plan-charge="${plan.price}">${plan.name}</option>
+                    // Update the fee display
+                    $('#planCharge').html(`
+                        <li class="flex justify-between text-base text-gray-500">
+                            <p>${PlanName}</p>
+                            <p class="font-bold">Rs. ${PlanFee}</p>
+                        </li>
+                        <li class="flex justify-between text-base text-gray-500">
+                            <p>Platform Fees</p>
+                            <p class="font-bold">Rs. 200</p>
+                        </li>
+                        <hr>
+                        <li class="flex justify-between text-base text-gray-500">
+                            <p>Total Payment</p>
+                            <p class="font-bold">Rs. ${PlanFee + 200}</p>
+                        </li>
                     `);
-                    });
+
+                        $('#payBtn1').html(`
+                        <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
+                            Pay Rs. ${PlanFee + 200} & Post Job
+                        </button>
+                    `);
+
+                        $('#payBtn2').html(`
+                        <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
+                            Pay Rs. ${PlanFee + 200} & Post Job
+                        </button>
+                    `);
                 }
             });
-
-            $('#callingPlans').change(function() {
-                let selectedPlan = $(this).children("option:selected");
-                let PlanFee = selectedPlan.data('plan-charge');
-                let PlanName = selectedPlan.data('plan-name');
-
-                // Update the fee display
-                $('#planCharge').html(
-                    `<li class="flex justify-between text-base text-gray-500">
-                        <p>${PlanName}</p>
-                        <p class="font-bold">Rs. ${PlanFee}</p>
-                    </li>
-                    <li class="flex justify-between text-base text-gray-500">
-                        <p>PlatForm Fees</p>
-                        <p class="font-bold">Rs. 200</p>
-                    </li>
-                    <hr>
-                    <li class="flex justify-between text-base text-gray-500">
-                        <p>Total Payment</p>
-                        <p class="font-bold">Rs. ${PlanFee + 200}</p>
-                    </li>
-                    `
-                );
-                
-
-                $('#payBtn1').html(
-                    `<button type="submit"
-                        class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
-                        Pay Rs. ${PlanFee + 200} &
-                        Post Job</button>
-                    `
-                );
-
-                $('#payBtn2').html(
-                    `<button  type="submit"
-                        class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full"> Pay Rs. ${PlanFee + 200} &
-                        Post Job
-                    </button>
-                    `
-                );
-            });
-
-            })
         </script>
     @endsection
