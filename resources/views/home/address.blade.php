@@ -67,13 +67,11 @@
     </div>
     <script>
         $(document).ready(function() {
-            //insert new call request
-
             $("#insertData").submit(function(e) {
                 e.preventDefault();
                 $.ajax({
                     type: "POST",
-                    url: "{{ route('address.store') }}",
+                    // url: "{{ route('address.store') }}",
                     data: new FormData(this),
                     dataType: "JSON",
                     contentType: false,
@@ -107,7 +105,7 @@
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(response) {
-                        $('#id').val(response.data.id);
+                    $('#id').val(response.data.id);
                     $('#qualification').val(response.data.qualification);
                     $('#q_state').val(response.data.q_state);
                     $('#board').val(response.data.board);
@@ -116,7 +114,6 @@
                     $('#skills').val(response.data.skills);
                     },
                     error: function(xhr, status, error) {
-                        alert("No Data Found")
                         console.error('Error fetching Job details for editing:', error);
                     }
                 });
@@ -154,5 +151,52 @@
                 }
             });
         });
+
+
+
+         //insert new call request
+
+        // $(document).on('click', '.editBtn', function() {
+        //     // Get the user ID from the logged-in session
+        //     let userId = {{ auth()->user()->id }};
+
+        //     // Now, proceed with your AJAX request
+        //     $.ajax({
+        //         type: 'GET',
+        //         url: `/api/job/view/`+ userId,
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         },
+        //         success: function(response) {
+        //             // Populate form fields with response data
+        //             $('#id').val(response.data.id);
+        //             $('#name').val(response.data.name);
+        //             $('#gender').val(response.data.gender);
+        //             $('#marital').val(response.data.marital);
+        //             $('#preferred_lang').val(response.data.preferred_lang);
+        //             $('#dob').val(response.data.dob);
+        //             $('#father').val(response.data.father);
+        //             $('#email').val(response.data.email);
+        //             $('#religion').val(response.data.religion);
+        //             $('#mother').val(response.data.mother);
+        //             $('#mobile').val(response.data.mobile);
+        //             $('#community').val(response.data.community);
+        //             $('#village').val(response.data.village);
+        //             $('#landmark').val(response.data.landmark);
+        //             $('#area').val(response.data.area);
+        //             $('#pincode').val(response.data.pincode);
+        //             $('#state').val(response.data.state);
+        //             $('#city').val(response.data.city);
+        //             $('#id_mark').val(response.data.id_mark);
+        //             $('#default-modal').removeClass('hidden');
+        //         },
+        //         error: function(xhr, status, error) {
+        //             alert("No Data Found")
+        //             console.error('Error fetching Job details for editing:', error);
+        //         }
+        //     });
+        // });
+
     </script>
 @endsection
+

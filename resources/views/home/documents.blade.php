@@ -154,7 +154,6 @@
                     $('#other_certificate').val(response.data.other_certificate);
                     },
                     error: function(xhr, status, error) {
-                        alert("No Data Found")
                         console.error('Error fetching Job details for editing:', error);
                     }
                 });

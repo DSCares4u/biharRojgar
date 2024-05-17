@@ -218,91 +218,49 @@
             })
         });
 
-        // $(document).on('click', '.editBtn', function() {
-        //     // Get the user ID from the logged-in session
-        //     let userId = {{ auth()->user()->id }};
-
-        //     // Now, proceed with your AJAX request
-        //     $.ajax({
-        //         type: 'GET',
-        //         url: `/api/job/view/`+ userId,
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //         },
-        //         success: function(response) {
-        //             // Populate form fields with response data
-        //             $('#id').val(response.data.id);
-        //             $('#name').val(response.data.name);
-        //             $('#gender').val(response.data.gender);
-        //             $('#marital').val(response.data.marital);
-        //             $('#preferred_lang').val(response.data.preferred_lang);
-        //             $('#dob').val(response.data.dob);
-        //             $('#father').val(response.data.father);
-        //             $('#email').val(response.data.email);
-        //             $('#religion').val(response.data.religion);
-        //             $('#mother').val(response.data.mother);
-        //             $('#mobile').val(response.data.mobile);
-        //             $('#community').val(response.data.community);
-        //             $('#village').val(response.data.village);
-        //             $('#landmark').val(response.data.landmark);
-        //             $('#area').val(response.data.area);
-        //             $('#pincode').val(response.data.pincode);
-        //             $('#state').val(response.data.state);
-        //             $('#city').val(response.data.city);
-        //             $('#id_mark').val(response.data.id_mark);
-        //             $('#default-modal').removeClass('hidden');
-        //         },
-        //         error: function(xhr, status, error) {
-        //             alert("No Data Found")
-        //             console.error('Error fetching Job details for editing:', error);
-        //         }
-        //     });
-        // });
-
         $(document).ready(function() {
 
-        function fetchJobDetailsAndOpenModal() {
-        let userId = {{ auth()->user()->id }};
+            function fetchJobDetailsAndOpenModal() {
+                let userId = {{ auth()->user()->id }};
 
-        $.ajax({
-            type: 'GET',
-            url: `/api/job/view/` + userId,
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(response) {
-                $('#id').val(response.data.id);
-                $('#name').val(response.data.name);
-                $('#gender').val(response.data.gender);
-                $('#marital').val(response.data.marital);
-                $('#preferred_lang').val(response.data.preferred_lang);
-                $('#dob').val(response.data.dob);
-                $('#father').val(response.data.father);
-                $('#email').val(response.data.email);
-                $('#religion').val(response.data.religion);
-                $('#mother').val(response.data.mother);
-                $('#mobile').val(response.data.mobile);
-                $('#community').val(response.data.community);
-                $('#village').val(response.data.village);
-                $('#landmark').val(response.data.landmark);
-                $('#area').val(response.data.area);
-                $('#pincode').val(response.data.pincode);
-                $('#state').val(response.data.state);
-                $('#city').val(response.data.city);
-                $('#id_mark').val(response.data.id_mark);
-                $('#default-modal').removeClass('hidden');
-            },
-            error: function(xhr, status, error) {
-                alert("No Data Found")
-                console.error('Error fetching Job details for editing:', error);
+                $.ajax({
+                    type: 'GET',
+                    url: `/api/job/view/` + userId,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        $('#id').val(response.data.id);
+                        $('#name').val(response.data.name);
+                        $('#gender').val(response.data.gender);
+                        $('#marital').val(response.data.marital);
+                        $('#preferred_lang').val(response.data.preferred_lang);
+                        $('#dob').val(response.data.dob);
+                        $('#father').val(response.data.father);
+                        $('#email').val(response.data.email);
+                        $('#religion').val(response.data.religion);
+                        $('#mother').val(response.data.mother);
+                        $('#mobile').val(response.data.mobile);
+                        $('#community').val(response.data.community);
+                        $('#village').val(response.data.village);
+                        $('#landmark').val(response.data.landmark);
+                        $('#area').val(response.data.area);
+                        $('#pincode').val(response.data.pincode);
+                        $('#state').val(response.data.state);
+                        $('#city').val(response.data.city);
+                        $('#id_mark').val(response.data.id_mark);
+                        $('#default-modal').removeClass('hidden');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching Job details for editing:', error);
+                    }
+                });
             }
+
+            // Auto-execute the function when the page loads
+            fetchJobDetailsAndOpenModal();
+
         });
-    }
-
-    // Auto-execute the function when the page loads
-    fetchJobDetailsAndOpenModal();
-
-    });
 
 
         $('#applyJob').submit(function(e) {
@@ -359,5 +317,4 @@
                 .catch(error => console.error('Error:', error));
         }
     </script>
-
 @endsection

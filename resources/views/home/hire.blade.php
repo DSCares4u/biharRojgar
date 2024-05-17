@@ -36,9 +36,9 @@
                                 <td class="py-1 text-center">
                                     <div class="text-xs text-gray-400">
                                         Min: <input type="text" min="0" name="inputs[0]['min_experience']" placeholder="0"
-                                            class="appearance-none border text-black px-1 w-1/4 text-xs">
+                                            class="appearance-none border text-black px-1 py-1 w-1/4 text-xs">
                                         Max: <input type="text" min="0" name="inputs[0]['max_experience']" placeholder="5y"
-                                            class="appearance-none text-black  px-1 border w-1/4 text-xs">
+                                            class="appearance-none text-black  px-1 border py-1 w-1/4 text-xs">
                                     </div>
                                 </td>
 
@@ -90,10 +90,10 @@
                                 </td>
                                 <td class="py-1 text-center">
                                     <div class="text-xs text-gray-400 flex gap-1">
-                                        Min: <input type="text" name="inputs[0]['min_salary']" placeholder="From"
-                                            class="appearance-none border py-1 px-2 w-1/2 text-sm">
-                                        Max: <input type="text" name="inputs[0]['max_salary']" placeholder="To"
-                                            class="appearance-none py-1 px-2 border w-1/2 text-sm">
+                                        <input type="text" name="inputs[0]['min_salary']" placeholder="From"
+                                            class="appearance-none border py-1 px-2 w-1/2 text-black text-sm">
+                                        <input type="text" name="inputs[0]['max_salary']" placeholder="To"
+                                            class="appearance-none py-1 px-2 text-black border w-1/2 text-sm">
                                     </div>
                                 </td>
                                 <td class=" py-2 flex justify-center">
@@ -295,11 +295,11 @@
                                         class="appearance-none border py-2 px-2 w-full text-xs">
                                 </td>
                                 <td class="py-1 text-center">
-                                    <div class="text-sm text-gray-400">
-                                        Min: <input type="number" min="0" name="inputs[${i}]['min_experience']" placeholder="0"
-                                            class="appearance-none text-black border px-2 w-1/2 text-sm">
-                                        Max: <input type="number" min="0" name="inputs[${i}]['max_experience']" placeholder="5y"
-                                            class="appearance-none text-black px-2 border w-1/2 text-sm">
+                                    <div class="text-xs text-gray-400">
+                                        Min: <input type="text" min="0" name="inputs[${i}]['min_experience']" placeholder="0"
+                                            class="appearance-none border text-black px-1 py-1 w-1/4 text-xs">
+                                        Max: <input type="text" min="0" name="inputs[${i}]['max_experience']" placeholder="5y"
+                                            class="appearance-none text-black  px-1 border py-1 w-1/4 text-xs">
                                     </div>
                                 </td>
 
@@ -349,9 +349,13 @@
                                         <option value="others" class=" border  w-full text-sm">Others</option>
                                     </select>
                                 </td>
-                                <td class=" py-1"><input type="number" name="inputs[${i}]['salary']"
-                                        placeholder="5000-10000"
-                                        class="appearance-none border py-2 px-1  w-full  text-xs">
+                                <td class="py-1 text-center">
+                                    <div class="text-xs text-gray-400 flex gap-1">
+                                        <input type="text" name="inputs[${i}]['min_salary']" placeholder="From"
+                                            class="appearance-none border py-1 px-2 w-1/2 text-black text-sm">
+                                        <input type="text" name="inputs[${i}]['max_salary']" placeholder="To"
+                                            class="appearance-none py-1 px-2 text-black border w-1/2 text-sm">
+                                    </div>
                                 </td>
                                 <td class=" py-2 flex justify-center">
                                     <button type="button" name="remove"

@@ -50,7 +50,7 @@ Route::get('/job',[JobController::class,'index'])->name('job.index');
 Route::get('/job/view/{id}',[JobController::class,'show']);
 Route::put('/job/edit/{id}',[JobController::class,'update']);
 Route::delete('/job/delete/{id}',[JobController::class,'destroy']);
-Route::get('/job/view',[JobController::class,'show'])->middleware('auth');
+// Route::get('/job/view',[JobController::class,'show'])->middleware('auth');
 
 Route::post('/address',[AddressController::class,'store'])->name('address.store');
 Route::get('/address',[AddressController::class,'index'])->name('address.index');

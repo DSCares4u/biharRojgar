@@ -53,6 +53,16 @@ class User extends Authenticatable implements JWTSubject
         return $this->HasOne(JOB::class, 'id', 'job_id');
     }
 
+    public function addresses(): HasOne
+    {
+        return $this->HasOne(Address::class, 'id', 'address_id');
+    }
+
+    public function documents(): HasOne
+    {
+        return $this->HasOne(Document::class, 'id', 'document_id');
+    }
+
     public function getJWTIdentifier() {
         return $this->getKey();
     }

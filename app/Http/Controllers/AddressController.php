@@ -95,33 +95,26 @@ class AddressController extends Controller
                 'error' => $validator->messages()
             ], 422);
         } else {
-            if ($id) {
-                // Check if job exists
-                $job = Address::find($id);
-                if ($job) {
-                    // Update existing job
-                    $job->update([
-                        'qualification' => $request->qualification,
-                        'q_state' => $request->q_state,
-                        'board' => $request->board,
-                        'passing_year' => $request->passing_year,
-                        'experience' => $request->experience,
-                        'skills' => $request->skills,
-                        'user_id' => $request->user_id,                            
-                    ]);
-    
-                    return response()->json([
-                        'status' => 200,
-                        'message' => "Job Updated Successfully"
-                    ], 200);
-                }
+            // Check if job exists
+            $job = Address::find($id);
+            if ($job) {
+                // Update existing job
+                $job->update([
+                    'qualification' => $request->qualification,
+                    'q_state' => $request->q_state,
+                    'board' => $request->board,
+                    'passing_year' => $request->passing_year,
+                    'experience' => $request->experience,
+                    'skills' => $request->skills,
+                    'user_id' => $request->user_id,
+                ]);
+
+                return response()->json([
+                    'status' => 200,
+                    'message' => "Job Updated Successfully"
+                ], 200);
             }
-    
-            return response()->json([
-                'status' => 200,
-                'message' => "Job Created Successfully",
-                'job' => $newJob
-            ], 200);
         }
     }
+
 }
