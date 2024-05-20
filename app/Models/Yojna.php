@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use illuminate\Database\Eloquent\Relations\HasOne;
+use illuminate\Database\Eloquent\Relations\HasMany;
 
 class Yojna extends Model
 {
@@ -15,4 +16,9 @@ class Yojna extends Model
     {
         return $this->HasOne(YojnaCategory::class, 'id', 'yojna_category_id');
     }
+
+    public function yojna_form(): HasMany
+    {
+        return $this->hasMany(YojnaForm::class);
+    }  
 }

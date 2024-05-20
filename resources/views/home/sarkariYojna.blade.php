@@ -3,7 +3,7 @@
     {{-- <button id="openFormBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Open
         Form</button> --}}
     <div class="container mx-auto p-6 rounded-lg">
-        <div class="heading text-center mb-6 flex justify-center">
+        <div class="heading text-center mb-6 flex justify-center" id="yojnaCat">
             <h2 class="text-xl rounded-full px-4 py-1 font-bold bg-green-600 text-white">Registration & Tax Filling Services
             </h2>
         </div>
@@ -339,7 +339,7 @@
     </script> --}}
 
 
-    <script>
+<script>
         $(document).ready(function() {
            // Function to fetch and display appointment
            let callingYojna = () => {
@@ -372,6 +372,32 @@
                });
            }
            callingYojna();
-       });
-   </script>
+    
+       // Function to fetch and display appointment
+        let callingYojnaCat = () => {
+           $.ajax({
+               type: "GET",
+               url: "{{ route('yojna.category.index') }}",
+               success: function(response) {
+                   let table = $("#yojnaCat");
+                   table.empty();
+                   let data = response.data;
+
+                   // Update appointment count
+                   let len = data.length;
+                   $("#counting").html(len);
+                   data.forEach((data) => {
+                       table.append(`
+                       <h2 class="text-xl rounded-full px-4 py-1 font-bold bg-green-600 text-white">${data.name}</h2>                  
+                   `);
+                   });
+               },
+               error: function(xhr, status, error) {
+                   console.error('Error:', error);
+               }
+           });
+        }
+        callingYojnaCat();
+    });
+</script>
 @endsection

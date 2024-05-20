@@ -99,3 +99,6 @@ Route::get('/admin/manage/yojna-category/insert',[AdminController::class,'insert
 
 Route::get('/admin/manage/sarkari-job',[AdminController::class,'manageSarkariJob']);
 Route::get('/admin/manage/sarkari-job/insert',[AdminController::class,'insertSarkariJob']);
+
+Route::get('/admin/manage/yojna-form',[AdminController::class,'manageYojnaForm']);
+Route::get('/admin/manage/yojna-form/insert',[AdminController::class,'insertYojnaForm']);

@@ -8,6 +8,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\SarkariJobController;
 use App\Http\Controllers\YojnaController;
 use App\Http\Controllers\YojnaCategoryController;
+use App\Http\Controllers\YojnaFormController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\DocumentController;
@@ -52,7 +53,6 @@ Route::get('/job',[JobController::class,'index'])->name('job.index');
 Route::get('/job/view/{id}',[JobController::class,'show']);
 Route::put('/job/edit/{id}',[JobController::class,'update']);
 Route::delete('/job/delete/{id}',[JobController::class,'destroy']);
-// Route::get('/job/view',[JobController::class,'show'])->middleware('auth');
 
 Route::post('/address',[AddressController::class,'store'])->name('address.store');
 Route::get('/address',[AddressController::class,'index'])->name('address.index');
@@ -77,6 +77,12 @@ Route::get('/admin/yojna/category',[YojnaCategoryController::class,'index'])->na
 Route::get('/admin/yojna/category/view/{id}',[YojnaCategoryController::class,'show']);
 Route::put('/admin/yojna/category/edit/{id}',[YojnaCategoryController::class,'update']);
 Route::delete('/admin/yojna/category/delete/{id}',[YojnaCategoryController::class,'destroy']);
+
+Route::post('/admin/manage/yojna-form',[YojnaFormController::class,'store'])->name('yojna.form.store');
+Route::get('/admin/manage/yojna-form',[YojnaFormController::class,'index'])->name('yojna.form.index');
+Route::get('/admin/manage/yojna-form/view/{id}',[YojnaFormController::class,'show']);
+Route::put('/admin/manage/yojna-form/edit/{id}',[YojnaFormController::class,'update']);
+Route::delete('/admin/manage/yojna-form/delete/{id}',[YojnaFormController::class,'destroy']);
 
 Route::post('/admin/sarkari-job',[SarkariJobController::class,'store'])->name('sarkari-job.store');
 Route::get('/admin/sarkari-job',[SarkariJobController::class,'index'])->name('sarkari-job.index');
