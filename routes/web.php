@@ -46,7 +46,7 @@ Route::get('/get-district-and-state', [JobController::class, 'getDistrictAndStat
 // Route::get('/sarkari-yojna', function () {
 //     return view('home.sarkariYojna');
 // });
-Route::get('/sarkari-yojna-form', function () {
+Route::get('/sarkari-yojna-form/{id}', function () {
     return view('home.sarkariYojnaForm');
 });
 

@@ -125,7 +125,7 @@
                 </div>
                 <div class="mb-3 flex items-center">
                     <h3 class=" font-semibold">Recruiter details</h3>
-                    <h3 class="text-sm ml-1"> (Cannot be changed later)</h3>
+                    {{-- <h3 class="text-sm ml-1"> (Cannot be changed later)</h3> --}}
                 </div>
                 <div class="mb-3 flex gap-2">
                     <div class="mb-3 items-center w-1/2">

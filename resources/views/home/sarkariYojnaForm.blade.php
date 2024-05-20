@@ -6,7 +6,8 @@
                 <div class="flex py-1 px-1 justify-between">
                     <div class="w-5/12">
                         <h2 class="text-center text-3xl font-semibold uppercase">Enquire Now</h2>
-                        <p class="text-gray-400 mt-5 text-xs">Vesta Elder Care services embodies integrity, professionalism and care
+                        <p class="text-gray-400 mt-5 text-xs">Vesta Elder Care services embodies integrity, professionalism
+                            and care
                             provided by highly
                             trained
                             caregivers especially certified to provide empathetic and loving support to its patrons.</p>
@@ -36,7 +37,7 @@
                         <div class="mb-2">
                             <label for="gender" class="block text-gray-700 text-sm mb-2 ">Gender</label>
                             <select name="gender" id="gender"
-                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
+                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
                                 required>
                                 <option value="">Choose Gender</option>
                                 <option value="male">Male</option>
@@ -74,8 +75,7 @@
                         <div class="mb-2">
                             <label for="address" class="block text-gray-700 text-sm mb-2 ">Address</label>
                             <textarea name="address" id="address" cols="20" rows="2"placeholder="Type Or Details Of Job Here"
-                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
-                            placeholder="Phone"></textarea>
+                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded" placeholder="Phone"></textarea>
                         </div>
                         <div class="mt-5">
                             <button type="submit"
@@ -90,7 +90,7 @@
     <script>
         $(document).ready(function() {
             //insert application details
-    
+
             $("#addData").submit(function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);
@@ -113,21 +113,32 @@
                     }
                 })
             })
-    
+
             $.ajax({
-                    type: "GET",
-                    url: "{{ route('yojna.index') }}",
-                    success: function(response) {
-                        let select = $("#callingYojna");
-                        select.empty();
-                        select.append(`<option value="">Select Plan</option>`)
-                        response.data.forEach((plan) => {
-                            select.append(`
+                type: "GET",
+                url: "{{ route('yojna.index') }}",
+                success: function(response) {
+                    let select = $("#callingYojna");
+                    select.empty();
+                    select.append(`<option value="">Select Plan</option>`)
+                    response.data.forEach((plan) => {
+                        select.append(`
                         <option value="${plan.id}">${plan.ename}</option>
                         `);
-                        });
-                    }
-                });
+                    });
+                }
+            });
+
+            // function for taking id from url
+
+            function getIdFromUrlPath() {
+                let pathArray = window.location.pathname.split('/');
+                return pathArray[pathArray.length - 1];
+            }
+
+            // Extract the ID from the URL path
+            let id = getIdFromUrlPath();
+            console.log(id);
         });
     </script>
 @endsection

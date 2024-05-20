@@ -116,7 +116,7 @@
 
                        data.forEach((data) => {
                            table.append(`
-                           <a href="/get-job"
+                           <a href="/register"
                                 class="block max-w-full mt-4 p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                 <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${data.name}</h5>
                                 <div class="details flex mt-4">

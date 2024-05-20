@@ -353,7 +353,7 @@
 
                        data.forEach((data) => {
                            table.append(`
-                           <a href="/sarkari-yojna-form" class="forms mt-4 mb-4 bg-green-600 text-white w-[13%] py-5">
+                           <a href="/sarkari-yojna-form/${data.id}" class="forms mt-4 mb-4 bg-green-600 text-white w-[13%] py-5">
                                 <div class="image flex justify-center mb-2">
                                     <img src="/image/yojna/${data.logo}" class="border border-solid rounded-full h-20 w-20" width="50"
                                         alt="">
