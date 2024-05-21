@@ -312,7 +312,6 @@
                 .then(data => {
                     document.getElementById('city').value = data.district;
                     document.getElementById('state').value = data.state;
-                    // document.getElementById('name').value = data.name;
                 })
                 .catch(error => console.error('Error:', error));
         }

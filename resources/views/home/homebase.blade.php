@@ -24,7 +24,6 @@
             <div class="hidden md:block">
                 <ul class="flex space-x-4">
                     <li><a href="/" class="text-white hover:text-gray-300">Home</a></li>
-                    <li><a href="/get-job/t&c" class="text-white hover:text-gray-300">Jobs</a></li>
                     <li><a href="/private-job" class="text-white hover:text-gray-300">Private Jobs</a></li>
                     <li><a href="/sarkari-job" class="text-white hover:text-gray-300">Sarkari Jobs</a></li>
                     <li><a href="/hire/t&c" class="text-white hover:text-gray-300">Hire</a></li>

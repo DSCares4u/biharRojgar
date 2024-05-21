@@ -164,7 +164,7 @@
                     </div>
                 </div>
                 {{-- Option card --}}
-                
+
                 <div class="mb-4 flex gap-2" id="plan_card">
                     <label
                         class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
@@ -185,15 +185,36 @@
                         </ul>
                     </label>
                 </div>
-                <div id="payBtn1" class="mb-3 flex justify-center">
-                    <button type="submit"
-                        class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
-                        Post Job
-                    </button>
+                {{-- <div class="flex justify-center gap-5">
+                    <div id="payBtn1" class="mb-3 flex justify-center">
+                        <button type="submit" id="payNowBtn"
+                            class="bg-yellow-400 px-4 hover:bg-yellow-500 float-left font-semibold  rounded focus:outline-none focus:shadow-outline text-black">
+                            Post Job
+                        </button>
+                    </div>
+                    <div id="payLater" class="mb-3 flex justify-center">
+                        <a href="/hire/pay-later" id="payLaterBtn"
+                            class="bg-green-400 px-4 hover:bg-green-500 float-left font-semibold py-3  rounded focus:outline-none focus:shadow-outline text-black">
+                            Pay Later
+                        </a>
+                    </div>
+                </div> --}}
+                <input type="hidden" name="payment_mode" id="paymentMode" value="">
+                <div class="flex justify-center gap-5">
+                    <div id="payBtn1" class="mb-3 flex justify-center">
+                        <button type="button" id="payNowBtn"
+                            class="bg-yellow-400 px-4 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black">
+                            Post Job
+                        </button>
+                    </div>
+                    <div id="payLater" class="mb-3 flex justify-center">
+                        <a href="#" id="payLaterBtn"
+                            class="bg-green-400 px-4 hover:bg-green-500 float-left font-semibold py-3 rounded focus:outline-none focus:shadow-outline text-black">
+                            Pay Later
+                        </a>
+                    </div>
                 </div>
-
             </form>
-
         </div>
         <div class="w-3/12 fixed right-3">
             <div class=" mt-10 w-[95%] bg-white border p-3 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
@@ -320,24 +341,65 @@
             $(document).ready(function() {
                 //insert application details
 
-                $("#addHirer").submit(function(e) {
-                    e.preventDefault();
-                    var formData = new FormData(this);
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ route('hire.store') }}",
-                        data: formData,
-                        dataType: "JSON",
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success: function(response) {
-                            swal("Success", response.message, "success");
-                            $("#addHirer").trigger("reset");
-                            window.open("/", "_self")
+                // $("#addHirer").submit(function(e) {
+                //     e.preventDefault();
+                //     var formData = new FormData(this);
+                //     $.ajax({
+                //         type: "POST",
+                //         url: "{{ route('hire.store') }}",
+                //         data: formData,
+                //         dataType: "JSON",
+                //         contentType: false,
+                //         cache: false,
+                //         processData: false,
+                //         success: function(response) {
+                //             swal("Success", response.message, "success");
+                //             $("#addHirer").trigger("reset");
+                //             window.open("/", "_self")
+                //         }
+                //     })
+                // });
+
+                    $("#payNowBtn").click(function() {
+                        $("#paymentMode").val("pay_now");
+                        $("#addHirer").submit();
+                    });
+
+                    $("#payLaterBtn").click(function(e) {
+                        e.preventDefault();
+                        $("#paymentMode").val("pay_later");
+                        $("#addHirer").submit();
+                    });
+
+                    $("#addHirer").submit(function(e) {
+                        e.preventDefault();
+
+                        // Ensure payment mode is correctly set
+                        if (!$("#paymentMode").val()) {
+                            console.log("Payment mode is not set.");
+                            return;
                         }
-                    })
-                });
+
+                        var formData = new FormData(this);
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ route('hire.store') }}",
+                            data: formData,
+                            dataType: "JSON",
+                            contentType: false,
+                            cache: false,
+                            processData: false,
+                            success: function(response) {
+                                swal("Success", response.message, "success");
+                                $("#addHirer").trigger("reset");
+                                window.open("/", "_self");
+                            },
+                            error: function(xhr, status, error) {
+                                console.error("Error: " + error);
+                            }
+                        });
+                    });
+
 
                 // plan card calling work
 
@@ -352,22 +414,22 @@
                                 `<li class="flex font-medium text-[13px] mt-2"><img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="">${feature}</li>`
                             ).join('');
                             select.append(`
-                    <label class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
-                        <input type="radio" name="plan_id" value="${plan.id}" data-plan-name="${plan.name}" data-plan-charge="${plan.price}" class="hidden" />
-                        <div class="price flex justify-between">
-                            <h3 class="text-lg font-semibold">${plan.name}</h3>
-                            <h3 class="text-lg font-semibold">Rs. ${plan.price}</h3>
-                        </div>
-                        <div class="line bg-orange-500 mt-20">
-                            <hr class="h-2">
-                        </div>
-                        <ul class="mt-3">
-                            <li class="text-gray-600 text-[13px]">Normal x applications</li>
-                            ${features}
-                        </ul>
-                    </label>
-                    `);
-                });
+                                <label class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+                                    <input type="radio" name="plan_id" value="${plan.id}" data-plan-name="${plan.name}" data-plan-charge="${plan.price}" class="hidden" />
+                                    <div class="price flex justify-between">
+                                        <h3 class="text-lg font-semibold">${plan.name}</h3>
+                                        <h3 class="text-lg font-semibold">Rs. ${plan.price}</h3>
+                                    </div>
+                                    <div class="line bg-orange-500 mt-20">
+                                        <hr class="h-2">
+                                    </div>
+                                    <ul class="mt-3">
+                                        <li class="text-gray-600 text-[13px]">Normal x applications</li>
+                                        ${features}
+                                    </ul>
+                                </label>
+                            `);
+                        });
 
                         // Add click event listener to the dynamically added labels
                         document.querySelectorAll('#plan_card label').forEach(label => {
@@ -404,16 +466,23 @@
                         </li>
                     `);
 
-                        $('#payBtn1').html(`
-                        <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
+                    $('#payBtn1').html(`
+                        <button type="submit" id="payNowBtn"  class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 px-4 py-2 border border-yellow-500 w-full">
                             Pay Rs. ${PlanFee + 200} & Post Job
                         </button>
                     `);
 
-                        $('#payBtn2').html(`
+                    $('#payBtn2').html(`
                         <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
                             Pay Rs. ${PlanFee + 200} & Post Job
                         </button>
+                    `);
+
+                    $('#payLater').html(`
+                        <a href="/hire/pay-later" id="payLaterBtn"
+                        class="bg-green-400 hover:bg-green-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline px-4 text-black mt-3 py-2 border border-yellow-500 w-full">
+                           Pay Later ${PlanFee + 200}
+                        </a>
                     `);
                 }
             });

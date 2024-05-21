@@ -25,6 +25,7 @@ Route::get('/get-job/t&c',[HomeController::class,'getJobTC']);
 
 Route::get('/hire',[HomeController::class,'hire']);
 Route::get('/hire/t&c',[HomeController::class,'hireTC']);
+Route::get('/hire/pay-later',[HomeController::class,'hirePayLater']);
 
 Route::get('/register',[HomeController::class,'register']);
 Route::get('/login',[HomeController::class,'login']);

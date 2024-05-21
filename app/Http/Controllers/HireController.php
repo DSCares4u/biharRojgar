@@ -96,6 +96,7 @@ class HireController extends Controller
                 'mobile' => $request->mobile,          
                 'alt_mobile' => $request->alt_mobile,          
                 'email' => $request->email,          
+                'payment_mode' => $request->payment_mode,          
                 'hire_plan_id' => $request->plan_id, 
                 'logo'=>$logo,         
             ]);    

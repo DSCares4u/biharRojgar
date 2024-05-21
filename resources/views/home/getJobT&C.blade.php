@@ -52,7 +52,7 @@
                         application.</label>
                 </li>
             </ul>
-            <a href="/register"class="flex justify-center">
+            <a href="/otp/login"class="flex justify-center">
                 <button
                     class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                     Proceed Now

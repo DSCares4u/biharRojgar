@@ -33,16 +33,16 @@ class YojnaFormController extends Controller
             'dob' => 'required',                      
             'mobile' => 'required',                      
             'email' => 'required',                      
-            'address' => 'required',                      
+            'city' => 'required',                      
+            'state' => 'required',                      
+            'pincode' => 'required',                      
+            'village' => 'required',                      
         ]);
 
         // image & document Work 
 
         $photo = "YJ". time() . "." . $request->photo->extension();        //upload on public/photo/image/filename
-        $request->photo->move(public_path("image/yojna/photo"), $photo);  
-
-        $document = "YJDOC". time() . "." . $request->document->extension();        //upload on public/photo/image/filename
-        $request->document->move(public_path("image/yojna/document"), $document);           
+        $request->photo->move(public_path("image/yojna/photo"), $photo);          
                 
             $yojna = YojnaForm::create([
                 'name' => $request->name,
@@ -51,10 +51,13 @@ class YojnaFormController extends Controller
                 'dob' => $request->dob,
                 'mobile' => $request->mobile,
                 'email' => $request->email,
-                'address' => $request->address,
+                'landmark' => $request->landmark,
                 'gender' => $request->gender,
+                'city' => $request->city,
+                'state' => $request->state,
+                'pincode' => $request->pincode,
+                'village' => $request->village,
                 'photo'=>$photo,     
-                'document'=>$document,     
                 'yojna_id'=>$request->yojna_id                       
             ]);               
 

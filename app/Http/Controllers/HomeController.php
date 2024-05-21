@@ -30,6 +30,10 @@ class HomeController extends Controller
         return view('home.hire');
     }
 
+    public function hirepayLater(){
+        return view('home.hirePayLater');
+    }
+
     public function hireTC(){
         return view('home.hireT&C');
     }

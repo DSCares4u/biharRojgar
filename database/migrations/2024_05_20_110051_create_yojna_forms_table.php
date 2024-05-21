@@ -23,8 +23,11 @@ return new class extends Migration
             $table->string('photo');
             $table->string('mobile');
             $table->string('email');
-            $table->string('address');
-            $table->string('document');
+            $table->string('landmark')->nullable();
+            $table->string('village');
+            $table->string('pincode');
+            $table->string('city');
+            $table->string('state');
             $table->enum('gender',['male','female','others']);
             $table->timestamps();
         });
