@@ -61,6 +61,8 @@ class HireController extends Controller
             ], 422);
         }
 
+            // Image Work
+
         if ($request->hasFile('logo')) {
             $logo = time() .  "." . $request->logo->extension();        //upload on public/photo/image/filename
             $request->logo->move(public_path("image/company/logo"), $logo);
@@ -71,14 +73,10 @@ class HireController extends Controller
             ], 422);
         }
 
-
-        // Image & Document Work
-        
-
-        $roles = [];
-        foreach ($request->inputs as $input) {
-            $roles[] = $input;
-        }
+        // $roles = [];
+        // foreach ($request->inputs as $input) {
+        //     $roles[] = $input;
+        // }
 
             $hire = Hire::create([
                 'name' => $request->name, 
@@ -94,7 +92,30 @@ class HireController extends Controller
                 'payment_mode' => $request->payment_mode,          
                 'hire_plan_id' => $request->plan_id, 
                 'logo'=>$logo,         
-            ]);    
+            ]);  
+            
+            if ($hire) {
+                // Save each role
+                foreach ($request->inputs as $input) {
+                    $hire->roles()->create([
+                        'role_name' => $input['profile'],
+                        'no_of_post' => $input['no_of_post'],
+                        'min_experience' => $input['min_experience'],
+                        'max_experience' => $input['max_experience'],
+                        'gender' => $input['gender'],
+                        'preferred_lang' => $input['preferred_lang'],
+                        'type' => $input['type'],
+                        'qualification' => $input['qualification'],
+                        'min_salary' => $input['min_salary'],
+                        'max_salary' => $input['max_salary']
+                    ]);
+                }
+        
+                return response()->json([
+                    'status' => 200,
+                    'message' => "We Will Connect You Soon"
+                ], 200);
+            }
             if ($hire) {
                 return response()->json([
                     'status' => 200,
@@ -106,7 +127,7 @@ class HireController extends Controller
                     'message' => "Unable to add your Request"
                 ], 500);
             }
-        }
+    }
 
     public function show($id)
     {
