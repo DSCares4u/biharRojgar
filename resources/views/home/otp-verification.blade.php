@@ -13,21 +13,20 @@
         @endif
 
         <h1 class="text-2xl font-bold mb-4 text-center">Enter Otp</h1>
-        <form method="POST" action="{{route('otp.getlogin')}}">
+        <form method="POST" id="otp-form" class="p-4 flex flex-col"action="{{route('otp.getlogin')}}">
             @csrf
             <input type="hidden" name="user_id" value="{{$user_id}}">
-
-            <div class="mb-4">
-                <label for="otp" class="block text-gray-700 text-sm font-bold mb-2">Otp</label>
-                <input id="otp" type="number" name="otp"  required  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <div class="mb-2">
+                <label for="otp" class="block text-gray-700 text-sm mb-1 font-medium ">Otp :</label>
+                <input type="number" id="otp" name="otp"
+                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
+                    placeholder="Enter Your Otp" required>
             </div>
-
-
-            <div class="flex items-center justify-between">
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
-                    Login
-                </button>
+            <div class="mt-4 flex justify-end">
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2">Login Now</button>
             </div>
+            <a href="/otp/login"
+                class="hover:text-blue-500 font-bold rounded focus:outline-none focus:shadow-outline">Generate Again?</a>
         </form>
     </div>
 </div>

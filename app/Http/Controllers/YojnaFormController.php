@@ -23,57 +23,99 @@ class YojnaFormController extends Controller
             ], 404);
         }
     }
-
+    
     public function store(Request $request)
     {
-        $validator = YojnaForm::make($request->all(), [
-            'name' => 'required|string|min:3',                      
-            'father' => 'required|string|min:3',                      
-            'mother' => 'required',                      
-            'dob' => 'required',                      
-            'mobile' => 'required',                      
-            'email' => 'required',                      
-            'city' => 'required',                      
-            'state' => 'required',                      
-            'pincode' => 'required',                      
-            'village' => 'required',                      
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:3',
+            'dob' => 'required',
+            'mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
+            'gender' => 'required',
+            'email' => 'required|email',
+            'city' => 'required',
+            'state' => 'required',
+            'pincode' => 'required',
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
+            'id_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
         ]);
 
-        // image & document Work 
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'errors' => $validator->messages()
+            ], 422);
+        }
 
-        $photo = "YJ". time() . "." . $request->photo->extension();        //upload on public/photo/image/filename
-        $request->photo->move(public_path("image/yojna/photo"), $photo);          
-                
-            $yojna = YojnaForm::create([
-                'name' => $request->name,
-                'father' => $request->father,
-                'mother' => $request->mother,
-                'dob' => $request->dob,
-                'mobile' => $request->mobile,
-                'email' => $request->email,
-                'landmark' => $request->landmark,
-                'gender' => $request->gender,
-                'city' => $request->city,
-                'state' => $request->state,
-                'pincode' => $request->pincode,
-                'village' => $request->village,
-                'photo'=>$photo,     
-                'yojna_id'=>$request->yojna_id                       
-            ]);               
+        if ($request->hasFile('photo')) {
+            $photo = "YJ" . time() . "." . $request->photo->extension();
+            $request->photo->move(public_path("image/yojna/photo"), $photo);
+        } else {
+            return response()->json([
+                'status' => 422,
+                'errors' => ['photo' => 'Photo is required.']
+            ], 422);
+        }
 
-            if ($yojna) {
-                return response()->json([
-                    'status' => 200,
-                    'message' => "We Will Connect You Soon"
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => 500,
-                    'message' => "Unable to add your Request"
-                ], 500);
-            }
-        
+        if ($request->hasFile('id_proof')) {
+            $id_proof = "YJID" . time() . "." . $request->id_proof->extension();
+            $request->id_proof->move(public_path("image/yojna/proof"), $id_proof);
+        } else {
+            return response()->json([
+                'status' => 422,
+                'errors' => ['id_proof' => 'Id Proof is required.']
+            ], 422);
+        }
+
+        $yojna = YojnaForm::create([
+            'name' => $request->name,
+            'dob' => $request->dob,
+            'mobile' => $request->mobile,
+            'email' => $request->email,
+            'landmark' => $request->landmark,
+            'gender' => $request->gender,
+            'city' => $request->city,
+            'state' => $request->state,
+            'pincode' => $request->pincode,
+            'village' => $request->village,
+            'photo' => $photo,
+            'id_proof' => $id_proof,
+            'yojna_id' => $request->yojna_id
+        ]);
+
+        if ($yojna) {
+            return response()->json([
+                'status' => 200,
+                'message' => "We Will Connect You Soon"
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 500,
+                'message' => "Unable to add your Request"
+            ], 500);
+        }
     }
+
+    public function getDistrictAndState(Request $request)
+    {
+        $pincode = $request->input('pincode');
+        $response = Http::get('https://api.postalpincode.in/pincode/' . $pincode);
+
+        if ($response->successful()) {
+            $data = $response->json()[0];
+            $district = $data['PostOffice'][0]['District'];
+            $state = $data['PostOffice'][0]['State'];
+
+            return response()->json([
+                'district' => $district,
+                'state' => $state,
+            ]);
+        } else {
+            return response()->json([
+                'error' => 'Failed to fetch data'
+            ], $response->status());
+        }
+    }
+
     
 
     public function show($id)

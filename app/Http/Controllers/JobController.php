@@ -10,8 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
-    public function index()
-    {
+    public function index(){
         $job = Job::orderBy('created_at', 'desc')->get();
         if ($job->count() > 0) {
             return response()->json([
@@ -26,8 +25,7 @@ class JobController extends Controller
         }
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3',
             'dob' => 'required',
@@ -94,8 +92,7 @@ class JobController extends Controller
 
 
 
-    public function getDistrictAndState(Request $request)
-    {
+    public function getDistrictAndState(Request $request){
         $pincode = $request->input('pincode');
 
         $response = Http::get('https://api.postalpincode.in/pincode/' . $pincode);
@@ -116,8 +113,7 @@ class JobController extends Controller
         }
     }
 
-    public function show($id)
-    {
+    public function show($id){
         $job = Job::find($id);
         if($job){
             return response()->json([
@@ -134,8 +130,7 @@ class JobController extends Controller
     }
     
     public function update(Request $request, int $id){
-        
-    $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
         'name' => 'required|string|min:3',
         'dob' => 'required',
         'mother' => 'required|string|min:3',
@@ -227,8 +222,7 @@ class JobController extends Controller
     }
 }
 
-    public function destroy($id)
-    {
+    public function destroy($id){
         $job  = Job::find($id);
         if($job){
             $job->delete();

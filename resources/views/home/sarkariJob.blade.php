@@ -104,7 +104,7 @@
         $(document).ready(function() {
            // Function to fetch and display appointment
            let callingSarkariJobs = () => {
-               $.ajax({
+                $.ajax({
                    type: "GET",
                    url: "{{ route('sarkari-job.index') }}",
                    success: function(response) {
@@ -165,10 +165,10 @@
                    error: function(xhr, status, error) {
                        console.error('Error:', error);
                    }
-               });
-           }
+                });
+            }
            callingSarkariJobs();
-       });
-   </script>
+        });
+    </script>
     
 @endsection

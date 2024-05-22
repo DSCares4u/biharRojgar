@@ -28,20 +28,6 @@ class HireController extends Controller
                 'data' => "No Records found"
             ], 404);
         }
-
-
-        // $hire = Hire::orderBy('created_at', 'desc')->get();
-        // if ($hire->count() > 0) {
-        //     return response()->json([
-        //         'status' => 200,
-        //         'data' => $hire
-        //     ], 200);
-        // } else {
-        //     return response()->json([
-        //         'status' => 404,
-        //         'data' => "No Records found"
-        //     ], 404);
-        // }
     }
 
 
@@ -59,31 +45,40 @@ class HireController extends Controller
             'state' => 'required|string',
             'description' => 'required|string',
             'company_name' => 'required|string',
+            'roles' => 'required|string',
             'website' => 'required|string',
-            'mobile' => 'required|string',
-            'alt_mobile' => 'required|string',
+            'mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
+            'alt_mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
             'email' => 'required|string',
             'plan_id'=>'required',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
         ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'errors' => $validator->messages()
+            ], 422);
+        }
+
+        if ($request->hasFile('logo')) {
+            $logo = time() .  "." . $request->logo->extension();        //upload on public/photo/image/filename
+            $request->logo->move(public_path("image/company/logo"), $logo);
+            } else {
+            return response()->json([
+                'status' => 422,
+                'errors' => ['logo' => 'Logo is required.']
+            ], 422);
+        }
 
 
         // Image & Document Work
         
-        $logo = time() .  "." . $request->logo->extension();        //upload on public/photo/image/filename
-        $request->logo->move(public_path("image/company/logo"), $logo);
 
         $roles = [];
         foreach ($request->inputs as $input) {
             $roles[] = $input;
         }
-
-
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 422,
-                'error' => $validator->messages()
-            ], 422);
-        } else {
 
             $hire = Hire::create([
                 'name' => $request->name, 
@@ -112,7 +107,6 @@ class HireController extends Controller
                 ], 500);
             }
         }
-    }
 
     public function show($id)
     {

@@ -9,8 +9,9 @@
                     <input type="text" id="name"
                         name="name"placeholder="Eg. Sales executives needed urgently for ..."
                         class="shadow appearance-none border py-1 px-2 w-full" required>
-                </div>
-                <div class="mb-3 flex items-center border rounded border-gray-300">
+                        <p id="error-name" class="text-red-500 text-xs font-semibold error-message"></p>
+                    </div>
+                <div class="flex items-center border rounded border-gray-300">
                     <table class="table-auto border-collapse " id="table">
                         <thead>
                             <tr class="bg-gray-200">
@@ -106,23 +107,27 @@
                         </tbody>
                     </table>
                 </div>
+                <p id="error-roles" class="text-red-500 text-xs mb-4 font-semibold error-message"></p>
                 <div class="mb-3 flex gap-2">
                     <div class="mb-3  items-center w-1/2">
                         <label for="city" class="block text-gray-700 text-sm mb-2 ">City</label>
                         <input type="text" id="city" name="city"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="Purnea" required>
+                            <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3  items-center w-1/2">
                         <label for="state" class="block text-gray-700 text-sm mb-2 ">State</label>
                         <input type="text" id="state" name="state"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="Bihar" required>
+                            <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                 </div>
                 <div class="mb-3  items-center">
                     <label for="description" class="block text-gray-700 text-sm mb-2 ">Job Description</label>
                     <textarea name="description" id="description" cols="20" rows="2"placeholder="Type Or Details Of Job Here"
                         class="shadow appearance-none border py-1 px-2 w-full"></textarea>
-                </div>
+                        <p id="error-description" class="text-red-500 text-xs font-semibold error-message"></p>
+                    </div>
                 <div class="mb-3 flex items-center">
                     <h3 class=" font-semibold">Recruiter details</h3>
                     {{-- <h3 class="text-sm ml-1"> (Cannot be changed later)</h3> --}}
@@ -133,11 +138,13 @@
                             name)</label>
                         <input type="text" id="company_name" name="company_name"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="Abc Pvt. Ltd." required>
+                            <p id="error-company_name" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3  items-center w-1/2">
                         <label for="website" class="block text-gray-700 text-sm mb-2 ">Company's Website (if any)</label>
                         <input type="text" id="website" name="website"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="abc.com" required>
+                            <p id="error-website" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                 </div>
                 <div class="mb-3 flex gap-2">
@@ -145,11 +152,13 @@
                         <label for="mobile" class="block text-gray-700 text-sm mb-2 ">Phone</label>
                         <input type="tel" id="mobile" name="mobile"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" required>
+                            <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3  items-center w-1/2">
                         <label for="alt_mobile" class="block text-gray-700 text-sm mb-2 ">Alternate Phone</label>
                         <input type="tel" id="alt_mobile" name="alt_mobile"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" required>
+                            <p id="error-alt_mobile" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                 </div>
                 <div class="flex gap-2 items-center">
@@ -157,10 +166,12 @@
                         <label for="email" class="block text-gray-700 text-sm mb-2 ">Email</label>
                         <input type="email" id="email" name="email"
                             class="shadow appearance-none border py-1 px-2 w-full" placeholder="roni@gmail.com" required>
+                            <p id="error-email" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3 items-center w-1/2">
                         <label for="logo" class="block text-gray-700 text-sm mb-2 ">Company's Logo / Image</label>
                         <input type="file" id="logo" name="logo" class="py-1 px-2 w-full" required>
+                        <p id="error-logo" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                 </div>
                 {{-- Option card --}}
@@ -361,9 +372,16 @@
                             $("#addHirer").trigger("reset");
                             window.open("/", "_self");
                         },
-                        error: function(xhr, status, error) {
-                            console.error("Error: " + error);
+                        error: function(xhr) {
+                        if (xhr.status === 422) {
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                $('#error-' + key).html(value[0]);
+                            });
+                        } else {
+                            alert('An error occurred. Please try again.');
                         }
+                    }
                     });
                 });
 

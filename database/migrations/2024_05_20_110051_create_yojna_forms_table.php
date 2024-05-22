@@ -17,10 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('yojna_id')->constrained()->onDelete("cascade");
             $table->string('name');
-            $table->string('father');
-            $table->string('mother');
             $table->string('dob');
             $table->string('photo');
+            $table->string('id_proof');
             $table->string('mobile');
             $table->string('email');
             $table->string('landmark')->nullable();

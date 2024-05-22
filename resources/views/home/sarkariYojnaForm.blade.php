@@ -24,74 +24,72 @@
                             <input type="text" id="name" name="name"
                                 class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
                                 placeholder="Name">
-                        </div>
-                        <div class="mb-2">
-                            <label for="father" class="block text-gray-700 text-xs mb-1 ">Father's Name :</label>
-                            <input type="text" id="father" name="father"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
-                                placeholder="father">
-                        </div>
-                        <div class="mb-2">
-                            <label for="mother" class="block text-gray-700 text-xs mb-1 ">Mother's Name :</label>
-                            <input type="text" id="mother" name="mother"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
-                                placeholder="mother">
+                            <p id="error-name" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                         <div class="flex justify-between">
-                        <div class="mb-2">
-                            <label for="gender" class="block text-gray-700 text-xs mb-1 ">Gender :</label>
-                            <select name="gender" id="gender"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
-                                required>
-                                <option value="">Choose Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="others">Others</option>
-                            </select>
-                        </div>
-                        <div class=" mb-2">
-                            <label for="dob" class="block text-gray-700 text-xs mb-1 ">Date Of Birth :</label>
-                            <input type="date" id="dob" name="dob"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
-                        </div>
+                            <div class="mb-2">
+                                <label for="gender" class="block text-gray-700 text-xs mb-1 ">Gender :</label>
+                                <select name="gender" id="gender"
+                                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                                    <option value="">Choose Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="others">Others</option>
+                                </select>
+                                <p id="error-gender" class="text-red-500 text-xs font-semibold error-message"></p>
+                            </div>
+                            <div class=" mb-2">
+                                <label for="dob" class="block text-gray-700 text-xs mb-1 ">Date Of Birth :</label>
+                                <input type="date" id="dob" name="dob"
+                                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                                <p id="error-dob" class="text-red-500 text-xs font-semibold error-message"></p>
+                            </div>
                         </div>
                         <div class="mb-2">
                             <label for="mobile" class="block text-gray-700 text-xs mb-1 ">Mobile No. :</label>
                             <input type="tel" id="mobile" name="mobile"
                                 class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
                                 placeholder="Phone">
+                            <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                         <div class=" mb-2">
                             <label for="email" class="block text-gray-700 text-xs mb-1 ">Email :</label>
                             <input type="email" id="email" name="email"
                                 class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
                                 placeholder="Email">
+                            <p id="error-email" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
-                        <div class=" mb-2">
-                            <label for="landmark" class="block text-gray-700 text-xs mb-1 ">Landmark :</label>
-                            <input type="text" id="landmark" name="landmark"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
-                        </div>
-                        <div class=" mb-2">
-                            <label for="village" class="block text-gray-700 text-xs mb-1 ">Village :</label>
-                            <input type="text" id="village" name="village"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                        <div class="flex justify-between gap-1">
+                            <div class=" mb-2">
+                                <label for="landmark" class="block text-gray-700 text-xs mb-1 ">Landmark :</label>
+                                <input type="text" id="landmark" name="landmark"
+                                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                            </div>
+                            <div class=" mb-2">
+                                <label for="village" class="block text-gray-700 text-xs mb-1 ">Village :</label>
+                                <input type="text" id="village" name="village"
+                                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                                <p id="error-village" class="text-red-500 text-xs font-semibold error-message"></p>
+                            </div>
                         </div>
                         <div class=" mb-2">
                             <label for="pincode" class="block text-gray-700 text-xs mb-1 ">Pincode :</label>
                             <input type="number" id="pincode" name="pincode" onchange="getDistrictAndState()"
                                 class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                            <p id="error-pincode" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                         <div class="flex gap-1">
                             <div class=" mb-2">
                                 <label for="city" class="block text-gray-700 text-xs mb-1 ">City :</label>
                                 <input type="text" id="city" name="city"
                                     class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                                <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
                             </div>
                             <div class=" mb-2">
                                 <label for="state" class="block text-gray-700 text-xs mb-1 ">State :</label>
                                 <input type="text" id="state" name="state"
                                     class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                                <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
                             </div>
                         </div>
                         <div class="mb-2">
@@ -99,11 +97,19 @@
                             <select name="yojna_id" id="callingYojna"
                                 class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded text-gray-500">
                             </select>
+                            <p id="error-yojna_id" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                         <div class=" mb-2">
                             <label for="photo" class="block text-gray-700 text-xs mb-1 ">Upload Your Photo :</label>
                             <input type="file" id="photo" name="photo"
                                 class="form-input w-full shadow-sm sm:text-sm py-2 px-2 ">
+                            <p id="error-photo" class="text-red-500 text-xs font-semibold error-message"></p>
+                        </div>
+                        <div class=" mb-2">
+                            <label for="id_proof" class="block text-gray-700 text-xs mb-1 ">Upload Your Id Proof :</label>
+                            <input type="file" id="id_proof" name="id_proof"
+                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 ">
+                            <p id="error-id_proof" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                         <div class="mt-4">
                             <button type="submit"
@@ -121,6 +127,7 @@
 
             $("#addData").submit(function(e) {
                 e.preventDefault();
+                $('.error-message').html(''); // Clear previous error messages
                 var formData = new FormData(this);
                 $.ajax({
                     type: "POST",
@@ -135,34 +142,18 @@
                         $("#addData").trigger("reset");
                         window.open("/", "_self")
                     },
-                    error: function(xhr, status, error) {
-                        alert('not')
-                        console.error('Error:', error);
-                    }
+                    error: function(xhr) {
+                        if (xhr.status === 422) {
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                $('#error-' + key).html(value[0]);
+                            });
+                        } else {
+                            alert('An error occurred. Please try again.');
+                        }
+                    },
                 })
             })
-
-            // $.ajax({
-            //     type: "GET",
-            //     url: "{{ route('yojna.index') }}",
-            //     success: function(response) {
-            //         let select = $("#callingYojna");
-            //         select.empty();
-            //         select.append(`<option value="">Select Plan</option>`)
-            //         response.data.forEach((plan) => {
-            //             select.append(`
-        //             <option value="${plan.id}">${plan.ename}</option>
-        //             `);
-            //         });
-            //     }
-            // });
-
-            // // function for taking id from url
-
-            // function getIdFromUrlPath() {
-            //     let pathArray = window.location.pathname.split('/');
-            //     return pathArray[pathArray.length - 1];
-            // }
 
             $.ajax({
                 type: "GET",
@@ -190,9 +181,9 @@
 
         });
 
-         // function to get distict and state details
+        // function to get distict and state details
 
-         function getDistrictAndState() {
+        function getDistrictAndState() {
             var pincode = document.getElementById('pincode').value;
             fetch('/get-district-and-state?pincode=' + pincode)
                 .then(response => response.json())
