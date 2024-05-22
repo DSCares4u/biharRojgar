@@ -41,16 +41,10 @@
     $("#insertPlan").submit(function(e) {
         e.preventDefault();
         
-        // Gather form data
         let formData = new FormData(this);
         let features = $("#features").val().split("\n");
 
-        // Remove empty values from the features array
         features = features.filter(feature => feature.trim() !== '');
-
-        // alert(JSON.stringify(features));
-        
-        // Convert features array to JSON string and append to form data
         formData.append('features', JSON.stringify(features));
 
         // Send AJAX request
