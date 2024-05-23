@@ -116,8 +116,7 @@
 
                        data.forEach((data) => {
                            table.append(`
-                           <a href="/register"
-                                class="block max-w-full mt-4 p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                           <div class="block max-w-full mt-4 p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                 <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${data.name}</h5>
                                 <div class="details flex mt-4">
                                     <div class="logo w-2/12">
@@ -155,10 +154,12 @@
                                         <p class="text-[12px]">(Including gov. fees)</p>
                                     </div>
                                     <div class="button">
-                                        <button class="bg-green-600 rounded text-white px-1 py-1">Apply Now</button>
+                                        <a href="/sarkari-job/${data.id}/confirm">
+                                            <button class="bg-green-600 hover:bg-green-700 rounded text-white px-1 py-1">Apply Now</button>
+                                        </a>
                                     </div>
                                 </div>
-                            </a>
+                            </div>
                        `);
                        });
                    },

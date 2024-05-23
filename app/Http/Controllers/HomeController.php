@@ -37,4 +37,12 @@ class HomeController extends Controller
     public function addCandidate(){
         return view('home.addCandidate');
     }
+
+    public function sarkariJobConfirm(){
+        return view('home.sarkariJobConfirm');
+    }
+
+    public function privateJobConfirm(){
+        return view('home.privateJobConfirm');
+    }
 }

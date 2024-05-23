@@ -48,9 +48,9 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    public function jobs(): HasOne
+    public function candidates(): HasOne
     {
-        return $this->HasOne(JOB::class, 'id', 'job_id');
+        return $this->HasOne(Candidate::class, 'id', 'candidate_id');
     }
 
     public function addresses(): HasOne

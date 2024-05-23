@@ -45,7 +45,6 @@ class HireController extends Controller
             'state' => 'required|string',
             'description' => 'required|string',
             'company_name' => 'required|string',
-            'roles' => 'required|string',
             'website' => 'required|string',
             'mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
             'alt_mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
@@ -73,10 +72,10 @@ class HireController extends Controller
             ], 422);
         }
 
-        // $roles = [];
-        // foreach ($request->inputs as $input) {
-        //     $roles[] = $input;
-        // }
+        $roles = [];
+        foreach ($request->inputs as $input) {
+            $roles[] = $input;
+        }
 
             $hire = Hire::create([
                 'name' => $request->name, 
@@ -94,28 +93,28 @@ class HireController extends Controller
                 'logo'=>$logo,         
             ]);  
             
-            if ($hire) {
-                // Save each role
-                foreach ($request->inputs as $input) {
-                    $hire->roles()->create([
-                        'role_name' => $input['profile'],
-                        'no_of_post' => $input['no_of_post'],
-                        'min_experience' => $input['min_experience'],
-                        'max_experience' => $input['max_experience'],
-                        'gender' => $input['gender'],
-                        'preferred_lang' => $input['preferred_lang'],
-                        'type' => $input['type'],
-                        'qualification' => $input['qualification'],
-                        'min_salary' => $input['min_salary'],
-                        'max_salary' => $input['max_salary']
-                    ]);
-                }
+            // if ($hire) {
+            //     // Save each role
+            //     foreach ($request->inputs as $input) {
+            //         $hire->roles()->create([
+            //             'role_name' => $input['profile'],
+            //             'no_of_post' => $input['no_of_post'],
+            //             'min_experience' => $input['min_experience'],
+            //             'max_experience' => $input['max_experience'],
+            //             'gender' => $input['gender'],
+            //             'preferred_lang' => $input['preferred_lang'],
+            //             'type' => $input['type'],
+            //             'qualification' => $input['qualification'],
+            //             'min_salary' => $input['min_salary'],
+            //             'max_salary' => $input['max_salary']
+            //         ]);
+            //     }
         
-                return response()->json([
-                    'status' => 200,
-                    'message' => "We Will Connect You Soon"
-                ], 200);
-            }
+            //     return response()->json([
+            //         'status' => 200,
+            //         'message' => "We Will Connect You Soon"
+            //     ], 200);
+            // }
             if ($hire) {
                 return response()->json([
                     'status' => 200,
