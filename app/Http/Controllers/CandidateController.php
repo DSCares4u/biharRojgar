@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Job;
+use App\Models\Candidate;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 
-class JobController extends Controller
+class CandidateController extends Controller
 {
     public function index(){
-        $job = Job::orderBy('created_at', 'desc')->get();
-        if ($job->count() > 0) {
+        $candidate = Candidate::orderBy('created_at', 'desc')->get();
+        if ($candidate->count() > 0) {
             return response()->json([
                 'status' => 200,
-                'data' => $job
+                'data' => $candidate
             ], 200);
         } else {
             return response()->json([
@@ -34,7 +34,7 @@ class JobController extends Controller
             'gender' => 'required',
             'mobile' => 'required',
             'marital' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:candidates',
             'id_mark' => 'required|string|min:3',
             'preferred_lang' => 'required',
             'religion' => 'required|string|min:3',
@@ -54,7 +54,7 @@ class JobController extends Controller
             ], 422);
         } else {
 
-            $job = Job::create([
+            $candidate = Candidate::create([
                 'name' => $request->name,
                 'dob' => $request->dob,
                 'mother' => $request->mother,
@@ -76,7 +76,7 @@ class JobController extends Controller
                 'user_id' => $request->user_id,                     
             ]);
     
-            if ($job) {
+            if ($candidate) {
                 return response()->json([
                     'status' => 200,
                     'message' => "We Will Connect You Soon"
@@ -114,11 +114,11 @@ class JobController extends Controller
     }
 
     public function show($id){
-        $job = Job::find($id);
-        if($job){
+        $candidate = Candidate::find($id);
+        if($candidate){
             return response()->json([
                 'status' => 200,
-                'data' => $job
+                'data' => $candidate
             ], 200);
         }
         else{
@@ -138,7 +138,7 @@ class JobController extends Controller
         'gender' => 'required',
         'mobile' => 'required',
         'marital' => 'required',
-        'email' => 'required|email|unique:jobs,email,'.$id,
+        'email' => 'required|email|unique:candidates,email,'.$id,
         'id_mark' => 'required|string|min:3',
         'preferred_lang' => 'required',
         'religion' => 'required|string|min:3',
@@ -159,10 +159,10 @@ class JobController extends Controller
     } else {
         if ($id) {
             // Check if job exists
-            $job = Job::find($id);
-            if ($job) {
+            $candidate = Candidate::find($id);
+            if ($candidate) {
                 // Update existing job
-                $job->update([
+                $candidate->update([
                     'name' => $request->name,
                     'dob' => $request->dob,
                     'mother' => $request->mother,
@@ -192,7 +192,7 @@ class JobController extends Controller
         }
 
         // Create new job
-        $newJob = Job::create([
+        $newJob = Candidate::create([
             'name' => $request->name,
             'dob' => $request->dob,
             'mother' => $request->mother,
@@ -223,18 +223,18 @@ class JobController extends Controller
     }
 
     public function destroy($id){
-        $job  = Job::find($id);
-        if($job){
-            $job->delete();
+        $candidate  = Candidate::find($id);
+        if($candidate){
+            $candidate->delete();
             return response()->json([
                 'status' => 200,
-                'message' => "Job Deleted"
+                'message' => "Candidate Deleted"
             ], 200);
         }
         else{
             return response()->json([
                 'status' => 500,
-                'message' => "No Job Found"
+                'message' => "No Data Found"
             ], 500);
         }       
     }

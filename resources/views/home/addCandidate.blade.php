@@ -196,7 +196,7 @@
                 var formData = new FormData(this);
                 $.ajax({
                     type: "POST",
-                    url: "{{ route('job.store') }}",
+                    url: "{{ route('candidate.store') }}",
                     data: formData,
                     dataType: "JSON",
                     contentType: false,
@@ -225,7 +225,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: `/api/job/view/` + userId,
+                    url: `/api/candidate/view/` + userId,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -289,7 +289,7 @@
             };
             $.ajax({
                 type: 'PUT',
-                url: `/api/job/edit/${userId}`,
+                url: `/api/candidate/edit/${userId}`,
                 data: formData,
                 success: function(response) {
                     swal("Success", response.message, "message");

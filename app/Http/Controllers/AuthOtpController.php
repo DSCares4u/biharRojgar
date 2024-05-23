@@ -83,7 +83,7 @@ class AuthOtpController extends Controller
             ]);
 
             Auth::login($user);
-            return redirect('/get-job');
+            return redirect('/add-candidate');
         }
 
         return redirect()->route('otp.login')->with('error','Your Otp is not Correct');

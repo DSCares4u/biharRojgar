@@ -20,7 +20,7 @@ use App\Http\Controllers\JobController;
 
 Route::get('/',[HomeController::class,'index']);
 
-Route::get('/get-job',[HomeController::class,'getJob'])->name('get.start');
+Route::get('/add-candidate',[HomeController::class,'addCandidate']);
 Route::get('/get-job/t&c',[HomeController::class,'getJobTC']);
 
 Route::get('/hire',[HomeController::class,'hire']);

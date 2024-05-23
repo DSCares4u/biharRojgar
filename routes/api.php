@@ -10,6 +10,7 @@ use App\Http\Controllers\YojnaController;
 use App\Http\Controllers\YojnaCategoryController;
 use App\Http\Controllers\YojnaFormController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\DocumentController;
 
@@ -53,6 +54,12 @@ Route::get('/job',[JobController::class,'index'])->name('job.index');
 Route::get('/job/view/{id}',[JobController::class,'show']);
 Route::put('/job/edit/{id}',[JobController::class,'update']);
 Route::delete('/job/delete/{id}',[JobController::class,'destroy']);
+
+Route::post('/candidate',[CandidateController::class,'store'])->name('candidate.store');
+Route::get('/candidate',[CandidateController::class,'index'])->name('candidate.index');
+Route::get('/candidate/view/{id}',[CandidateController::class,'show']);
+Route::put('/candidate/edit/{id}',[CandidateController::class,'update']);
+Route::delete('/candidate/delete/{id}',[CandidateController::class,'destroy']);
 
 Route::post('/address',[AddressController::class,'store'])->name('address.store');
 Route::get('/address',[AddressController::class,'index'])->name('address.index');

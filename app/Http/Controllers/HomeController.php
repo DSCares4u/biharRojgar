@@ -10,10 +10,6 @@ class HomeController extends Controller
         return view('home.index');
     }
 
-    public function getJob(){
-        return view('home.getJob');
-    }
-
     public function register(){
         return view('home.register');
     }
@@ -36,5 +32,9 @@ class HomeController extends Controller
 
     public function hireTC(){
         return view('home.hireT&C');
+    }
+
+    public function addCandidate(){
+        return view('home.addCandidate');
     }
 }
