@@ -45,4 +45,8 @@ class HomeController extends Controller
     public function privateJobConfirm(){
         return view('home.privateJobConfirm');
     }
+
+    public function viewJobForm(){
+        return view('home.viewJobForm');
+    }
 }

@@ -20,11 +20,18 @@ use App\Http\Controllers\JobController;
 
 Route::get('/',[HomeController::class,'index']);
 
-Route::get('/add-candidate',[HomeController::class,'addCandidate']);
-Route::get('/get-job/t&c',[HomeController::class,'getJobTC']);
 
-Route::get('/sarkari-job/{id}/confirm',[HomeController::class,'sarkariJobConfirm']);
-Route::get('/private-job/{id}/confirm',[HomeController::class,'PrivateJobConfirm']);
+Route::get('/get-job/t&c',[HomeController::class,'getJobTC']);
+Route::post('/logout', [AuthOtpController::class, 'logout'])->name('logout');
+
+Route::middleware("auth")->group(function (){
+    Route::get('/add-candidate',[HomeController::class,'addCandidate']);
+
+    Route::get('/viewJobForm',[HomeController::class,'viewJobForm']);
+    Route::get('/sarkari-job/{id}/confirm',[HomeController::class,'sarkariJobConfirm']);
+    Route::get('/private-job/{id}/confirm',[HomeController::class,'PrivateJobConfirm']); 
+      
+});
 
 Route::get('/hire',[HomeController::class,'hire']);
 Route::get('/hire/t&c',[HomeController::class,'hireTC']);

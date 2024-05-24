@@ -30,6 +30,18 @@
                     <li><a href="#" class="text-white hover:text-gray-300">About</a></li>
                     <li><a href="#" class="text-white hover:text-gray-300"><button id="openApplyJobBtn">Contact</button></a></li>
                     <!-- Add more navbar items as needed -->
+
+                    @auth
+                    <a href="" class="nav-link nav-item active text-capitalize">{{auth()->user()->name}}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>   
+                    @endauth
+    
+                    @guest
+                    <a href="/otp/login" class="nav-link nav-item active">Login</a>
+                    @endguest      
                 </ul>
             </div>
             <div class="md:hidden">

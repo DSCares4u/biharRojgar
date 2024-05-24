@@ -98,4 +98,13 @@ class AuthOtpController extends Controller
             'user' => auth()->user()
         ]);
     }
+
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('otp.login');
+    }
+
+
 }
