@@ -219,7 +219,6 @@
         });
 
         $(document).ready(function() {
-
             function fetchJobDetailsAndOpenModal() {
                 let userId = {{ auth()->user()->id }};
 

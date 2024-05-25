@@ -154,9 +154,10 @@
                                         <p class="text-[12px]">(Including gov. fees)</p>
                                     </div>
                                     <div class="button">
-                                        <a href="/sarkari-job/${data.id}/confirm">
+                                        <a href="/viewJobForm">
                                             <button class="bg-green-600 hover:bg-green-700 rounded text-white px-1 py-1">Apply Now</button>
                                         </a>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -171,5 +172,7 @@
            callingSarkariJobs();
         });
     </script>
-    
+    {{-- <a href="/sarkari-job/${data.id}/confirm">
+        <button class="bg-green-600 hover:bg-green-700 rounded text-white px-1 py-1">Apply Now</button>
+    </a> --}}
 @endsection

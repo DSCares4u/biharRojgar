@@ -6,7 +6,6 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthOtpController;
 use App\Http\Controllers\JobController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,8 +27,8 @@ Route::middleware("auth")->group(function (){
     Route::get('/add-candidate',[HomeController::class,'addCandidate']);
 
     Route::get('/viewJobForm',[HomeController::class,'viewJobForm']);
-    Route::get('/sarkari-job/{id}/confirm',[HomeController::class,'sarkariJobConfirm']);
-    Route::get('/private-job/{id}/confirm',[HomeController::class,'PrivateJobConfirm']); 
+    Route::get('/sarkari-job/confirm',[HomeController::class,'sarkariJobConfirm']);
+    Route::get('/private-job/confirm',[HomeController::class,'PrivateJobConfirm']); 
       
 });
 

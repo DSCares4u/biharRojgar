@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('sarkari_job_applies', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete("cascade");
+            $table->enum('payment_mode',['pay_now','pay_later'])->nullable();
             $table->timestamps();
         });
     }

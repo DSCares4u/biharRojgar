@@ -5,7 +5,6 @@
             <div class="bg-gray-100 mx-4 w-8/12">
                 <form class="p-5 flex flex-col" id="addDocument">
                     <div class="container mx-auto font-sans ">
-
                         <div class="p-5 flex flex-col">
                             <div class="border border-gray mt-2 p-4">
                                 <h2 class="text-lg font-semibold mb-2  ">Essential Qualification</h2>

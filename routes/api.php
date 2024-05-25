@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HireController;
 use App\Http\Controllers\HirePlanController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\SarkariJobApplyController;
 use App\Http\Controllers\SarkariJobController;
 use App\Http\Controllers\YojnaController;
 use App\Http\Controllers\YojnaCategoryController;
@@ -54,6 +55,12 @@ Route::get('/job',[JobController::class,'index'])->name('job.index');
 Route::get('/job/view/{id}',[JobController::class,'show']);
 Route::put('/job/edit/{id}',[JobController::class,'update']);
 Route::delete('/job/delete/{id}',[JobController::class,'destroy']);
+
+Route::post('/sarkari-job-apply',[SarkariJobApplyController::class,'store'])->name('sarkari.job.apply.store');
+Route::get('/sarkari-job-apply',[SarkariJobApplyController::class,'index'])->name('sarkari.job.apply.index');
+Route::get('/sarkari-job-apply/view/{id}',[SarkariJobApplyController::class,'show']);
+Route::put('/sarkari-job-apply/edit/{id}',[SarkariJobApplyController::class,'update']);
+Route::delete('/sarkari-job-apply/delete/{id}',[SarkariJobApplyController::class,'destroy']);
 
 Route::post('/candidate',[CandidateController::class,'store'])->name('candidate.store');
 Route::get('/candidate',[CandidateController::class,'index'])->name('candidate.index');

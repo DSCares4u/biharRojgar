@@ -27,24 +27,7 @@ class JobController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|min:3',
-            'dob' => 'required',
-            'mother' => 'required|string|min:3',
-            'father' => 'required|string|min:3',
-            'gender' => 'required',
-            'mobile' => 'required',
-            'marital' => 'required',
-            'email' => 'required|email|unique:users',
-            'id_mark' => 'required|string|min:3',
-            'preferred_lang' => 'required',
-            'religion' => 'required|string|min:3',
-            'community' => 'required',
-            'village' => 'required|string|min:3',
-            'landmark' => 'required|string|min:3',
-            'area' => 'required|string',
-            'city' => 'required|string|min:3',
-            'state' => 'required|string|min:3',
-            'pincode' => 'required',          
+            'user_id' => 'required',                 
         ]);
 
         if ($validator->fails()) {
@@ -55,24 +38,7 @@ class JobController extends Controller
         } else {
 
             $job = Job::create([
-                'name' => $request->name,
-                'dob' => $request->dob,
-                'mother' => $request->mother,
-                'father' => $request->father,
-                'gender' => $request->gender,
-                'mobile' => $request->mobile,
-                'marital' => $request->marital,
-                'email' => $request->email,
-                'id_mark' => $request->id_mark,
-                'preferred_lang' => $request->preferred_lang,
-                'religion' => $request->religion,
-                'community' => $request->community,
-                'village' => $request->village,
-                'landmark' => $request->landmark,
-                'area' => $request->area,
-                'city' => $request->city,
-                'state' => $request->state,
-                'pincode' => $request->pincode, 
+                'payment_mode' => $request->payment_mode,          
                 'user_id' => $request->user_id,                     
             ]);
     
@@ -87,29 +53,6 @@ class JobController extends Controller
                     'message' => "Unable to add your Request"
                 ], 500);
             }
-        }
-    }
-
-
-
-    public function getDistrictAndState(Request $request){
-        $pincode = $request->input('pincode');
-
-        $response = Http::get('https://api.postalpincode.in/pincode/' . $pincode);
-
-        if ($response->successful()) {
-            $data = $response->json()[0];
-            $district = $data['PostOffice'][0]['District'];
-            $state = $data['PostOffice'][0]['State'];
-
-            return response()->json([
-                'district' => $district,
-                'state' => $state,
-            ]);
-        } else {
-            return response()->json([
-                'error' => 'Failed to fetch data'
-            ], $response->status());
         }
     }
 
@@ -131,24 +74,7 @@ class JobController extends Controller
     
     public function update(Request $request, int $id){
         $validator = Validator::make($request->all(), [
-        'name' => 'required|string|min:3',
-        'dob' => 'required',
-        'mother' => 'required|string|min:3',
-        'father' => 'required|string|min:3',
-        'gender' => 'required',
-        'mobile' => 'required',
-        'marital' => 'required',
-        'email' => 'required|email|unique:jobs,email,'.$id,
-        'id_mark' => 'required|string|min:3',
-        'preferred_lang' => 'required',
-        'religion' => 'required|string|min:3',
-        'community' => 'required',
-        'village' => 'required|string|min:3',
-        'landmark' => 'required|string|min:3',
-        'city' => 'required|string|min:3',
-        'area' => 'required|string',
-        'state' => 'required|string|min:3',
-        'pincode' => 'required',                      
+            'user_id' => 'required',                 
     ]);
 
     if ($validator->fails()) {
@@ -163,25 +89,8 @@ class JobController extends Controller
             if ($job) {
                 // Update existing job
                 $job->update([
-                    'name' => $request->name,
-                    'dob' => $request->dob,
-                    'mother' => $request->mother,
-                    'father' => $request->father,
-                    'gender' => $request->gender,
-                    'mobile' => $request->mobile,
-                    'marital' => $request->marital,
-                    'email' => $request->email,
-                    'id_mark' => $request->id_mark,
-                    'preferred_lang' => $request->preferred_lang,
-                    'religion' => $request->religion,
-                    'community' => $request->community,
-                    'village' => $request->village,
-                    'landmark' => $request->landmark,
-                    'area' => $request->area,
-                    'city' => $request->city,
-                    'state' => $request->state,
-                    'pincode' => $request->pincode,  
-                    'user_id' => $request->user_id,                     
+                    'user_id' => $request->user_id,
+                    'payment_mode' => $request->payment_mode,                               
                 ]);
 
                 return response()->json([
@@ -193,25 +102,8 @@ class JobController extends Controller
 
         // Create new job
         $newJob = Job::create([
-            'name' => $request->name,
-            'dob' => $request->dob,
-            'mother' => $request->mother,
-            'father' => $request->father,
-            'gender' => $request->gender,
-            'mobile' => $request->mobile,
-            'marital' => $request->marital,
-            'email' => $request->email,
-            'id_mark' => $request->id_mark,
-            'preferred_lang' => $request->preferred_lang,
-            'religion' => $request->religion,
-            'community' => $request->community,
-            'village' => $request->village,
-            'landmark' => $request->landmark,
-            'area' => $request->area,
-            'city' => $request->city,
-            'state' => $request->state,
-            'pincode' => $request->pincode,  
-            'user_id' => $request->user_id,                     
+            'user_id' => $request->user_id,
+            'payment_mode' => $request->payment_mode,                               
         ]);
 
         return response()->json([
