@@ -1,32 +1,29 @@
 @extends('home.homebase')
 @section('content')
-    <div class="container mx-auto font-sans">
-        <div class="bg-gray-100 w-1/2 mx-auto border border-gray mt-3">
+    <div class="container mx-auto flex font-sans">
+
+        <div class="w-3/4 mt-10 p-10">
+            <h5 class="text-3xl font-extrabold">Trademark Registration</h5>
+            <p class="mt-5 text-xl text-gray-500">A Trademark or service mark is a word, name, symbol, or device used to indicate the source, quality and ownership of a product or service.</p>
+            <ul class="mt-8 text-sm">
+                <li class="mt-4 flex"> <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique trademark effortlessly.</li>
+                <li class="mt-4 flex"> <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique trademark effortlessly.</li>
+                <li class="mt-4 flex"> <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique trademark effortlessly.</li>
+                <li class="mt-4 flex"> <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique trademark effortlessly.</li>
+            </ul>
+        </div>
+
+        <div class="bg-gray-100 w-1/4 float-end border border-gray mt-10">
             <form id="addData" class="p-4 flex flex-col">
-                <div class="flex py-1 px-1 justify-between">
-                    <div class="w-5/12">
-                        <h2 class="text-center text-3xl font-semibold uppercase">Enquire Now</h2>
-                        <p class="text-gray-400 mt-5 text-xs">Vesta Elder Care services embodies integrity, professionalism
-                            and care
-                            provided by highly
-                            trained
-                            caregivers especially certified to provide empathetic and loving support to its patrons.</p>
-                        <div class="phone mt-4 text-xl  flex text-green-500">
-                            <p><i class="fa-solid fa-phone"></i> +91-8895456416</p>
-                        </div>
-                        <div class="phone mt-4 text-xl  text-green-500">
-                            <p><i class="fa-regular fa-envelope"></i> info@vestaeldercare.com</p>
-                        </div>
+                <div class=" py-1 px-1 justify-between">
+                    <div class="mb-2">
+                        <label for="name" class="block text-gray-700 text-xs mb-1 ">Name :</label>
+                        <input type="text" id="name" name="name"
+                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
+                            placeholder="Name">
+                        <p id="error-name" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
-                    <div class=" w-6/12 ">
-                        <div class="mb-2">
-                            <label for="name" class="block text-gray-700 text-xs mb-1 ">Name :</label>
-                            <input type="text" id="name" name="name"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
-                                placeholder="Name">
-                            <p id="error-name" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div>
-                        <div class="flex justify-between">
+                    {{-- <div class="flex justify-between">
                             <div class="mb-2">
                                 <label for="gender" class="block text-gray-700 text-xs mb-1 ">Gender :</label>
                                 <select name="gender" id="gender"
@@ -44,22 +41,29 @@
                                     class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
                                 <p id="error-dob" class="text-red-500 text-xs font-semibold error-message"></p>
                             </div>
-                        </div>
-                        <div class="mb-2">
-                            <label for="mobile" class="block text-gray-700 text-xs mb-1 ">Mobile No. :</label>
-                            <input type="tel" id="mobile" name="mobile"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
-                                placeholder="Phone">
-                            <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div>
-                        <div class=" mb-2">
-                            <label for="email" class="block text-gray-700 text-xs mb-1 ">Email :</label>
-                            <input type="email" id="email" name="email"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
-                                placeholder="Email">
-                            <p id="error-email" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div>
-                        <div class="flex justify-between gap-1">
+                        </div> --}}
+                    <div class="mb-2">
+                        <label for="mobile" class="block text-gray-700 text-xs mb-1 ">Mobile No. :</label>
+                        <input type="tel" id="mobile" name="mobile"
+                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
+                            placeholder="Phone">
+                        <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
+                    </div>
+                    <div class="mb-2">
+                        <label for="mobile" class="block text-gray-700 text-xs mb-1 ">Whatsapp No. :</label>
+                        <input type="tel" id="mobile" name="mobile"
+                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
+                            placeholder="Phone">
+                        <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
+                    </div>
+                    <div class=" mb-2">
+                        <label for="email" class="block text-gray-700 text-xs mb-1 ">Email :</label>
+                        <input type="email" id="email" name="email"
+                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
+                            placeholder="Email">
+                        <p id="error-email" class="text-red-500 text-xs font-semibold error-message"></p>
+                    </div>
+                    {{-- <div class="flex justify-between gap-1">
                             <div class=" mb-2">
                                 <label for="landmark" class="block text-gray-700 text-xs mb-1 ">Landmark :</label>
                                 <input type="text" id="landmark" name="landmark"
@@ -71,35 +75,35 @@
                                     class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
                                 <p id="error-village" class="text-red-500 text-xs font-semibold error-message"></p>
                             </div>
-                        </div>
-                        <div class=" mb-2">
+                        </div> --}}
+                    {{-- <div class=" mb-2">
                             <label for="pincode" class="block text-gray-700 text-xs mb-1 ">Pincode :</label>
                             <input type="number" id="pincode" name="pincode" onchange="getDistrictAndState()"
                                 class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
                             <p id="error-pincode" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div>
-                        <div class="flex gap-1">
-                            <div class=" mb-2">
-                                <label for="city" class="block text-gray-700 text-xs mb-1 ">City :</label>
-                                <input type="text" id="city" name="city"
-                                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
-                                <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
-                            </div>
-                            <div class=" mb-2">
-                                <label for="state" class="block text-gray-700 text-xs mb-1 ">State :</label>
-                                <input type="text" id="state" name="state"
-                                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
-                                <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            <label for="yojna_id" class="block text-gray-700 text-xs mb-1 ">Yojna Selected :</label>
-                            <select name="yojna_id" id="callingYojna"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded text-gray-500">
-                            </select>
-                            <p id="error-yojna_id" class="text-red-500 text-xs font-semibold error-message"></p>
+                        </div> --}}
+                    <div class="flex gap-1">
+                        <div class=" mb-2">
+                            <label for="city" class="block text-gray-700 text-xs mb-1 ">City/Village :</label>
+                            <input type="text" id="city" name="city"
+                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                            <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                         <div class=" mb-2">
+                            <label for="state" class="block text-gray-700 text-xs mb-1 ">State :</label>
+                            <input type="text" id="state" name="state"
+                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                            <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
+                        </div>
+                    </div>
+                    <div class="mb-2">
+                        <label for="yojna_id" class="block text-gray-700 text-xs mb-1 ">Yojna Selected :</label>
+                        <select name="yojna_id" id="callingYojna"
+                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded text-gray-500">
+                        </select>
+                        <p id="error-yojna_id" class="text-red-500 text-xs font-semibold error-message"></p>
+                    </div>
+                    {{-- <div class=" mb-2">
                             <label for="photo" class="block text-gray-700 text-xs mb-1 ">Upload Your Photo :</label>
                             <input type="file" id="photo" name="photo"
                                 class="form-input w-full shadow-sm sm:text-sm py-2 px-2 ">
@@ -110,14 +114,28 @@
                             <input type="file" id="id_proof" name="id_proof"
                                 class="form-input w-full shadow-sm sm:text-sm py-2 px-2 ">
                             <p id="error-id_proof" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div>
-                        <div class="mt-4">
-                            <button type="submit"
-                                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2">Submit</button>
-                        </div>
+                        </div> --}}
+                    <div class="mt-4">
+                        <button type="submit"
+                            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2">Submit</button>
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <div class="w-full mt-20 p-10">
+        <h2 class="text-center text-3xl font-semibold uppercase">Enquire Now</h2>
+        <p class="text-gray-400 mt-5 text-xs">Vesta Elder Care services embodies integrity, professionalism
+            and care
+            provided by highly
+            trained
+            caregivers especially certified to provide empathetic and loving support to its patrons.</p>
+        <div class="phone mt-4 text-xl  flex text-green-500">
+            <p><i class="fa-solid fa-phone"></i> +91-8895456416</p>
+        </div>
+        <div class="phone mt-4 text-xl  text-green-500">
+            <p><i class="fa-regular fa-envelope"></i> info@vestaeldercare.com</p>
         </div>
     </div>
 

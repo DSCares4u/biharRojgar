@@ -21,7 +21,7 @@
                             <div class="mb-3  items-center">
                                 <label for="gender" class="block text-gray-700 text-sm mb-2 ">Gender</label>
                                 <select name="gender" id="gender"
-                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
+                                    class="shadow border py-1 px-2 w-full bg-gray-300 rounded">
                                     <option value="">Choose Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -32,7 +32,7 @@
                             <div class="mb-3  items-center">
                                 <label for="marital" class="block text-gray-700 text-sm mb-2 ">Marital Status</label>
                                 <select name="marital" id="marital"
-                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
+                                    class="shadow border py-1 px-2 w-full bg-gray-300 rounded">
                                     <option value="">Select Status</option>
                                     <option value="married">Married</option>
                                     <option value="unmarried">UnMarried</option>
@@ -43,7 +43,7 @@
                                 <label for="preferred_lang" class="block text-gray-700 text-sm mb-2 ">Choice of Language for
                                     Examination</label>
                                 <select name="preferred_lang" id="preferred_lang"
-                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
+                                    class="shadow border py-1 px-2 w-full bg-gray-300 rounded">
                                     <option value="">Choose Language</option>
                                     <option value="english">English</option>
                                     <option value="hindi">Hindi</option>
@@ -76,8 +76,8 @@
                             </div>
                             <div class="mb-3  items-center">
                                 <label for="religion" class="block text-gray-700 text-sm mb-2 ">Religion</label>
-                                <select name="community" id="community"
-                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
+                                <select name="religion" id="religion"
+                                    class="shadow border py-1 px-2 w-full bg-gray-300 rounded">
                                     <option value="">अपना धर्म चुनें</option>
                                     <option value="hindu">Hindu</option>
                                     <option value="muslim">Muslim</option>
@@ -102,9 +102,7 @@
                                 <p id="mobile-error" class="text-red-500 text-xs italic hidden"></p>
                             </div>
                             <div class="mb-3  items-center">
-                                <label for="id_mark" class="block text-gray-700 text-sm mb-3 ">Permanent visible mark
-                                    of
-                                    identification</label>
+                                <label for="id_mark" class="block text-gray-700 text-sm mb-3 ">Permanent visible mark of identification</label>
                                 <input type="text" id="id_mark"
                                     name="id_mark"placeholder="आपके शरीर पर पहचान का स्थायी निशान"
                                     class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
@@ -122,7 +120,7 @@
                             <div class="mb-3  items-center">
                                 <label for="community" class="block text-gray-700 text-sm mb-2 ">Community</label>
                                 <select name="community" id="community"
-                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
+                                    class="shadow border py-1 px-2 w-full bg-gray-300 rounded">
                                     <option value="">अपना समुदाय चुनें</option>
                                     <option value="ur">UR(Unreserve)</option>
                                     <option value="sc">SC(Schedule Caste)</option>
