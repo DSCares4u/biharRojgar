@@ -27,7 +27,7 @@ class SarkariJobApplyController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required',                 
+            'user_id' => 'required|unique:candidates',                 
         ]);
 
         if ($validator->fails()) {

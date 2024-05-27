@@ -145,12 +145,12 @@
                     },
                     success: function(response) {
                         $('#id').val(response.data.id);
-                    $('#photo').val(response.data.photo);
-                    $('#signature').val(response.data.signature);
-                    $('#id_proof_type').val(response.data.id_proof_type);
-                    $('#id_proof').val(response.data.id_proof);
-                    $('#quali_certificate').val(response.data.quali_certificate);
-                    $('#other_certificate').val(response.data.other_certificate);
+                        $('#photo').val(response.data.photo);
+                        $('#signature').val(response.data.signature);
+                        $('#id_proof_type').val(response.data.id_proof_type);
+                        $('#id_proof').val(response.data.id_proof);
+                        $('#quali_certificate').val(response.data.quali_certificate);
+                        $('#other_certificate').val(response.data.other_certificate);
                     },
                     error: function(xhr, status, error) {
                         console.error('Error fetching Job details for editing:', error);
