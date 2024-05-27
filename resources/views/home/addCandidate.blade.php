@@ -14,14 +14,14 @@
                                 <label for="name" class="block text-gray-700 text-sm mb-2 ">Full Name as recorded in
                                     Matriculation(10th class) Certificate/Marks list</label>
                                 <input type="text" id="name"
-                                    name="name"placeholder="Eg. Sales executives needed urgently for ..."
-                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-200 rounded">
+                                    name="name"placeholder="सर्टिफिकेट के अनुसार अपना नाम डालें"
+                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                 <p id="name-error" class="text-red-500 text-xs italic hidden"></p>
                             </div>
                             <div class="mb-3  items-center">
                                 <label for="gender" class="block text-gray-700 text-sm mb-2 ">Gender</label>
                                 <select name="gender" id="gender"
-                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-200 rounded">
+                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                     <option value="">Choose Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -32,7 +32,7 @@
                             <div class="mb-3  items-center">
                                 <label for="marital" class="block text-gray-700 text-sm mb-2 ">Marital Status</label>
                                 <select name="marital" id="marital"
-                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-200 rounded">
+                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                     <option value="">Select Status</option>
                                     <option value="married">Married</option>
                                     <option value="unmarried">UnMarried</option>
@@ -43,7 +43,7 @@
                                 <label for="preferred_lang" class="block text-gray-700 text-sm mb-2 ">Choice of Language for
                                     Examination</label>
                                 <select name="preferred_lang" id="preferred_lang"
-                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-200 rounded">
+                                    class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                     <option value="">Choose Language</option>
                                     <option value="english">English</option>
                                     <option value="hindi">Hindi</option>
@@ -64,42 +64,49 @@
                             <div class="mb-3  items-center">
                                 <label for="father" class="block text-gray-700 text-sm mb-2 ">Father’s Name</label>
                                 <input type="text" id="father"
-                                    name="father"placeholder="Eg. Sales executives needed urgently for ..."
+                                    name="father"placeholder="अपने पिता का नाम लिखें"
                                     class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                 <p id="father-error" class="text-red-500 text-xs italic hidden"></p>
                             </div>
                             <div class="mb-3  items-center">
                                 <label for="email" class="block text-gray-700 text-sm mb-2 ">Email Address</label>
-                                <input type="email" id="email" name="email"placeholder="Eg. abc@gmail.com"
+                                <input type="email" id="email" name="email"placeholder="अपना ईमेल लिखें"
                                     class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                 <p id="email-error" class="text-red-500 text-xs italic hidden"></p>
                             </div>
                             <div class="mb-3  items-center">
                                 <label for="religion" class="block text-gray-700 text-sm mb-2 ">Religion</label>
-                                <input type="text" id="religion" name="religion"placeholder="Eg. Hindu"
+                                <select name="community" id="community"
                                     class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
+                                    <option value="">अपना धर्म चुनें</option>
+                                    <option value="hindu">Hindu</option>
+                                    <option value="muslim">Muslim</option>
+                                    <option value="sikh">Sikh</option>
+                                    <option value="christian">Christian</option>
+                                    <option value="other">Other</option>
+                                </select>
                                 <p id="religion-error" class="text-red-500 text-xs italic hidden"></p>
                             </div>
                         </div>
                         <div class="w-1/3">
                             <div class="mb-3  items-center">
                                 <label for="mother" class="block text-gray-700 text-sm mb-3 ">Mother’s Name</label>
-                                <input type="text" id="mother" name="mother"placeholder="Eg. abc Devi ..."
+                                <input type="text" id="mother" name="mother"placeholder="अपनी माँ का नाम लिखें"
                                     class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                 <p id="mother-error" class="text-red-500 text-xs italic hidden"></p>
                             </div>
                             <div class="mb-3  items-center">
                                 <label for="mobile" class="block text-gray-700 text-sm mb-3 ">Mobile No.</label>
-                                <input type="tel" id="mobile" name="mobile"placeholder="Eg. 7892456123"
+                                <input type="tel" id="mobile" name="mobile"placeholder="अपना मोबाइल नंबर लिखें"
                                     class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                 <p id="mobile-error" class="text-red-500 text-xs italic hidden"></p>
                             </div>
                             <div class="mb-3  items-center">
                                 <label for="id_mark" class="block text-gray-700 text-sm mb-3 ">Permanent visible mark
                                     of
-                                    identification 1</label>
+                                    identification</label>
                                 <input type="text" id="id_mark"
-                                    name="id_mark"placeholder="Permanent visible mark of identification"
+                                    name="id_mark"placeholder="आपके शरीर पर पहचान का स्थायी निशान"
                                     class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                 <p id="id_mark-error" class="text-red-500 text-xs italic hidden"></p>
                             </div>
@@ -116,7 +123,7 @@
                                 <label for="community" class="block text-gray-700 text-sm mb-2 ">Community</label>
                                 <select name="community" id="community"
                                     class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                    <option value="">Select</option>
+                                    <option value="">अपना समुदाय चुनें</option>
                                     <option value="ur">UR(Unreserve)</option>
                                     <option value="sc">SC(Schedule Caste)</option>
                                     <option value="st">ST(Schedule Tribe)</option>
@@ -136,27 +143,27 @@
                         <div class="w-1/2">
                             <div class="mb-3  items-center">
                                 <label for="village" class="block text-gray-700 text-sm mb-2 ">Village/Town/City</label>
-                                <input type="text" id="village" name="village"placeholder="Eg. abc nagar ..."
+                                <input type="text" id="village" name="village"placeholder="अपने गांव का नाम लिखें."
                                     class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                 <p id="village-error" class="text-red-500 text-xs italic hidden"></p>
 
                             </div>
                             <div class="mb-3  items-center">
                                 <label for="landmark" class="block text-gray-700 text-sm mb-2 ">Landmark</label>
-                                <input type="text" id="landmark" name="landmark"placeholder="Eg. abc chowk ..."
+                                <input type="text" id="landmark" name="landmark"placeholder="अपना लैंडमार्क लिखे"
                                     class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                 <p id="landmark-error" class="text-red-500 text-xs italic hidden"></p>
 
                             </div>
                             <div class="mb-3 items-center">
                                 <label for="area" class="block text-gray-700 text-sm mb-2">Area</label>
-                                <input type="text" id="area" name="area"
+                                <input type="text" id="area" name="area" placeholder="अपने एरिया का नाम लिखे"
                                     class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                 <p id="area-error" class="text-red-500 text-xs italic hidden"></p>
                             </div>
                             <div class="mb-3 items-center">
                                 <label for="pincode" class="block text-gray-700 text-sm mb-2">Pincode</label>
-                                <input type="number" id="pincode" name="pincode" placeholder="Eg. 789456"
+                                <input type="number" id="pincode" name="pincode" placeholder="अपना पिनकोड नंबर दर्ज करें"
                                     class="shadow appearance-none border py-1 px-2 w-1/2 bg-gray-300 rounded"
                                     onchange="getDistrictAndState()">
                                 <p id="pincode-error" class="text-red-500 text-xs italic hidden"></p>
@@ -164,13 +171,13 @@
                             <div class="flex gap-5">
                                 <div class="mb-3 w-1/2 items-center">
                                     <label for="city" class="block text-gray-700 text-sm mb-2">City</label>
-                                    <input type="text" id="city" name="city" placeholder="Eg. abc chowk ..."
+                                    <input type="text" id="city" name="city" placeholder="अपने शहर का नाम लिखे"
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                     <p id="city-error" class="text-red-500 text-xs italic hidden"></p>
                                 </div>
                                 <div class="mb-3 w-1/2 items-center">
                                     <label for="state" class="block text-gray-700 text-sm mb-2">State</label>
-                                    <input type="text" id="state" name="state" placeholder="Eg. abc chowk ..."
+                                    <input type="text" id="state" name="state" placeholder="अपने राज्य का नाम लिखे"
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
                                     <p id="state-error" class="text-red-500 text-xs italic hidden"></p>
                                 </div>
