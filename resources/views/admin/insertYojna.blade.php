@@ -21,6 +21,16 @@
                                 required>
                         </div>
                         <div class="mb-4">
+                            <label for="features" class="block text-sm font-medium text-gray-700">Features</label>
+                                <textarea name="features" id="features" rows="3" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                    required ></textarea>
+                        </div>
+                        <div class="mb-4">
+                            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                                <textarea name="description" id="description" rows="3" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                    required ></textarea>
+                        </div>
+                        <div class="mb-4">
                             <label for="" class="block text-sm font-medium text-gray-700">Select Category</label>
                             <select name="yojna_category_id" id="callingPlans" class="w-1/2 shadow-sm sm:text-sm rounded-md"
                                 required></select>
@@ -45,7 +55,12 @@
 
             $("#addYojna").submit(function(e) {
                 e.preventDefault();
-                var formData = new FormData(this);
+                let formData = new FormData(this);
+                let features = $("#features").val().split("\n");
+
+                features = features.filter(feature => feature.trim() !== '');
+                formData.append('features', JSON.stringify(features));
+
                 $.ajax({
                     type: "POST",
                     url: "{{ route('yojna.store') }}",
@@ -77,6 +92,8 @@
                 }
             });
         });
+
+
 
         // Function to transliterate English text to Hindi
         // function transliterateToHindi(englishText, callback) {

@@ -16,18 +16,12 @@ return new class extends Migration
         Schema::create('yojna_forms', function (Blueprint $table) {
             $table->id();
             $table->foreignId('yojna_id')->constrained()->onDelete("cascade");
-            $table->string('name');
-            $table->string('dob');
-            $table->string('photo');
-            $table->string('id_proof');
+            $table->string('name');            
             $table->string('mobile');
+            $table->string('wtsp_mobile');
             $table->string('email');
-            $table->string('landmark')->nullable();
-            $table->string('village');
-            $table->string('pincode');
             $table->string('city');
             $table->string('state');
-            $table->enum('gender',['male','female','others']);
             $table->timestamps();
         });
     }

@@ -2,14 +2,31 @@
 @section('content')
     <div class="container mx-auto flex font-sans">
 
-        <div class="w-3/4 mt-10 p-10">
+        <div class="w-3/4 mt-10 p-10" id="callingYojnaFeatures">
             <h5 class="text-3xl font-extrabold">Trademark Registration</h5>
-            <p class="mt-5 text-xl text-gray-500">A Trademark or service mark is a word, name, symbol, or device used to indicate the source, quality and ownership of a product or service.</p>
+            <p class="mt-5 text-xl text-gray-500">A Trademark or service mark is a word, name, symbol, or device used to
+                indicate the source, quality and ownership of a product or service.</p>
             <ul class="mt-8 text-sm">
-                <li class="mt-4 flex"> <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique trademark effortlessly.</li>
-                <li class="mt-4 flex"> <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique trademark effortlessly.</li>
-                <li class="mt-4 flex"> <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique trademark effortlessly.</li>
-                <li class="mt-4 flex"> <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique trademark effortlessly.</li>
+                <li class="mt-4 flex">
+                    <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our
+                    Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                    trademark effortlessly.
+                </li>
+                <li class="mt-4 flex">
+                    <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our
+                    Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                    trademark effortlessly.
+                </li>
+                <li class="mt-4 flex">
+                    <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with
+                    Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                    trademark effortlessly.
+                </li>
+                <li class="mt-4 flex">
+                    <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with
+                    Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                    trademark effortlessly.
+                </li>
             </ul>
         </div>
 
@@ -181,12 +198,13 @@
                     let selectedId = getIdFromUrlPath();
 
                     select.empty();
-                    select.append(`<option value="">Select Plan</option>`);
-                    response.data.forEach((plan) => {
+                    select.append(`
+                    <option value="">Select Plan</option>`);
+                        response.data.forEach((plan) => {
                         let isSelected = plan.id == selectedId ? 'selected' : '';
                         select.append(`
-                <option value="${plan.id}" ${isSelected}>${plan.ename}</option>
-            `);
+                    <option value="${plan.id}" ${isSelected}>${plan.ename}</option>
+                    `);
                     });
                 }
             });
@@ -197,19 +215,44 @@
                 return pathArray[pathArray.length - 1];
             }
 
+            // calling Features and description work
+
+            $.ajax({
+                type: "GET",
+                url: "{{ route('yojna.index') }}",
+                success: function(response) {
+                    let select = $("#callingYojnaFeatures");
+                    let selectedId = getIdFromUrlPath();
+
+                    select.empty();
+                    response.data.forEach((plan, index) => {
+                        // Remove square brackets and double quotes from the features string
+                        let cleanedFeatures = plan.features.replace(/[\[\]"]/g, '');
+
+                        // Split the features by comma and remove the first and last element
+                        let featuresArray = cleanedFeatures.split(',');
+
+                        // Map each feature to an HTML list item and join them into a single string
+                        let features = featuresArray.map(feature =>
+                            `<li class="mt-4 flex">
+                            <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>${feature}</li>`
+                        ).join('');
+
+                        select.append(`
+                                <h5 class="text-3xl font-extrabold">${plan.ename}</h5>
+                                <p class="mt-5 text-xl text-gray-500">${plan.description}</p>
+                                <ul class="mt-8 text-sm">
+                                    <li class="mt-4 flex">
+                                        <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our
+                                        Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                                        trademark effortlessly.
+                                    </li>
+                                    ${features}
+                                </ul>
+                            `);
+                    });
+                }
+            });
         });
-
-        // function to get distict and state details
-
-        function getDistrictAndState() {
-            var pincode = document.getElementById('pincode').value;
-            fetch('/get-district-and-state?pincode=' + pincode)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('city').value = data.district;
-                    document.getElementById('state').value = data.state;
-                })
-                .catch(error => console.error('Error:', error));
-        };
     </script>
 @endsection

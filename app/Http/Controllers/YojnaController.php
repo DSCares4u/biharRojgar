@@ -29,16 +29,33 @@ class YojnaController extends Controller
         $validator = Yojna::make($request->all(), [
             'ename' => 'required|string|min:3',                      
             'hname' => 'required|string|min:3',                      
+            'description' => 'required|string|min:3',                      
+            'features' => 'required|string|min:3',
+            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo                      
         ]);
-        
-        // image Work 
 
-        $logo = "LO". time() . "." . $request->logo->extension();        //upload on public/photo/image/filename
-        $request->logo->move(public_path("image/yojna"), $logo);      
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'errors' => $validator->messages()
+            ], 422);
+        }
+
+        if ($request->hasFile('logo')) {
+            $logo = "LO" . time() . "." . $request->logo->extension();
+            $request->logo->move(public_path("image/yojna/logo"), $logo);
+        } else {
+            return response()->json([
+                'status' => 422,
+                'errors' => ['logo' => 'Photo is required.']
+            ], 422);
+        }    
             
             $yojna = Yojna::create([
                 'ename' => $request->ename,
                 'hname' => $request->hname,
+                'description' => $request->description,
+                'features' => $request->features,
                 'logo'=>$logo,     
                 'yojna_category_id'=>$request->yojna_category_id                       
             ]);    
@@ -80,6 +97,8 @@ class YojnaController extends Controller
         $validator = Validator::make($request->all(), [
             'ename' => 'required|string|min:3',
             'hname' => 'required|string|min:3',
+            'features' => 'required|string|min:3',
+            'description' => 'required|string|min:3',
         ]);
 
         if ($validator->fails()) {
@@ -93,6 +112,8 @@ class YojnaController extends Controller
                 $yojna->update([
                     'ename' => $request->ename,                    
                     'hname' => $request->hname,   
+                    'description' => $request->description,   
+                    'features' => $request->features,   
                     'yojna_category_id'=>$request->yojna_category_id                                        
                 ]);
 

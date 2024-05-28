@@ -466,11 +466,11 @@
             //     </button>
             // `);
 
-                    // $('#payBtn2').html(`
-            //     <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
-            //         Pay Rs. ${PlanFee + 200} & Post Job
-            //     </button>
-            // `);
+                    $('#payBtn2').html(`
+                <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
+                    Pay Rs. ${PlanFee + 200} & Post Job
+                </button>
+            `);
 
                     // $('#payLater').html(`
             //     <a href="#" id="payLaterBtn"
