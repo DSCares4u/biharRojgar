@@ -67,8 +67,8 @@
                         <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-2">
-                        <label for="mobile" class="block text-gray-700 text-xs mb-1 ">Whatsapp No. :</label>
-                        <input type="tel" id="mobile" name="mobile"
+                        <label for="wtsp_mobile" class="block text-gray-700 text-xs mb-1 ">Whatsapp No. :</label>
+                        <input type="tel" id="wtsp_mobile" name="wtsp_mobile"
                             class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
                             placeholder="Phone">
                         <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>

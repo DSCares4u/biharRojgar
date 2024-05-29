@@ -29,10 +29,10 @@ class YojnaFormController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3',
             'mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
+            'wtsp_mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
             'email' => 'required|email',
             'city' => 'required',
             'state' => 'required',
-            'pincode' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -45,6 +45,7 @@ class YojnaFormController extends Controller
         $yojna = YojnaForm::create([
             'name' => $request->name,
             'mobile' => $request->mobile,
+            'wtsp_mobile' => $request->wtsp_mobile,
             'email' => $request->email,
             'city' => $request->city,
             'state' => $request->state,
