@@ -113,7 +113,7 @@
                     </li>
                     <li>
                         <a href="/hire/t&c"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hiring
+                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hire
                             Now</a>
                     </li>
                     <li>
@@ -124,14 +124,15 @@
                 </ul>
             </div>
             <div class="flex space-x-4 md:order-3 mt-4 md:mt-0">
-                <a href="/path-to-manual-form.pdf" download
-                    class="inline-block px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">Download Form</a>
-                <label class="inline-block px-4 py-2 text-white bg-green-500 rounded cursor-pointer hover:bg-green-700">
-                    Upload Form
-                    <input type="file" class="hidden" />
-                </label>
+                <a href="/path-to-manual-form.pdf" download class="inline-block px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">Download Form</a>
+                <form action="" id="uploadForm">
+                    <label class="inline-block px-4 py-2 text-white bg-green-500 rounded cursor-pointer hover:bg-green-700">
+                        Upload Form
+                        <input type="file" name="form" class="hidden" id="formFile"/>
+                    </label>
+                </form>
             </div>
-        </div> 
+        </div>
     </nav>
     {{-- <div class="flex p-5 items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
         <button type="button"
@@ -156,6 +157,73 @@
             @endguest
         </button>
     </div> --}}
+
+    {{-- <script>
+        $(document).ready(function() {
+            //insert application details
+    
+            $("#uploadForm").submit(function(e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('manual.job.store') }}",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response) {
+                        swal("Success", response.message, "success");
+                        $("#uploadForm").trigger("reset");
+                        window.open("/", "_self")
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Unable to Upload')
+                        console.error('Error:', error);
+                    }
+                })
+            })
+        });
+    </script> --}}
+
+    <script>
+        $(document).ready(function() {
+            // Event listener for file input change
+            $('#formFile').change(function() {
+                // Check if a file has been selected
+                if (this.files && this.files[0]) {
+                    // Trigger the form submit
+                    $('#uploadForm').submit();
+                }
+            });
+    
+            // Form submit handler
+            $("#uploadForm").submit(function(e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('manual.job.store') }}",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response) {
+                        swal("Success", response.message, "success");
+                        $("#uploadForm").trigger("reset");
+                        window.open("/", "_self");
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Unable to Upload');
+                        console.error('Error:', error);
+                    }
+                });
+            });
+        });
+    </script>
+    
 
 
     @section('content')

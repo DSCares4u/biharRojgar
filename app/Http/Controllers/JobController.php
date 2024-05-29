@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\ManualJob;
 use Illuminate\Http\Request;
 use Validator;
 use Illuminate\Support\Facades\Http;
@@ -53,6 +54,78 @@ class JobController extends Controller
                     'message' => "Unable to add your Request"
                 ], 500);
             }
+        }
+    }
+
+    public function manualJobIndex(){
+        $job = ManualJob::orderBy('created_at', 'desc')->get();
+        if ($job->count() > 0) {
+            return response()->json([
+                'status' => 200,
+                'data' => $job
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'data' => "No Records found"
+            ], 404);
+        }
+    }
+
+    public function manualStore(Request $request){
+        $validator = Validator::make($request->all(), [
+            'form' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'errors' => $validator->messages()
+            ], 422);
+        }
+
+            // Image Work
+
+        if ($request->hasFile('form')) {
+            $form = time() .  "." . $request->form->extension();        //upload on public/photo/image/filename
+            $request->form->move(public_path("image/manualJob/form"), $form);
+
+            } else {
+            return response()->json([
+                'status' => 422,
+                'errors' => ['form' => 'form is required.']
+            ], 422);
+        }
+            $job = ManualJob::create([
+                'form' => $form,          
+            ]);
+    
+            if ($job) {
+                return response()->json([
+                    'status' => 200,
+                    'message' => "We Will Connect You Soon"
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => 500,
+                    'message' => "Unable to add your Request"
+                ], 500);
+            }
+    }
+
+    public function ManualJobshow($id){
+        $job = ManualJob::find($id);
+        if($job){
+            return response()->json([
+                'status' => 200,
+                'data' => $job
+            ], 200);
+        }
+        else{
+            return response()->json([
+                'status' => 404,
+                'message' => "No call Found"
+            ], 404);
         }
     }
 
@@ -116,6 +189,23 @@ class JobController extends Controller
 
     public function destroy($id){
         $job  = Job::find($id);
+        if($job){
+            $job->delete();
+            return response()->json([
+                'status' => 200,
+                'message' => "Job Deleted"
+            ], 200);
+        }
+        else{
+            return response()->json([
+                'status' => 500,
+                'message' => "No Job Found"
+            ], 500);
+        }       
+    }
+
+    public function manualJobDelete($id){
+        $job  = ManualJob::find($id);
         if($job){
             $job->delete();
             return response()->json([

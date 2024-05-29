@@ -30,7 +30,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 Route::post('/register',[UserController::class,'store'])->name('register.store');
 Route::post('/login',[UserController::class,'login'])->name('login.submit');
 Route::get('/register',[UserController::class,'index'])->name('register.index');
@@ -49,6 +48,12 @@ Route::get('/hire-plan',[HirePlanController::class,'index'])->name('hire.plan.in
 Route::get('/hire-plan/view/{id}',[HirePlanController::class,'show']);
 Route::put('/hire-plan/edit/{id}',[HirePlanController::class,'update']);
 Route::delete('/hire-plan/delete/{id}',[HirePlanController::class,'destroy']);
+
+Route::post('/manual-job',[JobController::class,'manualStore'])->name('manual.job.store');
+Route::get('/manual-job',[JobController::class,'manualJobIndex'])->name('manual.job.index');
+Route::get('/manual-job/view/{id}',[JobController::class,'manualJobShow']);
+Route::put('/manual-job/edit/{id}',[JobController::class,'manualJobUpdate']);
+Route::delete('/manual-job/delete/{id}',[JobController::class,'manualJobDelete']);
 
 Route::post('/job',[JobController::class,'store'])->name('job.store');
 Route::get('/job',[JobController::class,'index'])->name('job.index');

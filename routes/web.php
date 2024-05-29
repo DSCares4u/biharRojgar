@@ -49,13 +49,6 @@ Route::controller(AuthOtpController::class)->group(function(){
 
 Route::get('/get-district-and-state', [JobController::class, 'getDistrictAndState']);
 
-// Route::get('/otp-login', [AuthOtpController::class, 'login'])->name('otp.login');
-// Route::post('/generate-otp', [AuthOtpController::class, 'generate'])->name('otp.generate');
-// Route::get('/otp-verification', [AuthOtpController::class, 'verification'])->name('otp.verification');
-
-// Route::get('/sarkari-yojna', function () {
-//     return view('home.sarkariYojna');
-// });
 Route::get('/sarkari-yojna-form/{id}', function () {
     return view('home.sarkariYojnaForm');
 });
@@ -109,6 +102,9 @@ Route::get('/admin/manage/yojna-category/insert',[AdminController::class,'insert
 
 Route::get('/admin/manage/sarkari-job',[AdminController::class,'manageSarkariJob']);
 Route::get('/admin/manage/sarkari-job/insert',[AdminController::class,'insertSarkariJob']);
+
+Route::get('/admin/manage/manual-job',[AdminController::class,'manageManualJob']);
+Route::get('/admin/manage/manual-job/insert',[AdminController::class,'insertManualJob']);
 
 Route::get('/admin/manage/yojna-form',[AdminController::class,'manageYojnaForm']);
 Route::get('/admin/manage/yojna-form/insert',[AdminController::class,'insertYojnaForm']);
