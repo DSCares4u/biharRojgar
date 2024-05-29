@@ -50,7 +50,7 @@
                             <div class="button flex justify-between ml-10 mt-8">
                                 <div class="previous">
                                     <a
-                                        href="/get-job"class="bg-[#1B9CFC] hover:bg-[#57aff7] rounded px-3 py-1 text-white">Previous</a>
+                                        href="/add-candidate"class="bg-[#1B9CFC] hover:bg-[#57aff7] rounded px-3 py-1 text-white">Previous</a>
                                 </div>
                                 <div class="next">
                                     <button class="bg-[#EA2027] hover:bg-[#ff4747] rounded px-3 py-1 text-white">Save &

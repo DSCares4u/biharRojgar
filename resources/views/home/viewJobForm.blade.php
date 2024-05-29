@@ -13,7 +13,7 @@
             <div class="mb-4">
                 <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
                 <div id="email"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight bg-gray-100">
+                    class="shadow lowercase appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight bg-gray-100">
                 </div>
             </div>
             <div class="mb-4">

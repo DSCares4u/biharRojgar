@@ -25,54 +25,59 @@ class YojnaController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validator = Yojna::make($request->all(), [
-            'ename' => 'required|string|min:3',                      
-            'hname' => 'required|string|min:3',                      
-            'description' => 'required|string|min:3',                      
-            'features' => 'required|string|min:3',
-            'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo                      
-        ]);
+{
+    // Validate the request
+    $validator = Validator::make($request->all(), [
+        'ename' => 'required|string|min:3',                      
+        'hname' => 'required|string|min:3',                      
+        'description' => 'required|string|min:3',                      
+        'features' => 'required|string|min:3',
+        'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
+    ]);
 
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 422,
-                'errors' => $validator->messages()
-            ], 422);
-        }
+    // Check if validation fails
+    if ($validator->fails()) {
+        return response()->json([
+            'status' => 422,
+            'errors' => $validator->messages()
+        ], 422);
+    }
 
-        if ($request->hasFile('logo')) {
-            $logo = "LO" . time() . "." . $request->logo->extension();
-            $request->logo->move(public_path("image/yojna/logo"), $logo);
-        } else {
-            return response()->json([
-                'status' => 422,
-                'errors' => ['logo' => 'Photo is required.']
-            ], 422);
-        }    
-            
-            $yojna = Yojna::create([
-                'ename' => $request->ename,
-                'hname' => $request->hname,
-                'description' => $request->description,
-                'features' => $request->features,
-                'logo'=>$logo,     
-                'yojna_category_id'=>$request->yojna_category_id                       
-            ]);    
-           
+    // Handle the file upload
+    if ($request->hasFile('logo')) {
+        $logo = "LO" . time() . "." . $request->logo->extension();
+        $request->logo->move(public_path("image/yojna/logo"), $logo);
+    } else {
+        return response()->json([
+            'status' => 422,
+            'errors' => ['logo' => 'Logo is required.']
+        ], 422);
+    }
 
-            if ($yojna) {
-                return response()->json([
-                    'status' => 200,
-                    'message' => "We Will Connect You Soon"
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => 500,
-                    'message' => "Unable to add your Request"
-                ], 500);
-            }
-        }
+    // Create the Yojna record
+    $yojna = Yojna::create([
+        'ename' => $request->ename,
+        'hname' => $request->hname,
+        'description' => $request->description,
+        'features' => $request->features,
+        'logo' => $logo,
+        'yojna_category_id' => $request->yojna_category_id                       
+    ]);
+
+    // Check if the Yojna was created successfully
+    if ($yojna) {
+        return response()->json([
+            'status' => 200,
+            'message' => "We will connect with you soon."
+        ], 200);
+    } else {
+        return response()->json([
+            'status' => 500,
+            'message' => "Unable to add your request."
+        ], 500);
+    }
+}
+
     
 
     public function show($id)

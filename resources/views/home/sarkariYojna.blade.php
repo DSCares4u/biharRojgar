@@ -36,7 +36,7 @@
                             table.append(`
                                 <a href="/sarkari-yojna-form/${data.id}" class="forms w-1/4 mt-4 mb-4 py-2 px-2">
                                     <div class="image flex justify-center mb-2">
-                                        <img src="/image/yojna/${data.logo}" class="shadow rounded-sm w-[25%]"
+                                        <img src="/image/yojna/logo/${data.logo}" class="shadow rounded-sm w-[25%]"
                                             alt="">
                                     </div>
                                     <div class="title text-center">
