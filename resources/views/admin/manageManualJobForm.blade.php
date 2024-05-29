@@ -7,7 +7,7 @@
             <form action="" id="uploadForm">
                 <label class="inline-block px-4 py-2 text-white bg-green-500 rounded cursor-pointer hover:bg-green-700">
                     Upload New Form
-                    <input type="file" name="form" class="hidden" id="formFile"/>
+                    <input type="file" name="form" class="hidden" id="formFile" />
                 </label>
             </form>
         </div>
@@ -42,8 +42,12 @@
                     <tr class="mt-5 capitalize">
                         <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">3</td>
                         <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">
-                            {{-- <button class="mx-8 text-sm"><svg xmlns="http://www.w3.org/2000/svg"class="h-5" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></button> --}}
-
+                            <a href="/image/photo/1715084780.jpg" target="_blank" class="inline-block px-4 py-2">
+                                <img src="/image/photo/1715084780.jpg" class="w-16" alt="Form Thumbnail">
+                            </a>
+                        </td>
+                    </tr>
+                        <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">
                             <button class=" py-1 px-2  "><svg
                                     class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                                     xmlns="http://www.w3.org/2000/svg" fill="currentColor"
@@ -95,12 +99,13 @@
 
                         data.forEach((data) => {
                             table.append(`
-                       <tr class="mt-5">
-                           <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.id}</td> 
-                           <a href="">
+                            <tr class="mt-5 capitalize">
+                            <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.id}</td>
                             <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">
-                                        <img src="/image/manualJob/form/${data.form}" class="shadow rounded-sm w-[5%]" alt="">
-                            </td> </a>
+                                <a href="/image/manualJob/form/${data.form}" target="_blank" class="inline-block px-4 py-2">
+                                <img src="/image/manualJob/form/${data.form}" class="w-16" alt="Form Thumbnail">
+                            </a>
+                            </td>
                            <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">
                                {{-- <button class="mx-8 text-sm"><svg xmlns="http://www.w3.org/2000/svg"class="h-5" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></button> --}}
 
@@ -120,39 +125,39 @@
             callingHire();
         });
 
-    $(document).ready(function() {
-        // Event listener for file input change
-        $('#formFile').change(function() {
-            // Check if a file has been selected
-            if (this.files && this.files[0]) {
-                // Trigger the form submit
-                $('#uploadForm').submit();
-            }
-        });
-
-        // Form submit handler
-        $("#uploadForm").submit(function(e) {
-            e.preventDefault();
-            var formData = new FormData(this);
-            $.ajax({
-                type: "POST",
-                url: "{{ route('manual.job.store') }}",
-                data: formData,
-                dataType: "JSON",
-                contentType: false,
-                cache: false,
-                processData: false,
-                success: function(response) {
-                    swal("Success", response.message, "success");
-                    $("#uploadForm").trigger("reset");
-                    window.open("/", "_self");
-                },
-                error: function(xhr, status, error) {
-                    alert('Unable to Upload');
-                    console.error('Error:', error);
+        $(document).ready(function() {
+            // Event listener for file input change
+            $('#formFile').change(function() {
+                // Check if a file has been selected
+                if (this.files && this.files[0]) {
+                    // Trigger the form submit
+                    $('#uploadForm').submit();
                 }
             });
+
+            // Form submit handler
+            $("#uploadForm").submit(function(e) {
+                e.preventDefault();
+                var formData = new FormData(this);
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('manual.job.store') }}",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response) {
+                        swal("Success", response.message, "success");
+                        $("#uploadForm").trigger("reset");
+                        window.open("/admin/manage/manual-job", "_self");
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Unable to Upload');
+                        console.error('Error:', error);
+                    }
+                });
+            });
         });
-    });
-</script>
+    </script>
 @endsection
