@@ -32,6 +32,8 @@ class YojnaController extends Controller
         'hname' => 'required|string|min:3',                      
         'description' => 'required|string|min:3',                      
         'features' => 'required|string|min:3',
+        'documents' => 'required|string|min:3',
+        'fees' => 'required|string|min:3',
         'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
     ]);
 
@@ -59,6 +61,8 @@ class YojnaController extends Controller
         'ename' => $request->ename,
         'hname' => $request->hname,
         'description' => $request->description,
+        'fees' => $request->fees,
+        'documents' => $request->documents,
         'features' => $request->features,
         'logo' => $logo,
         'yojna_category_id' => $request->yojna_category_id                       

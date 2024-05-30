@@ -18,8 +18,10 @@ return new class extends Migration
             $table->string('hname');
             $table->string('ename');
             $table->string('logo');
-            $table->string('features');
-            $table->string('description');
+            $table->longText('features');
+            $table->longText('description');
+            $table->longText('documents');
+            $table->longText('fees');
             $table->foreignId('yojna_category_id')->constrained()->onDelete("cascade");
             $table->timestamps();
         });

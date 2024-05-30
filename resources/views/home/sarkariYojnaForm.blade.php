@@ -2,32 +2,77 @@
 @section('content')
     <div class="container mx-auto flex font-sans">
 
-        <div class="w-3/4 mt-10 p-10" id="callingYojnaFeatures">
-            <h5 class="text-3xl font-extrabold">Trademark Registration</h5>
-            <p class="mt-5 text-xl text-gray-500">A Trademark or service mark is a word, name, symbol, or device used to
-                indicate the source, quality and ownership of a product or service.</p>
-            <ul class="mt-8 text-sm">
-                <li class="mt-4 flex">
-                    <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our
-                    Trademark Registration Service, designed to navigate the legal landscape and secure your unique
-                    trademark effortlessly.
-                </li>
-                <li class="mt-4 flex">
-                    <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our
-                    Trademark Registration Service, designed to navigate the legal landscape and secure your unique
-                    trademark effortlessly.
-                </li>
-                <li class="mt-4 flex">
-                    <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with
-                    Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique
-                    trademark effortlessly.
-                </li>
-                <li class="mt-4 flex">
-                    <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with
-                    Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique
-                    trademark effortlessly.
-                </li>
-            </ul>
+        <div class="w-3/4 p-10" id="callingYojnaFeatures">
+            <div>
+                <h5 class="text-3xl font-extrabold">Trademark Registration</h5>
+                <p class="mt-5 text-xl text-gray-500 line-clamp-2" id="description">A Trademark or service mark is a word,
+                    name, symbol, or device used to
+                    indicate the source, quality and ownership of a product or service. Lorem ipsum dolor sit amet
+                    consectetur adipisicing elit. Sit, reiciendis quam alias ratione similique unde nobis dolores sed illum?
+                    Deserunt exercitationem sapiente quod iusto blanditiis ad pariatur error eos repellat rerum iure
+                    voluptatem asperiores esse, molestiae optio! Omnis incidunt voluptas provident ab atque saepe.
+                    Laboriosam numquam magnam ullam est earum quae totam assumenda, voluptatum magni fugiat omnis repellat
+                    explicabo autem alias odit nobis, eius itaque cum tenetur labore ea dolores! Inventore numquam nisi rem
+                    tempora modi quibusdam, in natus eveniet necessitatibus magnam assumenda, repellat omnis, provident
+                    quaerat quae repudiandae. Accusantium amet similique a ex saepe consequatur debitis in non quod.
+                </p>
+                <button id="toggleButton" class="mt-4 text-blue-500">Read More</button>
+
+                <h5 class="text-xl font-bold mt-5 underline">Benefits</h5>
+                <ul class="mt-3 text-sm">
+                    <li class="mt-4 flex">
+                        <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity
+                        with Our
+                        Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                        trademark effortlessly.
+                    </li>
+                    <li class="mt-4 flex">
+                        <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity
+                        with Our
+                        Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                        trademark effortlessly.
+                    </li>
+                    <li class="mt-4 flex">
+                        <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity
+                        with
+                        Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                        trademark effortlessly.
+                    </li>
+                    <li class="mt-4 flex">
+                        <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity
+                        with
+                        Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                        trademark effortlessly.
+                    </li>
+                </ul>
+                <h5 class="text-xl font-bold mt-5 underline">Documents Required</h5>
+                <ul class="mt-3 text-sm">
+                    <li class="mt-4 flex">
+                        <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity
+                        with Our
+                        Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                        trademark effortlessly.
+                    </li>
+                    <li class="mt-4 flex">
+                        <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity
+                        with Our
+                        Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                        trademark effortlessly.
+                    </li>
+                    <li class="mt-4 flex">
+                        <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity
+                        with
+                        Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                        trademark effortlessly.
+                    </li>
+                    <li class="mt-4 flex">
+                        <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity
+                        with
+                        Our Trademark Registration Service, designed to navigate the legal landscape and secure your unique
+                        trademark effortlessly.
+                    </li>
+                </ul>
+            </div>
         </div>
 
         <div class="bg-gray-100 w-1/4 float-end border border-gray mt-10">
@@ -40,25 +85,6 @@
                             placeholder="Name">
                         <p id="error-name" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
-                    {{-- <div class="flex justify-between">
-                            <div class="mb-2">
-                                <label for="gender" class="block text-gray-700 text-xs mb-1 ">Gender :</label>
-                                <select name="gender" id="gender"
-                                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
-                                    <option value="">Choose Gender</option>
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                    <option value="others">Others</option>
-                                </select>
-                                <p id="error-gender" class="text-red-500 text-xs font-semibold error-message"></p>
-                            </div>
-                            <div class=" mb-2">
-                                <label for="dob" class="block text-gray-700 text-xs mb-1 ">Date Of Birth :</label>
-                                <input type="date" id="dob" name="dob"
-                                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
-                                <p id="error-dob" class="text-red-500 text-xs font-semibold error-message"></p>
-                            </div>
-                        </div> --}}
                     <div class="mb-2">
                         <label for="mobile" class="block text-gray-700 text-xs mb-1 ">Mobile No. :</label>
                         <input type="tel" id="mobile" name="mobile"
@@ -80,25 +106,6 @@
                             placeholder="Email">
                         <p id="error-email" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
-                    {{-- <div class="flex justify-between gap-1">
-                            <div class=" mb-2">
-                                <label for="landmark" class="block text-gray-700 text-xs mb-1 ">Landmark :</label>
-                                <input type="text" id="landmark" name="landmark"
-                                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
-                            </div>
-                            <div class=" mb-2">
-                                <label for="village" class="block text-gray-700 text-xs mb-1 ">Village :</label>
-                                <input type="text" id="village" name="village"
-                                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
-                                <p id="error-village" class="text-red-500 text-xs font-semibold error-message"></p>
-                            </div>
-                        </div> --}}
-                    {{-- <div class=" mb-2">
-                            <label for="pincode" class="block text-gray-700 text-xs mb-1 ">Pincode :</label>
-                            <input type="number" id="pincode" name="pincode" onchange="getDistrictAndState()"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
-                            <p id="error-pincode" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div> --}}
                     <div class="flex gap-1">
                         <div class=" mb-2">
                             <label for="city" class="block text-gray-700 text-xs mb-1 ">City/Village :</label>
@@ -120,40 +127,56 @@
                         </select>
                         <p id="error-yojna_id" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
-                    {{-- <div class=" mb-2">
-                            <label for="photo" class="block text-gray-700 text-xs mb-1 ">Upload Your Photo :</label>
-                            <input type="file" id="photo" name="photo"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 ">
-                            <p id="error-photo" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div>
-                        <div class=" mb-2">
-                            <label for="id_proof" class="block text-gray-700 text-xs mb-1 ">Upload Your Id Proof :</label>
-                            <input type="file" id="id_proof" name="id_proof"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 ">
-                            <p id="error-id_proof" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div> --}}
                     <div class="mt-4">
                         <button type="submit"
                             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2">Submit</button>
                     </div>
                 </div>
             </form>
+            <div class="fees p-3">
+                <h5 class="text-xl font-bold mt-5 underline mb-3">Pricing Summary</h5>
+                <p class="text-sm font-medium flex gap-5 mt-2">Market Price: <span class="font-light text-green-700">Rs. 1500</span></p>
+                <p class="text-sm font-medium flex gap-5 mt-2">You Saved: <span class="font-light text-green-700">Rs. 1500</span></p>
+                <p class="text-sm font-medium flex gap-5 mt-2">Government Price: <span class="font-light text-green-700">Rs. 1500</span></p>
+                <p class="text-sm font-medium flex gap-5 mt-2">Total Price: <span class="font-light text-green-700">Rs. 4500</span></p>
+            </div>
         </div>
     </div>
 
-    <div class="w-full mt-20 p-10">
-        <h2 class="text-center text-3xl font-semibold uppercase">Enquire Now</h2>
-        <p class="text-gray-400 mt-5 text-xs">Vesta Elder Care services embodies integrity, professionalism
-            and care
-            provided by highly
-            trained
-            caregivers especially certified to provide empathetic and loving support to its patrons.</p>
-        <div class="phone mt-4 text-xl  flex text-green-500">
-            <p><i class="fa-solid fa-phone"></i> +91-8895456416</p>
+    <div class="w-full flex mt-8 p-10 border-t-gray-300 border">
+        <div class="w-1/4 p-5">
+            <div class="image text-center ">
+                <i class="fa-solid fa-pen-to-square text-5xl text-gray-500"></i>
+            </div>
+            <h5 class="font-semibold mt-4 text-center">Fill The Enquiry Form</h5>
+            <p class="text-gray-400 mt-3 text-center">Choose your required Registration and Add-Ons to get maximum </p>
         </div>
-        <div class="phone mt-4 text-xl  text-green-500">
-            <p><i class="fa-regular fa-envelope"></i> info@vestaeldercare.com</p>
+        <i class="fa-solid fa-arrow-right my-auto text-gray-500 text-3xl"></i>
+        <div class="w-1/4 p-5">
+            <div class="image text-center ">
+                <i class="fa-solid fa-phone text-5xl text-gray-500"></i>
+            </div>
+            <h5 class="font-semibold mt-4 text-center">Call From Us</h5>
+            <p class="text-gray-400 mt-3 text-center">We Will Call You For the Required Documents</p>
         </div>
+        <i class="fa-solid fa-arrow-right my-auto text-gray-500 text-3xl"></i>
+        <div class="w-1/4 p-5">
+            <div class="image text-center ">
+                <i class="fa-solid fa-check text-5xl text-gray-500"></i>
+            </div>
+            <h5 class="font-semibold mt-4 text-center">Verification Process</h5>
+            <p class="text-gray-400 mt-3 text-center">Documents And Form will be verified By Our Team</p>
+        </div>
+        <i class="fa-solid fa-arrow-right my-auto text-gray-500 text-3xl"></i>
+        <div class="w-1/4 p-5">
+            <div class="image text-center ">
+                <i class="fa-solid fa-download text-5xl text-gray-500"></i>
+            </div>
+            <h5 class="font-semibold mt-4 text-center">Get Your Certificate</h5>
+            <p class="text-gray-400 mt-3 text-center">We will Follow-up and Respond to any objections raised and get your
+                Certificate </p>
+        </div>
+
     </div>
 
     <script>
@@ -200,7 +223,7 @@
                     select.empty();
                     select.append(`
                     <option value="">Select Plan</option>`);
-                        response.data.forEach((plan) => {
+                    response.data.forEach((plan) => {
                         let isSelected = plan.id == selectedId ? 'selected' : '';
                         select.append(`
                     <option value="${plan.id}" ${isSelected}>${plan.ename}</option>
@@ -238,21 +261,49 @@
                             <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>${feature}</li>`
                         ).join('');
 
+                    response.data.forEach((docs, index) => {
+                        // Remove square brackets and double quotes from the features string
+                        let cleanedDocuments = docs.documents.replace(/[\[\]"]/g, '');
+
+                        // Split the features by comma and remove the first and last element
+                        let array = cleanedDocuments.split(',');
+
+                        // Map each feature to an HTML list item and join them into a single string
+                        let documents = array.map(document =>
+                            `<li class="mt-4 flex">
+                            <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>${document}</li>`
+                        ).join('');
+
                         select.append(`
-                                <h5 class="text-3xl font-extrabold">${plan.ename}</h5>
-                                <p class="mt-5 text-xl text-gray-500">${plan.description}</p>
-                                <ul class="mt-8 text-sm">
-                                    <li class="mt-4 flex">
-                                        <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>Safeguard your brand identity with Our
-                                        Trademark Registration Service, designed to navigate the legal landscape and secure your unique
-                                        trademark effortlessly.
-                                    </li>
-                                    ${features}
-                                </ul>
+                                <div>
+                                    <h5 class="text-3xl font-extrabold">${plan.ename}</h5>
+                                    <p class="mt-5 text-xl text-gray-500 line-clamp-2 description">${plan.description}</p>
+                                    <button class="toggleButton mt-4 text-blue-500">Read More</button>
+                                    <h5 class="text-xl font-bold mt-5 underline">Benefits</h5>
+                                    <ul class="mt-3 text-sm">
+                                        ${features}
+                                    </ul>
+                                    <h5 class="text-xl font-bold mt-5 underline">Documents Required</h5>
+                                    <ul class="mt-3 text-sm">
+                                        ${documents}
+                                    </ul>
+                                </div>
                             `);
+                    });
                     });
                 }
             });
+        });
+
+        $(document).on('click', '.toggleButton', function() {
+            const description = $(this).siblings('.description');
+            if (description.hasClass('line-clamp-2')) {
+                description.removeClass('line-clamp-2');
+                $(this).text('Show Less');
+            } else {
+                description.addClass('line-clamp-2');
+                $(this).text('Read More');
+            }
         });
     </script>
 @endsection

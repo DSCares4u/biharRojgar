@@ -36,6 +36,12 @@
                 background-color: #ffffff;
             }
         }
+        .line-clamp-2 {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
     </style>
 </head>
 
@@ -123,15 +129,24 @@
                     </li>
                 </ul>
             </div>
+            @auth
             <div class="flex space-x-4 md:order-3 mt-4 md:mt-0">
-                <a href="/path-to-manual-form.pdf" download class="inline-block px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">Download Form</a>
+                {{-- <a href="/image/photo/1715084780.jpg" target="_blank" class="inline-block px-4 py-2">
+                    <img src="/image/photo/1715084780.jpg" class="w-16" alt="Form Thumbnail">
+                </a> --}}
+                <a href="/image/manual_form.jpg" download class="inline-block px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">Download Form</a>
                 <form action="" id="uploadForm">
                     <label class="inline-block px-4 py-2 text-white bg-green-500 rounded cursor-pointer hover:bg-green-700">
                         Upload Form
                         <input type="file" name="form" class="hidden" id="formFile"/>
                     </label>
                 </form>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>  
             </div>
+            @endauth
         </div>
     </nav>
     {{-- <div class="flex p-5 items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -144,7 +159,7 @@
                     class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hi,
                     {{ auth()->user()->name }}</a>
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                 @csrf
                 <button type="submit">Logout</button>
             </form>   

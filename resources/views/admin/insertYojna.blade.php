@@ -21,7 +21,7 @@
                                 required>
                         </div>
                         <div class="mb-4">
-                            <label for="features" class="block text-sm font-medium text-gray-700">Features</label>
+                            <label for="features" class="block text-sm font-medium text-gray-700">Yojna Features /Benefits</label>
                                 <textarea name="features" id="features" rows="3" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                                     required ></textarea>
                         </div>
@@ -31,10 +31,20 @@
                                     required ></textarea>
                         </div>
                         <div class="mb-4">
+                            <label for="documents" class="block text-sm font-medium text-gray-700">Required Documents</label>
+                                <textarea name="documents" id="documents" rows="3" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                    required ></textarea>
+                        </div>
+                        <div class="mb-4">
                             <label for="" class="block text-sm font-medium text-gray-700">Select Category</label>
                             <select name="yojna_category_id" id="callingPlans" class="w-1/2 shadow-sm sm:text-sm rounded-md"
                                 required></select>
                         </div>
+                        <label for="fees" class="block text-sm font-medium text-gray-700">Yojna Fees </label>
+                        <input type="number" id="fees" name="fees"
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            required>
+
                         <div class="mb-4 w-1/2">
                             <label for="logo" class="block text-sm font-medium text-gray-700">Image</label>
                             <input type="file" id="logo" name="logo" class="" required>
@@ -60,6 +70,11 @@
 
                 features = features.filter(feature => feature.trim() !== '');
                 formData.append('features', JSON.stringify(features));
+
+                let documents = $("#documents").val().split("\n");
+
+                documents = documents.filter(document => document.trim() !== '');
+                formData.append('documents', JSON.stringify(documents));
 
                 $.ajax({
                     type: "POST",
