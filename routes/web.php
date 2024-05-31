@@ -26,6 +26,8 @@ Route::post('/logout', [AuthOtpController::class, 'logout'])->name('logout');
 Route::middleware("auth")->group(function (){
     Route::get('/add-candidate',[HomeController::class,'addCandidate']);
 
+    Route::get('/manual-form',[HomeController::class,'manualForm']);
+
     Route::get('/viewJobForm',[HomeController::class,'viewJobForm']);
     Route::get('/sarkari-job/confirm',[HomeController::class,'sarkariJobConfirm']);
     Route::get('/private-job/confirm',[HomeController::class,'PrivateJobConfirm']); 

@@ -177,7 +177,7 @@
             };
             $.ajax({
                 type: 'PUT',
-                url: `/api/documents/edit/${userId}`,
+                url: `/api/document/edit/${userId}`,
                 data: formData,
                 success: function(response) {
                     swal("Success", response.message, "message");

@@ -131,16 +131,9 @@
             </div>
             @auth
             <div class="flex space-x-4 md:order-3 mt-4 md:mt-0">
-                {{-- <a href="/image/photo/1715084780.jpg" target="_blank" class="inline-block px-4 py-2">
-                    <img src="/image/photo/1715084780.jpg" class="w-16" alt="Form Thumbnail">
-                </a> --}}
                 <a href="/image/manual_form.jpg" download class="inline-block px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">Download Form</a>
-                <form action="" id="uploadForm">
-                    <label class="inline-block px-4 py-2 text-white bg-green-500 rounded cursor-pointer hover:bg-green-700">
-                        Upload Form
-                        <input type="file" name="form" class="hidden" id="formFile"/>
-                    </label>
-                </form>
+                <a href="/manual-form"class="inline-block px-4 py-2 text-white bg-green-500 rounded cursor-pointer hover:bg-green-700">Upload Form</a>
+
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                     @csrf
                     <button type="submit">Logout</button>
@@ -172,74 +165,6 @@
             @endguest
         </button>
     </div> --}}
-
-    {{-- <script>
-        $(document).ready(function() {
-            //insert application details
-    
-            $("#uploadForm").submit(function(e) {
-                e.preventDefault();
-                var formData = new FormData(this);
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('manual.job.store') }}",
-                    data: formData,
-                    dataType: "JSON",
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    success: function(response) {
-                        swal("Success", response.message, "success");
-                        $("#uploadForm").trigger("reset");
-                        window.open("/", "_self")
-                    },
-                    error: function(xhr, status, error) {
-                        alert('Unable to Upload')
-                        console.error('Error:', error);
-                    }
-                })
-            })
-        });
-    </script> --}}
-
-    <script>
-        $(document).ready(function() {
-            // Event listener for file input change
-            $('#formFile').change(function() {
-                // Check if a file has been selected
-                if (this.files && this.files[0]) {
-                    // Trigger the form submit
-                    $('#uploadForm').submit();
-                }
-            });
-    
-            // Form submit handler
-            $("#uploadForm").submit(function(e) {
-                e.preventDefault();
-                var formData = new FormData(this);
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('manual.job.store') }}",
-                    data: formData,
-                    dataType: "JSON",
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    success: function(response) {
-                        swal("Success", response.message, "success");
-                        $("#uploadForm").trigger("reset");
-                        window.open("/", "_self");
-                    },
-                    error: function(xhr, status, error) {
-                        alert('Unable to Upload');
-                        console.error('Error:', error);
-                    }
-                });
-            });
-        });
-    </script>
-    
-
 
     @section('content')
     @show

@@ -107,16 +107,53 @@
                         <p id="error-email" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="flex gap-1">
-                        <div class=" mb-2">
-                            <label for="city" class="block text-gray-700 text-xs mb-1 ">City/Village :</label>
+                        <div class=" mb-2 w-1/2">
+                            <label for="city" class="block text-gray-700 text-xs mb-1 ">City:</label>
                             <input type="text" id="city" name="city"
                                 class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
                             <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
-                        <div class=" mb-2">
-                            <label for="state" class="block text-gray-700 text-xs mb-1 ">State :</label>
-                            <input type="text" id="state" name="state"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                        <div class=" mb-2 w-1/2">
+                            <label for="state" class="block text-gray-700 text-xs mb-1">State :</label>
+                            <select id="state" name="state" class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                                <option value="">Select State</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                                <option value="Lakshadweep">Lakshadweep</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Puducherry">Puducherry</option>
+                                <option value="Ladakh">Ladakh</option>
+                                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                            </select>                            
                             <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                     </div>
@@ -133,12 +170,26 @@
                     </div>
                 </div>
             </form>
-            <div class="fees p-3">
-                <h5 class="text-xl font-bold mt-5 underline mb-3">Pricing Summary</h5>
-                <p class="text-sm font-medium flex gap-5 mt-2">Market Price: <span class="font-light text-green-700">Rs. 1500</span></p>
-                <p class="text-sm font-medium flex gap-5 mt-2">You Saved: <span class="font-light text-green-700">Rs. 1500</span></p>
-                <p class="text-sm font-medium flex gap-5 mt-2">Government Price: <span class="font-light text-green-700">Rs. 1500</span></p>
-                <p class="text-sm font-medium flex gap-5 mt-2">Total Price: <span class="font-light text-green-700">Rs. 4500</span></p>
+
+            <div class="w-[95%] bg-white border p-3 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
+                <div class="price mt-2 mb-4">
+                    <h3 class="text-lg font-semibold underline">Pricing Summary</h3>
+                </div>
+                <ul id="yojnaFees">
+                    <li class="flex justify-between text-base text-gray-500">
+                        <p>Market Price</p>
+                        <p class="font-bold">Rs. 500</p>
+                    </li>
+                    <li class="flex justify-between text-base text-gray-500">
+                        <p>Platform Fees</p>
+                        <p class="font-bold">Rs. 500</p>
+                    </li>
+                    <hr>
+                    <li class="flex justify-between text-base text-gray-500">
+                        <p>Total Payment</p>
+                        <p class="font-bold">Rs. 1000</p>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -214,23 +265,50 @@
             })
 
             $.ajax({
-                type: "GET",
-                url: "{{ route('yojna.index') }}",
-                success: function(response) {
-                    let select = $("#callingYojna");
-                    let selectedId = getIdFromUrlPath();
+    type: "GET",
+    url: "{{ route('yojna.index') }}",
+    success: function(response) {
+        let select = $("#callingYojna");
+        let selectedId = getIdFromUrlPath();
 
-                    select.empty();
-                    select.append(`
-                    <option value="">Select Plan</option>`);
-                    response.data.forEach((plan) => {
-                        let isSelected = plan.id == selectedId ? 'selected' : '';
-                        select.append(`
-                    <option value="${plan.id}" ${isSelected}>${plan.ename}</option>
-                    `);
-                    });
-                }
-            });
+        select.empty();
+        select.append(`
+            <option value="">Select Plan</option>`);
+        response.data.forEach((plan) => {
+            let isSelected = plan.id == selectedId ? 'selected' : '';
+            select.append(`
+                <option value="${plan.id}" data-plan-charge="${plan.fees}" ${isSelected}>${plan.ename}</option>
+            `);
+        });
+
+        // Trigger the change event to update the fee display automatically
+        select.trigger('change');
+    }
+});
+
+$('#callingYojna').change(function() {
+    let selectedPlan = $(this).children("option:selected");
+    let PlanFee = selectedPlan.data('plan-charge') || 0; // Default to 0 if no plan is selected
+
+    // Update the fee display
+    $('#yojnaFees').html(
+        `
+        <li class="flex justify-between text-base text-gray-500">
+            <p>Market Price</p>
+            <p class="font-bold">Rs. ${PlanFee}</p>
+        </li>
+        <li class="flex justify-between text-base text-gray-500">
+            <p>Platform Fees</p>
+            <p class="font-bold">Rs. 500</p>
+        </li>
+        <hr>
+        <li class="flex justify-between text-base text-gray-500">
+            <p>Total Payment</p>
+            <p class="font-bold">Rs. ${PlanFee + 500}</p>
+        </li>`
+    );
+});
+
 
             // Function for taking id from URL
             function getIdFromUrlPath() {
@@ -277,7 +355,7 @@
                         select.append(`
                                 <div>
                                     <h5 class="text-3xl font-extrabold">${plan.ename}</h5>
-                                    <p class="mt-5 text-xl text-gray-500 line-clamp-2 description">${plan.description}</p>
+                                    <p class="mt-5 text-base text-gray-500 line-clamp-2 description">${plan.description}</p>
                                     <button class="toggleButton mt-4 text-blue-500">Read More</button>
                                     <h5 class="text-xl font-bold mt-5 underline">Benefits</h5>
                                     <ul class="mt-3 text-sm">

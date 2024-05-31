@@ -16,6 +16,11 @@ return new class extends Migration
         Schema::create('manual_jobs', function (Blueprint $table) {
             $table->id();
             $table->string('form');
+            $table->string('name');
+            $table->string('mobile');
+            $table->string('id_proof');
+            $table->string('certificate');
+            $table->string('photo');
             $table->timestamps();
         });
     }

@@ -49,4 +49,8 @@ class HomeController extends Controller
     public function viewJobForm(){
         return view('home.viewJobForm');
     }
+
+    public function manualForm(){
+        return view('home.manualForm');
+    }
 }

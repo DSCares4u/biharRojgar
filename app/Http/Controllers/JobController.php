@@ -75,6 +75,11 @@ class JobController extends Controller
     public function manualStore(Request $request){
         $validator = Validator::make($request->all(), [
             'form' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
+            'name' => 'required|string|min:3',
+            'mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
+            'id_proof' => 'required|image|mimes:jpeg,png,jpg,gif,pdf,svg|max:10240',  // Add validation for photo
+            'certificate' => 'required|mimes:jpeg,png,jpg,gif,pdf,svg|max:10240',  // Add validation for photo
+            'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
         ]);
 
         if ($validator->fails()) {
@@ -84,7 +89,7 @@ class JobController extends Controller
             ], 422);
         }
 
-            // Image Work
+            // Image & document Work
 
         if ($request->hasFile('form')) {
             $form = time() .  "." . $request->form->extension();        //upload on public/photo/image/filename
@@ -93,11 +98,46 @@ class JobController extends Controller
             } else {
             return response()->json([
                 'status' => 422,
-                'errors' => ['form' => 'form is required.']
+                'errors' => ['form' => 'Form is required.']
+            ], 422);
+        }
+        if ($request->hasFile('photo')) {
+            $photo = "IMG".time() .  "." . $request->photo->extension();        //upload on public/photo/image/filename
+            $request->photo->move(public_path("image/manualJob/photo"), $photo);
+
+            } else {
+            return response()->json([
+                'status' => 422,
+                'errors' => ['photo' => 'Photo is required.']
+            ], 422);
+        }
+        if ($request->hasFile('id_proof')) {
+            $id_proof = "ID".time() .  "." . $request->id_proof->extension();        //upload on public/photo/image/filename
+            $request->id_proof->move(public_path("image/manualJob/id_proof"), $id_proof);
+
+            } else {
+            return response()->json([
+                'status' => 422,
+                'errors' => ['id_proof' => 'Id Proof is required.']
+            ], 422);
+        }
+        if ($request->hasFile('certificate')) {
+            $certificate = "DOC".time() .  "." . $request->certificate->extension();        //upload on public/photo/image/filename
+            $request->certificate->move(public_path("image/manualJob/certificate"), $certificate);
+
+            } else {
+            return response()->json([
+                'status' => 422,
+                'errors' => ['certificate' => 'Certificate is required.']
             ], 422);
         }
             $job = ManualJob::create([
                 'form' => $form,          
+                'name' => $request->name,
+                'mobile' => $request->mobile,         
+                'id_proof' => $id_proof,          
+                'certificate' => $certificate,          
+                'photo' => $photo,          
             ]);
     
             if ($job) {
@@ -113,7 +153,7 @@ class JobController extends Controller
             }
     }
 
-    public function ManualJobshow($id){
+    public function manualJobshow($id){
         $job = ManualJob::find($id);
         if($job){
             return response()->json([
