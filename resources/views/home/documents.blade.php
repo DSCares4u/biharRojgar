@@ -15,11 +15,13 @@
                                         <label for="photo" class="block text-sm mb-3 ">Upload Your
                                             Photo</label>
                                         <input type="file" id="photo" name="photo">
+                                        <p id="error-photo" class="text-red-500 text-xs font-semibold error-message"></p>
                                     </div>
                                     <div class="mb-4 items-center">
                                         <label for="signature" class="block text-sm mb-3 ">Upload Your
                                             Signature</label>
                                         <input type="file" id="signature" name="signature">
+                                        <p id="error-signature" class="text-red-500 text-xs font-semibold error-message"></p>
                                     </div>
                                     <div class="flex gap-3">
                                         <div class="mb-4 items-center">
@@ -110,40 +112,123 @@
         </div>
     </div>
     <script>
-        $(document).ready(function() {
-            //insert new call request
+        // $(document).ready(function() {
+        //     //insert new call request
 
-            $("#addDocument").submit(function(e) {
-                e.preventDefault();
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('document.store') }}",
-                    data: new FormData(this),
-                    dataType: "JSON",
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    success: function(response) {
-                        swal("Success", response.message, "success");
-                        $("#addDocument").trigger("reset");
-                        window.open("/", "_self")
-                    }
-                })
-            })
-        });
+        //     $("#addDocument").submit(function(e) {
+        //         e.preventDefault();
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "{{ route('document.store') }}",
+        //             data: new FormData(this),
+        //             dataType: "JSON",
+        //             contentType: false,
+        //             cache: false,
+        //             processData: false,
+        //             success: function(response) {
+        //                 swal("Success", response.message, "success");
+        //                 $("#addDocument").trigger("reset");
+        //                 window.open("/", "_self")
+        //             }
+        //         })
+        //     })
+        // });
 
-        $(document).ready(function() {
+//         $(document).ready(function() {
+//     function fetchJobDetailsAndOpenModal() {
+//         // Ensure userId is available
+//         let userId = {{ auth()->user()->id }};
+        
+//         if (userId) {
+//             $.ajax({
+//                 type: 'GET',
+//                 url: `/api/document/view/${userId}`,
+//                 headers: {
+//                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//                 },
+//                 success: function(response) {
+//                     if (response.data) {
+//                         $('#id').val(response.data.id);
+//                         $('#photo').val(response.data.photo);
+//                         $('#signature').val(response.data.signature);
+//                         $('#id_proof_type').val(response.data.id_proof_type);
+//                         $('#id_proof').val(response.data.id_proof);
+//                         $('#quali_certificate').val(response.data.quali_certificate);
+//                         $('#other_certificate').val(response.data.other_certificate);
+//                     } else {
+//                         console.error('No data found in response.');
+//                     }
+//                 },
+//                 error: function(xhr, status, error) {
+//                     console.error('Error fetching document details for editing:', error);
+//                 }
+//             });
+//         } else {
+//             console.error('User ID is not defined.');
+//         }
+//     }
 
-            function fetchJobDetailsAndOpenModal() {
-                let userId = {{ auth()->user()->id }};
+//     // Auto-execute the function when the page loads
+//     fetchJobDetailsAndOpenModal();
 
-                $.ajax({
-                    type: 'GET',
-                    url: `/api/document/view/` + userId,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(response) {
+//     // Handle form submission
+//     $('#addDocument').submit(function(e) {
+//         e.preventDefault();
+
+//         // Ensure userId is available
+//         let userId = {{ auth()->user()->id }};
+        
+//         if (userId) {
+//             let formData = {
+//                 user_id: $('#id').val(),
+//                 photo: $('#photo').val(),
+//                 signature: $('#signature').val(),
+//                 id_proof_type: $('#id_proof_type').val(),
+//                 id_proof: $('#id_proof').val(),
+//                 quali_certificate: $('#quali_certificate').val(),
+//                 other_certificate: $('#other_certificate').val(),
+//             };
+
+//             $.ajax({
+//                 type: 'PUT',
+//                 url: `/api/document/edit/${userId}`,
+//                 data: formData,
+//                 headers: {
+//                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//                 },
+//                 success: function(response) {
+//                     swal("Success", response.message, "message");
+//                     $("#addDocument").trigger("reset");
+//                     window.open("/", "_self");
+//                 },
+//                 error: function(xhr) {
+//                     if (xhr.status === 422) {
+//                         var errors = xhr.responseJSON.errors;
+//                         $.each(errors, function(key, value) {
+//                             $('#error-' + key).html(value[0]);
+//                         });
+//                     } else {
+//                         alert('An error occurred. Please try again.');
+//                     }
+//                 }
+//             });
+//         } else {
+//             console.error('User ID is not defined.');
+//         }
+//     });
+// });
+
+$(document).ready(function() {
+    function fetchJobDetailsAndOpenModal(userId) {
+        if (userId) {
+            $.ajax({
+                type: 'GET',
+                url: `/api/document/view/${userId}`,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    if (response.data) {
                         $('#id').val(response.data.id);
                         $('#photo').val(response.data.photo);
                         $('#signature').val(response.data.signature);
@@ -151,44 +236,69 @@
                         $('#id_proof').val(response.data.id_proof);
                         $('#quali_certificate').val(response.data.quali_certificate);
                         $('#other_certificate').val(response.data.other_certificate);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error fetching Job details for editing:', error);
+                    } else {
+                        console.error('No data found in response.');
                     }
-                });
-            }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching document details for editing:', error);
+                }
+            });
+        } else {
+            console.error('User ID is not defined.');
+        }
+    }
 
-            // Auto-execute the function when the page loads
-            fetchJobDetailsAndOpenModal();
+    // Auto-execute the function when the page loads
+    let userId = {{ auth()->user()->id }};
+    fetchJobDetailsAndOpenModal(userId);
 
-        });
-
-        $('#addDocument').submit(function(e) {
-            e.preventDefault();
-            let userId = {{ auth()->user()->id }};
+    // Handle form submission
+    $('#addDocument').submit(function(e) {
+        e.preventDefault();
+        
+        let userId = {{ auth()->user()->id }};
+        
+        if (userId) {
             let formData = {
-                user_id: $('#id').val(),
+                id: $('#id').val(),
                 photo: $('#photo').val(),
                 signature: $('#signature').val(),
                 id_proof_type: $('#id_proof_type').val(),
                 id_proof: $('#id_proof').val(),
                 quali_certificate: $('#quali_certificate').val(),
                 other_certificate: $('#other_certificate').val(),
+                user_id: userId
             };
             $.ajax({
                 type: 'PUT',
                 url: `/api/document/edit/${userId}`,
                 data: formData,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 success: function(response) {
                     swal("Success", response.message, "message");
                     $("#addDocument").trigger("reset");
-                    window.open("/", "_self")
-
+                    window.open("/", "_self");
                 },
-                error: function(xhr, status, error) {
-                    console.error('Error updating Plan Details:', error);
+                error: function(xhr) {
+                    if (xhr.status === 422) {
+                        var errors = xhr.responseJSON.errors;
+                        $.each(errors, function(key, value) {
+                            $('#error-' + key).html(value[0]);
+                        });
+                    } else {
+                        alert('An error occurred. Please try again.');
+                    }
                 }
             });
-        });
+        } else {
+            console.error('User ID is not defined.');
+        }
+    });
+});
+
+
     </script>
 @endsection
