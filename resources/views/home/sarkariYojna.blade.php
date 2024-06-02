@@ -6,16 +6,6 @@
             <h2 class="text-3xl  px-4 py-1 font-semibold text-orange-400 uppercase">Our Services</h2>
         </div>
         <div class="main flex flex-wrap justify-around" id="callingYojna">
-            {{-- <a href="/job-app-forms" class="forms mt-4 mb-4 py-5 px-2">
-                <div class="image flex justify-center mb-2">
-                    <img src="/sarkari/court.png" class="border border-solid rounded-sm bg-slate-500 h-16 w-16"
-                        width="50" alt="">
-                </div>
-                <div class="title text-center">
-                    <h3 class="text-base font-semibold">व्यवहार न्याय प्रकरण</h3>
-                    <h3 class="text-sm">Company Formation</h3>
-                </div>
-            </a> --}}
         </div>
     </div>
 
@@ -60,7 +50,7 @@
                     type: "GET",
                     url: "{{ route('yojna.category.index') }}",
                     success: function(response) {
-                        let table = $("#yojnaCa");
+                        let table = $("#yojnaCat");
                         table.empty();
                         let data = response.data;
 
@@ -69,9 +59,8 @@
                         $("#counting").html(len);
                         data.forEach((data) => {
                             table.append(`  
-                       <h2 class="text-3xl  px-4 py-1 font-semibold text-orange-500 uppercase">${data.name}</h2>
-                
-                   `);
+                            <h2 class="text-3xl  px-4 py-1 font-semibold text-orange-500 uppercase">${data.name}</h2>
+                            `);
                         });
                     },
                     error: function(xhr, status, error) {
