@@ -42,6 +42,23 @@
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
         }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printable-area, #printable-area * {
+                visibility: visible;
+            }
+            #printable-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+            .no-print {
+                display: none;
+            }
+        }
     </style>
 </head>
 
