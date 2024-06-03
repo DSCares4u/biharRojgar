@@ -75,29 +75,33 @@
             </div>
         </div>
 
-        <div class="bg-gray-100 w-1/4 float-end border border-gray mt-10">
-            <div class="w-[95%] bg-white border p-3 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
-                <div class="price mt-2 mb-4">
+        <div class="bg-gray-100 w-1/4 float-end border border-gray ">
+            <div class="w-[95%] bg-white border  p-2 rounded dark:bg-gray-800 dark:border-gray-700 ">
+                <div class="price mt-1 mb-2">
                     <h3 class="text-lg font-semibold underline">Pricing Summary</h3>
                 </div>
                 <ul id="yojnaFees">
                     <li class="flex justify-between text-base text-gray-500">
                         <p>Market Price</p>
-                        <p class="font-bold">Rs. 500</p>
+                        <p class="font-bold text-black"><i class="fa-solid fa-indian-rupee-sign fa-xs"></i><del>500</del></p>
                     </li>
                     <li class="flex justify-between text-base text-gray-500">
-                        <p>Platform Fees</p>
-                        <p class="font-bold">Rs. 500</p>
+                        <p>MKDF Discounted Price</p>
+                        <p class="font-bold text-black"><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>200</p>
+                    </li>
+                    <li class="flex justify-between text-base text-red-500">
+                    <p class="text-sm ">Total Savings</p><p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>50</p>
                     </li>
                     <hr>
-                    <li class="flex justify-between text-base text-gray-500">
-                        <p>Total Payment</p>
-                        <p class="font-bold">Rs. 1000</p>
+                    <li class="flex justify-between text-base items-center text-gray-500">
+                        <p>Actual Amount</p><p class="text-sm">(including 18% Gst)</p>
+                        <p class="font-bold text-green-600"><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>1000</p>
                     </li>
                 </ul>
             </div>
-            <form id="addData" class="p-4 flex flex-col">
-                <div class=" py-1 px-1 justify-between">
+            <hr class="bg-black">
+            <form id="addData" class="p-2 flex flex-col">
+                <div class=" px-1 justify-between">
                     <div class="mb-2">
                         <label for="name" class="block text-gray-700 text-xs mb-1 ">Name :</label>
                         <input type="text" id="name" name="name"
@@ -414,7 +418,7 @@
                 select.append('<option value="">Select Plan</option>');
                 yojnaData.forEach((plan) => {
                     let isSelected = plan.id == selectedId ? 'selected' : '';
-                    select.append(`<option value="${plan.id}" data-plan-charge="${plan.fees}" ${isSelected}>${plan.ename}</option>`);
+                    select.append(`<option value="${plan.id}" data-market-charge="${plan.market_fees}" data-plan-charge="${plan.fees}" ${isSelected}>${plan.ename}</option>`);
                 });
     
                 select.trigger('change');
@@ -447,21 +451,27 @@
                 let selectedPlan = yojnaData.find(plan => plan.id == selectedPlanId);
                 if (selectedPlan) {
                     let PlanFee = Number(selectedPlan.fees) || 0; // Default to 0 if no plan is selected
+                    let MarketFee = Number(selectedPlan.market_fees) || 0; // Default to 0 if no plan is selected
+                    let TotalFee = Math.round(Math.abs(PlanFee + (PlanFee*0.18)));
+                    let savings = Math.round(Math.abs(TotalFee - MarketFee));
     
                     // Update the fee display
                     $('#yojnaFees').html(`
                         <li class="flex justify-between text-base text-gray-500">
                             <p>Market Price</p>
-                            <p class="font-bold">Rs. ${PlanFee}</p>
+                            <p class="font-bold text-black"><i class="fa-solid fa-indian-rupee-sign fa-xs"></i><del>${MarketFee}</del></p>
                         </li>
                         <li class="flex justify-between text-base text-gray-500">
-                            <p>Platform Fees</p>
-                            <p class="font-bold">Rs. 500</p>
+                            <p>MKDF Discounted Price</p>
+                            <p class="font-bold text-black"><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>${PlanFee}</p>
+                        </li>
+                        <li class="flex justify-between text-base text-red-500">
+                            <p class="text-sm ">Total Savings</p><p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>${savings}</p>
                         </li>
                         <hr>
-                        <li class="flex justify-between text-base text-gray-500">
-                            <p>Total Payment</p>
-                            <p class="font-bold">Rs. ${PlanFee+ 500}</p>
+                        <li class="flex justify-between text-base items-center text-gray-500">
+                            <p>Actual Amount</p><p class="text-sm">(including 18% Gst)</p>
+                            <p class="font-bold text-green-600"><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>${TotalFee}</p>
                         </li>
                     `);
     

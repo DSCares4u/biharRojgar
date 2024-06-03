@@ -34,6 +34,7 @@ class YojnaController extends Controller
         'features' => 'required|string|min:3',
         'documents' => 'required|string',
         'fees' => 'required|string',
+        'market_fees' => 'required|string',
         'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
     ]);
 
@@ -62,6 +63,7 @@ class YojnaController extends Controller
         'hname' => $request->hname,
         'description' => $request->description,
         'fees' => $request->fees,
+        'market_fees' => $requestmarket_->fees,
         'documents' => $request->documents,
         'features' => $request->features,
         'logo' => $logo,

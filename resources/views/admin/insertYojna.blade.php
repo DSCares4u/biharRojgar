@@ -40,6 +40,10 @@
                             <select name="yojna_category_id" id="callingPlans" class="w-1/2 shadow-sm sm:text-sm rounded-md"
                                 required></select>
                         </div>
+                        <label for="market_fees" class="block text-sm font-medium text-gray-700">Market Fees </label>
+                        <input type="number" id="market_fees" name="market_fees"
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            required>
                         <label for="fees" class="block text-sm font-medium text-gray-700">Yojna Fees </label>
                         <input type="number" id="fees" name="fees"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"

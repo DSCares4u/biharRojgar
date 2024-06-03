@@ -22,6 +22,7 @@ return new class extends Migration
             $table->longText('description');
             $table->longText('documents');
             $table->longText('fees');
+            $table->longText('market_fees');
             $table->foreignId('yojna_category_id')->constrained()->onDelete("cascade");
             $table->timestamps();
         });
