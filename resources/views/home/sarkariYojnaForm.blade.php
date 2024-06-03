@@ -115,7 +115,8 @@
                         </div>
                         <div class=" mb-2 w-1/2">
                             <label for="state" class="block text-gray-700 text-xs mb-1">State :</label>
-                            <select id="state" name="state" class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                            <select id="state" name="state"
+                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
                                 <option value="">Select State</option>
                                 <option value="Andhra Pradesh">Andhra Pradesh</option>
                                 <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -147,13 +148,14 @@
                                 <option value="West Bengal">West Bengal</option>
                                 <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                 <option value="Chandigarh">Chandigarh</option>
-                                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman
+                                    and Diu</option>
                                 <option value="Lakshadweep">Lakshadweep</option>
                                 <option value="Delhi">Delhi</option>
                                 <option value="Puducherry">Puducherry</option>
                                 <option value="Ladakh">Ladakh</option>
                                 <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                            </select>                            
+                            </select>
                             <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                     </div>
@@ -230,9 +232,9 @@
 
     </div>
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
-            //insert application details
+            //insert apply data for yojna details
 
             $("#addData").submit(function(e) {
                 e.preventDefault();
@@ -265,49 +267,49 @@
             })
 
             $.ajax({
-    type: "GET",
-    url: "{{ route('yojna.index') }}",
-    success: function(response) {
-        let select = $("#callingYojna");
-        let selectedId = getIdFromUrlPath();
+                type: "GET",
+                url: "{{ route('yojna.index') }}",
+                success: function(response) {
+                    let select = $("#callingYojna");
+                    let selectedId = getIdFromUrlPath();
 
-        select.empty();
-        select.append(`
-            <option value="">Select Plan</option>`);
-        response.data.forEach((plan) => {
-            let isSelected = plan.id == selectedId ? 'selected' : '';
-            select.append(`
-                <option value="${plan.id}" data-plan-charge="${plan.fees}" ${isSelected}>${plan.ename}</option>
-            `);
-        });
+                    select.empty();
+                    select.append(`
+                        <option value="">Select Plan</option>`);
+                    response.data.forEach((plan) => {
+                        let isSelected = plan.id == selectedId ? 'selected' : '';
+                        select.append(`
+                            <option value="${plan.id}" data-plan-charge="${plan.fees}" ${isSelected}>${plan.ename}</option>
+                        `);
+                    });
 
-        // Trigger the change event to update the fee display automatically
-        select.trigger('change');
-    }
-});
+                    // Trigger the change event to update the fee display automatically
+                    select.trigger('change');
+                }
+            });
 
-$('#callingYojna').change(function() {
-    let selectedPlan = $(this).children("option:selected");
-    let PlanFee = selectedPlan.data('plan-charge') || 0; // Default to 0 if no plan is selected
+            $('#callingYojna').change(function() {
+                let selectedPlan = $(this).children("option:selected");
+                let PlanFee = selectedPlan.data('plan-charge') || 0; // Default to 0 if no plan is selected
 
-    // Update the fee display
-    $('#yojnaFees').html(
-        `
-        <li class="flex justify-between text-base text-gray-500">
-            <p>Market Price</p>
-            <p class="font-bold">Rs. ${PlanFee}</p>
-        </li>
-        <li class="flex justify-between text-base text-gray-500">
-            <p>Platform Fees</p>
-            <p class="font-bold">Rs. 500</p>
-        </li>
-        <hr>
-        <li class="flex justify-between text-base text-gray-500">
-            <p>Total Payment</p>
-            <p class="font-bold">Rs. ${PlanFee + 500}</p>
-        </li>`
-    );
-});
+                // Update the fee display
+                $('#yojnaFees').html(
+                    `
+                        <li class="flex justify-between text-base text-gray-500">
+                            <p>Market Price</p>
+                            <p class="font-bold">Rs. ${PlanFee}</p>
+                        </li>
+                        <li class="flex justify-between text-base text-gray-500">
+                            <p>Platform Fees</p>
+                            <p class="font-bold">Rs. 500</p>
+                        </li>
+                        <hr>
+                        <li class="flex justify-between text-base text-gray-500">
+                            <p>Total Payment</p>
+                            <p class="font-bold">Rs. ${PlanFee + 500}</p>
+                        </li>`
+                        );
+                    });
 
 
             // Function for taking id from URL
@@ -339,20 +341,21 @@ $('#callingYojna').change(function() {
                             <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>${feature}</li>`
                         ).join('');
 
-                    response.data.forEach((docs, index) => {
-                        // Remove square brackets and double quotes from the features string
-                        let cleanedDocuments = docs.documents.replace(/[\[\]"]/g, '');
+                        response.data.forEach((docs, index) => {
+                            // Remove square brackets and double quotes from the features string
+                            let cleanedDocuments = docs.documents.replace(/[\[\]"]/g,
+                                '');
 
-                        // Split the features by comma and remove the first and last element
-                        let array = cleanedDocuments.split(',');
+                            // Split the features by comma and remove the first and last element
+                            let array = cleanedDocuments.split(',');
 
-                        // Map each feature to an HTML list item and join them into a single string
-                        let documents = array.map(document =>
-                            `<li class="mt-4 flex">
+                            // Map each feature to an HTML list item and join them into a single string
+                            let documents = array.map(document =>
+                                `<li class="mt-4 flex">
                             <p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>${document}</li>`
-                        ).join('');
+                            ).join('');
 
-                        select.append(`
+                            select.append(`
                                 <div>
                                     <h5 class="text-3xl font-extrabold">${plan.ename}</h5>
                                     <p class="mt-5 text-base text-gray-500 line-clamp-2 description">${plan.description}</p>
@@ -367,7 +370,7 @@ $('#callingYojna').change(function() {
                                     </ul>
                                 </div>
                             `);
-                    });
+                        });
                     });
                 }
             });
@@ -383,5 +386,147 @@ $('#callingYojna').change(function() {
                 $(this).text('Read More');
             }
         });
+    </script> --}}
+
+    <script>
+        $(document).ready(function() {
+            let yojnaData = [];
+            
+            // Function to get the Yojna data from the server
+            function fetchYojnaData() {
+                return $.ajax({
+                    type: "GET",
+                    url: "{{ route('yojna.index') }}",
+                    success: function(response) {
+                        yojnaData = response.data;
+                    },
+                    error: function(xhr) {
+                        console.error('Error:', xhr);
+                    }
+                });
+            }
+    
+            // Populate the Yojna dropdown
+            function populateYojnaDropdown() {
+                let select = $("#callingYojna");
+                let selectedId = getIdFromUrlPath();
+    
+                select.empty();
+                select.append('<option value="">Select Plan</option>');
+                yojnaData.forEach((plan) => {
+                    let isSelected = plan.id == selectedId ? 'selected' : '';
+                    select.append(`<option value="${plan.id}" data-plan-charge="${plan.fees}" ${isSelected}>${plan.ename}</option>`);
+                });
+    
+                select.trigger('change');
+            }
+    
+            // Display selected Yojna details
+            function displaySelectedYojnaDetails(selectedYojna) {
+                let cleanedFeatures = selectedYojna.features.replace(/[\[\]"]/g, '').split(',');
+                let features = cleanedFeatures.map(feature => `<li class="mt-4 flex"><p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>${feature}</li>`).join('');
+    
+                let cleanedDocuments = selectedYojna.documents.replace(/[\[\]"]/g, '').split(',');
+                let documents = cleanedDocuments.map(document => `<li class="mt-4 flex"><p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>${document}</li>`).join('');
+    
+                $("#callingYojnaFeatures").html(`
+                    <div>
+                        <h5 class="text-3xl font-extrabold">${selectedYojna.ename}</h5>
+                        <p class="mt-5 text-base text-gray-500 line-clamp-2 description">${selectedYojna.description}</p>
+                        <button class="toggleButton mt-4 text-blue-500">Read More</button>
+                        <h5 class="text-xl font-bold mt-5 underline">Benefits</h5>
+                        <ul class="mt-3 text-sm">${features}</ul>
+                        <h5 class="text-xl font-bold mt-5 underline">Documents Required</h5>
+                        <ul class="mt-3 text-sm">${documents}</ul>
+                    </div>
+                `);
+            }
+    
+            // Event handler for Yojna dropdown change
+            $('#callingYojna').change(function() {
+                let selectedPlanId = $(this).val();
+                let selectedPlan = yojnaData.find(plan => plan.id == selectedPlanId);
+                if (selectedPlan) {
+                    let PlanFee = selectedPlan.fees || 0; // Default to 0 if no plan is selected
+    
+                    // Update the fee display
+                    $('#yojnaFees').html(`
+                        <li class="flex justify-between text-base text-gray-500">
+                            <p>Market Price</p>
+                            <p class="font-bold">Rs. ${PlanFee}</p>
+                        </li>
+                        <li class="flex justify-between text-base text-gray-500">
+                            <p>Platform Fees</p>
+                            <p class="font-bold">Rs. 500</p>
+                        </li>
+                        <hr>
+                        <li class="flex justify-between text-base text-gray-500">
+                            <p>Total Payment</p>
+                            <p class="font-bold">Rs. ${PlanFee + 500}</p>
+                        </li>
+                    `);
+    
+                    // Display the selected Yojna details
+                    displaySelectedYojnaDetails(selectedPlan);
+                } else {
+                    // Clear the details if no plan is selected
+                    $("#callingYojnaFeatures").empty();
+                    $('#yojnaFees').empty();
+                }
+            });
+    
+            // Function for taking id from URL
+            function getIdFromUrlPath() {
+                let pathArray = window.location.pathname.split('/');
+                return pathArray[pathArray.length - 1];
+            }
+    
+            // Initialize the page
+            fetchYojnaData().then(populateYojnaDropdown);
+    
+            // Toggle button functionality
+            $(document).on('click', '.toggleButton', function() {
+                const description = $(this).siblings('.description');
+                if (description.hasClass('line-clamp-2')) {
+                    description.removeClass('line-clamp-2');
+                    $(this).text('Show Less');
+                } else {
+                    description.addClass('line-clamp-2');
+                    $(this).text('Read More');
+                }
+            });
+    
+            // Insert apply data for yojna details
+            $("#addData").submit(function(e) {
+                e.preventDefault();
+                $('.error-message').html(''); // Clear previous error messages
+                var formData = new FormData(this);
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('yojna.form.store') }}",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response) {
+                        swal("Success", response.message, "success");
+                        $("#addData").trigger("reset");
+                        window.open("/", "_self");
+                    },
+                    error: function(xhr) {
+                        if (xhr.status === 422) {
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                $('#error-' + key).html(value[0]);
+                            });
+                        } else {
+                            alert('An error occurred. Please try again.');
+                        }
+                    }
+                });
+            });
+        });
     </script>
+    
 @endsection
