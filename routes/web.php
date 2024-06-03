@@ -25,6 +25,8 @@ Route::post('/logout', [AuthOtpController::class, 'logout'])->name('logout');
 
 Route::middleware("auth")->group(function (){
     Route::get('/add-candidate',[HomeController::class,'addCandidate']);
+    Route::get('/address',[HomeController::class,'address']);
+    Route::get('/documents',[HomeController::class,'documents']);
 
     Route::get('/manual-form',[HomeController::class,'manualForm']);
 
@@ -37,6 +39,15 @@ Route::middleware("auth")->group(function (){
 Route::get('/hire',[HomeController::class,'hire']);
 Route::get('/hire/t&c',[HomeController::class,'hireTC']);
 Route::get('/hire/pay-later',[HomeController::class,'hirePayLater']);
+
+Route::get('/sarkari-job',[HomeController::class,'sarkariJob']);
+Route::get('/private-job',[HomeController::class,'privateJob']);
+
+Route::get('/sarkari-yojna',[HomeController::class,'sarkariYojna']);
+Route::get('/sarkari-yojna-form/{id}',[HomeController::class,'sarkariYojnaForm']);
+
+Route::get('/sarkari-job-apply-form',[HomeController::class,'sarkariJobApplyForm']);
+Route::get('/job-app-forms',[HomeController::class,'jobAppForms']);
 
 Route::get('/register',[HomeController::class,'register']);
 Route::get('/login',[HomeController::class,'login']);
@@ -51,40 +62,9 @@ Route::controller(AuthOtpController::class)->group(function(){
 
 Route::get('/get-district-and-state', [JobController::class, 'getDistrictAndState']);
 
-Route::get('/sarkari-yojna-form/{id}', function () {
-    return view('home.sarkariYojnaForm');
-});
-
-Route::get('/sarkari-job-form', function () {
-    return view('home.sarkariJobForm');
-});
-
-Route::get('/address', function () {
-    return view('home.address');
-});
-Route::get('/documents', function () {
-    return view('home.documents');
-});
-
-Route::get('/sarkari-yojna', function () {
-    return view('home.sarkariYojna');
-});
-
-Route::get('/sarkari-job', function () {
-    return view('home.sarkariJob');
-});
-
-Route::get('/private-job', function () {
-    return view('home.privateJob');
-});
-
-Route::get('/job-app-forms', function () {
-    return view('home.jobAppForms');
-});
-
-Route::get('/sarkari-job-apply-form', function () {
-    return view('home.sarkariJobApplyForm');
-});
+// Route::get('/sarkari-job-form', function () {
+//     return view('home.sarkariJobForm');
+// });
 
 Route::get('/admin',[AdminController::class,'dashboard']);
 

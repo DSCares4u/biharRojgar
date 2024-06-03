@@ -38,6 +38,30 @@ class HomeController extends Controller
         return view('home.addCandidate');
     }
 
+    public function address(){
+        return view('home.address');
+    }
+
+    public function documents(){
+        return view('home.documents');
+    }
+
+    public function sarkariJob(){
+        return view('home.sarkariJob');
+    }
+
+    public function jobAppForms(){
+    return view('home.jobAppForms');
+    }
+
+    public function privateJob(){
+        return view('home.privateJob');
+    }
+
+    public function sarkariJobApplyForm(){
+        return view('home.sarkariJobApplyForm');
+    }
+
     public function sarkariJobConfirm(){
         return view('home.sarkariJobConfirm');
     }
@@ -52,5 +76,13 @@ class HomeController extends Controller
 
     public function manualForm(){
         return view('home.manualForm');
+    }
+
+    public function sarkariYojna(){
+        return view('home.sarkariYojna');
+    }
+
+    public function sarkariYojnaForm(){
+        return view('home.sarkariYojnaForm');
     }
 }
