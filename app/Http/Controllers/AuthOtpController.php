@@ -76,14 +76,25 @@ class AuthOtpController extends Controller
 
         $user = User::whereId($request->user_id)->first();
 
-        if($user){
+        // if($user){
 
+        //     $verificationCode->update([
+        //         'expire_at'=>Carbon::now()
+        //     ]);
+
+        //     Auth::login($user);
+        //     return redirect('/add-candidate');
+        // }
+
+        if ($user) {
             $verificationCode->update([
-                'expire_at'=>Carbon::now()
+                'expire_at' => Carbon::now()
             ]);
-
+        
             Auth::login($user);
-            return redirect('/add-candidate');
+        
+            // Redirect back to the previous page or a default page if there's no previous page
+            return redirect()->intended('/add-candidate');
         }
 
         return redirect()->route('otp.login')->with('error','Your Otp is not Correct');
@@ -103,7 +114,7 @@ class AuthOtpController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('otp.login');
+        return redirect()->route('home');
     }
 
 

@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-        <div class=" mt-5 w-[80%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
+        <div class=" mt-5 w-[85%] bg-white border p-3 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
             <div class="price mt-2 mb-4">
                 <h3 class="text-lg font-semibold">Contact Us</h3>
                 <div class="line bg-blue-500">

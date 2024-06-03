@@ -17,7 +17,7 @@ use App\Http\Controllers\JobController;
 |
 */
 
-Route::get('/',[HomeController::class,'index']);
+Route::get('/',[HomeController::class,'index'])->name('home');
 
 
 Route::get('/get-job/t&c',[HomeController::class,'getJobTC']);
