@@ -76,6 +76,26 @@
         </div>
 
         <div class="bg-gray-100 w-1/4 float-end border border-gray mt-10">
+            <div class="w-[95%] bg-white border p-3 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
+                <div class="price mt-2 mb-4">
+                    <h3 class="text-lg font-semibold underline">Pricing Summary</h3>
+                </div>
+                <ul id="yojnaFees">
+                    <li class="flex justify-between text-base text-gray-500">
+                        <p>Market Price</p>
+                        <p class="font-bold">Rs. 500</p>
+                    </li>
+                    <li class="flex justify-between text-base text-gray-500">
+                        <p>Platform Fees</p>
+                        <p class="font-bold">Rs. 500</p>
+                    </li>
+                    <hr>
+                    <li class="flex justify-between text-base text-gray-500">
+                        <p>Total Payment</p>
+                        <p class="font-bold">Rs. 1000</p>
+                    </li>
+                </ul>
+            </div>
             <form id="addData" class="p-4 flex flex-col">
                 <div class=" py-1 px-1 justify-between">
                     <div class="mb-2">
@@ -171,28 +191,7 @@
                             class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2">Submit</button>
                     </div>
                 </div>
-            </form>
-
-            <div class="w-[95%] bg-white border p-3 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
-                <div class="price mt-2 mb-4">
-                    <h3 class="text-lg font-semibold underline">Pricing Summary</h3>
-                </div>
-                <ul id="yojnaFees">
-                    <li class="flex justify-between text-base text-gray-500">
-                        <p>Market Price</p>
-                        <p class="font-bold">Rs. 500</p>
-                    </li>
-                    <li class="flex justify-between text-base text-gray-500">
-                        <p>Platform Fees</p>
-                        <p class="font-bold">Rs. 500</p>
-                    </li>
-                    <hr>
-                    <li class="flex justify-between text-base text-gray-500">
-                        <p>Total Payment</p>
-                        <p class="font-bold">Rs. 1000</p>
-                    </li>
-                </ul>
-            </div>
+            </form>           
         </div>
     </div>
 
@@ -447,7 +446,7 @@
                 let selectedPlanId = $(this).val();
                 let selectedPlan = yojnaData.find(plan => plan.id == selectedPlanId);
                 if (selectedPlan) {
-                    let PlanFee = selectedPlan.fees || 0; // Default to 0 if no plan is selected
+                    let PlanFee = Number(selectedPlan.fees) || 0; // Default to 0 if no plan is selected
     
                     // Update the fee display
                     $('#yojnaFees').html(`
@@ -462,7 +461,7 @@
                         <hr>
                         <li class="flex justify-between text-base text-gray-500">
                             <p>Total Payment</p>
-                            <p class="font-bold">Rs. ${PlanFee + 500}</p>
+                            <p class="font-bold">Rs. ${PlanFee+ 500}</p>
                         </li>
                     `);
     

@@ -28,12 +28,12 @@ class YojnaController extends Controller
 {
     // Validate the request
     $validator = Validator::make($request->all(), [
-        'ename' => 'required|string|min:3',                      
-        'hname' => 'required|string|min:3',                      
+        'ename' => 'required|string',                      
+        'hname' => 'required|string',                      
         'description' => 'required|string|min:3',                      
         'features' => 'required|string|min:3',
-        'documents' => 'required|string|min:3',
-        'fees' => 'required|string|min:3',
+        'documents' => 'required|string',
+        'fees' => 'required|string',
         'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
     ]);
 

@@ -10,7 +10,7 @@ class YojnaCategoryController extends Controller
 {
     public function index()
     {
-        $yojnaCat = YojnaCategory::orderBy('created_at', 'desc')->get();
+        $yojnaCat = YojnaCategory::get();
         if ($yojnaCat->count() > 0) {
             return response()->json([
                 'status' => 200,
