@@ -70,8 +70,12 @@ class HomeController extends Controller
         return view('home.privateJobConfirm');
     }
 
-    public function viewJobForm(){
-        return view('home.viewJobForm');
+    public function viewSarkariJobForm(){
+        return view('home.viewSarkariJobForm');
+    }
+
+    public function viewPrivateJobForm(){
+        return view('home.viewPrivateJobForm');
     }
 
     public function manualForm(){

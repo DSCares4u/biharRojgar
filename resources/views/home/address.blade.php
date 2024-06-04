@@ -141,7 +141,7 @@
                 url: `/api/address/edit/${userId}`,
                 data: formData,
                 success: function(response) {
-                    swal("Success", response.message, "message");
+                    // swal("Success", response.message, "message");
                     $("#insertData").trigger("reset");
                     window.open("/documents", "_self")
 

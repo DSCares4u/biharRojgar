@@ -296,7 +296,7 @@
                 url: `/api/candidate/edit/${userId}`,
                 data: formData,
                 success: function(response) {
-                    swal("Success", response.message, "message");
+                    // swal("Success", response.message, "message");
                     $("#applyJob").trigger("reset");
                     window.open("/address", "_self")
 

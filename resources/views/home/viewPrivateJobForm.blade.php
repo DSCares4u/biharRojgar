@@ -112,7 +112,7 @@
         </a>
         <button onclick="window.print()" class=" bg-blue-500 text-white rounded-md px-2 hover:bg-blue-600">Print
             Confirmation</button>
-        <form action="" id="applySarkariJob">
+        <form action="" id="applyPrivateJob">
             <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}">
 
             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
@@ -122,6 +122,7 @@
     </div>
 
     <script>
+
         $(document).ready(function() {
             function fetchJobDetailsAndOpenModal() {
                 let userId = {{ auth()->user()->id }};
@@ -201,12 +202,12 @@
 
             // applying for job
 
-            $("#applySarkariJob").submit(function(e) {
+            $("#applyPrivateJob").submit(function(e) {
                 e.preventDefault();
                 var formData = new FormData(this);
                 $.ajax({
                     type: "POST",
-                    url: "{{ route('sarkari.job.apply.store') }}",
+                    url: "{{ route('job.store') }}",
                     data: formData,
                     dataType: "JSON",
                     contentType: false,
@@ -214,8 +215,8 @@
                     processData: false,
                     success: function(response) {
                         swal("success", response.message, "success");
-                        $("#applySarkariJob").trigger("reset");
-                        window.open("/sarkari-job/confirm", "_self")
+                        $("#applyPrivateJob").trigger("reset");
+                        window.open("/private-job/confirm", "_self")
                     },
                     error: function(xhr, status, error) {
                         var errors = xhr.responseJSON.error;
