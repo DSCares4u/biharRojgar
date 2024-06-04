@@ -72,14 +72,14 @@ class HireController extends Controller
             ], 422);
         }
 
-        $roles = [];
-        foreach ($request->inputs as $input) {
-            $roles[] = $input;
-        }
+        // $roles = [];
+        // foreach ($request->inputs as $input) {
+        //     $roles[] = $input;
+        // }
 
             $hire = Hire::create([
                 'name' => $request->name, 
-                'roles' => json_encode($roles), 
+                // 'roles' => json_encode($roles), 
                 'city' => $request->city,          
                 'state' => $request->state,          
                 'description' => $request->description,          
@@ -91,30 +91,30 @@ class HireController extends Controller
                 'payment_mode' => $request->payment_mode,          
                 'hire_plan_id' => $request->plan_id, 
                 'logo'=>$logo,         
-            ]);  
-            
-            // if ($hire) {
-            //     // Save each role
-            //     foreach ($request->inputs as $input) {
-            //         $hire->roles()->create([
-            //             'role_name' => $input['profile'],
-            //             'no_of_post' => $input['no_of_post'],
-            //             'min_experience' => $input['min_experience'],
-            //             'max_experience' => $input['max_experience'],
-            //             'gender' => $input['gender'],
-            //             'preferred_lang' => $input['preferred_lang'],
-            //             'type' => $input['type'],
-            //             'qualification' => $input['qualification'],
-            //             'min_salary' => $input['min_salary'],
-            //             'max_salary' => $input['max_salary']
-            //         ]);
-            //     }
+            ]);              
+            if ($hire) {
+                // Save each role
+                foreach ($request->inputs as $input) {
+                    $hire->roles()->create([
+                        'profile' => $input['profile'],
+                        'no_of_post' => $input['no_of_post'],
+                        'min_experience' => $input['min_experience'],
+                        'max_experience' => $input['max_experience'],
+                        'gender' => $input['gender'],
+                        'preferred_lang' => $input['preferred_lang'],
+                        'type' => $input['type'],
+                        'qualification' => $input['qualification'],
+                        'min_salary' => $input['min_salary'],
+                        'max_salary' => $input['max_salary']
+                    ]);
+                    dd($hire);
+                }
         
-            //     return response()->json([
-            //         'status' => 200,
-            //         'message' => "We Will Connect You Soon"
-            //     ], 200);
-            // }
+                return response()->json([
+                    'status' => 200,
+                    'message' => "We Will Connect You Soon"
+                ], 200);
+            }
             if ($hire) {
                 return response()->json([
                     'status' => 200,

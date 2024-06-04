@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('hires', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->json('roles');
             $table->string('city');
             $table->string('state');
             $table->string('description');

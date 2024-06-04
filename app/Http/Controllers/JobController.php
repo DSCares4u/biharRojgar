@@ -28,7 +28,7 @@ class JobController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|unique:candidates',                 
+            'user_id' => 'required|unique:users',                 
         ]);
 
         if ($validator->fails()) {
