@@ -20,6 +20,5 @@ class Hire extends Model
     public function roles(): HasMany
     {
         return $this->hasMany(Role::class);
-    }  
-
+    }
 }

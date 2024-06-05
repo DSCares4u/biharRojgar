@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hire;
+use App\Models\Role;
 use App\Models\HirePlan;
 use Illuminate\Http\Request;
 use Validator;
@@ -21,6 +22,22 @@ class HireController extends Controller
             return response()->json([
                 'status' => 200,
                 'data' => $hire
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'data' => "No Records found"
+            ], 404);
+        }
+    }
+    
+    public function roleIndex(){
+        // $role = Role::with("hire_id")->orderBy('created_at', 'desc')->get();
+        $role = Role::orderBy('created_at', 'desc')->get();
+        if ($role->count() > 0) {
+            return response()->json([
+                'status' => 200,
+                'data' => $role
             ], 200);
         } else {
             return response()->json([

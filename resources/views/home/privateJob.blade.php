@@ -172,7 +172,7 @@
             let callingSarkariJobs = () => {
                 $.ajax({
                     type: "GET",
-                    url: "{{ route('hire.index') }}",
+                    url: "{{ route('role.index') }}",
                     success: function(response) {
                         let table = $("#callingHire");
                         table.empty();
@@ -189,8 +189,8 @@
                                             <img src="/sarkari/private.png" class="rounded w-18" alt="">
                                         </div>
                                         <div class="name">
-                                            <h5 class="font-semibold text-black">${data.company_name}</h5>
-                                            <p class="text-gray-500 text-sm">${data.name}</p>
+                                            <h5 class="font-semibold text-black">${data.hire_id}</h5>
+                                            <p class="text-gray-500 text-sm capitalize">${data.profile}</p>
                                         </div>
                                         <p class="text-gray-600 text-sm ml-8"><strong class="text-red-600">Last Date : </strong>
                                             04/05/2024
@@ -198,15 +198,14 @@
 
                                     </div>
                                     <div class="body mt-4">
-                                        <h5 class="flex gap-2 text-gray-500"><img src="/icons/home.png" class="w-5 h-5"
-                                                alt="">Work
-                                            From Home</h5>
+                                        <h5 class="flex gap-2 text-gray-500"><img src="/icons/home.png" class="w-5 h-5 "
+                                                alt=""><p class='capitalize'>${data.type}</p></h5>
                                     </div>
                                     <div class="main flex justify-start text-gray-500 mt-6">
                                         <div class="mb-3">
                                             <h5 class="text-sm font-normal">Salary</h5>
                                             <h5 class="flex gap-1 font-semibold text-gray-500 text-sm mt-2">
-                                                <p>Rs. 15000</p> -<p>Rs. 25000</p>
+                                                <p>Rs. ${data.min_salary}</p> -<p>Rs. ${data.max_salary}</p>
                                             </h5>
                                         </div>
                                     </div>
@@ -235,5 +234,75 @@
             }
             callingSarkariJobs();
         });
+
+
+        // $(document).ready(function() {
+        //     // Function to fetch and display appointment
+        //     let callingSarkariJobs = () => {
+        //         $.ajax({
+        //             type: "GET",
+        //             url: "{{ route('hire.index') }}",
+        //             success: function(response) {
+        //                 let table = $("#callingHire");
+        //                 table.empty();
+        //                 let data = response.data;
+
+        //                 console.log(data);
+
+        //                 data.forEach((data) => {
+        //                     table.append(`
+        //                     <div class="card w-3/4 mb-4">
+        //                         <div class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        //                             <div class="upper flex gap-5">
+        //                                 <div class="logo mt-2">
+        //                                     <img src="/sarkari/private.png" class="rounded w-18" alt="">
+        //                                 </div>
+        //                                 <div class="name">
+        //                                     <h5 class="font-semibold text-black">${data.company_name}</h5>
+        //                                     <p class="text-gray-500 text-sm">${data.name}</p>
+        //                                 </div>
+        //                                 <p class="text-gray-600 text-sm ml-8"><strong class="text-red-600">Last Date : </strong>
+        //                                     04/05/2024
+        //                                 </p>
+
+        //                             </div>
+        //                             <div class="body mt-4">
+        //                                 <h5 class="flex gap-2 text-gray-500"><img src="/icons/home.png" class="w-5 h-5"
+        //                                         alt="">Work
+        //                                     From Home</h5>
+        //                             </div>
+        //                             <div class="main flex justify-start text-gray-500 mt-6">
+        //                                 <div class="mb-3">
+        //                                     <h5 class="text-sm font-normal">Salary</h5>
+        //                                     <h5 class="flex gap-1 font-semibold text-gray-500 text-sm mt-2">
+        //                                         <p>Rs. 15000</p> -<p>Rs. 25000</p>
+        //                                     </h5>
+        //                                 </div>
+        //                             </div>
+        //                             <hr class="bg-gray-500">
+        //                             <div class="footer flex gap-6 font-medium mt-5 text-gray-500 text-sm">
+        //                                 <p>Part Time</p>
+        //                                 <p>Full Time</p>
+        //                                 <p>Freshers Only</p>
+        //                                 <p>No English Required</p>
+        //                             </div>
+        //                             <div class="button flex gap-5 mt-5">
+        //                                 <a href="/viewPrivateJobForm" class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job </a>
+        //                                 <button
+        //                                     class=" rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2"><img
+        //                                         src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
+        //                             </div>
+        //                         </div>
+        //                     </div>
+        //                     `);
+        //                 });
+        //             },
+        //             error: function(xhr, status, error) {
+        //                 console.error('Error:', error);
+        //             }
+        //         });
+        //     }
+        //     callingSarkariJobs();
+        // });
     </script>
 @endsection
