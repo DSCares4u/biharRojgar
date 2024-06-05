@@ -9,10 +9,10 @@
                     <input type="text" id="name"
                         name="name"placeholder="Eg. Sales executives needed urgently for ..."
                         class="shadow appearance-none border py-1 px-2 w-full" required>
-                        <p id="error-name" class="text-red-500 text-xs font-semibold error-message"></p>
-                    </div>
+                    <p id="error-name" class="text-red-500 text-xs font-semibold error-message"></p>
+                </div>
                 <div class="flex items-center border rounded border-gray-300">
-                    <table class="table-auto border-collapse " id="table">
+                    {{-- <table class="table-auto border-collapse " id="table">
                         <thead>
                             <tr class="bg-gray-200">
                                 <th class="px-4 py-1 text-sm font-normal">Job Profile</th>
@@ -105,7 +105,101 @@
                                 </td>
                             </tr>
                         </tbody>
+                    </table> --}}
+                    <table class="table-auto border-collapse" id="table">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th class="px-4 py-1 text-sm font-normal">Job Profile</th>
+                                <th class="px-4 py-1 text-sm font-normal">No.of Post</th>
+                                <th class="px-2 py-1 text-sm font-normal">Experience</th>
+                                <th class="px-4 py-1 text-sm font-normal">Gender</th>
+                                <th class="px-4 py-1 text-sm font-normal">Preferred Language</th>
+                                <th class="px-4 py-1 text-sm font-normal">Type</th>
+                                <th class="px-4 py-1 text-sm font-normal">Qualification</th>
+                                <th class="px-4 py-1 text-sm font-normal">Salary</th>
+                                <th class="px-4 py-1 text-sm font-normal">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-1"><input type="text" name="inputs[0][profile]" placeholder="Job Name"
+                                        class="appearance-none border py-2 px-2 w-full text-xs"></td>
+                                <td class="py-1"><input type="number" min="1" name="inputs[0][no_of_post]"
+                                        placeholder="Number" class="appearance-none border py-2 px-2 w-full text-xs"></td>
+                                <td class="py-1 text-center">
+                                    <div class="text-xs text-gray-400">
+                                        Min: <input type="text" min="0" name="inputs[0][min_experience]"
+                                            placeholder="0"
+                                            class="appearance-none border text-black px-1 py-1 w-1/4 text-xs">
+                                        Max: <input type="text" min="0" name="inputs[0][max_experience]"
+                                            placeholder="5y"
+                                            class="appearance-none text-black px-1 border py-1 w-1/4 text-xs">
+                                    </div>
+                                </td>
+                                <td class="py-1 text-xs">
+                                    <select name="inputs[0][gender]"
+                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                        id="gender">
+                                        <option value="" class="appearance-none border text-center w-full">Select
+                                        </option>
+                                        <option value="male" class="border w-full text-sm">Male</option>
+                                        <option value="female" class="border w-full text-sm">Female</option>
+                                        <option value="others" class="border w-full text-sm">Others</option>
+                                    </select>
+                                </td>
+                                <td class="py-1">
+                                    <select name="inputs[0][preferred_lang]"
+                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                        id="preferred_lang">
+                                        <option value="" class="appearance-none border text-center w-full">Select
+                                        </option>
+                                        <option value="english" class="border w-full text-sm">English</option>
+                                        <option value="hindi" class="border w-full text-sm">Hindi</option>
+                                        <option value="other" class="border w-full text-sm">Others</option>
+                                    </select>
+                                </td>
+                                <td class="py-1">
+                                    <select name="inputs[0][type]"
+                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                        id="type">
+                                        <option value="" class="appearance-none border text-center w-full">Select
+                                        </option>
+                                        <option value="full-time" class="border w-full text-sm">Full-Time</option>
+                                        <option value="part-time" class="border w-full text-sm">Part-Time</option>
+                                        <option value="temporary" class="border w-full text-sm">Temporary</option>
+                                    </select>
+                                </td>
+                                <td class="py-1">
+                                    <select name="inputs[0][qualification]"
+                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                        id="qualification">
+                                        <option value="" class="appearance-none border text-center w-full">Select
+                                        </option>
+                                        <option value="masters" class="border w-full text-sm">Masters</option>
+                                        <option value="graduate" class="border w-full text-sm">Graduate</option>
+                                        <option value="12th Pass" class="border w-full text-sm">12th Pass</option>
+                                        <option value="10th Pass" class="border w-full text-sm">10th Pass</option>
+                                        <option value="below 10th" class="border w-full text-sm">Below 10th</option>
+                                        <option value="others" class="border w-full text-sm">Others</option>
+                                    </select>
+                                </td>
+                                <td class="py-1 text-center">
+                                    <div class="text-xs text-gray-400 flex gap-1">
+                                        <input type="text" name="inputs[0][min_salary]" placeholder="From"
+                                            class="appearance-none border py-1 px-2 w-1/2 text-black text-sm">
+                                        <input type="text" name="inputs[0][max_salary]" placeholder="To"
+                                            class="appearance-none py-1 px-2 text-black border w-1/2 text-sm">
+                                    </div>
+                                </td>
+                                <td class="py-2 flex justify-center">
+                                    <button type="button" name="add"
+                                        class="add bg-green-500 px-3 py-1 rounded text-white"><i
+                                            class="fa-solid fa-user-plus"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
+
                 </div>
                 <p id="error-roles" class="text-red-500 text-xs mb-4 font-semibold error-message"></p>
                 <div class="mb-3 flex gap-2">
@@ -113,60 +207,61 @@
                         <label for="city" class="block text-gray-700 text-sm mb-2 ">City</label>
                         <input type="text" id="city" name="city"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="Purnea" required>
-                            <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
+                        <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3  items-center w-1/2">
-                        <label for="state" class="block text-gray-700 text-sm appearance-none border px-2 w-full">State</label>
+                        <label for="state"
+                            class="block text-gray-700 text-sm appearance-none border px-2 w-full">State</label>
                         <select id="state" name="state"
-                        class="sm:text-sm py-2 px-2 items-center border border-gray-300 rounded">
-                        <option value="">Select State</option>
-                        <option value="Andhra Pradesh">Andhra Pradesh</option>
-                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                        <option value="Assam">Assam</option>
-                        <option value="Bihar">Bihar</option>
-                        <option value="Chhattisgarh">Chhattisgarh</option>
-                        <option value="Goa">Goa</option>
-                        <option value="Gujarat">Gujarat</option>
-                        <option value="Haryana">Haryana</option>
-                        <option value="Himachal Pradesh">Himachal Pradesh</option>
-                        <option value="Jharkhand">Jharkhand</option>
-                        <option value="Karnataka">Karnataka</option>
-                        <option value="Kerala">Kerala</option>
-                        <option value="Madhya Pradesh">Madhya Pradesh</option>
-                        <option value="Maharashtra">Maharashtra</option>
-                        <option value="Manipur">Manipur</option>
-                        <option value="Meghalaya">Meghalaya</option>
-                        <option value="Mizoram">Mizoram</option>
-                        <option value="Nagaland">Nagaland</option>
-                        <option value="Odisha">Odisha</option>
-                        <option value="Punjab">Punjab</option>
-                        <option value="Rajasthan">Rajasthan</option>
-                        <option value="Sikkim">Sikkim</option>
-                        <option value="Tamil Nadu">Tamil Nadu</option>
-                        <option value="Telangana">Telangana</option>
-                        <option value="Tripura">Tripura</option>
-                        <option value="Uttar Pradesh">Uttar Pradesh</option>
-                        <option value="Uttarakhand">Uttarakhand</option>
-                        <option value="West Bengal">West Bengal</option>
-                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                        <option value="Chandigarh">Chandigarh</option>
-                        <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman
-                            and Diu</option>
-                        <option value="Lakshadweep">Lakshadweep</option>
-                        <option value="Delhi">Delhi</option>
-                        <option value="Puducherry">Puducherry</option>
-                        <option value="Ladakh">Ladakh</option>
-                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                    </select>
-                            <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
+                            class="sm:text-sm py-2 px-2 items-center border border-gray-300 rounded">
+                            <option value="">Select State</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman
+                                and Diu</option>
+                            <option value="Lakshadweep">Lakshadweep</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Puducherry">Puducherry</option>
+                            <option value="Ladakh">Ladakh</option>
+                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                        </select>
+                        <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                 </div>
                 <div class="mb-3  items-center">
                     <label for="description" class="block text-gray-700 text-sm mb-2 ">Job Description</label>
                     <textarea name="description" id="description" cols="20" rows="2"placeholder="Type Or Details Of Job Here"
                         class="shadow appearance-none border py-1 px-2 w-full"></textarea>
-                        <p id="error-description" class="text-red-500 text-xs font-semibold error-message"></p>
-                    </div>
+                    <p id="error-description" class="text-red-500 text-xs font-semibold error-message"></p>
+                </div>
                 <div class="mb-3 flex items-center">
                     <h3 class=" font-semibold">Recruiter details</h3>
                     {{-- <h3 class="text-sm ml-1"> (Cannot be changed later)</h3> --}}
@@ -177,13 +272,13 @@
                             name)</label>
                         <input type="text" id="company_name" name="company_name"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="Abc Pvt. Ltd." required>
-                            <p id="error-company_name" class="text-red-500 text-xs font-semibold error-message"></p>
+                        <p id="error-company_name" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3  items-center w-1/2">
                         <label for="website" class="block text-gray-700 text-sm mb-2 ">Company's Website (if any)</label>
                         <input type="text" id="website" name="website"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="abc.com" required>
-                            <p id="error-website" class="text-red-500 text-xs font-semibold error-message"></p>
+                        <p id="error-website" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                 </div>
                 <div class="mb-3 flex gap-2">
@@ -191,13 +286,13 @@
                         <label for="mobile" class="block text-gray-700 text-sm mb-2 ">Phone</label>
                         <input type="tel" id="mobile" name="mobile"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" required>
-                            <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
+                        <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3  items-center w-1/2">
                         <label for="alt_mobile" class="block text-gray-700 text-sm mb-2 ">Alternate Phone</label>
                         <input type="tel" id="alt_mobile" name="alt_mobile"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" required>
-                            <p id="error-alt_mobile" class="text-red-500 text-xs font-semibold error-message"></p>
+                        <p id="error-alt_mobile" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                 </div>
                 <div class="flex gap-2 items-center">
@@ -205,7 +300,7 @@
                         <label for="email" class="block text-gray-700 text-sm mb-2 ">Email</label>
                         <input type="email" id="email" name="email"
                             class="shadow appearance-none border py-1 px-2 w-full" placeholder="roni@gmail.com" required>
-                            <p id="error-email" class="text-red-500 text-xs font-semibold error-message"></p>
+                        <p id="error-email" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3 items-center w-1/2">
                         <label for="logo" class="block text-gray-700 text-sm mb-2 ">Company's Logo / Image</label>
@@ -282,89 +377,84 @@
         </div>
 
         <script>
+
             $(document).ready(function() {
                 var i = 0;
 
                 // Add new row
                 $('#table').on('click', '.add', function() {
                     ++i;
-                    $('#table').append(
+                    $('#table tbody').append(
                         `<tr>
-                                <td class=" py-1"><input type="text" name="inputs[${i}]['profile']" placeholder="Job Name"
-                                        class="appearance-none border py-2 px-2 w-full text-xs"></td>
-                                <td class=" py-1"><input type="" min="1" name="inputs[${i}]['no_of_post']"
-                                        placeholder="Number"
-                                        class="appearance-none border py-2 px-2 w-full text-xs">
-                                </td>
-                                <td class="py-1 text-center">
-                                    <div class="text-xs text-gray-400">
-                                        Min: <input type="text" min="0" name="inputs[${i}]['min_experience']" placeholder="0"
-                                            class="appearance-none border text-black px-1 py-1 w-1/4 text-xs">
-                                        Max: <input type="text" min="0" name="inputs[${i}]['max_experience']" placeholder="5y"
-                                            class="appearance-none text-black  px-1 border py-1 w-1/4 text-xs">
-                                    </div>
-                                </td>
-
-                                <td class=" py-1 text-xs">
-                                    <select name="inputs[${i}]['gender']"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                        id="gender">
-                                        <option value="" class="appearance-none border text-center w-full  ">Select
-                                        </option>
-                                        <option value="male" class=" border  w-full text-sm">Male</option>
-                                        <option value="female" class=" border  w-full text-sm">Female</option>
-                                        <option value="others" class=" border  w-full text-sm">Others</option>
-                                    </select>
-                                </td>
-                                <td class=" py-1">
-                                    <select name="inputs[${i}]['preferred_lang']"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                        id="preferred_lang">
-                                        <option value="" class="appearance-none border text-center w-full  ">Select
-                                        </option>
-                                        <option value="english" class=" border  w-full text-sm">English</option>
-                                        <option value="hindi" class=" border  w-full text-sm">Hindi</option>
-                                        <option value="other" class=" border w-full text-sm">Others</option>
-                                    </select>
-                                </td>
-                                <td class=" py-1"><select name="inputs[${i}]['type']"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                        id="type">
-                                        <option value="" class="appearance-none border text-center w-full  ">Select
-                                        </option>
-                                        <option value="full-time" class=" border  w-full text-sm">Full-Time</option>
-                                        <option value="part-time" class=" border  w-full text-sm">Part-Time</option>
-                                        <option value="temporary" class=" border  w-full text-sm">Temporary</option>
-                                    </select>
-                                </td>
-                                <td class=" py-1">
-                                    <select name="inputs[${i}]['qualification']"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                        id="qualification">
-                                        <option value="" class="appearance-none border text-center w-full  ">Select
-                                        </option>
-                                        <option value="masters" class=" border  w-full text-sm">Masters</option>
-                                        <option value="graduate" class=" border  w-full text-sm">Graduate</option>
-                                        <option value="12th Pass" class=" border  w-full text-sm">12th Pass</option>
-                                        <option value="10th Pass" class=" border  w-full text-sm">10th Pass</option>
-                                        <option value="below 10th" class=" border  w-full text-sm">Below 10th</option>
-                                        <option value="others" class=" border  w-full text-sm">Others</option>
-                                    </select>
-                                </td>
-                                <td class="py-1 text-center">
-                                    <div class="text-xs text-gray-400 flex gap-1">
-                                        <input type="text" name="inputs[${i}]['min_salary']" placeholder="From"
-                                            class="appearance-none border py-1 px-2 w-1/2 text-black text-sm">
-                                        <input type="text" name="inputs[${i}]['max_salary']" placeholder="To"
-                                            class="appearance-none py-1 px-2 text-black border w-1/2 text-sm">
-                                    </div>
-                                </td>
-                                <td class=" py-2 flex justify-center">
-                                    <button type="button" name="remove"
-                                        class="remove bg-red-500 px-3 py-1 rounded text-white"><i
-                                            class="fa-solid fa-user-minus"></i></button>
-                                </td>
-                            </tr>`
+                        <td class="py-1"><input type="text" name="inputs[${i}][profile]" placeholder="Job Name"
+                            class="appearance-none border py-2 px-2 w-full text-xs"></td>
+                        <td class="py-1"><input type="number" min="1" name="inputs[${i}][no_of_post]"
+                            placeholder="Number" class="appearance-none border py-2 px-2 w-full text-xs">
+                        </td>
+                        <td class="py-1 text-center">
+                            <div class="text-xs text-gray-400">
+                                Min: <input type="text" min="0" name="inputs[${i}][min_experience]" placeholder="0"
+                                    class="appearance-none border text-black px-1 py-1 w-1/4 text-xs">
+                                Max: <input type="text" min="0" name="inputs[${i}][max_experience]" placeholder="5y"
+                                    class="appearance-none text-black px-1 border py-1 w-1/4 text-xs">
+                            </div>
+                        </td>
+                        <td class="py-1 text-xs">
+                            <select name="inputs[${i}][gender]"
+                                class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                id="gender">
+                                <option value="" class="appearance-none border text-center w-full">Select</option>
+                                <option value="male" class="border w-full text-sm">Male</option>
+                                <option value="female" class="border w-full text-sm">Female</option>
+                                <option value="others" class="border w-full text-sm">Others</option>
+                            </select>
+                        </td>
+                        <td class="py-1">
+                            <select name="inputs[${i}][preferred_lang]"
+                                class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                id="preferred_lang">
+                                <option value="" class="appearance-none border text-center w-full">Select</option>
+                                <option value="english" class="border w-full text-sm">English</option>
+                                <option value="hindi" class="border w-full text-sm">Hindi</option>
+                                <option value="other" class="border w-full text-sm">Others</option>
+                            </select>
+                        </td>
+                        <td class="py-1"><select name="inputs[${i}][type]"
+                                class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                id="type">
+                                <option value="" class="appearance-none border text-center w-full">Select</option>
+                                <option value="full-time" class="border w-full text-sm">Full-Time</option>
+                                <option value="part-time" class="border w-full text-sm">Part-Time</option>
+                                <option value="temporary" class="border w-full text-sm">Temporary</option>
+                            </select>
+                        </td>
+                        <td class="py-1">
+                            <select name="inputs[${i}][qualification]"
+                                class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                id="qualification">
+                                <option value="" class="appearance-none border text-center w-full">Select</option>
+                                <option value="masters" class="border w-full text-sm">Masters</option>
+                                <option value="graduate" class="border w-full text-sm">Graduate</option>
+                                <option value="12th Pass" class="border w-full text-sm">12th Pass</option>
+                                <option value="10th Pass" class="border w-full text-sm">10th Pass</option>
+                                <option value="below 10th" class="border w-full text-sm">Below 10th</option>
+                                <option value="others" class="border w-full text-sm">Others</option>
+                            </select>
+                        </td>
+                        <td class="py-1 text-center">
+                            <div class="text-xs text-gray-400 flex gap-1">
+                                <input type="text" name="inputs[${i}][min_salary]" placeholder="From"
+                                    class="appearance-none border py-1 px-2 w-1/2 text-black text-sm">
+                                <input type="text" name="inputs[${i}][max_salary]" placeholder="To"
+                                    class="appearance-none py-1 px-2 text-black border w-1/2 text-sm">
+                            </div>
+                        </td>
+                        <td class="py-2 flex justify-center">
+                            <button type="button" name="add"
+                                class="add bg-green-500 px-3 py-1 rounded text-white"><i
+                                    class="fa-solid fa-user-plus"></i></button>
+                        </td>
+                    </tr>`
                     );
                 });
 
@@ -372,11 +462,8 @@
                 $('#table').on('click', '.remove', function() {
                     $(this).closest('tr').remove();
                 });
-            });
 
-            $(document).ready(function() {
-                //insert application details
-
+                // Handle form submission
                 $("#payNowBtn").click(function() {
                     $("#paymentMode").val("pay_now");
                     $("#addHirer").submit();
@@ -391,7 +478,6 @@
                 $("#addHirer").submit(function(e) {
                     e.preventDefault();
 
-                    // Ensure payment mode is correctly set
                     if (!$("#paymentMode").val()) {
                         console.log("Payment mode is not set.");
                         return;
@@ -412,17 +498,18 @@
                             window.open("/", "_self");
                         },
                         error: function(xhr) {
-                        if (xhr.status === 422) {
-                            var errors = xhr.responseJSON.errors;
-                            $.each(errors, function(key, value) {
-                                $('#error-' + key).html(value[0]);
-                            });
-                        } else {
-                            alert('An error occurred. Please try again.');
+                            if (xhr.status === 422) {
+                                var errors = xhr.responseJSON.errors;
+                                $.each(errors, function(key, value) {
+                                    $('#error-' + key).html(value[0]);
+                                });
+                            } else {
+                                alert('An error occurred. Please try again.');
+                            }
                         }
-                    }
                     });
                 });
+
 
 
                 // plan card calling work
@@ -443,8 +530,9 @@
 
                             // Map each feature to an HTML list item and join them into a single string
                             let features = featuresArray.map(feature =>
-                                `<li class="flex font-medium text-[13px] mt-2"><img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="">${feature}</li>`).join('');
-                                
+                                `<li class="flex font-medium text-[13px] mt-2"><img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="">${feature}</li>`
+                            ).join('');
+
                             select.append(`
                                 <label class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
                                     <input type="radio" name="plan_id" value="${plan.id}" data-plan-name="${plan.name}" data-plan-charge="${plan.price}" class="hidden" />

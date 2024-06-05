@@ -9,6 +9,8 @@ use illuminate\Database\Eloquent\Relations\HasOne;
 class Role extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
 
     public function hire(): HasOne
     {

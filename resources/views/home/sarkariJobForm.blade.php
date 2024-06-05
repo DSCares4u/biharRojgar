@@ -4,7 +4,7 @@
     <div class="container mx-auto font-sans">
         <div class="bg-gray-100 mx-16 border border-gray mt-3">
             <form id="applyForm" class="p-5 flex flex-col mx-10">
-                <h2 class="text-lg font-semibold mb-2">Apply For Sarkari job</h2>
+ gi               <h2 class="text-lg font-semibold mb-2">Apply For Sarkari job</h2>
                 <div class="mb-3">
                     <label for="name" class="block text-gray-700 text-sm mb-2">Name</label>
                     <input type="text" id="name" name="name" placeholder="Eg. Sales executives needed urgently for ..."
