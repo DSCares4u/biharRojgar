@@ -451,8 +451,8 @@
                         </td>
                         <td class="py-2 flex justify-center">
                             <button type="button" name="add"
-                                class="add bg-green-500 px-3 py-1 rounded text-white"><i
-                                    class="fa-solid fa-user-plus"></i></button>
+                                class="remove bg-red-500 px-3 py-1 rounded text-white"><i
+                                    class="fa-solid fa-user-minus"></i></button>
                         </td>
                     </tr>`
                     );
@@ -509,9 +509,6 @@
                         }
                     });
                 });
-
-
-
                 // plan card calling work
 
                 $.ajax({

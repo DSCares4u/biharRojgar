@@ -12,8 +12,9 @@ class Role extends Model
     protected $guarded = [];
 
 
-    public function hire(): BelongsTo
+    public function hire(): HasOne
     {
-        return $this->belongsTo(Hire::class);
+        return $this->HasOne(Hire::class, 'id', 'hire_id');
     }
+
 }

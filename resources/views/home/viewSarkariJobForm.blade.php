@@ -1,6 +1,6 @@
 @extends('home.homebase')
 @section('content')
-    <div id="printable-area" class="container mx-auto p-8 mt-3 bg-white shadow-lg border border-gray-400">
+    <div id="printable-area" class="container mx-auto w-[65%] p-8 mt-3 bg-white shadow-lg border border-gray-400">
         <h1 class="text-3xl font-extrabold text-center mb-4 text-gray-900">माता कलावती देवी फाउंडेशन</h1>
         <p class="text-xl text-center mb-4 underline text-gray-700">JOB APPLICATION FORM</p>
         <!-- Personal Details -->
@@ -57,7 +57,7 @@
 
         <!-- Address Details -->
         <h2 class="text-2xl underline font-semibold mt-4 mb-3 text-gray-800">Address Details / पता का विवरण :</h2>
-        <div class="w-full space-y-4">
+        <div class="w-3/4 space-y-4">
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">Landmark :</label>
                 <p class="w-2/4 capitalize text-sm" id="landmark">Near Park</p>
@@ -86,7 +86,7 @@
 
         <!-- Educational Details -->
         <h2 class="text-2xl underline font-semibold mt-4 mb-3 text-gray-800">Educational Details / शैक्षिक विवरण</h2>
-        <div class="w-full space-y-4">
+        <div class="w-3/4 space-y-4">
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">Last Qualification / अंतिम शिक्षा :</label>
                 <p class="w-2/4 capitalize text-sm" id="qualification">B.Sc. in Computer Science</p>
