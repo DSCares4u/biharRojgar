@@ -1,7 +1,7 @@
 @extends('home.homebase')
 @section('content')
     <div class="container p-2 bg-gray-100 rounded-lg ">
-        <div class="heading mb-6">
+        <div class="heading mb-6 w-[70%]">
             <h2 class="text-2xl font-semibold">Private Job</h2>
             <p class="text-sm text-red-500 mt-4 font-medium">To avoid last minute rush, you are advised to submit your online
                 application much before the last date. RRBs shall not be responsible if applicants are not able to submit
@@ -59,13 +59,13 @@
                         <div class="button flex gap-5 mt-5">
                             <button class="bg-green-700 rounded text-white py-1 w-1/2">Apply For Job</button>
                             <button
-                                class=" rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2"><img
+                                class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2"><img
                                     src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="w-1/4 fixed right-5 top-5 mt-32">
+            <div class="w-1/4 fixed right-5 top-1 mt-20">
                 <div class="w-[100%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
                     <div class="price mt-2 mb-4">
                         <h3 class="text-lg font-semibold">Our Services</h3>
@@ -117,15 +117,19 @@
                         table.empty();
                         let data = response.data;
 
-                        console.log(data);
-
                         data.forEach((data) => {
+                            let language = data.preferred_lang;
+                            if (language === 'english') {
+                                language = "English Required";
+                            } else {
+                                language = "No English Required";
+                            }
                             table.append(`
                             <div class="card w-3/4 mb-4">
                                 <div class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                     <div class="upper flex gap-5">
-                                        <div class="logo mt-2">
-                                            <img src="/image/company/logo/${data.hire.logo}" class="rounded w-16" alt="">
+                                        <div class="logo">
+                                            <img src="/image/company/logo/${data.hire.logo}" class="rounded w-12 h-12" alt="">
                                         </div>
                                         <div class="name">
                                             <h5 class="font-semibold text-black">${data.hire.company_name}</h5>
@@ -136,7 +140,7 @@
                                         <h5 class="flex gap-2 text-gray-500"><img src="/icons/home.png" class="w-5 h-5 "
                                                 alt=""><p class='capitalize'>${data.type}</p></h5>
                                     </div>
-                                    <div class="main flex justify-start text-gray-500 mt-6">
+                                    <div class="main flex justify-start text-gray-500 mt-3">
                                         <div class="mb-3">
                                             <h5 class="text-sm font-normal">Salary</h5>
                                             <h5 class="flex gap-1 font-semibold text-gray-500 text-sm mt-2">
@@ -154,17 +158,31 @@
                                         <p>Part Time</p>
                                         <p>Full Time</p>
                                         <p>Freshers Only</p>
-                                        <p>No English Required</p>
+                                        <p>${language}</p>
                                     </div>
                                     <div class="button flex gap-5 mt-5">
                                         <a href="/viewPrivateJobForm" class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job </a>
                                         <button
-                                            class=" rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2"><img
+                                            class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2"><img
                                                 src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
                                     </div>
                                 </div>
                             </div>
                             `);
+                        });
+                        $(".share-btn").on("click", function() {
+                            let shareUrl = $(this).data("share-url");
+                            if (navigator.share) {
+                                navigator.share({
+                                    title: 'Job Opportunity',
+                                    url: 'http://127.0.0.1:8000/private-job', // need to replace with actual url
+                                }).then(() => {
+                                    console.log('Thanks for sharing!');
+                                }).catch(console.error);
+                            } else {
+                                // Fallback for browsers that do not support the Web Share API
+                                prompt("Copy this link to share:", shareUrl);
+                            }
                         });
                     },
                     error: function(xhr, status, error) {
