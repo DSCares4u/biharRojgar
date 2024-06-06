@@ -30,8 +30,8 @@ Route::middleware("auth")->group(function (){
 
     Route::get('/manual-form',[HomeController::class,'manualForm']);
 
-    Route::get('/viewSarkariJobForm',[HomeController::class,'viewSarkariJobForm']);
-    Route::get('/viewPrivateJobForm',[HomeController::class,'viewPrivateJobForm']);
+    Route::get('/viewSarkariJobForm/{id}',[HomeController::class,'viewSarkariJobForm']);
+    Route::get('/viewPrivateJobForm/{id}',[HomeController::class,'viewPrivateJobForm']);
     Route::get('/sarkari-job/confirm',[HomeController::class,'sarkariJobConfirm']);
     Route::get('/private-job/confirm',[HomeController::class,'PrivateJobConfirm']); 
       

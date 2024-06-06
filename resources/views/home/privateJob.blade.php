@@ -124,8 +124,16 @@
                             } else {
                                 language = "No English Required";
                             }
+
+                            let exp = data.min_experience;
+                            if(exp <= 1){
+                                exp = "Fresher Also";
+                            } else{
+                                exp = "Not for Freshers";
+                            }
+
                             table.append(`
-                            <div class="card w-3/4 mb-4">
+                            <div class="card w-3/4 mb-4 capitalize">
                                 <div class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                     <div class="upper flex gap-5">
                                         <div class="logo">
@@ -136,16 +144,12 @@
                                             <p class="text-gray-500 text-sm capitalize">${data.profile}</p>
                                         </div>
                                     </div>
-                                    <div class="body mt-4">
-                                        <h5 class="flex gap-2 text-gray-500"><img src="/icons/home.png" class="w-5 h-5 "
-                                                alt=""><p class='capitalize'>${data.type}</p></h5>
+                                    <div class="body mt-4 mb-4">
+                                        <h5 class="flex gap-2 text-gray-500"><img src="/icons/home.png" class="w-5 h-5 "alt=""><p class='capitalize'>${data.type}</p></h5>
                                     </div>
-                                    <div class="main flex justify-start text-gray-500 mt-3">
+                                    <div class="main flex justify-start text-gray-500">
                                         <div class="mb-3">
-                                            <h5 class="text-sm font-normal">Salary</h5>
-                                            <h5 class="flex gap-1 font-semibold text-gray-500 text-sm mt-2">
-                                                <p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i> ${data.min_salary}</p> -<p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i> ${data.max_salary}</p>
-                                            </h5>
+                                            <h5 class="text-sm font-normal flex gap-2"><p>No. of Post :</p> <p class="font-semibold text-gray-500 text-sm"> ${data.no_of_post} </p></h5>
                                         </div>
                                     </div>
                                     <div class="main flex justify-start text-gray-500">
@@ -153,15 +157,24 @@
                                             <h5 class="text-sm font-normal flex gap-2"><p>Experience :</p> <p class="font-semibold text-gray-500 text-sm"> ${data.min_experience} - ${data.max_experience} Years </p></h5>
                                         </div>
                                     </div>
+                                    <div class="main flex justify-start text-gray-500">
+                                        <div class="mb-3">
+                                            <h5 class="text-sm font-normal flex gap-2"><p>Qualification :</p> <p class="font-semibold text-gray-500 text-sm"> ${data.qualification}</p></h5>
+                                        </div>
+                                    </div>
+                                    <div class="main flex justify-start text-gray-500">
+                                        <div class="mb-3">
+                                            <h5 class="text-sm font-normal flex gap-2"><p>Salary :</p>  <p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i> ${data.min_salary}</p> -<p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i> ${data.max_salary}</p></h5>
+                                        </div>
+                                    </div>
                                     <hr class="bg-gray-500">
-                                    <div class="footer flex gap-6 font-medium mt-5 text-gray-500 text-sm">
-                                        <p>Part Time</p>
-                                        <p>Full Time</p>
-                                        <p>Freshers Only</p>
+                                    <div class="footer flex gap-6 font-medium mt-2 capitalize text-gray-500 text-sm">
+                                        <p>${data.type}</p>
+                                        <p>${exp}</p>
                                         <p>${language}</p>
                                     </div>
                                     <div class="button flex gap-5 mt-5">
-                                        <a href="/viewPrivateJobForm" class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job </a>
+                                        <a href="/viewPrivateJobForm/${data.id}" class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job </a>
                                         <button
                                             class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2"><img
                                                 src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>

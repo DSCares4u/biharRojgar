@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete("cascade");
+            $table->integer('job_id');
             $table->enum('payment_mode',['pay_now','pay_later'])->nullable();
             $table->timestamps();
            

@@ -122,7 +122,6 @@
     </div>
 
     <script>
-
         $(document).ready(function() {
             function fetchJobDetailsAndOpenModal() {
                 let userId = {{ auth()->user()->id }};
@@ -200,11 +199,23 @@
             // Auto-execute the function when the page loads
             fetchJobDetailsAndOpenModal();
 
-            // applying for job
+            // Function for taking id from URL
+            function getIdFromUrlPath() {
+                let pathArray = window.location.pathname.split('/');
+                return pathArray[pathArray.length - 1];
+            }
 
+            // applying for job
             $("#applySarkariJob").submit(function(e) {
                 e.preventDefault();
+
+                // Get the job ID from the URL
+                var jobId = getIdFromUrlPath();
+
+                // Append the job ID to the form data
                 var formData = new FormData(this);
+                formData.append('job_id', jobId);
+
                 $.ajax({
                     type: "POST",
                     url: "{{ route('sarkari.job.apply.store') }}",
@@ -216,16 +227,35 @@
                     success: function(response) {
                         swal("success", response.message, "success");
                         $("#applySarkariJob").trigger("reset");
-                        window.open("/sarkari-job/confirm", "_self")
+                        setTimeout(function() {
+                            window.open("/sarkari-job/confirm", "_self");
+                        }, 3000); // Redirect after 3 seconds
                     },
                     error: function(xhr, status, error) {
-                        var errors = xhr.responseJSON.error;
-                        $.each(errors, function(key, value) {
-                            $("#" + key + "-error").text(value[0]).removeClass(
-                                "hidden");
-                        });
+                        if (xhr.status === 409) {
+                            swal("error", "You have already applied for this job.", "error");
+                        } else if (xhr.status === 403) {
+                            // Handle missing candidate profile or documents
+                            var message = xhr.responseJSON.message;
+                            swal("error", message, "error").then(function() {
+                                // Redirect based on the message
+                                if (message.includes("candidate profile")) {
+                                    window.open("/add-candidate", "_self");
+                                } else if (message.includes("add Qualification")) {
+                                    window.open("/address", "_self");
+                                } else if (message.includes("required documents")) {
+                                    window.open("/documents", "_self");
+                                }
+                            });
+                        } else {
+                            var errors = xhr.responseJSON.error;
+                            $.each(errors, function(key, value) {
+                                $("#" + key + "-error").text(value[0]).removeClass(
+                                    "hidden");
+                            });
+                        }
                     }
-                })
+                });
             });
         });
     </script>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\Candidate;
+use App\Models\Address;
+use App\Models\Document;
 use App\Models\ManualJob;
 use Illuminate\Http\Request;
 use Validator;
@@ -28,9 +31,10 @@ class JobController extends Controller
 
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required|unique:users',                 
+            'user_id' => 'required',
+            'job_id' =>'required'                
         ]);
-
+    
         if ($validator->fails()) {
             return response()->json([
                 'status' => 422,
@@ -38,9 +42,47 @@ class JobController extends Controller
             ], 422);
         } else {
 
-            $job = Job::create([
+              // Check if the user has a candidate profile
+              $candidate = Candidate::where('user_id', $request->user_id)->first();
+              if (!$candidate) {
+                  return response()->json([
+                      'status' => 403,
+                      'message' => "You need to create a candidate profile before applying."
+                  ], 403);
+              }
+  
+              $address = Address::where('user_id', $request->user_id)->first();
+              if (!$address) {
+                  return response()->json([
+                      'status' => 403,
+                      'message' => "You need to add Qualification details  before applying."
+                  ], 403);
+              }
+      
+              // Check if the user has uploaded the required documents
+              $documents = Document::where('user_id', $request->user_id)->get();
+              if ($documents->isEmpty()) {
+                  return response()->json([
+                      'status' => 403,
+                      'message' => "You need to upload the required documents before applying."
+                  ], 403);
+              }
+            // Check if the user has already applied for the job
+            $existingApplication = Job::where('user_id', $request->user_id)
+                                                 ->where('job_id', $request->job_id)
+                                                 ->first();
+            if ($existingApplication) {
+                return response()->json([
+                    'status' => 409,
+                    'message' => "You have already applied for this job."
+                ], 409);
+            }
+    
+            // Create the new job application
+            $job = JOb::create([
                 'payment_mode' => $request->payment_mode,          
                 'user_id' => $request->user_id,                     
+                'job_id' => $request->job_id,                     
             ]);
     
             if ($job) {

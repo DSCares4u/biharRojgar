@@ -11,16 +11,16 @@
             <p class="text-gray-600 mb-6">Thank you for applying! We appreciate your interest and will review your
                 application shortly.</p>
 
-            <div class="bg-gray-50 p-4 rounded-lg shadow-inner text-left">
+            {{-- <div class="bg-gray-50 p-4 rounded-lg shadow-inner text-left">
                 <h3 class="text-lg font-medium text-gray-800 mb-2">Your Information</h3>
                 <p class="text-gray-700"><strong>Name:</strong> John Doe</p>
                 <p class="text-gray-700"><strong>Email:</strong> john.doe@example.com</p>
                 <p class="text-gray-700"><strong>Phone:</strong> (123) 456-7890</p>
-            </div>
+            </div> --}}
 
-            <button onclick="window.print()"
-                class="mt-6 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Print
-                Confirmation</button>
+            <a href="/private-job">
+                <button class="mt-6 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Apply for more Jobs</button>
+            </a>
         </div>
     </div>
 @endsection
