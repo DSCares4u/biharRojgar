@@ -2,10 +2,10 @@
 @section('content')
     <hr class="bg-gray-300 h-1 rounded-xl">
     <div class="container mx-auto p-6 rounded-lg">
-        <div class="heading text-center mb-6" id="yojnaCat">
+        <div class="heading text-center mb-6 capitalize" id="yojnaCat">
             <!-- Categories will be appended here -->
         </div>
-        <div class="main" id="callingYojna">
+        <div class="main capitalize" id="callingYojna">
             <!-- Yojnas will be appended here under respective categories -->
         </div>
     </div>

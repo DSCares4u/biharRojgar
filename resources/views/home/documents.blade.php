@@ -244,7 +244,7 @@
                                         <input type="file" id="quali_certificate" name="quali_certificate">
                                     </div>
                                     <div class="mb-4 items-center">
-                                        <h4 for="other_certificate" class="text-sm mb-3 flex">Any Other Certificate <p class="text-sm">(i.e. Computer Certificate, Skill Certificate, etc)</p></h4>
+                                        <label for="other_certificate" class="text-sm mb-3 flex">Any Other Certificate <p class="text-sm">(i.e. Computer Certificate, Skill Certificate, etc)</p></label>
                                         <input type="file" id="other_certificate" name="other_certificate">
                                     </div>
                                 </div>
