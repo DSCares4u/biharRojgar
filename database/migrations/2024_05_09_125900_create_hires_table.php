@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('alt_mobile');
             $table->string('email');
             $table->string('logo');
+            $table->string('isApproved')->default(false);
             $table->enum('payment_mode',['pay_now','pay_later']);
             $table->foreignId('hire_plan_id')->constrained()->onDelete("cascade");
             $table->timestamps();
