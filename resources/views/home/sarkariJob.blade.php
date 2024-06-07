@@ -124,7 +124,7 @@
                                     </div>
                                     <div class="w-10/12 mb-1">
                                         <div class="flex justify-between text-blue-500 font-bold">
-                                            <h5>CEN No. RPF 01/2024</h5>
+                                            <h5>${data.role}</h5>
                                             <h5>Important Instruction</h5>
                                         </div>
                                         <div class="mt-1 flex justify-between">
@@ -149,7 +149,7 @@
                                     </div>
                                 </div>
                                 <div class="flex justify-between ml-1">
-                                    <div class="fees mt-2 ml-36 flex">
+                                    <div class="fees mt-2 ml-32 flex">
                                         <h5 class=" font-semibold text-red-700 w-32 rounded text-base">Fees : Rs. ${data.fees}</h5>
                                         <p class="text-[12px]">(Including gov. fees)</p>
                                     </div>

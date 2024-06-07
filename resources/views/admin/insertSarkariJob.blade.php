@@ -16,6 +16,12 @@
                             required>
                     </div>
                     <div class="mb-4">
+                        <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
+                        <input type="text" id="role" name="role"
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            required>
+                    </div>
+                    <div class="mb-4">
                         <label for="no_of_post" class="block text-sm font-medium text-gray-700">No Of Post</label>
                         <input type="number" id="no_of_post" name="no_of_post"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
@@ -109,5 +115,4 @@
 });
 
 </script>
-
 @endsection

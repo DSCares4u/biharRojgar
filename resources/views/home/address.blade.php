@@ -143,8 +143,7 @@
                 success: function(response) {
                     // swal("Success", response.message, "message");
                     $("#insertData").trigger("reset");
-                    window.open("/documents", "_self")
-
+                    window.open("/documents", "_self");
                 },
                 error: function(xhr, status, error) {
                     console.error('Error updating Plan Details:', error);

@@ -192,9 +192,7 @@
                                     </div>
                                 </td>
                                 <td class="py-2 flex justify-center">
-                                    <button type="button" name="add"
-                                        class="add bg-green-500 px-3 py-1 rounded text-white"><i
-                                            class="fa-solid fa-user-plus"></i></button>
+                                    <button type="button" name="add" class="add bg-green-500 px-3 py-1 rounded text-white"><i class="fa-solid fa-user-plus"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -276,7 +274,7 @@
                     </div>
                     <div class="mb-3  items-center w-1/2">
                         <label for="website" class="block text-gray-700 text-sm mb-2 ">Company's Website (if any)</label>
-                        <input type="text" id="website" name="website"
+                        <input type="url" id="website" name="website"
                             class="shadow appearance-none border py-1 px-2 w-full"placeholder="abc.com" required>
                         <p id="error-website" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
@@ -377,7 +375,6 @@
         </div>
 
         <script>
-
             $(document).ready(function() {
                 var i = 0;
 
@@ -484,6 +481,14 @@
                     }
 
                     var formData = new FormData(this);
+
+                    // Get the current date and format it as needed
+                    var currentDate = new Date();
+                    var formattedDate = ('0' + currentDate.getDate()).slice(-2) + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + currentDate.getFullYear();
+
+                    // Append the date to the FormData object
+                    formData.append('date_of_start', formattedDate);
+
                     $.ajax({
                         type: "POST",
                         url: "{{ route('hire.store') }}",

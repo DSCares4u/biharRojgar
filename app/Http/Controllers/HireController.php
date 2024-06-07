@@ -50,11 +50,12 @@ class HireController extends Controller
 {
     $validator = Validator::make($request->all(), [
         'name' => 'required|string|min:3',
+        'date_of_start' => 'required',
         'city' => 'required|string',
         'state' => 'required|string',
         'description' => 'required|string',
         'company_name' => 'required|string',
-        'website' => 'required|string',
+        'website' => 'required|url',
         'mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
         'alt_mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
         'email' => 'required|string',
@@ -92,6 +93,7 @@ class HireController extends Controller
 
     $hire = Hire::create([
         'name' => $request->name,
+        'date_of_start' => $request->date_of_start,
         'city' => $request->city,
         'state' => $request->state,
         'description' => $request->description,

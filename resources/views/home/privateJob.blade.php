@@ -104,6 +104,7 @@
             </div>
         </div>
     </div>
+    <a href=""></a>
 
     <script>
         $(document).ready(function() {
@@ -126,22 +127,28 @@
                             }
 
                             let exp = data.min_experience;
-                            if(exp <= 1){
+                            if (exp <= 1) {
                                 exp = "Fresher Also";
-                            } else{
+                            } else {
                                 exp = "Not for Freshers";
                             }
 
                             table.append(`
                             <div class="card w-3/4 mb-4 capitalize">
                                 <div class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                                    <div class="upper flex gap-5">
-                                        <div class="logo">
-                                            <img src="/image/company/logo/${data.hire.logo}" class="rounded w-12 h-12" alt="">
+                                    <div class="flex justify-between">
+                                        <div class="flex gap-5">
+                                            <div class="logo">
+                                                <img src="/image/company/logo/${data.hire.logo}" class="rounded w-12 h-12" alt="">
+                                            </div>
+                                            <div class="name">
+                                                <h5 class="font-semibold text-black">${data.hire.company_name}</h5>
+                                                <p class="text-gray-500 text-sm capitalize">${data.profile}</p>
+                                            </div>
                                         </div>
-                                        <div class="name">
-                                            <h5 class="font-semibold text-black">${data.hire.company_name}</h5>
-                                            <p class="text-gray-500 text-sm capitalize">${data.profile}</p>
+                                        <div>
+                                            <p class="text-gray-600 text-sm "><strong class="text-red-600">Opening Date : </strong>${data.hire.date_of_start}</p>
+                                            <p class="text-gray-600 text-sm "><strong class="text-blue-600">Website : </strong><a href='${data.hire.website}' class='lowercase hover:underline'>${data.hire.website}</a></p>
                                         </div>
                                     </div>
                                     <div class="body mt-4 mb-4">

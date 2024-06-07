@@ -29,6 +29,7 @@ class SarkariJobController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|min:3',
+            'role' => 'required|string',
             'no_of_post' => 'required',
             'min_age' => 'required',
             'max_age' => 'required',
@@ -50,6 +51,7 @@ class SarkariJobController extends Controller
 
             $job = SarkariJob::create([
                 'name' => $request->name,               
+                'role' => $request->role,               
                 'no_of_post' => $request->no_of_post,               
                 'min_age' => $request->min_age,               
                 'max_age' => $request->max_age,               
@@ -96,6 +98,7 @@ class SarkariJobController extends Controller
         
     $validator = Validator::make($request->all(), [
         'name' => 'required|string|min:3',
+        'role' => 'required|string|min:3',
         'no_of_post' => 'required|string|min:3',
         'min_age' => 'required|string|min:3',
         'max_age' => 'required|string|min:3',
@@ -119,6 +122,7 @@ class SarkariJobController extends Controller
                 // Update existing job
                 $job->update([
                 'name' => $request->name,               
+                'role' => $request->role,               
                 'no_of_post' => $request->no_of_post,               
                 'min_age' => $request->min_age,               
                 'max_age' => $request->max_age,               

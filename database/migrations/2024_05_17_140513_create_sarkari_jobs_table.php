@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('sarkari_jobs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('role');
             $table->integer('no_of_post');
             $table->integer('min_age');
             $table->integer('max_age');
