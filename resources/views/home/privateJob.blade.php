@@ -184,8 +184,7 @@
                                             <div class="button flex gap-5 mt-5">
                                                 <a href="/viewPrivateJobForm/${data.id}" class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job </a>
                                                 <button
-                                                    class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2"><img
-                                                        src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
+                                                    class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2"><img src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
                                             </div>
                                         </div>
                                     </div>
