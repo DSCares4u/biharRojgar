@@ -26,19 +26,24 @@
                                 required>
                         </div>
                         <div class="mb-4">
-                            <label for="features" class="block text-sm font-medium text-gray-700">Yojna Features /Benefits</label>
-                                <textarea name="features" id="features" rows="3" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                    required ></textarea>
+                            <label for="features" class="block text-sm font-medium text-gray-700">Yojna Features
+                                /Benefits</label>
+                            <textarea name="features" id="features" rows="3"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                required></textarea>
                         </div>
                         <div class="mb-4">
                             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-                                <textarea name="description" id="description" rows="3" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                    required ></textarea>
+                            <textarea name="description" id="description" rows="3"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                required></textarea>
                         </div>
                         <div class="mb-4">
-                            <label for="documents" class="block text-sm font-medium text-gray-700">Required Documents</label>
-                                <textarea name="documents" id="documents" rows="3" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                    required ></textarea>
+                            <label for="documents" class="block text-sm font-medium text-gray-700">Required
+                                Documents</label>
+                            <textarea name="documents" id="documents" rows="3"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                required></textarea>
                         </div>
                         <label for="market_fees" class="block text-sm font-medium text-gray-700">Market Fees </label>
                         <input type="number" id="market_fees" name="market_fees"
@@ -63,7 +68,7 @@
             </div>
         </div>
     </div>
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             //insert application details
 
@@ -115,11 +120,12 @@
 
 
         // Function to transliterate English text to Hindi
+
         // function transliterateToHindi(englishText, callback) {
         //     $.ajax({
         //         type: "POST",
-        //         url: 'https://google-translate1.p.rapidapi.com/language/translate/v2/detect', // Replace with actual API endpoint
-        //         data: JSON.stringify({
+        //         url: `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=hi&dt=t&q=${encodeURI(englishText)}`,
+        //             data: JSON.stringify({
         //             text: englishText
         //         }),
         //         contentType: "application/json",
@@ -140,5 +146,76 @@
         //         });
         //     });
         // });
+    </script> --}}
+
+    <script>
+        $(document).ready(function() {
+            // Insert application details
+            $("#addYojna").submit(function(e) {
+                e.preventDefault();
+                let formData = new FormData(this);
+                let features = $("#features").val().split("\n");
+
+                features = features.filter(feature => feature.trim() !== '');
+                formData.append('features', JSON.stringify(features));
+
+                let documents = $("#documents").val().split("\n");
+
+                documents = documents.filter(document => document.trim() !== '');
+                formData.append('documents', JSON.stringify(documents));
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('yojna.store') }}",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    success: function(response) {
+                        swal("Success", response.message, "success");
+                        $("#addYojna").trigger("reset");
+                        window.open("/admin/manage-yojna", "_self")
+                    }
+                });
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "{{ route('yojna.category.index') }}",
+                success: function(response) {
+                    let select = $("#callingPlans");
+                    select.empty();
+                    select.append(`<option value="">Select Category</option>`);
+                    response.data.forEach((plan) => {
+                        select.append(`
+                    <option value="${plan.id}">${plan.name}</option>
+                    `);
+                    });
+                }
+            });
+
+            // Function to transliterate English text to Hindi
+            function transliterateToHindi(englishText, callback) {
+                $.ajax({
+                    type: "GET",
+                    url: `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=hi&dt=t&q=${encodeURI(englishText)}`,
+                    success: function(response) {
+                        let hindiText = response[0][0][0];
+                        callback(hindiText);
+                    },
+                    error: function() {
+                        console.error('Error in transliteration');
+                    }
+                });
+            }
+
+            $('#ename').on('input', function() {
+                let englishText = $(this).val();
+                transliterateToHindi(englishText, function(hindiText) {
+                    $('#hname').val(hindiText);
+                });
+            });
+        });
     </script>
 @endsection
