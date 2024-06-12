@@ -6,10 +6,14 @@
                 <h2 class="text-lg font-semibold mb-2  ">Post a job</h2>
                 <div class="mb-3  items-center">
                     <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Title</label>
-                    <input type="text" id="name"
+                    {{-- <input type="text" id="name"
                         name="name"placeholder="Eg. Sales executives needed urgently for ..."
-                        class="shadow appearance-none border py-1 px-2 w-full" required>
-                    <p id="error-name" class="text-red-500 text-xs font-semibold error-message"></p>
+                        class="shadow appearance-none border py-1 px-2 w-full" required> --}}
+                    <div id="title_input">
+                        <input type="text" name="inputs[0][title]"
+                            placeholder="Eg. Sales executives needed urgently for ..."
+                            class=" border py-1 px-2 w-1/2 text-black text-sm">
+                    </div>
                 </div>
                 <div class="flex items-center border rounded border-gray-300">
                     {{-- <table class="table-auto border-collapse " id="table">
@@ -123,24 +127,21 @@
                         <tbody>
                             <tr>
                                 <td class="py-1"><input type="text" name="inputs[0][profile]" placeholder="Job Name"
-                                        class="appearance-none border py-2 px-2 w-full text-xs"></td>
+                                        class="appearance border py-2 px-2 w-full text-xs"></td>
                                 <td class="py-1"><input type="number" min="1" name="inputs[0][no_of_post]"
-                                        placeholder="Number" class="appearance-none border py-2 px-2 w-full text-xs"></td>
+                                        placeholder="Number" class="appearance border py-2 px-2 w-full text-xs"></td>
                                 <td class="py-1 text-center">
                                     <div class="text-xs text-gray-400">
                                         Min: <input type="text" min="0" name="inputs[0][min_experience]"
-                                            placeholder="0"
-                                            class="appearance-none border text-black px-1 py-1 w-1/4 text-xs">
+                                            placeholder="0" class="appearance border text-black px-1 py-1 w-1/4 text-xs">
                                         Max: <input type="text" min="0" name="inputs[0][max_experience]"
-                                            placeholder="5y"
-                                            class="appearance-none text-black px-1 border py-1 w-1/4 text-xs">
+                                            placeholder="5y" class="appearance text-black px-1 border py-1 w-1/4 text-xs">
                                     </div>
                                 </td>
                                 <td class="py-1 text-xs">
                                     <select name="inputs[0][gender]"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                        id="gender">
-                                        <option value="" class="appearance-none border text-center w-full">Select
+                                        class=" border text-center py-2 px-2 w-full text-sm text-gray-400" id="gender">
+                                        <option value="" class=" border text-center w-full">Select
                                         </option>
                                         <option value="male" class="border w-full text-sm">Male</option>
                                         <option value="female" class="border w-full text-sm">Female</option>
@@ -149,20 +150,20 @@
                                 </td>
                                 <td class="py-1">
                                     <select name="inputs[0][preferred_lang]"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                        class=" border text-center py-2 px-3 w-full text-sm text-gray-400"
                                         id="preferred_lang">
-                                        <option value="" class="appearance-none border text-center w-full">Select
+                                        <option value="" class=" border text-center w-full">Select
                                         </option>
                                         <option value="english" class="border w-full text-sm">English</option>
                                         <option value="hindi" class="border w-full text-sm">Hindi</option>
-                                        <option value="other" class="border w-full text-sm">Others</option>
+                                        <option value="hindi english" class="border w-full text-sm ">Hindi + English
+                                        </option>
                                     </select>
                                 </td>
                                 <td class="py-1">
                                     <select name="inputs[0][type]"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                        id="type">
-                                        <option value="" class="appearance-none border text-center w-full">Select
+                                        class=" border text-center py-2 px-2 w-full text-sm text-gray-400" id="type">
+                                        <option value="" class=" border text-center w-full">Select
                                         </option>
                                         <option value="full-time" class="border w-full text-sm">Full-Time</option>
                                         <option value="part-time" class="border w-full text-sm">Part-Time</option>
@@ -171,9 +172,9 @@
                                 </td>
                                 <td class="py-1">
                                     <select name="inputs[0][qualification]"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                        class=" border text-center py-2 px-2 w-full text-sm text-gray-400"
                                         id="qualification">
-                                        <option value="" class="appearance-none border text-center w-full">Select
+                                        <option value="" class=" border text-center w-full">Select
                                         </option>
                                         <option value="masters" class="border w-full text-sm">Masters</option>
                                         <option value="graduate" class="border w-full text-sm">Graduate</option>
@@ -186,13 +187,15 @@
                                 <td class="py-1 text-center">
                                     <div class="text-xs text-gray-400 flex gap-1">
                                         <input type="text" name="inputs[0][min_salary]" placeholder="From"
-                                            class="appearance-none border py-1 px-2 w-1/2 text-black text-sm">
+                                            class=" border py-1 px-2 w-1/2 text-black text-sm">
                                         <input type="text" name="inputs[0][max_salary]" placeholder="To"
-                                            class="appearance-none py-1 px-2 text-black border w-1/2 text-sm">
+                                            class=" py-1 px-2 text-black border w-1/2 text-sm">
                                     </div>
                                 </td>
                                 <td class="py-2 flex justify-center">
-                                    <button type="button" name="add" class="add bg-green-500 px-3 py-1 rounded text-white"><i class="fa-solid fa-user-plus"></i></button>
+                                    <button type="button" name="add"
+                                        class="add bg-green-500 px-3 py-1 rounded text-white"><i
+                                            class="fa-solid fa-user-plus"></i></button>
                                 </td>
                             </tr>
                         </tbody>
@@ -382,83 +385,86 @@
                 $('#table').on('click', '.add', function() {
                     ++i;
                     $('#table tbody').append(
-                        `<tr>
-                        <td class="py-1"><input type="text" name="inputs[${i}][profile]" placeholder="Job Name"
-                            class="appearance-none border py-2 px-2 w-full text-xs"></td>
-                        <td class="py-1"><input type="number" min="1" name="inputs[${i}][no_of_post]"
-                            placeholder="Number" class="appearance-none border py-2 px-2 w-full text-xs">
-                        </td>
-                        <td class="py-1 text-center">
-                            <div class="text-xs text-gray-400">
-                                Min: <input type="text" min="0" name="inputs[${i}][min_experience]" placeholder="0"
-                                    class="appearance-none border text-black px-1 py-1 w-1/4 text-xs">
-                                Max: <input type="text" min="0" name="inputs[${i}][max_experience]" placeholder="5y"
-                                    class="appearance-none text-black px-1 border py-1 w-1/4 text-xs">
-                            </div>
-                        </td>
-                        <td class="py-1 text-xs">
-                            <select name="inputs[${i}][gender]"
-                                class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                id="gender">
-                                <option value="" class="appearance-none border text-center w-full">Select</option>
-                                <option value="male" class="border w-full text-sm">Male</option>
-                                <option value="female" class="border w-full text-sm">Female</option>
-                                <option value="others" class="border w-full text-sm">Others</option>
-                            </select>
-                        </td>
-                        <td class="py-1">
-                            <select name="inputs[${i}][preferred_lang]"
-                                class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                id="preferred_lang">
-                                <option value="" class="appearance-none border text-center w-full">Select</option>
-                                <option value="english" class="border w-full text-sm">English</option>
-                                <option value="hindi" class="border w-full text-sm">Hindi</option>
-                                <option value="other" class="border w-full text-sm">Others</option>
-                            </select>
-                        </td>
-                        <td class="py-1"><select name="inputs[${i}][type]"
-                                class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                id="type">
-                                <option value="" class="appearance-none border text-center w-full">Select</option>
-                                <option value="full-time" class="border w-full text-sm">Full-Time</option>
-                                <option value="part-time" class="border w-full text-sm">Part-Time</option>
-                                <option value="temporary" class="border w-full text-sm">Temporary</option>
-                            </select>
-                        </td>
-                        <td class="py-1">
-                            <select name="inputs[${i}][qualification]"
-                                class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                id="qualification">
-                                <option value="" class="appearance-none border text-center w-full">Select</option>
-                                <option value="masters" class="border w-full text-sm">Masters</option>
-                                <option value="graduate" class="border w-full text-sm">Graduate</option>
-                                <option value="12th Pass" class="border w-full text-sm">12th Pass</option>
-                                <option value="10th Pass" class="border w-full text-sm">10th Pass</option>
-                                <option value="below 10th" class="border w-full text-sm">Below 10th</option>
-                                <option value="others" class="border w-full text-sm">Others</option>
-                            </select>
-                        </td>
-                        <td class="py-1 text-center">
-                            <div class="text-xs text-gray-400 flex gap-1">
-                                <input type="text" name="inputs[${i}][min_salary]" placeholder="From"
-                                    class="appearance-none border py-1 px-2 w-1/2 text-black text-sm">
-                                <input type="text" name="inputs[${i}][max_salary]" placeholder="To"
-                                    class="appearance-none py-1 px-2 text-black border w-1/2 text-sm">
-                            </div>
-                        </td>
-                        <td class="py-2 flex justify-center">
-                            <button type="button" name="add"
-                                class="remove bg-red-500 px-3 py-1 rounded text-white"><i
-                                    class="fa-solid fa-user-minus"></i></button>
-                        </td>
-                    </tr>`
+                        `<tr data-index="${i}">
+                <td class="py-1"><input type="text" name="inputs[${i}][profile]" placeholder="Job Name"
+                    class="border py-2 px-2 w-full text-xs"></td>
+                <td class="py-1"><input type="number" min="1" name="inputs[${i}][no_of_post]"
+                    placeholder="Number" class="border py-2 px-2 w-full text-xs">
+                </td>
+                <td class="py-1 text-center">
+                    <div class="text-xs text-gray-400">
+                        Min: <input type="text" min="0" name="inputs[${i}][min_experience]" placeholder="0"
+                            class="border text-black px-1 py-1 w-1/4 text-xs">
+                        Max: <input type="text" min="0" name="inputs[${i}][max_experience]" placeholder="5y"
+                            class="text-black px-1 border py-1 w-1/4 text-xs">
+                    </div>
+                </td>
+                <td class="py-1 text-xs">
+                    <select name="inputs[${i}][gender]"
+                        class="border text-center py-2 px-2 w-full text-sm text-gray-400"
+                        id="gender">
+                        <option value="" class="border text-center w-full">Select</option>
+                        <option value="male" class="border w-full text-sm">Male</option>
+                        <option value="female" class="border w-full text-sm">Female</option>
+                        <option value="others" class="border w-full text-sm">Others</option>
+                    </select>
+                </td>
+                <td class="py-1">
+                    <select name="inputs[${i}][preferred_lang]"
+                        class="border text-center py-2 px-2 w-full text-sm text-gray-400"
+                        id="preferred_lang">
+                        <option value="" class="border text-center w-full">Select</option>
+                        <option value="english" class="border w-full text-sm">English</option>
+                        <option value="hindi" class="border w-full text-sm">Hindi</option>
+                        <option value="other" class="border w-full text-sm">Others</option>
+                    </select>
+                </td>
+                <td class="py-1"><select name="inputs[${i}][type]"
+                        class="border text-center py-2 px-2 w-full text-sm text-gray-400"
+                        id="type">
+                        <option value="" class="border text-center w-full">Select</option>
+                        <option value="full-time" class="border w-full text-sm">Full-Time</option>
+                        <option value="part-time" class="border w-full text-sm">Part-Time</option>
+                        <option value="temporary" class="border w-full text-sm">Temporary</option>
+                    </select>
+                </td>
+                <td class="py-1">
+                    <select name="inputs[${i}][qualification]" class="border text-center py-2 px-2 w-full text-sm text-gray-400"
+                        id="qualification">
+                        <option value border text-center w-full">Select</option>
+                        <option value="masters" class="border w-full text-sm">Masters</option>
+                        <option value="graduate" class="border w-full text-sm">Graduate</option>
+                        <option value="12th Pass" class="border w-full text-sm">12th Pass</option>
+                        <option value="10th Pass" class="border w-full text-sm">10th Pass</option>
+                        <option value="below 10th" class="border w-full text-sm">Below 10th</option>
+                        <option value="others" class="border w-full text-sm">Others</option>
+                    </select>
+                </td>
+                <td class="py-1 text-center">
+                    <div class="text-xs text-gray-400 flex gap-1">
+                        <input type="text" name="inputs[${i}][min_salary]" placeholder="From" class="border py-1 px-2 w-1/2 text-black text-sm">
+                        <input type="text" name="inputs[${i}][max_salary]" placeholder="To" class="py-1 px-2 text-black border w-1/2 text-sm">
+                    </div>
+                </td>
+                <td class="py-2 flex justify-center">
+                    <button type="button" name="add" class="remove bg-red-500 px-3 py-1 rounded text-white"><i class="fa-solid fa-user-minus"></i></button>
+                </td>
+            </tr>`
                     );
+                    $('#title_input').append(`
+            <div class="title-wrapper flex gap-2 items-center" data-index="${i}">
+                <input type="text" name="inputs[${i}][title]" placeholder="Eg. Sales executives needed urgently for ..." class="border py-1 px-2 w-1/2 text-black text-sm">
+            </div>
+        `);
                 });
 
-                // Remove row
+                // Remove row and corresponding title
                 $('#table').on('click', '.remove', function() {
+                    var index = $(this).closest('tr').data('index');
                     $(this).closest('tr').remove();
+                    $('#title_input .title-wrapper[data-index="' + index + '"]').remove();
                 });
+
 
                 // Handle form submission
                 $("#payNowBtn").click(function() {
@@ -484,7 +490,8 @@
 
                     // Get the current date and format it as needed
                     var currentDate = new Date();
-                    var formattedDate = ('0' + currentDate.getDate()).slice(-2) + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + currentDate.getFullYear();
+                    var formattedDate = ('0' + currentDate.getDate()).slice(-2) + '-' + ('0' + (currentDate
+                        .getMonth() + 1)).slice(-2) + '-' + currentDate.getFullYear();
 
                     // Append the date to the FormData object
                     formData.append('date_of_start', formattedDate);

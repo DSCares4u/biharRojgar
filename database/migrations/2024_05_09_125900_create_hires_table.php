@@ -15,11 +15,10 @@ return new class extends Migration
     {
         Schema::create('hires', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->string('date_of_start');
             $table->string('city');
             $table->string('state');
-            $table->string('description');
+            $table->longText('description');
             $table->string('company_name');
             $table->string('website');
             $table->string('mobile');

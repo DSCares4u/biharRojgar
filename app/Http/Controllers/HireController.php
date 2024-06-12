@@ -49,7 +49,6 @@ class HireController extends Controller
     public function store(Request $request)
 {
     $validator = Validator::make($request->all(), [
-        'name' => 'required|string|min:3',
         'date_of_start' => 'required',
         'city' => 'required|string',
         'state' => 'required|string',
@@ -63,6 +62,7 @@ class HireController extends Controller
         'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         'inputs' => 'required|array', // Ensure inputs is an array
         'inputs.*.profile' => 'required|string',
+        'inputs.*.title' => 'required|string',
         'inputs.*.no_of_post' => 'required|integer|min:1',
         'inputs.*.min_experience' => 'required|integer|min:0',
         'inputs.*.max_experience' => 'required|integer|min:0',
@@ -92,7 +92,6 @@ class HireController extends Controller
     }
 
     $hire = Hire::create([
-        'name' => $request->name,
         'date_of_start' => $request->date_of_start,
         'city' => $request->city,
         'state' => $request->state,
@@ -111,6 +110,7 @@ class HireController extends Controller
         foreach ($request->inputs as $input) {
             $hire->roles()->create([
                 'profile' => $input['profile'],
+                'title' => $input['title'],
                 'no_of_post' => $input['no_of_post'],
                 'min_experience' => $input['min_experience'],
                 'max_experience' => $input['max_experience'],

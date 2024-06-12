@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
             $table->string('profile');
+            $table->string('title');
             $table->integer('no_of_post');
             $table->integer('min_experience');
             $table->integer('max_experience');
