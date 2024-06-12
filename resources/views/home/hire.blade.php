@@ -5,111 +5,14 @@
             <form class="p-5 flex flex-col" id="addHirer">
                 <h2 class="text-lg font-semibold mb-2  ">Post a job</h2>
                 <div class="mb-3  items-center">
-                    <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Title</label>
-                    {{-- <input type="text" id="name"
-                        name="name"placeholder="Eg. Sales executives needed urgently for ..."
-                        class="shadow appearance-none border py-1 px-2 w-full" required> --}}
+                    {{-- <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Title</label>
                     <div id="title_input">
                         <input type="text" name="inputs[0][title]"
                             placeholder="Eg. Sales executives needed urgently for ..."
                             class=" border py-1 px-2 w-1/2 text-black text-sm">
-                    </div>
+                    </div> --}}
                 </div>
-                <div class="flex items-center border rounded border-gray-300">
-                    {{-- <table class="table-auto border-collapse " id="table">
-                        <thead>
-                            <tr class="bg-gray-200">
-                                <th class="px-4 py-1 text-sm font-normal">Job Profile</th>
-                                <th class="px-4 py-1 text-sm font-normal">No.of Post</th>
-                                <th class="px-2 py-1 text-sm font-normal">Experience</th>
-                                <th class="px-4 py-1 text-sm font-normal">Gender</th>
-                                <th class="px-4 py-1 text-sm font-normal">Preferred Language</th>
-                                <th class="px-4 py-1 text-sm font-normal">Type</th>
-                                <th class="px-4 py-1 text-sm font-normal">Qualification</th>
-                                <th class="px-4 py-1 text-sm font-normal">Salary</th>
-                                <th class="px-4 py-1 text-sm font-normal">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class=" py-1"><input type="text" name="inputs[0]['profile']" placeholder="Job Name"
-                                        class="appearance-none border py-2 px-2 w-full text-xs"></td>
-                                <td class=" py-1"><input type="" min="1" name="inputs[0]['no_of_post']"
-                                        placeholder="Number" class="appearance-none border py-2 px-2 w-full text-xs">
-                                </td>
-                                <td class="py-1 text-center">
-                                    <div class="text-xs text-gray-400">
-                                        Min: <input type="text" min="0" name="inputs[0]['min_experience']"
-                                            placeholder="0"
-                                            class="appearance-none border text-black px-1 py-1 w-1/4 text-xs">
-                                        Max: <input type="text" min="0" name="inputs[0]['max_experience']"
-                                            placeholder="5y"
-                                            class="appearance-none text-black  px-1 border py-1 w-1/4 text-xs">
-                                    </div>
-                                </td>
-
-                                <td class=" py-1 text-xs">
-                                    <select name="inputs[0]['gender']"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                        id="gender">
-                                        <option value="" class="appearance-none  border text-center w-full  ">Select
-                                        </option>
-                                        <option value="male" class=" border  w-full text-sm">Male</option>
-                                        <option value="female" class=" border  w-full text-sm">Female</option>
-                                        <option value="others" class=" border  w-full text-sm">Others</option>
-                                    </select>
-                                </td>
-                                <td class=" py-1">
-                                    <select name="inputs[0]['preferred_lang']"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                        id="preferred_lang">
-                                        <option value="" class="appearance-none border text-center w-full  ">Select
-                                        </option>
-                                        <option value="english" class=" border  w-full text-sm">English</option>
-                                        <option value="hindi" class=" border  w-full text-sm">Hindi</option>
-                                        <option value="other" class=" border w-full text-sm">Others</option>
-                                    </select>
-                                </td>
-                                <td class=" py-1"><select name="inputs[0]['type']"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                        id="type">
-                                        <option value="" class="appearance-none border text-center w-full  ">Select
-                                        </option>
-                                        <option value="full-time" class=" border  w-full text-sm">Full-Time</option>
-                                        <option value="part-time" class=" border  w-full text-sm">Part-Time</option>
-                                        <option value="temporary" class=" border  w-full text-sm">Temporary</option>
-                                    </select>
-                                </td>
-                                <td class=" py-1">
-                                    <select name="inputs[0]['qualification']"
-                                        class="appearance-none border text-center py-2 px-2 w-full text-sm text-gray-400"
-                                        id="qualification">
-                                        <option value="" class="appearance-none border text-center w-full  ">Select
-                                        </option>
-                                        <option value="masters" class=" border  w-full text-sm">Masters</option>
-                                        <option value="graduate" class=" border  w-full text-sm">Graduate</option>
-                                        <option value="12th Pass" class=" border  w-full text-sm">12th Pass</option>
-                                        <option value="10th Pass" class=" border  w-full text-sm">10th Pass</option>
-                                        <option value="below 10th" class=" border  w-full text-sm">Below 10th</option>
-                                        <option value="others" class=" border  w-full text-sm">Others</option>
-                                    </select>
-                                </td>
-                                <td class="py-1 text-center">
-                                    <div class="text-xs text-gray-400 flex gap-1">
-                                        <input type="text" name="inputs[0]['min_salary']" placeholder="From"
-                                            class="appearance-none border py-1 px-2 w-1/2 text-black text-sm">
-                                        <input type="text" name="inputs[0]['max_salary']" placeholder="To"
-                                            class="appearance-none py-1 px-2 text-black border w-1/2 text-sm">
-                                    </div>
-                                </td>
-                                <td class=" py-2 flex justify-center">
-                                    <button type="button" name="add"
-                                        class="add bg-green-500 px-3 py-1 rounded text-white"><i
-                                            class="fa-solid fa-user-plus"></i></button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table> --}}
+                <div class="flex flex-col  border rounded border-gray-300 p-2">
                     <table class="table-auto border-collapse" id="table">
                         <thead>
                             <tr class="bg-gray-200">
@@ -121,7 +24,7 @@
                                 <th class="px-4 py-1 text-sm font-normal">Type</th>
                                 <th class="px-4 py-1 text-sm font-normal">Qualification</th>
                                 <th class="px-4 py-1 text-sm font-normal">Salary</th>
-                                <th class="px-4 py-1 text-sm font-normal">Action</th>
+                                <th class="px-4 py-1 text-sm font-normal">Add / Remove JOBS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -200,7 +103,10 @@
                             </tr>
                         </tbody>
                     </table>
-
+                    <div class="title-wrapper gap-2 items-center" id="title_input">
+                        <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Title</label>
+                        <input type="text" name="inputs[0][title]" placeholder="Eg. Sales executives needed urgently for ..." class="border py-1 px-2 w-1/2 text-black text-sm">
+                    </div>
                 </div>
                 <p id="error-roles" class="text-red-500 text-xs mb-4 font-semibold error-message"></p>
                 <div class="mb-3 flex gap-2">
@@ -453,6 +359,7 @@
                     );
                     $('#title_input').append(`
             <div class="title-wrapper flex gap-2 items-center" data-index="${i}">
+                <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Title</label>
                 <input type="text" name="inputs[${i}][title]" placeholder="Eg. Sales executives needed urgently for ..." class="border py-1 px-2 w-1/2 text-black text-sm">
             </div>
         `);

@@ -158,7 +158,7 @@
                                             <div class="body mt-2 mb-2">
                                                 <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Name :</p><p class=" text-sm">${data.profile}</p></h5>
                                             </div>
-                                            <div class= mb-2">
+                                            <div class= mb-2 mt-2">
                                                 <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Type :</p><p class=" text-sm">${data.type}</p></h5>
                                             </div>
                                             
