@@ -55,7 +55,8 @@ class YojnaFormController extends Controller
         if ($yojna) {
             return response()->json([
                 'status' => 200,
-                'message' => "We Will Connect You Soon"
+                'message' => "You Have SuccessFully Applied.
+                We Will Connect You Soon"
             ], 200);
         } else {
             return response()->json([

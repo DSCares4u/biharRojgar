@@ -63,7 +63,7 @@ class YojnaController extends Controller
         'hname' => $request->hname,
         'description' => $request->description,
         'fees' => $request->fees,
-        'market_fees' => $requestmarket_->fees,
+        'market_fees' => $request->market_fees,
         'documents' => $request->documents,
         'features' => $request->features,
         'logo' => $logo,

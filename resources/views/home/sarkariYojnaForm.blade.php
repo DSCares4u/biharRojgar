@@ -186,7 +186,7 @@
                     <div class="mb-2">
                         <label for="yojna_id" class="block text-gray-700 text-xs mb-1 ">Yojna Selected :</label>
                         <select name="yojna_id" id="callingYojna"
-                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded text-gray-500">
+                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded text-gray-500 capitalize">
                         </select>
                         <p id="error-yojna_id" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
@@ -277,8 +277,8 @@
                 let documents = cleanedDocuments.map(document => `<li class="mt-4 flex"><p><i class="fa-solid fa-circle-check text-green-500 mr-2"></i></p>${document}</li>`).join('');
     
                 $("#callingYojnaFeatures").html(`
-                    <div>
-                        <h5 class="text-3xl font-extrabold">${selectedYojna.ename}</h5>
+                    <div class='capitalize'>
+                        <h5 class="text-3xl font-extrabold capitalize">${selectedYojna.ename}</h5>
                         <p class="mt-5 text-base text-gray-500 line-clamp-2 description">${selectedYojna.description}</p>
                         <button class="toggleButton mt-4 text-blue-500">Read More</button>
                         <h5 class="text-xl font-bold mt-5 underline">Benefits</h5>
@@ -365,7 +365,9 @@
                     success: function(response) {
                         swal("Success", response.message, "success");
                         $("#addData").trigger("reset");
-                        window.open("/", "_self");
+                        setTimeout(function() {
+                            window.open("/", "_self");
+                        }, 1000000); // Redirect after  seconds
                     },
                     error: function(xhr) {
                         if (xhr.status === 422) {
