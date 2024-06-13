@@ -168,92 +168,198 @@
             //     });
             // }
 
+            // let callingSarkariJobs = () => {
+            //     $.ajax({
+            //         type: "GET",
+            //         url: "{{ route('sarkari-job.index') }}",
+            //         success: function(response) {
+            //             let table = $("#callingData");
+            //             table.empty();
+
+            //             let data = response.data;
+            //             console.log(data);
+
+            //             data.forEach((job) => {
+            //                 let logIn = {{ auth()->user() }};
+            //                 if (!logIn) {
+            //                     console.log('Need to login');
+            //                 } else {
+            //                     // Check if the user has already applied for this job
+            //                     $.ajax({
+            //                         type: "GET",
+            //                         url: `/checkApplicationStatus/${job.id}`, // The endpoint
+            //                         success: function(applicationResponse) {
+            //                             let applyButton;
+            //                             if (applicationResponse
+            //                                 .already_applied) {
+            //                                 applyButton =
+            //                                     `<button class="bg-gray-600 rounded text-center text-white py-1 px-1 w-full" disabled>Already Applied</button>`;
+            //                             } else {
+            //                                 applyButton =
+            //                                     `<a href="/viewSarkariJobForm/${job.id}"><button class="bg-green-600 hover:bg-green-700 rounded text-white px-1 py-1">Apply Now</button></a>`;
+            //                             }
+
+            //                             table.append(`
+        //                             <div class="block max-w-full mt-4 p-4 bg-white border capitalize border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+        //                                 <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${job.name}</h5>
+        //                                 <div class="details flex mt-4">
+        //                                     <div class="logo w-2/12">
+        //                                         <img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20" alt="">
+        //                                     </div>
+        //                                     <div class="w-10/12 mb-1">
+        //                                         <div class="flex justify-between text-blue-500 font-bold">
+        //                                             <h5>${job.role}</h5>
+        //                                             <h5>Important Instruction</h5>
+        //                                         </div>
+        //                                         <div class="mt-1 flex justify-between">
+        //                                             <div class="mt">
+        //                                                 <h5 class="text-sm text-gray-500 font-semibold"> No. Of Post : ${job.no_of_post}</h5>
+        //                                                 <div class="mt-1">
+        //                                                     <h5 class="text-sm text-gray-500 font-semibold">Age : ${job.min_age} - ${job.max_age} Years</h5>
+        //                                                 </div>
+        //                                             </div>
+        //                                             <div class="">
+        //                                                 <h5 class="text-gray-500 font-semibold">Opening Date : ${job.opening_date}</h5>
+        //                                                 <h5 class="text-gray-500 font-semibold">Closing Date : ${job.closing_date}</h5>
+        //                                             </div>
+        //                                         </div>
+
+        //                                         <div class="mt-1">
+        //                                             <h5 class="text-sm text-gray-500 font-semibold">Qualification : ${job.qualification}</h5>
+        //                                         </div>
+        //                                         <div class="mt-1">
+        //                                             <h5 class="text-sm text-gray-500 font-semibold">Skills req : ${job.skills}</h5>
+        //                                         </div>
+        //                                     </div>
+        //                                 </div>
+        //                                 <div class="flex justify-between ml-1">
+        //                                     <div class="fees mt-2 ml-32 flex">
+        //                                         <h5 class="font-semibold text-red-700 w-32 rounded text-base">Fees : Rs. ${job.fees}</h5>
+        //                                         <p class="text-[12px]">(Including gov. fees)</p>
+        //                                     </div>
+        //                                     <div class="button">
+        //                                         ${applyButton}
+        //                                     </div>
+        //                                 </div>
+        //                             </div>
+        //                         `);
+            //                         },
+            //                         error: function(xhr, status, error) {
+            //                             console.error(
+            //                                 'Error checking application status:',
+            //                                 error);
+            //                         }
+            //                     });
+            //                 }
+            //             });
+
+            //         },
+            //         error: function(xhr, status, error) {
+            //             console.error('Error:', error);
+            //         }
+            //     });
+            // };
+
             let callingSarkariJobs = () => {
                 $.ajax({
-                    type: "GET",
-                    url: "{{ route('sarkari-job.index') }}",
-                    success: function(response) {
-                        let table = $("#callingData");
-                        table.empty();
-                        let data = response.data;
+                        type: "GET",
+                        url: "{{ route('sarkari-job.index') }}",
+                        success: function(response) {
+                            let table = $("#callingData");
+                            table.empty();
 
-                        console.log(data);
+                            let data = response.data;
+                            console.log(data);
 
-                        data.forEach((job) => {
-                            // Check if the user has already applied for this job
-                            $.ajax({
-                                type: "GET",
-                                url: `/checkApplicationStatus/${job.id}`, // The endpoint
-                                success: function(applicationResponse) {
-                                    let applyButton;
-                                    if (applicationResponse.already_applied) {
-                                        applyButton =
-                                            `<button class="bg-gray-600 rounded text-center text-white py-1 px-1 w-full" disabled>Already Applied</button>`;
-                                    } else {
-                                        applyButton =
-                                            `<a href="/viewSarkariJobForm/${job.id}"><button class="bg-green-600 hover:bg-green-700 rounded text-white px-1 py-1">Apply Now</button></a>`;
-                                    }
+                            data.forEach((job) => {
+                                    // Check if the user is logged in
+                                    @auth
+                                    let logIn = true; // User is logged in
+                                @else
+                                    let logIn = false; // User is not logged in
+                                @endauth
 
-                                    table.append(`
-                                        <div class="block max-w-full mt-4 p-4 bg-white border capitalize border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                                            <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${job.name}</h5>
-                                            <div class="details flex mt-4">
-                                                <div class="logo w-2/12">
-                                                    <img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20" alt="">
-                                                </div>
-                                                <div class="w-10/12 mb-1">
-                                                    <div class="flex justify-between text-blue-500 font-bold">
-                                                        <h5>${job.role}</h5>
-                                                        <h5>Important Instruction</h5>
-                                                    </div>
-                                                    <div class="mt-1 flex justify-between">
-                                                        <div class="mt">
-                                                            <h5 class="text-sm text-gray-500 font-semibold"> No. Of Post : ${job.no_of_post}</h5>
+                                if (!logIn) {
+                                    console.log('Need to login');
+                                    
+                                } else {
+                                    // Check if the user has already applied for this job
+                                    $.ajax({
+                                        type: "GET",
+                                        url: `/checkApplicationStatus/${job.id}`, // Replace with your endpoint
+                                        success: function(applicationResponse) {
+                                            let applyButton;
+                                            if (applicationResponse.already_applied) {
+                                                applyButton =
+                                                    `<button class="bg-gray-600 rounded text-center text-white py-1 px-1 w-full" disabled>Already Applied</button>`;
+                                            } else {
+                                                applyButton =
+                                                    `<a href="/viewSarkariJobForm/${job.id}"><button class="bg-green-600 hover:bg-green-700 rounded text-white px-1 py-1">Apply Now</button></a>`;
+                                            }
+
+                                            table.append(`
+                                                <div class="block max-w-full mt-4 p-4 bg-white border capitalize border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                                                    <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${job.name}</h5>
+                                                    <div class="details flex mt-4">
+                                                        <div class="logo w-2/12">
+                                                            <img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20" alt="">
+                                                        </div>
+                                                        <div class="w-10/12 mb-1">
+                                                            <div class="flex justify-between text-blue-500 font-bold">
+                                                                <h5>${job.role}</h5>
+                                                                <h5>Important Instruction</h5>
+                                                            </div>
+                                                            <div class="mt-1 flex justify-between">
+                                                                <div class="mt">
+                                                                    <h5 class="text-sm text-gray-500 font-semibold"> No. Of Post : ${job.no_of_post}</h5>
+                                                                    <div class="mt-1">
+                                                                        <h5 class="text-sm text-gray-500 font-semibold">Age : ${job.min_age} - ${job.max_age} Years</h5>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="">
+                                                                    <h5 class="text-gray-500 font-semibold">Opening Date : ${job.opening_date}</h5>
+                                                                    <h5 class="text-gray-500 font-semibold">Closing Date : ${job.closing_date}</h5>
+                                                                </div>
+                                                            </div>
+                                                            
                                                             <div class="mt-1">
-                                                                <h5 class="text-sm text-gray-500 font-semibold">Age : ${job.min_age} - ${job.max_age} Years</h5>
+                                                                <h5 class="text-sm text-gray-500 font-semibold">Qualification : ${job.qualification}</h5>
+                                                            </div>
+                                                            <div class="mt-1">
+                                                                <h5 class="text-sm text-gray-500 font-semibold">Skills req : ${job.skills}</h5>
                                                             </div>
                                                         </div>
-                                                        <div class="">
-                                                            <h5 class="text-gray-500 font-semibold">Opening Date : ${job.opening_date}</h5>
-                                                            <h5 class="text-gray-500 font-semibold">Closing Date : ${job.closing_date}</h5>
+                                                    </div>
+                                                    <div class="flex justify-between ml-1">
+                                                        <div class="fees mt-2 ml-32 flex">
+                                                            <h5 class="font-semibold text-red-700 w-32 rounded text-base">Fees : Rs. ${job.fees}</h5>
+                                                            <p class="text-[12px]">(Including gov. fees)</p>
+                                                        </div>
+                                                        <div class="button">
+                                                            ${applyButton}
                                                         </div>
                                                     </div>
-                                                    
-                                                    <div class="mt-1">
-                                                        <h5 class="text-sm text-gray-500 font-semibold">Qualification : ${job.qualification}</h5>
-                                                    </div>
-                                                    <div class="mt-1">
-                                                        <h5 class="text-sm text-gray-500 font-semibold">Skills req : ${job.skills}</h5>
-                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="flex justify-between ml-1">
-                                                <div class="fees mt-2 ml-32 flex">
-                                                    <h5 class="font-semibold text-red-700 w-32 rounded text-base">Fees : Rs. ${job.fees}</h5>
-                                                    <p class="text-[12px]">(Including gov. fees)</p>
-                                                </div>
-                                                <div class="button">
-                                                    ${applyButton}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    `);
-                                },
-                                error: function(xhr, status, error) {
-                                    console.error(
-                                        'Error checking application status:',
-                                        error);
+                            `);
+                                        },
+                                        error: function(xhr, status, error) {
+                                            console.error(
+                                                'Error checking application status:',
+                                                error);
+                                        }
+                                    });
                                 }
                             });
-                        });
+
                     },
                     error: function(xhr, status, error) {
                         console.error('Error:', error);
                     }
                 });
-            };
+        };
 
-            callingSarkariJobs();
+
+        callingSarkariJobs();
         });
     </script>
 @endsection
