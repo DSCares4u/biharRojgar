@@ -370,7 +370,10 @@
                         }, 1000000); // Redirect after  seconds
                     },
                     error: function(xhr) {
-                        if (xhr.status === 422) {
+                        if (xhr.status === 409) {
+                            swal("error", "You have already applied for this Yojna.", "error");
+                        }
+                        else if (xhr.status === 422) {
                             var errors = xhr.responseJSON.errors;
                             $.each(errors, function(key, value) {
                                 $('#error-' + key).html(value[0]);

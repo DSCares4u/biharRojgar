@@ -42,6 +42,16 @@ class YojnaFormController extends Controller
             ], 422);
         }
 
+         // Check if the user has already applied for yojna
+         $existingApplication = YojnaForm::where('mobile', $request->mobile)->where('yojna_id', $request->yojna_id)->first();
+
+        if ($existingApplication) {
+            return response()->json([
+                'status' => 409,
+                'message' => `You have already applied for this Yojna.`
+            ], 409);
+        }
+
         $yojna = YojnaForm::create([
             'name' => $request->name,
             'mobile' => $request->mobile,
