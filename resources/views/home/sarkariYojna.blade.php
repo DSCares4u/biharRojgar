@@ -53,7 +53,7 @@
                                 categoryGroup.append(`
                                     <a href="/sarkari-yojna-form/${yojna.id}" class="forms w-1/4 mt-4 mb-4 py-2 px-2">
                                         <div class="image flex justify-center mb-2">
-                                            <img src="/image/yojna/logo/${yojna.logo}" class="shadow rounded-sm w-[25%]" alt="">
+                                            <img src="/image/yojna/logo/${yojna.logo}" class="shadow rounded-full w-20 h-20" alt="">
                                         </div>
                                         <div class="title text-center">
                                             <h3 class="text-base font-semibold">${yojna.hname}</h3>
