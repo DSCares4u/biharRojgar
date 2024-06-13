@@ -46,6 +46,10 @@ class AdminController extends Controller
         return view('admin.insertYojna');
     }
 
+    public function editYojna(){
+        return view('admin.editYojna');
+    }
+
     public function manageYojnaCategory(){
         return view('admin.manageYojnaCategory');
     }
