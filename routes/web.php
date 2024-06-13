@@ -83,6 +83,7 @@ Route::get('/admin/manage-hire/plan/insert',[AdminController::class,'insertHireP
 
 Route::get('/admin/manage-yojna',[AdminController::class,'manageYojna']);
 Route::get('/admin/manage-yojna/insert',[AdminController::class,'insertYojna']);
+Route::get('/admin/manage-yojna/{id}',[AdminController::class,'editYojna']);
 
 Route::get('/admin/manage/yojna-category',[AdminController::class,'manageYojnaCategory']);
 Route::get('/admin/manage/yojna-category/insert',[AdminController::class,'insertYojnaCategory']);
