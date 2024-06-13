@@ -28,6 +28,19 @@ class SarkariJobApplyController extends Controller
         }
     }
 
+    public function checkApplicationStatus($jobId, Request $request)
+    {
+        $userId = $request->user()->id; // Get the authenticated user's ID
+
+        $existingApplication = SarkariJobApply::where('user_id', $userId)
+            ->where('job_id', $jobId)
+            ->first();
+
+        return response()->json([
+            'already_applied' => $existingApplication ? true : false
+        ]);
+    }
+
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',

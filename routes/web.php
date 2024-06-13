@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthOtpController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\SarkariJobApplyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,8 @@ Route::middleware("auth")->group(function (){
     Route::get('/viewPrivateJobForm/{id}',[HomeController::class,'viewPrivateJobForm']);
     Route::get('/sarkari-job/confirm',[HomeController::class,'sarkariJobConfirm']);
     Route::get('/private-job/confirm',[HomeController::class,'PrivateJobConfirm']); 
+    Route::get('/checkApplicationStatus/{jobId}', [JobController::class, 'checkApplicationStatus'])->name('checkApplicationStatus');
+    Route::get('/checkApplicationStatus/{jobId}', [SarkariJobApplyController::class, 'checkApplicationStatus'])->name('checkApplicationStatus');
       
 });
 
