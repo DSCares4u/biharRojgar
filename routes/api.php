@@ -83,7 +83,7 @@ Route::delete('/address/delete/{id}',[AddressController::class,'destroy']);
 Route::post('/document',[DocumentController::class,'store'])->name('document.store');
 Route::get('/document',[DocumentController::class,'index'])->name('document.index');
 Route::get('/document/view/{id}',[DocumentController::class,'show']);
-Route::put('/document/edit/{id}',[DocumentController::class,'update']);
+Route::post('/document/edit/{id}',[DocumentController::class,'update']);
 Route::delete('/document/delete/{id}',[DocumentController::class,'destroy']);
 
 Route::post('/yojna',[YojnaController::class,'store'])->name('yojna.store');

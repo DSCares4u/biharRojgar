@@ -130,139 +130,30 @@ class DocumentController extends Controller
         else{
             return response()->json([
                 'status' => 404,
-                'message' => "No call Found"
+                'message' => "No Document Found"
             ], 404);
         }
     }
 
-    // public function update(Request $request, int $id)
-    // {        
-    //     $validator = Validator::make($request->all(), [
-    //         'id_proof_type' => 'required',            
-    //         'id_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
-    //         'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
-    //         'signature' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
-    //         'quali_certificate' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo          
-    //     ]);
-
-    //     // image & pdf Work  
-
-    //     $randomNumber = mt_rand(1000,9999); // Generate a random number
-
-    //       // Handle the file upload
-    //     if ($request->hasFile('photo')) {
-    //         $photo = "LO" . time() . $randomNumber. "." . $request->photo->extension();
-    //         $request->photo->move(public_path("image/yojna/photo"), $photo);
-    //     } else {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'errors' => ['photo' => 'photo is required.']
-    //         ], 422);
-    //     }
-    //       // Handle the file upload
-    //     if ($request->hasFile('signature')) {
-    //         $signature = "SI". time() . $randomNumber . "." . $request->signature->extension();        //upload on public/photo/image/filename
-    //     $request->signature->move(public_path("image/signature"), $signature);
-    //     } else {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'errors' => ['signature' => 'signature is required.']
-    //         ], 422);
-    //     }
-    //       // Handle the file upload
-    //     if ($request->hasFile('id_proof')) {
-    //         $id_proof = "ID". time() . $randomNumber . "." . $request->id_proof->extension();        //upload on public/photo/image/filename
-    //         $request->id_proof->move(public_path("image/id_proof"), $id_proof);
-    //     } else {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'errors' => ['id_proof' => 'Id Proof is required.']
-    //         ], 422);
-    //     }
-    //       // Handle the file upload
-    //     if ($request->hasFile('quali_certificate')) {
-    //         $quali_certificate = "QU". time() . $randomNumber . "." . $request->quali_certificate->extension();        //upload on public/photo/image/filename
-    //         $request->quali_certificate->move(public_path("image/quali_certificate"), $quali_certificate);    
-    //     } else {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'errors' => ['quali_certificate' => 'Qualification Certificate is required.']
-    //         ], 422);
-    //     }
-     
-    //     $other_certificate = "OT". time() . $randomNumber . "." . $request->other_certificate->extension();        //upload on public/photo/image/filename
-    //     $request->other_certificate->move(public_path("image/other_certificate"), $other_certificate);
-    
-    //     if ($validator->fails()) {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'error' => $validator->messages()
-    //         ], 422);
-    //     } else {
-    //         if ($id) {
-    //             // Check if job exists
-    //             $job = Document::find($id);
-    //             if ($job) {
-    //                 // Update existing job
-    //                 $job->update([
-    //                     'id_proof_type' => $request->id_proof_type,
-    //                     'photo' => $photo,
-    //                     'signature'=>$signature,
-    //                     'id_proof'=>$id_proof,
-    //                     'quali_certificate'=>$quali_certificate,
-    //                     'other_certificate'=>$other_certificate  ,  
-    //                     'user_id' => $request->user_id,                     
-    //                 ]);
-    
-    //                 return response()->json([
-    //                     'status' => 200,
-    //                     'message' => "Job Updated Successfully"
-    //                 ], 200);
-    //             }
-    //         }
-    
-    //         // Create new job
-    //         $newJob = Document::create([
-    //             'id_proof_type' => $request->id_proof_type,
-    //             'photo' => $photo,
-    //             'signature'=>$signature,
-    //             'id_proof'=>$id_proof,
-    //             'quali_certificate'=>$quali_certificate,
-    //             'other_certificate'=>$other_certificate  ,  
-    //             'user_id' => $request->user_id,                      
-    //         ]);
-    
-    //         if ($newJob) {
-    //             return response()->json([
-    //                 'status' => 200,
-    //                 'message' => "We Will Connect You Soon"
-    //             ], 200);
-    //         } else {
-    //             return response()->json([
-    //                 'status' => 500,
-    //                 'message' => "Unable to add your Request"
-    //             ], 500);
-    //         }
-    //     }
-    // }
-
     public function update(Request $request, int $id)
     {        
-        // $validator = Validator::make($request->all(), [
-        //     'id_proof_type' => 'required',            
-        //     'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
-        //     'signature' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for signature
-        //     'id_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for id proof
-        //     'quali_certificate' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for qualification certificate
-        //     'other_certificate' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for other certificate
-        // ]);
+        $validator = Validator::make($request->all(), [
+            'id_proof_type' => 'required',            
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'id_proof' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'quali_certificate' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  
+            'other_certificate' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  
+        ]);
 
-        // if ($validator->fails()) {
-        //     return response()->json([
-        //         'status' => 422,
-        //         'error' => $validator->messages()
-        //     ], 422);
-        // }
+        dd($validator);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'error' => $validator->messages()
+            ], 422);
+        }
 
         $randomNumber = mt_rand(1000, 9999);
 
@@ -275,7 +166,7 @@ class DocumentController extends Controller
         $quali_certificate = "QU" . time() . $randomNumber . "." . $request->quali_certificate->extension();
         $other_certificate = "OT" . time() . $randomNumber . "." . $request->other_certificate->extension();
 
-        $photo = $request->photo->move(public_path("image/candidate/photo"), $photo);
+        $request->photo->move(public_path("image/candidate/photo"), $photo);
         $request->signature->move(public_path("image/candidate/signature"), $signature);
         $request->id_proof->move(public_path("image/candidate/id_proof"), $id_proof);
         $request->quali_certificate->move(public_path("image/candidate/quali_certificate"), $quali_certificate);
@@ -299,6 +190,20 @@ class DocumentController extends Controller
             ], 200);
         } else {
             // Create new job
+
+            $validator = Validator::make($request->all(), [
+                        'id_proof_type' => 'required',            
+                        'id_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+                        'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+                        'signature' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+                        'quali_certificate' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',          
+                    ]);
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => 422,
+                    'error' => $validator->messages()
+                ], 422);
+            }
 
             $job = Document::create([
                 'id_proof_type' => $request->id_proof_type,
@@ -325,5 +230,3 @@ class DocumentController extends Controller
         }
     }
 }
-
-// return redirect()->intended('/add-candidate');
