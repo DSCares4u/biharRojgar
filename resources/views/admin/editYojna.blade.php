@@ -40,7 +40,8 @@
                         <label for="fees" class="block text-sm font-medium text-gray-700">Yojna Fees</label>
                         <input type="number" id="fees" name="fees" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" required>
                     </div>
-                    <div class="mb-4 w-1/2">
+                    <div class="mb-4">
+                        <img id="logo-preview" src="" alt="Logo Preview" class="mt-2" style="max-width: 100px;">
                         <label for="logo" class="block text-sm font-medium text-gray-700">Image</label>
                         <input type="file" id="logo" name="logo">
                     </div>
@@ -74,6 +75,7 @@
                     $('#documents').val(response.data.documents);
                     $('#market_fees').val(response.data.market_fees);
                     $('#fees').val(response.data.fees);
+                    $('#logo-preview').attr('src','/image/yojna/logo/'+ response.data.logo);
                 },
                 error: function(xhr, status, error) {
                     console.error('Error fetching Yojna details for editing:', error);
@@ -107,21 +109,13 @@
         $('#addYojna').submit(function(e) {
             e.preventDefault();
             let id = getIdFromUrlPath();
-            let formData = {
-                ename: $('#ename').val(),
-                hname: $('#hname').val(),
-                features: $('#features').val(),
-                description: $('#description').val(),
-                yojna_category_id: $('#callingPlans').val(),
-                documents: $('#documents').val(),
-                market_fees: $('#market_fees').val(),
-                fees: $('#fees').val(),
-                logo:$('#logo').val()
-            };
+            let formData = new FormData(this); 
             $.ajax({
-                type: 'PUT',
+                type: 'POST',
                 url: `/api/yojna/edit/${id}`,
                 data: formData,
+                contentType: false,
+                processData: false,
                 success: function(response) {
                     console.log(response); // Debugging response
                     $("#addYojna").trigger("reset");

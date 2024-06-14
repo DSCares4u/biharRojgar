@@ -97,16 +97,17 @@ class SarkariJobController extends Controller
     public function update(Request $request, int $id){
         
     $validator = Validator::make($request->all(), [
-        'name' => 'required|string|min:3',
-        'role' => 'required|string|min:3',
-        'no_of_post' => 'required|string|min:3',
-        'min_age' => 'required|string|min:3',
-        'max_age' => 'required|string|min:3',
+        'name' => 'required|string',
+        'role' => 'required|string',
+        'no_of_post' => 'required|integer',
+        'min_age' => 'required|integer',
+        'max_age' => 'required|integer',
         'qualification' => 'required|string|min:3',
         'skills' => 'required|string|min:3',
-        'fees' => 'required|string|min:3',
-        'opening_date' => 'required|string|min:3',
-        'closing_date' => 'required|string|min:3',
+        'fees' => 'required|integer',
+        'opening_date' => 'required',
+        'closing_date' => 'required',
+        'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Allow optional logo update
     ]);
 
     if ($validator->fails()) {
@@ -119,11 +120,19 @@ class SarkariJobController extends Controller
             // Check if job exists
             $job = SarkariJob::find($id);
             if ($job) {
+
+                 // Handle the file upload
+                $logo = $job->logo; // Default to current logo
+                if ($request->hasFile('logo')) {
+                    $logo = time() . "." . $request->logo->extension();
+                    $request->logo->move(public_path("image/sarkari/logo"), $logo);
+                }
                 // Update existing job
                 $job->update([
                 'name' => $request->name,               
                 'role' => $request->role,               
-                'no_of_post' => $request->no_of_post,               
+                'no_of_post' => $request->no_of_post, 
+                'logo' => $logo,              
                 'min_age' => $request->min_age,               
                 'max_age' => $request->max_age,               
                 'qualification' => $request->qualification,               

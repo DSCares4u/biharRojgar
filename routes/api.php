@@ -89,7 +89,7 @@ Route::delete('/document/delete/{id}',[DocumentController::class,'destroy']);
 Route::post('/yojna',[YojnaController::class,'store'])->name('yojna.store');
 Route::get('/yojna',[YojnaController::class,'index'])->name('yojna.index');
 Route::get('/yojna/view/{id}',[YojnaController::class,'show']);
-Route::put('/yojna/edit/{id}',[YojnaController::class,'update']);
+Route::post('/yojna/edit/{id}',[YojnaController::class,'update']);
 Route::delete('/yojna/delete/{id}',[YojnaController::class,'destroy']);
 
 Route::post('/admin/yojna/category',[YojnaCategoryController::class,'store'])->name('yojna.category.store');
@@ -107,5 +107,5 @@ Route::delete('/admin/manage/yojna-form/delete/{id}',[YojnaFormController::class
 Route::post('/admin/sarkari-job',[SarkariJobController::class,'store'])->name('sarkari-job.store');
 Route::get('/admin/sarkari-job',[SarkariJobController::class,'index'])->name('sarkari-job.index');
 Route::get('/admin/sarkari-job/view/{id}',[SarkariJobController::class,'show']);
-Route::put('/admin/sarkari-job/edit/{id}',[SarkariJobController::class,'update']);
+Route::post('/admin/sarkari-job/edit/{id}',[SarkariJobController::class,'update']);
 Route::delete('/admin/sarkari-job/delete/{id}',[SarkariJobController::class,'destroy']);

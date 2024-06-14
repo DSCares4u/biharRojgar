@@ -90,6 +90,7 @@ Route::get('/admin/manage/yojna-category/insert',[AdminController::class,'insert
 
 Route::get('/admin/manage/sarkari-job',[AdminController::class,'manageSarkariJob']);
 Route::get('/admin/manage/sarkari-job/insert',[AdminController::class,'insertSarkariJob']);
+Route::get('/admin/manage/sarkari-job/{id}',[AdminController::class,'editSarkariJob']);
 
 Route::get('/admin/manage/manual-job',[AdminController::class,'manageManualJob']);
 Route::get('/admin/manage/manual-job/insert',[AdminController::class,'insertManualJob']);

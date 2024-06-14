@@ -62,6 +62,10 @@ class AdminController extends Controller
         return view('admin.manageSarkariJob');
     }
 
+    public function editSarkariJob(){
+        return view('admin.editSarkariJob');
+    }
+
     public function insertSarkariJob(){
         return view('admin.insertSarkariJob');
     }
