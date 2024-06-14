@@ -88,8 +88,6 @@
                 success: function(response) {
                     console.log(response); // Debugging response
                     let select = $("#callingPlans");
-                    select.empty();
-                    select.append(`<option value="">Select Category</option>`);
                     response.data.forEach((plan) => {
                         select.append(`
                             <option value="${plan.id}">${plan.name}</option>

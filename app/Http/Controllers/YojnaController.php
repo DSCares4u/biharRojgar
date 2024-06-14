@@ -111,7 +111,7 @@ class YojnaController extends Controller
             'documents' => 'required|string',
             'fees' => 'required|string',
             'market_fees' => 'required|string',
-            // 'logo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
+            'logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Allow optional logo update
         ]);
 
         if ($validator->fails()) {
@@ -119,45 +119,41 @@ class YojnaController extends Controller
                 'status' => 422,
                 'error' => $validator->messages()
             ], 422);
-
-             // Handle the file upload
-            // if ($request->hasFile('logo')) {
-            //     $logo = "LO" . time() . "." . $request->logo->extension();
-            //     $request->logo->move(public_path("image/yojna/logo"), $logo);
-            // } else {
-            //     return response()->json([
-            //         'status' => 422,
-            //         'errors' => ['logo' => 'Logo is required.']
-            //     ], 422);
-            // }
-        } else {
-
-            $yojna = Yojna::find($id);
-            if ($yojna) {
-                $yojna->update([
-                    'ename' => $request->ename,
-                    'hname' => $request->hname,
-                    'description' => $request->description,
-                    'fees' => $request->fees,
-                    'market_fees' => $request->market_fees,
-                    'documents' => $request->documents,
-                    'features' => $request->features,
-                    // 'logo' => $logo,
-                    'yojna_category_id' => $request->yojna_category_id                                        
-                ]);
-
-                return response()->json([
-                    'status' => 200,
-                    'message' => "Yojna Updated Successfully"
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => 500,
-                    'message' => "No Yojna Found"
-                ], 500);
-            }
         }
+
+        $yojna = Yojna::find($id);
+        if (!$yojna) {
+            return response()->json([
+                'status' => 500,
+                'message' => "No Yojna Found"
+            ], 500);
+        }
+
+        // Handle the file upload
+        $logo = $yojna->logo; // Default to current logo
+        if ($request->hasFile('logo')) {
+            $logo = "LO" . time() . "." . $request->logo->extension();
+            $request->logo->move(public_path("image/yojna/logo"), $logo);
+        }
+
+        $yojna->update([
+            'ename' => $request->ename,
+            'hname' => $request->hname,
+            'description' => $request->description,
+            'fees' => $request->fees,
+            'market_fees' => $request->market_fees,
+            'documents' => $request->documents,
+            'features' => $request->features,
+            'logo' => $logo,
+            'yojna_category_id' => $request->yojna_category_id
+        ]);
+
+        return response()->json([
+            'status' => 200,
+            'message' => "Yojna Updated Successfully"
+        ], 200);
     }
+
 
     public function destroy($id)
     {
