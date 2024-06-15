@@ -40,8 +40,9 @@ Route::delete('/register/delete/{id}',[UserController::class,'destroy']);
 Route::post('/hire',[HireController::class,'store'])->name('hire.store');
 Route::get('/hire',[HireController::class,'index'])->name('hire.index');
 Route::get('/hire-role',[HireController::class,'roleIndex'])->name('role.index');
+Route::get('/hire-role/view/{id}',[HireController::class,'roleShow']);
 Route::get('/hire/view/{id}',[HireController::class,'show']);
-Route::put('/hire/edit/{id}',[HireController::class,'update']);
+Route::post('/hire-role/edit/{id}',[HireController::class,'roleUpdate']);
 Route::delete('/hire/delete/{id}',[HireController::class,'destroy']);
 
 Route::post('/hire-plan',[HirePlanController::class,'store'])->name('hire.plan.store');

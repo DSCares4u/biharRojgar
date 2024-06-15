@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('preferred_lang');
             $table->string('type');
             $table->string('qualification');
+            $table->string('isApproved')->default(false);
             $table->foreignId('hire_id')->constrained()->onDelete("cascade");
             $table->timestamps();
         });

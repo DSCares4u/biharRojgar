@@ -114,72 +114,74 @@
 
                             data.forEach((job) => {
 
-                                    // Check if the user is logged in
-                                    @auth
-                                    let logIn = true; // User is logged in
+                                // Check if the user is logged in
+                                @auth
+                                let logIn = true; // User is logged in
                                 @else
                                     let logIn = false; // User is not logged in
                                 @endauth
                                 if (!logIn) {
+                                    if (job.isApproved == true) {
                                     table.append(`
-                                <div class="card w-3/4 mb-4 capitalize">
-                                    <div class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                                        <div class="flex justify-between">
-                                            <div class="flex gap-5">
-                                                <div class="logo">
-                                                    <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">
+                                            <div class="card w-3/4 mb-4 capitalize">
+                                                <div class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                                                    <div class="flex justify-between">
+                                                        <div class="flex gap-5">
+                                                            <div class="logo">
+                                                                <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">
+                                                            </div>
+                                                            <div class="name">
+                                                                <h5 class="font-semibold text-black">${job.title}</h5>
+                                                                <p class="text-gray-500 text-sm capitalize">${job.hire.company_name}</p>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <p class="text-gray-600 text-sm"><strong class="text-red-600">Opening Date: </strong>${job.hire.date_of_start}</p>
+                                                            <p class="text-gray-600 text-sm"><strong class="text-blue-600">Website: </strong><a target="_blank" href='${job.hire.website}' class='lowercase hover:underline'>${job.hire.website}</a></p>
+                                                            <div class="mb-2">
+                                                                <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>No. of Post: </p><p class="text-sm">${job.no_of_post}</p></h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="body mt-2 mb-2">
+                                                        <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Name: </p><p class="text-sm">${job.profile}</p></h5>
+                                                    </div>
+                                                    <div class="mb-2 mt-2">
+                                                        <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Type: </p><p class="text-sm">${job.type}</p></h5>
+                                                    </div>
+                                                    <div class="main flex justify-start text-gray-500">
+                                                        <div class="mb-2">
+                                                            <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Experience: </p><p class="text-sm">${job.min_experience}-${job.max_experience} Years</p></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="main flex justify-start text-gray-500">
+                                                        <div class="mb-2">
+                                                            <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Language Required: </p><p class="text-sm">${job.preferred_lang}</p></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="main flex justify-start text-gray-500">
+                                                        <div class="mb-2">
+                                                            <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Qualification: </p><p class="text-sm">${job.qualification}</p></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="main flex justify-start text-gray-500">
+                                                        <div class="mb-2">
+                                                            <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Salary: </p><p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>${job.min_salary}</p> -<p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>${job.max_salary}</p></h5>
+                                                        </div>
+                                                    </div>
+                                                    <hr class="bg-gray-500">
+                                                    <div class="footer flex gap-6 font-medium mt-2 capitalize text-xs">
+                                                        <p class="description line-clamp-2">${job.hire.description}</p>
+                                                        <button class="toggleButton text-blue-500"><i class="fa-solid fa-angle-down"></i></button>
+                                                    </div>
+                                                    <div class="button flex gap-5 mt-5">
+                                                        <a href="/viewPrivateJobForm/${job.id}" class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job</a>
+                                                        <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="/viewPrivateJobForm/${job.id}"><img src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
+                                                    </div>
                                                 </div>
-                                                <div class="name">
-                                                    <h5 class="font-semibold text-black">${job.title}</h5>
-                                                    <p class="text-gray-500 text-sm capitalize">${job.hire.company_name}</p>
-                                                </div>
                                             </div>
-                                            <div>
-                                                <p class="text-gray-600 text-sm"><strong class="text-red-600">Opening Date: </strong>${job.hire.date_of_start}</p>
-                                                <p class="text-gray-600 text-sm"><strong class="text-blue-600">Website: </strong><a target="_blank" href='${job.hire.website}' class='lowercase hover:underline'>${job.hire.website}</a></p>
-                                                <div class="mb-2">
-                                                    <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>No. of Post: </p><p class="text-sm">${job.no_of_post}</p></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="body mt-2 mb-2">
-                                            <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Name: </p><p class="text-sm">${job.profile}</p></h5>
-                                        </div>
-                                        <div class="mb-2 mt-2">
-                                            <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Type: </p><p class="text-sm">${job.type}</p></h5>
-                                        </div>
-                                        <div class="main flex justify-start text-gray-500">
-                                            <div class="mb-2">
-                                                <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Experience: </p><p class="text-sm">${job.min_experience}-${job.max_experience} Years</p></h5>
-                                            </div>
-                                        </div>
-                                        <div class="main flex justify-start text-gray-500">
-                                            <div class="mb-2">
-                                                <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Language Required: </p><p class="text-sm">${job.preferred_lang}</p></h5>
-                                            </div>
-                                        </div>
-                                        <div class="main flex justify-start text-gray-500">
-                                            <div class="mb-2">
-                                                <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Qualification: </p><p class="text-sm">${job.qualification}</p></h5>
-                                            </div>
-                                        </div>
-                                        <div class="main flex justify-start text-gray-500">
-                                            <div class="mb-2">
-                                                <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Salary: </p><p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>${job.min_salary}</p> -<p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>${job.max_salary}</p></h5>
-                                            </div>
-                                        </div>
-                                        <hr class="bg-gray-500">
-                                        <div class="footer flex gap-6 font-medium mt-2 capitalize text-xs">
-                                            <p class="description line-clamp-2">${job.hire.description}</p>
-                                            <button class="toggleButton text-blue-500"><i class="fa-solid fa-angle-down"></i></button>
-                                        </div>
-                                        <div class="button flex gap-5 mt-5">
-                                            <a href="/viewPrivateJobForm/${job.id}" class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job</a>
-                                            <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="/viewPrivateJobForm/${job.id}"><img src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            `);
+                                        `);
+                                    }
                                 } else {
 
                                     // Check if the user has already applied for this job
@@ -196,66 +198,66 @@
                                                     `<a href="/viewPrivateJobForm/${job.id}" class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job</a>`;
                                             }
 
-                                            if (job.hire.isApproved == true) {
+                                            if (job.isApproved == true) {
                                                 table.append(`
-                                <div class="card w-3/4 mb-4 capitalize">
-                                    <div class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                                        <div class="flex justify-between">
-                                            <div class="flex gap-5">
-                                                <div class="logo">
-                                                    <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">
-                                                </div>
-                                                <div class="name">
-                                                    <h5 class="font-semibold text-black">${job.title}</h5>
-                                                    <p class="text-gray-500 text-sm capitalize">${job.hire.company_name}</p>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <p class="text-gray-600 text-sm"><strong class="text-red-600">Opening Date: </strong>${job.hire.date_of_start}</p>
-                                                <p class="text-gray-600 text-sm"><strong class="text-blue-600">Website: </strong><a target="_blank" href='${job.hire.website}' class='lowercase hover:underline'>${job.hire.website}</a></p>
-                                                <div class="mb-2">
-                                                    <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>No. of Post: </p><p class="text-sm">${job.no_of_post}</p></h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="body mt-2 mb-2">
-                                            <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Name: </p><p class="text-sm">${job.profile}</p></h5>
-                                        </div>
-                                        <div class="mb-2 mt-2">
-                                            <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Type: </p><p class="text-sm">${job.type}</p></h5>
-                                        </div>
-                                        <div class="main flex justify-start text-gray-500">
-                                            <div class="mb-2">
-                                                <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Experience: </p><p class="text-sm">${job.min_experience}-${job.max_experience} Years</p></h5>
-                                            </div>
-                                        </div>
-                                        <div class="main flex justify-start text-gray-500">
-                                            <div class="mb-2">
-                                                <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Language Required: </p><p class="text-sm">${job.preferred_lang}</p></h5>
-                                            </div>
-                                        </div>
-                                        <div class="main flex justify-start text-gray-500">
-                                            <div class="mb-2">
-                                                <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Qualification: </p><p class="text-sm">${job.qualification}</p></h5>
-                                            </div>
-                                        </div>
-                                        <div class="main flex justify-start text-gray-500">
-                                            <div class="mb-2">
-                                                <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Salary: </p><p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>${job.min_salary}</p> -<p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>${job.max_salary}</p></h5>
-                                            </div>
-                                        </div>
-                                        <hr class="bg-gray-500">
-                                        <div class="footer flex gap-6 font-medium mt-2 capitalize text-xs">
-                                            <p class="description line-clamp-2">${job.hire.description}</p>
-                                            <button class="toggleButton text-blue-500"><i class="fa-solid fa-angle-down"></i></button>
-                                        </div>
-                                        <div class="button flex gap-5 mt-5">
-                                            ${applyButton}
-                                            <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="/viewPrivateJobForm/${job.id}"><img src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            `);
+                                                    <div class="card w-3/4 mb-4 capitalize">
+                                                        <div class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                                                            <div class="flex justify-between">
+                                                                <div class="flex gap-5">
+                                                                    <div class="logo">
+                                                                        <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">
+                                                                    </div>
+                                                                    <div class="name">
+                                                                        <h5 class="font-semibold text-black">${job.title}</h5>
+                                                                        <p class="text-gray-500 text-sm capitalize">${job.hire.company_name}</p>
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    <p class="text-gray-600 text-sm"><strong class="text-red-600">Opening Date: </strong>${job.hire.date_of_start}</p>
+                                                                    <p class="text-gray-600 text-sm"><strong class="text-blue-600">Website: </strong><a target="_blank" href='${job.hire.website}' class='lowercase hover:underline'>${job.hire.website}</a></p>
+                                                                    <div class="mb-2">
+                                                                        <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>No. of Post: </p><p class="text-sm">${job.no_of_post}</p></h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="body mt-2 mb-2">
+                                                                <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Name: </p><p class="text-sm">${job.profile}</p></h5>
+                                                            </div>
+                                                            <div class="mb-2 mt-2">
+                                                                <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Type: </p><p class="text-sm">${job.type}</p></h5>
+                                                            </div>
+                                                            <div class="main flex justify-start text-gray-500">
+                                                                <div class="mb-2">
+                                                                    <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Experience: </p><p class="text-sm">${job.min_experience}-${job.max_experience} Years</p></h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="main flex justify-start text-gray-500">
+                                                                <div class="mb-2">
+                                                                    <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Language Required: </p><p class="text-sm">${job.preferred_lang}</p></h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="main flex justify-start text-gray-500">
+                                                                <div class="mb-2">
+                                                                    <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Qualification: </p><p class="text-sm">${job.qualification}</p></h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="main flex justify-start text-gray-500">
+                                                                <div class="mb-2">
+                                                                    <h5 class="text-sm font-normal flex gap-2"><p class='font-semibold text-gray-500'>Salary: </p><p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>${job.min_salary}</p> -<p><i class="fa-solid fa-indian-rupee-sign fa-xs"></i>${job.max_salary}</p></h5>
+                                                                </div>
+                                                            </div>
+                                                            <hr class="bg-gray-500">
+                                                            <div class="footer flex gap-6 font-medium mt-2 capitalize text-xs">
+                                                                <p class="description line-clamp-2">${job.hire.description}</p>
+                                                                <button class="toggleButton text-blue-500"><i class="fa-solid fa-angle-down"></i></button>
+                                                            </div>
+                                                            <div class="button flex gap-5 mt-5">
+                                                                ${applyButton}
+                                                                <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="/viewPrivateJobForm/${job.id}"><img src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                `);
                                             }
                                         },
                                         error: function(xhr, status, error) {
