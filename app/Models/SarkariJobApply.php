@@ -11,8 +11,13 @@ class SarkariJobApply extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function user(): HasMany
+    public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function sarkariJob()
+    {
+        return $this->belongsTo(SarkariJob::class, 'sarkari_job_id');
     }
 }

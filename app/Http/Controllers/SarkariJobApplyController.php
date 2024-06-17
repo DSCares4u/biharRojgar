@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class SarkariJobApplyController extends Controller
 {
     public function index(){
-        $job = SarkariJobApply::orderBy('created_at', 'desc')->get();
+        $job = SarkariJobApply::with('user','sarkariJob')->orderBy('created_at', 'desc')->get();
         if ($job->count() > 0) {
             return response()->json([
                 'status' => 200,
@@ -33,7 +33,7 @@ class SarkariJobApplyController extends Controller
         $userId = $request->user()->id; // Get the authenticated user's ID
 
         $existingApplication = SarkariJobApply::where('user_id', $userId)
-            ->where('job_id', $jobId)
+            ->where('sarkari_job_id', $jobId)
             ->first();
 
         return response()->json([
@@ -44,7 +44,7 @@ class SarkariJobApplyController extends Controller
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
-            'job_id' => 'required'                
+            'sarkari_job_id' => 'required'                
         ]);
     
         if ($validator->fails()) {
@@ -81,7 +81,7 @@ class SarkariJobApplyController extends Controller
     
             // Check if the user has already applied for the job
             $existingApplication = SarkariJobApply::where('user_id', $request->user_id)
-                                                 ->where('job_id', $request->job_id)
+                                                 ->where('sarkari_job_id', $request->sarkari_job_id)
                                                  ->first();
             if ($existingApplication) {
                 return response()->json([
@@ -94,7 +94,7 @@ class SarkariJobApplyController extends Controller
             $job = SarkariJobApply::create([
                 'payment_mode' => $request->payment_mode,
                 'user_id' => $request->user_id,
-                'job_id' => $request->job_id,
+                'sarkari_job_id' => $request->sarkari_job_id,
             ]);
     
             if ($job) {
@@ -112,7 +112,7 @@ class SarkariJobApplyController extends Controller
     }
 
     public function show($id){
-        $job = SarkariJobApply::find($id);
+        $job = SarkariJobApply::with('user', 'sarkariJob')->find($id);
         if($job){
             return response()->json([
                 'status' => 200,
@@ -130,7 +130,7 @@ class SarkariJobApplyController extends Controller
     public function update(Request $request, int $id){
             $validator = Validator::make($request->all(), [
             'user_id' => 'required',
-            'job_id' => 'required' 
+            'sarkari_job_id' => 'required' 
             ]);
 
         if ($validator->fails()) {
@@ -147,7 +147,7 @@ class SarkariJobApplyController extends Controller
                     $job->update([
                         'payment_mode' => $request->payment_mode,
                         'user_id' => $request->user_id,
-                        'job_id' => $request->job_id,                              
+                        'sarkari_job_id' => $request->sarkari_job_id,                              
                     ]);
 
                     return response()->json([

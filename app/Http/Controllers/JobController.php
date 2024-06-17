@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class JobController extends Controller
 {
     public function index(){
-        $job = Job::orderBy('created_at', 'desc')->get();
+        $job = Job::with('user','job')->orderBy('created_at', 'desc')->get();
         if ($job->count() > 0) {
             return response()->json([
                 'status' => 200,
@@ -225,7 +225,7 @@ class JobController extends Controller
     }
 
     public function show($id){
-        $job = Job::find($id);
+        $job = Job::with('user', 'job')->find($id);
         if($job){
             return response()->json([
                 'status' => 200,

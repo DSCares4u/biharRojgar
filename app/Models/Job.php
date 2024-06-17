@@ -17,4 +17,15 @@ class Job extends Model
         return $this->HasOne(User::class, 'id', 'user_id');
     }
 
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function job()
+    {
+        return $this->belongsTo(job::class, 'job_id');
+    }
+
 }
