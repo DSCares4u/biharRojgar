@@ -122,52 +122,54 @@ class SarkariJobApplyController extends Controller
         else{
             return response()->json([
                 'status' => 404,
-                'message' => "No call Found"
+                'message' => "No Data Found"
             ], 404);
         }
     }
     
-    // public function update(Request $request, int $id){
-    //     $validator = Validator::make($request->all(), [
-    //         'user_id' => 'required',                 
-    // ]);
+    public function update(Request $request, int $id){
+            $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'job_id' => 'required' 
+            ]);
 
-    // if ($validator->fails()) {
-    //     return response()->json([
-    //         'status' => 422,
-    //         'error' => $validator->messages()
-    //     ], 422);
-    // } else {
-    //     if ($id) {
-    //         // Check if job exists
-    //         $job = SarkariJobApply::find($id);
-    //         if ($job) {
-    //             // Update existing job
-    //             $job->update([
-    //                 'user_id' => $request->user_id,
-    //                 'payment_mode' => $request->payment_mode,                               
-    //             ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'error' => $validator->messages()
+            ], 422);
+        } else {
+            if ($id) {
+                // Check if job exists
+                $job = SarkariJobApply::find($id);
+                if ($job) {
+                    // Update existing job
+                    $job->update([
+                        'payment_mode' => $request->payment_mode,
+                        'user_id' => $request->user_id,
+                        'job_id' => $request->job_id,                              
+                    ]);
 
-    //             return response()->json([
-    //                 'status' => 200,
-    //                 'message' => "Job Updated Successfully"
-    //             ], 200);
-    //         }
-    //     }
+                    return response()->json([
+                        'status' => 200,
+                        'message' => "Job Details Updated Successfully"
+                    ], 200);
+                }
+            }
 
-    //     // Create new job
-    //     $newJob = SarkariJobApply::create([
-    //         'user_id' => $request->user_id,
-    //         'payment_mode' => $request->payment_mode,                               
-    //     ]);
+            // Create new job
+            $newJob = SarkariJobApply::create([
+                'user_id' => $request->user_id,
+                'payment_mode' => $request->payment_mode,                               
+            ]);
 
-    //     return response()->json([
-    //         'status' => 200,
-    //         'message' => "Job Created Successfully",
-    //         'job' => $newJob
-    //     ], 200);
-    // }
-    // }
+            return response()->json([
+                'status' => 200,
+                'message' => "Job Created Successfully",
+                'job' => $newJob
+            ], 200);
+        }
+    }
 
     public function destroy($id){
         $job  = SarkariJobApply::find($id);

@@ -65,8 +65,7 @@ class YojnaFormController extends Controller
         if ($yojna) {
             return response()->json([
                 'status' => 200,
-                'message' => "You Have SuccessFully Applied.
-                We Will Connect You Soon"
+                'message' => "You Have SuccessFully Applied"
             ], 200);
         } else {
             return response()->json([
@@ -78,7 +77,7 @@ class YojnaFormController extends Controller
 
     public function show($id)
     {
-        $yojna = YojnaForm::find($id);
+        $yojna = YojnaForm::with("user")-where('id',$id)->first();
         if($yojna){
             return response()->json([
                 'status' => 200,
@@ -93,53 +92,47 @@ class YojnaFormController extends Controller
         }
     }
 
-    // public function update(Request $request, int $id)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'ename' => 'required|string|min:3',
-    //         'hname' => 'required|string|min:3',
-    //     ]);
+    public function update(Request $request, int $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:3',
+            'mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
+            'wtsp_mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
+            'email' => 'required|email',
+            'city' => 'required',
+            'state' => 'required'
+        ]);
 
-    //     if ($validator->fails()) {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'error' => $validator->messages()
-    //         ], 422);
-    //     } else {
-    //         $photo = "YJ". time() . "." . $request->photo->extension();        //upload on public/photo/image/filename
-    //         $request->photo->move(public_path("image/yojna/photo"), $photo);  
-    
-    //         $document = "YJDOC". time() . "." . $request->document->extension();        //upload on public/photo/image/filename
-    //         $request->document->move(public_path("image/yojna/document"), $document);      
-    
-    //         $yojna = YojnaForm::find($id);
-    //         if ($yojna) {
-    //             $yojna->update([
-    //                 'name' => $request->name,
-    //                 'father' => $request->father,
-    //                 'mother' => $request->mother,
-    //                 'dob' => $request->dob,
-    //                 'mobile' => $request->mobile,
-    //                 'email' => $request->email,
-    //                 'address' => $request->address,
-    //                 'gender' => $request->gender,
-    //                 'photo'=>$photo,     
-    //                 'document'=>$document,     
-    //                 'yojna_id'=>$request->yojna_id                                                   
-    //             ]);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'error' => $validator->messages()
+            ], 422);
+        }
 
-    //             return response()->json([
-    //                 'status' => 200,
-    //                 'message' => "Yojna Updated Successfully"
-    //             ], 200);
-    //         } else {
-    //             return response()->json([
-    //                 'status' => 500,
-    //                 'message' => "No Yojna Found"
-    //             ], 500);
-    //         }
-    //     }
-    // }
+        $yojna = YojnaForm::find($id);
+        if (!$yojna) {
+            return response()->json([
+                'status' => 500,
+                'message' => "No Form Found"
+            ], 500);
+        }
+
+        $yojna->update([
+            'name' => $request->name,
+            'mobile' => $request->mobile,
+            'wtsp_mobile' => $request->wtsp_mobile,
+            'email' => $request->email,
+            'city' => $request->city,
+            'state' => $request->state,
+            'yojna_id' => $request->yojna_id
+        ]);
+
+        return response()->json([
+            'status' => 200,
+            'message' => "Form Updated Successfully"
+        ], 200);
+    }
 
     public function destroy($id)
     {

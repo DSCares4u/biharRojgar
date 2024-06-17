@@ -70,4 +70,9 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims() {
         return [];
     }  
+
+    public function sarkariJobApplies(): HasOne
+    {
+        return $this->HasOne(sarkariJobApply::class, 'id', 'sarkari_job_apply_id');
+    }
 }

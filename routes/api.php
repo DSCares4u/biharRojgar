@@ -102,7 +102,7 @@ Route::delete('/admin/yojna/category/delete/{id}',[YojnaCategoryController::clas
 Route::post('/admin/manage/yojna-form',[YojnaFormController::class,'store'])->name('yojna.form.store');
 Route::get('/admin/manage/yojna-form',[YojnaFormController::class,'index'])->name('yojna.form.index');
 Route::get('/admin/manage/yojna-form/view/{id}',[YojnaFormController::class,'show']);
-Route::put('/admin/manage/yojna-form/edit/{id}',[YojnaFormController::class,'update']);
+Route::post('/admin/manage/yojna-form/edit/{id}',[YojnaFormController::class,'update']);
 Route::delete('/admin/manage/yojna-form/delete/{id}',[YojnaFormController::class,'destroy']);
 
 Route::post('/admin/sarkari-job',[SarkariJobController::class,'store'])->name('sarkari-job.store');

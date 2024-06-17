@@ -97,3 +97,14 @@ Route::get('/admin/manage/manual-job/insert',[AdminController::class,'insertManu
 
 Route::get('/admin/manage/yojna-form',[AdminController::class,'manageYojnaForm']);
 Route::get('/admin/manage/yojna-form/insert',[AdminController::class,'insertYojnaForm']);
+Route::get('/admin/manage/yojna-form/{id}',[AdminController::class,'viewYojnaForm']);
+
+Route::get('/admin/manage/sarkari-job-form',[AdminController::class,'manageSarkariJobForm']);
+Route::get('/admin/manage/sarkari-job-form/insert',[AdminController::class,'insertSarkariJobForm']);
+Route::get('/admin/manage/sarkari-job-form/{id}',[AdminController::class,'viewSarkariJobForm']);
+
+Route::get('/admin/manage/private-job-form',[AdminController::class,'managePrivateJobForm']);
+Route::get('/admin/manage/private-job-form/insert',[AdminController::class,'insertPrivateJobForm']);
+Route::get('/admin/manage/private-job-form/{id}',[AdminController::class,'viewPrivateJobForm']);
+
+

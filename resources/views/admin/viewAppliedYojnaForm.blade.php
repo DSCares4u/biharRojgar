@@ -11,7 +11,7 @@
                         <div class="mb-4">
                             <label for="name" class="block text-sm font-medium text-gray-700">Candidate's Name</label>
                             <input type="text" id="name" name="name"
-                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-1/2 shadow-sm sm:text-sm border-gray-300 rounded-md"
                                 required>
                         </div>
 
@@ -34,7 +34,7 @@
                         <div class="mb-4">
                             <label for="email" class="block text-sm font-medium text-gray-700">Email Id</label>
                             <input type="text" id="email" name="email"
-                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-1/2 shadow-sm sm:text-sm border-gray-300 rounded-md"
                                 required>
                         </div>
                         <div class="flex gap-1">
@@ -98,8 +98,7 @@
                         </div>
                         <div class="">
                             <button type="submit"
-                                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Add
-                                New Plan</button>
+                                class="w-1/2 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Update Now</button>
                         </div>
                     </form>
                 </div>
@@ -108,53 +107,72 @@
     </div>
     <script>
         $(document).ready(function() {
-            //insert application details
-
-            $("#addData").submit(function(e) {
-                e.preventDefault();
-                var formData = new FormData(this);
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('yojna.form.store') }}",
-                    data: formData,
-                    dataType: "JSON",
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    success: function(response) {
-                        swal("Success", response.message, "success");
-                        $("#addData").trigger("reset");
-                        window.open("/admin/manage/yojna-form", "_self")
-                    },
-                    error: function(xhr) {
-                        if (xhr.status === 409) {
-                            swal("error", "Already applied for this Yojna.", "error");
-                        }
-                        else if (xhr.status === 422) {
-                            var errors = xhr.responseJSON.errors;
-                            $.each(errors, function(key, value) {
-                                $('#error-' + key).html(value[0]);
-                            });
-                        } else {
-                            alert('An error occurred. Please try again.');
-                        }
-                    }
-                })
-            })
-
             $.ajax({
                 type: "GET",
                 url: "{{ route('yojna.index') }}",
                 success: function(response) {
                     let select = $("#callingYojna");
-                    select.empty();
-                    select.append(`<option value="">Select Plan</option>`)
-                    response.data.forEach((plan) => {
+                    response.data.forEach((yojna) => {
                         select.append(`
-                    <option value="${plan.id}">${plan.ename}</option>
+                    <option value="${yojna.id}">${yojna.ename}</option>
                     `);
                     });
                 }
+            });
+
+            function fetchDetails() {
+                let id = getIdFromUrlPath();
+
+                $.ajax({
+                    type: 'GET',
+                    url: `/api/admin/manage/yojna-form/view/${id}`,
+                    success: function(response) {
+                        console.log(response);
+                        $('#id').val(response.data.id);
+                        $('#name').val(response.data.name);
+                        $('#mobile').val(response.data.mobile);
+                        $('#wtsp_mobile').val(response.data.wtsp_mobile);
+                        $('#email').val(response.data.email);
+                        $('#city').val(response.data.city);
+                        $('#state').val(response.data.state);
+                        $('#callingYojna').val(response.data.yojna_id);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching Applied details for editing:', error);
+                    }
+                });
+            }
+
+            // Auto-execute the function when the page loads
+            fetchDetails();
+
+            // Function to extract ID from URL path
+            function getIdFromUrlPath() {
+                let pathArray = window.location.pathname.split('/');
+                return pathArray[pathArray.length - 1];
+            }
+
+            // Form submission handler
+            $('#addData').submit(function(e) {
+                e.preventDefault();
+                let userId = getIdFromUrlPath();
+                let formData = new FormData(this);
+
+                $.ajax({
+                    type: 'POST',
+                    url: `/api/admin/manage/yojna-form/edit/${userId}`,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        alert("Success: " + response.message);
+                        $("#addData").trigger("reset");
+                        window.location.href = "/admin/manage/yojna-form";
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error updating Details:', error);
+                    }
+                });
             });
         });
     </script>

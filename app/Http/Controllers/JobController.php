@@ -242,8 +242,9 @@ class JobController extends Controller
     
     public function update(Request $request, int $id){
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required',                 
-    ]);
+            'user_id' => 'required',
+            'job_id' =>'required'    
+        ]);
 
     if ($validator->fails()) {
         return response()->json([
@@ -257,8 +258,9 @@ class JobController extends Controller
             if ($job) {
                 // Update existing job
                 $job->update([
-                    'user_id' => $request->user_id,
-                    'payment_mode' => $request->payment_mode,                               
+                    'payment_mode' => $request->payment_mode,          
+                    'user_id' => $request->user_id,                     
+                    'job_id' => $request->job_id,                               
                 ]);
 
                 return response()->json([
