@@ -92,7 +92,7 @@ class JobController extends Controller
             }
     
             // Create the new job application
-            $job = JOb::create([
+            $job = Job::create([
                 'payment_mode' => $request->payment_mode,          
                 'user_id' => $request->user_id,                     
                 'role_id' => $request->role_id,                     

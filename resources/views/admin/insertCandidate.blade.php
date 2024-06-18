@@ -6,7 +6,7 @@
                 <div class="bg-gray-200 px-4 py-2 rounded-t-lg mt-2">
                     <h3 class="text-xl font-semibold mt-2">Add New Candidate</h3>
                 </div>
-                <form class="p-4 flex flex-col" id="applyJob">
+                <form class="p-4 flex flex-col" id="addData">
                     <div class="border p-4 border-gray mt-2">
                         <h2 class="text-lg font-semibold mb-2  ">Personal Details</h2>
                         <hr class="h-1 rounded bg-gray-600 mb-4">
@@ -150,7 +150,7 @@
                                 <div class="mb-3  items-center">
                                     <label for="landmark" class="block text-gray-700 text-sm mb-2 ">Landmark</label>
                                     <input type="text" id="landmark"
-                                        name="landmark"placeholder="Eg. abc chowk ..."
+                                        name="landmark" placeholder="Eg. abc chowk ..."
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded"
                                         required>
                                 </div>
@@ -277,28 +277,509 @@
         </div>
     </div>
 
-    <script>
-        $(document).ready(function() {
-            //insert application details
+{{-- <script>
+    $(document).ready(function() {
+        function fetchJobDetailsAndOpenModal() {
+            let userId = {{ auth()->user()->id }};
 
-            $("#applyJob").submit(function(e) {
-                e.preventDefault();
-                var formData = new FormData(this);
-                $.ajax({
-                    type: "POST",
-                    url: "{{ route('job.store') }}",
-                    data: formData,
-                    dataType: "JSON",
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    success: function(response) {
-                        swal("Success", response.message, "success");
-                        $("#applyJob").trigger("reset");
-                        window.open("/admin/manage-candidate", "_self")
-                    }
-                })
-            })
+            $.ajax({
+                type: 'GET',
+                url: `/api/candidate/view/` + userId,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    $('#id').val(response.data.id);
+                    $('#name').val(response.data.name);
+                    $('#gender').val(response.data.gender);
+                    $('#marital').val(response.data.marital);
+                    $('#preferred_lang').val(response.data.preferred_lang);
+                    $('#dob').val(response.data.dob);
+                    $('#father').val(response.data.father);
+                    $('#email').val(response.data.email);
+                    $('#religion').val(response.data.religion);
+                    $('#mother').val(response.data.mother);
+                    $('#mobile').val(response.data.mobile);
+                    $('#community').val(response.data.community);
+                    $('#village').val(response.data.village);
+                    $('#landmark').val(response.data.landmark);
+                    $('#area').val(response.data.area);
+                    $('#pincode').val(response.data.pincode);
+                    $('#state').val(response.data.state);
+                    $('#city').val(response.data.city);
+                    $('#id_mark').val(response.data.id_mark);
+                    $('#default-modal').removeClass('hidden');
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching Job details for editing:', error);
+                }
+            });
+        }
+
+        // Auto-execute the function when the page loads
+        fetchJobDetailsAndOpenModal();
+
+    });
+
+
+    $('#addData').submit(function(e) {
+        e.preventDefault();
+        let userId = {{ auth()->user()->id }};
+        let formData = {
+            user_id: $('#id').val(),
+            name: $('#name').val(),
+            gender: $('#gender').val(),
+            marital: $('#marital').val(),
+            preferred_lang: $('#preferred_lang').val(),
+            dob: $('#dob').val(),
+            father: $('#father').val(),
+            email: $('#email').val(),
+            religion: $('#religion').val(),
+            mother: $('#mother').val(),
+            mobile: $('#mobile').val(),
+            community: $('#community').val(),
+            village: $('#village').val(),
+            landmark: $('#landmark').val(),
+            area: $('#area').val(),
+            pincode: $('#pincode').val(),
+            state: $('#state').val(),
+            city: $('#city').val(),
+            id_mark: $('#id_mark').val(),
+        };
+        $.ajax({
+            type: 'PUT',
+            url: `/api/candidate/edit/${userId}`,
+            data: formData,
+            success: function(response) {
+                $("#addData").trigger("reset");
+            },
+            error: function(xhr, status, error) {
+                console.error('Error updating Plan Details:', error);
+            }
         });
-    </script>
+    });
+
+    // function to get distict and state details
+
+    function getDistrictAndState() {
+        var pincode = document.getElementById('pincode').value;
+        fetch('/get-district-and-state?pincode=' + pincode)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('city').value = data.district;
+                document.getElementById('state').value = data.state;
+            })
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+
+<script>
+
+    $(document).ready(function() {
+
+        function fetchJobDetailsAndOpenModal() {
+            let userId = {{ auth()->user()->id }};
+
+            $.ajax({
+                type: 'GET',
+                url: `/api/address/view/` + userId,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                $('#id').val(response.data.id);
+                $('#qualification').val(response.data.qualification);
+                $('#q_state').val(response.data.q_state);
+                $('#board').val(response.data.board);
+                $('#passing_year').val(response.data.passing_year);
+                $('#experience').val(response.data.experience);
+                $('#skills').val(response.data.skills);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching Job details for editing:', error);
+                }
+            });
+        }
+
+        // Auto-execute the function when the page loads
+        fetchJobDetailsAndOpenModal();
+
+    });
+
+    $('#addData').submit(function(e) {
+        e.preventDefault();
+        let userId = {{ auth()->user()->id }};
+        let formData = {
+            user_id: $('#id').val(),
+            qualification: $('#qualification').val(),
+            q_state: $('#q_state').val(),
+            board: $('#board').val(),
+            passing_year: $('#passing_year').val(),
+            experience: $('#experience').val(),
+            skills: $('#skills').val(),
+        };
+        $.ajax({
+            type: 'PUT',
+            url: `/api/address/edit/${userId}`,
+            data: formData,
+            success: function(response) {
+                $("#addData").trigger("reset");
+            },
+            error: function(xhr, status, error) {
+                console.error('Error updating Plan Details:', error);
+            }
+        });
+    });
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        function fetchJobDetailsAndOpenModal(userId) {
+            if (userId) {
+                $.ajax({
+                    type: 'GET',
+                    url: `/api/document/view/${userId}`,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response);
+                        if (response.data) {
+                            $('#id').val(response.data.id);
+                            $('#photoPreview').attr('src','/image/candidate/photo/'+ response.data.photo);
+                            $('#signaturePreview').attr('src','/image/candidate/signature/'+ response.data.signature);
+                            $('#id_proof_type').val( response.data.id_proof_type);
+                            $('#idProofPreview').attr('src','/image/candidate/id_proof/'+ response.data.id_proof);
+                            $('#qualiCertificatePreview').attr('src','/image/candidate/quali_certificate/'+ response.data.quali_certificate);
+                            $('#otherCertificatePreview').attr('src','/image/candidate/other_certificate/'+ response.data.other_certificate);
+                        } else {
+                            console.error('No data found in response.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching document details for editing:', error);
+                    }
+                });
+            } else {
+                console.error('User ID is not defined.');
+            }
+        }
+        // Preview the image files
+        function previewImage(input, previewId) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $(previewId).attr('src', e.target.result).removeClass('hidden');
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $('#photo').change(function() {
+            previewImage(this, '#photoPreview');
+        });
+
+        $('#signature').change(function() {
+            previewImage(this, '#signaturePreview');
+        });
+        $('#id_proof').change(function() {
+            previewImage(this, '#idProofPreview');
+        });
+        $('#quali_certificate').change(function() {
+            previewImage(this, '#qualiCertificatePreview');
+        });
+        $('#other_certificate').change(function() {
+            previewImage(this, '#otherCertificatePreview');
+        });
+
+        // Auto-execute the function when the page loads
+        let userId = {{ auth()->user()->id }};
+        fetchJobDetailsAndOpenModal(userId);
+
+        // Handle form submission
+        $('#addData').submit(function(e) {
+            e.preventDefault();            
+            let userId = {{ auth()->user()->id }};            
+            if (userId) {
+                let formData = new FormData(this); 
+                $.ajax({
+                    type: 'POST',
+                    url: `/api/document/edit/${userId}`,
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        $("#addData").trigger("reset");
+                    },
+                    error: function(xhr) {
+                        if (xhr.status === 422) {
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                $('#error-' + key).html(value[0]);
+                            });
+                        } else {
+                            alert('An error occurred. Please try again.');
+                        }
+                    }
+                });
+            } else {
+                console.error('User ID is not defined.');
+            }
+        });
+    });
+</script>
+ --}}
+
+{{-- <script>
+    $(document).ready(function() {
+    $("#addData").submit(function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+        // Send AJAX request
+        $.ajax({
+            type: "POST",
+            url: "{{ route('register.store') }}",
+            data: formData,
+            dataType: "JSON",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response) {
+                $("#addData").trigger("reset");
+            },
+            error: function(xhr, status, error) {
+                swal("Error", xhr.responseText, "error");
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "{{ route('candidate.store') }}",
+            data: formData,
+            dataType: "JSON",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response) {
+                $("#addData").trigger("reset");
+            },
+            error: function(xhr, status, error) {
+                swal("Error", xhr.responseText, "error");
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "{{ route('address.store') }}",
+            data: formData,
+            dataType: "JSON",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response) {
+                $("#addData").trigger("reset");
+            },
+            error: function(xhr, status, error) {
+                swal("Error", xhr.responseText, "error");
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "{{ route('document.store') }}",
+            data: formData,
+            dataType: "JSON",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response) {
+                $("#addData").trigger("reset");
+            },
+            error: function(xhr, status, error) {
+                swal("Error", xhr.responseText, "error");
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: "{{ route('document.store') }}",
+            data: formData,
+            dataType: "JSON",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response) {
+                $("#addData").trigger("reset");
+            },
+            error: function(xhr, status, error) {
+                swal("Error", xhr.responseText, "error");
+            }
+        });
+    });
+});
+
+</script> --}}
+<script>
+//     $(document).ready(function() {
+//     $("#addData").submit(function(e) {
+//         e.preventDefault();
+//         var formData = new FormData(this);
+
+//         // First AJAX request to register the user
+//         $.ajax({
+//             type: "POST",
+//             url: "{{ route('register.store') }}",
+//             data: formData,
+//             dataType: "JSON",
+//             contentType: false,
+//             cache: false,
+//             processData: false,
+//             success: function(response) {
+//                 if (response.status === 200) {
+//                     var userId = response.data.user_id; // Assuming the response contains the user_id
+
+//                     // Adding user_id to formData for the next requests
+//                     formData.append('user_id', userId);
+
+//                     // Second AJAX request to store candidate data
+//                     $.ajax({
+//                         type: "POST",
+//                         url: "{{ route('candidate.store') }}",
+//                         data: formData,
+//                         dataType: "JSON",
+//                         contentType: false,
+//                         cache: false,
+//                         processData: false,
+//                         success: function(response) {
+//                             // Handle success
+//                         },
+//                         error: function(xhr, status, error) {
+//                             swal("Error", xhr.responseText, "error");
+//                         }
+//                     });
+
+//                     // Third AJAX request to store address data
+//                     $.ajax({
+//                         type: "POST",
+//                         url: "{{ route('address.store') }}",
+//                         data: formData,
+//                         dataType: "JSON",
+//                         contentType: false,
+//                         cache: false,
+//                         processData: false,
+//                         success: function(response) {
+//                             // Handle success
+//                         },
+//                         error: function(xhr, status, error) {
+//                             swal("Error", xhr.responseText, "error");
+//                         }
+//                     });
+
+//                     // Fourth AJAX request to store document data
+//                     $.ajax({
+//                         type: "POST",
+//                         url: "{{ route('document.store') }}",
+//                         data: formData,
+//                         dataType: "JSON",
+//                         contentType: false,
+//                         cache: false,
+//                         processData: false,
+//                         success: function(response) {
+//                             $("#addData").trigger("reset");
+//                         },
+//                         error: function(xhr, status, error) {
+//                             swal("Error", xhr.responseText, "error");
+//                         }
+//                     });
+//                 }
+//             },
+//             error: function(xhr, status, error) {
+//                 swal("Error", xhr.responseText, "error");
+//             }
+//         });
+//     });
+// });
+
+$(document).ready(function() {
+    $("#addData").submit(function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+
+        // First AJAX request to register the user
+        $.ajax({
+            type: "POST",
+            url: "{{ route('register.store') }}",
+            data: formData,
+            dataType: "JSON",
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(response) {
+                if (response.status === 200) {
+                    var userId = response.data.user_id; // Assuming the response contains the user_id
+
+                    // Adding user_id to formData for the next requests
+                    formData.append('user_id', userId);
+
+                    // Second AJAX request to store candidate data
+                    $.ajax({
+                        type: "POST",
+                        url: "{{ route('candidate.store') }}",
+                        data: formData,
+                        dataType: "JSON",
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        success: function(response) {
+                            // Third AJAX request to store address data
+                            $.ajax({
+                                type: "POST",
+                                url: "{{ route('address.store') }}",
+                                data: formData,
+                                dataType: "JSON",
+                                contentType: false,
+                                cache: false,
+                                processData: false,
+                                success: function(response) {
+                                    // Fourth AJAX request to store document data
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "{{ route('document.store') }}",
+                                        data: formData,
+                                        dataType: "JSON",
+                                        contentType: false,
+                                        cache: false,
+                                        processData: false,
+                                        success: function(response) {
+                                            $("#addData").trigger("reset");
+                                        },
+                                        error: function(xhr, status, error) {
+                                            swal("Error", xhr.responseText, "error");
+                                        }
+                                    });
+                                },
+                                error: function(xhr, status, error) {
+                                    swal("Error", xhr.responseText, "error");
+                                }
+                            });
+                        },
+                        error: function(xhr, status, error) {
+                            swal("Error", xhr.responseText, "error");
+                        }
+                    });
+                } else {
+                    swal("Error", response.message, "error");
+                }
+            },
+            error: function(xhr, status, error) {
+                swal("Error", xhr.responseText, "error");
+            }
+        });
+    });
+});
+
+
+</script>
+
+    
 @endsection

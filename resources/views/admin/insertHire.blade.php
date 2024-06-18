@@ -15,43 +15,92 @@
                             class="shadow appearance-none border py-1 px-2 w-full" required>
                     </div>
                     <div class="mb-3 flex items-center border rounded border-gray-300">
-                        <table class="table-auto border-collapse " id="table">
+                        <table class="table-auto border-collapse" id="table">
                             <thead>
                                 <tr class="bg-gray-200">
-                                    <th class="px-4 py-1 text-sm font-normal">Profile</th>
-                                    <th class="px-4 py-1 text-sm font-normal">No. Of Post</th>
-                                    <th class="px-4 py-1 text-sm font-normal">Experience</th>
+                                    <th class="px-4 py-1 text-sm font-normal">Title</th>
+                                    <th class="px-4 py-1 text-sm font-normal">Job Profile</th>
+                                    <th class="px-4 py-1 text-sm font-normal">No.of Post</th>
+                                    <th class="px-2 py-1 text-sm font-normal">Experience</th>
                                     <th class="px-4 py-1 text-sm font-normal">Gender</th>
                                     <th class="px-4 py-1 text-sm font-normal">Preferred Language</th>
                                     <th class="px-4 py-1 text-sm font-normal">Type</th>
-                                    <th class="px-4 py-1 text-sm font-normal">Salary</th>
                                     <th class="px-4 py-1 text-sm font-normal">Qualification</th>
-                                    <th class="px-4 py-1 text-sm font-normal">Action</th>
+                                    <th class="px-4 py-1 text-sm font-normal">Salary</th>
+                                    <th class="px-4 py-1 text-sm font-normal">Add / Remove JOBS</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class=" py-1"><input type="text" name="inputs[0]['profile']" placeholder="Enter"
-                                            class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                    <td class=" py-1"><input type="number" min="1" name="inputs[0]['no_of_post']"
-                                            placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full">
+                                    <td class="py-1"><input type="text" name="inputs[0][title]" placeholder="Job Name"
+                                            class="appearance border py-2 px-2 w-full text-xs"></td>
+                                    <td class="py-1"><input type="text" name="inputs[0][profile]" placeholder="Job Name"
+                                            class="appearance border py-2 px-2 w-full text-xs"></td>
+                                    <td class="py-1"><input type="number" min="1" name="inputs[0][no_of_post]"
+                                            placeholder="Number" class="appearance border py-2 px-2 w-full text-xs"></td>
+                                    <td class="py-1 text-center">
+                                        <div class="text-xs text-gray-400">
+                                            Min: <input type="number" min="0" name="inputs[0][min_experience]"
+                                                placeholder="0" class="appearance-none border text-black px-1 py-1 w-1/4 text-xs">
+                                            Max: <input type="number" min="0" name="inputs[0][max_experience]"
+                                                placeholder="5y" class="appearance-none text-black px-1 border py-1 w-1/4 text-xs">
+                                        </div>
                                     </td>
-                                    <td class=" py-1"><input type="text" name="inputs[0]['experience']"
-                                            placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full">
+                                    <td class="py-1 text-xs">
+                                        <select name="inputs[0][gender]"
+                                            class=" border text-center py-2 px-2 w-full text-sm text-gray-400" id="gender">
+                                            <option value="" class=" border text-center w-full">Select
+                                            </option>
+                                            <option value="male" class="border w-full text-sm">Male</option>
+                                            <option value="female" class="border w-full text-sm">Female</option>
+                                            <option value="others" class="border w-full text-sm">Others</option>
+                                        </select>
                                     </td>
-                                    <td class=" py-1"><input type="text" name="inputs[0]['gender']" placeholder="Enter"
-                                            class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                    <td class=" py-1"><input type="text" name="inputs[0]['preferred_lang']"
-                                            placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full">
+                                    <td class="py-1">
+                                        <select name="inputs[0][preferred_lang]"
+                                            class=" border text-center py-2 px-3 w-full text-sm text-gray-400"
+                                            id="preferred_lang">
+                                            <option value="" class=" border text-center w-full">Select
+                                            </option>
+                                            <option value="english" class="border w-full text-sm">English</option>
+                                            <option value="hindi" class="border w-full text-sm">Hindi</option>
+                                            <option value="hindi english" class="border w-full text-sm ">Hindi + English
+                                            </option>
+                                        </select>
                                     </td>
-                                    <td class=" py-1"><input type="text" name="inputs[0]['type']" placeholder="Enter"
-                                            class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                    <td class=" py-1"><input type="text" name="inputs[0]['salary']" placeholder="Enter"
-                                            class="appearance-none border text-center py-2 px-2 w-full"></td>
-                                    <td class=" py-1"><input type="text" name="inputs[0]['qualification']"
-                                            placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full">
+                                    <td class="py-1">
+                                        <select name="inputs[0][type]"
+                                            class=" border text-center py-2 px-2 w-full text-sm text-gray-400" id="type">
+                                            <option value="" class=" border text-center w-full">Select
+                                            </option>
+                                            <option value="full-time" class="border w-full text-sm">Full-Time</option>
+                                            <option value="part-time" class="border w-full text-sm">Part-Time</option>
+                                            <option value="temporary" class="border w-full text-sm">Temporary</option>
+                                        </select>
                                     </td>
-                                    <td class=" py-2 flex justify-center">
+                                    <td class="py-1">
+                                        <select name="inputs[0][qualification]"
+                                            class=" border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                            id="qualification">
+                                            <option value="" class=" border text-center w-full">Select
+                                            </option>
+                                            <option value="masters" class="border w-full text-sm">Masters</option>
+                                            <option value="graduate" class="border w-full text-sm">Graduate</option>
+                                            <option value="12th Pass" class="border w-full text-sm">12th Pass</option>
+                                            <option value="10th Pass" class="border w-full text-sm">10th Pass</option>
+                                            <option value="below 10th" class="border w-full text-sm">Below 10th</option>
+                                            <option value="others" class="border w-full text-sm">Others</option>
+                                        </select>
+                                    </td>
+                                    <td class="py-1 text-center">
+                                        <div class="text-xs text-gray-400 flex gap-1">
+                                            <input type="number" name="inputs[0][min_salary]" placeholder="From"
+                                                class=" border appearance-none py-1 px-2 w-1/2 text-black text-sm">
+                                            <input type="number" name="inputs[0][max_salary]" placeholder="To"
+                                                class=" py-1 px-2 appearance-none text-black border w-1/2 text-sm">
+                                        </div>
+                                    </td>
+                                    <td class="py-2 flex justify-center">
                                         <button type="button" name="add"
                                             class="add bg-green-500 px-3 py-1 rounded text-white"><i
                                                 class="fa-solid fa-user-plus"></i></button>
@@ -119,6 +168,11 @@
                             <input type="file" id="logo" name="logo"  class="py-1 px-2 w-full"  required>
                         </div>
                     </div>
+                    <select name="isApproved" id="isApproved" hidden>
+                        <option value="">Update</option>
+                        <option value="1" selected>Approve Now</option>
+                        <option value="0">Not Approved</option>
+                    </select>
                     <div class="mb-4">
                         <select name="plan_id" id="callingPlans">
                             <option value="">Select Plan</option>
@@ -141,47 +195,95 @@
     <script>
         $(document).ready(function() {
             var i = 0;
-
+    
             // Add new row
             $('#table').on('click', '.add', function() {
                 ++i;
-                $('#table').append(
-                    `<tr>
-                    <td class="py-1"><input type="text" name="inputs[${i}]['profile']"
-                                placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                        <td class="py-1"><input type="number" min="1"
-                                name="inputs[${i}]['no_of_post']" placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                        <td class="py-1"><input type="text" name="inputs[${i}]['experience']"
-                                placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                        <td class="py-1"><input type="text" name="inputs[${i}]['gender']"
-                                placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                        <td class="py-1"><input type="text" name="inputs[${i}]['preferred_lang']"
-                                placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                        <td class="py-1"><input type="text" name="inputs[${i}]['type']"
-                                placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                        <td class="py-1"><input type="text" name="inputs[${i}]['salary']"
-                                placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                        <td class="py-1"><input type="text" name="inputs[${i}]['qualification']"
-                                placeholder="Enter" class="appearance-none border text-center py-2 px-2 w-full"></td>
-                        <td class="py-2 flex justify-center">
-                            <button type="button" class="remove bg-red-500 px-3 py-1 rounded text-white"><i class="fa-solid fa-user-xmark"></i></button>
+                var newRow = `
+                    <tr data-index="${i}">
+                        <td class="py-1"><input type="text" name="inputs[${i}][title]"        placeholder="Job Name" class="border py-2 px-2 w-full text-xs"></td>
+                        <td class="py-1"><input type="text" name="inputs[${i}][profile]"            placeholder="Job Name" class="border py-2 px-2 w-full text-xs"></td>
+                        <td class="py-1"><input type="number" min="1" name="inputs[${i}][no_of_post]" placeholder="Number" class="border py-2 px-2 w-full text-xs"></td>
+                        <td class="py-1 text-center">
+                            <div class="text-xs text-gray-400">
+                                Min: <input type="number" min="0" name="inputs[${i}][min_experience]" placeholder="0" class="border text-black px-1 py-1 w-1/4 text-xs">
+                                Max: <input type="number" min="0" name="inputs[${i}][max_experience]" placeholder="5y" class="text-black px-1 border py-1 w-1/4 text-xs">
+                            </div>
                         </td>
-        </tr>`
-                );
-            });
-
-            // Remove row
+                        <td class="py-1 text-xs">
+                            <select name="inputs[${i}][gender]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="gender">
+                                <option value="">Select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </td>
+                        <td class="py-1">
+                            <select name="inputs[${i}][preferred_lang]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="preferred_lang">
+                                <option value="">Select</option>
+                                <option value="english">English</option>
+                                <option value="hindi">Hindi</option>
+                                <option value="other">Others</option>
+                            </select>
+                        </td>
+                        <td class="py-1">
+                            <select name="inputs[${i}][type]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="type">
+                                <option value="">Select</option>
+                                <option value="full-time">Full-Time</option>
+                                <option value="part-time">Part-Time</option>
+                                <option value="temporary">Temporary</option>
+                            </select>
+                        </td>
+                        <td class="py-1">
+                            <select name="inputs[${i}][qualification]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="qualification">
+                                <option value="">Select</option>
+                                <option value="masters">Masters</option>
+                                <option value="graduate">Graduate</option>
+                                <option value="12th Pass">12th Pass</option>
+                                <option value="10th Pass">10th Pass</option>
+                                <option value="below 10th">Below 10th</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </td>
+                        <td class="py-1 text-center">
+                            <div class="text-xs text-gray-400 flex gap-1">
+                                <input type="number" name="inputs[${i}][min_salary]" placeholder="From" class="border py-1 px-2 w-1/2 text-black text-sm">
+                                <input type="number" name="inputs[${i}][max_salary]" placeholder="To" class="py-1 px-2 text-black border w-1/2 text-sm">
+                            </div>
+                        </td>
+                        <td class="py-2 flex justify-center">
+                            <button type="button" name="add" class="remove bg-red-500 px-3 py-1 rounded text-white"><i class="fa-solid fa-user-minus"></i></button>
+                        </td>
+                    </tr>
+                `;
+                $('#table tbody').append(newRow);
+                });
+    
+            // Remove row and corresponding title
             $('#table').on('click', '.remove', function() {
+                var index = $(this).closest('tr').data('index');
                 $(this).closest('tr').remove();
+                $('#title_input .title-wrapper[data-index="' + index + '"]').remove();
             });
-        });
-
-        $(document).ready(function() {
-            //insert application details
-
+    
+            // Insert application details
             $("#addHirer").submit(function(e) {
                 e.preventDefault();
+    
+                // if (!$("#paymentMode").val()) {
+                //     console.log("Payment mode is not set.");
+                //     return;
+                // }
+    
                 var formData = new FormData(this);
+    
+                // Get the current date and format it as needed
+                var currentDate = new Date();
+                var formattedDate = ('0' + currentDate.getDate()).slice(-2) + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + currentDate.getFullYear();
+
+                // Append the date to the FormData object
+                formData.append('date_of_start', formattedDate); 
+
                 $.ajax({
                     type: "POST",
                     url: "{{ route('hire.store') }}",
@@ -193,11 +295,22 @@
                     success: function(response) {
                         swal("Success", response.message, "success");
                         $("#addHirer").trigger("reset");
-                        window.open("/admin/manage-hire", "_self")
+                        window.open("/admin/manage-hire", "_self");
+                    },
+                    error: function(xhr) {
+                        if (xhr.status === 422) {
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                $('#error-' + key).html(value[0]);
+                            });
+                        } else {
+                            alert('An error occurred. Please try again.');
+                        }
                     }
-                })
+                });
             });
-
+    
+            // Fetch calling plans
             $.ajax({
                 type: "GET",
                 url: "{{ route('hire.plan.index') }}",
@@ -207,22 +320,21 @@
                     select.append(`<option value="">Select Plan</option>`)
                     response.data.forEach((plan) => {
                         select.append(`
-                    <option value="${plan.id}"  data-plan-charge="${plan.price}">${plan.name}</option>
-                    `);
+                            <option value="${plan.id}" data-plan-charge="${plan.price}">${plan.name}</option>
+                        `);
                     });
                 }
             });
-
+    
+            // Update plan charge display
             $('#callingPlans').change(function() {
                 let selectedPlan = $(this).children("option:selected");
-                let PlanFee = selectedPlan.data('plan-charge');
-
-                // Update the fee display
-                $('#planCharge').html(
-                    `<input  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                    <label  class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Plan Charge Rs. ${PlanFee}</label>`
-                );
+                let planCharge = selectedPlan.data('plan-charge');
+    
+                $('#planCharge').html(`Plan Charge Rs. ${planCharge}`);
             });
-        })
+        });
     </script>
+    
+    
 @endsection

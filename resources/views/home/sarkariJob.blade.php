@@ -130,43 +130,50 @@
                                                         <div class="logo w-2/12">
                                                             <img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20" alt="">
                                                         </div>
-                                                        <div class="w-10/12 mb-1">
-                                                            <div class="flex justify-between text-blue-500 font-bold">
+                                                        <div class="w-10/12 mb-1 flex-col flex">
+                                                            <div class="flex  justify-between text-blue-500 font-bold">
                                                                 <h5>${job.role}</h5>
                                                                 <h5>Important Instruction</h5>
                                                             </div>
                                                             <div class="mt-1 flex justify-between">
-                                                                <div class="mt">
+                                                                <div class="mt-2">
                                                                     <h5 class="text-sm text-gray-500 font-semibold"> No. Of Post : ${job.no_of_post}</h5>
                                                                     <div class="mt-1">
                                                                         <h5 class="text-sm text-gray-500 font-semibold">Age : ${job.min_age} - ${job.max_age} Years</h5>
                                                                     </div>
+                                                                    <div class="mt-1">
+                                                                        <h5 class="text-sm text-gray-500 font-semibold">Salary : ${job.min_salary} - ${job.max_salary}</h5>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="">
+                                                                <div class="flex flex-col">
                                                                     <h5 class="text-gray-500 font-semibold">Opening Date : ${job.opening_date}</h5>
                                                                     <h5 class="text-gray-500 font-semibold">Closing Date : ${job.closing_date}</h5>
+                                                                    <h5 class="text-sm text-gray-500 font-semibold">Job Location : ${job.location}</h5>
                                                                 </div>
                                                             </div>
-                                                            
+                                                            <div class="mt-1">
+                                                                    <h5 class="text-sm text-gray-500 font-semibold">Job Type : ${job.job_type} Government</h5>
+                                                            </div>
                                                             <div class="mt-1">
                                                                 <h5 class="text-sm text-gray-500 font-semibold">Qualification : ${job.qualification}</h5>
                                                             </div>
                                                             <div class="mt-1">
                                                                 <h5 class="text-sm text-gray-500 font-semibold">Skills req : ${job.skills}</h5>
                                                             </div>
+                                                            <div class="flex justify-between">
+                                                                <div class="mt-1">
+                                                                        <h5 class="font-semibold text-red-700 rounded text-base">Form Fees : Rs. ${job.fees}</h5>
+                                                                        <p class="text-[12px]">(Including gov. fees)</p>
+                                                                    </div>
+                                                                <div class="button">
+                                                                    <a href="/viewSarkariJobForm/${job.id}"><button class="bg-green-600 hover:bg-green-700 rounded text-white px-2 py-1 mt-2">Apply Now</button></a>
+                                                                </div>
+                                                            </div>                                                            
                                                         </div>
                                                     </div>
-                                                    <div class="flex justify-between ml-1">
-                                                        <div class="fees mt-2 ml-32 flex">
-                                                            <h5 class="font-semibold text-red-700 w-32 rounded text-base">Fees : Rs. ${job.fees}</h5>
-                                                            <p class="text-[12px]">(Including gov. fees)</p>
-                                                        </div>
-                                                        <div class="button">
-                                                            <a href="/viewSarkariJobForm/${job.id}"><button class="bg-green-600 hover:bg-green-700 rounded text-white px-1 py-1">Apply Now</button></a>
-                                                        </div>
-                                                    </div>
+                                                   
                                                 </div>
-                                            `);                                    
+                                            `);
                                 } else {
                                     // Check if the user has already applied for this job
                                     $.ajax({

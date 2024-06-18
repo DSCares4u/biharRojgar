@@ -24,6 +24,10 @@ return new class extends Migration
             $table->string('skills');
             $table->integer('fees');
             $table->string('logo');
+            $table->string('job_type');
+            $table->string('location');
+            $table->integer('min_salary');
+            $table->integer('max_salary');
             $table->string('opening_date');
             $table->string('closing_date');
             $table->timestamps();

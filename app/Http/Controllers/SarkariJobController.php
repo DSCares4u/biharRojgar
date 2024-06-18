@@ -60,6 +60,10 @@ class SarkariJobController extends Controller
                 'fees' => $request->fees,               
                 'opening_date' => $request->opening_date,               
                 'closing_date' => $request->closing_date,               
+                'job_type' => $request->job_type,               
+                'location' => $request->location,               
+                'min_salary' => $request->min_salary,               
+                'max_salary' => $request->max_salary,               
                 'logo' => $logo,               
             ]);
     
@@ -139,7 +143,11 @@ class SarkariJobController extends Controller
                 'skills' => $request->skills,               
                 'fees' => $request->fees,               
                 'opening_date' => $request->opening_date,               
-                'closing_date' => $request->closing_date,                   
+                'closing_date' => $request->closing_date, 
+                'min_salary' => $request->min_salary, 
+                'max_salary' => $request->max_salary, 
+                'job_type' => $request->job_type,               
+                'location' => $request->location,                  
                 ]);
 
                 return response()->json([

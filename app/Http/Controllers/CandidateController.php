@@ -25,70 +25,69 @@ class CandidateController extends Controller
         }
     }
 
-    // public function store(Request $request){
-    //     $validator = Validator::make($request->all(), [
-    //         'name' => 'required|string|min:3',
-    //         'dob' => 'required',
-    //         'mother' => 'required|string|min:3',
-    //         'father' => 'required|string|min:3',
-    //         'gender' => 'required',
-    //         'mobile' => 'required',
-    //         'marital' => 'required',
-    //         'email' => 'required|email|unique:candidates',
-    //         'id_mark' => 'required|string|min:3',
-    //         'preferred_lang' => 'required',
-    //         'religion' => 'required|string|min:3',
-    //         'community' => 'required',
-    //         'village' => 'required|string|min:3',
-    //         'landmark' => 'required|string|min:3',
-    //         'area' => 'required|string',
-    //         'city' => 'required|string|min:3',
-    //         'state' => 'required|string|min:3',
-    //         'pincode' => 'required',          
-    //     ]);
+    public function store(Request $request){
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|min:3',
+            'dob' => 'required',
+            'mother' => 'required|string|min:3',
+            'father' => 'required|string|min:3',
+            'gender' => 'required',
+            'mobile' => 'required',
+            'marital' => 'required',
+            'email' => 'required|email|unique:candidates',
+            'id_mark' => 'required|string|min:3',
+            'preferred_lang' => 'required',
+            'religion' => 'required|string|min:3',
+            'community' => 'required',
+            'village' => 'required|string|min:3',
+            'landmark' => 'required|string|min:3',
+            'city' => 'required|string|min:3',
+            'state' => 'required|string|min:3',
+            'pincode' => 'required',          
+        ]);
 
-    //     if ($validator->fails()) {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'error' => $validator->messages()
-    //         ], 422);
-    //     } else {
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'error' => $validator->messages()
+            ], 422);
+        } else {
 
-    //         $candidate = Candidate::create([
-    //             'name' => $request->name,
-    //             'dob' => $request->dob,
-    //             'mother' => $request->mother,
-    //             'father' => $request->father,
-    //             'gender' => $request->gender,
-    //             'mobile' => $request->mobile,
-    //             'marital' => $request->marital,
-    //             'email' => $request->email,
-    //             'id_mark' => $request->id_mark,
-    //             'preferred_lang' => $request->preferred_lang,
-    //             'religion' => $request->religion,
-    //             'community' => $request->community,
-    //             'village' => $request->village,
-    //             'landmark' => $request->landmark,
-    //             'area' => $request->area,
-    //             'city' => $request->city,
-    //             'state' => $request->state,
-    //             'pincode' => $request->pincode, 
-    //             'user_id' => $request->user_id,                     
-    //         ]);
+            $candidate = Candidate::create([
+                'name' => $request->name,
+                'dob' => $request->dob,
+                'mother' => $request->mother,
+                'father' => $request->father,
+                'gender' => $request->gender,
+                'mobile' => $request->mobile,
+                'marital' => $request->marital,
+                'email' => $request->email,
+                'id_mark' => $request->id_mark,
+                'preferred_lang' => $request->preferred_lang,
+                'religion' => $request->religion,
+                'community' => $request->community,
+                'village' => $request->village,
+                'landmark' => $request->landmark,
+                'area' => $request->area,
+                'city' => $request->city,
+                'state' => $request->state,
+                'pincode' => $request->pincode,  
+                'user_id' => $request->user_id,                     
+            ]);
     
-    //         if ($candidate) {
-    //             return response()->json([
-    //                 'status' => 200,
-    //                 'message' => "We Will Connect You Soon"
-    //             ], 200);
-    //         } else {
-    //             return response()->json([
-    //                 'status' => 500,
-    //                 'message' => "Unable to add your Request"
-    //             ], 500);
-    //         }
-    //     }
-    // }
+            if ($candidate) {
+                return response()->json([
+                    'status' => 200,
+                    'message' => "We Will Connect You Soon"
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => 500,
+                    'message' => "Unable to add your Request"
+                ], 500);
+            }
+        }
+    }
 
 
 

@@ -66,32 +66,6 @@
         </div>
     </div>
     <script>
-        // $(document).ready(function() {
-        //     $("#insertData").submit(function(e) {
-        //         e.preventDefault();
-        //         $.ajax({
-        //             type: "POST",
-        //             // url: "{{ route('address.store') }}",
-        //             data: new FormData(this),
-        //             dataType: "JSON",
-        //             contentType: false,
-        //             cache: false,
-        //             processData: false,
-        //             success: function(response) {
-        //                 swal("Success", response.message, "success");
-        //                 $("#insertData").trigger("reset");
-        //                 window.open("/documents", "_self")
-        //             },
-        //             error: function(xhr, status, error) {
-        //                 var errors = xhr.responseJSON.error;
-        //                 $.each(errors, function(key, value) {
-        //                     $("#" + key + "-error").text(value[0]).removeClass(
-        //                         "hidden");
-        //                 });
-        //             }
-        //         })
-        //     })
-        // });
 
         $(document).ready(function() {
 

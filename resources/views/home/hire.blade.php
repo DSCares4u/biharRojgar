@@ -4,14 +4,6 @@
         <div class="bg-gray-100 mx-12 border border-gray mt-3 w-8/12">
             <form class="p-5 flex flex-col" id="addHirer">
                 <h2 class="text-lg font-semibold mb-2  ">Post a job</h2>
-                <div class="mb-3  items-center">
-                    {{-- <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Title</label>
-                    <div id="title_input">
-                        <input type="text" name="inputs[0][title]"
-                            placeholder="Eg. Sales executives needed urgently for ..."
-                            class=" border py-1 px-2 w-1/2 text-black text-sm">
-                    </div> --}}
-                </div>
                 <div class="flex flex-col  border rounded border-gray-300 p-2">
                     <table class="table-auto border-collapse" id="table">
                         <thead>

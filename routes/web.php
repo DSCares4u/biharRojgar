@@ -70,7 +70,8 @@ Route::get('/get-district-and-state', [JobController::class, 'getDistrictAndStat
 //     return view('home.sarkariJobForm');
 // });
 
-Route::get('/admin',[AdminController::class,'dashboard']);
+// Route::get('/admin',[AdminController::class,'dashboard']);
+Route::get('/admin',[AdminController::class,'manageCandidate']);
 
 Route::get('/admin/manage-candidate',[AdminController::class,'manageCandidate']);
 Route::get('/admin/manage-candidate/insert',[AdminController::class,'insertCandidate']);

@@ -52,11 +52,84 @@
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             required>
                     </div>
+                    <div class="mb-4 items-center w-1/2">
+                        <label for="job_type" class="block text-sm font-medium text-gray-700">Job Type</label>
+                        <select name="job_type"
+                                        class=" sm:text-sm py-2 px-2 items-center border border-gray-300 rounded mt-1"
+                                        id="job_type">
+                                        <option value="" class=" border text-center w-full">Select
+                                        </option>
+                                        <option value="Central" class="border w-full text-sm">Central Government</option>
+                                        <option value="State" class="border w-full text-sm">State Government</option>
+                                        <option value="District" class="border w-full text-sm">District Government</option>
+                                        <option value="Local" class="border w-full text-sm">Local Government</option>
+                                    </select>
+                    </div>
+                    <div class="mb-3  items-center w-1/2">
+                        <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
+                        <select id="location" name="location"
+                            class="sm:text-sm py-2 px-2 items-center border border-gray-300 rounded mt-1">
+                            <option value="">Select State</option>
+                            <option value="All Over India">All Over India</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman
+                                and Diu</option>
+                            <option value="Lakshadweep">Lakshadweep</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Puducherry">Puducherry</option>
+                            <option value="Ladakh">Ladakh</option>
+                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                        </select>
+                        <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
+                    </div>
                     <div class="mb-4">
-                        <label for="fees" class="block text-sm font-medium text-gray-700">Fees</label>
+                        <label for="fees" class="block text-sm font-medium text-gray-700">Form Fees</label>
                         <input type="number" id="fees" name="fees"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             required>
+                    </div>
+                    <div class="mb-4 flex gap-2">
+                        <div class="date w-1/2">
+                            <label for="min_salary" class="block text-sm font-medium text-gray-700 ">Minimum Salary</label>
+                            <input type="number" id="min_salary" name="min_salary"
+                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                                required>
+                        </div>
+                        <div class="date w-1/2">
+                            <label for="max_salary" class="block text-sm font-medium text-gray-700 ">Maximum Salary</label>
+                        <input type="number" id="max_salary" name="max_salary"
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            required>
+                        </div>
                     </div>
                     <div class="mb-4 flex gap-2">
                         <div class="date w-1/2">

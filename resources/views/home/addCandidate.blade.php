@@ -193,36 +193,6 @@
         </div>
     </div>
     <script>
-        // $(document).ready(function() {
-        //     //insert application details
-
-        //     $("#applyJob").submit(function(e) {
-        //         e.preventDefault();
-        //         var formData = new FormData(this);
-        //         $.ajax({
-        //             type: "POST",
-        //             url: "{{ route('candidate.store') }}",
-        //             data: formData,
-        //             dataType: "JSON",
-        //             contentType: false,
-        //             cache: false,
-        //             processData: false,
-        //             success: function(response) {
-        //                 swal("success", response.message, "success");
-        //                 $("#applyJob").trigger("reset");
-        //                 window.open("/address", "_self")
-        //             },
-        //             error: function(xhr, status, error) {
-        //                 var errors = xhr.responseJSON.error;
-        //                 $.each(errors, function(key, value) {
-        //                     $("#" + key + "-error").text(value[0]).removeClass(
-        //                         "hidden");
-        //                 });
-        //             }
-        //         })
-        //     })
-        // });
-
         $(document).ready(function() {
             function fetchJobDetailsAndOpenModal() {
                 let userId = {{ auth()->user()->id }};
