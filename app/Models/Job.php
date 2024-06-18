@@ -23,9 +23,9 @@ class Job extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function job()
+    public function role()
     {
-        return $this->belongsTo(job::class, 'job_id');
+        return $this->belongsTo(Role::class, 'role_id');
     }
 
 }

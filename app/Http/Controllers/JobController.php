@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class JobController extends Controller
 {
     public function index(){
-        $job = Job::with('user','job')->orderBy('created_at', 'desc')->get();
+        $job = Job::with('user','role')->orderBy('created_at', 'desc')->get();
         if ($job->count() > 0) {
             return response()->json([
                 'status' => 200,
@@ -34,7 +34,7 @@ class JobController extends Controller
         $userId = $request->user()->id; // Get the authenticated user's ID
 
         $existingApplication = Job::where('user_id', $userId)
-            ->where('job_id', $jobId)
+            ->where('role_id', $jobId)
             ->first();
 
         return response()->json([
@@ -45,7 +45,7 @@ class JobController extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
-            'job_id' =>'required'                
+            'role_id' =>'required'                
         ]);
     
         if ($validator->fails()) {
@@ -82,7 +82,7 @@ class JobController extends Controller
               }
             // Check if the user has already applied for the job
             $existingApplication = Job::where('user_id', $request->user_id)
-                                                 ->where('job_id', $request->job_id)
+                                                 ->where('role_id', $request->role_id)
                                                  ->first();
             if ($existingApplication) {
                 return response()->json([
@@ -95,7 +95,7 @@ class JobController extends Controller
             $job = JOb::create([
                 'payment_mode' => $request->payment_mode,          
                 'user_id' => $request->user_id,                     
-                'job_id' => $request->job_id,                     
+                'role_id' => $request->role_id,                     
             ]);
     
             if ($job) {
@@ -225,7 +225,7 @@ class JobController extends Controller
     }
 
     public function show($id){
-        $job = Job::with('user', 'job')->find($id);
+        $job = Job::with('user', 'role')->find($id);
         if($job){
             return response()->json([
                 'status' => 200,
@@ -243,7 +243,7 @@ class JobController extends Controller
     public function update(Request $request, int $id){
         $validator = Validator::make($request->all(), [
             'user_id' => 'required',
-            'job_id' =>'required'    
+            'role_id' =>'required'    
         ]);
 
     if ($validator->fails()) {
@@ -260,7 +260,7 @@ class JobController extends Controller
                 $job->update([
                     'payment_mode' => $request->payment_mode,          
                     'user_id' => $request->user_id,                     
-                    'job_id' => $request->job_id,                               
+                    'role_id' => $request->role_id,                               
                 ]);
 
                 return response()->json([

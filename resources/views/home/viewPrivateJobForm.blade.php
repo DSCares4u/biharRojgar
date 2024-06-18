@@ -216,7 +216,7 @@
 
                 // Append the job ID to the form data
                 var formData = new FormData(this);
-                formData.append('job_id', jobId);
+                formData.append('role_id', jobId);
 
                 $.ajax({
                     type: "POST",
