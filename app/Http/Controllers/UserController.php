@@ -48,9 +48,9 @@ class UserController extends Controller
     
             if ($user) {
                 return response()->json([
-                    'status' => 200,
-                    'message' => "New User Added Successfully"
-                ], 200);
+                    'user_id' => $user->id,
+                    'message' => 'User registered successfully'
+                ]);
             } else {
                 return response()->json([
                     'status' => 500,

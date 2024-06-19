@@ -478,6 +478,13 @@
                     let selectedPlan = label.querySelector('input[type="radio"]');
                     let PlanFee = parseInt(selectedPlan.dataset.planCharge);
                     let PlanName = selectedPlan.dataset.planName;
+                    let Platform = '';
+                    if(PlanFee == '0'){
+                        Platform = 0;
+                    }
+                    else{
+                        Platform = 200;
+                    }
 
                     // Update the fee display
                     $('#planCharge').html(`
@@ -487,34 +494,34 @@
                         </li>
                         <li class="flex justify-between text-base text-gray-500">
                             <p>Platform Fees</p>
-                            <p class="font-bold">Rs. 200</p>
+                            <p class="font-bold">Rs. ${Platform}</p>
                         </li>
                         <hr>
                         <li class="flex justify-between text-base text-gray-500">
                             <p>Total Payment</p>
-                            <p class="font-bold">Rs. ${PlanFee + 200}</p>
+                            <p class="font-bold">Rs. ${PlanFee + Platform}</p>
                         </li>
                     `);
 
-                    // $('#payBtn1').html(`
-            //     <button type="button" id="payNowBtn"
-            //     class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 px-4 py-2 border border-yellow-500 w-full">
-            //         Pay Rs. ${PlanFee + 200} & Post Job
-            //     </button>
-            // `);
+                    //         $('#payBtn1').html(`
+                    //     <button type="button" id="payNowBtn"
+                    //     class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 px-4 py-2 border border-yellow-500 w-full">
+                    //         Pay Rs. ${PlanFee + Platform} & Post Job
+                    //     </button>
+                    // `);
 
-                    $('#payBtn2').html(`
-                <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
-                    Pay Rs. ${PlanFee + 200} & Post Job
-                </button>
-            `);
+                            $('#payBtn2').html(`
+                        <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
+                            Pay Rs. ${PlanFee + Platform} & Post Job
+                        </button>
+                    `);
 
-                    // $('#payLater').html(`
-            //     <a href="#" id="payLaterBtn"
-            //         class="bg-green-400 hover:bg-green-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline px-4 text-black mt-3 py-2 border border-yellow-500 w-full">
-            //     Pay Later ${PlanFee + 200}
-            //     </a>
-            // `);
+                    //         $('#payLater').html(`
+                    //     <a href="#" id="payLaterBtn"
+                    //         class="bg-green-400 hover:bg-green-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline px-4 text-black mt-3 py-2 border border-yellow-500 w-full">
+                    //     Pay Later ${PlanFee + Platform}
+                    //     </a>
+                    // `);
                 }
             });
         </script>

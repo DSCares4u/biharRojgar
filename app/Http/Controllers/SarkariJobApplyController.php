@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class SarkariJobApplyController extends Controller
 {
     public function index(){
-        $job = SarkariJobApply::with('user','sarkariJob')->orderBy('created_at', 'desc')->get();
+        $job = SarkariJobApply::with('user','sarkariJob','candidate','address','document')->orderBy('created_at', 'desc')->get();
         if ($job->count() > 0) {
             return response()->json([
                 'status' => 200,
@@ -112,7 +112,7 @@ class SarkariJobApplyController extends Controller
     }
 
     public function show($id){
-        $job = SarkariJobApply::with('user', 'sarkariJob')->find($id);
+        $job = SarkariJobApply::with('user', 'sarkariJob','candidate','address','document')->find($id);
         if($job){
             return response()->json([
                 'status' => 200,

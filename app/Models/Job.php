@@ -28,4 +28,19 @@ class Job extends Model
         return $this->belongsTo(Role::class, 'role_id');
     }
 
+    public function candidate()
+    {
+        return $this->belongsTo(Candidate::class, 'user_id');
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class, 'user_id');
+    }
+
+    public function document()
+    {
+        return $this->belongsTo(Document::class, 'user_id');
+    }
+
 }

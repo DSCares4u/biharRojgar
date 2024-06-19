@@ -17,7 +17,7 @@
                         <div class="flex gap-1">
                             <div class=" mb-2 w-1/2">
                                 <label for="sarkari_job_id" class="block text-gray-700 text-xs mb-1 ">Applied For :</label>
-                                <input type="text" id="sarkari_job" name="sarkari_job" disabled
+                                <input type="text" id="job" name="job" disabled
                                     class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
                                 <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
                             </div>
@@ -51,7 +51,7 @@
                         console.log(response);
                         $('#id').val(response.data.id);
                         $('#name').val(response.data.user.name);
-                        $('#job').val(response.data.job.name);
+                        $('#job').val(response.data.role.title);
                         $('#payment_status').val(response.data.payment_mode);
                     },
                     error: function(xhr, status, error) {
@@ -70,27 +70,26 @@
             }
 
             // Form submission handler
-            $('#addData').submit(function(e) {
-                e.preventDefault();
-                let userId = getIdFromUrlPath();
-                let formData = new FormData(this);
+            // $('#addData').submit(function(e) {
+            //     e.preventDefault();
+            //     let userId = getIdFromUrlPath();
+            //     let formData = new FormData(this);
 
-                $.ajax({
-                    type: 'POST',
-                    url: `/api/job/edit/${userId}`,
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function(response) {
-                        alert("Success: " + response.message);
-                        $("#addData").trigger("reset");
-                        window.location.href = "/admin/manage/yojna-form";
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error updating Details:', error);
-                    }
-                });
-            });
+            //     $.ajax({
+            //         type: 'POST',
+            //         url: `/api/job/edit/${userId}`,
+            //         data: formData,
+            //         processData: false,
+            //         contentType: false,
+            //         success: function(response) {
+            //             alert("Success: " + response.message);
+            //             $("#addData").trigger("reset");
+            //         },
+            //         error: function(xhr, status, error) {
+            //             console.error('Error updating Details:', error);
+            //         }
+            //     });
+            // });
         });
     </script>
 @endsection

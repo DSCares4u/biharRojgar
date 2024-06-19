@@ -325,8 +325,7 @@
             // Update plan charge display
             $('#callingPlans').change(function() {
                 let selectedPlan = $(this).children("option:selected");
-                let planCharge = selectedPlan.data('plan-charge');
-    
+                let planCharge = selectedPlan.data('plan-charge');    
                 $('#planCharge').html(`Plan Charge Rs. ${planCharge}`);
             });
         });

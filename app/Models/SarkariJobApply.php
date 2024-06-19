@@ -20,4 +20,19 @@ class SarkariJobApply extends Model
     {
         return $this->belongsTo(SarkariJob::class, 'sarkari_job_id');
     }
+
+    public function candidate()
+    {
+        return $this->belongsTo(Candidate::class, 'user_id');
+    }
+
+    public function address()
+    {
+        return $this->belongsTo(Address::class, 'user_id');
+    }
+
+    public function document()
+    {
+        return $this->belongsTo(Document::class, 'user_id');
+    }
 }

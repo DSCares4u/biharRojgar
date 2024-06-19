@@ -7,7 +7,7 @@
                     <div class="container mx-auto font-sans ">
                         <div class="p-5 flex flex-col">
                             <div class="border border-gray mt-2 p-4">
-                                <h2 class="text-lg font-semibold mb-2">Essential Qualification</h2>
+                                <h2 class="text-lg font-semibold mb-2">Essential Documents</h2>
                                 <hr class="h-1 rounded bg-gray-600 mb-2">
                                 <div class="mt-2">
                                     <div class="mb-4 items-center">
