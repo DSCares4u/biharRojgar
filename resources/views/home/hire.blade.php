@@ -40,6 +40,7 @@
                                         </option>
                                         <option value="male" class="border w-full text-sm">Male</option>
                                         <option value="female" class="border w-full text-sm">Female</option>
+                                        <option value="male & female" class="border w-full text-sm">Male & Female</option>
                                         <option value="others" class="border w-full text-sm">Others</option>
                                     </select>
                                 </td>
@@ -63,6 +64,7 @@
                                         <option value="full-time" class="border w-full text-sm">Full-Time</option>
                                         <option value="part-time" class="border w-full text-sm">Part-Time</option>
                                         <option value="temporary" class="border w-full text-sm">Temporary</option>
+                                        <option value="work from Home" class="border w-full text-sm">Work From Home</option>
                                     </select>
                                 </td>
                                 <td class="py-1">

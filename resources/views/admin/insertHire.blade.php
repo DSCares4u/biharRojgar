@@ -8,12 +8,6 @@
                 </div>
                 <form class="p-5 flex flex-col" id="addHirer">
                     <h2 class="text-lg font-semibold mb-2  ">Post a job</h2>
-                    <div class="mb-3  items-center">
-                        <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Title</label>
-                        <input type="text" id="name"
-                            name="name"placeholder="Eg. Sales executives needed urgently for ..."
-                            class="shadow appearance-none border py-1 px-2 w-full" required>
-                    </div>
                     <div class="mb-3 flex items-center border rounded border-gray-300">
                         <table class="table-auto border-collapse" id="table">
                             <thead>
@@ -53,6 +47,7 @@
                                             </option>
                                             <option value="male" class="border w-full text-sm">Male</option>
                                             <option value="female" class="border w-full text-sm">Female</option>
+                                            <option value="male & female" class="border w-full text-sm">Male & Female</option>
                                             <option value="others" class="border w-full text-sm">Others</option>
                                         </select>
                                     </td>
@@ -64,7 +59,7 @@
                                             </option>
                                             <option value="english" class="border w-full text-sm">English</option>
                                             <option value="hindi" class="border w-full text-sm">Hindi</option>
-                                            <option value="hindi english" class="border w-full text-sm ">Hindi + English
+                                            <option value="hindi & english" class="border w-full text-sm ">Hindi + English
                                             </option>
                                         </select>
                                     </td>
@@ -76,6 +71,7 @@
                                             <option value="full-time" class="border w-full text-sm">Full-Time</option>
                                             <option value="part-time" class="border w-full text-sm">Part-Time</option>
                                             <option value="temporary" class="border w-full text-sm">Temporary</option>
+                                            <option value="work from ome" class="border w-full text-sm">Work From Home</option>
                                         </select>
                                     </td>
                                     <td class="py-1">
