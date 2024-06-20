@@ -300,46 +300,44 @@
                     </div>
                 </td>
                 <td class="py-1 text-xs">
-                    <select name="inputs[${i}][gender]"
-                        class="border text-center py-2 px-2 w-full text-sm text-gray-400"
-                        id="gender">
-                        <option value="" class="border text-center w-full">Select</option>
-                        <option value="male" class="border w-full text-sm">Male</option>
-                        <option value="female" class="border w-full text-sm">Female</option>
-                        <option value="others" class="border w-full text-sm">Others</option>
-                    </select>
-                </td>
-                <td class="py-1">
-                    <select name="inputs[${i}][preferred_lang]"
-                        class="border text-center py-2 px-2 w-full text-sm text-gray-400"
-                        id="preferred_lang">
-                        <option value="" class="border text-center w-full">Select</option>
-                        <option value="english" class="border w-full text-sm">English</option>
-                        <option value="hindi" class="border w-full text-sm">Hindi</option>
-                        <option value="other" class="border w-full text-sm">Others</option>
-                    </select>
-                </td>
-                <td class="py-1"><select name="inputs[${i}][type]"
-                        class="border text-center py-2 px-2 w-full text-sm text-gray-400"
-                        id="type">
-                        <option value="" class="border text-center w-full">Select</option>
-                        <option value="full-time" class="border w-full text-sm">Full-Time</option>
-                        <option value="part-time" class="border w-full text-sm">Part-Time</option>
-                        <option value="temporary" class="border w-full text-sm">Temporary</option>
-                    </select>
-                </td>
-                <td class="py-1">
-                    <select name="inputs[${i}][qualification]" class="border text-center py-2 px-2 w-full text-sm text-gray-400"
-                        id="qualification">
-                        <option value border text-center w-full">Select</option>
-                        <option value="masters" class="border w-full text-sm">Masters</option>
-                        <option value="graduate" class="border w-full text-sm">Graduate</option>
-                        <option value="12th Pass" class="border w-full text-sm">12th Pass</option>
-                        <option value="10th Pass" class="border w-full text-sm">10th Pass</option>
-                        <option value="below 10th" class="border w-full text-sm">Below 10th</option>
-                        <option value="others" class="border w-full text-sm">Others</option>
-                    </select>
-                </td>
+                            <select name="inputs[${i}][gender]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="gender">
+                                <option value="">Select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                 <option value="male & female" class="border w-full text-sm">Male & Female</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </td>
+                        <td class="py-1">
+                            <select name="inputs[${i}][preferred_lang]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="preferred_lang">
+                                <option value="">Select</option>
+                                <option value="english">English</option>
+                                <option value="hindi">Hindi</option>
+                                <option value="hindi & english" class="border w-full text-sm ">Hindi + English</option>
+                                <option value="other">Others</option>
+                            </select>
+                        </td>
+                        <td class="py-1">
+                            <select name="inputs[${i}][type]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="type">
+                                <option value="">Select</option>
+                                <option value="full-time">Full-Time</option>
+                                <option value="part-time">Part-Time</option>
+                                <option value="temporary">Temporary</option>
+                                <option value="work from ome" class="border w-full text-sm">Work From Home</option>
+                            </select>
+                        </td>
+                        <td class="py-1">
+                            <select name="inputs[${i}][qualification]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="qualification">
+                                <option value="">Select</option>
+                                <option value="no education required" class="border w-full text-sm">No Education Required</option>
+                                <option value="masters">Masters</option>
+                                <option value="graduate">Graduate</option>
+                                <option value="12th Pass">12th Pass</option>
+                                <option value="10th Pass">10th Pass</option>
+                                <option value="below 10th">Below 10th</option>
+                                <option value="others">Others</option>
+                            </select>
+                        </td>
                 <td class="py-1 text-center">
                     <div class="text-xs text-gray-400 flex gap-1">
                         <input type="text" name="inputs[${i}][min_salary]" placeholder="From" class="border py-1 px-2 w-1/2 text-black text-sm">

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Intervention\Image\Facades\Image;
 use App\Models\Hire;
 use App\Models\Role;
 use App\Models\HirePlan;
@@ -83,26 +82,38 @@ class HireController extends Controller
         $request->logo->move(public_path("image/company/logo"), $logo);
     } else {
           // Extract the first letter of the company name
-            $companyName = $request->company_name;
-            $firstLetter = strtoupper(substr(trim($companyName), 0, 1)); // Get the first letter and convert to uppercase
+    $companyName = $request->company_name;
+    $firstLetter = strtoupper(substr(trim($companyName), 0, 1)); // Get the first letter and convert to uppercase
 
-            // Create an image with the first letter
-            $imgWidth = 100;
-            $imgHeight = 100;
-            $bgColor = '#ffffff'; // white background
-            $textColor = '#000000'; // black text
+    // Create an image with the first letter
+    $imgWidth = 100;
+    $imgHeight = 100;
+    $bgColor = [255, 255, 255]; // white background
+    $textColor = [0, 0, 0]; // black text
 
-            $image = Image::canvas($imgWidth, $imgHeight, $bgColor);
-            $image->text($firstLetter, $imgWidth / 2, $imgHeight / 2, function($font) {
-                $font->file(public_path('fonts/arial.ttf')); // Path to your font file
-                $font->size(48);
-                $font->color('#000000');
-                $font->align('center');
-                $font->valign('middle');
-            });
+    // Create the image
+    $image = imagecreatetruecolor($imgWidth, $imgHeight);
+    $bg = imagecolorallocate($image, $bgColor[0], $bgColor[1], $bgColor[2]);
+    $text = imagecolorallocate($image, $textColor[0], $textColor[1], $textColor[2]);
 
-            $logo = time() . ".png";
-            $image->save(public_path("image/company/logo/") . $logo);
+    // Fill the background
+    imagefilledrectangle($image, 0, 0, $imgWidth, $imgHeight, $bg);
+
+    // Set the path to the font
+    $fontPath = public_path('fonts/arial.ttf'); // Adjust the path to your font file
+
+    // Add the text to the image
+    $fontSize = 40; // Adjust the font size as needed
+    $bbox = imagettfbbox($fontSize, 0, $fontPath, $firstLetter);
+    $x = ($imgWidth - ($bbox[2] - $bbox[0])) / 2;
+    $y = ($imgHeight - ($bbox[1] - $bbox[7])) / 2 + $fontSize / 2;
+    imagettftext($image, $fontSize, 0, $x, $y, $text, $fontPath, $firstLetter);
+
+    // Save the image
+    $logo = time() . ".png";
+    $logoPath = public_path("image/company/logo/") . $logo;
+    imagepng($image, $logoPath);
+    imagedestroy($image);
     }
     dd($logo);
 

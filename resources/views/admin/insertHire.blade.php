@@ -111,17 +111,20 @@
                             <label for="name" class="block text-gray-700 text-sm mb-2 ">City</label>
                             <input type="text" id="city" name="city"
                                 class="shadow appearance-none border py-1 px-2 w-full"placeholder="Purnea" >
+                                <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                         <div class="mb-3  items-center w-1/2">
                             <label for="name" class="block text-gray-700 text-sm mb-2 ">State</label>
                             <input type="text" id="state" name="state"
                                 class="shadow appearance-none border py-1 px-2 w-full"placeholder="Bihar" >
+                                <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                     </div>
                     <div class="mb-3  items-center">
                         <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Description</label>
                         <textarea name="description" id="description" cols="20" rows="2"placeholder="Type Or Details Of Job Here"
                             class="shadow appearance-none border py-1 px-2 w-full"></textarea>
+                            <p id="error-description" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3 flex items-center">
                         <h3 class=" font-semibold">Recruiter details</h3>
@@ -133,6 +136,7 @@
                                 name)</label>
                             <input type="text" id="company_name" name="company_name"
                                 class="shadow appearance-none border py-1 px-2 w-full"placeholder="Abc Pvt. Ltd." >
+                                <p id="error-company_name" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                         <div class="mb-3  items-center w-1/2">
                             <label for="name" class="block text-gray-700 text-sm mb-2 ">Company's Website (if
@@ -146,6 +150,7 @@
                             <label for="name" class="block text-gray-700 text-sm mb-2 ">Phone</label>
                             <input type="tel" id="mobile" name="mobile"
                                 class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" >
+                                <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                         <div class="mb-3  items-center w-1/2">
                             <label for="name" class="block text-gray-700 text-sm mb-2 ">Alternate Phone</label>
@@ -212,6 +217,7 @@
                                 <option value="">Select</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
+                                 <option value="male & female" class="border w-full text-sm">Male & Female</option>
                                 <option value="others">Others</option>
                             </select>
                         </td>
@@ -220,6 +226,7 @@
                                 <option value="">Select</option>
                                 <option value="english">English</option>
                                 <option value="hindi">Hindi</option>
+                                <option value="hindi & english" class="border w-full text-sm ">Hindi + English</option>
                                 <option value="other">Others</option>
                             </select>
                         </td>
@@ -229,11 +236,13 @@
                                 <option value="full-time">Full-Time</option>
                                 <option value="part-time">Part-Time</option>
                                 <option value="temporary">Temporary</option>
+                                <option value="work from ome" class="border w-full text-sm">Work From Home</option>
                             </select>
                         </td>
                         <td class="py-1">
                             <select name="inputs[${i}][qualification]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="qualification">
                                 <option value="">Select</option>
+                                <option value="no education required" class="border w-full text-sm">No Education Required</option>
                                 <option value="masters">Masters</option>
                                 <option value="graduate">Graduate</option>
                                 <option value="12th Pass">12th Pass</option>
@@ -290,8 +299,8 @@
                     cache: false,
                     processData: false,
                     success: function(response) {
-                        swal("Success", response.message, "success");
                         $("#addHirer").trigger("reset");
+                        swal("Success", response.message, "success");
                         window.open("/admin/manage-hire", "_self");
                     },
                     error: function(xhr) {
