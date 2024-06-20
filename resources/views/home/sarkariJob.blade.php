@@ -123,12 +123,14 @@
                                 @endauth
 
                                 if (!logIn) {
+                                    // Generate logo using the first letter of the job name if no logo is provided
+                                    let logo = job.logo ? `<img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20 h-20" alt="">` : `<div class="generated-logo rounded-full w-20 h-20 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.name.charAt(0)}</div>`;
+
                                     table.append(`
                                                 <div class="block max-w-full mt-4 p-4 bg-white border capitalize border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                                     <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${job.name}</h5>
                                                     <div class="details flex mt-4">
-                                                        <div class="logo w-2/12">
-                                                            <img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20" alt="">
+                                                        <div class="logo w-2/12">${logo}
                                                         </div>
                                                         <div class="w-10/12 mb-1 flex-col flex">
                                                             <div class="flex  justify-between text-blue-500 font-bold">
@@ -188,14 +190,14 @@
                                                 applyButton =
                                                     `<a href="/viewSarkariJobForm/${job.id}"><button class="bg-green-600 hover:bg-green-700 rounded text-white px-1 py-1">Apply Now</button></a>`;
                                             }
+                                             // Generate logo using the first letter of the job name if no logo is provided
+                                            let logo = job.logo ? `<img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20 h-20" alt="">` : `<div class="generated-logo rounded-full w-20 h-20 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.name.charAt(0)}</div>`;
 
                                             table.append(`
                                                 <div class="block max-w-full mt-4 p-4 bg-white border capitalize border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                                     <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${job.name}</h5>
                                                     <div class="details flex mt-4">
-                                                        <div class="logo w-2/12">
-                                                            <img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20" alt="">
-                                                        </div>
+                                                        <div class="logo w-2/12">${logo}</div>
                                                         <div class="w-10/12 mb-1">
                                                             <div class="flex justify-between text-blue-500 font-bold">
                                                                 <h5>${job.role}</h5>

@@ -28,7 +28,7 @@
                         categories.forEach((category) => {
                             catContainer.append(`  
                                 <h2 class="text-3xl px-4 py-1 font-semibold text-orange-500 uppercase" data-cat-id="${category.id}">${category.name}</h2>
-                                <div class="category-group flex flex-wrap justify-around mb-6" id="category-${category.id}">
+                                <div class="category-group grid grid-cols-4 mb-6" id="category-${category.id}">
                                     <!-- Yojnas for this category will be appended here -->
                                 </div>
                             `);
@@ -51,7 +51,7 @@
                             let categoryGroup = $(`#category-${yojna.yojna_category_id}`);
                             if (categoryGroup.length > 0) {
                                 categoryGroup.append(`
-                                    <a href="/sarkari-yojna-form/${yojna.id}" class="forms w-1/4 mt-4 mb-4 py-2 px-2">
+                                    <a href="/sarkari-yojna-form/${yojna.id}" class="forms  mt-4 mb-4 py-2 px-6">
                                         <div class="image flex justify-center mb-2">
                                             <img src="/image/yojna/logo/${yojna.logo}" class="shadow rounded-full w-20 h-20" alt="">
                                         </div>

@@ -122,13 +122,16 @@
                                 @endauth
                                 if (!logIn) {
                                     if (job.isApproved == true) {
+                                        // Generate logo using the first letter of the job name if no logo is provided
+                                        let logo = job.hire.logo ? ` <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">` : `<div class="generated-logo rounded w-12 h-12 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.hire.company_name.charAt(0)}</div>`;
+
                                     table.append(`
                                             <div class="card w-3/4 mb-4 capitalize">
                                                 <div class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                                     <div class="flex justify-between">
                                                         <div class="flex gap-5">
                                                             <div class="logo">
-                                                                <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">
+                                                                ${logo}
                                                             </div>
                                                             <div class="name flex-col flex">
                                                                 <h5 class="font-semibold text-black">${job.title}</h5>
@@ -201,13 +204,16 @@
                                             }
 
                                             if (job.isApproved == true) {
+                                                 // Generate logo using the first letter of the job name if no logo is provided
+                                                let logo = job.hire.logo ? ` <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">` : `<div class="generated-logo rounded w-12 h-12 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.hire.company_name.charAt(0)}</div>`;
+
                                                 table.append(`
                                                     <div class="card w-3/4 mb-4 capitalize">
                                                         <div class="block max-w-full p-4 bg-white border border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                                                             <div class="flex justify-between">
                                                                 <div class="flex gap-5">
                                                                     <div class="logo">
-                                                                        <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">
+                                                                        ${logo}
                                                                     </div>
                                                                     <div class="name flex flex-col">
                                                                         <h5 class="font-semibold text-black">${job.title}</h5>
