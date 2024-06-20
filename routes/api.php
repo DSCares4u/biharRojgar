@@ -73,6 +73,7 @@ Route::post('/candidate',[CandidateController::class,'store'])->name('candidate.
 Route::get('/candidate',[CandidateController::class,'index'])->name('candidate.index');
 Route::get('/candidate/view/{id}',[CandidateController::class,'show']);
 Route::put('/candidate/edit/{id}',[CandidateController::class,'update']);
+Route::post('/update-all/edit/{id}',[CandidateController::class,'updateAll']);
 Route::delete('/candidate/delete/{id}',[CandidateController::class,'destroy']);
 
 Route::post('/address',[AddressController::class,'store'])->name('address.store');

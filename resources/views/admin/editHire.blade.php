@@ -56,6 +56,7 @@
                                             <option value="" class="border text-center w-full">Select</option>
                                             <option value="male" class="border w-full text-sm">Male</option>
                                             <option value="female" class="border w-full text-sm">Female</option>
+                                            <option value="male & female" class="border w-full text-sm">Male & Female</option>
                                             <option value="others" class="border w-full text-sm">Others</option>
                                         </select>
                                     </td>
@@ -76,12 +77,14 @@
                                             <option value="full-time" class="border w-full text-sm">Full-Time</option>
                                             <option value="part-time" class="border w-full text-sm">Part-Time</option>
                                             <option value="temporary" class="border w-full text-sm">Temporary</option>
+                                            <option value="work from ome" class="border w-full text-sm">Work From Home</option>
                                         </select>
                                     </td>
                                     <td class="py-1">
                                         <select id="qualification" name="qualification"
                                             class="border text-center py-2 px-2 w-full text-sm text-gray-400">
                                             <option value="" class="border text-center w-full">Select</option>
+                                            <option value="no education required" class="border w-full text-sm">No Education Required</option>
                                             <option value="masters" class="border w-full text-sm">Masters</option>
                                             <option value="graduate" class="border w-full text-sm">Graduate</option>
                                             <option value="12th Pass" class="border w-full text-sm">12th Pass</option>

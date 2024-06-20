@@ -80,6 +80,7 @@
                                             id="qualification">
                                             <option value="" class=" border text-center w-full">Select
                                             </option>
+                                            <option value="no education required" class="border w-full text-sm">No Education Required</option>
                                             <option value="masters" class="border w-full text-sm">Masters</option>
                                             <option value="graduate" class="border w-full text-sm">Graduate</option>
                                             <option value="12th Pass" class="border w-full text-sm">12th Pass</option>
@@ -109,12 +110,12 @@
                         <div class="mb-3  items-center w-1/2">
                             <label for="name" class="block text-gray-700 text-sm mb-2 ">City</label>
                             <input type="text" id="city" name="city"
-                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="Purnea" required>
+                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="Purnea" >
                         </div>
                         <div class="mb-3  items-center w-1/2">
                             <label for="name" class="block text-gray-700 text-sm mb-2 ">State</label>
                             <input type="text" id="state" name="state"
-                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="Bihar" required>
+                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="Bihar" >
                         </div>
                     </div>
                     <div class="mb-3  items-center">
@@ -131,25 +132,25 @@
                             <label for="" class="block text-gray-700 text-sm mb-2 ">Hiring for (Company
                                 name)</label>
                             <input type="text" id="company_name" name="company_name"
-                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="Abc Pvt. Ltd." required>
+                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="Abc Pvt. Ltd." >
                         </div>
                         <div class="mb-3  items-center w-1/2">
                             <label for="name" class="block text-gray-700 text-sm mb-2 ">Company's Website (if
                                 any)</label>
                             <input type="text" id="website" name="website"
-                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="abc.com" required>
+                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="abc.com" >
                         </div>
                     </div>
                     <div class="mb-3 flex gap-2">
                         <div class="mb-3  items-center w-1/2">
                             <label for="name" class="block text-gray-700 text-sm mb-2 ">Phone</label>
                             <input type="tel" id="mobile" name="mobile"
-                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" required>
+                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" >
                         </div>
                         <div class="mb-3  items-center w-1/2">
                             <label for="name" class="block text-gray-700 text-sm mb-2 ">Alternate Phone</label>
                             <input type="tel" id="alt_mobile" name="alt_mobile"
-                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" required>
+                                class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" >
                         </div>
                     </div>
                     <div class="flex gap-2 items-center">
@@ -157,11 +158,11 @@
                             <label for="name" class="block text-gray-700 text-sm mb-2 ">Email</label>
                             <input type="email" id="email" name="email"
                                 class="shadow appearance-none border py-1 px-2 w-full" placeholder="roni@gmail.com"
-                                required>
+                                >
                         </div>
                         <div class="mb-3 items-center w-1/2">
                             <label for="logo" class="block text-gray-700 text-sm mb-2 ">Company's Logo / Image</label>
-                            <input type="file" id="logo" name="logo"  class="py-1 px-2 w-full"  required>
+                            <input type="file" id="logo" name="logo"  class="py-1 px-2 w-full"  >
                         </div>
                     </div>
                     <select name="isApproved" id="isApproved" hidden>

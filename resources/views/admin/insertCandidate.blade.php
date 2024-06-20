@@ -350,7 +350,6 @@
                         <hr class="h-1 rounded bg-gray-600 mb-4">
                         <div class="flex gap-5">
                             <div class="w-1/3">
-                                {{-- <input type="hidden" name="user_id" value="{{$user_id}}"> --}}
                                 <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}">
                                 <div class="mb-3  items-center">
                                     <label for="name" class="block text-gray-700 text-sm mb-2 ">Full Name as recorded in
@@ -705,43 +704,43 @@
             // Auto-execute the function when the page loads
             fetchCandidateDetailsAndOpenModal();
     
-            $('#insertData').submit(function(e) {
-                e.preventDefault();
-                let userId = getIdFromUrlPath();
-                let formData = {
-                    name: $('#name').val(),
-                    gender: $('#gender').val(),
-                    marital: $('#marital').val(),
-                    preferred_lang: $('#preferred_lang').val(),
-                    dob: $('#dob').val(),
-                    father: $('#father').val(),
-                    email: $('#email').val(),
-                    religion: $('#religion').val(),
-                    mother: $('#mother').val(),
-                    mobile: $('#mobile').val(),
-                    community: $('#community').val(),
-                    village: $('#village').val(),
-                    landmark: $('#landmark').val(),
-                    area: $('#area').val(),
-                    pincode: $('#pincode').val(),
-                    state: $('#state').val(),
-                    city: $('#city').val(),
-                    id_mark: $('#id_mark').val(),
-                    user_id: userId,
-                };
+            // $('#insertData').submit(function(e) {
+            //     e.preventDefault();
+            //     let userId = getIdFromUrlPath();
+            //     let formData = {
+            //         name: $('#name').val(),
+            //         gender: $('#gender').val(),
+            //         marital: $('#marital').val(),
+            //         preferred_lang: $('#preferred_lang').val(),
+            //         dob: $('#dob').val(),
+            //         father: $('#father').val(),
+            //         email: $('#email').val(),
+            //         religion: $('#religion').val(),
+            //         mother: $('#mother').val(),
+            //         mobile: $('#mobile').val(),
+            //         community: $('#community').val(),
+            //         village: $('#village').val(),
+            //         landmark: $('#landmark').val(),
+            //         area: $('#area').val(),
+            //         pincode: $('#pincode').val(),
+            //         state: $('#state').val(),
+            //         city: $('#city').val(),
+            //         id_mark: $('#id_mark').val(),
+            //         user_id: userId,
+            //     };
     
-                $.ajax({
-                    type: 'PUT',
-                    url: `/api/candidate/edit/${userId}`,
-                    data: formData,
-                    success: function(response) {
-                        console.log("Data insertion done for candidate");
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error updating candidate details:', error);
-                    }
-                });
-            });
+            //     $.ajax({
+            //         type: 'PUT',
+            //         url: `/api/candidate/edit/${userId}`,
+            //         data: formData,
+            //         success: function(response) {
+            //             console.log("Data insertion done for candidate");
+            //         },
+            //         error: function(xhr, status, error) {
+            //             console.error('Error updating candidate details:', error);
+            //         }
+            //     });
+            // });
     
             function getDistrictAndState() {
                 var pincode = document.getElementById('pincode').value;
@@ -780,30 +779,30 @@
             // Auto-execute the function when the page loads
             fetchAddressDetailsAndOpenModal();
     
-            $('#insertData').submit(function(e) {
-                e.preventDefault();
-                let userId = getIdFromUrlPath();
-                let formData = {
-                    qualification: $('#qualification').val(),
-                    q_state: $('#q_state').val(),
-                    board: $('#board').val(),
-                    passing_year: $('#passing_year').val(),
-                    experience: $('#experience').val(),
-                    skills: $('#skills').val(),
-                    user_id: userId
-                };
-                $.ajax({
-                    type: 'PUT',
-                    url: `/api/address/edit/${userId}`,
-                    data: formData,
-                    success: function(response) {
-                        console.log("Data insertion done for address");
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error updating address details:', error);
-                    }
-                });
-            });
+            // $('#insertData').submit(function(e) {
+            //     e.preventDefault();
+            //     let userId = getIdFromUrlPath();
+            //     let formData = {
+            //         qualification: $('#qualification').val(),
+            //         q_state: $('#q_state').val(),
+            //         board: $('#board').val(),
+            //         passing_year: $('#passing_year').val(),
+            //         experience: $('#experience').val(),
+            //         skills: $('#skills').val(),
+            //         user_id: userId
+            //     };
+            //     $.ajax({
+            //         type: 'PUT',
+            //         url: `/api/address/edit/${userId}`,
+            //         data: formData,
+            //         success: function(response) {
+            //             console.log("Data insertion done for address");
+            //         },
+            //         error: function(xhr, status, error) {
+            //             console.error('Error updating address details:', error);
+            //         }
+            //     });
+            // });
     
             function fetchDocumentDetailsAndOpenModal(userId) {
                 if (userId) {
@@ -877,7 +876,7 @@
                     formData.append('user_id', userId);
                     $.ajax({
                         type: 'POST',
-                        url: `/api/document/edit/${userId}`,
+                        url: `/api/update-all/edit/${userId}`,
                         data: formData,
                         contentType: false,
                         processData: false,
@@ -906,6 +905,485 @@
             });
         });
     </script>
+
+    {{-- <script>
+        $(document).ready(function() {
+    
+            function getIdFromUrlPath() {
+                let pathArray = window.location.pathname.split('/');
+                return pathArray[pathArray.length - 1];
+            }
+    
+            function fetchCandidateDetailsAndOpenModal() {
+                let userId = getIdFromUrlPath();
+    
+                $.ajax({
+                    type: 'GET',
+                    url: `/api/candidate/view/` + userId,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        $('#name').val(response.data.name);
+                        $('#gender').val(response.data.gender);
+                        $('#marital').val(response.data.marital);
+                        $('#preferred_lang').val(response.data.preferred_lang);
+                        $('#dob').val(response.data.dob);
+                        $('#father').val(response.data.father);
+                        $('#email').val(response.data.email);
+                        $('#religion').val(response.data.religion);
+                        $('#mother').val(response.data.mother);
+                        $('#mobile').val(response.data.mobile);
+                        $('#community').val(response.data.community);
+                        $('#village').val(response.data.village);
+                        $('#landmark').val(response.data.landmark);
+                        $('#area').val(response.data.area);
+                        $('#pincode').val(response.data.pincode);
+                        $('#state').val(response.data.state);
+                        $('#city').val(response.data.city);
+                        $('#id_mark').val(response.data.id_mark);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching candidate details for editing:', error);
+                    }
+                });
+            }
+    
+            // Auto-execute the function when the page loads
+            fetchCandidateDetailsAndOpenModal();
+    
+            function validateFormData(formData) {
+                let valid = true;
+                for (let key in formData) {
+                    if (formData[key] === '') {
+                        valid = false;
+                        $('#error-' + key).html(key + ' is required.');
+                    } else {
+                        $('#error-' + key).html('');
+                    }
+                }
+                return valid;
+            }
+    
+            $('#insertData').submit(function(e) {
+                e.preventDefault();
+                let userId = getIdFromUrlPath();
+                let formData = {
+                    name: $('#name').val(),
+                    gender: $('#gender').val(),
+                    marital: $('#marital').val(),
+                    preferred_lang: $('#preferred_lang').val(),
+                    dob: $('#dob').val(),
+                    father: $('#father').val(),
+                    email: $('#email').val(),
+                    religion: $('#religion').val(),
+                    mother: $('#mother').val(),
+                    mobile: $('#mobile').val(),
+                    community: $('#community').val(),
+                    village: $('#village').val(),
+                    landmark: $('#landmark').val(),
+                    area: $('#area').val(),
+                    pincode: $('#pincode').val(),
+                    state: $('#state').val(),
+                    city: $('#city').val(),
+                    id_mark: $('#id_mark').val(),
+                    user_id: userId,
+                };
+    
+                if (validateFormData(formData)) {
+                    $.ajax({
+                        type: 'PUT',
+                        url: `/api/candidate/edit/${userId}`,
+                        data: formData,
+                        success: function(response) {
+                            console.log("Data insertion done for candidate");
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error updating candidate details:', error);
+                        }
+                    });
+                }
+            });
+    
+            function getDistrictAndState() {
+                var pincode = document.getElementById('pincode').value;
+                fetch('/get-district-and-state?pincode=' + pincode)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('city').value = data.district;
+                        document.getElementById('state').value = data.state;
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+    
+            function fetchAddressDetailsAndOpenModal() {
+                let userId = getIdFromUrlPath();
+    
+                $.ajax({
+                    type: 'GET',
+                    url: `/api/address/view/` + userId,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        $('#qualification').val(response.data.qualification);
+                        $('#q_state').val(response.data.q_state);
+                        $('#board').val(response.data.board);
+                        $('#passing_year').val(response.data.passing_year);
+                        $('#experience').val(response.data.experience);
+                        $('#skills').val(response.data.skills);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error fetching address details for editing:', error);
+                    }
+                });
+            }
+    
+            // Auto-execute the function when the page loads
+            fetchAddressDetailsAndOpenModal();
+    
+            $('#insertData').submit(function(e) {
+                e.preventDefault();
+                let userId = getIdFromUrlPath();
+                let formData = {
+                    qualification: $('#qualification').val(),
+                    q_state: $('#q_state').val(),
+                    board: $('#board').val(),
+                    passing_year: $('#passing_year').val(),
+                    experience: $('#experience').val(),
+                    skills: $('#skills').val(),
+                    user_id: userId
+                };
+    
+                if (validateFormData(formData)) {
+                    $.ajax({
+                        type: 'PUT',
+                        url: `/api/address/edit/${userId}`,
+                        data: formData,
+                        success: function(response) {
+                            console.log("Data insertion done for address");
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error updating address details:', error);
+                        }
+                    });
+                }
+            });
+    
+            function fetchDocumentDetailsAndOpenModal(userId) {
+                if (userId) {
+                    $.ajax({
+                        type: 'GET',
+                        url: `/api/document/view/${userId}`,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            console.log(response);
+                            if (response.data) {
+                                $('#id').val(response.data.id);
+                                $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data.photo);
+                                $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data.signature);
+                                $('#id_proof_type').val(response.data.id_proof_type);
+                                $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data.id_proof);
+                                $('#qualiCertificatePreview').attr('src', '/image/candidate/quali_certificate/' + response.data.quali_certificate);
+                                $('#otherCertificatePreview').attr('src', '/image/candidate/other_certificate/' + response.data.other_certificate);
+                            } else {
+                                console.error('No data found in response.');
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error fetching document details for editing:', error);
+                        }
+                    });
+                } else {
+                    console.error('User ID is not defined.');
+                }
+            }
+    
+            // Preview the image files
+            function previewImage(input, previewId) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $(previewId).attr('src', e.target.result).removeClass('hidden');
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+    
+            $('#photo').change(function() {
+                previewImage(this, '#photoPreview');
+            });
+    
+            $('#signature').change(function() {
+                previewImage(this, '#signaturePreview');
+            });
+            $('#id_proof').change(function() {
+                previewImage(this, '#idProofPreview');
+            });
+            $('#quali_certificate').change(function() {
+                previewImage(this, '#qualiCertificatePreview');
+            });
+            $('#other_certificate').change(function() {
+                previewImage(this, '#otherCertificatePreview');
+            });
+    
+            // Auto-execute the function when the page loads
+            let userId = getIdFromUrlPath();
+            fetchDocumentDetailsAndOpenModal(userId);
+    
+            // Handle form submission for documents
+            $('#insertData').submit(function(e) {
+                e.preventDefault();
+                let userId = getIdFromUrlPath();
+                if (userId) {
+                    let formData = new FormData(this);
+                    formData.append('user_id', userId);
+                    if (validateFormData(Object.fromEntries(formData.entries()))) {
+                        $.ajax({
+                            type: 'POST',
+                            url: `/api/document/edit/${userId}`,
+                            data: formData,
+                            contentType: false,
+                            processData: false,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                swal("Success", response.message, "success");
+                                $("#insertData").trigger("reset");
+                                window.open("/admin/manage-candidate", "_self");
+                            },
+                            error: function(xhr) {
+                                if (xhr.status === 422) {
+                                    var errors = xhr.responseJSON.errors;
+                                    $.each(errors, function(key, value) {
+                                        $('#error-' + key).html(value[0]);
+                                    });
+                                } else {
+                                    alert('An error occurred. Please try again.');
+                                }
+                            }
+                        });
+                    }
+                } else {
+                    console.error('User ID is not defined.');
+                }
+            });
+        });
+    </script> --}}
+
+    {{-- <script>
+        $(document).ready(function() {
+            function getIdFromUrlPath() {
+                let pathArray = window.location.pathname.split('/');
+                return pathArray[pathArray.length - 1];
+            }
+    
+            function fetchCandidateDetails(userId) {
+                return $.ajax({
+                    type: 'GET',
+                    url: `/api/candidate/view/${userId}`,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            }
+    
+            function fetchAddressDetails(userId) {
+                return $.ajax({
+                    type: 'GET',
+                    url: `/api/address/view/${userId}`,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            }
+    
+            function fetchDocumentDetails(userId) {
+                return $.ajax({
+                    type: 'GET',
+                    url: `/api/document/view/${userId}`,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            }
+    
+            function fillCandidateDetails(response) {
+                $('#name').val(response.data.name);
+                $('#gender').val(response.data.gender);
+                $('#marital').val(response.data.marital);
+                $('#preferred_lang').val(response.data.preferred_lang);
+                $('#dob').val(response.data.dob);
+                $('#father').val(response.data.father);
+                $('#email').val(response.data.email);
+                $('#religion').val(response.data.religion);
+                $('#mother').val(response.data.mother);
+                $('#mobile').val(response.data.mobile);
+                $('#community').val(response.data.community);
+                $('#village').val(response.data.village);
+                $('#landmark').val(response.data.landmark);
+                $('#area').val(response.data.area);
+                $('#pincode').val(response.data.pincode);
+                $('#state').val(response.data.state);
+                $('#city').val(response.data.city);
+                $('#id_mark').val(response.data.id_mark);
+            }
+    
+            function fillAddressDetails(response) {
+                $('#qualification').val(response.data.qualification);
+                $('#q_state').val(response.data.q_state);
+                $('#board').val(response.data.board);
+                $('#passing_year').val(response.data.passing_year);
+                $('#experience').val(response.data.experience);
+                $('#skills').val(response.data.skills);
+            }
+    
+            function fillDocumentDetails(response) {
+                if (response.data) {
+                    $('#id').val(response.data.id);
+                    $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data.photo);
+                    $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data.signature);
+                    $('#id_proof_type').val(response.data.id_proof_type);
+                    $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data.id_proof);
+                    $('#qualiCertificatePreview').attr('src', '/image/candidate/quali_certificate/' + response.data.quali_certificate);
+                    $('#otherCertificatePreview').attr('src', '/image/candidate/other_certificate/' + response.data.other_certificate);
+                } else {
+                    console.error('No data found in response.');
+                }
+            }
+    
+            function previewImage(input, previewId) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $(previewId).attr('src', e.target.result).removeClass('hidden');
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+    
+            function handleInsertDataSubmission(e) {
+                e.preventDefault();
+                let userId = getIdFromUrlPath();
+    
+                if (!userId) {
+                    console.error('User ID is not defined.');
+                    return;
+                }
+    
+                // Create FormData objects for each form
+                let candidateFormData = {
+                    name: $('#name').val(),
+                    gender: $('#gender').val(),
+                    marital: $('#marital').val(),
+                    preferred_lang: $('#preferred_lang').val(),
+                    dob: $('#dob').val(),
+                    father: $('#father').val(),
+                    email: $('#email').val(),
+                    religion: $('#religion').val(),
+                    mother: $('#mother').val(),
+                    mobile: $('#mobile').val(),
+                    community: $('#community').val(),
+                    village: $('#village').val(),
+                    landmark: $('#landmark').val(),
+                    area: $('#area').val(),
+                    pincode: $('#pincode').val(),
+                    state: $('#state').val(),
+                    city: $('#city').val(),
+                    id_mark: $('#id_mark').val(),
+                    user_id: userId
+                };
+    
+                let addressFormData = {
+                    qualification: $('#qualification').val(),
+                    q_state: $('#q_state').val(),
+                    board: $('#board').val(),
+                    passing_year: $('#passing_year').val(),
+                    experience: $('#experience').val(),
+                    skills: $('#skills').val(),
+                    user_id: userId
+                };
+    
+                let documentFormData = new FormData($('#insertData')[0]);
+                documentFormData.append('user_id', userId);
+    
+                // Perform the AJAX requests sequentially
+                $.when(
+                    $.ajax({
+                        type: 'PUT',
+                        url: `/api/candidate/edit/${userId}`,
+                        data: candidateFormData
+                    }),
+                    $.ajax({
+                        type: 'PUT',
+                        url: `/api/address/edit/${userId}`,
+                        data: addressFormData
+                    }),
+                    $.ajax({
+                        type: 'POST',
+                        url: `/api/document/edit/${userId}`,
+                        data: documentFormData,
+                        contentType: false,
+                        processData: false,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        }
+                    })
+                ).done(function(candidateResponse, addressResponse, documentResponse) {
+                    swal("Success", "All data inserted successfully", "success");
+                    $("#insertData").trigger("reset");
+                    window.open("/admin/manage-candidate", "_self");
+                }).fail(function(xhr) {
+                    if (xhr.status === 422) {
+                        var errors = xhr.responseJSON.errors;
+                        $.each(errors, function(key, value) {
+                            $('#error-' + key).html(value[0]);
+                        });
+                    } else {
+                        alert('An error occurred. Please try again.');
+                    }
+                });
+            }
+    
+            // Auto-execute the functions when the page loads
+            let userId = getIdFromUrlPath();
+            $.when(fetchCandidateDetails(userId), fetchAddressDetails(userId), fetchDocumentDetails(userId))
+                .done(function(candidateResponse, addressResponse, documentResponse) {
+                    fillCandidateDetails(candidateResponse[0]);
+                    fillAddressDetails(addressResponse[0]);
+                    fillDocumentDetails(documentResponse[0]);
+                }).fail(function(xhr) {
+                    console.error('Error fetching details:', xhr);
+                });
+    
+            $('#photo').change(function() {
+                previewImage(this, '#photoPreview');
+            });
+    
+            $('#signature').change(function() {
+                previewImage(this, '#signaturePreview');
+            });
+    
+            $('#id_proof').change(function() {
+                previewImage(this, '#idProofPreview');
+            });
+    
+            $('#quali_certificate').change(function() {
+                previewImage(this, '#qualiCertificatePreview');
+            });
+    
+            $('#other_certificate').change(function() {
+                previewImage(this, '#otherCertificatePreview');
+            });
+    
+            $('#insertData').submit(handleInsertDataSubmission);
+        });
+    </script> --}}
+    
+    
     
 @endsection
 

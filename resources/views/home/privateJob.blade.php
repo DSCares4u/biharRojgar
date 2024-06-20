@@ -130,9 +130,10 @@
                                                             <div class="logo">
                                                                 <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">
                                                             </div>
-                                                            <div class="name">
+                                                            <div class="name flex-col flex">
                                                                 <h5 class="font-semibold text-black">${job.title}</h5>
                                                                 <p class="text-gray-500 text-sm capitalize">${job.hire.company_name}</p>
+                                                                <p class="text-gray-500 text-xs capitalize">${job.hire.city},${job.hire.state}</p>
                                                             </div>
                                                         </div>
                                                         <div>
@@ -144,7 +145,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="body mt-2 mb-2">
-                                                        <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Name: </p><p class="text-sm">${job.profile}</p></h5>
+                                                        <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Profile: </p><p class="text-sm">${job.profile}</p></h5>
                                                     </div>
                                                     <div class="mb-2 mt-2">
                                                         <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Type: </p><p class="text-sm">${job.type}</p></h5>
@@ -208,9 +209,10 @@
                                                                     <div class="logo">
                                                                         <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">
                                                                     </div>
-                                                                    <div class="name">
+                                                                    <div class="name flex flex-col">
                                                                         <h5 class="font-semibold text-black">${job.title}</h5>
                                                                         <p class="text-gray-500 text-sm capitalize">${job.hire.company_name}</p>
+                                                                        <p class="text-gray-500 text-xs capitalize">${job.hire.city},${job.hire.state}</p>
                                                                     </div>
                                                                 </div>
                                                                 <div>
@@ -222,7 +224,7 @@
                                                                 </div>
                                                             </div>
                                                             <div class="body mt-2 mb-2">
-                                                                <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Name: </p><p class="text-sm">${job.profile}</p></h5>
+                                                                <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Profile: </p><p class="text-sm">${job.profile}</p></h5>
                                                             </div>
                                                             <div class="mb-2 mt-2">
                                                                 <h5 class="text-sm font-normal text-gray-500 flex gap-2"><p class='font-semibold text-gray-500'>Job Type: </p><p class="text-sm">${job.type}</p></h5>

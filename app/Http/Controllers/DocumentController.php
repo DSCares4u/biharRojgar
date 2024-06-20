@@ -29,169 +29,81 @@ class DocumentController extends Controller
         }
     }
 
-    // public function store(Request $request)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'id_proof_type' => 'required',            
-    //         'id_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
-    //         'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
-    //         'signature' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo
-    //         'quali_certificate' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add validation for photo          
-    //     ]);
 
-    //     // image & pdf Work  
+//     public function store(Request $request)
+// {
+//     $validator = Validator::make($request->all(), [
+//         'id_proof_type' => 'required',
+//         'id_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+//         'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+//         'signature' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+//         'quali_certificate' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+//         'other_certificate' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:10240'
+//     ]);
 
-    //     $randomNumber = mt_rand(1000,9999); // Generate a random number
+//     if ($validator->fails()) {
+//         return response()->json([
+//             'status' => 422,
+//             'errors' => $validator->messages()
+//         ], 422);
+//     }
 
-    //       // Handle the file upload
-    //     if ($request->hasFile('photo')) {
-    //         $photo = "LO" . time() . $randomNumber. "." . $request->photo->extension();
-    //         $request->photo->move(public_path("image/yojna/photo"), $photo);
-    //     } else {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'errors' => ['photo' => 'photo is required.']
-    //         ], 422);
-    //     }
-    //       // Handle the file upload
-    //     if ($request->hasFile('signature')) {
-    //         $signature = "SI". time() . $randomNumber . "." . $request->signature->extension();        //upload on public/photo/image/filename
-    //     $request->signature->move(public_path("image/signature"), $signature);
-    //     } else {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'errors' => ['signature' => 'signature is required.']
-    //         ], 422);
-    //     }
-    //       // Handle the file upload
-    //     if ($request->hasFile('id_proof')) {
-    //         $id_proof = "ID". time() . $randomNumber . "." . $request->id_proof->extension();        //upload on public/photo/image/filename
-    //         $request->id_proof->move(public_path("image/id_proof"), $id_proof);
-    //     } else {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'errors' => ['id_proof' => 'Id Proof is required.']
-    //         ], 422);
-    //     }
-    //       // Handle the file upload
-    //     if ($request->hasFile('quali_certificate')) {
-    //         $quali_certificate = "QU". time() . $randomNumber . "." . $request->quali_certificate->extension();        //upload on public/photo/image/filename
-    //         $request->quali_certificate->move(public_path("image/quali_certificate"), $quali_certificate);    
-    //     } else {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'errors' => ['quali_certificate' => 'Qualification Certificate is required.']
-    //         ], 422);
-    //     }
-     
-    //     $other_certificate = "OT". time() . $randomNumber . "." . $request->other_certificate->extension();        //upload on public/photo/image/filename
-    //     $request->other_certificate->move(public_path("image/other_certificate"), $other_certificate);
+//     // Generate a random number
+//     $randomNumber = mt_rand(1000, 9999); 
 
-    //     if ($validator->fails()) {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'error' => $validator->messages()
-    //         ], 422);
-    //     } else {
+//     // Handle the file upload
+//     $photo = null;
+//     if ($request->hasFile('photo')) {
+//         $photo = "LO" . time() . $randomNumber . "." . $request->photo->extension();
+//         $request->photo->move(public_path("image/yojna/photo"), $photo);
+//     }
 
-    //         $document = Document::create([
-    //             'id_proof_type' => $request->id_proof_type,
-    //             'photo' => $photo,
-    //             'signature'=>$signature,
-    //             'id_proof'=>$id_proof,
-    //             'quali_certificate'=>$quali_certificate,
-    //             'other_certificate'=>$other_certificate ,
-    //             'user_id' => $request->user_id,                                                  
-    //         ]);
-    
-    //         if ($document) {
-    //             return response()->json([
-    //                 'status' => 200,
-    //                 'message' => "We Will Connect You Soon"
-    //             ], 200);
-    //         } else {
-    //             return response()->json([
-    //                 'status' => 500,
-    //                 'message' => "Unable to add your Request"
-    //             ], 500);
-    //         }
-    //     }
-    // }
+//     $signature = null;
+//     if ($request->hasFile('signature')) {
+//         $signature = "SI" . time() . $randomNumber . "." . $request->signature->extension();
+//         $request->signature->move(public_path("image/signature"), $signature);
+//     }
 
-    public function store(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'id_proof_type' => 'required',
-        'id_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-        'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-        'signature' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-        'quali_certificate' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-        'other_certificate' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:10240'
-    ]);
+//     $id_proof = null;
+//     if ($request->hasFile('id_proof')) {
+//         $id_proof = "ID" . time() . $randomNumber . "." . $request->id_proof->extension();
+//         $request->id_proof->move(public_path("image/id_proof"), $id_proof);
+//     }
 
-    if ($validator->fails()) {
-        return response()->json([
-            'status' => 422,
-            'errors' => $validator->messages()
-        ], 422);
-    }
+//     $quali_certificate = null;
+//     if ($request->hasFile('quali_certificate')) {
+//         $quali_certificate = "QU" . time() . $randomNumber . "." . $request->quali_certificate->extension();
+//         $request->quali_certificate->move(public_path("image/quali_certificate"), $quali_certificate);
+//     }
 
-    // Generate a random number
-    $randomNumber = mt_rand(1000, 9999); 
+//     $other_certificate = null;
+//     if ($request->hasFile('other_certificate')) {
+//         $other_certificate = "OT" . time() . $randomNumber . "." . $request->other_certificate->extension();
+//         $request->other_certificate->move(public_path("image/other_certificate"), $other_certificate);
+//     }
 
-    // Handle the file upload
-    $photo = null;
-    if ($request->hasFile('photo')) {
-        $photo = "LO" . time() . $randomNumber . "." . $request->photo->extension();
-        $request->photo->move(public_path("image/yojna/photo"), $photo);
-    }
+//     $document = Document::create([
+//         'id_proof_type' => $request->id_proof_type,
+//         'photo' => $photo,
+//         'signature' => $signature,
+//         'id_proof' => $id_proof,
+//         'quali_certificate' => $quali_certificate,
+//         'other_certificate' => $other_certificate,
+//         'user_id' => $request->user_id,
+//     ]);
 
-    $signature = null;
-    if ($request->hasFile('signature')) {
-        $signature = "SI" . time() . $randomNumber . "." . $request->signature->extension();
-        $request->signature->move(public_path("image/signature"), $signature);
-    }
-
-    $id_proof = null;
-    if ($request->hasFile('id_proof')) {
-        $id_proof = "ID" . time() . $randomNumber . "." . $request->id_proof->extension();
-        $request->id_proof->move(public_path("image/id_proof"), $id_proof);
-    }
-
-    $quali_certificate = null;
-    if ($request->hasFile('quali_certificate')) {
-        $quali_certificate = "QU" . time() . $randomNumber . "." . $request->quali_certificate->extension();
-        $request->quali_certificate->move(public_path("image/quali_certificate"), $quali_certificate);
-    }
-
-    $other_certificate = null;
-    if ($request->hasFile('other_certificate')) {
-        $other_certificate = "OT" . time() . $randomNumber . "." . $request->other_certificate->extension();
-        $request->other_certificate->move(public_path("image/other_certificate"), $other_certificate);
-    }
-
-    $document = Document::create([
-        'id_proof_type' => $request->id_proof_type,
-        'photo' => $photo,
-        'signature' => $signature,
-        'id_proof' => $id_proof,
-        'quali_certificate' => $quali_certificate,
-        'other_certificate' => $other_certificate,
-        'user_id' => $request->user_id,
-    ]);
-
-    if ($document) {
-        return response()->json([
-            'status' => 200,
-            'message' => "We Will Connect You Soon"
-        ], 200);
-    } else {
-        return response()->json([
-            'status' => 500,
-            'message' => "Unable to add your Request"
-        ], 500);
-    }
-}
+//     if ($document) {
+//         return response()->json([
+//             'status' => 200,
+//             'message' => "We Will Connect You Soon"
+//         ], 200);
+//     } else {
+//         return response()->json([
+//             'status' => 500,
+//             'message' => "Unable to add your Request"
+//         ], 500);
+//     }
+// }
 
     
     public function show($id)
