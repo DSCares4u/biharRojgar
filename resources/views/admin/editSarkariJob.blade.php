@@ -149,9 +149,11 @@
                         <label for="logo" class="block text-sm font-medium text-gray-700">Job Logo</label>
                         <input type="file" id="logo" name="logo" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300" >
                     </div>
-                    <div class="">
+                    <div class="flex justify-center gap-5">
                         <button type="submit"
-                            class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Update Job</button>
+                            class="w-3/2 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Update Job</button>
+                        <button type="submit"
+                            class="delete-btn w-3/2 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Delete Job</button>
                     </div>
                 </form>
             </div>
@@ -218,6 +220,29 @@
                 }
             });
         });
+         // Delete Yojna with confirmation
+         $(document).on('click', '.delete-btn', function() {
+                let id = getIdFromUrlPath();
+
+                // Confirm deletion
+                if (confirm("Are you sure you want to delete this Job?")) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: `/api/admin/sarkari-job/delete/${id}`,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            console.log('Job deleted successfully:', response);
+                            window.location.href =
+                            "/admin/manage/sarkari-job"; // Redirect to manage page
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error deleting Data:', error);
+                        }
+                    });
+                }
+            });
 
         // Function for taking id from URL
         function getIdFromUrlPath() {

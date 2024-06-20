@@ -116,7 +116,7 @@
             <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}">
 
             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                Proceed To Payment
+                Apply Now
             </button>
         </form>
     </div>

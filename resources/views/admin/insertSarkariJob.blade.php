@@ -12,45 +12,45 @@
                     <div class="mb-4">
                         <label for="name" class="block text-sm font-medium text-gray-700">Job Name</label>
                         <input type="text" id="name" name="name"
-                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required>
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <p id="error-name" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-4">
                         <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
                         <input type="text" id="role" name="role"
-                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required>
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <p id="error-role" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-4">
                         <label for="no_of_post" class="block text-sm font-medium text-gray-700">No Of Post</label>
                         <input type="number" id="no_of_post" name="no_of_post"
-                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required>
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <p id="error-no_of_post" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
                     <div class="mb-4 flex gap-2">
                         <div class="">
                         <input type="number" id="min_age" name="min_age"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block  shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required placeholder="Min Age">
+                             placeholder="Min Age">
                         </div>
                         <div class="">
                         <input type="number" id="max_age" name="max_age" placeholder="Max Age"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required>
+                            >
                     </div>
                     </div>
                     <div class="mb-4">
                         <label for="qualification" class="block text-sm font-medium text-gray-700">Qualification</label>
                         <input type="text" id="qualification" name="qualification"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required>
+                            >
                     </div>
                     <div class="mb-4">
                         <label for="skills" class="block text-sm font-medium text-gray-700">Skills</label>
                         <input type="text" id="skills" name="skills"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required>
+                            >
                     </div>
                     <div class="mb-4 items-center w-1/2">
                         <label for="job_type" class="block text-sm font-medium text-gray-700">Job Type</label>
@@ -115,20 +115,20 @@
                         <label for="fees" class="block text-sm font-medium text-gray-700">Form Fees</label>
                         <input type="number" id="fees" name="fees"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required>
+                            >
                     </div>
                     <div class="mb-4 flex gap-2">
                         <div class="date w-1/2">
                             <label for="min_salary" class="block text-sm font-medium text-gray-700 ">Minimum Salary</label>
                             <input type="number" id="min_salary" name="min_salary"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                required>
+                                >
                         </div>
                         <div class="date w-1/2">
                             <label for="max_salary" class="block text-sm font-medium text-gray-700 ">Maximum Salary</label>
                         <input type="number" id="max_salary" name="max_salary"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required>
+                            >
                         </div>
                     </div>
                     <div class="mb-4 flex gap-2">
@@ -136,20 +136,20 @@
                             <label for="opening_date" class="block text-sm font-medium text-gray-700 ">Opening Dates</label>
                             <input type="date" id="opening_date" name="opening_date"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                required>
+                                >
                         </div>
                         <div class="date w-1/2">
                             <label for="closing_date" class="block text-sm font-medium text-gray-700 ">Closing Dates</label>
                         <input type="date" id="closing_date" name="closing_date"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required>
+                            >
                         </div>
                     </div>
                     <div class="mb-4">
                         <label for="logo" class="block text-sm font-medium text-gray-700">Logo</label>
                         <input type="file" id="logo" name="logo"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300"
-                            required>
+                            >
                     </div>
                     <div class="">
                         <button type="submit"
@@ -161,7 +161,7 @@
     </div>
 </div>
 
-<script>
+{{-- <script>
     $(document).ready(function() {
     $("#insertData").submit(function(e) {
         e.preventDefault();
@@ -180,12 +180,57 @@
                 $("#insertData").trigger("reset");
                 window.open("/admin/manage/sarkari-job", "_self");
             },
-            error: function(xhr, status, error) {
-                swal("Error", xhr.responseText, "error");
-            }
+            error: function(xhr) {
+                        if (xhr.status === 422) {
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                $('#error-' + key).html(value[0]);
+                            });
+                        } else {
+                            alert('An error occurred. Please try again.');
+                        }
+                    }
         });
     });
 });
 
+</script> --}}
+
+<script>
+    $(document).ready(function() {
+        $("#insertData").submit(function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            // Send AJAX request
+            $.ajax({
+                type: "POST",
+                url: "{{ route('sarkari-job.store') }}",
+                data: formData,
+                dataType: "JSON",
+                contentType: false,
+                cache: false,
+                processData: false,
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    swal("Success", response.message, "success");
+                    $("#insertData").trigger("reset");
+                    window.open("/admin/manage/sarkari-job", "_self");
+                },
+                error: function(xhr) {
+                    if (xhr.status === 422) {
+                        var errors = xhr.responseJSON.errors;
+                        $.each(errors, function(key, value) {
+                            $('#error-' + key).html(value[0]);
+                        });
+                    } else {
+                        alert('An error occurred. Please try again.');
+                    }
+                }
+            });
+        });
+    });
 </script>
+
 @endsection

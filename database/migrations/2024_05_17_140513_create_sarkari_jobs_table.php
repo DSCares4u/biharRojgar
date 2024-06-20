@@ -30,6 +30,7 @@ return new class extends Migration
             $table->integer('max_salary');
             $table->string('opening_date');
             $table->string('closing_date');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -180,10 +180,14 @@
                             <option value="0">Not Approved</option>
                         </select>
                     </div>
-                    <div class="mb-3 flex justify-center">
+                    <div class="mb-3 flex justify-center gap-5">
                         <button type="submit"
                             class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
                             Update Now
+                        </button>
+                        <button type="button"
+                            class="delete-btn bg-red-600 hover:bg-red-700 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
+                            Delete Job
                         </button>
                     </div>
                 </form>
@@ -281,6 +285,30 @@
                         console.error('Error updating Plan Details:', error);
                     }
                 });
+            });
+
+            // Delete Yojna with confirmation
+            $(document).on('click', '.delete-btn', function() {
+                let id = getIdFromUrlPath();
+
+                // Confirm deletion
+                if (confirm("Are you sure you want to delete this Job?")) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: `/api/hire-role/delete/${id}`,
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            console.log('Hire deleted successfully:', response);
+                            window.location.href =
+                            "/admin/manage-hire"; // Redirect to manage page
+                        },
+                        error: function(xhr, status, error) {
+                            console.error('Error deleting Data:', error);
+                        }
+                    });
+                }
             });
         });
     </script>

@@ -79,8 +79,21 @@ class HirePaymentController extends Controller
      * @param  \App\Models\hire_payment  $hire_payment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(hire_payment $hire_payment)
+    public function destroy($id)
     {
-        //
+        $data  = HirePayment::find($id);
+        if($data){
+            $data->delete();
+            return response()->json([
+                'status' => 200,
+                'message' => "data Deleted"
+            ], 200);
+        }
+        else{
+            return response()->json([
+                'status' => 500,
+                'message' => "No data Found"
+            ], 500);
+        }       
     }
 }

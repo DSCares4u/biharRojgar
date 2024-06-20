@@ -43,6 +43,7 @@ Route::get('/hire-role',[HireController::class,'roleIndex'])->name('role.index')
 Route::get('/hire-role/view/{id}',[HireController::class,'roleShow']);
 Route::get('/hire/view/{id}',[HireController::class,'show']);
 Route::post('/hire-role/edit/{id}',[HireController::class,'roleUpdate']);
+Route::delete('/hire-role/delete/{id}',[HireController::class,'destroyRole']);
 Route::delete('/hire/delete/{id}',[HireController::class,'destroy']);
 
 Route::post('/hire-plan',[HirePlanController::class,'store'])->name('hire.plan.store');

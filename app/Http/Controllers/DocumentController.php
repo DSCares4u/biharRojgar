@@ -191,4 +191,22 @@ class DocumentController extends Controller
     }
 }
 
+public function destroy($id)
+{
+    $data  = Document::find($id);
+    if($data){
+        $data->delete();
+        return response()->json([
+            'status' => 200,
+            'message' => "data Deleted"
+        ], 200);
+    }
+    else{
+        return response()->json([
+            'status' => 500,
+            'message' => "No data Found"
+        ], 500);
+    }       
+}
+
 }
