@@ -35,6 +35,7 @@ class SarkariJobController extends Controller
             'max_age' => 'required',
             'qualification' => 'required',
             'skills' => 'required',
+            'category' => 'required',
             'fees' => 'required',
             'opening_date' => 'required',
             'closing_date' => 'required',              
@@ -63,6 +64,8 @@ class SarkariJobController extends Controller
                 'closing_date' => $request->closing_date,               
                 'job_type' => $request->job_type,               
                 'location' => $request->location,               
+                'description' => $request->description,               
+                'category' => $request->category,               
                 'min_salary' => $request->min_salary,               
                 'max_salary' => $request->max_salary,               
                 'logo' => $logo,               
@@ -108,6 +111,7 @@ class SarkariJobController extends Controller
         'min_age' => 'required|integer',
         'max_age' => 'required|integer',
         'qualification' => 'required|string|min:3',
+        'category' => 'required|string',
         'skills' => 'required|string|min:3',
         'fees' => 'required|integer',
         'opening_date' => 'required',
@@ -146,6 +150,8 @@ class SarkariJobController extends Controller
                 'r_fees' => $request->r_fees,               
                 'opening_date' => $request->opening_date,               
                 'closing_date' => $request->closing_date, 
+                'category' => $request->category, 
+                'description' => $request->description, 
                 'min_salary' => $request->min_salary, 
                 'max_salary' => $request->max_salary, 
                 'job_type' => $request->job_type,               
@@ -178,4 +184,35 @@ class SarkariJobController extends Controller
             ], 500);
         }       
     }
+
+    public function restore($id)
+    {
+        $job = SarkariJob::onlyTrashed()->findOrFail($id);
+        $job->restore();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Job restored successfully'
+        ]);
+    }
+
+    public function trash()
+    {
+         $jobs = SarkariJob::onlyTrashed()->get();
+         return response()->json([
+             'success' => true,
+             'data' => $jobs
+         ]);
+    }
+
+    public function forceDelete($id)
+    {
+        $job = SarkariJob::onlyTrashed()->findOrFail($id);
+        $job->forceDelete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Job permanently deleted'
+        ]); 
+   }
 }

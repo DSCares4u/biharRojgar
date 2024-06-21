@@ -125,5 +125,17 @@ class AdminController extends Controller
     public function viewPrivateJobForm(){
         return view('admin.viewPrivateJobForm');
     }
+
+    public function manageSarkariJobTrash(){
+        return view('admin.trash.manageSarkariJobTrash');
+    }
+
+    public function manageYojnaCategoryTrash(){
+        return view('admin.trash.manageYojnaCategoryTrash');
+    }
+
+    public function manageYojnaTrash(){
+        return view('admin.trash.manageYojnaTrash');
+    }
     
 }

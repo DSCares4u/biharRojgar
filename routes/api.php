@@ -96,12 +96,20 @@ Route::get('/yojna',[YojnaController::class,'index'])->name('yojna.index');
 Route::get('/yojna/view/{id}',[YojnaController::class,'show']);
 Route::post('/yojna/edit/{id}',[YojnaController::class,'update']);
 Route::delete('/yojna/delete/{id}',[YojnaController::class,'destroy']);
+Route::get('/yojna/trash',[YojnaController::class,'trash']);
+Route::delete('/yojna/forceDelete/{id}',[YojnaController::class,'forceDelete']);
+Route::patch('/yojna/restore/{id}',[YojnaController::class,'restore']);
+
 
 Route::post('/admin/yojna/category',[YojnaCategoryController::class,'store'])->name('yojna.category.store');
 Route::get('/admin/yojna/category',[YojnaCategoryController::class,'index'])->name('yojna.category.index');
 Route::get('/admin/yojna/category/view/{id}',[YojnaCategoryController::class,'show']);
 Route::put('/admin/yojna/category/edit/{id}',[YojnaCategoryController::class,'update']);
 Route::delete('/admin/yojna/category/delete/{id}',[YojnaCategoryController::class,'destroy']);
+Route::get('/admin/yojna/category/trash',[YojnaCategoryController::class,'trash']);
+Route::delete('/admin/yojna/category/forceDelete/{id}',[YojnaCategoryController::class,'forceDelete']);
+Route::patch('/admin/yojna/category/restore/{id}',[YojnaCategoryController::class,'restore']);
+
 
 Route::post('/admin/manage/yojna-form',[YojnaFormController::class,'store'])->name('yojna.form.store');
 Route::get('/admin/manage/yojna-form',[YojnaFormController::class,'index'])->name('yojna.form.index');
@@ -114,3 +122,6 @@ Route::get('/admin/sarkari-job',[SarkariJobController::class,'index'])->name('sa
 Route::get('/admin/sarkari-job/view/{id}',[SarkariJobController::class,'show']);
 Route::post('/admin/sarkari-job/edit/{id}',[SarkariJobController::class,'update']);
 Route::delete('/admin/sarkari-job/delete/{id}',[SarkariJobController::class,'destroy']);
+Route::get('/admin/sarkari-job/trash',[SarkariJobController::class,'trash']);
+Route::delete('/admin/sarkari-job/forceDelete/{id}',[SarkariJobController::class,'forceDelete']);
+Route::patch('/admin/sarkari-job/restore/{id}',[SarkariJobController::class,'restore']);

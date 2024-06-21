@@ -122,4 +122,35 @@ class YojnaCategoryController extends Controller
             ], 500);
         }       
     }
+
+    public function restore($id)
+    {
+        $data = YojnaCategory::onlyTrashed()->findOrFail($id);
+        $data->restore();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data restored successfully'
+        ]);
+    }
+
+    public function trash()
+    {
+         $data = YojnaCategory::onlyTrashed()->get();
+         return response()->json([
+             'success' => true,
+             'data' => $data
+         ]);
+    }
+
+    public function forceDelete($id)
+    {
+        $data = YojnaCategory::onlyTrashed()->findOrFail($id);
+        $data->forceDelete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data permanently deleted'
+        ]); 
+   }
 }

@@ -45,18 +45,36 @@
                             <input type="text" id="skills" name="skills"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                         </div>
-                        <div class="mb-4 items-center w-1/2">
-                            <label for="job_type" class="block text-sm font-medium text-gray-700">Job Type</label>
-                            <select name="job_type"
-                                class=" sm:text-sm py-2 px-2 items-center border border-gray-300 rounded mt-1"
-                                id="job_type">
-                                <option value="" class=" border text-center w-full">Select
-                                </option>
-                                <option value="Central" class="border w-full text-sm">Central Government</option>
-                                <option value="State" class="border w-full text-sm">State Government</option>
-                                <option value="District" class="border w-full text-sm">District Government</option>
-                                <option value="Local" class="border w-full text-sm">Local Government</option>
-                            </select>
+                        <div class="flex gap-5">
+                            <div class="mb-4 items-center">
+                                <label for="job_type" class="block text-sm font-medium text-gray-700">Job Type</label>
+                                <select name="job_type"
+                                    class=" sm:text-sm py-2 px-2 items-center border border-gray-300 rounded mt-1"
+                                    id="job_type">
+                                    <option value="" class=" border text-center w-full">Select
+                                    </option>
+                                    <option value="Central" class="border w-full text-sm">Central Government</option>
+                                    <option value="State" class="border w-full text-sm">State Government</option>
+                                    <option value="District" class="border w-full text-sm">District Government</option>
+                                    <option value="Local" class="border w-full text-sm">Local Government</option>
+                                </select>
+                            </div>
+                            <div class="mb-4 items-center w-1/2">
+                                <label for="category"
+                                    class="block text-sm font-medium text-gray-700">Category </label>
+                                <select name="category"
+                                    class=" sm:text-sm py-2 px-2 items-center border border-gray-300 rounded mt-1"
+                                    id="category">
+                                    <option value="" class=" border text-center w-full">Select
+                                    </option>
+                                    <option value="all categories" class="border w-full text-sm">All Categories</option>
+                                    <option value="General" class="border w-full text-sm">General</option>
+                                    <option value="Sc / St" class="border w-full text-sm">Sc / St</option>
+                                    <option value="OBC" class="border w-full text-sm">OBC</option>
+                                    <option value="General & Obc" class="border w-full text-sm">General & Obc</option>
+                                    <option value="OBC & SC & ST" class="border w-full text-sm">OBC & SC & ST</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="mb-3  items-center w-1/2">
                             <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
@@ -144,6 +162,11 @@
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                             </div>
                         </div>
+                        <div class="mb-3 items-center">
+                            <label for="description" class="block text-gray-700 text-sm mb-2">Job Description</label>
+                            <textarea name="description" id="description" cols="20" rows="2"
+                                placeholder="Type Or Details Of Job Here" class="shadow appearance-none border py-1 px-2 w-full" disabled></textarea>
+                        </div>
                         <div class="mb-4">
                             <img id="logo-preview" src="" alt="Logo Preview" class="mt-2"
                                 style="max-width: 100px;">
@@ -188,6 +211,8 @@
                         $('#location').val(response.data.location);
                         $('#job_type').val(response.data.job_type);
                         $('#qualification').val(response.data.qualification);
+                        $('#description').val(response.data.description);
+                        $('#category').val(response.data.category);
                         $('#skills').val(response.data.skills);
                         $('#fees').val(response.data.fees);
                         $('#r_fees').val(response.data.r_fees);
