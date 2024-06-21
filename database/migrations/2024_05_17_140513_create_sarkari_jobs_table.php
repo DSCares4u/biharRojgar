@@ -23,7 +23,8 @@ return new class extends Migration
             $table->string('qualification');
             $table->string('skills');
             $table->integer('fees');
-            $table->string('logo');
+            $table->integer('r_fees')->nullable();
+            $table->string('logo')->nullable();
             $table->string('job_type');
             $table->string('location');
             $table->integer('min_salary');

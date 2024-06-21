@@ -38,6 +38,10 @@ class AdminController extends Controller
         return view('admin.editHire');
     }
 
+    public function manageHireCompany(){
+        return view('admin.manageHireCompany');
+    }
+
     public function insertHirePlan(){
         return view('admin.insertHirePlan');
     }

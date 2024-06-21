@@ -111,11 +111,19 @@
                         </select>
                         <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
-                    <div class="mb-4">
+                    <div class="flex gap-5">
+                    <div class="mb-4 w-1/2">
                         <label for="fees" class="block text-sm font-medium text-gray-700">Form Fees</label>
                         <input type="number" id="fees" name="fees"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                             >
+                    </div>
+                    <div class="mb-4 w-1/2">
+                        <label for="r_fees" class="block text-sm font-medium text-gray-700">SC/ST Form Fees</label>
+                        <input type="number" id="r_fees" name="r_fees"
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            >
+                    </div>
                     </div>
                     <div class="mb-4 flex gap-2">
                         <div class="date w-1/2">
@@ -160,41 +168,6 @@
         </div>
     </div>
 </div>
-
-{{-- <script>
-    $(document).ready(function() {
-    $("#insertData").submit(function(e) {
-        e.preventDefault();
-        var formData = new FormData(this);
-        // Send AJAX request
-        $.ajax({
-            type: "POST",
-            url: "{{ route('sarkari-job.store') }}",
-            data: formData,
-            dataType: "JSON",
-            contentType: false,
-            cache: false,
-            processData: false,
-            success: function(response) {
-                swal("Success", response.message, "success");
-                $("#insertData").trigger("reset");
-                window.open("/admin/manage/sarkari-job", "_self");
-            },
-            error: function(xhr) {
-                        if (xhr.status === 422) {
-                            var errors = xhr.responseJSON.errors;
-                            $.each(errors, function(key, value) {
-                                $('#error-' + key).html(value[0]);
-                            });
-                        } else {
-                            alert('An error occurred. Please try again.');
-                        }
-                    }
-        });
-    });
-});
-
-</script> --}}
 
 <script>
     $(document).ready(function() {

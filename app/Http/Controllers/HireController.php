@@ -82,6 +82,9 @@ class HireController extends Controller
         $logo = time() . "." . $request->logo->extension();
         $request->logo->move(public_path("image/company/logo"), $logo);
     }
+    else{
+        $logo = NULL;
+    }
 
     $hire = Hire::create([
         'date_of_start' => $request->date_of_start,
@@ -164,86 +167,61 @@ public function roleShow($id)
         }
     }
         
-    // public function hireUpdate(Request $request, int $id)
-    // {
-    //     $validator = Validator::make($request->all(), [
-    //         'date_of_start' => 'required',
-    //         'city' => 'required|string',
-    //         'state' => 'required|string',
-    //         'description' => 'required|string',
-    //         'company_name' => 'required|string',
-    //         'website' => 'required|url',
-    //         'mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
-    //         'alt_mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
-    //         'email' => 'required|string|email',
-    //         'plan_id' => 'required|integer',
-    //         'logo' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-    //         'profile' => 'required|string',
-    //         'title' => 'required|string',
-    //         'no_of_post' => 'required|integer|min:1',
-    //         'min_experience' => 'required|integer|min:0',
-    //         'max_experience' => 'required|integer|min:0',
-    //         'gender' => 'required|string',
-    //         'preferred_lang' => 'required|string',
-    //         'type' => 'required|string',
-    //         'qualification' => 'required|string',
-    //         'min_salary' => 'required|integer|min:0',
-    //         'max_salary' => 'required|integer|min:0',
-    //     ]);
+    public function hireUpdate(Request $request, int $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'description' => 'required|string',
+            'company_name' => 'required|string',
+            'mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
+            'plan_id' => 'required',
+        ]);
     
-    //     if ($validator->fails()) {
-    //         return response()->json([
-    //             'status' => 422,
-    //             'errors' => $validator->messages()
-    //         ], 422);
-    //     }
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 422,
+                'errors' => $validator->messages()
+            ], 422);
+        }
     
-    //     $hire = Role::find($id);
-    //     if (!$hire) {
-    //         return response()->json([
-    //             'status' => 404,
-    //             'message' => 'No Hire Found'
-    //         ], 404);
-    //     }
+        $hire = Hire::find($id);
+        if (!$hire) {
+            return response()->json([
+                'status' => 404,
+                'message' => 'No Hire Found'
+            ], 404);
+        }
     
-    //     if ($request->hasFile('logo')) {
-    //         $logo = time() . "." . $request->logo->extension();
-    //         $request->logo->move(public_path("image/company/logo"), $logo);
-    //         $hire->logo = $logo;
-    //     }
+        if ($request->hasFile('logo')) {
+            $logo = time() . "." . $request->logo->extension();
+            $request->logo->move(public_path("image/company/logo"), $logo);
+        }
+        else{
+            $logo = NULL;
+        }
+        
+        $hire->update([
+            'city' => $request->city,
+            'state' => $request->state,
+            'description' => $request->description,
+            'company_name' => $request->company_name,
+            'website' => $request->website,
+            'mobile' => $request->mobile,
+            'alt_mobile' => $request->alt_mobile,
+            'email' => $request->email,
+            'payment_mode' => $request->payment_mode,
+            'hire_plan_id' => $request->plan_id,
+            'logo' => $logo,
+        ]);
     
-    //     $hire->update([
-    //         'date_of_start' => $request->date_of_start,
-    //         'city' => $request->city,
-    //         'state' => $request->state,
-    //         'description' => $request->description,
-    //         'company_name' => $request->company_name,
-    //         'website' => $request->website,
-    //         'mobile' => $request->mobile,
-    //         'alt_mobile' => $request->alt_mobile,
-    //         'email' => $request->email,
-    //         'payment_mode' => $request->payment_mode,
-    //         'hire_plan_id' => $request->plan_id,
-    //     ]);
-    //     $hire->roles()->update([
-    //         'profile' => $input['profile'],
-    //         'title' => $input['title'],
-    //         'no_of_post' => $input['no_of_post'],
-    //         'min_experience' => $input['min_experience'],
-    //         'max_experience' => $input['max_experience'],
-    //         'gender' => $input['gender'],
-    //         'preferred_lang' => $input['preferred_lang'],
-    //         'type' => $input['type'],
-    //         'qualification' => $input['qualification'],
-    //         'min_salary' => $input['min_salary'],
-    //         'max_salary' => $input['max_salary']
-    //     ]);
-    
-    //     return response()->json([
-    //         'status' => 200,
-    //         'message' => 'Hiring Updated Successfully'
-    //     ], 200);
-    // }
+        return response()->json([
+            'status' => 200,
+            'message' => 'Hiring Company Updated Successfully'
+        ], 200);
+    }
+
+
     public function roleUpdate(Request $request, int $id)
 {
     $validator = Validator::make($request->all(), [

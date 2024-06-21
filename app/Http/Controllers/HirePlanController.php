@@ -84,7 +84,9 @@ class HirePlanController extends Controller
     public function update(Request $request, int $id)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|min:3',
+            'name' => 'required|string',
+            'features' => 'required|string|min:3',
+            'price' => 'required|string',   
             
         ]);
 
@@ -98,17 +100,18 @@ class HirePlanController extends Controller
             if ($hirePlan) {
                 $hirePlan->update([
                     'name' => $request->name,
-                    
+                    'features' => $request->features,
+                    'price' => $request->price,                      
                 ]);
 
                 return response()->json([
                     'status' => 200,
-                    'message' => "Hiring Updated Successfully"
+                    'message' => "Hiring Plan Updated Successfully"
                 ], 200);
             } else {
                 return response()->json([
                     'status' => 500,
-                    'message' => "No Hire Found"
+                    'message' => "No Plan Found"
                 ], 500);
             }
         }

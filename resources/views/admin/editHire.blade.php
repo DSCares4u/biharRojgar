@@ -182,11 +182,11 @@
                     </div>
                     <div class="mb-3 flex justify-center gap-5">
                         <button type="submit"
-                            class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
+                            class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-white">
                             Update Now
                         </button>
                         <button type="button"
-                            class="delete-btn bg-red-600 hover:bg-red-700 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-black">
+                            class="delete-btn bg-red-600 hover:bg-red-700 float-left font-semibold py-3 w-1/4 rounded focus:outline-none focus:shadow-outline text-white">
                             Delete Job
                         </button>
                     </div>

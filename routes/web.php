@@ -83,6 +83,7 @@ Route::get('/admin/manage-hire/edit/{id}',[AdminController::class,'editHire']);
 Route::get('/admin/manage-hire/insert',[AdminController::class,'insertHire']);
 Route::get('/admin/manage-hire/plan',[AdminController::class,'manageHirePlan']);
 Route::get('/admin/manage-hire/plan/insert',[AdminController::class,'insertHirePlan']);
+Route::get('/admin/manage-hire-company',[AdminController::class,'manageHireCompany']);
 
 Route::get('/admin/manage-yojna',[AdminController::class,'manageYojna']);
 Route::get('/admin/manage-yojna/insert',[AdminController::class,'insertYojna']);

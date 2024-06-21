@@ -39,6 +39,8 @@ Route::delete('/register/delete/{id}',[UserController::class,'destroy']);
 
 Route::post('/hire',[HireController::class,'store'])->name('hire.store');
 Route::get('/hire',[HireController::class,'index'])->name('hire.index');
+Route::get('/hire/view/{id}',[HireController::class,'show']);
+Route::post('/hire/edit/{id}',[HireController::class,'hireUpdate']);
 Route::get('/hire-role',[HireController::class,'roleIndex'])->name('role.index');
 Route::get('/hire-role/view/{id}',[HireController::class,'roleShow']);
 Route::get('/hire/view/{id}',[HireController::class,'show']);
