@@ -124,7 +124,7 @@ class HirePlanController extends Controller
             $hirePlan->delete();
             return response()->json([
                 'status' => 200,
-                'message' => "Hire Deleted"
+                'message' => "Hire Plan Deleted"
             ], 200);
         }
         else{
@@ -134,4 +134,35 @@ class HirePlanController extends Controller
             ], 500);
         }       
     }
+
+    public function restore($id)
+    {
+        $data = HirePlan::onlyTrashed()->findOrFail($id);
+        $data->restore();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data restored successfully'
+        ]);
+    }
+
+    public function trash()
+    {
+         $data = HirePlan::onlyTrashed()->get();
+         return response()->json([
+             'success' => true,
+             'data' => $data
+         ]);
+    }
+
+    public function forceDelete($id)
+    {
+        $data = HirePlan::onlyTrashed()->findOrFail($id);
+        $data->forceDelete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Data permanently deleted'
+        ]); 
+   }
 }

@@ -141,5 +141,17 @@ class AdminController extends Controller
     public function manageYojnaTrash(){
         return view('admin.trash.manageYojnaTrash');
     }
+
+    public function manageRoleTrash(){
+        return view('admin.trash.manageRoleTrash');
+    }
+
+    public function manageHireTrash(){
+        return view('admin.trash.manageHireTrash');
+    }
+    
+    public function manageHirePlanTrash(){
+        return view('admin.trash.manageHirePlanTrash');
+    }
     
 }

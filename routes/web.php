@@ -115,5 +115,8 @@ Route::get('/admin/manage/trash/sarkari-job',[AdminController::class,'manageSark
 Route::get('/admin/manage/trash/yojna-category',[AdminController::class,'manageYojnaCategoryTrash']);
 Route::get('/admin/manage/trash/yojna',[AdminController::class,'manageYojnaTrash']);
 Route::get('/admin/manage/trash/candidate',[AdminController::class,'manageCandidateTrash']);
+Route::get('/admin/manage/trash/role',[AdminController::class,'manageRoleTrash']);
+Route::get('/admin/manage/trash/hire',[AdminController::class,'manageHireTrash']);
+Route::get('/admin/manage/trash/hire-plan',[AdminController::class,'manageHirePlanTrash']);
 
 

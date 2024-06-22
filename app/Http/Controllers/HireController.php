@@ -275,23 +275,48 @@ public function roleShow($id)
 }
 
 
-    public function destroy($id)
-    {
-        $hire  = Hire::find($id);
-        if($hire){
-            $hire->delete();
+    // public function destroy($id)
+    // {
+    //     $hire  = Hire::find($id);
+    //     if($hire){
+    //         $hire->delete();
+    //         return response()->json([
+    //             'status' => 200,
+    //             'message' => "Hire Deleted"
+    //         ], 200);
+    //     }
+    //     else{
+    //         return response()->json([
+    //             'status' => 500,
+    //             'message' => "No Hire Found"
+    //         ], 500);
+    //     }       
+    // }
+
+    public function destroy($id){
+        $hire = Hire::find($id);
+
+        if ($hire) {
+            $roleId = $hire->role_id;
+
+            dd($roleId);
+                $hire->delete();
+                if ($roleId) {
+                Role::destroy($roleId);
+            }
+    
             return response()->json([
                 'status' => 200,
-                'message' => "Hire Deleted"
+                'message' => "Hire and associated Role Deleted"
             ], 200);
-        }
-        else{
+        } else {
             return response()->json([
                 'status' => 500,
                 'message' => "No Hire Found"
             ], 500);
-        }       
+        }
     }
+
 
     public function destroyRole($id)
     {
@@ -300,7 +325,7 @@ public function roleShow($id)
             $hire->delete();
             return response()->json([
                 'status' => 200,
-                'message' => "ROle Deleted"
+                'message' => "Role Deleted"
             ], 200);
         }
         else{
@@ -310,4 +335,66 @@ public function roleShow($id)
             ], 500);
         }       
     }
+
+    public function roleRestore($id)
+    {
+        $data = Role::onlyTrashed()->findOrFail($id);
+        $data->restore();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Role restored successfully'
+        ]);
+    }
+
+    public function roleTrash()
+    {
+         $data = Role::onlyTrashed()->get();
+         return response()->json([
+             'success' => true,
+             'data' => $data
+         ]);
+    }
+
+    public function roleForceDelete($id)
+    {
+        $data = Role::onlyTrashed()->findOrFail($id);
+        $data->forceDelete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Role permanently deleted'
+        ]); 
+   }
+
+    public function restore($id)
+    {
+        $data = Hire::onlyTrashed()->findOrFail($id);
+        $data->restore();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Hire Company restored successfully'
+        ]);
+    }
+
+    public function trash()
+    {
+         $data = Hire::onlyTrashed()->get();
+         return response()->json([
+             'success' => true,
+             'data' => $data
+         ]);
+    }
+
+    public function forceDelete($id)
+    {
+        $data = Hire::onlyTrashed()->findOrFail($id);
+        $data->forceDelete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Hire Company permanently deleted'
+        ]); 
+   }
 }

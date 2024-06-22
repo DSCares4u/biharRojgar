@@ -5,6 +5,9 @@
     <a href="/admin/manage/trash/yojna"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Yojna Trash</button></a>
     <a href="/admin/manage/trash/yojna-category"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Yojna Category Trash</button></a>
     <a href="/admin/manage/trash/candidate"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Candidate Trash</button></a>
+    <a href="/admin/manage/trash/role"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Private Job Trash</button></a>
+    <a href="/admin/manage/trash/hire"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Hire Company Trash</button></a>
+    <a href="/admin/manage/trash/hire-plan"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Hire Plan Trash</button></a>
 </div>
 
     <div class="overflow-x-auto">

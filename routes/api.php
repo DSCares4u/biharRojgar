@@ -41,18 +41,28 @@ Route::post('/hire',[HireController::class,'store'])->name('hire.store');
 Route::get('/hire',[HireController::class,'index'])->name('hire.index');
 Route::get('/hire/view/{id}',[HireController::class,'show']);
 Route::post('/hire/edit/{id}',[HireController::class,'hireUpdate']);
+Route::delete('/hire/delete/{id}',[HireController::class,'destroy']);
+Route::get('/hire/trash',[HireController::class,'trash']);
+Route::delete('/hire/forceDelete/{id}',[HireController::class,'forceDelete']);
+Route::patch('/hire/restore/{id}',[HireController::class,'restore']);
+
 Route::get('/hire-role',[HireController::class,'roleIndex'])->name('role.index');
 Route::get('/hire-role/view/{id}',[HireController::class,'roleShow']);
-Route::get('/hire/view/{id}',[HireController::class,'show']);
 Route::post('/hire-role/edit/{id}',[HireController::class,'roleUpdate']);
 Route::delete('/hire-role/delete/{id}',[HireController::class,'destroyRole']);
-Route::delete('/hire/delete/{id}',[HireController::class,'destroy']);
+Route::get('/hire-role/trash',[HireController::class,'roleTrash']);
+Route::delete('/hire-role/forceDelete/{id}',[HireController::class,'roleForceDelete']);
+Route::patch('/hire-role/restore/{id}',[HireController::class,'roleRestore']);
 
 Route::post('/hire-plan',[HirePlanController::class,'store'])->name('hire.plan.store');
 Route::get('/hire-plan',[HirePlanController::class,'index'])->name('hire.plan.index');
 Route::get('/hire-plan/view/{id}',[HirePlanController::class,'show']);
 Route::put('/hire-plan/edit/{id}',[HirePlanController::class,'update']);
 Route::delete('/hire-plan/delete/{id}',[HirePlanController::class,'destroy']);
+Route::get('/hire-plan/trash',[HirePlanController::class,'trash']);
+Route::delete('/hire-plan/forceDelete/{id}',[HirePlanController::class,'forceDelete']);
+Route::patch('/hire-plan/restore/{id}',[HirePlanController::class,'restore']);
+
 
 Route::post('/manual-job',[JobController::class,'manualStore'])->name('manual.job.store');
 Route::get('/manual-job',[JobController::class,'manualJobIndex'])->name('manual.job.index');
