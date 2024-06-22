@@ -76,8 +76,13 @@ Route::post('/candidate',[CandidateController::class,'store'])->name('candidate.
 Route::get('/candidate',[CandidateController::class,'index'])->name('candidate.index');
 Route::get('/candidate/view/{id}',[CandidateController::class,'show']);
 Route::put('/candidate/edit/{id}',[CandidateController::class,'update']);
+Route::get('/show-all/view/{id}',[CandidateController::class,'showAll']);
 Route::post('/update-all/edit/{id}',[CandidateController::class,'updateAll']);
-Route::delete('/candidate/delete/{id}',[CandidateController::class,'destroy']);
+Route::delete('/candidate/delete/{id}',[CandidateController::class,'destroyAll']);
+Route::get('/candidate/trash',[CandidateController::class,'trashAll']);
+Route::delete('/candidate/forceDelete/{id}',[CandidateController::class,'forceDeleteAll']);
+Route::patch('/candidate/restore/{id}',[CandidateController::class,'restoreAll']);
+
 
 Route::post('/address',[AddressController::class,'store'])->name('address.store');
 Route::get('/address',[AddressController::class,'index'])->name('address.index');

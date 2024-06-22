@@ -19,4 +19,10 @@ class Address extends Model
     {
         return $this->HasOne(User::class, 'id', 'user_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

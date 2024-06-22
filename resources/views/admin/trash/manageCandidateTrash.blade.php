@@ -1,6 +1,6 @@
 @extends('admin.adminBase')
 @section('content')
-<div class="flex-1 flex gap-3  items-center  mt-20 mb-5">
+<div class="flex-1 flex gap-3  items-center mt-12 mb-5">
     <a href="/admin/manage/trash/sarkari-job"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Sarkari Job Trash</button></a>
     <a href="/admin/manage/trash/yojna"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Yojna Trash</button></a>
     <a href="/admin/manage/trash/yojna-category"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Yojna Category Trash</button></a>
@@ -9,13 +9,14 @@
 
     <div class="overflow-x-auto">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <h1 class="mb-2">Sarkari Job Trash</h1>
+            <h1 class="mb-2">Candidate Trash</h1>
             <table class="min-w-full bg-white border border-gray-200">
                 <thead class="bg-gray-100">
                     <tr>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm">Id</th>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm">Name</th>
-                        <th class="border-b border-gray-200 px-3 py-2 text-sm">Role</th>
+                        <th class="border-b border-gray-200 px-3 py-2 text-sm">Mobile</th>
+                        <th class="border-b border-gray-200 px-3 py-2 text-sm">Address</th>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm">Action</th>
 
                     </tr>
@@ -35,14 +36,14 @@
     <script>
         $(document).ready(function() {
             // Function to fetch and display appointment
-            let callingSarkariJobs = () => {
+            let callingData = () => {
                 $.ajax({
                     type: "GET",
-                    url: "/api/admin/sarkari-job/trash",
+                    url: "/api/candidate/trash",
                     success: function(response) {
                         let table = $("#callingData");
                         table.empty();
-                        let data = response.data;
+                        let data = response.candidates;
 
                         // Update appointment count
                         data.forEach((data) => {
@@ -50,7 +51,8 @@
                                 <tr class="mt-5">
                                     <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.id}</td> 
                                     <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.name}</td>
-                                    <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.role}</td>
+                                    <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.mobile}</td>
+                                    <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.landmark},${data.state}</td>
                                         <td class="border-b border-gray-200 px-3  flex gap-2 justify-center py-2 text-sm">
                                             <button class="py-2 px-4 rounded-lg text-white restore-btn bg-green-500" data-id="${data.id}">Restore</button>
                                             <button class="py-2 px-4 rounded-lg text-white force-delete-btn bg-red-500" data-id="${data.id}">Delete</button>
@@ -71,10 +73,10 @@
                 let id = $(this).data('id');
                     $.ajax({
                     type: "PATCH",
-                    url: `/api/admin/sarkari-job/restore/${id}`,
+                    url: `/api/candidate/restore/${id}`,
                     success: function(response) {
                         alert(response.message);
-                        callingSarkariJobs();
+                        callingData();
                     },
                     error: function(xhr, status, error) {
                         console.error('Error:', error);
@@ -91,13 +93,13 @@
                 if (confirm("Are you sure you want to Permanently delete this Data?")) {
                     $.ajax({
                         type: 'DELETE',
-                        url: `/api/admin/sarkari-job/forceDelete/${id}`,
+                        url: `/api/candidate/forceDelete/${id}`,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         success: function(response) {
                             swal("success", response.message, "message");
-                            callingSarkariJobs();
+                            callingData();
                         },
                         error: function(xhr, status, error) {
                             console.error('Error deleting Data:', error);
@@ -105,7 +107,7 @@
                     });
                 }
             });
-            callingSarkariJobs();
+            callingData();
         });
     </script>
 @endsection

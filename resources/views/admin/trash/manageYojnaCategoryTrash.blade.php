@@ -1,17 +1,14 @@
 @extends('admin.adminBase')
 @section('content')
     <div class="flex-1 flex gap-3  items-center  mt-20 mb-5">
-        <button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500"><a
-                href="/admin/manage/trash/sarkari-job">Sarkari Job Trash</a></button>
-        <button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500"><a
-                href="/admin/manage/trash/yojna">Yojna Trash</a></button>
-        <button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500"><a
-                href="/admin/manage/trash/yojna-category">Yojna Category Trash</a></button>
-        <button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500"><a
-                href="/admin/manage/trash/sarkari-job">Private Job Trash</a></button>
+        <a href="/admin/manage/trash/sarkari-job"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Sarkari Job Trash</button></a>
+        <a href="/admin/manage/trash/yojna"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Yojna Trash</button></a>
+        <a href="/admin/manage/trash/yojna-category"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Yojna Category Trash</button></a>
+        <a href="/admin/manage/trash/candidate"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Candidate Trash</button></a>
     </div>
     <div class="overflow-x-auto">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <h1 class="mb-2">Yojna Category Trash</h1>
             <table class="min-w-full bg-white border border-gray-200">
                 <thead class="bg-gray-100">
                     <tr>

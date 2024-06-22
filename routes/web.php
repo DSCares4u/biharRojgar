@@ -114,5 +114,6 @@ Route::get('/admin/manage/private-job-form/{id}',[AdminController::class,'viewPr
 Route::get('/admin/manage/trash/sarkari-job',[AdminController::class,'manageSarkariJobTrash']);
 Route::get('/admin/manage/trash/yojna-category',[AdminController::class,'manageYojnaCategoryTrash']);
 Route::get('/admin/manage/trash/yojna',[AdminController::class,'manageYojnaTrash']);
+Route::get('/admin/manage/trash/candidate',[AdminController::class,'manageCandidateTrash']);
 
 

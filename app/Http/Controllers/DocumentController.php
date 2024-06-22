@@ -105,25 +105,25 @@ class DocumentController extends Controller
 //     }
 // }
 
-    
-    public function show($id)
+
+    public function show($user_id)
     {
-        $job = Document::find($id);
-        if($job){
+        $data = Document::with('user')->where('user_id', $user_id)->first();
+        
+        if ($data) {
             return response()->json([
                 'status' => 200,
-                'data' => $job
+                'data' => $data
             ], 200);
-        }
-        else{
+        } else {
             return response()->json([
                 'status' => 404,
-                'message' => "No Document Found"
+                'message' => "No data found"
             ], 404);
         }
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $user_id)
 {        
     // Validate the request data
     $validator = Validator::make($request->all(), [
@@ -146,13 +146,12 @@ class DocumentController extends Controller
     $randomNumber = mt_rand(1000, 9999);
 
     // Find the document to update or create a new one
-    $job = Document::find($id);
+    $job = Document::with('user')->where('user_id', $user_id)->first();
 
     // Handle file uploads and update/create job
     try {
         $data = [
             'id_proof_type' => $request->id_proof_type,
-            'user_id' => $request->user_id,
         ];
 
         $fields = ['photo', 'signature', 'id_proof', 'quali_certificate', 'other_certificate'];

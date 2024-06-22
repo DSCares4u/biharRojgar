@@ -26,6 +26,10 @@ class AdminController extends Controller
         return view('admin.editCandidate');
     }
 
+    public function manageCandidateTrash(){
+        return view('admin.trash.manageCandidateTrash');
+    }
+
     public function manageHire(){
         return view('admin.manageHire');
     }

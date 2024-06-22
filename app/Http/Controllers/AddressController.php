@@ -66,9 +66,9 @@ class AddressController extends Controller
     //     }
     // }
 
-    public function show($id)
+    public function show($user_id)
     {
-        $address = Address::find($id);
+        $address = Address::with('user')->where('user_id', $user_id)->first();
         if($address){
             return response()->json([
                 'status' => 200,
@@ -83,7 +83,7 @@ class AddressController extends Controller
         }
     }
 
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $user_id)
     {
         $validator = Validator::make($request->all(), [
             'qualification' => 'required|string|min:3',
@@ -100,9 +100,9 @@ class AddressController extends Controller
                 'error' => $validator->messages()
             ], 422);
         } else {
-            if($id){
+            if($user_id){
             // Check if job exists
-            $address = Address::find($id);
+            $address = Address::with('user')->where('user_id', $user_id)->first();
             if ($address) {
                 // Update existing job
                 $address->update([
@@ -112,7 +112,6 @@ class AddressController extends Controller
                     'passing_year' => $request->passing_year,
                     'experience' => $request->experience,
                     'skills' => $request->skills,
-                    'user_id' => $request->user_id,
                 ]);
 
                 return response()->json([
