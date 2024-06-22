@@ -321,7 +321,7 @@
         </div>
     </div>
     <script>
-        $(document).ready(function() {           
+        $(document).ready(function() {
             function fetchCandidateDetailsAndOpenModal() {
                 let userId = getIdFromUrlPath();
                 $.ajax({
@@ -350,12 +350,19 @@
                         $('#state').val(response.data.candidate.state);
                         $('#city').val(response.data.candidate.city);
                         $('#id_mark').val(response.data.candidate.id_mark);
-                        $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data.document.photo);
-                        $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data.document.signature);
+                        $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data
+                            .document.photo);
+                        $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data
+                            .document.signature);
                         $('#id_proof_type').val(response.data.document.id_proof_type);
-                        $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data.document.id_proof);
-                        $('#qualiCertificatePreview').attr('src','/image/candidate/quali_certificate/' + response.data.document.quali_certificate);
-                        $('#otherCertificatePreview').attr('src','/image/candidate/other_certificate/' + response.data.document.other_certificate);
+                        $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data
+                            .document.id_proof);
+                        $('#qualiCertificatePreview').attr('src',
+                            '/image/candidate/quali_certificate/' + response.data.document
+                            .quali_certificate);
+                        $('#otherCertificatePreview').attr('src',
+                            '/image/candidate/other_certificate/' + response.data.document
+                            .other_certificate);
                         $('#qualification').val(response.data.address.qualification);
                         $('#q_state').val(response.data.address.q_state);
                         $('#board').val(response.data.address.board);
@@ -445,6 +452,7 @@
                     .catch(error => console.error('Error:', error));
             }
 
+
             function getIdFromUrlPath() {
                 let pathArray = window.location.pathname.split('/');
                 return pathArray[pathArray.length - 1];
@@ -475,5 +483,7 @@
                 }
             });
         });
+
+
     </script>
 @endsection

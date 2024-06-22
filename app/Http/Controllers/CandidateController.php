@@ -371,13 +371,17 @@ class CandidateController extends Controller
 
     public function destroyAll($user_id){
 
+    $user = User::where('id',$user_id)->first();
     $candidate = Candidate::where('user_id', $user_id)->first();
     $document = Document::where('user_id', $user_id)->first();
     $address = Address::where('user_id', $user_id)->first();
 
     // Check if any of the data exists
-    if ($candidate || $document || $address) {
+    if ($user || $candidate || $document || $address) {
         // Delete the candidate data if it exists
+        if ($user) {
+            $user->delete();
+        }
         if ($candidate) {
             $candidate->delete();
         }
@@ -407,25 +411,53 @@ class CandidateController extends Controller
 }
 
 
-    public function restoreAll($id)
+public function restoreAll($user_id)
 {
-    $candidate = Candidate::onlyTrashed()->findOrFail($id);
-    $address = Address::onlyTrashed()->findOrFail($id);
-    $document = Document::onlyTrashed()->findOrFail($id);
+    $user = User::withTrashed()->where('id', $user_id)->first();
+    $candidate = Candidate::withTrashed()->where('user_id', $user_id)->first();
+    $document = Document::withTrashed()->where('user_id', $user_id)->first();
+    $address = Address::withTrashed()->where('user_id', $user_id)->first();
 
-    $candidate->restore();
-    $address->restore();
-    $document->restore();
+    // Check if any of the data exists
+    if ($user || $candidate || $document || $address) {
+        // Restore the candidate data if it exists
+        if ($user) {
+            $candidate->restore();
+        }
 
-    return response()->json([
-        'success' => true,
-        'message' => 'Data restored successfully'
-    ]);
+        if ($candidate) {
+            $candidate->restore();
+        }
+
+        // Restore the document data if it exists
+        if ($document) {
+            $document->restore();
+        }
+
+        // Restore the address data if it exists
+        if ($address) {
+            $address->restore();
+        }
+
+        // Return a success response
+        return response()->json([
+            'status' => 200,
+            'message' => "Data Restored Successfully"
+        ], 200);
+    } else {
+        // Return a response indicating no data found
+        return response()->json([
+            'status' => 404,
+            'message' => "No Data Found"
+        ], 404);
+    }
 }
+
 
 
 public function trashAll()
 {
+    $users = User::onlyTrashed()->get();
     $candidates = Candidate::onlyTrashed()->get();
     $addresses = Address::onlyTrashed()->get();
     $documents = Document::onlyTrashed()->get();
@@ -434,60 +466,53 @@ public function trashAll()
         'success' => true,
         'candidates' => $candidates,
         'addresses' => $addresses,
-        'documents' => $documents
+        'documents' => $documents,
+        'users' => $users
     ]);
 }
 
-
-public function forceDeleteAll($id)
+public function forceDeleteAll($user_id)
 {
-    $candidate = Candidate::onlyTrashed()->findOrFail($id);
-    $address = Address::onlyTrashed()->findOrFail($id);
-    $document = Document::onlyTrashed()->findOrFail($id);
+    $user = User::withTrashed()->where('id',$user_id)->first();
+    $candidate = Candidate::withTrashed()->where('user_id', $user_id)->first();
+    $document = Document::withTrashed()->where('user_id', $user_id)->first();
+    $address = Address::withTrashed()->where('user_id', $user_id)->first();
 
-    $candidate->forceDelete();
-    $address->forceDelete();
-    $document->forceDelete();
+    // Check if any of the data exists
+    if ($user ||$candidate || $document || $address) {
+        // Force delete the candidate data if it exists
 
-    return response()->json([
-        'success' => true,
-        'message' => 'Data permanently deleted'
-    ]);
+        if ($user) {
+            $user->forceDelete();
+        }
+        
+        if ($candidate) {
+            $candidate->forceDelete();
+        }
+
+        // Force delete the document data if it exists
+        if ($document) {
+            $document->forceDelete();
+        }
+
+        // Force delete the address data if it exists
+        if ($address) {
+            $address->forceDelete();
+        }
+
+        // Return a success response
+        return response()->json([
+            'status' => 200,
+            'message' => "Data Permanently Deleted Successfully"
+        ], 200);
+    } else {
+        // Return a response indicating no data found
+        return response()->json([
+            'status' => 404,
+            'message' => "No Data Found"
+        ], 404);
+    }
 }
 
-// public function forceDeletee($id)
-// {
-//     // Retrieve the trashed candidate
-//     $candidate = Candidate::onlyTrashed()->findOrFail($id);
-    
-//     // Find the associated user, if any
-//     $user = User::find($candidate->user_id);
-
-//     // Retrieve related trashed records
-//     $address = Address::onlyTrashed()->where('candidate_id', $id)->first();
-//     $document = Document::onlyTrashed()->where('candidate_id', $id)->first();
-
-//     // Force delete the related records
-//     if ($address) {
-//         $address->forceDelete();
-//     }
-
-//     if ($document) {
-//         $document->forceDelete();
-//     }
-
-//     // Force delete the candidate
-//     $candidate->forceDelete();
-
-//     // Force delete the associated user
-//     if ($user) {
-//         $user->forceDelete();
-//     }
-
-//     return response()->json([
-//         'success' => true,
-//         'message' => 'Data permanently deleted'
-//     ]);
-// }
 
 }

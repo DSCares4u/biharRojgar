@@ -54,8 +54,8 @@
                                     <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.mobile}</td>
                                     <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.landmark},${data.state}</td>
                                         <td class="border-b border-gray-200 px-3  flex gap-2 justify-center py-2 text-sm">
-                                            <button class="py-2 px-4 rounded-lg text-white restore-btn bg-green-500" data-id="${data.id}">Restore</button>
-                                            <button class="py-2 px-4 rounded-lg text-white force-delete-btn bg-red-500" data-id="${data.id}">Delete</button>
+                                            <button class="py-2 px-4 rounded-lg text-white restore-btn bg-green-500" data-id="${data.user_id}">Restore</button>
+                                            <button class="py-2 px-4 rounded-lg text-white force-delete-btn bg-red-500" data-id="${data.user_id}">Delete</button>
                                     </td>
                                 </tr>    
                             `);

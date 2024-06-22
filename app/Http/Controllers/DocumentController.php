@@ -152,6 +152,7 @@ class DocumentController extends Controller
     try {
         $data = [
             'id_proof_type' => $request->id_proof_type,
+            'user_id'=>$user_id
         ];
 
         $fields = ['photo', 'signature', 'id_proof', 'quali_certificate', 'other_certificate'];
