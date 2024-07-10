@@ -60,6 +60,18 @@ class UserController extends Controller
         }
     }
 
+    public function checkUser(Request $request)
+    {
+        $mobile = $request->input('mobile');
+        $user = User::where('mobile', $mobile)->first();
+
+        if ($user) {
+            return response()->json(['exists' => true, 'user_id' => $user->id]);
+        } else {
+            return response()->json(['exists' => false]);
+        }
+    }
+
     // public function login(Request $request)
     // {
     //     $credentials = $request->only('email', 'password');

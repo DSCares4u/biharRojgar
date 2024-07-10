@@ -77,6 +77,7 @@
                                             <option value="full-time" class="border w-full text-sm">Full-Time</option>
                                             <option value="part-time" class="border w-full text-sm">Part-Time</option>
                                             <option value="temporary" class="border w-full text-sm">Temporary</option>
+                                            <option value="part-time&full-time" class="border w-full text-sm">Part-Time & Full-Time</option>
                                             <option value="work from ome" class="border w-full text-sm">Work From Home</option>
                                         </select>
                                     </td>
@@ -246,8 +247,7 @@
                         $('#email').val(response.data.hire.email);
                         $('#date_of_start').val(response.data.hire.date_of_start);
                         $('#callingPlans').val(response.data.hire.hire_plan_id);
-                        $('#logo-preview').attr('src', '/image/company/logo/' + response.data.hire
-                        .logo);
+                        $('#logo-preview').attr('src', '/image/company/logo/' + response.data.hire.logo);
                     },
                     error: function(xhr, status, error) {
                         console.error('Error fetching Job details for editing:', error);

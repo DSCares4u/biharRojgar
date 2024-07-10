@@ -4,7 +4,7 @@
         <div class="w-full lg:w-2/3 md:w-8/12 sm:w-11/12 mx-auto">
             <div class="bg-white shadow-lg rounded-lg">
                 <div class="bg-gray-200 px-4 py-2 rounded-t-lg">
-                    <h3 class="text-xl font-semibold">Add New Form</h3>
+                    <h3 class="text-xl font-semibold">Edit Yojna Form</h3>
                 </div>
                 <div class="p-3">
                     <form id="addData">

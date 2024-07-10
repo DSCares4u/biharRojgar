@@ -1,6 +1,6 @@
 @extends('home.homebase')
 @section('content')
-    <div class="container p-2 bg-gray-100 rounded-lg ">
+    <div class="container p-2 bg-gray-100  rounded-lg ">
         <div class="heading mb-6 w-[70%]">
             <h2 class="text-2xl font-semibold">Private Job</h2>
             <p class="text-sm text-red-500 mt-4 font-medium">To avoid last minute rush, you are advised to submit your online
@@ -8,6 +8,14 @@
                 their online application including payment of fee within the last date for any reason whatsoever.</p>
         </div>
         <div class="flex mx-10">
+            <div class="flex flex-col">
+                <div class="flex mb-4 w-1/2">
+                    <input type="text" id="searchName" placeholder="Search by Name" class="border p-2 w-1/2 mr-2 rounded-lg">
+                    <input type="text" id="searchLocation" placeholder="Search by Location" class="border p-2 w-1/2 ml-2 rounded-lg">
+                    <button id="searchButton" class="ml-2 bg-blue-500 text-white p-2 rounded-lg">Search</button>
+                </div>
+                <!-- Results will be displayed here -->
+                <div id="searchResults" class="mt-4"></div>
             <div class=" w-3/4 " id="callingHire">
                 {{-- <div class="card w-3/4 mb-4">
                     <div
@@ -61,6 +69,7 @@
                         </div>
                     </div>
                 </div> --}}
+            </div>
             </div>
             <div class="w-1/4 fixed right-5 top-1 mt-20">
                 <div class="w-[100%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">

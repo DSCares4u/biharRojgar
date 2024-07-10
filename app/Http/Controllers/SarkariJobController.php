@@ -85,6 +85,23 @@ class SarkariJobController extends Controller
         }
     }
 
+    public function searchSarkariJobs(Request $request)
+    {
+        $name = $request->input('name');
+        $role = $request->input('role');
+
+        $jobs = SarkariJob::query()
+            ->when($name, function ($query, $name) {
+                return $query->where('name', 'like', '%' . $name . '%');
+            })
+            ->when($role, function ($query, $role) {
+                return $query->where('role', 'like', '%' . $role . '%');
+            })
+            ->get();
+
+        return response()->json($jobs);
+    }
+
     public function show($id)
     {
         $job = SarkariJob::find($id);
