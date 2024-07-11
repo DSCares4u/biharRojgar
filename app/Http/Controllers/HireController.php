@@ -32,8 +32,8 @@ class HireController extends Controller
     }
     
     public function roleIndex(){
-        // $role = Role::with("hire")->orderBy('created_at', 'desc')->get();
-        $role = Role::with("hire")->inRandomOrder()->get();
+        $role = Role::with("hire")->orderBy('created_at', 'desc')->get();
+        // $role = Role::with("hire")->inRandomOrder()->get();
         if ($role->count() > 0) {
             return response()->json([
                 'status' => 200,

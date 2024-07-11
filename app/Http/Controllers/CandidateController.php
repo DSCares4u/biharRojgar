@@ -225,27 +225,28 @@ class CandidateController extends Controller
 
     public function updateAll(Request $request, int $user_id){
     $validator = Validator::make($request->all(), [
-        'name' => 'required|string|min:3',
+        'user_id'=>'required',
+        'name' => 'required|string',
         'dob' => 'required',
-        'mother' => 'required|string|min:3',
-        'father' => 'required|string|min:3',
+        'mother' => 'required|string',
+        'father' => 'required|string',
         'gender' => 'required',
         'mobile' => 'required|digits:10|regex:/^[0-9]{10}$/',
         'marital' => 'required',
         'email' => 'required|email',
-        'id_mark' => 'required|string|min:3',
+        'id_mark' => 'required|string',
         'preferred_lang' => 'required',
-        'religion' => 'required|string|min:3',
+        'religion' => 'required|string',
         'community' => 'required',
-        'village' => 'required|string|min:3',
-        'landmark' => 'required|string|min:3',
-        'city' => 'required|string|min:3',
+        'village' => 'required|string',
+        'landmark' => 'required|string',
+        'city' => 'required|string',
         'area' => 'required|string',
-        'state' => 'required|string|min:3',
+        'state' => 'required|string',
         'pincode' => 'required',
-        'qualification' => 'required|string|min:3',
-        'q_state' => 'required|string|min:3',
-        'board' => 'required|string|min:3',
+        'qualification' => 'required|string',
+        'q_state' => 'required|string',
+        'board' => 'required|string',
         'passing_year' => 'required',
         'experience' => 'required|string',
         'skills' => 'required|string',
@@ -255,7 +256,7 @@ class CandidateController extends Controller
         'id_proof' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         'quali_certificate' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         'other_certificate' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-    ]);
+    ]);    
 
     if ($validator->fails()) {
         return response()->json([
@@ -264,7 +265,9 @@ class CandidateController extends Controller
         ], 422);
     }
 
-    $candidate = Candidate::with('user')->where('user_id', $user_id)->first();
+    $candidate = Candidate::with('user')->where('user_id', $request->user_id)->first();
+    // $candidate = Candidate::with('user')->where('user_id', $user_id)->first();
+
     if ($candidate) {
         $candidate->update([
             'name' => $request->name,
@@ -286,9 +289,33 @@ class CandidateController extends Controller
             'state' => $request->state,
             'pincode' => $request->pincode,
         ]);
+    }else{
+         // Create new job
+         $data = Candidate::create([
+            'name' => $request->name,
+            'dob' => $request->dob,
+            'mother' => $request->mother,
+            'father' => $request->father,
+            'gender' => $request->gender,
+            'mobile' => $request->mobile,
+            'marital' => $request->marital,
+            'email' => $request->email,
+            'id_mark' => $request->id_mark,
+            'preferred_lang' => $request->preferred_lang,
+            'religion' => $request->religion,
+            'community' => $request->community,
+            'village' => $request->village,
+            'landmark' => $request->landmark,
+            'area' => $request->area,
+            'city' => $request->city,
+            'state' => $request->state,
+            'pincode' => $request->pincode,  
+            'user_id' => $request->user_id,                     
+        ]); 
     }
 
-    $address = Address::with('user')->where('user_id', $user_id)->first();
+    $address = Address::with('user')->where('user_id', $request->user_id)->first();
+    // $address = Address::with('user')->where('user_id', $user_id)->first();
     if ($address) {
         $address->update([
             'qualification' => $request->qualification,
@@ -298,9 +325,20 @@ class CandidateController extends Controller
             'experience' => $request->experience,
             'skills' => $request->skills,
         ]);
+    }else{
+        $a_data = Address::create([
+            'qualification' => $request->qualification,
+            'q_state' => $request->q_state,
+            'board' => $request->board,
+            'passing_year' => $request->passing_year,
+            'experience' => $request->experience,
+            'skills' => $request->skills, 
+            'user_id' => $request->user_id,                                 
+        ]);
     }
 
-    $document = Document::with('user')->where('user_id', $user_id)->first();
+    // $document = Document::with('user')->where('user_id', $user_id)->first();
+    $document = Document::with('user')->where('user_id', $request->user_id)->first();
     if ($document) {
         $randomNumber = mt_rand(1000, 9999);
 
@@ -337,12 +375,68 @@ class CandidateController extends Controller
         $document->update([
             'id_proof_type' => $request->id_proof_type,
         ]);
-    }
+        }else{
+            $randomNumber = mt_rand(1000, 9999); 
 
+        // Handle the file upload
+        $photo = null;
+        if ($request->hasFile('photo')) {
+            $photo = "LO" . time() . $randomNumber . "." . $request->photo->extension();
+            $request->photo->move(public_path("image/candidate/photo"), $photo);
+        }
+
+        $signature = null;
+        if ($request->hasFile('signature')) {
+            $signature = "SI" . time() . $randomNumber . "." . $request->signature->extension();
+            $request->signature->move(public_path("image/candidate/signature"), $signature);
+        }
+
+        $id_proof = null;
+        if ($request->hasFile('id_proof')) {
+            $id_proof = "ID" . time() . $randomNumber . "." . $request->id_proof->extension();
+            $request->id_proof->move(public_path("image/candidate/id_proof"), $id_proof);
+        }
+
+        $quali_certificate = null;
+        if ($request->hasFile('quali_certificate')) {
+            $quali_certificate = "QU" . time() . $randomNumber . "." . $request->quali_certificate->extension();
+            $request->quali_certificate->move(public_path("image/candidate/quali_certificate"), $quali_certificate);
+        }
+
+        $other_certificate = null;
+        if ($request->hasFile('other_certificate')) {
+            $other_certificate = "OT" . time() . $randomNumber . "." . $request->other_certificate->extension();
+            $request->other_certificate->move(public_path("image/candidate/other_certificate"), $other_certificate);
+        }
+
+        $d_data= Document::create([
+            'id_proof_type' => $request->id_proof_type,
+            'photo' => $photo,
+            'signature' => $signature,
+            'id_proof' => $id_proof,
+            'quali_certificate' => $quali_certificate,
+            'other_certificate' => $other_certificate,
+            'user_id' => $request->user_id,
+        ]);
+
+        if ($d_data) {
+            return response()->json([
+                'status' => 200,
+                'message' => "Data Updated Successfully"
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 500,
+                'message' => "Unable to update Data"
+            ], 500);
+        }
+    }
     return response()->json([
         'status' => 200,
         'message' => "Data Updated Successfully"
     ], 200);
+
+   
 }
 
 
