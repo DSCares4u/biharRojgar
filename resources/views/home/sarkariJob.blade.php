@@ -204,19 +204,24 @@
                                                                 <h5>Important Instruction</h5>
                                                             </div>
                                                             <div class="mt-1 flex justify-between">
-                                                                <div class="mt">
+                                                                <div class="mt-2">
                                                                     <h5 class="text-sm text-gray-500 font-semibold"> No. Of Post : ${job.no_of_post}</h5>
                                                                     <div class="mt-1">
                                                                         <h5 class="text-sm text-gray-500 font-semibold">Age : ${job.min_age} - ${job.max_age} Years</h5>
                                                                     </div>
+                                                                    <div class="mt-1">
+                                                                        <h5 class="text-sm text-gray-500 font-semibold">Salary : ${job.min_salary} - ${job.max_salary}</h5>
+                                                                    </div>
                                                                 </div>
-                                                                 <div class="flex flex-col">
+                                                                <div class="flex flex-col">
                                                                     <h5 class="text-gray-500 font-semibold">Opening Date : ${job.opening_date}</h5>
                                                                     <h5 class="text-gray-500 font-semibold">Closing Date : ${job.closing_date}</h5>
                                                                     <h5 class="text-sm text-gray-500 font-semibold">Openings for : ${job.location}</h5>
                                                                 </div>
                                                             </div>
-                                                            
+                                                            <div class="mt-1">
+                                                                    <h5 class="text-sm text-gray-500 font-semibold">Job Type : ${job.job_type} Government</h5>
+                                                            </div>
                                                             <div class="mt-1">
                                                                 <h5 class="text-sm text-gray-500 font-semibold">Qualification : ${job.qualification}</h5>
                                                             </div>

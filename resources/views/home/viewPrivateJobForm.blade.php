@@ -10,7 +10,7 @@
                 <div class="flex w-full">
                     <label class="w-2/4 font-medium text-gray-700 text-sm">Name (As per Aadhar Card) / नाम (आधार कार्ड
                         अनुसार) :</label>
-                    <p class="w-1/4 capitalize text-sm" id="name">John Doe</p>
+                    <p class="w-1/4 capitalize text-sm" id="name"></p>
                 </div>
                 <div class="flex w-full">
                     <label class="w-2/4 font-medium text-gray-700 text-sm">Father's Name / पिता का नाम :</label>
