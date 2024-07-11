@@ -204,7 +204,6 @@
                                         success: function(applicationResponse) {
                                             let applyButton;
                                             if (applicationResponse.already_applied) {
-                                                alert('true');
                                                 applyButton =
                                                     `<button class="bg-gray-600 rounded text-center text-white py-1 w-1/2" disabled>Already Applied</button>`;
                                             } else {

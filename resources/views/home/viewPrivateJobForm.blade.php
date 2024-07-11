@@ -113,7 +113,7 @@
         <button onclick="window.print()" class=" bg-blue-500 text-white rounded-md px-2 hover:bg-blue-600">Print
             Confirmation</button>
         <form action="" id="applyPrivateJob">
-            <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}">
+            {{-- <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}"> --}}
 
             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
                 Apply Now 
@@ -214,9 +214,13 @@
                 // Get the job ID from the URL
                 var jobId = getIdFromUrlPath();
 
+
+                let userId = {{ auth()->user()->id }};
+
                 // Append the job ID to the form data
                 var formData = new FormData(this);
                 formData.append('role_id', jobId);
+                formData.append('user_id', userId);
 
                 $.ajax({
                     type: "POST",

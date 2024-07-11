@@ -41,73 +41,144 @@ class SarkariJobApplyController extends Controller
         ]);
     }
 
+    // public function store(Request $request) {
+    //     $validator = Validator::make($request->all(), [
+    //         'user_id' => 'required',
+    //         'sarkari_job_id' => 'required'                
+    //     ]);
+    
+    //     if ($validator->fails()) {
+    //         return response()->json([
+    //             'status' => 422,
+    //             'error' => $validator->messages()
+    //         ], 422);
+    //     } else {
+    //         // Check if the user has a candidate profile
+    //         $candidate = Candidate::where('user_id', $request->user_id)->first();
+    //         if (!$candidate) {
+    //             return response()->json([
+    //                 'status' => 403,
+    //                 'message' => "You need to create a candidate profile before applying."
+    //             ], 403);
+    //         }
+
+    //         $address = Address::where('user_id', $request->user_id)->first();
+    //         if (!$address) {
+    //             return response()->json([
+    //                 'status' => 403,
+    //                 'message' => "You need to add Qualification details  before applying."
+    //             ], 403);
+    //         }
+    
+    //         // Check if the user has uploaded the required documents
+    //         $documents = Document::where('user_id', $request->user_id)->get();
+    //         if ($documents->isEmpty()) {
+    //             return response()->json([
+    //                 'status' => 403,
+    //                 'message' => "You need to upload the required documents before applying."
+    //             ], 403);
+    //         }
+    
+    //         // Check if the user has already applied for the job
+    //         $existingApplication = SarkariJobApply::where('user_id', $request->user_id)
+    //                                              ->where('sarkari_job_id', $request->sarkari_job_id)
+    //                                              ->first();
+    //         if ($existingApplication) {
+    //             return response()->json([
+    //                 'status' => 409,
+    //                 'message' => "You have already applied for this job."
+    //             ], 409);
+    //         }
+    
+    //         // Create the new job application
+    //         $job = SarkariJobApply::create([
+    //             'payment_mode' => $request->payment_mode,
+    //             'user_id' => $request->user_id,
+    //             'sarkari_job_id' => $request->sarkari_job_id,
+    //         ]);
+    
+    //         if ($job) {
+    //             return response()->json([
+    //                 'status' => 200,
+    //                 'message' => "We Will Connect You Soon"
+    //             ], 200);
+    //         } else {
+    //             return response()->json([
+    //                 'status' => 500,
+    //                 'message' => "Unable to add your Request"
+    //             ], 500);
+    //         }
+    //     }
+    // }
+
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-            'user_id' => 'required',
-            'sarkari_job_id' => 'required'                
+            'user_id' => 'required|exists:users,id', // Ensure user_id exists in the users table
+            'sarkari_job_id' => 'required|exists:sarkari_jobs,id', 
         ]);
     
         if ($validator->fails()) {
             return response()->json([
                 'status' => 422,
-                'error' => $validator->messages()
+                'errors' => $validator->messages()
             ], 422);
+        }
+    
+        // Check if the user has a candidate profile
+        $candidate = Candidate::where('user_id', $request->user_id)->first();
+        if (!$candidate) {
+            return response()->json([
+                'status' => 403,
+                'message' => "You need to create a candidate profile before applying."
+            ], 403);
+        }
+    
+        // Check if the user has added address details
+        $address = Address::where('user_id', $request->user_id)->first();
+        if (!$address) {
+            return response()->json([
+                'status' => 403,
+                'message' => "You need to add address details before applying."
+            ], 403);
+        }
+    
+        // Check if the user has uploaded the required documents
+        $documents = Document::where('user_id', $request->user_id)->get();
+        if ($documents->isEmpty()) {
+            return response()->json([
+                'status' => 403,
+                'message' => "You need to upload the required documents before applying."
+            ], 403);
+        }
+    
+        // Check if the user has already applied for the job
+        $existingApplication = SarkariJobApply::where('user_id', $request->user_id)
+                                              ->where('sarkari_job_id', $request->sarkari_job_id)
+                                              ->first();
+        if ($existingApplication) {
+            return response()->json([
+                'status' => 409,
+                'message' => "You have already applied for this job."
+            ], 409);
+        }
+    
+        // Create the new job application
+        $job = SarkariJobApply::create([
+            'payment_mode' => $request->payment_mode,
+            'user_id' => $request->user_id,
+            'sarkari_job_id' => $request->sarkari_job_id,
+        ]);
+    
+        if ($job) {
+            return response()->json([
+                'status' => 200,
+                'message' => "We will connect with you soon."
+            ], 200);
         } else {
-            // Check if the user has a candidate profile
-            $candidate = Candidate::where('user_id', $request->user_id)->first();
-            if (!$candidate) {
-                return response()->json([
-                    'status' => 403,
-                    'message' => "You need to create a candidate profile before applying."
-                ], 403);
-            }
-
-            $address = Address::where('user_id', $request->user_id)->first();
-            if (!$address) {
-                return response()->json([
-                    'status' => 403,
-                    'message' => "You need to add Qualification details  before applying."
-                ], 403);
-            }
-    
-            // Check if the user has uploaded the required documents
-            $documents = Document::where('user_id', $request->user_id)->get();
-            if ($documents->isEmpty()) {
-                return response()->json([
-                    'status' => 403,
-                    'message' => "You need to upload the required documents before applying."
-                ], 403);
-            }
-    
-            // Check if the user has already applied for the job
-            $existingApplication = SarkariJobApply::where('user_id', $request->user_id)
-                                                 ->where('sarkari_job_id', $request->sarkari_job_id)
-                                                 ->first();
-            if ($existingApplication) {
-                return response()->json([
-                    'status' => 409,
-                    'message' => "You have already applied for this job."
-                ], 409);
-            }
-    
-            // Create the new job application
-            $job = SarkariJobApply::create([
-                'payment_mode' => $request->payment_mode,
-                'user_id' => $request->user_id,
-                'sarkari_job_id' => $request->sarkari_job_id,
-            ]);
-    
-            if ($job) {
-                return response()->json([
-                    'status' => 200,
-                    'message' => "We Will Connect You Soon"
-                ], 200);
-            } else {
-                return response()->json([
-                    'status' => 500,
-                    'message' => "Unable to add your Request"
-                ], 500);
-            }
+            return response()->json([
+                'status' => 500,
+                'message' => "Unable to process your request."
+            ], 500);
         }
     }
 
