@@ -77,7 +77,7 @@ class YojnaFormController extends Controller
 
     public function show($id)
     {
-        $yojna = YojnaForm::with("user")-where('id',$id)->first();
+        $yojna = YojnaForm::with("yojna")->where('id',$id)->first();
         if($yojna){
             return response()->json([
                 'status' => 200,

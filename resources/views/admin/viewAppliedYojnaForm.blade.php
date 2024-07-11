@@ -37,17 +37,17 @@
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-1/2 shadow-sm sm:text-sm border-gray-300 rounded-md"
                                 required>
                         </div>
-                        <div class="flex gap-1">
+                        <div class="flex flex-col gap-1">
                             <div class=" mb-2 w-1/2">
-                                <label for="city" class="block text-gray-700 text-xs mb-1 ">City:</label>
+                                <label for="city" class="block text-gray-700  font-medium text-sm mb-1 ">City:</label>
                                 <input type="text" id="city" name="city"
                                     class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
                                 <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
                             </div>
                             <div class=" mb-2 w-1/2">
-                                <label for="state" class="block text-gray-700 text-xs mb-1">State :</label>
+                                <label for="state" class="block text-gray-700  font-medium text-sm mb-1">State :</label>
                                 <select id="state" name="state"
-                                    class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                                    class="form-input shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
                                     <option value="">Select State</option>
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
