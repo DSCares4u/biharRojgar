@@ -169,7 +169,7 @@
                         <div class="mb-3 items-center">
                             <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Job Description</label>
                             <textarea name="description" id="description" cols="20" rows="2"
-                                placeholder="Type Or Details Of Job Here" class="shadow appearance-none border py-1 px-2 w-full" disabled></textarea>
+                                placeholder="Type Or Details Of Job Here" class="shadow appearance-none border py-1 px-2 w-full" ></textarea>
                         </div>
                         <div class="mb-4">
                             <label for="logo" class="block text-sm font-medium text-gray-700">Logo</label>
