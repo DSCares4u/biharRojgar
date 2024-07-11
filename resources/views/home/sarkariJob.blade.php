@@ -11,6 +11,13 @@
                     submit
                     their online application including payment of fee within the last date for any reason whatsoever.</p>
             </div>
+            <div class="flex mb-4 w-1/2">
+                <input type="text" id="searchName" placeholder="Search by Name" class="border p-2 w-1/2 mr-2 rounded-lg">
+                <input type="text" id="searchRole" placeholder="Search by Role" class="border p-2 w-1/2 ml-2 rounded-lg">
+                <button id="searchButton" class="ml-2 bg-blue-500 text-white p-2 rounded-lg">Search</button>
+            </div>
+            <!-- Results will be displayed here -->
+            <div id="searchResults" class="mt-4"></div>
             <div class="card" id="callingData">
                 {{-- <a href="/get-job"
                 class="block max-w-full mt-4 p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -124,7 +131,9 @@
 
                                 if (!logIn) {
                                     // Generate logo using the first letter of the job name if no logo is provided
-                                    let logo = job.logo ? `<img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20 h-20" alt="">` : `<div class="generated-logo rounded-full w-20 h-20 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.name.charAt(0)}</div>`;
+                                    let logo = job.logo ?
+                                        `<img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20 h-20" alt="">` :
+                                        `<div class="generated-logo rounded-full w-20 h-20 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.name.charAt(0)}</div>`;
 
                                     table.append(`
                                                 <div class="block max-w-full mt-4 p-4 bg-white border capitalize border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -190,8 +199,10 @@
                                                 applyButton =
                                                     `<a href="/viewSarkariJobForm/${job.id}"><button class="bg-green-600 hover:bg-green-700 rounded text-white px-1 py-1">Apply Now</button></a>`;
                                             }
-                                             // Generate logo using the first letter of the job name if no logo is provided
-                                            let logo = job.logo ? `<img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20 h-20" alt="">` : `<div class="generated-logo rounded-full w-20 h-20 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.name.charAt(0)}</div>`;
+                                            // Generate logo using the first letter of the job name if no logo is provided
+                                            let logo = job.logo ?
+                                                `<img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20 h-20" alt="">` :
+                                                `<div class="generated-logo rounded-full w-20 h-20 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.name.charAt(0)}</div>`;
 
                                             table.append(`
                                                 <div class="block max-w-full mt-4 p-4 bg-white border capitalize border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -257,6 +268,40 @@
                     }
                 });
         };
+
+        function searchJobs() {
+            let name = $('#searchName').val();
+            let role = $('#searchRole').val();
+
+            $.ajax({
+                url: '/api/search-sarkari-jobs',
+                type: 'GET',
+                data: {
+                    name: name,
+                    role: role
+                },
+                success: function(response) {
+                    $('#searchResults').html('');
+                    if (response.length > 0) {
+                        response.forEach(function(job) {
+                            $('#searchResults').append(
+                                '<div class="border p-4 rounded-lg mb-2">' +
+                                '<h2 class="font-bold text-lg">' + job.name + '</h2>' +
+                                '</div>'
+                            );
+                        });
+                    } else {
+                        $('#searchResults').html('<p>No results found.</p>');
+                    }
+                },
+                error: function(error) {
+                    console.error(error);
+                    $('#searchResults').html('<p>An error occurred while fetching data.</p>');
+                }
+            });
+        }
+
+        $('#searchName').on('input', searchJobs); $('#searchLocation').on('input', searchJobs);
 
 
         callingSarkariJobs();

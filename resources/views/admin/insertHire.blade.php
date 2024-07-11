@@ -66,11 +66,11 @@
                                     <td class="py-1">
                                         <select name="inputs[0][type]"
                                             class=" border text-center py-2 px-2 w-full text-sm text-gray-400" id="type">
-                                            <option value="" class=" border text-center w-full">Select
-                                            </option>
+                                            <option value="" class=" border text-center w-full">Select</option>
                                             <option value="full-time" class="border w-full text-sm">Full-Time</option>
                                             <option value="part-time" class="border w-full text-sm">Part-Time</option>
                                             <option value="temporary" class="border w-full text-sm">Temporary</option>
+                                            <option value="part-time&full-time" class="border w-full text-sm">Part-Time & Full-Time</option>
                                             <option value="work from ome" class="border w-full text-sm">Work From Home</option>
                                         </select>
                                     </td>
@@ -236,6 +236,7 @@
                                 <option value="full-time">Full-Time</option>
                                 <option value="part-time">Part-Time</option>
                                 <option value="temporary">Temporary</option>
+                                <option value="part-time&full-time">Part-Time & Full-Time</option>
                                 <option value="work from ome" class="border w-full text-sm">Work From Home</option>
                             </select>
                         </td>

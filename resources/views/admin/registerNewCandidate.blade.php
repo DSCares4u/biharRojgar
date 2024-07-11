@@ -31,7 +31,7 @@
     </div>
 </div>
 
-<script>
+{{-- <script>
     $(document).ready(function() {
         $("#registerUser").submit(function(e) {
             e.preventDefault();
@@ -64,6 +64,62 @@
             });
         });
     });
+</script> --}}
+
+<script>
+    $(document).ready(function() {
+        $("#registerUser").submit(function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            var mobileNumber = formData.get('mobile'); // Assuming the input name for mobile number is 'mobile'
+
+            // First AJAX call to check if the user already exists
+            $.ajax({
+                type: "GET",
+                url: "/api/check-user", // Endpoint to check if the user exists
+                data: { mobile: mobileNumber },
+                dataType: "JSON",
+                success: function(response) {
+                    if (response.exists) {
+                        // User exists, redirect with the existing user ID
+                        window.location.href = `/admin/manage-candidate/insert/${response.user_id}`;
+                    } else {
+                        // User does not exist, proceed with registration
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ route('register.store') }}",
+                            data: formData,
+                            dataType: "JSON",
+                            contentType: false,
+                            cache: false,
+                            processData: false,
+                            success: function(response) {
+                                $("#registerUser").trigger("reset");
+                                if (response && response.user_id) {
+                                    console.log("New user ID:", response.user_id);
+                                    // Redirect to the specified URL after successful registration
+                                    window.location.href = `/admin/manage-candidate/insert/${response.user_id}`;
+                                } else {
+                                    console.error("User ID not found in response:", response);
+                                    // Handle the case where user_id is not found in response
+                                }
+                            },
+                            error: function(xhr, status, error) {
+                                var errors = xhr.responseJSON.errors;
+                                $.each(errors, function(key, value) {
+                                    $("#" + key + "-error").text(value[0]).removeClass("hidden");
+                                });
+                            }
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Error checking user existence:", error);
+                }
+            });
+        });
+    });
 </script>
+
 
 @endsection

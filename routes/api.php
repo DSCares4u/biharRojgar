@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::get('/check-user', [UserController::class, 'checkUser'])->name('check.user');
 Route::post('/register',[UserController::class,'store'])->name('register.store');
 Route::post('/login',[UserController::class,'login'])->name('login.submit');
 Route::get('/register',[UserController::class,'index'])->name('register.index');
@@ -140,3 +141,4 @@ Route::delete('/admin/sarkari-job/delete/{id}',[SarkariJobController::class,'des
 Route::get('/admin/sarkari-job/trash',[SarkariJobController::class,'trash']);
 Route::delete('/admin/sarkari-job/forceDelete/{id}',[SarkariJobController::class,'forceDelete']);
 Route::patch('/admin/sarkari-job/restore/{id}',[SarkariJobController::class,'restore']);
+Route::get('/search-sarkari-jobs', [SarkariJobController::class, 'searchSarkariJobs']);

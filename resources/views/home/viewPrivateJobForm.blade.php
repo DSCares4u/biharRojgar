@@ -14,39 +14,39 @@
                 </div>
                 <div class="flex w-full">
                     <label class="w-2/4 font-medium text-gray-700 text-sm">Father's Name / पिता का नाम :</label>
-                    <p class="w-2/4 capitalize text-sm" id="father">Richard Roe</p>
+                    <p class="w-2/4 capitalize text-sm" id="father"></p>
                 </div>
                 <div class="flex w-full">
                     <label class="w-2/4 font-medium text-gray-700 text-sm">Mother's Name / माता का नाम :</label>
-                    <p class="w-2/4 capitalize text-sm" id="mother">Jane Doe</p>
+                    <p class="w-2/4 capitalize text-sm" id="mother"></p>
                 </div>
                 <div class="flex w-full">
                     <label class="w-2/4 font-medium text-gray-700 text-sm">D.O.B. / जन्म तिथि :</label>
-                    <p class="w-2/4 capitalize text-sm" id="dob">01/01/1990</p>
+                    <p class="w-2/4 capitalize text-sm" id="dob"></p>
                 </div>
                 <div class="flex w-full">
                     <label class="w-2/4 font-medium text-gray-700 text-sm">Gender / लिंग :</label>
-                    <p class="w-2/4 capitalize text-sm" id="gender">Male</p>
+                    <p class="w-2/4 capitalize text-sm" id="gender"></p>
                 </div>
                 <div class="flex w-full">
                     <label class="w-2/4 font-medium text-gray-700 text-sm">Marital Status / वैवाहिक स्थिति :</label>
-                    <p class="w-2/4 capitalize text-sm" id="marital">Single</p>
+                    <p class="w-2/4 capitalize text-sm" id="marital"></p>
                 </div>
                 <div class="flex w-full">
                     <label class="w-2/4 font-medium text-gray-700 text-sm">Religion / धर्म :</label>
-                    <p class="w-2/4 capitalize text-sm" id="religion">Hindu</p>
+                    <p class="w-2/4 capitalize text-sm" id="religion"></p>
                 </div>
                 <div class="flex w-full">
                     <label class="w-2/4 font-medium text-gray-700 text-sm">Category / वर्ग :</label>
-                    <p class="w-2/4 capitalize text-sm" id="community">General</p>
+                    <p class="w-2/4 capitalize text-sm" id="community"></p>
                 </div>
                 <div class="flex w-full">
                     <label class="w-2/4 font-medium text-gray-700 text-sm">Mobile No. / मोबाइल नं :</label>
-                    <p class="w-2/4 capitalize text-sm" id="mobile">9876543210</p>
+                    <p class="w-2/4 capitalize text-sm" id="mobile"></p>
                 </div>
                 <div class="flex w-full">
                     <label class="w-2/4 font-medium text-gray-700 text-sm">Email ID / ईमेल आईडी :</label>
-                    <p class="w-2/4 capitalize text-sm" id="email">john.doe@example.com</p>
+                    <p class="w-2/4 capitalize text-sm" id="email"></p>
                 </div>
             </div>
             <div class="photo w-1/4 flex justify-center">
@@ -60,27 +60,27 @@
         <div class="w-3/4 space-y-4">
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">Landmark :</label>
-                <p class="w-2/4 capitalize text-sm" id="landmark">Near Park</p>
+                <p class="w-2/4 capitalize text-sm" id="landmark"></p>
             </div>
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">Village / गांव :</label>
-                <p class="w-2/4 capitalize text-sm" id="village">Springfield</p>
+                <p class="w-2/4 capitalize text-sm" id="village"></p>
             </div>
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">Post Office / डाक घर :</label>
-                <p class="w-2/4 capitalize text-sm" id="area">Main PO</p>
+                <p class="w-2/4 capitalize text-sm" id="area"></p>
             </div>
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">PIN Code / पिन कोड :</label>
-                <p class="w-2/4 capitalize text-sm" id="pincode">123456</p>
+                <p class="w-2/4 capitalize text-sm" id="pincode"></p>
             </div>
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">District / जिला :</label>
-                <p class="w-2/4 capitalize text-sm" id="city">Metro City</p>
+                <p class="w-2/4 capitalize text-sm" id="city"></p>
             </div>
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">State / राज्य :</label>
-                <p class="w-2/4 capitalize text-sm" id="state">Example State</p>
+                <p class="w-2/4 capitalize text-sm" id="state"></p>
             </div>
         </div>
 
@@ -89,19 +89,19 @@
         <div class="w-3/4 space-y-4">
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">Last Qualification / अंतिम शिक्षा :</label>
-                <p class="w-2/4 capitalize text-sm" id="qualification">B.Sc. in Computer Science</p>
+                <p class="w-2/4 capitalize text-sm" id="qualification"></p>
             </div>
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">Board / University :</label>
-                <p class="w-2/4 capitalize text-sm" id="board">ABC University</p>
+                <p class="w-2/4 capitalize text-sm" id="board"></p>
             </div>
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">Experience :</label>
-                <p class="w-2/4 capitalize text-sm" id="experience">5 Years in Software Development</p>
+                <p class="w-2/4 capitalize text-sm" id="experience"></p>
             </div>
             <div class="flex w-full">
                 <label class="w-2/4 font-medium text-gray-700 text-sm">Skills :</label>
-                <p class="w-2/4 capitalize text-sm" id="skills">JavaScript, React, Node.js</p>
+                <p class="w-2/4 capitalize text-sm" id="skills"></p>
             </div>
         </div>
     </div>
