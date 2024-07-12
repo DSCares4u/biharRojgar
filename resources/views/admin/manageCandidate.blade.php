@@ -9,25 +9,11 @@
     </div>
     <div class="overflow-x-auto">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            {{-- <div class="pb-4">
-                <label for="table-search" class="sr-only">Search</label>
-                <div class="relative mt-1">
-                    <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
-                    </div>
-                    <input type="text" name="query" id="searchInput"
-                        class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search Candidate By Name">
-                </div>
-            </div> --}}
-            <table class="min-w-full bg-white border border-gray-200">
+            <div class="search-container text-center mb-3"></div>
+            <table class="min-w-full bg-white border border-gray-200" id="callingCandidates">
                 <thead class="bg-gray-100">
                     <tr>
-                        <th class="border-b border-gray-200 px-3 py-2 text-sm">Id</th>
+                        <th class="border-b border-gray-200 px-3 py-2 text-sm">Sr. No.</th>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm">Name</th>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm">DOB/Gender</th>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm">Mobile</th>
@@ -37,7 +23,7 @@
                         <th class="border-b border-gray-200 px-3 py-2 text-sm">Actions</th>
                     </tr>
                 </thead>
-                <tbody id="callingCandidates"></tbody>
+                <tbody></tbody>
                 <tfoot>
                     <tr>
                         <th colspan="10" class="p-3 flex items-center justify-center">
@@ -46,18 +32,46 @@
                         </th>
                     </tr>
                 </tfoot>
+            </table>
         </div>
+    </div>
+    <div class="flex justify-end mt-4">
+        <button onclick="let printContents = document.getElementById('callingCandidates').outerHTML; let originalContents = document.body.innerHTML; document.body.innerHTML = printContents; window.print(); document.body.innerHTML = originalContents;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Print This Page
+        </button>
     </div>
 
     <script>
         $(document).ready(function() {
+
+            let dataTable = $('#callingCandidates').DataTable({
+                "searching": true,
+                "paging": true,
+                "info": true,
+                "destroy": true,
+                "dom": '<"search-container"f>t<"bottom"p>',
+                "language": {
+                    "search": "",
+                    "searchPlaceholder": "Search..."
+                },
+                "columnDefs": [{
+                        "orderable": false,
+                        "targets": 4
+                    } // Make 'Actions' column non-sortable
+                ]
+            });
+
+            // Center the search box
+            $('.search-container').addClass('d-flex justify-content-center').css('margin-bottom', '10px');
+
+
             // Function to fetch and display appointment
             let callingCandidates = () => {
                 $.ajax({
                     type: "GET",
                     url: "{{ route('candidate.index') }}",
                     success: function(response) {
-                        let table = $("#callingCandidates");
+                        let table = $("#callingCandidates tbody");
                         table.empty();
                         let data = response.data;
 
@@ -65,10 +79,10 @@
                         let len = data.length;
                         $("#counting").html(len);
 
-                        data.forEach((data) => {
+                        data.forEach((data,index) => {
                             table.append(`
                         <tr class="mt-5">
-                            <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.id}</td> 
+                            <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${index + 1}</td> 
                             <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.name}</td> 
                             <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.dob}/${data.gender}</td> 
                             <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.mobile}</td> 
@@ -83,6 +97,8 @@
                         </tr>    
                        `);
                         });
+                        dataTable.clear().rows.add($(table).find('tr')).draw();
+
                     },
                     error: function(xhr, status, error) {
                         console.error('Error:', error);

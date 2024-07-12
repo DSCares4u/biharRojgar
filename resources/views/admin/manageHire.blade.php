@@ -19,14 +19,15 @@
                         </svg>
                     </div>
                     <input type="text" name="query" id="searchInput"
-                        class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        class="search-container block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Search Candidate By Name">
                 </div>
             </div> --}}
-            <table class="min-w-full bg-white border border-gray-200">
+            <div class="search-container text-center mb-3"></div>
+            <table class="min-w-full bg-white border border-gray-200" id="callingHire">
                 <thead class="bg-gray-100">
                     <tr>
-                        {{-- <th class="border-b border-gray-200 px-3 py-2 text-sm">Id</th> --}}
+                        <th class="border-b border-gray-200 px-3 py-2 text-sm">Sr. No.</th>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm">Title</th>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm">Profile</th>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm">Company</th>
@@ -36,7 +37,7 @@
                         <th class="border-b border-gray-200 px-3 py-2 text-sm">Actions</th>
                     </tr>
                 </thead>
-                <tbody id="callingHire"></tbody>
+                <tbody></tbody>
                 <tfoot>
                     <tr>
                         <th colspan="10" class="p-3 flex items-center justify-center">
@@ -45,26 +46,54 @@
                         </th>
                     </tr>
                 </tfoot>
+            </table>
         </div>
+    </div>
+    <div class="flex justify-end mt-4">
+        <button onclick="let printContents = document.getElementById('callingHire').outerHTML; let originalContents = document.body.innerHTML; document.body.innerHTML = printContents; window.print(); document.body.innerHTML = originalContents;" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Print This Page
+        </button>
     </div>
 
     <script>
         $(document).ready(function() {
+
+            let dataTable = $('#callingHire').DataTable({
+                "searching": true,
+                "paging": true,
+                "info": true,
+                "destroy": true,
+                "dom": '<"search-container"f>t<"bottom"p>',
+                "language": {
+                    "search": "",
+                    "searchPlaceholder": "Search..."
+                },
+                "columnDefs": [{
+                        "orderable": false,
+                        "targets": 4
+                    } // Make 'Actions' column non-sortable
+                ]
+            });
+
+            // Center the search box
+            $('.search-container').addClass('d-flex justify-content-center').css('margin-bottom', '10px');
+
+
             // Function to fetch and display appointment
             let callingHire = () => {
                 $.ajax({
                     type: "GET",
                     url: "{{ route('role.index') }}",
                     success: function(response) {
-                        let table = $("#callingHire");
-                        table.empty();
+                        let tableBody = $("#callingHire tbody");
+                        tableBody.empty();
                         let data = response.data;
 
                         // Update appointment count
                         let len = data.length;
                         $("#counting").html(len);
 
-                        data.forEach((data) => {
+                        data.forEach((data, index) => {
 
                             let isApproved = data.isApproved;
                             if (isApproved == 1) {
@@ -72,8 +101,9 @@
                             } else {
                                 isApproved = 'Pending'
                             }
-                            table.append(`                           
+                            tableBody.append(`                           
                             <tr class="mt-5 capitalize">
+                                <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${index + 1}</td> 
                                 <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.title}</td> 
                                 <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.profile}</td> 
                                 <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.hire.company_name}</td> 
@@ -88,6 +118,9 @@
                             </tr>   
                             `);
                         });
+
+                        // Redraw DataTable with updated data
+                        dataTable.clear().rows.add($(tableBody).find('tr')).draw();
                     },
                     error: function(xhr, status, error) {
                         console.error('Error:', error);
