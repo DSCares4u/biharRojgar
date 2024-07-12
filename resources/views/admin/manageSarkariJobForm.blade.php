@@ -82,7 +82,7 @@
                         `);
                         });
                         // Redraw DataTable with updated data
-                        dataTable.clear().rows.add($(tableBody).find('tr')).draw();
+                        dataTable.clear().rows.add($(table).find('tr')).draw();
 
                     },
                     error: function(xhr, status, error) {
