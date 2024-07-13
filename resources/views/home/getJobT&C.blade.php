@@ -1,4 +1,5 @@
 @extends('home.homebase')
+@section('title', 'Terms & Conditions')
 @section('content')
     <div class="container mx-auto flex">
         <div class="bg-gray-100 p-6 rounded-lg w-8/12">

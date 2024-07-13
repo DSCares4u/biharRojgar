@@ -1,4 +1,5 @@
 @extends('home.homebase')
+@section('title', 'Manual Application')
 @section('content')
     <div class="container mx-auto font-sans ">
         <div class="flex">

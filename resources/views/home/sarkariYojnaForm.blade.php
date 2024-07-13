@@ -1,6 +1,7 @@
 @extends('home.homebase')
+@section('title', 'Yojna Application')
 @section('content')
-    <div class="container mx-auto flex font-sans">
+    <div class="container mx-auto flex font-sans mb-10">
 
         <div class="w-3/4 p-10" id="callingYojnaFeatures">
             <div>

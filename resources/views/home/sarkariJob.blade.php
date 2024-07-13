@@ -1,8 +1,9 @@
 @extends('home.homebase')
+@section('title', 'Sarkari Jobs')
 @section('content')
     <div class="flex">
 
-        <div class="container  p-6 bg-gray-100 rounded-lg w-3/4 ">
+        <div class="container p-6 bg-gray-100 rounded-lg w-3/4 mb-10">
             <div class="heading mb-6">
                 <h2 class="text-2xl font-semibold">Sarkari Jobs</h2>
                 <p class="text-sm text-red-500 mt-4 font-medium">To avoid last minute rush, you are advised to submit your
@@ -12,65 +13,16 @@
                     their online application including payment of fee within the last date for any reason whatsoever.</p>
             </div>
             <div class="flex mb-4 w-1/2">
-                <input type="text" id="searchName" placeholder="Search by Name" class="border p-2 w-1/2 mr-2 rounded-lg">
-                <input type="text" id="searchRole" placeholder="Search by Role" class="border p-2 w-1/2 ml-2 rounded-lg">
+                <input type="text" id="searchNameRole" placeholder="Search by Name/ Role"
+                    class="border p-2 w-1/2 mr-2 rounded-lg">
+                <input type="text" id="searchCityState" placeholder="Search by Location"
+                    class="border p-2 w-1/2 ml-2 rounded-lg">
                 <button id="searchButton" class="ml-2 bg-blue-500 text-white p-2 rounded-lg">Search</button>
             </div>
-            <!-- Results will be displayed here -->
-            <div id="searchResults" class="mt-4"></div>
-            <div class="card" id="callingData">
-                {{-- <a href="/get-job"
-                class="block max-w-full mt-4 p-4 bg-white border border-purple-300 rounded-lg  hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">
-                    CENTRALISED EMPLOYMENT NOTICE (CEN) No.RPF 01/2024 Sub-Inspector (Executive)</h5>
-                <div class="details flex mt-4">
-                    <div class="logo w-2/12">
-                        <img src="/sarkari/rrb.png" class="rounded-full w-20" alt="">
-                    </div>
-                    <div class="w-10/12 mb-1">
-                        <div class="flex justify-between text-blue-500 font-bold">
-                            <h5>CEN No. RPF 01/2024</h5>
-                            <h5>Important Instruction</h5>
-                        </div>
-                        <div class="mt-1 flex justify-between">
-                            <div class="mt">
-                                <h5 class="text-sm text-gray-500 font-semibold"> No. Of Post : 50</h5>
-                                <div class="mt-1">
-                                    <h5 class="text-sm text-gray-500 font-semibold">Age : 20 -45 Years</h5>
-                                </div>
-                            </div>
-                            <div class="">
-                                <h5 class="text-gray-500 font-semibold">Opening Date : 15/04/2024</h5>
-                                <h5 class="text-gray-500 font-semibold">Closing Date : 14/05/2024</h5>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-1">
-                            <h5 class="text-sm text-gray-500 font-semibold">Qualification :  Graduate in any field</h5>
-                        </div>
-                        <div class="mt-1">
-                            <h5 class="text-sm text-gray-500 font-semibold">Skills req :  Good Communication Skills</h5>
-                        </div>
-                        
-                      
-                    </div>
-                </div>
-                <div class="flex justify-between ml-1">
-                    <div class="fees mt-2 ml-36 flex">
-                        <h5 class=" font-semibold text-red-700 w-32 rounded text-base">Fees : Rs. 1000</h5>
-                        <p class="text-[12px]">(Including gov. fees)</p>
-                    </div>
-                    <div class="button">
-                        <button class="bg-green-600 rounded text-white px-1 py-1">Apply Now</button>
-                    </div>
-                </div>
-                
-                
-            </a> --}}
-            </div>
+            <div class="card" id="callingData"></div>
         </div>
         <div class="w-1/4">
-            <div class=" mt-10 w-[80%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
+            <div class="mt-10 w-[80%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
                 <div class="price mt-2 mb-4">
                     <h3 class="text-lg font-semibold">Our Services</h3>
                     <div class="line bg-blue-500">
@@ -84,18 +36,18 @@
                     </div>
                 </div>
             </div>
-            <div class=" mt-5 w-[85%] bg-white border p-3 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
+            <div class="mt-5 w-[85%] bg-white border p-3 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
                 <div class="price mt-2 mb-4">
                     <h3 class="text-lg font-semibold">Contact Us</h3>
                     <div class="line bg-blue-500">
                         <hr class="h-1">
                     </div>
-                    <div class="flex flex-col  mt-3">
-                        <h3 href="" class="mt-2 text-sm font-medium">Pensive Supremo Edu Pvt. Ltd.</h3>
+                    <div class="flex flex-col mt-3">
+                        <h3 class="mt-2 text-sm font-medium">Pensive Supremo Edu Pvt. Ltd.</h3>
                         <hr class="mt-2">
-                        <h3 href="" class="mt-2 font-normal text-xs">House No. 59 Ground Floor, Shukriya</h3>
-                        <h3 href="" class=" font-normal text-xs">Manzil, , Behind Hotel Crystal Inn,</h3>
-                        <h3 href="" class=" font-normal text-xs">Hatigaon, Guwahati, Assam - 781038, India</h3>
+                        <h3 class="mt-2 font-normal text-xs">House No. 59 Ground Floor, Shukriya</h3>
+                        <h3 class="font-normal text-xs">Manzil, Behind Hotel Crystal Inn,</h3>
+                        <h3 class="font-normal text-xs">Hatigaon, Guwahati, Assam - 781038, India</h3>
                         <hr class="mt-2 mb-2">
                         <h3 class="text-sm"><strong>Mobile : </strong> +91-9365447219, 7578999821</h3>
                         <hr class="mt-2 mb-2">
@@ -110,7 +62,7 @@
 
     <script>
         $(document).ready(function() {
-            let callingSarkariJobs = () => {
+            let callingSarkariJobs = (searchNameRole = '', searchCityState = '') => {
                 $.ajax({
                         type: "GET",
                         url: "{{ route('sarkari-job.index') }}",
@@ -120,6 +72,34 @@
 
                             let data = response.data;
                             console.log(data);
+
+                            data = data.filter(job => {
+                                let matchNameRole = true;
+                                let matchCityState = true;
+
+                                // Check if searchNameRole matches job name or role
+                                if (searchNameRole) {
+                                    matchNameRole = job.name.toLowerCase().includes(
+                                            searchNameRole) ||
+                                        job.role.toLowerCase().includes(searchNameRole);
+                                }
+
+                                // Check if searchCityState matches job city or state
+                                if (searchCityState) {
+                                    matchCityState = job.location.toLowerCase().includes(
+                                        searchCityState);
+                                }
+
+                                return matchNameRole && matchCityState;
+                            });
+
+                            // Filter jobs based on search criteria
+                            // if (searchName) {
+                            //     data = data.filter(job => job.name.toLowerCase().includes(searchName.toLowerCase()));
+                            // }
+                            // if (searchRole) {
+                            //     data = data.filter(job => job.role.toLowerCase().includes(searchRole.toLowerCase()));
+                            // }
 
                             data.forEach((job) => {
                                     // Check if the user is logged in
@@ -136,60 +116,58 @@
                                         `<div class="generated-logo rounded-full w-20 h-20 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.name.charAt(0)}</div>`;
 
                                     table.append(`
-                                                <div class="block max-w-full mt-4 p-4 bg-white border capitalize border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                                                    <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${job.name}</h5>
-                                                    <div class="details flex mt-4">
-                                                        <div class="logo w-2/12">${logo}
+                                    <div class="block max-w-full mt-4 p-4 bg-white border capitalize border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                                        <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${job.name}</h5>
+                                        <div class="details flex mt-4">
+                                            <div class="logo w-2/12">${logo}</div>
+                                            <div class="w-10/12 mb-1 flex-col flex">
+                                                <div class="flex justify-between text-blue-500 font-bold">
+                                                    <h5>${job.role}</h5>
+                                                    <h5>Important Instruction</h5>
+                                                </div>
+                                                <div class="mt-1 flex justify-between">
+                                                    <div class="mt-2">
+                                                        <h5 class="text-sm text-gray-500 font-semibold"> No. Of Post : ${job.no_of_post}</h5>
+                                                        <div class="mt-1">
+                                                            <h5 class="text-sm text-gray-500 font-semibold">Age : ${job.min_age} - ${job.max_age} Years</h5>
                                                         </div>
-                                                        <div class="w-10/12 mb-1 flex-col flex">
-                                                            <div class="flex  justify-between text-blue-500 font-bold">
-                                                                <h5>${job.role}</h5>
-                                                                <h5>Important Instruction</h5>
-                                                            </div>
-                                                            <div class="mt-1 flex justify-between">
-                                                                <div class="mt-2">
-                                                                    <h5 class="text-sm text-gray-500 font-semibold"> No. Of Post : ${job.no_of_post}</h5>
-                                                                    <div class="mt-1">
-                                                                        <h5 class="text-sm text-gray-500 font-semibold">Age : ${job.min_age} - ${job.max_age} Years</h5>
-                                                                    </div>
-                                                                    <div class="mt-1">
-                                                                        <h5 class="text-sm text-gray-500 font-semibold">Salary : ${job.min_salary} - ${job.max_salary}</h5>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="flex flex-col">
-                                                                    <h5 class="text-gray-500 font-semibold">Opening Date : ${job.opening_date}</h5>
-                                                                    <h5 class="text-gray-500 font-semibold">Closing Date : ${job.closing_date}</h5>
-                                                                    <h5 class="text-sm text-gray-500 font-semibold">Openings for : ${job.location}</h5>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mt-1">
-                                                                    <h5 class="text-sm text-gray-500 font-semibold">Job Type : ${job.job_type} Government</h5>
-                                                            </div>
-                                                            <div class="mt-1">
-                                                                <h5 class="text-sm text-gray-500 font-semibold">Qualification : ${job.qualification}</h5>
-                                                            </div>
-                                                            <div class="mt-1">
-                                                                <h5 class="text-sm text-gray-500 font-semibold">Skills req : ${job.skills}</h5>
-                                                            </div>
-                                                            <div class="flex justify-between">
-                                                                <div class="mt-1">
-                                                                        <h5 class="font-semibold text-red-700 rounded text-base">Form Fees : Rs. ${job.fees}</h5>
-                                                                        <p class="text-[12px]">(Including gov. fees)</p>
-                                                                    </div>
-                                                                <div class="button">
-                                                                    <a href="/viewSarkariJobForm/${job.id}"><button class="bg-green-600 hover:bg-green-700 rounded text-white px-2 py-1 mt-2">Apply Now</button></a>
-                                                                </div>
-                                                            </div>                                                            
+                                                        <div class="mt-1">
+                                                            <h5 class="text-sm text-gray-500 font-semibold">Salary : ${job.min_salary} - ${job.max_salary}</h5>
                                                         </div>
                                                     </div>
-                                                   
+                                                    <div class="flex flex-col">
+                                                        <h5 class="text-gray-500 font-semibold">Opening Date : ${job.opening_date}</h5>
+                                                        <h5 class="text-gray-500 font-semibold">Closing Date : ${job.closing_date}</h5>
+                                                        <h5 class="text-sm text-gray-500 font-semibold">Openings for : ${job.location}</h5>
+                                                    </div>
                                                 </div>
-                                            `);
+                                                <div class="mt-1">
+                                                    <h5 class="text-sm text-gray-500 font-semibold">Job Type : ${job.job_type} Government</h5>
+                                                </div>
+                                                <div class="mt-1">
+                                                    <h5 class="text-sm text-gray-500 font-semibold">Qualification : ${job.qualification}</h5>
+                                                </div>
+                                                <div class="mt-1">
+                                                    <h5 class="text-sm text-gray-500 font-semibold">Skills req : ${job.skills}</h5>
+                                                </div>
+                                                <div class="flex justify-between">
+                                                    <div class="mt-1">
+                                                        <h5 class="font-semibold text-red-700 rounded text-base">Form Fees : Rs. ${job.fees}</h5>
+                                                        <p class="text-[12px]">(Including gov. fees)</p>
+                                                    </div>
+                                                    <div class="button">
+                                                        <a href="/viewSarkariJobForm/${job.id}"><button class="bg-green-600 hover:bg-green-700 rounded text-white px-2 py-1 mt-2">Apply Now</button></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `);
                                 } else {
                                     // Check if the user has already applied for this job
                                     $.ajax({
                                         type: "GET",
-                                        url: `/checkApplicationStatus/${job.id}`, // Replace with your endpoint
+                                        url: `/checkApplicationStatus/${job.id}`,
                                         success: function(applicationResponse) {
                                             let applyButton;
                                             if (applicationResponse.already_applied) {
@@ -199,59 +177,58 @@
                                                 applyButton =
                                                     `<a href="/viewSarkariJobForm/${job.id}"><button class="bg-green-600 hover:bg-green-700 rounded text-white px-1 py-1">Apply Now</button></a>`;
                                             }
-                                            // Generate logo using the first letter of the job name if no logo is provided
                                             let logo = job.logo ?
                                                 `<img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20 h-20" alt="">` :
                                                 `<div class="generated-logo rounded-full w-20 h-20 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.name.charAt(0)}</div>`;
 
                                             table.append(`
-                                                <div class="block max-w-full mt-4 p-4 bg-white border capitalize border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                                                    <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${job.name}</h5>
-                                                    <div class="details flex mt-4">
-                                                        <div class="logo w-2/12">${logo}</div>
-                                                        <div class="w-10/12 mb-1">
-                                                            <div class="flex justify-between text-blue-500 font-bold">
-                                                                <h5>${job.role}</h5>
-                                                                <h5>Important Instruction</h5>
-                                                            </div>
-                                                            <div class="mt-1 flex justify-between">
-                                                                <div class="mt-2">
-                                                                    <h5 class="text-sm text-gray-500 font-semibold"> No. Of Post : ${job.no_of_post}</h5>
-                                                                    <div class="mt-1">
-                                                                        <h5 class="text-sm text-gray-500 font-semibold">Age : ${job.min_age} - ${job.max_age} Years</h5>
-                                                                    </div>
-                                                                    <div class="mt-1">
-                                                                        <h5 class="text-sm text-gray-500 font-semibold">Salary : ${job.min_salary} - ${job.max_salary}</h5>
-                                                                    </div>
+                                            <div class="block max-w-full mt-4 p-4 bg-white border capitalize border-purple-300 rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                                                <h5 class="mb-2 text-xl py-2 px-3 leading-5 bg-purple-400 font-bold rounded-full text-white dark:text-white">${job.name}</h5>
+                                                <div class="details flex mt-4">
+                                                    <div class="logo w-2/12">${logo}</div>
+                                                    <div class="w-10/12 mb-1">
+                                                        <div class="flex justify-between text-blue-500 font-bold">
+                                                            <h5>${job.role}</h5>
+                                                            <h5>Important Instruction</h5>
+                                                        </div>
+                                                        <div class="mt-1 flex justify-between">
+                                                            <div class="mt-2">
+                                                                <h5 class="text-sm text-gray-500 font-semibold"> No. Of Post : ${job.no_of_post}</h5>
+                                                                <div class="mt-1">
+                                                                    <h5 class="text-sm text-gray-500 font-semibold">Age : ${job.min_age} - ${job.max_age} Years</h5>
                                                                 </div>
-                                                                <div class="flex flex-col">
-                                                                    <h5 class="text-gray-500 font-semibold">Opening Date : ${job.opening_date}</h5>
-                                                                    <h5 class="text-gray-500 font-semibold">Closing Date : ${job.closing_date}</h5>
-                                                                    <h5 class="text-sm text-gray-500 font-semibold">Openings for : ${job.location}</h5>
+                                                                <div class="mt-1">
+                                                                    <h5 class="text-sm text-gray-500 font-semibold">Salary : ${job.min_salary} - ${job.max_salary}</h5>
                                                                 </div>
                                                             </div>
-                                                            <div class="mt-1">
-                                                                    <h5 class="text-sm text-gray-500 font-semibold">Job Type : ${job.job_type} Government</h5>
-                                                            </div>
-                                                            <div class="mt-1">
-                                                                <h5 class="text-sm text-gray-500 font-semibold">Qualification : ${job.qualification}</h5>
-                                                            </div>
-                                                            <div class="mt-1">
-                                                                <h5 class="text-sm text-gray-500 font-semibold">Skills req : ${job.skills}</h5>
+                                                            <div class="flex flex-col">
+                                                                <h5 class="text-gray-500 font-semibold">Opening Date : ${job.opening_date}</h5>
+                                                                <h5 class="text-gray-500 font-semibold">Closing Date : ${job.closing_date}</h5>
+                                                                <h5 class="text-sm text-gray-500 font-semibold">Openings for : ${job.location}</h5>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="flex justify-between ml-1">
-                                                        <div class="fees mt-2 ml-32 flex">
-                                                            <h5 class="font-semibold text-red-700 w-32 rounded text-base">Fees : Rs. ${job.fees}</h5>
-                                                            <p class="text-[12px]">(Including gov. fees)</p>
+                                                        <div class="mt-1">
+                                                            <h5 class="text-sm text-gray-500 font-semibold">Job Type : ${job.job_type} Government</h5>
                                                         </div>
-                                                        <div class="button">
-                                                            ${applyButton}
+                                                        <div class="mt-1">
+                                                            <h5 class="text-sm text-gray-500 font-semibold">Qualification : ${job.qualification}</h5>
+                                                        </div>
+                                                        <div class="mt-1">
+                                                            <h5 class="text-sm text-gray-500 font-semibold">Skills req : ${job.skills}</h5>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            `);
+                                                <div class="flex justify-between ml-1">
+                                                    <div class="fees mt-2 ml-32 flex">
+                                                        <h5 class="font-semibold text-red-700 w-32 rounded text-base">Fees : Rs. ${job.fees}</h5>
+                                                        <p class="text-[12px]">(Including gov. fees)</p>
+                                                    </div>
+                                                    <div class="button">
+                                                        ${applyButton}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `);
                                         },
                                         error: function(xhr, status, error) {
                                             console.error(
@@ -261,7 +238,6 @@
                                     });
                                 }
                             });
-
                     },
                     error: function(xhr, status, error) {
                         console.error('Error:', error);
@@ -269,42 +245,26 @@
                 });
         };
 
-        function searchJobs() {
-            let name = $('#searchName').val();
-            let role = $('#searchRole').val();
-
-            $.ajax({
-                url: '/api/search-sarkari-jobs',
-                type: 'GET',
-                data: {
-                    name: name,
-                    role: role
-                },
-                success: function(response) {
-                    $('#searchResults').html('');
-                    if (response.length > 0) {
-                        response.forEach(function(job) {
-                            $('#searchResults').append(
-                                '<div class="border p-4 rounded-lg mb-2">' +
-                                '<h2 class="font-bold text-lg">' + job.name + '</h2>' +
-                                '</div>'
-                            );
-                        });
-                    } else {
-                        $('#searchResults').html('<p>No results found.</p>');
-                    }
-                },
-                error: function(error) {
-                    console.error(error);
-                    $('#searchResults').html('<p>An error occurred while fetching data.</p>');
-                }
-            });
-        }
-
-        $('#searchName').on('input', searchJobs); $('#searchLocation').on('input', searchJobs);
-
-
+        // Call the function initially to load all jobs
         callingSarkariJobs();
+
+        $('#searchName, #searchRole').on('keyup', function() {
+            let searchName = $('#searchName').val();
+            let searchRole = $('#searchRole').val();
+            callingSarkariJobs(searchName, searchRole);
+        });
+
+        $('#searchNameRole').on('keyup', function() {
+            let searchNameRole = $(this).val().toLowerCase();
+            let searchCityState = $('#searchCityState').val().toLowerCase();
+            callingSarkariJobs(searchNameRole, searchCityState);
+        });
+
+        $('#searchCityState').on('keyup', function() {
+            let searchNameRole = $('#searchNameRole').val().toLowerCase();
+            let searchCityState = $(this).val().toLowerCase();
+            callingSarkariJobs(searchNameRole, searchCityState);
+        });
         });
     </script>
 @endsection

@@ -40,8 +40,13 @@ class SarkariJobController extends Controller
             'opening_date' => 'required',
             'closing_date' => 'required',              
         ]);
-        $logo = time() .  "." . $request->logo->extension();        //upload on public/photo/image/filename
-        $request->logo->move(public_path("image/sarkari/logo"), $logo);
+        if($request->hasFile('logo')){
+            $logo = time() .  "." . $request->logo->extension();        //upload on public/photo/image/filename
+            $request->logo->move(public_path("image/sarkari/logo"), $logo);
+        }else{
+            $logo = NULL;
+        }
+       
 
         if ($validator->fails()) {
             return response()->json([

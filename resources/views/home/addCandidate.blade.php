@@ -1,6 +1,7 @@
 @extends('home.homebase')
+@section('title', 'Add Candidate')
 @section('content')
-    <div class="container mx-auto font-sans ">
+    <div class="container mx-auto font-sans mb-10 ">
         <div class="mx-4 ">
             <form class="p-5 flex flex-col" id="applyJob">
                 <div class="border p-4 border-gray mt-3">

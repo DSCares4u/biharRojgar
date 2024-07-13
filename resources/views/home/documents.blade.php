@@ -1,6 +1,7 @@
 @extends('home.homebase')
+@section('title', 'Add Candidate')
 @section('content')
-    <div class="container mx-auto font-sans ">
+    <div class="container mx-auto font-sans mb-10">
         <div class="flex">
             <div class="bg-gray-100 mx-4 w-8/12">
                 <form class="p-5 flex flex-col" id="addDocument" enctype="multipart/form-data">

@@ -1,7 +1,8 @@
 @extends('home.homebase')
+@section('title', 'Sarkari Yojna')
 @section('content')
     <hr class="bg-gray-300 h-1 rounded-xl">
-    <div class="container mx-auto p-6 rounded-lg">
+    <div class="container mx-auto p-6 rounded-lg mb-10">
         <div class="heading text-center mb-6 capitalize" id="yojnaCat">
             <!-- Categories will be appended here -->
         </div>

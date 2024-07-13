@@ -1,4 +1,5 @@
 @extends('home.homebase')
+@section('title', 'Login')
 @section('content')
 
 <div class="flex justify-center items-center mt-10">

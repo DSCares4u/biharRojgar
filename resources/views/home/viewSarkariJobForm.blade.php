@@ -1,6 +1,7 @@
 @extends('home.homebase')
+@section('title', 'Job Application Form')
 @section('content')
-    <div id="printable-area" class="container mx-auto w-[65%] p-8 mt-3 bg-white shadow-lg border border-gray-400">
+    <div id="printable-area" class="container mx-auto w-[65%] p-8 mt-3 bg-white shadow-lg border border-gray-400 mb-10">
         <h1 class="text-3xl font-extrabold text-center mb-4 text-gray-900">माता कलावती देवी फाउंडेशन</h1>
         <p class="text-xl text-center mb-4 underline text-gray-700">JOB APPLICATION FORM</p>
         <!-- Personal Details -->

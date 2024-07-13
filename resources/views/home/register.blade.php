@@ -1,4 +1,5 @@
 @extends('home.homebase')
+@section('title', 'Registration')
 @section('content')
     {{-- <div class="flex justify-center items-center mt-10">
         <div class="bg-white shadow-md rounded pt-5 px-8 pb-8 mb-4 w-full max-w-md">
