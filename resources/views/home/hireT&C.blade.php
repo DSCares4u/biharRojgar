@@ -1,7 +1,7 @@
 @extends('home.homebase')
 @section('title', 'Terms & Conditions')
 @section('content')
-    <div class="container mx-auto flex">
+    <div class="container mx-auto flex mb-20">
         <div class="bg-gray-100 p-6 rounded-lg w-8/12">
             <h2 class="text-lg font-bold mb-4">Terms and Conditions</h2>
             <ul class="list-disc list-inside mb-4">
