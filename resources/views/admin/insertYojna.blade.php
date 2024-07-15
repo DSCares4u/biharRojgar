@@ -11,52 +11,61 @@
                         <div class="mb-4">
                             <label for="" class="block text-sm font-medium text-gray-700">Select Category</label>
                             <select name="yojna_category_id" id="callingPlans" class="w-1/2 shadow-sm sm:text-sm rounded-md"
-                                required></select>
+                                ></select>
+                                <span class="error text-red-500 text-xs font-semibold " id="yojna_category_idError"></span>
                         </div>
                         <div class="mb-4">
                             <label for="ename" class="block text-sm font-medium text-gray-700">Yojna English Name</label>
                             <input type="text" id="ename" name="ename"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                required>
+                                >
+                                <span class="error text-red-500 text-xs font-semibold " id="enameError"></span>
                         </div>
                         <div class="mb-4">
                             <label for="hname" class="block text-sm font-medium text-gray-700">Yojna Hindi Name</label>
                             <input type="text" id="hname" name="hname"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                required>
+                                >
+                                <span class="error text-red-500 text-xs font-semibold " id="hnameError"></span>
+
                         </div>
                         <div class="mb-4">
                             <label for="features" class="block text-sm font-medium text-gray-700">Yojna Features
                                 /Benefits</label>
                             <textarea name="features" id="features" rows="3"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                required></textarea>
+                                ></textarea>
+                                <span class="error text-red-500 text-xs font-semibold " id="featuresError"></span>
                         </div>
                         <div class="mb-4">
                             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                             <textarea name="description" id="description" rows="3"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                required></textarea>
+                                ></textarea>
+                                <span class="error text-red-500 text-xs font-semibold " id="descriptionError"></span>
                         </div>
                         <div class="mb-4">
                             <label for="documents" class="block text-sm font-medium text-gray-700">Required
                                 Documents</label>
                             <textarea name="documents" id="documents" rows="3"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                required></textarea>
+                                ></textarea>
+                                <span class="error text-red-500 text-xs font-semibold " id="documentsError"></span>
                         </div>
                         <label for="market_fees" class="block text-sm font-medium text-gray-700">Market Fees </label>
                         <input type="number" id="market_fees" name="market_fees"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required>
+                            >
+                            <span class="error text-red-500 text-xs font-semibold " id="market_feesError"></span>
                         <label for="fees" class="block text-sm font-medium text-gray-700">Yojna Fees </label>
                         <input type="number" id="fees" name="fees"
                             class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            required>
+                            >
+                            <span class="error text-red-500 text-xs font-semibold " id="feesError"></span>
 
                         <div class="mb-4 w-1/2">
                             <label for="logo" class="block text-sm font-medium text-gray-700">Image</label>
-                            <input type="file" id="logo" name="logo" class="" required>
+                            <input type="file" id="logo" name="logo" class="" >
                         </div>
                         <div class="">
                             <button type="submit"
@@ -95,9 +104,21 @@
                     processData: false,
                     success: function(response) {
                         swal("Success", response.message, "success");
+                        $('.error').text('');
                         $("#addYojna").trigger("reset");
                         window.open("/admin/manage-yojna", "_self")
-                    }
+                    },
+                    error: function(xhr) {
+                            // Clear previous error messages
+                            $('.error').text('');
+
+                            // Display validation errors
+                            if (xhr.responseJSON && xhr.responseJSON.error) {
+                                $.each(xhr.responseJSON.error, function(key, value) {
+                                    $('#' + key + 'Error').text(value[0]);
+                                });
+                            }
+                        }
                 });
             });
 

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('mother');
             $table->string('father');
             $table->enum('gender',['male','female','others']);
-            $table->integer('mobile');
+            $table->string('mobile');
             $table->enum('marital',['married','unmarried']);
             $table->string('id_mark');
             $table->enum('preferred_lang',['english','hindi']);

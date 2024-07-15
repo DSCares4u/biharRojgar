@@ -128,11 +128,11 @@ class DocumentController extends Controller
     // Validate the request data
     $validator = Validator::make($request->all(), [
         'id_proof_type' => 'required',
-        'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-        'signature' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-        'id_proof' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-        'quali_certificate' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
-        'other_certificate' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+        'photo' => 'nullable|max:10240',
+        'signature' => 'nullable|max:10240',
+        'id_proof' => 'nullable|max:10240',
+        'quali_certificate' => 'nullable|max:10240',
+        'other_certificate' => 'nullable|max:10240',
     ]);
 
     if ($validator->fails()) {

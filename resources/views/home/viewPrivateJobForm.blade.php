@@ -1,129 +1,131 @@
 @extends('home.homebase')
 @section('title', 'Job Application Form')
 @section('content')
-    <div id="printable-area" class="container w-[65%] mx-auto p-8 mt-3 bg-white shadow-lg border border-gray-400 mb-10">
-        <h1 class="text-3xl font-extrabold text-center mb-4 text-gray-900">माता कलावती देवी फाउंडेशन</h1>
-        <p class="text-xl text-center mb-4 underline text-gray-700">JOB APPLICATION FORM</p>
-        <!-- Personal Details -->
-        <h2 class="text-2xl underline font-semibold mb-4 text-gray-800">Personal Details / व्यक्तिगत विवरण</h2>
-        <div class="flex justify-between items-start">
+
+    <div class="container mb-20">
+        <div id="printable-area" class="container w-[65%] mx-auto p-8 mt-3 bg-white shadow-lg border border-gray-400">
+            <h1 class="text-3xl font-extrabold text-center mb-4 text-gray-900">माता कलावती देवी फाउंडेशन</h1>
+            <p class="text-xl text-center mb-4 underline text-gray-700">JOB APPLICATION FORM</p>
+            <!-- Personal Details -->
+            <h2 class="text-2xl underline font-semibold mb-4 text-gray-800">Personal Details / व्यक्तिगत विवरण</h2>
+            <div class="flex justify-between items-start">
+                <div class="w-3/4 space-y-4">
+                    <div class="flex w-full">
+                        <label class="w-2/4 font-medium text-gray-700 text-sm">Name (As per Aadhar Card) / नाम (आधार कार्ड
+                            अनुसार) :</label>
+                        <p class="w-1/4 capitalize text-sm" id="name"></p>
+                    </div>
+                    <div class="flex w-full">
+                        <label class="w-2/4 font-medium text-gray-700 text-sm">Father's Name / पिता का नाम :</label>
+                        <p class="w-2/4 capitalize text-sm" id="father"></p>
+                    </div>
+                    <div class="flex w-full">
+                        <label class="w-2/4 font-medium text-gray-700 text-sm">Mother's Name / माता का नाम :</label>
+                        <p class="w-2/4 capitalize text-sm" id="mother"></p>
+                    </div>
+                    <div class="flex w-full">
+                        <label class="w-2/4 font-medium text-gray-700 text-sm">D.O.B. / जन्म तिथि :</label>
+                        <p class="w-2/4 capitalize text-sm" id="dob"></p>
+                    </div>
+                    <div class="flex w-full">
+                        <label class="w-2/4 font-medium text-gray-700 text-sm">Gender / लिंग :</label>
+                        <p class="w-2/4 capitalize text-sm" id="gender"></p>
+                    </div>
+                    <div class="flex w-full">
+                        <label class="w-2/4 font-medium text-gray-700 text-sm">Marital Status / वैवाहिक स्थिति :</label>
+                        <p class="w-2/4 capitalize text-sm" id="marital"></p>
+                    </div>
+                    <div class="flex w-full">
+                        <label class="w-2/4 font-medium text-gray-700 text-sm">Religion / धर्म :</label>
+                        <p class="w-2/4 capitalize text-sm" id="religion"></p>
+                    </div>
+                    <div class="flex w-full">
+                        <label class="w-2/4 font-medium text-gray-700 text-sm">Category / वर्ग :</label>
+                        <p class="w-2/4 capitalize text-sm" id="community"></p>
+                    </div>
+                    <div class="flex w-full">
+                        <label class="w-2/4 font-medium text-gray-700 text-sm">Mobile No. / मोबाइल नं :</label>
+                        <p class="w-2/4 capitalize text-sm" id="mobile"></p>
+                    </div>
+                    <div class="flex w-full">
+                        <label class="w-2/4 font-medium text-gray-700 text-sm">Email ID / ईमेल आईडी :</label>
+                        <p class="w-2/4 capitalize text-sm" id="email"></p>
+                    </div>
+                </div>
+                <div class="photo w-1/4 flex justify-center">
+                    <img src="/image/photo/1715085122.jpg" class="border border-gray-500 w-32 h-32  shadow-lg"
+                        alt="Applicant Photo">
+                </div>
+            </div>
+
+            <!-- Address Details -->
+            <h2 class="text-2xl underline font-semibold mt-4 mb-3 text-gray-800">Address Details / पता का विवरण :</h2>
             <div class="w-3/4 space-y-4">
                 <div class="flex w-full">
-                    <label class="w-2/4 font-medium text-gray-700 text-sm">Name (As per Aadhar Card) / नाम (आधार कार्ड
-                        अनुसार) :</label>
-                    <p class="w-1/4 capitalize text-sm" id="name"></p>
+                    <label class="w-2/4 font-medium text-gray-700 text-sm">Landmark :</label>
+                    <p class="w-2/4 capitalize text-sm" id="landmark"></p>
                 </div>
                 <div class="flex w-full">
-                    <label class="w-2/4 font-medium text-gray-700 text-sm">Father's Name / पिता का नाम :</label>
-                    <p class="w-2/4 capitalize text-sm" id="father"></p>
+                    <label class="w-2/4 font-medium text-gray-700 text-sm">Village / गांव :</label>
+                    <p class="w-2/4 capitalize text-sm" id="village"></p>
                 </div>
                 <div class="flex w-full">
-                    <label class="w-2/4 font-medium text-gray-700 text-sm">Mother's Name / माता का नाम :</label>
-                    <p class="w-2/4 capitalize text-sm" id="mother"></p>
+                    <label class="w-2/4 font-medium text-gray-700 text-sm">Post Office / डाक घर :</label>
+                    <p class="w-2/4 capitalize text-sm" id="area"></p>
                 </div>
                 <div class="flex w-full">
-                    <label class="w-2/4 font-medium text-gray-700 text-sm">D.O.B. / जन्म तिथि :</label>
-                    <p class="w-2/4 capitalize text-sm" id="dob"></p>
+                    <label class="w-2/4 font-medium text-gray-700 text-sm">PIN Code / पिन कोड :</label>
+                    <p class="w-2/4 capitalize text-sm" id="pincode"></p>
                 </div>
                 <div class="flex w-full">
-                    <label class="w-2/4 font-medium text-gray-700 text-sm">Gender / लिंग :</label>
-                    <p class="w-2/4 capitalize text-sm" id="gender"></p>
+                    <label class="w-2/4 font-medium text-gray-700 text-sm">District / जिला :</label>
+                    <p class="w-2/4 capitalize text-sm" id="city"></p>
                 </div>
                 <div class="flex w-full">
-                    <label class="w-2/4 font-medium text-gray-700 text-sm">Marital Status / वैवाहिक स्थिति :</label>
-                    <p class="w-2/4 capitalize text-sm" id="marital"></p>
-                </div>
-                <div class="flex w-full">
-                    <label class="w-2/4 font-medium text-gray-700 text-sm">Religion / धर्म :</label>
-                    <p class="w-2/4 capitalize text-sm" id="religion"></p>
-                </div>
-                <div class="flex w-full">
-                    <label class="w-2/4 font-medium text-gray-700 text-sm">Category / वर्ग :</label>
-                    <p class="w-2/4 capitalize text-sm" id="community"></p>
-                </div>
-                <div class="flex w-full">
-                    <label class="w-2/4 font-medium text-gray-700 text-sm">Mobile No. / मोबाइल नं :</label>
-                    <p class="w-2/4 capitalize text-sm" id="mobile"></p>
-                </div>
-                <div class="flex w-full">
-                    <label class="w-2/4 font-medium text-gray-700 text-sm">Email ID / ईमेल आईडी :</label>
-                    <p class="w-2/4 capitalize text-sm" id="email"></p>
+                    <label class="w-2/4 font-medium text-gray-700 text-sm">State / राज्य :</label>
+                    <p class="w-2/4 capitalize text-sm" id="state"></p>
                 </div>
             </div>
-            <div class="photo w-1/4 flex justify-center">
-                <img src="/image/photo/1715085122.jpg" class="border border-gray-500 w-32 h-32  shadow-lg"
-                    alt="Applicant Photo">
+
+            <!-- Educational Details -->
+            <h2 class="text-2xl underline font-semibold mt-4 mb-3 text-gray-800">Educational Details / शैक्षिक विवरण</h2>
+            <div class="w-3/4 space-y-4">
+                <div class="flex w-full">
+                    <label class="w-2/4 font-medium text-gray-700 text-sm">Last Qualification / अंतिम शिक्षा :</label>
+                    <p class="w-2/4 capitalize text-sm" id="qualification"></p>
+                </div>
+                <div class="flex w-full">
+                    <label class="w-2/4 font-medium text-gray-700 text-sm">Board / University :</label>
+                    <p class="w-2/4 capitalize text-sm" id="board"></p>
+                </div>
+                <div class="flex w-full">
+                    <label class="w-2/4 font-medium text-gray-700 text-sm">Experience :</label>
+                    <p class="w-2/4 capitalize text-sm" id="experience"></p>
+                </div>
+                <div class="flex w-full">
+                    <label class="w-2/4 font-medium text-gray-700 text-sm">Skills :</label>
+                    <p class="w-2/4 capitalize text-sm" id="skills"></p>
+                </div>
             </div>
         </div>
+        <div class="text-center flex justify-evenly mt-5 mb-4">
+            <a href="/add-candidate" id="editButton"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Edit
+            </a>
+            <button onclick="window.print()" class=" bg-blue-500 text-white rounded-md px-2 hover:bg-blue-600">Print
+                Confirmation</button>
+            <form action="" id="applyPrivateJob">
+                {{-- <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}"> --}}
 
-        <!-- Address Details -->
-        <h2 class="text-2xl underline font-semibold mt-4 mb-3 text-gray-800">Address Details / पता का विवरण :</h2>
-        <div class="w-3/4 space-y-4">
-            <div class="flex w-full">
-                <label class="w-2/4 font-medium text-gray-700 text-sm">Landmark :</label>
-                <p class="w-2/4 capitalize text-sm" id="landmark"></p>
-            </div>
-            <div class="flex w-full">
-                <label class="w-2/4 font-medium text-gray-700 text-sm">Village / गांव :</label>
-                <p class="w-2/4 capitalize text-sm" id="village"></p>
-            </div>
-            <div class="flex w-full">
-                <label class="w-2/4 font-medium text-gray-700 text-sm">Post Office / डाक घर :</label>
-                <p class="w-2/4 capitalize text-sm" id="area"></p>
-            </div>
-            <div class="flex w-full">
-                <label class="w-2/4 font-medium text-gray-700 text-sm">PIN Code / पिन कोड :</label>
-                <p class="w-2/4 capitalize text-sm" id="pincode"></p>
-            </div>
-            <div class="flex w-full">
-                <label class="w-2/4 font-medium text-gray-700 text-sm">District / जिला :</label>
-                <p class="w-2/4 capitalize text-sm" id="city"></p>
-            </div>
-            <div class="flex w-full">
-                <label class="w-2/4 font-medium text-gray-700 text-sm">State / राज्य :</label>
-                <p class="w-2/4 capitalize text-sm" id="state"></p>
-            </div>
+                <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Apply Now
+                </button>
+            </form>
         </div>
-
-        <!-- Educational Details -->
-        <h2 class="text-2xl underline font-semibold mt-4 mb-3 text-gray-800">Educational Details / शैक्षिक विवरण</h2>
-        <div class="w-3/4 space-y-4">
-            <div class="flex w-full">
-                <label class="w-2/4 font-medium text-gray-700 text-sm">Last Qualification / अंतिम शिक्षा :</label>
-                <p class="w-2/4 capitalize text-sm" id="qualification"></p>
-            </div>
-            <div class="flex w-full">
-                <label class="w-2/4 font-medium text-gray-700 text-sm">Board / University :</label>
-                <p class="w-2/4 capitalize text-sm" id="board"></p>
-            </div>
-            <div class="flex w-full">
-                <label class="w-2/4 font-medium text-gray-700 text-sm">Experience :</label>
-                <p class="w-2/4 capitalize text-sm" id="experience"></p>
-            </div>
-            <div class="flex w-full">
-                <label class="w-2/4 font-medium text-gray-700 text-sm">Skills :</label>
-                <p class="w-2/4 capitalize text-sm" id="skills"></p>
-            </div>
-        </div>
-    </div>
-    <div class="text-center flex justify-evenly mt-5 mb-4">
-        <a href="/add-candidate" id="editButton"
-            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Edit
-        </a>
-        <button onclick="window.print()" class=" bg-blue-500 text-white rounded-md px-2 hover:bg-blue-600">Print
-            Confirmation</button>
-        <form action="" id="applyPrivateJob">
-            {{-- <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}"> --}}
-
-            <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                Apply Now 
-            </button>
-        </form>
     </div>
 
     <script>
-
         $(document).ready(function() {
             function fetchJobDetailsAndOpenModal() {
                 let userId = {{ auth()->user()->id }};

@@ -17,22 +17,27 @@
                                         <input type="text" id="qualification"
                                             name="qualification"placeholder="Eg. abc chowk ..."
                                             class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
+                                            <span class="error text-red-500 text-xs font-semibold " id="qualificationError"></span>
                                     </div>
                                     <div class="mb-3 items-center">
                                         <label for="q_state" class="block text-sm mb-2 ">State</label>
                                         <input type="text" id="q_state" name="q_state"placeholder="Eg. abc chowk ..."
                                             class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
+                                            <span class="error text-red-500 text-xs font-semibold " id="q_stateError"></span>
+                                            
                                     </div>
                                     <div class="mb-3 items-center">
                                         <label for="board" class="block text-sm mb-2 ">Board</label>
                                         <input type="text" id="board"
                                             name="board"placeholder="Eg. Sales executives needed urgently for ..."
                                             class="shadow appearance-none border py-1 px-2 w-full">
+                                            <span class="error text-red-500 text-xs font-semibold " id="boardError"></span>
                                     </div>
                                     <div class="mb-3 items-center">
                                         <label for="passing_year" class="block text-sm mb-2 ">Year Of Passing</label>
                                         <input type="month" id="passing_year" name="passing_year"
                                             class="shadow appearance-none border py-1 px-2 w-full">
+                                            <span class="error text-red-500 text-xs font-semibold " id="passing_yearError"></span>
                                     </div>
                                 </div>
                             </div>
@@ -41,11 +46,13 @@
                                     <label for="experience" class="block text-gray-700 text-sm mb-2 ">Experience</label>
                                     <input type="text" id="experience" name="experience"placeholder="Eg. abc..."
                                         class="shadow appearance-none border py-1 px-2 w-full">
+                                        <span class="error text-red-500 text-xs font-semibold " id="experienceError"></span>
                                 </div>
                                 <div class="mb-3  items-center">
                                     <label for="skills" class="block text-gray-700 text-sm mb-2 ">Skills</label>
                                     <input type="text" id="skills" name="skills"placeholder="Eg. abc..."
                                         class="shadow appearance-none border py-1 px-2 w-full">
+                                        <span class="error text-red-500 text-xs font-semibold " id="skillsError"></span>
                                 </div>
                             </div>
                             <div class="button flex justify-between ml-10 mt-8">
@@ -120,9 +127,17 @@
                     $("#insertData").trigger("reset");
                     window.open("/documents", "_self");
                 },
-                error: function(xhr, status, error) {
-                    console.error('Error updating Plan Details:', error);
-                }
+                error: function(xhr) {
+                            // Clear previous error messages
+                            $('.error').text('');
+
+                            // Display validation errors
+                            if (xhr.responseJSON && xhr.responseJSON.error) {
+                                $.each(xhr.responseJSON.error, function(key, value) {
+                                    $('#' + key + 'Error').text(value[0]);
+                                });
+                            }
+                        }
             });
         });
 

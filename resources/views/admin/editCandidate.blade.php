@@ -9,15 +9,14 @@
                         <hr class="h-1 rounded bg-gray-600 mb-4">
                         <div class="flex gap-5">
                             <div class="w-1/3">
-                                {{-- <input type="hidden" name="user_id" value="{{$user_id}}"> --}}
-                                <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}">
+                                <input type="hidden" id="id" name="user_id" value="">
                                 <div class="mb-3  items-center">
                                     <label for="name" class="block text-gray-700 text-sm mb-2 ">Full Name as recorded in
                                         Matriculation(10th class) Certificate/Marks list</label>
                                     <input type="text" id="name"
                                         name="name"placeholder="सर्टिफिकेट के अनुसार अपना नाम डालें"
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                    <p id="name-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="nameError"></span>
                                 </div>
                                 <div class="mb-3  items-center">
                                     <label for="gender" class="block text-gray-700 text-sm mb-2 ">Gender</label>
@@ -28,7 +27,7 @@
                                         <option value="female">Female</option>
                                         <option value="others">Others</option>
                                     </select>
-                                    <p id="gender-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="genderError"></span>
                                 </div>
                                 <div class="mb-3  items-center">
                                     <label for="marital" class="block text-gray-700 text-sm mb-2 ">Marital Status</label>
@@ -38,7 +37,7 @@
                                         <option value="married">Married</option>
                                         <option value="unmarried">UnMarried</option>
                                     </select>
-                                    <p id="marital-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="maritalError"></span>
                                 </div>
                                 <div class="mb-3  items-center">
                                     <label for="preferred_lang" class="block text-gray-700 text-sm mb-2 ">Choice of Language
@@ -50,7 +49,8 @@
                                         <option value="english">English</option>
                                         <option value="hindi">Hindi</option>
                                     </select>
-                                    <p id="preferred_lang-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="preferred_langError"></span>
+                                    </p>
                                 </div>
                             </div>
                             <div class="w-1/3">
@@ -61,19 +61,19 @@
                                     <input type="date" id="dob"
                                         name="dob"placeholder="Eg. Sales executives needed urgently for ..."
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                    <p id="dob-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="dobError"></span>
                                 </div>
                                 <div class="mb-3  items-center">
                                     <label for="father" class="block text-gray-700 text-sm mb-2 ">Father’s Name</label>
                                     <input type="text" id="father" name="father"placeholder="अपने पिता का नाम लिखें"
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                    <p id="father-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="fatherError"></span>
                                 </div>
                                 <div class="mb-3  items-center">
                                     <label for="email" class="block text-gray-700 text-sm mb-2 ">Email Address</label>
                                     <input type="email" id="email" name="email"placeholder="अपना ईमेल लिखें"
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                    <p id="email-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="emailError"></span>
                                 </div>
                                 <div class="mb-3  items-center">
                                     <label for="religion" class="block text-gray-700 text-sm mb-2 ">Religion</label>
@@ -86,7 +86,7 @@
                                         <option value="christian">Christian</option>
                                         <option value="other">Other</option>
                                     </select>
-                                    <p id="religion-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="religionError"></span>
                                 </div>
                             </div>
                             <div class="w-1/3">
@@ -95,14 +95,14 @@
                                     <input type="text" id="mother"
                                         name="mother"placeholder="अपनी माँ का नाम लिखें"
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                    <p id="mother-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="motherError"></span>
                                 </div>
                                 <div class="mb-3  items-center">
                                     <label for="mobile" class="block text-gray-700 text-sm mb-3 ">Mobile No.</label>
                                     <input type="tel" id="mobile"
                                         name="mobile"placeholder="अपना मोबाइल नंबर लिखें"
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                    <p id="mobile-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="mobileError"></span>
                                 </div>
                                 <div class="mb-3  items-center">
                                     <label for="id_mark" class="block text-gray-700 text-sm mb-3 ">Permanent visible mark
@@ -111,7 +111,7 @@
                                     <input type="text" id="id_mark"
                                         name="id_mark"placeholder="आपके शरीर पर पहचान का स्थायी निशान"
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                    <p id="id_mark-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="id_markError"></span>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                                         <option value="obc">OBC(Other Backward Clases)</option>
                                         <option value="ews">EWS(Economically Weake Section)</option>
                                     </select>
-                                    <p id="community-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="communityError"></span>
                                 </div>
                             </div>
                         </div>
@@ -150,22 +150,20 @@
                                     <input type="text" id="village"
                                         name="village"placeholder="अपने गांव का नाम लिखें."
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                    <p id="village-error" class="text-red-500 text-xs italic hidden"></p>
-
+                                    <span class="error text-red-500 text-xs font-semibold " id="villageError"></span>
                                 </div>
                                 <div class="mb-3  items-center">
                                     <label for="landmark" class="block text-gray-700 text-sm mb-2 ">Landmark</label>
                                     <input type="text" id="landmark" name="landmark"placeholder="अपना लैंडमार्क लिखे"
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                    <p id="landmark-error" class="text-red-500 text-xs italic hidden"></p>
-
+                                    <span class="error text-red-500 text-xs font-semibold " id="landmarkError"></span>
                                 </div>
                                 <div class="mb-3 items-center">
                                     <label for="area" class="block text-gray-700 text-sm mb-2">Area</label>
                                     <input type="text" id="area" name="area"
                                         placeholder="अपने एरिया का नाम लिखे"
                                         class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                    <p id="area-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="areaError"></span>
                                 </div>
                                 <div class="mb-3 items-center">
                                     <label for="pincode" class="block text-gray-700 text-sm mb-2">Pincode</label>
@@ -173,7 +171,7 @@
                                         placeholder="अपना पिनकोड नंबर दर्ज करें"
                                         class="shadow appearance-none border py-1 px-2 w-1/2 bg-gray-300 rounded"
                                         onchange="getDistrictAndState()">
-                                    <p id="pincode-error" class="text-red-500 text-xs italic hidden"></p>
+                                    <span class="error text-red-500 text-xs font-semibold " id="pincodeError"></span>
                                 </div>
                                 <div class="flex gap-5">
                                     <div class="mb-3 w-1/2 items-center">
@@ -181,14 +179,14 @@
                                         <input type="text" id="city" name="city"
                                             placeholder="अपने शहर का नाम लिखे"
                                             class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                        <p id="city-error" class="text-red-500 text-xs italic hidden"></p>
+                                        <span class="error text-red-500 text-xs font-semibold " id="cityError"></span>
                                     </div>
                                     <div class="mb-3 w-1/2 items-center">
                                         <label for="state" class="block text-gray-700 text-sm mb-2">State</label>
                                         <input type="text" id="state" name="state"
                                             placeholder="अपने राज्य का नाम लिखे"
                                             class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
-                                        <p id="state-error" class="text-red-500 text-xs italic hidden"></p>
+                                        <span class="error text-red-500 text-xs font-semibold " id="stateError"></span>
                                     </div>
                                 </div>
                             </div>
@@ -210,23 +208,31 @@
                                             <input type="text" id="qualification"
                                                 name="qualification"placeholder="Eg. abc chowk ..."
                                                 class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
+                                            <span class="error text-red-500 text-xs font-semibold "
+                                                id="qualificationError"></span>
                                         </div>
                                         <div class="mb-3 items-center">
                                             <label for="q_state" class="block text-sm mb-2 ">State</label>
                                             <input type="text" id="q_state"
                                                 name="q_state"placeholder="Eg. abc chowk ..."
                                                 class="shadow appearance-none border py-1 px-2 w-full bg-gray-300 rounded">
+                                            <span class="error text-red-500 text-xs font-semibold "
+                                                id="q_stateError"></span>
                                         </div>
                                         <div class="mb-3 items-center">
                                             <label for="board" class="block text-sm mb-2 ">Board</label>
                                             <input type="text" id="board"
                                                 name="board"placeholder="Eg. Sales executives needed urgently for ..."
                                                 class="shadow appearance-none border py-1 px-2 w-full">
+                                            <span class="error text-red-500 text-xs font-semibold "
+                                                id="boardError"></span>
                                         </div>
                                         <div class="mb-3 items-center">
                                             <label for="passing_year" class="block text-sm mb-2 ">Year Of Passing</label>
                                             <input type="month" id="passing_year" name="passing_year"
                                                 class="shadow appearance-none border py-1 px-2 w-full">
+                                            <span class="error text-red-500 text-xs font-semibold "
+                                                id="passing_yearError"></span>
                                         </div>
                                     </div>
                                 </div>
@@ -236,11 +242,14 @@
                                             class="block text-gray-700 text-sm mb-2 ">Experience</label>
                                         <input type="text" id="experience" name="experience"placeholder="Eg. abc..."
                                             class="shadow appearance-none border py-1 px-2 w-full">
+                                        <span class="error text-red-500 text-xs font-semibold "
+                                            id="experienceError"></span>
                                     </div>
                                     <div class="mb-3  items-center">
                                         <label for="skills" class="block text-gray-700 text-sm mb-2 ">Skills</label>
                                         <input type="text" id="skills" name="skills"placeholder="Eg. abc..."
                                             class="shadow appearance-none border py-1 px-2 w-full">
+                                        <span class="error text-red-500 text-xs font-semibold " id="skillsError"></span>
                                     </div>
                                 </div>
                             </div>
@@ -306,7 +315,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex justify-center gap-5">
+                            <div class="flex justify-center gap-5 mt-5">
                                 <button type="submit"
                                     class="w-3/2 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Update
                                     Details</button>
@@ -422,17 +431,19 @@
                         },
                         success: function(response) {
                             swal("Success", response.message, "success");
+                            $('.error').text('');
                             // $("#insertData").trigger("reset");
                             window.open("/admin/manage-candidate", "_self");
                         },
                         error: function(xhr) {
-                            if (xhr.status === 422) {
-                                var errors = xhr.responseJSON.errors;
-                                $.each(errors, function(key, value) {
-                                    $('#error-' + key).html(value[0]);
+                            // Clear previous error messages
+                            $('.error').text('');
+
+                            // Display validation errors
+                            if (xhr.responseJSON && xhr.responseJSON.error) {
+                                $.each(xhr.responseJSON.error, function(key, value) {
+                                    $('#' + key + 'Error').text(value[0]);
                                 });
-                            } else {
-                                alert('An error occurred. Please try again.');
                             }
                         }
                     });
@@ -483,7 +494,5 @@
                 }
             });
         });
-
-
     </script>
 @endsection

@@ -12,42 +12,54 @@
                             <label for="name" class="block text-sm font-medium text-gray-700">Job Name</label>
                             <input type="text" id="name" name="name"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                            <p id="error-name" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div>
+                                <span class="error text-red-500 text-xs font-semibold "
+                                id="nameError"></span>
+            </div>
                         <div class="mb-4">
                             <label for="role" class="block text-sm font-medium text-gray-700">Role</label>
                             <input type="text" id="role" name="role"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                            <p id="error-role" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div>
+                                <span class="error text-red-500 text-xs font-semibold "
+                                id="roleError"></span>
+            </div>
                         <div class="mb-4">
                             <label for="no_of_post" class="block text-sm font-medium text-gray-700">No Of Post</label>
                             <input type="number" id="no_of_post" name="no_of_post"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                            <p id="error-no_of_post" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div>
+                                <span class="error text-red-500 text-xs font-semibold "
+                                id="no_of_postError"></span>
+            </div>
                         <label for="age" class="block text-sm font-medium text-gray-700">Age</label>
                         <div class="mb-4 flex gap-2">
                             <div class="">
                                 <input type="number" id="min_age" name="min_age"
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block  shadow-sm sm:text-sm border-gray-300 rounded-md"
                                     placeholder="Min Age">
+                                    <span class="error text-red-500 text-xs font-semibold "
+                                    id="min_ageError"></span>
                             </div>
                             <div class="">
                                 <input type="number" id="max_age" name="max_age" placeholder="Max Age"
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <span class="error text-red-500 text-xs font-semibold "
+                                    id="max_ageError"></span>
                             </div>
                         </div>
                         <div class="mb-4">
                             <label for="qualification" class="block text-sm font-medium text-gray-700">Qualification</label>
                             <input type="text" id="qualification" name="qualification"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <span class="error text-red-500 text-xs font-semibold "
+                                id="qualificationError"></span>
                         </div>
                         <div class="mb-4">
                             <label for="skills" class="block text-sm font-medium text-gray-700">Skills</label>
                             <input type="text" id="skills" name="skills"
                                 class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                <span class="error text-red-500 text-xs font-semibold "
+                                id="skillsError"></span>
                         </div>
+
                         <div class="flex gap-5">
                             <div class="mb-4 items-center">
                                 <label for="job_type" class="block text-sm font-medium text-gray-700">Job Type</label>
@@ -61,6 +73,8 @@
                                     <option value="District" class="border w-full text-sm">District Government</option>
                                     <option value="Local" class="border w-full text-sm">Local Government</option>
                                 </select>
+                                <span class="error text-red-500 text-xs font-semibold "
+                                id="job_typeError"></span>
                             </div>
                             <div class="mb-4 items-center w-1/2">
                                 <label for="category"
@@ -77,6 +91,8 @@
                                     <option value="General & Obc" class="border w-full text-sm">General & Obc</option>
                                     <option value="OBC & SC & ST" class="border w-full text-sm">OBC & SC & ST</option>
                                 </select>
+                                <span class="error text-red-500 text-xs font-semibold "
+                                id="categoryError"></span>
                             </div>
                         </div>
                         <div class="mb-3  items-center w-1/2">
@@ -123,13 +139,16 @@
                                 <option value="Ladakh">Ladakh</option>
                                 <option value="Jammu and Kashmir">Jammu and Kashmir</option>
                             </select>
-                            <p id="error-state" class="text-red-500 text-xs font-semibold error-message"></p>
-                        </div>
+                            <span class="error text-red-500 text-xs font-semibold "
+                            id="stateError"></span>
+        </div>
                         <div class="flex gap-5">
                             <div class="mb-4 w-1/2">
                                 <label for="fees" class="block text-sm font-medium text-gray-700">Form Fees</label>
                                 <input type="number" id="fees" name="fees"
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <span class="error text-red-500 text-xs font-semibold "
+                                    id="feesError"></span>
                             </div>
                             <div class="mb-4 w-1/2">
                                 <label for="r_fees" class="block text-sm font-medium text-gray-700">SC/ST Form
@@ -144,12 +163,16 @@
                                     Salary</label>
                                 <input type="number" id="min_salary" name="min_salary"
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <span class="error text-red-500 text-xs font-semibold "
+                                    id="min_salaryError"></span>
                             </div>
                             <div class="date w-1/2">
                                 <label for="max_salary" class="block text-sm font-medium text-gray-700 ">Maximum
                                     Salary</label>
                                 <input type="number" id="max_salary" name="max_salary"
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <span class="error text-red-500 text-xs font-semibold "
+                                    id="max_salaryError"></span>
                             </div>
                         </div>
                         <div class="mb-4 flex gap-2">
@@ -158,18 +181,24 @@
                                     Dates</label>
                                 <input type="date" id="opening_date" name="opening_date"
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <span class="error text-red-500 text-xs font-semibold "
+                                    id="opening_dateError"></span>
                             </div>
                             <div class="date w-1/2">
                                 <label for="closing_date" class="block text-sm font-medium text-gray-700 ">Closing
                                     Dates</label>
                                 <input type="date" id="closing_date" name="closing_date"
                                     class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                    <span class="error text-red-500 text-xs font-semibold "
+                                    id="closing_dateError"></span>
                             </div>
                         </div>
                         <div class="mb-3 items-center">
                             <label for="description" class="block text-sm font-medium text-gray-700 mb-2">Job Description</label>
                             <textarea name="description" id="description" cols="20" rows="2"
                                 placeholder="Type Or Details Of Job Here" class="shadow appearance-none border py-1 px-2 w-full" ></textarea>
+                                <span class="error text-red-500 text-xs font-semibold "
+                                id="descriptionError"></span>
                         </div>
                         <div class="mb-4">
                             <label for="logo" class="block text-sm font-medium text-gray-700">Logo</label>
@@ -206,19 +235,21 @@
                     },
                     success: function(response) {
                         swal("Success", response.message, "success");
+                        $('.error').text('');
                         $("#insertData").trigger("reset");
                         window.open("/admin/manage/sarkari-job", "_self");
                     },
                     error: function(xhr) {
-                        if (xhr.status === 422) {
-                            var errors = xhr.responseJSON.errors;
-                            $.each(errors, function(key, value) {
-                                $('#error-' + key).html(value[0]);
-                            });
-                        } else {
-                            alert('An error occurred. Please try again.');
+                            // Clear previous error messages
+                            $('.error').text('');
+
+                            // Display validation errors
+                            if (xhr.responseJSON && xhr.responseJSON.error) {
+                                $.each(xhr.responseJSON.error, function(key, value) {
+                                    $('#' + key + 'Error').text(value[0]);
+                                });
+                            }
                         }
-                    }
                 });
             });
         });
