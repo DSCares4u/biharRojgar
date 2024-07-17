@@ -9,7 +9,7 @@
                 <form class="p-5 flex flex-col" id="addHirer">
                     <h2 class="text-lg font-semibold mb-2">Verify a Hirer</h2>
                     <div class="mb-3 items-center">
-                        <label for="date_of_start" class="block text-gray-700 text-sm mb-2">Applied Date</label>
+                        <label for="date_of_start" class="block text-gray-700 text-sm mb-2">Job Posted Date</label>
                         <input type="text" id="date_of_start" placeholder="Eg. Sales executives needed urgently for ..."
                             class="shadow appearance-none border py-1 px-2 w-1/2" disabled>
                     </div>

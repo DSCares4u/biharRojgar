@@ -128,7 +128,7 @@
                                     <option value="sc">SC(Schedule Caste)</option>
                                     <option value="st">ST(Schedule Tribe)</option>
                                     <option value="obc">OBC(Other Backward Clases)</option>
-                                    <option value="ews">EWS(Economically Weake Section)</option>
+                                    <option value="ews">EWS(Economically weaker Section)</option>
                                 </select>
                                 <span class="error text-red-500 text-xs font-semibold " id="communityError"></span>
                             </div>

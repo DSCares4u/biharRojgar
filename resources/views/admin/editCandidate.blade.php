@@ -246,7 +246,7 @@
                                             id="experienceError"></span>
                                     </div>
                                     <div class="mb-3  items-center">
-                                        <label for="skills" class="block text-gray-700 text-sm mb-2 ">Skills</label>
+                                        <label for="skills" class="block text-gray-700 text-sm mb-2 ">Any Other Diploma Degree</label>
                                         <input type="text" id="skills" name="skills"placeholder="Eg. abc..."
                                             class="shadow appearance-none border py-1 px-2 w-full">
                                         <span class="error text-red-500 text-xs font-semibold " id="skillsError"></span>
@@ -266,7 +266,7 @@
                                     <div class="mb-4 items-center">
                                         <input type="hidden" id="id" name="user_id">
                                         <label for="photo" class="block text-sm mb-3">Upload Your Photo</label>
-                                        <input type="file" id="photo" name="photo">
+                                        <input type="file" id="photo" src="#" name="photo">
                                         <img id="photoPreview" src="#" alt="Photo Preview"
                                             class=" w-24 h-24 object-cover mt-2" />
                                         <p id="error-photo" class="text-red-500 text-xs font-semibold error-message"></p>
@@ -359,6 +359,7 @@
                         $('#state').val(response.data.candidate.state);
                         $('#city').val(response.data.candidate.city);
                         $('#id_mark').val(response.data.candidate.id_mark);
+                        $('#photo').attr('src',response.data.document.photo);
                         $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data
                             .document.photo);
                         $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data

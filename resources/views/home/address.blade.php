@@ -49,7 +49,7 @@
                                         <span class="error text-red-500 text-xs font-semibold " id="experienceError"></span>
                                 </div>
                                 <div class="mb-3  items-center">
-                                    <label for="skills" class="block text-gray-700 text-sm mb-2 ">Skills</label>
+                                    <label for="skills" class="block text-gray-700 text-sm mb-2 ">Any Other Diploma Degree</label>
                                     <input type="text" id="skills" name="skills"placeholder="Eg. abc..."
                                         class="shadow appearance-none border py-1 px-2 w-full">
                                         <span class="error text-red-500 text-xs font-semibold " id="skillsError"></span>

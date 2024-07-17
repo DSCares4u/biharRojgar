@@ -26,20 +26,22 @@
                                     </div>
                                     <div class="flex gap-3">
                                         <div class="mb-4 items-center">
+                                            <label for="id_proof" class="block text-sm mb-3">Upload Your Id</label>
+                                            <input type="file" id="id_proof" name="id_proof">
+                                            <img id="idProofPreview" src="#" alt="id Proof Preview"
+                                                class=" w-24 h-24 object-cover mt-2" />
+                                        </div>
+                                        <div class="mb-4 items-center">
                                             <label for="id_proof_type" class="block text-sm mb-3">Choose Id Proof</label>
-                                            <select name="id_proof_type" id="id_proof_type" class="border py-2 px-5 w-full rounded">
+                                            <select name="id_proof_type" id="id_proof_type"
+                                                class="border py-2 px-5 w-full rounded">
                                                 <option value="">Select</option>
                                                 <option value="aadhar">Aadhar Card</option>
                                                 <option value="pan">Pan Card</option>
                                                 <option value="dl">Driving Licence</option>
                                                 <option value="voter-id">Voter Id Card</option>
                                             </select>
-                                        </div>
-                                        <div class="mb-4 items-center">
-                                            <label for="id_proof" class="block text-sm mb-3">Upload Selected Id</label>
-                                            <input type="file" id="id_proof" name="id_proof">
-                                            <img id="idProofPreview" src="#" alt="id Proof Preview" class=" w-24 h-24 object-cover mt-2"/>
-                                        </div>
+                                        </div>                                        
                                     </div>
                                     <div class="mb-4 items-center">
                                         <label for="quali_certificate" class="block text-sm mb-3">Upload Your Latest Qualification Certificate</label>

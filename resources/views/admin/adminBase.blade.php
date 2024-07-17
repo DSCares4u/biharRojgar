@@ -13,7 +13,17 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script>
-    <title>BiharRojgar | Admin</title>
+    <title>Taskinn Solution | Admin</title>
+    <style>
+        table thead th {
+            background-color: #f3f4f6;
+            text-align: center;
+            font-weight: bold;
+        }
+        table tbody td {
+            text-align: center;
+        }
+    </style>
 
 </head>
 

@@ -131,7 +131,7 @@
                                         <option value="sc">SC(Schedule Caste)</option>
                                         <option value="st">ST(Schedule Tribe)</option>
                                         <option value="obc">OBC(Other Backward Clases)</option>
-                                        <option value="ews">EWS(Economically Weake Section)</option>
+                                        <option value="ews">EWS(Economically weaker Section)</option>
                                     </select>
                                     <span class="error text-red-500 text-xs font-semibold " id="communityError"></span>
                                 </div>
@@ -246,7 +246,7 @@
                                             id="experienceError"></span>
                                     </div>
                                     <div class="mb-3  items-center">
-                                        <label for="skills" class="block text-gray-700 text-sm mb-2 ">Skills</label>
+                                        <label for="skills" class="block text-gray-700 text-sm mb-2 ">Any Other Diploma Degree</label>
                                         <input type="text" id="skills" name="skills"placeholder="Eg. abc..."
                                             class="shadow appearance-none border py-1 px-2 w-full">
                                         <span class="error text-red-500 text-xs font-semibold " id="skillsError"></span>
@@ -266,7 +266,7 @@
                                     <div class="mb-4 items-center">
                                         <input type="hidden" id="id" name="user_id">
                                         <label for="photo" class="block text-sm mb-3">Upload Your Photo</label>
-                                        <input type="file" id="photo" name="photo">
+                                        <input type="file" id="photo" name="photo" class="appearance-none">
                                         <img id="photoPreview" src="#" alt="Photo Preview"
                                             class=" w-24 h-24 object-cover mt-2" />
                                         <p id="error-photo" class="text-red-500 text-xs font-semibold error-message"></p>
@@ -281,6 +281,12 @@
                                     </div>
                                     <div class="flex gap-3">
                                         <div class="mb-4 items-center">
+                                            <label for="id_proof" class="block text-sm mb-3">Upload Your Id</label>
+                                            <input type="file" id="id_proof" name="id_proof">
+                                            <img id="idProofPreview" src="#" alt="id Proof Preview"
+                                                class=" w-24 h-24 object-cover mt-2" />
+                                        </div>
+                                        <div class="mb-4 items-center">
                                             <label for="id_proof_type" class="block text-sm mb-3">Choose Id Proof</label>
                                             <select name="id_proof_type" id="id_proof_type"
                                                 class="border py-2 px-5 w-full rounded">
@@ -291,12 +297,7 @@
                                                 <option value="voter-id">Voter Id Card</option>
                                             </select>
                                         </div>
-                                        <div class="mb-4 items-center">
-                                            <label for="id_proof" class="block text-sm mb-3">Upload Selected Id</label>
-                                            <input type="file" id="id_proof" name="id_proof">
-                                            <img id="idProofPreview" src="#" alt="id Proof Preview"
-                                                class=" w-24 h-24 object-cover mt-2" />
-                                        </div>
+                                        
                                     </div>
                                     <div class="mb-4 items-center">
                                         <label for="quali_certificate" class="block text-sm mb-3">Upload Your Latest
