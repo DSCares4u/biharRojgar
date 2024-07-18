@@ -26,10 +26,8 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="py-1"><input type="text" name="inputs[0][title]" placeholder="Title"
-                                            class="appearance border py-2 px-2 w-full text-xs"></td>
-                                    <td class="py-1"><input type="text" name="inputs[0][profile]" placeholder="Job Name"
-                                            class="appearance border py-2 px-2 w-full text-xs"></td>
+                                    <td class="py-1"><input type="text" name="inputs[0][title]" placeholder="Title" class="appearance border py-2 px-2 w-full text-xs"></td>
+                                    <td class="py-1"><input type="text" name="inputs[0][profile]" placeholder="Job Name" class="appearance border py-2 px-2 w-full text-xs"></td>
                                     <td class="py-1"><input type="number" min="1" name="inputs[0][no_of_post]"
                                             placeholder="Number" class="appearance border py-2 px-2 w-full text-xs"></td>
                                     <td class="py-1 text-center">

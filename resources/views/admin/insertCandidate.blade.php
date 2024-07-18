@@ -237,18 +237,19 @@
                                     </div>
                                 </div>
                                 <div class="border border-gray mt-3 p-4">
-                                    <div class="mb-3  items-center">
-                                        <label for="experience"
-                                            class="block text-gray-700 text-sm mb-2 ">Experience</label>
-                                        <input type="text" id="experience" name="experience"placeholder="Eg. abc..."
-                                            class="shadow appearance-none border py-1 px-2 w-full">
-                                        <span class="error text-red-500 text-xs font-semibold "
-                                            id="experienceError"></span>
+                                    <div class="mb-3 items-center w-1/2">
+                                        <label for="experience" class="block text-gray-700 text-sm mb-2">Working Experience</label>
+                                        <div class="flex items-center">
+                                            <input type="number" id="experience" name="experience" placeholder="" class="shadow appearance-none border py-1 px-2 w-1/6 mr-2">
+                                            <span class="mr-2">Years</span>
+                                        </div>
+                                            <span class="error text-red-500 text-xs font-semibold" id="experienceError"></span>
                                     </div>
-                                    <div class="mb-3  items-center">
+                                    
+                                    <div class="mb-3 flex flex-col">
                                         <label for="skills" class="block text-gray-700 text-sm mb-2 ">Any Other Diploma Degree</label>
                                         <input type="text" id="skills" name="skills"placeholder="Eg. abc..."
-                                            class="shadow appearance-none border py-1 px-2 w-full">
+                                            class="shadow appearance-none border py-1 px-2 w-1/4">
                                         <span class="error text-red-500 text-xs font-semibold " id="skillsError"></span>
                                     </div>
                                 </div>

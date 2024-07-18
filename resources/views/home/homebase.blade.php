@@ -149,9 +149,8 @@
                         clip-rule="evenodd"></path>
                 </svg>
             </button>
-            <div class="hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-                <ul
-                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-[#74b9ff] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <div class="hidden w-full md:flex md:w-auto md:order-1 md:justify-between" id="navbar-user">
+                <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-[#74b9ff] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
                         <a href="/"
                             class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
@@ -176,21 +175,21 @@
                     @endguest
                     <li>
                         <a href="/sarkari-yojna"
-                            class="block py-4 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ">Sarkari
+                            class="block py-4 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 flashing-yojna">Sarkari
                             Yojna</a>
                     </li>
                     @auth
                         <li>
                             <a href="/image/manual_form.jpg" download
-                                class="inline-block px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">Download
+                                class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Download
                                 Form</a>
                         </li>
                         <li>
                             <a href="/manual-form"
-                                class="inline-block px-4 py-2 text-white bg-green-500 rounded cursor-pointer hover:bg-green-700">Upload
+                                class="inline-block px-4 py-1 text-white bg-green-500 rounded cursor-pointer hover:bg-green-700">Upload
                                 Form</a>
                         </li>
-                        <li>
+                        <li class="md:hidden">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="inline-block">
                                 @csrf
                                 <button type="submit"
@@ -199,16 +198,16 @@
                         </li>
                     @endauth
                     @guest
-                        <li>
-                            <a href="/otp/login"
-                                class="inline-block px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">Sign In</a>
+                        <li class="md:hidden">
+                            <a href="{{url('/otp/login')}}"
+                                class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Sign In</a>
                         </li>
                     @endguest
                 </ul>
             </div>
-            <div class="flex items-center md:flex md:justify-end space-x-4 md:space-x-6 md:order-2">
+            <div class="hidden items-center md:flex md:justify-end space-x-4 md:space-x-6 md:order-2">
                 @auth
-                    <div class="flex space-x-4 md:flex md:justify-end">
+                    <div class="flex space-x-4 md:flex md:justify-end ">
                         {{-- <a href="/image/manual_form.jpg" download
                             class="inline-block px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">Download
                             Form</a>
@@ -222,6 +221,10 @@
                         </form>
                     </div>
                 @endauth
+                @guest
+                    <a href="{{url('/otp/login')}}"
+                        class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Sign In</a>
+            @endguest
             </div>
         </div>
     </nav>
