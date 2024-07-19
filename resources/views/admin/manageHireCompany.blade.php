@@ -166,7 +166,7 @@
                             <tr class="mt-5">
                                 <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.id}</td> 
                                 <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.company_name}</td> 
-                                <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.mobile}</td> 
+                                <td class="border-b border-gray-200 px-3 text-center py-2 text-sm"style="text-align:center;">${data.mobile}</td> 
                                 <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.city},${data.state}</td> 
 
                                 <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">
@@ -260,5 +260,10 @@
             });
             callingPlans();
         });
+        function alignTableHeaders() {
+            $('#callingCandidates thead th').each(function(index) {
+                $(this).css('text-align', 'center');
+            });
+        }
     </script>
 @endsection

@@ -87,7 +87,7 @@
                             <td class=" px-3  flex justify-center item-center text-center py-2 text-sm">${index + 1}</td> 
                             <td class=" px-3 text-center py-2 text-sm">${data.name}</td> 
                             <td class=" px-3 text-center py-2 text-sm">${data.dob}/${data.gender}</td> 
-                            <td class=" flex justify-center item-center text-center px-3 py-2 text-sm">${data.mobile}</td> 
+                            <td class="  text-sm" style="text-align:center;">${data.mobile}</td> 
                             <td class=" px-3 text-center py-2 text-sm">${data.email}</td> 
                             <td class=" px-3 text-center py-2 text-sm">${data.city}</td> 
                             <td class=" px-3 text-center py-2 text-sm">${data.state}</td> 

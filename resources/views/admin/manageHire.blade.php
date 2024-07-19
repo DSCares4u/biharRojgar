@@ -109,7 +109,7 @@
                                 <td class="px-3 text-center py-2 text-sm">${data.title}</td> 
                                 <td class="px-3 text-center py-2 text-sm">${data.profile}</td> 
                                 <td class="px-3 text-center py-2 text-sm">${data.hire.company_name}</td> 
-                                <td class="px-3 flex justify-center  text-center py-2 text-sm">${data.hire.mobile}</td> 
+                                <td class="text-sm"style="text-align:center;">${data.hire.mobile}</td> 
                                 <td class="px-3 text-center py-2 text-sm">${data.hire.city}</td> 
                                 <td class="px-3 text-center py-2 text-sm">${isApproved}</td> 
                                     <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">
