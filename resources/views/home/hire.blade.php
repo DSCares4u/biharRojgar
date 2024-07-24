@@ -2,13 +2,14 @@
 @section('title', 'Hire')
 @section('content')
     <div class="container font-sans flex mb-10">
-        <div class="bg-gray-100 mx-12 border border-gray mt-3 w-8/12">
+        <div class="bg-gray-100 mx-12 border border-gray mt-3 w-10/12">
             <form class="p-5 flex flex-col" id="addHirer">
                 <h2 class="text-lg font-semibold mb-2  ">Post a job</h2>
                 <div class="flex flex-col  border rounded border-gray-300 p-2">
                     <table class="table-auto border-collapse" id="table">
                         <thead>
                             <tr class="bg-gray-200">
+                                <th class="px-4 py-1 text-sm font-normal">Job Title</th>
                                 <th class="px-4 py-1 text-sm font-normal">Job Profile</th>
                                 <th class="px-4 py-1 text-sm font-normal">No.of Post</th>
                                 <th class="px-2 py-1 text-sm font-normal">Experience</th>
@@ -22,6 +23,8 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td class="py-1"><input type="text" name="inputs[0][title]" placeholder="Job Title"
+                                        class="appearance border py-2 px-2 w-full text-xs"></td>
                                 <td class="py-1"><input type="text" name="inputs[0][profile]" placeholder="Job Name"
                                         class="appearance border py-2 px-2 w-full text-xs"></td>
                                 <td class="py-1"><input type="number" min="1" name="inputs[0][no_of_post]"
@@ -98,10 +101,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="title-wrapper gap-2 items-center" id="title_input">
-                        <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Title</label>
-                        <input type="text" name="inputs[0][title]" placeholder="Eg. Sales executives needed urgently for ..." class="border py-1 px-2 w-1/2 text-black text-sm">
-                    </div>
                 </div>
                 <p id="error-roles" class="text-red-500 text-xs mb-4 font-semibold error-message"></p>
                 <div class="mb-3 flex gap-2">
@@ -113,9 +112,8 @@
                     </div>
                     <div class="mb-3  items-center w-1/2">
                         <label for="state"
-                            class="block text-gray-700 text-sm appearance-none border px-2 w-full">State</label>
-                        <select id="state" name="state"
-                            class="sm:text-sm py-2 px-2 items-center border border-gray-300 rounded">
+                            class="block text-gray-700 text-sm appearance-none mb-2  px-2 w-full">State</label>
+                        <select id="state" name="state" class="shadow appearance-none border py-1 px-2 w-full">
                             <option value="">Select State</option>
                             <option value="Andhra Pradesh">Andhra Pradesh</option>
                             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -166,7 +164,6 @@
                 </div>
                 <div class="mb-3 flex items-center">
                     <h3 class=" font-semibold">Recruiter details</h3>
-                    {{-- <h3 class="text-sm ml-1"> (Cannot be changed later)</h3> --}}
                 </div>
                 <div class="mb-3 flex gap-2">
                     <div class="mb-3 items-center w-1/2">
@@ -210,8 +207,6 @@
                         <p id="error-logo" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                 </div>
-                {{-- Option card --}}
-
                 <div class="mb-4 flex gap-2" id="plan_card">
                     <label
                         class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
@@ -277,172 +272,169 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <script>
-            $(document).ready(function() {
-                var i = 0;
+    <script>
+        $(document).ready(function() {
+            var i = 0;
 
-                // Add new row
-                $('#table').on('click', '.add', function() {
-                    ++i;
-                    $('#table tbody').append(
-                        `<tr data-index="${i}">
-                <td class="py-1"><input type="text" name="inputs[${i}][profile]" placeholder="Job Name"
-                    class="border py-2 px-2 w-full text-xs"></td>
-                <td class="py-1"><input type="number" min="1" name="inputs[${i}][no_of_post]"
-                    placeholder="Number" class="border py-2 px-2 w-full text-xs">
-                </td>
-                <td class="py-1 text-center">
-                    <div class="text-xs text-gray-400">
-                        Min: <input type="text" min="0" name="inputs[${i}][min_experience]" placeholder="0"
-                            class="border text-black px-1 py-1 w-1/4 text-xs">
-                        Max: <input type="text" min="0" name="inputs[${i}][max_experience]" placeholder="5y"
-                            class="text-black px-1 border py-1 w-1/4 text-xs">
-                    </div>
-                </td>
-                <td class="py-1 text-xs">
-                            <select name="inputs[${i}][gender]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="gender">
-                                <option value="">Select</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                 <option value="male & female" class="border w-full text-sm">Male & Female</option>
-                                <option value="others">Others</option>
-                            </select>
-                        </td>
-                        <td class="py-1">
-                            <select name="inputs[${i}][preferred_lang]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="preferred_lang">
-                                <option value="">Select</option>
-                                <option value="english">English</option>
-                                <option value="hindi">Hindi</option>
-                                <option value="hindi & english" class="border w-full text-sm ">Hindi + English</option>
-                                <option value="other">Others</option>
-                            </select>
-                        </td>
-                        <td class="py-1">
-                            <select name="inputs[${i}][type]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="type">
-                                <option value="">Select</option>
-                                <option value="full-time">Full-Time</option>
-                                <option value="part-time">Part-Time</option>
-                                <option value="temporary">Temporary</option>
-                                <option value="work from ome" class="border w-full text-sm">Work From Home</option>
-                            </select>
-                        </td>
-                        <td class="py-1">
-                            <select name="inputs[${i}][qualification]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="qualification">
-                                <option value="">Select</option>
-                                <option value="no education required" class="border w-full text-sm">No Education Required</option>
-                                <option value="masters">Masters</option>
-                                <option value="graduate">Graduate</option>
-                                <option value="12th Pass">12th Pass</option>
-                                <option value="10th Pass">10th Pass</option>
-                                <option value="below 10th">Below 10th</option>
-                                <option value="others">Others</option>
-                            </select>
-                        </td>
-                <td class="py-1 text-center">
-                    <div class="text-xs text-gray-400 flex gap-1">
-                        <input type="text" name="inputs[${i}][min_salary]" placeholder="From" class="border py-1 px-2 w-1/2 text-black text-sm">
-                        <input type="text" name="inputs[${i}][max_salary]" placeholder="To" class="py-1 px-2 text-black border w-1/2 text-sm">
-                    </div>
-                </td>
-                <td class="py-2 flex justify-center">
-                    <button type="button" name="add" class="remove bg-red-500 px-3 py-1 rounded text-white"><i class="fa-solid fa-user-minus"></i></button>
-                </td>
-            </tr>`
-                    );
-                    $('#title_input').append(`
-            <div class="title-wrapper flex gap-2 items-center" data-index="${i}">
-                <label for="name" class="block text-gray-700 text-sm mb-2 ">Job Title</label>
-                <input type="text" name="inputs[${i}][title]" placeholder="Eg. Sales executives needed urgently for ..." class="border py-1 px-2 w-1/2 text-black text-sm">
-            </div>
-        `);
-                });
+            // Add new row
+            $('#table').on('click', '.add', function() {
+                ++i;
+                $('#table tbody').append(
+                    `<tr data-index="${i}">
+                            <td class="py-1"><input type="text" name="inputs[${i}][title]" placeholder="Job Title"
+                                class="border py-2 px-2 w-full text-xs"></td>
+                            <td class="py-1"><input type="text" name="inputs[${i}][profile]" placeholder="Job Name"
+                                class="border py-2 px-2 w-full text-xs"></td>
+                            <td class="py-1"><input type="number" min="1" name="inputs[${i}][no_of_post]"
+                                placeholder="Number" class="border py-2 px-2 w-full text-xs">
+                            </td>
+                            <td class="py-1 text-center">
+                                <div class="text-xs text-gray-400">
+                                    Min: <input type="text" min="0" name="inputs[${i}][min_experience]" placeholder="0"
+                                        class="border text-black px-1 py-1 w-1/4 text-xs">
+                                    Max: <input type="text" min="0" name="inputs[${i}][max_experience]" placeholder="5y"
+                                        class="text-black px-1 border py-1 w-1/4 text-xs">
+                                </div>
+                            </td>
+                            <td class="py-1 text-xs">
+                                        <select name="inputs[${i}][gender]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="gender">
+                                            <option value="">Select</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="male & female" class="border w-full text-sm">Male & Female</option>
+                                            <option value="others">Others</option>
+                                        </select>
+                                    </td>
+                                    <td class="py-1">
+                                        <select name="inputs[${i}][preferred_lang]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="preferred_lang">
+                                            <option value="">Select</option>
+                                            <option value="english">English</option>
+                                            <option value="hindi">Hindi</option>
+                                            <option value="hindi & english" class="border w-full text-sm ">Hindi + English</option>
+                                            <option value="other">Others</option>
+                                        </select>
+                                    </td>
+                                    <td class="py-1">
+                                        <select name="inputs[${i}][type]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="type">
+                                            <option value="">Select</option>
+                                            <option value="full-time">Full-Time</option>
+                                            <option value="part-time">Part-Time</option>
+                                            <option value="temporary">Temporary</option>
+                                            <option value="work from ome" class="border w-full text-sm">Work From Home</option>
+                                        </select>
+                                    </td>
+                                    <td class="py-1">
+                                        <select name="inputs[${i}][qualification]" class="border text-center py-2 px-2 w-full text-sm text-gray-400" id="qualification">
+                                            <option value="">Select</option>
+                                            <option value="no education required" class="border w-full text-sm">No Education Required</option>
+                                            <option value="masters">Masters</option>
+                                            <option value="graduate">Graduate</option>
+                                            <option value="12th Pass">12th Pass</option>
+                                            <option value="10th Pass">10th Pass</option>
+                                            <option value="below 10th">Below 10th</option>
+                                            <option value="others">Others</option>
+                                        </select>
+                                    </td>
+                            <td class="py-1 text-center">
+                                <div class="text-xs text-gray-400 flex gap-1">
+                                    <input type="text" name="inputs[${i}][min_salary]" placeholder="From" class="border py-1 px-2 w-1/2 text-black text-sm">
+                                    <input type="text" name="inputs[${i}][max_salary]" placeholder="To" class="py-1 px-2 text-black border w-1/2 text-sm">
+                                </div>
+                            </td>
+                            <td class="py-2 flex justify-center">
+                                <button type="button" name="add" class="remove bg-red-500 px-3 py-1 rounded text-white"><i class="fa-solid fa-user-minus"></i></button>
+                            </td>
+                        </tr>`
+                );
+            });
 
-                // Remove row and corresponding title
-                $('#table').on('click', '.remove', function() {
-                    var index = $(this).closest('tr').data('index');
-                    $(this).closest('tr').remove();
-                    $('#title_input .title-wrapper[data-index="' + index + '"]').remove();
-                });
+            // Remove row and corresponding title
+            $('#table').on('click', '.remove', function() {
+                var index = $(this).closest('tr').data('index');
+                $(this).closest('tr').remove();
+                $('#title_input .title-wrapper[data-index="' + index + '"]').remove();
+            });
 
 
-                // Handle form submission
-                $("#payNowBtn").click(function() {
-                    $("#paymentMode").val("pay_now");
-                    $("#addHirer").submit();
-                });
+            // Handle form submission
+            $("#payNowBtn").click(function() {
+                $("#paymentMode").val("pay_now");
+                $("#addHirer").submit();
+            });
 
-                $("#payLaterBtn").click(function(e) {
-                    e.preventDefault();
-                    $("#paymentMode").val("pay_later");
-                    $("#addHirer").submit();
-                });
+            $("#payLaterBtn").click(function(e) {
+                e.preventDefault();
+                $("#paymentMode").val("pay_later");
+                $("#addHirer").submit();
+            });
 
-                $("#addHirer").submit(function(e) {
-                    e.preventDefault();
+            $("#addHirer").submit(function(e) {
+                e.preventDefault();
 
-                    if (!$("#paymentMode").val()) {
-                        console.log("Payment mode is not set.");
-                        return;
-                    }
+                if (!$("#paymentMode").val()) {
+                    console.log("Payment mode is not set.");
+                    return;
+                }
 
-                    var formData = new FormData(this);
+                var formData = new FormData(this);
 
-                    // Get the current date and format it as needed
-                    var currentDate = new Date();
-                    var formattedDate = ('0' + currentDate.getDate()).slice(-2) + '-' + ('0' + (currentDate
-                        .getMonth() + 1)).slice(-2) + '-' + currentDate.getFullYear();
+                // Get the current date and format it as needed
+                var currentDate = new Date();
+                var formattedDate = ('0' + currentDate.getDate()).slice(-2) + '-' + ('0' + (currentDate
+                    .getMonth() + 1)).slice(-2) + '-' + currentDate.getFullYear();
 
-                    // Append the date to the FormData object
-                    formData.append('date_of_start', formattedDate);
-
-                    $.ajax({
-                        type: "POST",
-                        url: "{{ route('hire.store') }}",
-                        data: formData,
-                        dataType: "JSON",
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        success: function(response) {
-                            swal("Success", response.message, "success");
-                            $("#addHirer").trigger("reset");
-                            window.open("/", "_self");
-                        },
-                        error: function(xhr) {
-                            if (xhr.status === 422) {
-                                var errors = xhr.responseJSON.errors;
-                                $.each(errors, function(key, value) {
-                                    $('#error-' + key).html(value[0]);
-                                });
-                            } else {
-                                alert('An error occurred. Please try again.');
-                            }
-                        }
-                    });
-                });
-                // plan card calling work
+                // Append the date to the FormData object
+                formData.append('date_of_start', formattedDate);
 
                 $.ajax({
-                    type: "GET",
-                    url: "{{ route('hire.plan.index') }}",
+                    type: "POST",
+                    url: "{{ route('hire.store') }}",
+                    data: formData,
+                    dataType: "JSON",
+                    contentType: false,
+                    cache: false,
+                    processData: false,
                     success: function(response) {
-                        let select = $("#plan_card");
-                        select.empty();
+                        swal("Success", response.message, "success");
+                        $("#addHirer").trigger("reset");
+                        window.open("/", "_self");
+                    },
+                    error: function(xhr) {
+                        if (xhr.status === 422) {
+                            var errors = xhr.responseJSON.errors;
+                            $.each(errors, function(key, value) {
+                                $('#error-' + key).html(value[0]);
+                            });
+                        } else {
+                            alert('An error occurred. Please try again.');
+                        }
+                    }
+                });
+            });
+            // plan card calling work
 
-                        response.data.forEach((plan, index) => {
-                            // Remove square brackets and double quotes from the features string
-                            let cleanedFeatures = plan.features.replace(/[\[\]"]/g, '');
+            $.ajax({
+                type: "GET",
+                url: "{{ route('hire.plan.index') }}",
+                success: function(response) {
+                    let select = $("#plan_card");
+                    select.empty();
 
-                            // Split the features by comma and remove the first and last element
-                            let featuresArray = cleanedFeatures.split(',');
+                    response.data.forEach((plan, index) => {
+                        // Remove square brackets and double quotes from the features string
+                        let cleanedFeatures = plan.features.replace(/[\[\]"]/g, '');
 
-                            // Map each feature to an HTML list item and join them into a single string
-                            let features = featuresArray.map(feature =>
-                                `<li class="flex font-medium text-[13px] mt-2"><img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="">${feature}</li>`
-                            ).join('');
+                        // Split the features by comma and remove the first and last element
+                        let featuresArray = cleanedFeatures.split(',');
 
-                            select.append(`
+                        // Map each feature to an HTML list item and join them into a single string
+                        let features = featuresArray.map(feature =>
+                            `<li class="flex font-medium text-[13px] mt-2"><img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="">${feature}</li>`
+                        ).join('');
+
+                        select.append(`
                                 <label class="w-[25%] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
                                     <input type="radio" name="plan_id" value="${plan.id}" data-plan-name="${plan.name}" data-plan-charge="${plan.price}" class="hidden" />
                                     <div class="price flex justify-between">
@@ -458,35 +450,34 @@
                                     </ul>
                                 </label>
                             `);
+                    });
+
+                    // Add click event listener to the dynamically added labels
+                    document.querySelectorAll('#plan_card label').forEach(label => {
+                        label.addEventListener('click', () => {
+                            document.querySelectorAll('#plan_card label').forEach(l => l
+                                .classList.remove('border-orange-500'));
+                            label.classList.add('border-orange-500');
+                            label.querySelector('input[type="radio"]').checked = true;
+                            updatePlanDetails(label);
                         });
+                    });
+                }
+            });
 
-                        // Add click event listener to the dynamically added labels
-                        document.querySelectorAll('#plan_card label').forEach(label => {
-                            label.addEventListener('click', () => {
-                                document.querySelectorAll('#plan_card label').forEach(l => l
-                                    .classList.remove('border-orange-500'));
-                                label.classList.add('border-orange-500');
-                                label.querySelector('input[type="radio"]').checked = true;
-                                updatePlanDetails(label);
-                            });
-                        });
-                    }
-                });
+            function updatePlanDetails(label) {
+                let selectedPlan = label.querySelector('input[type="radio"]');
+                let PlanFee = parseInt(selectedPlan.dataset.planCharge);
+                let PlanName = selectedPlan.dataset.planName;
+                let Platform = '';
+                if (PlanFee == '0') {
+                    Platform = 0;
+                } else {
+                    Platform = 200;
+                }
 
-                function updatePlanDetails(label) {
-                    let selectedPlan = label.querySelector('input[type="radio"]');
-                    let PlanFee = parseInt(selectedPlan.dataset.planCharge);
-                    let PlanName = selectedPlan.dataset.planName;
-                    let Platform = '';
-                    if(PlanFee == '0'){
-                        Platform = 0;
-                    }
-                    else{
-                        Platform = 200;
-                    }
-
-                    // Update the fee display
-                    $('#planCharge').html(`
+                // Update the fee display
+                $('#planCharge').html(`
                         <li class="flex justify-between text-base text-gray-500">
                             <p>${PlanName}</p>
                             <p class="font-bold">Rs. ${PlanFee}</p>
@@ -502,26 +493,26 @@
                         </li>
                     `);
 
-                    //         $('#payBtn1').html(`
-                    //     <button type="button" id="payNowBtn"
-                    //     class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 px-4 py-2 border border-yellow-500 w-full">
-                    //         Pay Rs. ${PlanFee + Platform} & Post Job
-                    //     </button>
-                    // `);
+                //         $('#payBtn1').html(`
+            //     <button type="button" id="payNowBtn"
+            //     class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 px-4 py-2 border border-yellow-500 w-full">
+            //         Pay Rs. ${PlanFee + Platform} & Post Job
+            //     </button>
+            // `);
 
-                            $('#payBtn2').html(`
+                $('#payBtn2').html(`
                         <button type="submit" class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
                             Pay Rs. ${PlanFee + Platform} & Post Job
                         </button>
                     `);
 
-                    //         $('#payLater').html(`
-                    //     <a href="#" id="payLaterBtn"
-                    //         class="bg-green-400 hover:bg-green-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline px-4 text-black mt-3 py-2 border border-yellow-500 w-full">
-                    //     Pay Later ${PlanFee + Platform}
-                    //     </a>
-                    // `);
-                }
-            });
-        </script>
-    @endsection
+                //         $('#payLater').html(`
+            //     <a href="#" id="payLaterBtn"
+            //         class="bg-green-400 hover:bg-green-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline px-4 text-black mt-3 py-2 border border-yellow-500 w-full">
+            //     Pay Later ${PlanFee + Platform}
+            //     </a>
+            // `);
+            }
+        });
+    </script>
+@endsection

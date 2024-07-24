@@ -22,7 +22,7 @@
         <h3 class="text-4xl md:text-3xl sm:text-2xl">Bihar's <strong>Largest</strong> Job Portal</h3>
         <h3 class="text-xl mt-4 md:text-lg sm:text-base">Taskinn Solution helps you hire staff in very less time</h3>
         <div class="image flex justify-center mt-4">
-            <img src="/landing.jpg" class="h-96 md:h-72 sm:h-48" alt="">
+            <img src="/landing.jpg" class="h-96 md:h-96 sm:h-48" alt="">
         </div>
     </div>
     

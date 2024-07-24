@@ -69,7 +69,7 @@
     </style>
 </head>
 
-<body>
+<body class="">
     {{-- <nav class="bg-[#74b9ff] border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -134,9 +134,11 @@
 
     <nav class="bg-[#74b9ff] border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Taskinn
-                    Solution</span>
+            <a href="/" class="flex flex-col space-x-3 rtl:space-x-reverse">
+                <span class="self-center text-3xl font-bold text-white whitespace-nowrap dark:text-white tracking-widest">Taskinn
+                    </span>
+                <span class=" text-xl  font-semibold whitespace-nowrap dark:text-white text-center">Solutions
+                    </span>
             </a>
             <button data-collapse-toggle="navbar-user" type="button"
                 class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
