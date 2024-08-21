@@ -275,8 +275,8 @@
             </div>
         </div>
     
-        <div class="bg-gray-100 w-full flex-col-reverse lg:w-1/4 border border-gray flex md:flex-col md:h-[90%] md: md:right-5 md:fixed">
-            <div class="w-[100%] bg-white border p-2 rounded dark:bg-gray-800 dark:border-gray-700 h-[100%]">
+        <div class="bg-gray-100 w-full   flex-col-reverse lg:w-1/4 border border-gray flex md:flex-col md:h-[90%]  md:right-5 md:fixed">
+            <div class="w-[100%] bg-white border p-2 rounded dark:bg-gray-800 dark:border-gray-700 ">
                 <div class="price mt-1 mb-2">
                     <h3 class="text-lg font-semibold underline">Pricing Summary</h3>
                 </div>
@@ -303,46 +303,46 @@
             </div>
             <hr class="bg-black">
             <form id="addData" class="p-2 flex flex-col">
-                <div class="px-1 justify-between">
-                    <div class="mb-2">
-                        <label for="name" class="block text-gray-700 text-xs mb-1">Name :</label>
+                <div class="px-1 justify-between ">
+                    <div class="mb-1">
+                        <label for="name" class="block text-gray-700 text-xs mb-1 font-semibold">Name :</label>
                         <input type="text" id="name" name="name"
-                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
+                            class="form-input w-full shadow-sm sm:text-sm py-1 px-2 border border-gray-300 rounded"
                             placeholder="Name">
                         <p id="error-name" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
-                    <div class="mb-2">
-                        <label for="mobile" class="block text-gray-700 text-xs mb-1">Mobile No. :</label>
+                    <div class="mb-1">
+                        <label for="mobile" class="block text-gray-700 text-xs mb-1 font-semibold">Mobile No. :</label>
                         <input type="tel" id="mobile" name="mobile"
-                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
+                            class="form-input w-full shadow-sm sm:text-sm py-1 px-2 border border-gray-300 rounded"
                             placeholder="Phone">
                         <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
-                    <div class="mb-2">
-                        <label for="wtsp_mobile" class="block text-gray-700 text-xs mb-1">Whatsapp No. :</label>
+                    <div class="mb-1">
+                        <label for="wtsp_mobile" class="block text-gray-700 text-xs mb-1 font-semibold">Whatsapp No. :</label>
                         <input type="tel" id="wtsp_mobile" name="wtsp_mobile"
-                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
-                            placeholder="Phone">
+                            class="form-input w-full shadow-sm sm:text-sm py-1 px-2 border border-gray-300 rounded"
+                            placeholder="Whatsapp No.">
                         <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
-                    <div class="mb-2">
-                        <label for="email" class="block text-gray-700 text-xs mb-1">Email :</label>
+                    <div class="mb-1">
+                        <label for="email" class="block text-gray-700 text-xs mb-1 font-semibold">Email :</label>
                         <input type="email" id="email" name="email"
-                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded"
+                            class="form-input w-full shadow-sm sm:text-sm py-1 px-2 border border-gray-300 rounded"
                             placeholder="Email">
                         <p id="error-email" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="flex gap-1">
                         <div class="mb-2 w-1/2">
-                            <label for="city" class="block text-gray-700 text-xs mb-1">City:</label>
+                            <label for="city" class="block text-gray-700 text-xs mb-1 font-semibold">City:</label>
                             <input type="text" id="city" name="city"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                                class="form-input w-full shadow-sm sm:text-sm py-1 px-2 border border-gray-300 rounded">
                             <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
                         </div>
                         <div class="mb-2 w-1/2">
-                            <label for="state" class="block text-gray-700 text-xs mb-1">State :</label>
+                            <label for="state" class="block text-gray-700 text-xs mb-1 font-semibold">State :</label>
                             <select id="state" name="state"
-                                class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded">
+                                class="form-input w-full shadow-sm sm:text-sm py-1 px-2 border border-gray-300 rounded">
                                 <option value="">Select State</option>
                                 <option value="Andhra Pradesh">Andhra Pradesh</option>
                                 <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -374,8 +374,7 @@
                                 <option value="West Bengal">West Bengal</option>
                                 <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                 <option value="Chandigarh">Chandigarh</option>
-                                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman
-                                    and Diu</option>
+                                <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
                                 <option value="Lakshadweep">Lakshadweep</option>
                                 <option value="Delhi">Delhi</option>
                                 <option value="Puducherry">Puducherry</option>
@@ -386,9 +385,9 @@
                         </div>
                     </div>
                     <div class="mb-2">
-                        <label for="yojna_id" class="block text-gray-700 text-xs mb-1">Yojna Selected :</label>
+                        <label for="yojna_id" class="block text-gray-700 text-xs mb-1 font-semibold">Yojna Selected :</label>
                         <select name="yojna_id" id="callingYojna"
-                            class="form-input w-full shadow-sm sm:text-sm py-2 px-2 border border-gray-300 rounded text-gray-500 capitalize">
+                            class="form-input w-full shadow-sm sm:text-sm py-1 px-2 border border-gray-300 rounded text-gray-500 capitalize">
                         </select>
                         <p id="error-yojna_id" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
@@ -401,7 +400,7 @@
         </div>
     </div>
     
-    <div class="w-full flex flex-col lg:flex-row mt-8 p-10 border-t-gray-300 border mb-5">
+    <div class="w-full lg:w-3/4 flex flex-col lg:flex-row mt-8 p-10 border-t-gray-300 border mb-5">
         <div class="lg:w-1/4 p-5">
             <div class="image text-center">
                 <i class="fa-solid fa-pen-to-square text-5xl text-gray-500"></i>

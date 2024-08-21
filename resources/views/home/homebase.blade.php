@@ -135,10 +135,11 @@
     <nav class="bg-[#74b9ff] border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex flex-col space-x-3 rtl:space-x-reverse">
-                <span class="self-center text-3xl font-bold text-white whitespace-nowrap dark:text-white tracking-widest">Taskinn
-                    </span>
+                <span
+                    class="self-center text-3xl font-bold text-white whitespace-nowrap dark:text-white tracking-widest">Taskinn
+                </span>
                 <span class=" text-xl  font-semibold whitespace-nowrap dark:text-white text-center">Solutions
-                    </span>
+                </span>
             </a>
             <button data-collapse-toggle="navbar-user" type="button"
                 class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -152,7 +153,8 @@
                 </svg>
             </button>
             <div class="hidden w-full md:flex md:w-auto md:order-1 md:justify-between" id="navbar-user">
-                <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-[#74b9ff] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                <ul
+                    class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-[#74b9ff] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
                         <a href="/"
                             class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
@@ -201,7 +203,7 @@
                     @endauth
                     @guest
                         <li class="md:hidden">
-                            <a href="{{url('/otp/login')}}"
+                            <a href="{{ url('/otp/login') }}"
                                 class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Sign In</a>
                         </li>
                     @endguest
@@ -224,9 +226,9 @@
                     </div>
                 @endauth
                 @guest
-                    <a href="{{url('/otp/login')}}"
+                    <a href="{{ url('/otp/login') }}"
                         class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Sign In</a>
-            @endguest
+                @endguest
             </div>
         </div>
     </nav>
