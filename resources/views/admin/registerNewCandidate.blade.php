@@ -82,7 +82,7 @@
                 success: function(response) {
                     if (response.exists) {
                         // User exists, redirect with the existing user ID
-                        window.location.href = `/admin/manage-candidate/insert/${response.user_id}`;
+                        window.location.href = `{{url('/admin/manage-candidate/insert/${response.user_id}')}}`;
                     } else {
                         // User does not exist, proceed with registration
                         $.ajax({
@@ -98,7 +98,7 @@
                                 if (response && response.user_id) {
                                     console.log("New user ID:", response.user_id);
                                     // Redirect to the specified URL after successful registration
-                                    window.location.href = `/admin/manage-candidate/insert/${response.user_id}`;
+                                    window.location.href = `{{url('/admin/manage-candidate/insert/${response.user_id}')}}`;
                                 } else {
                                     console.error("User ID not found in response:", response);
                                     // Handle the case where user_id is not found in response

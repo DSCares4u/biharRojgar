@@ -86,7 +86,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: `/api/yojna/view/${id}`,
+                    url: `{{url('/api/yojna/view/${id}')}}`,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -140,14 +140,14 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: `/api/yojna/edit/${id}`,
+                    url: `{{url('/api/yojna/edit/${id}')}}`,
                     data: formData,
                     contentType: false,
                     processData: false,
                     success: function(response) {
                         console.log(response); // Debugging response
                         $("#addYojna").trigger("reset");
-                        window.location.href = "/admin/manage-yojna";
+                        window.location.href = "{{url('/admin/manage-yojna')}}";
                     },
                     error: function(xhr, status, error) {
                         console.error('Error updating Yojna Details:', error);
@@ -193,14 +193,13 @@
                 if (confirm("Are you sure you want to delete this Yojna?")) {
                     $.ajax({
                         type: 'DELETE',
-                        url: `/api/yojna/delete/${id}`,
+                        url: `{{url('/api/yojna/delete/${id}')}}`,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         success: function(response) {
                             console.log('Yojna deleted successfully:', response);
-                            window.location.href =
-                            "/admin/manage-yojna"; // Redirect to manage page
+                            window.location.href = "{{url('/admin/manage-yojna')}}"; // Redirect to manage page
                         },
                         error: function(xhr, status, error) {
                             console.error('Error deleting Yojna:', error);

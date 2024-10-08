@@ -108,7 +108,7 @@
                                 if (!logIn) {
                                     // Generate logo using the first letter of the job name if no logo is provided
                                     let logo = job.logo ?
-                                        `<img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20 h-20" alt="">` :
+                                        `<img src="{{asset('/image/sarkari/logo/${job.logo}')}}" class="rounded-full w-20 h-20" alt="">` :
                                         `<div class="generated-logo rounded-full w-20 h-20 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.name.charAt(0)}</div>`;
 
                                     table.append(`
@@ -152,7 +152,7 @@
                                                     <h5 class="text-sm text-gray-500 font-semibold">Openings for: ${job.location}</h5>
                                                 </div>
                                                 <div class="button flex justify-end mt-4 md:mt-0">
-                                                    <a href="/viewSarkariJobForm/${job.id}">
+                                                    <a href="{{url('/viewSarkariJobForm/${job.id}')}}">
                                                             <button class="bg-green-600 hover:bg-green-700 rounded text-white px-2 py-1 mt-2">Apply Now</button>
                                                     </a>
                                                 </div>
@@ -164,7 +164,7 @@
                                     // Check if the user has already applied for this job
                                     $.ajax({
                                         type: "GET",
-                                        url: `/checkApplicationStatus/${job.id}`,
+                                        url: `{{url('checkApplicationStatus/${job.id}')}}`,
                                         success: function(applicationResponse) {
                                             let applyButton;
                                             if (applicationResponse.already_applied) {
@@ -175,7 +175,7 @@
                                                     `<a href="/viewSarkariJobForm/${job.id}"><button class="bg-green-600 hover:bg-green-700 rounded text-white px-1 py-1">Apply Now</button></a>`;
                                             }
                                             let logo = job.logo ?
-                                                `<img src="/image/sarkari/logo/${job.logo}" class="rounded-full w-20 h-20" alt="">` :
+                                                `<img src="{{asset('/image/sarkari/logo/${job.logo}')}}" class="rounded-full w-20 h-20" alt="">` :
                                                 `<div class="generated-logo rounded-full w-20 h-20 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.name.charAt(0)}</div>`;
 
                                             table.append(`

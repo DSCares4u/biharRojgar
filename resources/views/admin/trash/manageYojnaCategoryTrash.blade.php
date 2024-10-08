@@ -1,13 +1,13 @@
 @extends('admin.adminBase')
 @section('content')
 <div class="flex-1 flex gap-3  items-center  mt-20 mb-5">
-    <a href="/admin/manage/trash/sarkari-job"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Sarkari Job Trash</button></a>
-    <a href="/admin/manage/trash/yojna"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Yojna Trash</button></a>
-    <a href="/admin/manage/trash/yojna-category"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Yojna Category Trash</button></a>
-    <a href="/admin/manage/trash/candidate"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Candidate Trash</button></a>
-    <a href="/admin/manage/trash/role"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Private Job Trash</button></a>
-    <a href="/admin/manage/trash/hire"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Hire Company Trash</button></a>
-    <a href="/admin/manage/trash/hire-plan"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Hire Plan Trash</button></a>
+    <a href="{{url('/admin/manage/trash/sarkari-job')}}"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Sarkari Job Trash</button></a>
+    <a href="{{url('/admin/manage/trash/yojna')}}"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Yojna Trash</button></a>
+    <a href="{{url('/admin/manage/trash/yojna-category')}}"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Yojna Category Trash</button></a>
+    <a href="{{url('/admin/manage/trash/candidate')}}"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Candidate Trash</button></a>
+    <a href="{{url('/admin/manage/trash/role')}}"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Private Job Trash</button></a>
+    <a href="{{url('/admin/manage/trash/hire')}}"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Hire Company Trash</button></a>
+    <a href="{{url('/admin/manage/trash/hire-plan')}}"><button class="py-2 px-4 rounded-lg text-white restore-btn bg-orange-400 hover:bg-orange-500">Hire Plan Trash</button></a>
 </div>
     <div class="overflow-x-auto">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -40,7 +40,7 @@
             let callingYojnaCategory = () => {
                 $.ajax({
                     type: "GET",
-                    url: "/api/admin/yojna/category/trash",
+                    url: "{{url('/api/admin/yojna/category/trash')}}",
                     success: function(response) {
                         let table = $("#callingData");
                         table.empty();
@@ -74,7 +74,7 @@
                 let id = $(this).data('id');
                 $.ajax({
                     type: "PATCH",
-                    url: `/api/admin/yojna/category/restore/${id}`,
+                    url: `{{url('/api/admin/yojna/category/restore/${id}')}}`,
                     success: function(response) {
                         alert(response.message);
                         callingYojnaCategory();
@@ -94,7 +94,7 @@
                 if (confirm("Are you sure you want to Permanently delete this Data?")) {
                     $.ajax({
                         type: 'DELETE',
-                        url: `/api/admin/yojna/category/forceDelete/${id}`,
+                        url: `{{url('/api/admin/yojna/category/forceDelete/${id}')}}`,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },

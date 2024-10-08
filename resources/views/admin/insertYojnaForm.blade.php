@@ -124,7 +124,7 @@
                     success: function(response) {
                         swal("Success", response.message, "success");
                         $("#addData").trigger("reset");
-                        window.open("/admin/manage/yojna-form", "_self")
+                        window.open("{{url('/admin/manage/yojna-form')}}", "_self")
                     },
                     error: function(xhr) {
                         if (xhr.status === 409) {

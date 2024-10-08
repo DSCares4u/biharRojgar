@@ -220,7 +220,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: `/api/hire-role/view/${id}`,
+                    url: `{{url('/api/hire-role/view/${id}')}}`,
                     success: function(response) {
                         console.log(response);
                         $('#id').val(response.data.id);
@@ -272,7 +272,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: `/api/hire-role/edit/${userId}`,
+                    url: `{{url('/api/hire-role/edit/${userId}')}}`,
                     data: formData,
                     processData: false,
                     contentType: false,
@@ -295,7 +295,7 @@
                 if (confirm("Are you sure you want to delete this Job?")) {
                     $.ajax({
                         type: 'DELETE',
-                        url: `/api/hire-role/delete/${id}`,
+                        url: `{{url('/api/hire-role/delete/${id}')}}`,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },

@@ -26,7 +26,7 @@
                     <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2">Generate
                         Otp</button>
                 </div>
-                <a href="/register"
+                <a href="{{url('/register')}}"
                     class="hover:text-blue-500 font-bold rounded focus:outline-none focus:shadow-outline">Don't have an
                     Account?</a>
             </form>

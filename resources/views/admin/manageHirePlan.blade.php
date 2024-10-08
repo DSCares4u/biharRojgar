@@ -2,7 +2,7 @@
 @section('content')
     <div class="flex-1 flex mt-20 items-center justify-between ">
         <h1 class="text-lg font-semibold  py-2">Manage Plans (<span id="counting">0</span>)</h1>
-        <a href="/admin/manage-hire/plan/insert" class="bg-indigo-500 hover:bg-indigo-800 text-white px-3 py-2 rounded">
+        <a href="{{url('/admin/manage-hire/plan/insert')}}" class="bg-indigo-500 hover:bg-indigo-800 text-white px-3 py-2 rounded">
             <i class="fas fa-plus"></i>Add New plan</a>
     </div>
     <div class="overflow-x-auto">
@@ -118,7 +118,7 @@
                 let id = $(this).data('id');
                 $.ajax({
                     type: 'GET',
-                    url: `/api/hire-plan/view/${id}`,
+                    url: `{{url('/api/hire-plan/view/${id}')}}`,
                     success: function(response) {
                         $('#id').val(response.data.id);
                         $('#name').val(response.data.name);
@@ -142,7 +142,7 @@
                 };
                 $.ajax({
                     type: 'PUT',
-                    url: `/api/hire-plan/edit/${id}`,
+                    url: `{{url('/api/hire-plan/edit/${id}')}}`,
                     data: formData,
                     success: function(response) {
                         swal("Success", response.message, "message");
@@ -168,7 +168,7 @@
                 if (confirm("Are you sure you want to delete this Plan?")) {
                     $.ajax({
                         type: 'DELETE',
-                        url: `/api/hire-plan/delete/${id}`,
+                        url: `{{url('/api/hire-plan/delete/${id}')}}`,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },

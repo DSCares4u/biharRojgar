@@ -336,7 +336,7 @@
                 let userId = getIdFromUrlPath();
                 $.ajax({
                     type: 'GET',
-                    url: `/api/show-all/view/` + userId,
+                    url: `{{url('/api/show-all/view/${userId}')}}`
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -424,7 +424,7 @@
                     formData.append('user_id', userId);
                     $.ajax({
                         type: 'POST',
-                        url: `/api/update-all/edit/${userId}`,
+                        url: `{{url('/api/update-all/edit/${userId}')}}`,
                         data: formData,
                         contentType: false,
                         processData: false,
@@ -481,13 +481,13 @@
                 if (confirm("Are you sure you want to delete this Candidate?")) {
                     $.ajax({
                         type: 'DELETE',
-                        url: `/api/candidate/delete/${id}`,
+                        url: `{{url('/api/candidate/delete/${id}')}}`,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         success: function(response) {
                             console.log('Candidate deleted successfully:', response);
-                            window.location.href = "/admin/manage-candidate";
+                            window.location.href = "{{url('/admin/manage-candidate')}}";
                         },
                         error: function(xhr, status, error) {
                             console.error('Error deleting Data:', error);

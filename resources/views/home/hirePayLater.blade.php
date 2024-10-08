@@ -74,9 +74,9 @@
             <div class="bg-white rounded-lg p-6 shadow-lg max-w-md mx-auto">
                 <h2 class="text-2xl font-bold text-gray-800 mb-4">Thank You for Choosing Us!</h2>
                 <p class="text-gray-600 mb-4">We appreciate your trust in us and are excited to connect with you soon. Our team is already working on your request, and we'll get in touch shortly.</p>
-                <p class="text-gray-600">If you have any questions in the meantime, feel free to <a href="contact-us.html" class="text-blue-500 underline">contact us</a>.</p>
+                <p class="text-gray-600">If you have any questions in the meantime, feel free to <a href="{{url('')}}" class="text-blue-500 underline">contact us</a>.</p>
                 <div class="mt-6">
-                  <a href="/" class="bg-blue-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-600 transition duration-300">Return to Home</a>
+                  <a href="{{url('')}}" class="bg-blue-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-600 transition duration-300">Return to Home</a>
                 </div>
               </div>
               

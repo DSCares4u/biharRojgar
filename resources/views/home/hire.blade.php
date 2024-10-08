@@ -511,7 +511,7 @@
                         <ul class="mt-3">
                             <li class="text-gray-600 text-[13px]">Normal x applications</li>
                             <li class="flex font-medium text-[13px] mt-2">
-                                <img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="" />Limited applications
+                                <img src="{{url('/icons/correct.png')}}" class="h-4 mr-2 mt-1" alt="" />Limited applications
                             </li>
                         </ul>
                     </label>
@@ -726,7 +726,7 @@
 
                         // Map each feature to an HTML list item and join them into a single string
                         let features = featuresArray.map(feature =>
-                            `<li class="flex font-medium text-[13px] mt-2overflow-y-hidden"><img src="/icons/correct.png" class="h-4 mr-2 mt-1" alt="">${feature}</li>`
+                            `<li class="flex font-medium text-[13px] mt-2overflow-y-hidden"><img src="{{url('/icons/correct.png')}}" class="h-4 mr-2 mt-1" alt="">${feature}</li>`
                         ).join('');
 
                         select.append(`

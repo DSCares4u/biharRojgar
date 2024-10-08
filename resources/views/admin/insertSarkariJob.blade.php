@@ -237,7 +237,7 @@
                         swal("Success", response.message, "success");
                         $('.error').text('');
                         $("#insertData").trigger("reset");
-                        window.open("/admin/manage/sarkari-job", "_self");
+                        window.open("{{url('/admin/manage/sarkari-job')}}", "_self");
                     },
                     error: function(xhr) {
                             // Clear previous error messages

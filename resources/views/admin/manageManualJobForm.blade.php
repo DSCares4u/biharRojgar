@@ -74,23 +74,23 @@
                             <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.id}</td>
                             <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.name}</td>
                             <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">
-                                <a href="/image/manualJob/photo/${data.photo}" target="_blank" class="inline-block px-4 py-2">
-                                    <img src="/image/manualJob/photo/${data.photo}" class="w-16" alt="Form Thumbnail">
+                                <a href="{{url('/image/manualJob/photo/${data.photo}')}}" target="_blank" class="inline-block px-4 py-2">
+                                    <img src="{{asset('/image/manualJob/photo/${data.photo}')}}" class="w-16" alt="Form Thumbnail">
                                 </a>
                             </td>
                             <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">
-                                <a href="/image/manualJob/form/${data.form}" target="_blank" class="inline-block px-4 py-2">
-                                    <img src="/image/manualJob/form/${data.form}" class="w-16" alt="Form Thumbnail">
+                                <a href="{{url('/image/manualJob/form/${data.form}')}}" target="_blank" class="inline-block px-4 py-2">
+                                    <img src="{{asset('/image/manualJob/form/${data.form}')}}" class="w-16" alt="Form Thumbnail">
                                 </a>
                             </td>
                             <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">
-                                <a href="/image/manualJob/id_proof/${data.id_proof}" target="_blank" class="inline-block px-4 py-2">
-                                    <img src="/image/manualJob/id_proof/${data.id_proof}" class="w-16" alt="Form Thumbnail">
+                                <a href="{{url('/image/manualJob/id_proof/${data.id_proof}')}}" target="_blank" class="inline-block px-4 py-2">
+                                    <img src="{{asset('/image/manualJob/id_proof/${data.id_proof}')}}" class="w-16" alt="Form Thumbnail">
                                 </a>
                             </td>
                             <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">
-                                <a href="/image/manualJob/certificate/${data.certificate}" target="_blank" class="inline-block px-4 py-2">
-                                    <img src="/image/manualJob/certificate/${data.certificate}" class="w-16" alt="Form Thumbnail">
+                                <a href="{{url('/image/manualJob/certificate/${data.certificate}')}}" target="_blank" class="inline-block px-4 py-2">
+                                    <img src="{{asset('/image/manualJob/certificate/${data.certificate}')}}" class="w-16" alt="Form Thumbnail">
                                 </a>
                             </td>
                            <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">
@@ -135,7 +135,7 @@
                     success: function(response) {
                         swal("Success", response.message, "success");
                         $("#uploadForm").trigger("reset");
-                        window.open("/admin/manage/manual-job", "_self");
+                        window.open("{{url('/admin/manage/manual-job')}}", "_self");
                     },
                     error: function(xhr, status, error) {
                         alert('Unable to Upload');
@@ -151,7 +151,7 @@
                     if (confirm("Are you sure you want to delete this Form ?")) {
                         $.ajax({
                             type: 'DELETE',
-                            url: `/api/manual-job/delete/${id}`,
+                            url: `{{url('/api/manual-job/delete/${id}')}}`,
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },

@@ -106,7 +106,7 @@
                         swal("Success", response.message, "success");
                         $('.error').text('');
                         $("#addYojna").trigger("reset");
-                        window.open("/admin/manage-yojna", "_self")
+                        window.open("{{url('/admin/manage-yojna')}}", "_self")
                     },
                     error: function(xhr) {
                             // Clear previous error messages

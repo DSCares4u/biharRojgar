@@ -73,9 +73,9 @@
                         let categoryGroup = $(`#category-${yojna.yojna_category_id}`);
                         if (categoryGroup.length > 0) {
                             categoryGroup.append(`
-                                <a href="/sarkari-yojna-form/${yojna.id}" class="forms mt-4 mb-4 py-2 md:px-6 px-1 block w-full md:w-auto">
+                                <a href="{{url('/sarkari-yojna-form/${yojna.id}')}}" class="forms mt-4 mb-4 py-2 md:px-6 px-1 block w-full md:w-auto">
                                     <div class="image flex justify-center mb-2">
-                                        <img src="/image/yojna/logo/${yojna.logo}" class="shadow rounded-full w-16 h-16 md:w-20 md:h-20" alt="">
+                                        <img src="{{url('/image/yojna/logo/${yojna.logo}')}}" class="shadow rounded-full w-16 h-16 md:w-20 md:h-20" alt="">
                                     </div>
                                     <div class="title text-center">
                                         <h3 class="text-sm md:text-base font-semibold">${yojna.hname}</h3>

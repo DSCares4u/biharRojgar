@@ -46,7 +46,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: `/api/job/view/${id}`,
+                    url: `{{url('/api/job/view/${id}')}}`,
                     success: function(response) {
                         console.log(response);
                         $('#id').val(response.data.id);

@@ -49,7 +49,7 @@
                 success: function(response) {
                     swal("Success", response.message, "success");
                     $("#addPlan").trigger("reset");
-                    window.open("/admin/manage/yojna-category", "_self")
+                    window.open("{{url('/admin/manage/yojna-category')}}", "_self")
                 }
             })
         })

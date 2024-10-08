@@ -125,7 +125,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: `/api/admin/manage/yojna-form/view/${id}`,
+                    url: `{{url('/api/admin/manage/yojna-form/view/${id}')}}`,
                     success: function(response) {
                         console.log(response);
                         $('#id').val(response.data.id);
@@ -160,14 +160,14 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: `/api/admin/manage/yojna-form/edit/${userId}`,
+                    url: `{{url('/api/admin/manage/yojna-form/edit/${userId}')}}`,
                     data: formData,
                     processData: false,
                     contentType: false,
                     success: function(response) {
                         alert("Success: " + response.message);
                         $("#addData").trigger("reset");
-                        window.location.href = "/admin/manage/yojna-form";
+                        window.location.href = "{{url('/admin/manage/yojna-form')}}";
                     },
                     error: function(xhr, status, error) {
                         console.error('Error updating Details:', error);

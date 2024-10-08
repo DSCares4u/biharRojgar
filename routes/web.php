@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthOtpController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\SarkariJobApplyController;
 
@@ -71,52 +72,69 @@ Route::get('/get-district-and-state', [JobController::class, 'getDistrictAndStat
 // });
 
 // Route::get('/admin',[AdminController::class,'dashboard']);
-Route::get('/admin',[AdminController::class,'manageCandidate']);
 
-Route::get('/admin/manage-candidate',[AdminController::class,'manageCandidate']);
-Route::get('/admin/manage-candidate/register',[AdminController::class,'registerCandidate']);
-Route::get('/admin/manage-candidate/insert/{id}',[AdminController::class,'insertCandidate']);
-Route::get('/admin/manage-candidate/edit/{id}',[AdminController::class,'editCandidate']);
 
-Route::get('/admin/manage-hire',[AdminController::class,'manageHire']);
-Route::get('/admin/manage-hire/edit/{id}',[AdminController::class,'editHire']);
-Route::get('/admin/manage-hire/insert',[AdminController::class,'insertHire']);
-Route::get('/admin/manage-hire/plan',[AdminController::class,'manageHirePlan']);
-Route::get('/admin/manage-hire/plan/insert',[AdminController::class,'insertHirePlan']);
-Route::get('/admin/manage-hire-company',[AdminController::class,'manageHireCompany']);
+Route::middleware(['admin'])->group(function () {
+    Route::get('/admin',[AdminController::class,'manageCandidate']);
+    Route::get('/admin/manage-candidate',[AdminController::class,'manageCandidate']);
+    Route::get('/admin/manage-candidate/register',[AdminController::class,'registerCandidate']);
+    Route::get('/admin/manage-candidate/insert/{id}',[AdminController::class,'insertCandidate']);
+    Route::get('/admin/manage-candidate/edit/{id}',[AdminController::class,'editCandidate']);
 
-Route::get('/admin/manage-yojna',[AdminController::class,'manageYojna']);
-Route::get('/admin/manage-yojna/insert',[AdminController::class,'insertYojna']);
-Route::get('/admin/manage-yojna/{id}',[AdminController::class,'editYojna']);
+    Route::get('/admin/manage-hire',[AdminController::class,'manageHire']);
+    Route::get('/admin/manage-hire/edit/{id}',[AdminController::class,'editHire']);
+    Route::get('/admin/manage-hire/insert',[AdminController::class,'insertHire']);
+    Route::get('/admin/manage-hire/plan',[AdminController::class,'manageHirePlan']);
+    Route::get('/admin/manage-hire/plan/insert',[AdminController::class,'insertHirePlan']);
+    Route::get('/admin/manage-hire-company',[AdminController::class,'manageHireCompany']);
 
-Route::get('/admin/manage/yojna-category',[AdminController::class,'manageYojnaCategory']);
-Route::get('/admin/manage/yojna-category/insert',[AdminController::class,'insertYojnaCategory']);
+    Route::get('/admin/manage-yojna',[AdminController::class,'manageYojna']);
+    Route::get('/admin/manage-yojna/insert',[AdminController::class,'insertYojna']);
+    Route::get('/admin/manage-yojna/{id}',[AdminController::class,'editYojna']);
 
-Route::get('/admin/manage/sarkari-job',[AdminController::class,'manageSarkariJob']);
-Route::get('/admin/manage/sarkari-job/insert',[AdminController::class,'insertSarkariJob']);
-Route::get('/admin/manage/sarkari-job/{id}',[AdminController::class,'editSarkariJob']);
+    Route::get('/admin/manage/yojna-category',[AdminController::class,'manageYojnaCategory']);
+    Route::get('/admin/manage/yojna-category/insert',[AdminController::class,'insertYojnaCategory']);
 
-Route::get('/admin/manage/manual-job',[AdminController::class,'manageManualJob']);
-Route::get('/admin/manage/manual-job/insert',[AdminController::class,'insertManualJob']);
+    Route::get('/admin/manage/sarkari-job',[AdminController::class,'manageSarkariJob']);
+    Route::get('/admin/manage/sarkari-job/insert',[AdminController::class,'insertSarkariJob']);
+    Route::get('/admin/manage/sarkari-job/{id}',[AdminController::class,'editSarkariJob']);
 
-Route::get('/admin/manage/yojna-form',[AdminController::class,'manageYojnaForm']);
-Route::get('/admin/manage/yojna-form/insert',[AdminController::class,'insertYojnaForm']);
-Route::get('/admin/manage/yojna-form/{id}',[AdminController::class,'viewYojnaForm']);
+    Route::get('/admin/manage/manual-job',[AdminController::class,'manageManualJob']);
+    Route::get('/admin/manage/manual-job/insert',[AdminController::class,'insertManualJob']);
 
-Route::get('/admin/manage/sarkari-job-form',[AdminController::class,'manageSarkariJobForm']);
-Route::get('/admin/manage/sarkari-job-form/insert',[AdminController::class,'insertSarkariJobForm']);
-Route::get('/admin/manage/sarkari-job-form/{id}',[AdminController::class,'viewSarkariJobForm']);
+    Route::get('/admin/manage/yojna-form',[AdminController::class,'manageYojnaForm']);
+    Route::get('/admin/manage/yojna-form/insert',[AdminController::class,'insertYojnaForm']);
+    Route::get('/admin/manage/yojna-form/{id}',[AdminController::class,'viewYojnaForm']);
 
-Route::get('/admin/manage/private-job-form',[AdminController::class,'managePrivateJobForm']);
-Route::get('/admin/manage/private-job-form/insert',[AdminController::class,'insertPrivateJobForm']);
-Route::get('/admin/manage/private-job-form/{id}',[AdminController::class,'viewPrivateJobForm']);
+    Route::get('/admin/manage/sarkari-job-form',[AdminController::class,'manageSarkariJobForm']);
+    Route::get('/admin/manage/sarkari-job-form/insert',[AdminController::class,'insertSarkariJobForm']);
+    Route::get('/admin/manage/sarkari-job-form/{id}',[AdminController::class,'viewSarkariJobForm']);
 
-Route::get('/admin/manage/trash/sarkari-job',[AdminController::class,'manageSarkariJobTrash']);
-Route::get('/admin/manage/trash/yojna-category',[AdminController::class,'manageYojnaCategoryTrash']);
-Route::get('/admin/manage/trash/yojna',[AdminController::class,'manageYojnaTrash']);
-Route::get('/admin/manage/trash/candidate',[AdminController::class,'manageCandidateTrash']);
-Route::get('/admin/manage/trash/role',[AdminController::class,'manageRoleTrash']);
-Route::get('/admin/manage/trash/hire',[AdminController::class,'manageHireTrash']);
-Route::get('/admin/manage/trash/hire-plan',[AdminController::class,'manageHirePlanTrash']);
+    Route::get('/admin/manage/private-job-form',[AdminController::class,'managePrivateJobForm']);
+    Route::get('/admin/manage/private-job-form/insert',[AdminController::class,'insertPrivateJobForm']);
+    Route::get('/admin/manage/private-job-form/{id}',[AdminController::class,'viewPrivateJobForm']);
+
+    Route::get('/admin/manage/trash/sarkari-job',[AdminController::class,'manageSarkariJobTrash']);
+    Route::get('/admin/manage/trash/yojna-category',[AdminController::class,'manageYojnaCategoryTrash']);
+    Route::get('/admin/manage/trash/yojna',[AdminController::class,'manageYojnaTrash']);
+    Route::get('/admin/manage/trash/candidate',[AdminController::class,'manageCandidateTrash']);
+    Route::get('/admin/manage/trash/role',[AdminController::class,'manageRoleTrash']);
+    Route::get('/admin/manage/trash/hire',[AdminController::class,'manageHireTrash']);
+    Route::get('/admin/manage/trash/hire-plan',[AdminController::class,'manageHirePlanTrash']);
+});
+
+
+Route::get('/admin/login-page', function () {
+    return view('auth.login');
+});
+
+// Route::get('/register-page', function () {
+//     return view('auth.register');
+// });
+// Route::post('/register',[UserController::class,"adminRegister"])->name("admin.register");
+
+
+Route::match(['get',"post"],'/admin-login',[UserController::class,"adminLogin"])->name("admin.login");
+// Route::post('/logout',[UserController::class,"logout"])->name("logout");
 
 

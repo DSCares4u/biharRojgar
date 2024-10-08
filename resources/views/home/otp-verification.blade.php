@@ -25,7 +25,7 @@
             <div class="mt-4 flex justify-end">
                 <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-2">Login Now</button>
             </div>
-            <a href="/otp/login"
+            <a href="{{url('/otp/login')}}"
                 class="hover:text-blue-500 font-bold rounded focus:outline-none focus:shadow-outline">Generate Again?</a>
         </form>
     </div>

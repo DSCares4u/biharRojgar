@@ -41,7 +41,7 @@
                 data: formData,
                 success: function(response) {
                     // Redirect to dashboard upon successful login
-                    window.location.href = '/dashboard';
+                    window.location.href = `{{url('/dashboard')}}`;
                 },
                 error: function(xhr) {
                     // Display error message

@@ -172,7 +172,7 @@
                     </div>
                 </div>
                 <div class="photo  flex items-center mb-5 justify-center mt-4 sm:mt-0">
-                    <img src="/image/photo/1715085122.jpg" class="border border-gray-500 w-32 h-32 shadow-lg" alt="Applicant Photo">
+                    <img src="{{asset('/image/photo/1715085122.jpg')}}" class="border border-gray-500 w-32 h-32 shadow-lg" alt="Applicant Photo">
                 </div>
             </div>
     
@@ -227,7 +227,7 @@
             </div>
         </div>
         <div class="text-center flex flex-col sm:flex-row justify-evenly mt-5 mb-4">
-            <a href="/add-candidate" id="editButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 sm:mb-0">
+            <a href="{{url('/add-candidate')}}" id="editButton" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4 sm:mb-0">
                 Edit
             </a>
             <button onclick="window.print()" class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 mb-4 sm:mb-0">Print Confirmation</button>
@@ -245,7 +245,7 @@
                 let userId = {{ auth()->user()->id }};
                 $.ajax({
                     type: 'GET',
-                    url: `/api/candidate/view/` + userId,
+                    url: `{{url('/api/candidate/view/${userId}')}}`,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -276,7 +276,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: `/api/address/view/` + userId,
+                    url: `{{url('/api/address/view/${userId}')}}`,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -295,7 +295,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: `/api/document/view/` + userId,
+                    url: `{{url('/api/document/view/${userId}')}}`,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },

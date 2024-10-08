@@ -154,7 +154,7 @@
                             </div>
                             <div class="button flex justify-between ml-0 lg:ml-10 mt-2">
                                 <div class="previous">
-                                    <a href="/address" class="bg-blue-500 hover:bg-blue-700 rounded px-3 py-1 text-white">Previous</a>
+                                    <a href="{{url('/address')}}" class="bg-blue-500 hover:bg-blue-700 rounded px-3 py-1 text-white">Previous</a>
                                 </div>
                                 <div class="next">
                                     <button type="submit" class="bg-green-500 hover:bg-green-600 rounded px-3 py-1 text-white">Submit</button>
@@ -193,7 +193,7 @@
                 if (userId) {
                     $.ajax({
                         type: 'GET',
-                        url: `/api/document/view/${userId}`,
+                        url: `{{url('/api/document/view/${userId}')}}`,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
@@ -266,7 +266,7 @@
                     let formData = new FormData(this);
                     $.ajax({
                         type: 'POST',
-                        url: `/api/document/edit/${userId}`,
+                        url: `{{url('/api/document/edit/${userId}')}}`,
                         data: formData,
                         contentType: false,
                         processData: false,

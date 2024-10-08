@@ -59,7 +59,7 @@
             success: function(response) {
                 swal("Success", response.message, "success");
                 $("#insertPlan").trigger("reset");
-                window.open("/admin/manage-hire/plan", "_self");
+                window.open("{{url('/admin/manage-hire/plan')}}", "_self");
             },
             error: function(xhr, status, error) {
                 swal("Error", xhr.responseText, "error");

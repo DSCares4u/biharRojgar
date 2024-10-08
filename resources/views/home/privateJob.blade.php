@@ -169,7 +169,7 @@
                                     if (job.isApproved == true) {
                                         // Generate logo using the first letter of the job name if no logo is provided
                                         let logo = job.hire.logo ?
-                                            ` <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">` :
+                                            ` <img src="{{asset('/image/company/logo/${job.hire.logo}')}}" class="rounded w-12 h-12" alt="">` :
                                             `<div class="generated-logo rounded w-12 h-12 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.hire.company_name.charAt(0)}</div>`;
 
                                         table.append(`
@@ -226,8 +226,8 @@
                                                         <button class="toggleButton text-blue-500"><i class="fa-solid fa-angle-down"></i></button>
                                                     </div>
                                                     <div class="button flex gap-5 mt-5">
-                                                        <a href="/viewPrivateJobForm/${job.id}" class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job</a>
-                                                        <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="/viewPrivateJobForm/${job.id}"><img src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
+                                                        <a href={{url('/viewPrivateJobForm/${job.id}')}} class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job</a>
+                                                        <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="/viewPrivateJobForm/${job.id}"><img src="{{url('/icons/share.png')}}" class="h-6 mr-1" alt="">Share</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -252,7 +252,7 @@
                                             if (job.isApproved == true) {
                                                 // Generate logo using the first letter of the job name if no logo is provided
                                                 let logo = job.hire.logo ?
-                                                    ` <img src="/image/company/logo/${job.hire.logo}" class="rounded w-12 h-12" alt="">` :
+                                                    ` <img src="{{url('/image/company/logo/${job.hire.logo}')}}" class="rounded w-12 h-12" alt="">` :
                                                     `<div class="generated-logo rounded w-12 h-12 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.hire.company_name.charAt(0)}</div>`;
 
                                                 table.append(`
@@ -309,7 +309,7 @@
                                                                 <button class="toggleButton text-blue-500"><i class="fa-solid fa-angle-down"></i></button>
                                                             </div>
                                                             <div class="button flex gap-5 mt-5">${applyButton}
-                                                                <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="/viewPrivateJobForm/${job.id}"><img src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
+                                                                <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="{{url('/viewPrivateJobForm/${job.id}')}}"><img src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
                                                             </div>
                                                         </div>
                                                     </div>

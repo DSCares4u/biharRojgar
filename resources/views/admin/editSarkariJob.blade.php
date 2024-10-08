@@ -195,7 +195,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: `/api/admin/sarkari-job/view/` + id,
+                    url: `{{url('/api/admin/sarkari-job/view/${id}')}}`,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -238,7 +238,7 @@
                 let formData = new FormData(this);
                 $.ajax({
                     type: 'POST',
-                    url: `/api/admin/sarkari-job/edit/${id}`,
+                    url: `{{url('/api/admin/sarkari-job/edit/${id}')}}`,
                     data: formData,
                     contentType: false,
                     processData: false,
@@ -260,14 +260,13 @@
                 if (confirm("Are you sure you want to delete this Job?")) {
                     $.ajax({
                         type: 'DELETE',
-                        url: `/api/admin/sarkari-job/delete/${id}`,
+                        url: `{{url('/api/admin/sarkari-job/delete/${id}')}}`,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         success: function(response) {
                             console.log('Job deleted successfully:', response);
-                            window.location.href =
-                                "/admin/manage/sarkari-job"; // Redirect to manage page
+                            window.location.href = "{{url('/admin/manage/sarkari-job')}}"; // Redirect to manage page
                         },
                         error: function(xhr, status, error) {
                             console.error('Error deleting Data:', error);

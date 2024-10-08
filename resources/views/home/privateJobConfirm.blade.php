@@ -19,7 +19,7 @@
                 <p class="text-gray-700"><strong>Phone:</strong> (123) 456-7890</p>
             </div> --}}
 
-            <a href="/private-job">
+            <a href="{{url('/private-job')}}">
                 <button class="mt-6 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75">Apply for more Jobs</button>
             </a>
         </div>

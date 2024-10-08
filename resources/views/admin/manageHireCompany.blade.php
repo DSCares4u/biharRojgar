@@ -187,7 +187,7 @@
                 let id = $(this).data('id');
                 $.ajax({
                     type: 'GET',
-                    url: `/api/hire/view/${id}`,
+                    url: `{{url('/api/hire/view/${id}')}}`,
                     success: function(response) {
                         $('#id').val(response.data.id);
                         $('#company_name').val(response.data.company_name);
@@ -216,7 +216,7 @@
                 let formData = new FormData(this);
                 $.ajax({
                     type: 'POST',
-                    url: `/api/hire/edit/${id}`,
+                    url: `{{url('/api/hire/edit/${id}')}}`,
                     data: formData,
                     contentType: false,
                     processData: false,
@@ -243,7 +243,7 @@
                 if (confirm("Are you sure you want to delete this Company?")) {
                     $.ajax({
                         type: 'DELETE',
-                        url: `/api/hire/delete/${id}`,
+                        url: `{{url('/api/hire/delete/${id}')}}`,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },

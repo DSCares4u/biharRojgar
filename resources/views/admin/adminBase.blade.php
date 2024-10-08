@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
+    {{-- @vite('resources/css/app.css') --}}
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
@@ -43,7 +44,7 @@
                             </path>
                         </svg>
                     </button>
-                    <a href="#" class="flex ms-2 md:me-24">
+                    <a href="{{url('/admin')}}" class="flex ms-2 md:me-24">
                         <span
                             class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Admin
                             Panel </span>
@@ -76,7 +77,7 @@
                     </li> --}}
 
                     <li>
-                        <a href="/admin/manage-candidate"
+                        <a href="{{url('/admin/manage-candidate')}}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -89,7 +90,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/manage/sarkari-job"
+                        <a href="{{url('/admin/manage/sarkari-job')}}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -102,7 +103,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/manage-hire"
+                        <a href="{{url('/admin/manage-hire')}}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -115,7 +116,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/manage-hire-company"
+                        <a href="{{url('/admin/manage-hire-company')}}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -128,7 +129,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/manage-yojna"
+                        <a href="{{url('/admin/manage-yojna')}}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -141,7 +142,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/manage/yojna-category"
+                        <a href="{{url('/admin/manage/yojna-category')}}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -154,7 +155,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/manage-hire/plan"
+                        <a href="{{url('/admin/manage-hire/plan')}}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -167,7 +168,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/manage/manual-job"
+                        <a href="{{url('/admin/manage/manual-job')}}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -181,7 +182,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/manage/yojna-form"
+                        <a href="{{url('/admin/manage/yojna-form')}}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -194,7 +195,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/manage/sarkari-job-form"
+                        <a href="{{url('/admin/manage/sarkari-job-form')}}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -207,7 +208,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/manage/private-job-form"
+                        <a href="{{url('/admin/manage/private-job-form')}}"
                             class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -220,7 +221,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/manage/trash/sarkari-job"
+                        <a href="{{url('/admin/manage/trash/sarkari-job')}}"
                             class="flex items-center p-2 text-red-500 rounded-lg dark:text-white hover:bg-red-400 hover:text-white dark:hover:bg-red-700 group">
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"

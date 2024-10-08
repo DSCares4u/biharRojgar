@@ -109,7 +109,7 @@
                             class="bg-[#ffa801] hover:bg-[#ffa601c0] font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto mb-4 sm:mb-0">
                             Register
                         </button>
-                        <a href="/otp/login"
+                        <a href="{{url('/otp/login')}}"
                             class="text-white hover:text-gray-300 font-bold rounded focus:outline-none focus:shadow-outline">Already have an Account?</a>
                     </div>
                 </form>

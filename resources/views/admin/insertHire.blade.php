@@ -300,7 +300,7 @@
                     success: function(response) {
                         $("#addHirer").trigger("reset");
                         swal("Success", response.message, "success");
-                        window.open("/admin/manage-hire", "_self");
+                        window.open("{{url('/admin/manage-hire')}}", "_self");
                     },
                     error: function(xhr) {
                         if (xhr.status === 422) {

@@ -147,7 +147,7 @@
                 <!-- Repeated Terms, consider removing or revising for redundancy -->
             </ul>
             <div class="flex justify-center">
-                <a href="/add-candidate">
+                <a href="{{url('/add-candidate')}}">
                     <button class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                         Proceed Now
                     </button>

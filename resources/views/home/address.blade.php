@@ -130,7 +130,7 @@
                 </div>
                 <div class="button flex justify-between ml-10 mt-8">
                     <div class="previous">
-                        <a href="/add-candidate" class="bg-[#1B9CFC] hover:bg-[#57aff7] rounded px-3 py-1 text-white">Previous</a>
+                        <a href="{{url('/manual-form')}}" class="bg-[#1B9CFC] hover:bg-[#57aff7] rounded px-3 py-1 text-white">Previous</a>
                     </div>
                     <div class="next">
                         <button class="bg-[#EA2027] hover:bg-[#ff4747] rounded px-3 py-1 text-white">Save & Next</button>
@@ -149,7 +149,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: `/api/address/view/` + userId,
+                    url: `{{url('/api/address/view/${userId}')}}`,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -187,7 +187,7 @@
             };
             $.ajax({
                 type: 'PUT',
-                url: `/api/address/edit/${userId}`,
+                url: `{{url('/api/address/edit/${userId}')}}`,
                 data: formData,
                 success: function(response) {
                     // swal("Success", response.message, "message");

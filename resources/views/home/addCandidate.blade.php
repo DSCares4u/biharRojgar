@@ -362,7 +362,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: `/api/candidate/view/` + userId,
+                    url: `{{url('/api/candidate/view/${userId}')}}` +,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -426,7 +426,7 @@
             };
             $.ajax({
                 type: 'PUT',
-                url: `/api/candidate/edit/${userId}`,
+                url: `{{url('/api/candidate/edit/${userId}')}}`,
                 data: formData,
                 success: function(response) {
                     // swal("Success", response.message, "message");
