@@ -217,7 +217,6 @@
                         $('#fees').val(response.data.fees);
                         $('#r_fees').val(response.data.r_fees);
                         $('#logo-preview').attr('src', '/image/sarkari/logo/' + response.data.logo);
-                        // Parsing dates to yyyy-mm-dd format if necessary
                         $('#opening_date').val(new Date(response.data.opening_date).toISOString().split(
                             'T')[0]);
                         $('#closing_date').val(new Date(response.data.closing_date).toISOString().split(

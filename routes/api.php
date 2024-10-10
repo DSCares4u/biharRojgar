@@ -142,3 +142,10 @@ Route::get('/admin/sarkari-job/trash',[SarkariJobController::class,'trash']);
 Route::delete('/admin/sarkari-job/forceDelete/{id}',[SarkariJobController::class,'forceDelete']);
 Route::patch('/admin/sarkari-job/restore/{id}',[SarkariJobController::class,'restore']);
 Route::get('/search-sarkari-jobs', [SarkariJobController::class, 'searchSarkariJobs']);
+
+
+Route::put('/sarkari-job/status/{id}',[SarkariJobController::class,'updateStatus']);
+Route::put('/hire-plan/status/{id}',[HirePlanController::class,'updateStatus']);
+Route::put('/yojna-category/status/{id}',[YojnaCategoryController::class,'updateStatus']);
+Route::put('/yojna/status/{id}',[YojnaController::class,'updateStatus']);
+

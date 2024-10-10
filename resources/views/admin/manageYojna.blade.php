@@ -16,6 +16,7 @@
                         <th class="border-b border-gray-200 px-3 py-2 text-sm text-center">Hindi Name</th>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm text-center">English Name</th>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm text-center">Price</th>
+                        <th class="border-b border-gray-200 px-3 py-2 text-sm text-center">Status</th>
                         <th class="border-b border-gray-200 px-3 py-2 text-sm text-center">Actions</th>
                     </tr>
                 </thead>
@@ -82,6 +83,12 @@
                                     <td class=" px-3 py-2 text-sm">${data.hname}</td> 
                                     <td class=" px-3 py-2 text-sm">${data.ename}</td> 
                                     <td class=" px-3 py-2 text-sm">Rs.${data.fees}</td>
+                                     <td class="text-sm border-b border-gray-200 p-2" style="text-align:center;">
+                                        <label class="inline-flex items-center mb-5 cursor-pointer">
+                                                <input type="checkbox" class="sr-only peer status-toggle" data-id="${data.id}" ${data.status == 1 ? 'checked' : ''}>
+                                                <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                                            </label>
+                                        </td>
                                     <td class=" px-3 flex justify-center py-2 text-sm">
                                         <a href="{{url('/admin/manage-yojna/${data.id}')}}" class="py-1 px-2">
                                             <svg class="w-5 h-5 text-gray-500 transition duration-75 hover:text-gray-900" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 512 512">
@@ -102,6 +109,28 @@
                 });
             }
             callingPlans();
+
+            $(document).on('change', '.status-toggle', function() {
+                let id = $(this).data('id');
+                let status = $(this).is(':checked') ? 1 : 0;
+                
+                $.ajax({
+                    type: 'PUT',
+                    url: `{{url('/api/yojna/status/${id}')}}`,
+                    data: { status: status },
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        console.log(response); 
+                        swal("Success", response.message, "success");
+                        callingPlans(); 
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error updating Details:', error);
+                    }
+                });
+            });
         });
 
         function alignTableHeaders() {
