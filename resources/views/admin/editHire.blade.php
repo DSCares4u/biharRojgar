@@ -1,13 +1,12 @@
 @extends('admin.adminBase')
 @section('content')
     <div class="container mx-auto mt-8">
-        <div class="w-full lg:w-2/3 md:w-8/12 sm:w-11/12 mx-auto">
+        <div class="w-full lg:w-full md:w-8/12 sm:w-11/12 mx-auto">
             <div class="bg-white shadow-lg rounded-lg">
                 <div class="bg-gray-200 px-4 py-2 rounded-t-lg mt-2">
-                    <h3 class="text-xl font-semibold mt-2">Add New Hirer</h3>
+                    <h3 class="text-xl font-semibold mt-2">View Hirer</h3>
                 </div>
                 <form class="p-5 flex flex-col" id="addHirer">
-                    <h2 class="text-lg font-semibold mb-2">Verify a Hirer</h2>
                     <div class="mb-3 items-center">
                         <label for="date_of_start" class="block text-gray-700 text-sm mb-2">Job Posted Date</label>
                         <input type="text" id="date_of_start" placeholder="Eg. Sales executives needed urgently for ..."

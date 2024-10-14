@@ -275,7 +275,7 @@ public function roleShow($id)
 }
 
     public function updateStatus(Request $request, int $id){
-        $job = Hire::find($id);
+        $job = Role::find($id);
             if($job){
             $data = $job->update([
                 'status' => $request->status,   

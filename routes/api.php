@@ -146,6 +146,7 @@ Route::get('/search-sarkari-jobs', [SarkariJobController::class, 'searchSarkariJ
 
 Route::put('/sarkari-job/status/{id}',[SarkariJobController::class,'updateStatus']);
 Route::put('/hire-plan/status/{id}',[HirePlanController::class,'updateStatus']);
+Route::put('/hire/status/{id}',[HireController::class,'updateStatus']);
 Route::put('/yojna-category/status/{id}',[YojnaCategoryController::class,'updateStatus']);
 Route::put('/yojna/status/{id}',[YojnaController::class,'updateStatus']);
 
