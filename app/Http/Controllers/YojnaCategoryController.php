@@ -24,6 +24,22 @@ class YojnaCategoryController extends Controller
         }
     }
 
+    public function homeIndex()
+    {
+        $yojnaCat = YojnaCategory::where('status',1)->get();
+        if ($yojnaCat->count() > 0) {
+            return response()->json([
+                'status' => 200,
+                'data' => $yojnaCat
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'data' => "No Records found"
+            ], 404);
+        }
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [

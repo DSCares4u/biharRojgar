@@ -179,7 +179,7 @@
                     success: function(response) {
                         console.log(response); 
                         swal("Success", response.message, "success");
-                        callingPlans(); 
+                        // callingPlans(); 
                     },
                     error: function(xhr, status, error) {
                         console.error('Error updating Details:', error);

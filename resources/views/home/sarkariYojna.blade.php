@@ -26,7 +26,7 @@
         let callingYojnaCat = () => {
             return $.ajax({
                 type: "GET",
-                url: "{{ route('yojna.category.index') }}",
+                url: "{{ route('home.yojna-category.index') }}",
                 success: function(response) {
                     categories = response.data;
                     let catContainer = $("#yojnaCat");
@@ -50,7 +50,7 @@
         let callingYojna = (searchName = '') => {
             $.ajax({
                 type: "GET",
-                url: "{{ route('yojna.index') }}",
+                url: "{{ route('home.yojna.index') }}",
                 success: function(response) {
                     let yojnas = response.data;
                     let filteredYojnas = yojnas.filter(yojna => {

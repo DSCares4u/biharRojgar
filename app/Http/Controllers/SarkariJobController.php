@@ -24,6 +24,21 @@ class SarkariJobController extends Controller
             ], 404);
         }
     }
+    public function homeIndex()
+    {
+        $job = SarkariJob::where('status',1)->orderBy('created_at', 'desc')->get();
+        if ($job->count() > 0) {
+            return response()->json([
+                'status' => 200,
+                'data' => $job
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'data' => "No Records found"
+            ], 404);
+        }
+    }
 
     public function store(Request $request)
     {

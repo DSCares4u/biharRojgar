@@ -130,7 +130,7 @@
             let callingSarkariJobs = (searchNameRole = '', searchCityState = '') => {
                 $.ajax({
                         type: "GET",
-                        url: "{{ route('role.index') }}",
+                        url: "{{ route('home.role.index') }}",
                         success: function(response) {
                             let table = $("#callingHire");
                             table.empty();
@@ -238,7 +238,7 @@
                                     // Check if the user has already applied for this job
                                     $.ajax({
                                         type: "GET",
-                                        url: `/checkApplicationStatus/${job.id}`, // The endpoint
+                                        url: `{{url('/checkApplicationStatus/${job.id}')}}`, // The endpoint
                                         success: function(applicationResponse) {
                                             let applyButton;
                                             if (applicationResponse.already_applied) {

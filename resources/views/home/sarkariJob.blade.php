@@ -69,7 +69,7 @@
             let callingSarkariJobs = (searchNameRole = '', searchCityState = '') => {
                 $.ajax({
                         type: "GET",
-                        url: "{{ route('sarkari-job.index') }}",
+                        url: "{{ route('home.sarkari-job.index') }}",
                         success: function(response) {
                             let table = $("#callingData");
                             table.empty();

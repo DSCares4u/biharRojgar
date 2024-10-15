@@ -123,7 +123,7 @@
                     success: function(response) {
                         console.log(response); 
                         swal("Success", response.message, "success");
-                        callingSarkariJobs(); 
+                        // callingSarkariJobs(); 
                     },
                     error: function(xhr, status, error) {
                         console.error('Error updating Details:', error);

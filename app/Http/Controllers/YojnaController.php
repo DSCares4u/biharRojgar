@@ -24,6 +24,22 @@ class YojnaController extends Controller
         }
     }
 
+    public function homeIndex()
+    {
+        $yojna = Yojna::with("yojna_category")->where('status',1)->orderBy('created_at', 'desc')->get();
+        if ($yojna->count() > 0) {
+            return response()->json([
+                'status' => 200,
+                'data' => $yojna
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'data' => "No Records found"
+            ], 404);
+        }
+    }
+
     public function store(Request $request)
     {
         // Validate the request
