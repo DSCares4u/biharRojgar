@@ -47,6 +47,22 @@ class HireController extends Controller
         }
     }
 
+    public function homeRoleIndex(){
+        $role = Role::with("hire")->where('status',1)->orderBy('created_at', 'desc')->get();
+        // $role = Role::with("hire")->inRandomOrder()->get();
+        if ($role->count() > 0) {
+            return response()->json([
+                'status' => 200,
+                'data' => $role
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'data' => "No Records found"
+            ], 404);
+        }
+    }
+
     public function store(Request $request)
 {
     $validator = Validator::make($request->all(), [

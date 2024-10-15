@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete("cascade");
             $table->foreignId('sarkari_job_id')->constrained()->onDelete("cascade");
             $table->enum('payment_mode',['pay_now','pay_later'])->nullable();
+            $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('passing_year');
             $table->string('experience');
             $table->string('skills');
+            $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

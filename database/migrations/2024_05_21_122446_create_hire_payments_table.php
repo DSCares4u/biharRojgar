@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('hire_payments', function (Blueprint $table) {
             $table->id();
+            $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

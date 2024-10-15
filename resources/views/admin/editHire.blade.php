@@ -278,7 +278,7 @@
                     success: function(response) {
                         alert("Success: " + response.message);
                         $("#addHirer").trigger("reset");
-                        window.location.href = "/admin/manage-hire";
+                        window.location.href = "{{url('/admin/manage-hire')}}";
                     },
                     error: function(xhr, status, error) {
                         console.error('Error updating Plan Details:', error);
@@ -301,7 +301,7 @@
                         success: function(response) {
                             console.log('Hire deleted successfully:', response);
                             window.location.href =
-                            "/admin/manage-hire"; // Redirect to manage page
+                            "{{url('/admin/manage-hire')}}"; // Redirect to manage page
                         },
                         error: function(xhr, status, error) {
                             console.error('Error deleting Data:', error);

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('id_proof');
             $table->string('quali_certificate');
             $table->string('other_certificate');
+            $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

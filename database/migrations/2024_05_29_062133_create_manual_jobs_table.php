@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('id_proof');
             $table->string('certificate');
             $table->string('photo');
+            $table->string('status')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

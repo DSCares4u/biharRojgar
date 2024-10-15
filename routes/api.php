@@ -153,4 +153,4 @@ Route::put('/yojna/status/{id}',[YojnaController::class,'updateStatus']);
 Route::get('/home/yojna',[YojnaController::class,'homeIndex'])->name('home.yojna.index');
 Route::get('/home/yojna-category',[YojnaCategoryController::class,'homeIndex'])->name('home.yojna-category.index');
 Route::get('/home/sarkari-job',[SarkariJobController::class,'homeIndex'])->name('home.sarkari-job.index');
-// Route::get('/home/private-job',[HireController::class,'homeIndex'])->name('home.role.index');
+Route::get('/home/private-job/role',[HireController::class,'homeRoleIndex'])->name('home.role.index');
