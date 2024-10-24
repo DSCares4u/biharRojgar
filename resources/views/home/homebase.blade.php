@@ -14,10 +14,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 
     <title>Taskinn Solution - @yield('title')</title>
 
     <style>
+        .roboto-medium {
+            font-family: "Roboto", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        body {
+            font-family: "Roboto", sans-serif;
+        }
+
         .flashing-yojna {
             animation: flash 1.8s infinite;
         }
@@ -70,7 +85,7 @@
     </style>
 </head>
 
-<body class="">
+<body class="roboto-medium bg-gray-100">
     {{-- <nav class="bg-[#74b9ff] border-gray-200 dark:bg-gray-900">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -129,21 +144,15 @@
                         </form>
                     </div>
                 @endauth
-            </div>
+            </div> 
         </div>
     </nav> --}}
 
-    <nav class="bg-[#74b9ff] border-gray-200 dark:bg-gray-900">
+    <nav class="bg-[#74b9ff] border-gray-200 dark:bg-gray-900 md:fixed w-full md:top-0">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="{{url('')}}" class="flex flex-col space-x-3 rtl:space-x-reverse">
-                <span
-                    class="self-center text-3xl font-bold text-white whitespace-nowrap dark:text-white tracking-widest">Taskinn
-                </span>
-                {{-- <span class=" text-xl  font-semibold whitespace-nowrap dark:text-white text-center">Solutions
-                </span> --}}
-            </a>
+
             <button data-collapse-toggle="navbar-user" type="button"
-                class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                class="inline-flex  items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 aria-controls="navbar-user" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
@@ -153,44 +162,49 @@
                         clip-rule="evenodd"></path>
                 </svg>
             </button>
+            <a href="{{ url('') }}" class="flex flex-col space-x-3 rtl:space-x-reverse">
+                <span
+                    class="self-center text-3xl font-bold text-white whitespace-nowrap dark:text-white tracking-widest">Taskinn
+                </span>
+            </a>
             <div class="hidden w-full md:flex md:w-auto md:order-1 md:justify-between" id="navbar-user">
                 <ul
                     class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-[#74b9ff] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                     <li>
-                        <a href="{{url('')}}"
+                        <a href="{{ url('') }}"
                             class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
                             aria-current="page">Home</a>
                     </li>
                     <li>
-                        <a href="{{url('/private-job')}}"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Private
+                        <a href="{{ url('/private-job') }}"
+                            class="block py-2 px-3  text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Private
                             Job</a>
                     </li>
                     <li>
-                        <a href="{{url('/sarkari-job')}}"
-                            class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Sarkari
+                        <a href="{{ url('/sarkari-job') }}"
+                            class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Sarkari
                             Job</a>
                     </li>
                     @guest
                         <li>
-                            <a href="{{url('/hire/t&c')}}"
-                                class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hire
+                            <a href="{{ url('/hire/t&c') }}"
+                                class="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Hire
                                 Now</a>
                         </li>
                     @endguest
                     <li>
-                        <a href="{{url('/sarkari-yojna')}}"
-                            class="block py-4 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 flashing-yojna">Sarkari
+                        <a href="{{ url('/sarkari-yojna') }}"
+                            class="block py-4 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 ">Sarkari
                             Yojna</a>
                     </li>
                     @auth
                         <li>
-                            <a href="{{url('/image/manual_form.jpg')}}" download
+                            <a href="{{ url('/image/manual_form.jpg') }}" download
                                 class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Download
                                 Form</a>
                         </li>
                         <li>
-                            <a href="{{url('/manual-form')}}"
+                            <a href="{{ url('/manual-form') }}"
                                 class="inline-block px-4 py-1 text-white bg-green-500 rounded cursor-pointer hover:bg-green-700">Upload
                                 Form</a>
                         </li>
@@ -246,8 +260,10 @@
     </script>
 
 
+ <div class="mt-20">
     @yield('content')
     @show
+ </div>
 
 {{-- <footer class="bg-gray-900 text-gray-400 py-12 z-30">
     <div class="container mx-auto px-4 md:px-5">
@@ -295,12 +311,62 @@
         </div>
     </div>
 </footer> --}}
-<footer class="bg-gray-800 text-white py-3 fixed bottom-0 w-full mt-10">
+{{-- <footer class="bg-gray-800 text-white py-3 fixed bottom-0 w-full mt-10">
     <div class="container mx-auto flex items-center justify-center px-4">
         <p>&copy; 2024 Taskinn Solution. All rights reserved.</p>
     </div>
-</footer>
+</footer> --}}
 
+
+<a href="https://wa.me/9955232260" target="_blank" class="fixed md:bottom-10 bottom-20 right-2 md:right-10 z-20">
+    <div class="bg-green-500 rounded-full p-5 shadow-lg text-white hover:text-gray-100 hover:bg-green-600">
+        <i class="fa-brands fa-whatsapp fa-2xl  " style="line-height: 1;"></i>
+    </div>
+</a>
+
+<footer class="bg-gray-900 text-gray-400 py-10 sticky">
+    <div class="container mx-auto px-4 md:px-5">
+        <div class="flex flex-col md:flex-row justify-between md:gap-10">
+            <div class="w-full md:w-1/4 mb-6">
+                <h4 class="text-white text-lg mb-4">About Us</h4>
+                <p class="text-gray-400">Welcome to our Mithila Idli ! We offer the finest cuisine with fresh
+                    ingredients and a welcoming atmosphere.</p>
+            </div>
+
+            <div class="w-full md:w-1/4 mb-6">
+                <h4 class="text-white text-lg mb-4">Quick Links</h4>
+                <ul class="list-none">
+                    <li><a href="{{ url('/') }}" class="hover:text-white">Home</a></li>
+                    {{-- <li><a href="#" class="hover:text-white"></a></li> --}}
+                    <li><a href="{{ url('brand-story') }}" class="hover:text-white">About</a></li>
+                    <li><a href="{{ url('order-now') }}" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="w-full md:w-1/4 mb-6">
+                <h4 class="text-white text-lg mb-4">Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt mr-2"></i>Rambagh, Purnea, Bihar</p>
+                <p><i class="fas fa-phone mr-2"></i>(+91) {{ env('PHONE_NO') }}</p>
+                <p><i class="fas fa-envelope mr-2"></i>taskinnsolution@gmail.com</p>
+            </div>
+
+            <div class="w-full md:w-1/4 mb-6">
+                <h4 class="text-white text-lg mb-4">Follow Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 border-t border-gray-700 pt-6 text-center">
+            <p>&copy; 2024 Taskinn Solutions. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
 </body>
 

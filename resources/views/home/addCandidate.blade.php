@@ -191,7 +191,8 @@
                 </div>
             </form>
         </div>
-    </div> --}}
+    </div>
+     --}}
     <div class="container mx-auto font-sans mb-10 ">
         <div class="mx-4 ">
             <form class="p-4 flex flex-col" id="applyJob">

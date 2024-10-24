@@ -67,7 +67,8 @@
     <div class="container p-2 bg-gray-100 rounded-lg mb-10">
         <div class="heading mb-6 w-full md:w-[70%]">
             <h2 class="md:text-2xl text-xl font-semibold">Private Job</h2>
-            <p class="md:text-sm text-xs text-red-500 mt-4 font-medium ">To avoid last minute rush, you are advised to submit your online
+            <p class="md:text-sm text-xs text-red-500 mt-4 font-medium ">To avoid last minute rush, you are advised to submit
+                your online
                 application much before the last date. RRBs shall not be responsible if applicants are not able to submit
                 their online application including payment of fee within the last date for any reason whatsoever.</p>
         </div>
@@ -84,7 +85,7 @@
                 <div id="searchResults" class="mt-4"></div>
                 <div class="w-full" id="callingHire"></div>
             </div>
-            <div class="flex flex-col w-full md:w-1/4 md:fixed right-5 top-1 mt-6 md:mt-20 z-20">
+            <div class="flex flex-col w-full md:w-1/4 md:fixed right-5 top-1 mt-6 md:mt-20 ">
                 <div
                     class="w-full bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 mb-5 md:mb-0">
                     <div class="price mt-2 mb-4">
@@ -124,7 +125,7 @@
             </div>
         </div>
     </div>
-    
+
     <script>
         $(document).ready(function() {
             let callingSarkariJobs = (searchNameRole = '', searchCityState = '') => {
@@ -169,7 +170,7 @@
                                     if (job.isApproved == true) {
                                         // Generate logo using the first letter of the job name if no logo is provided
                                         let logo = job.hire.logo ?
-                                            ` <img src="{{asset('/image/company/logo/${job.hire.logo}')}}" class="rounded w-12 h-12" alt="">` :
+                                            ` <img src="{{ asset('/image/company/logo/${job.hire.logo}') }}" class="rounded w-12 h-12" alt="">` :
                                             `<div class="generated-logo rounded w-12 h-12 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.hire.company_name.charAt(0)}</div>`;
 
                                         table.append(`
@@ -226,8 +227,8 @@
                                                         <button class="toggleButton text-blue-500"><i class="fa-solid fa-angle-down"></i></button>
                                                     </div>
                                                     <div class="button flex gap-5 mt-5">
-                                                        <a href={{url('/viewPrivateJobForm/${job.id}')}} class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job</a>
-                                                        <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="/viewPrivateJobForm/${job.id}"><img src="{{url('/icons/share.png')}}" class="h-6 mr-1" alt="">Share</button>
+                                                        <a href={{ url('/viewPrivateJobForm/${job.id}') }} class="bg-green-600 rounded hover:bg-green-700 text-center text-white py-1 w-1/2">Apply For Job</a>
+                                                        <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="/viewPrivateJobForm/${job.id}"><img src="{{ url('/icons/share.png') }}" class="h-6 mr-1" alt="">Share</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -238,7 +239,7 @@
                                     // Check if the user has already applied for this job
                                     $.ajax({
                                         type: "GET",
-                                        url: `{{url('/checkApplicationStatus/${job.id}')}}`, // The endpoint
+                                        url: `{{ url('/checkApplicationStatus/${job.id}') }}`, // The endpoint
                                         success: function(applicationResponse) {
                                             let applyButton;
                                             if (applicationResponse.already_applied) {
@@ -252,7 +253,7 @@
                                             if (job.isApproved == true) {
                                                 // Generate logo using the first letter of the job name if no logo is provided
                                                 let logo = job.hire.logo ?
-                                                    ` <img src="{{url('/image/company/logo/${job.hire.logo}')}}" class="rounded w-12 h-12" alt="">` :
+                                                    ` <img src="{{ url('/image/company/logo/${job.hire.logo}') }}" class="rounded w-12 h-12" alt="">` :
                                                     `<div class="generated-logo rounded w-12 h-12 flex items-center justify-center bg-gray-300 text-white font-bold text-xl">${job.hire.company_name.charAt(0)}</div>`;
 
                                                 table.append(`
@@ -309,7 +310,7 @@
                                                                 <button class="toggleButton text-blue-500"><i class="fa-solid fa-angle-down"></i></button>
                                                             </div>
                                                             <div class="button flex gap-5 mt-5">${applyButton}
-                                                                <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="{{url('/viewPrivateJobForm/${job.id}')}}"><img src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
+                                                                <button class="share-btn rounded text-green-700 border border-green-700 text-center px-auto flex justify-center py-1 w-1/2" data-share-url="{{ url('/viewPrivateJobForm/${job.id}') }}"><img src="/icons/share.png" class="h-6 mr-1" alt="">Share</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -317,31 +318,33 @@
                                             }
                                         },
                                         error: function(xhr, status, error) {
-                                            console.error('Error checking application status:',error);
+                                            console.error(
+                                                'Error checking application status:',
+                                                error);
                                         }
                                     });
                                 }
                             });
-                            $(".share-btn").on("click", function() {
-                                let shareUrl = $(this).data("share-url");
-                                if (navigator.share) {
-                                    navigator.share({
-                                        title: 'Job Opportunity',
-                                        url: shareUrl,
-                                    }).then(() => {
-                                        console.log('Thanks for sharing!');
-                                    }).catch(console.error);
-                                } else {
-                                    // Fallback for browsers that do not support the Web Share API
-                                    prompt("Copy this link to share:", shareUrl);
-                                }
-                            });
-                        },
-                        error: function(xhr, status, error) {
-                            console.error('Error:', error);
-                        }
-                    });
-                };
+                        $(".share-btn").on("click", function() {
+                            let shareUrl = $(this).data("share-url");
+                            if (navigator.share) {
+                                navigator.share({
+                                    title: 'Job Opportunity',
+                                    url: shareUrl,
+                                }).then(() => {
+                                    console.log('Thanks for sharing!');
+                                }).catch(console.error);
+                            } else {
+                                // Fallback for browsers that do not support the Web Share API
+                                prompt("Copy this link to share:", shareUrl);
+                            }
+                        });
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                    }
+                });
+        };
 
         // Toggle button functionality
         $(document).on('click', '.toggleButton', function() {

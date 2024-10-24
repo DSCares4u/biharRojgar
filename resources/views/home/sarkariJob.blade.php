@@ -22,9 +22,9 @@
             </div>
             <div class="card" id="callingData"></div>
         </div>
-        <div class="w-full md:w-1/4 mb-10 md:mb-2">
+        <div class="flex flex-col w-full md:w-1/4 md:fixed right-2 top-1 mt-6 md:mt-20 ">
             <div
-                class="mt-10 w-full md:w-[80%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
+                class="w-full bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 mb-5 md:mb-0">
                 <div class="price mt-2 mb-4">
                     <h3 class="text-lg font-semibold">Our Services</h3>
                     <div class="line bg-blue-500">
@@ -34,29 +34,28 @@
                         <a href="" class="mt-3 font-semibold">Manpower Recruitment</a>
                         <a href="" class="mt-3 font-semibold">Placement Recruitment</a>
                         <a href="" class="mt-3 font-semibold">Career Consultant</a>
-                        <a href="" class="mt-3 font-semibold">Corporate Training Services</a>
+                        <a href="" class="mt-3 font-semibold">Job Placement</a>
                     </div>
                 </div>
             </div>
-            <div
-                class="mt-5 w-full md:w-[85%] bg-white border p-3 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
+            <div class="w-full bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700">
                 <div class="price mt-2 mb-4">
                     <h3 class="text-lg font-semibold">Contact Us</h3>
                     <div class="line bg-blue-500">
                         <hr class="h-1">
                     </div>
                     <div class="flex flex-col mt-3">
-                        <h3 class="mt-2 text-sm font-medium">Pensive Supremo Edu Pvt. Ltd.</h3>
+                        <h3 class="mt-2 text-sm font-medium">Taskinn Solution</h3>
                         <hr class="mt-2">
-                        <h3 class="mt-2 font-normal text-xs">House No. 59 Ground Floor, Shukriya</h3>
-                        <h3 class="font-normal text-xs">Manzil, Behind Hotel Crystal Inn,</h3>
-                        <h3 class="font-normal text-xs">Hatigaon, Guwahati, Assam - 781038, India</h3>
+                        <h3 class="mt-2 font-normal text-xs">Near Panchwati Chowk</h3>
+                        <h3 class="font-normal text-xs">Professor Colony, Rambagh</h3>
+                        <h3 class="font-normal text-xs">Purnea Bihar - 854301, India</h3>
                         <hr class="mt-2 mb-2">
-                        <h3 class="text-sm"><strong>Mobile : </strong> +91-9365447219, 7578999821</h3>
+                        <h3 class="text-sm"><strong>Mobile: </strong> +91-8677889960, 8268222299</h3>
                         <hr class="mt-2 mb-2">
-                        <h3 class="text-sm"><strong>Call Us : </strong> 09365447219</h3>
+                        <h3 class="text-sm"><strong>Call Us: </strong> 08677889960</h3>
                         <hr class="mt-2 mb-2">
-                        <h3 class="text-sm"><strong>E-mail : </strong> info@pensivesupremoedu.in</h3>
+                        <h3 class="text-sm"><strong>E-mail: </strong> taskinnsolution@gmail.com</h3>
                     </div>
                 </div>
             </div>

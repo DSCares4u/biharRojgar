@@ -1,7 +1,7 @@
 @extends('home.homebase')
 @section('title', 'Sarkari Yojna')
 @section('content')
-<hr class="bg-gray-300 h-1 rounded-xl">
+{{-- <hr class="bg-gray-300 h-1 rounded-xl"> --}}
 
 <div class="flex flex-row mb-4 mt-5 ml-10 lg:w-1/3 lg:ml-10 w-full">
     <input type="text" id="searchName" placeholder="Search by Name or Category" class="border p-1 lg:w-1/2 mr-2 rounded-lg w-1/2">

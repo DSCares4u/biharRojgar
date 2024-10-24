@@ -336,7 +336,7 @@
                 let userId = getIdFromUrlPath();
                 $.ajax({
                     type: 'GET',
-                    url: `{{url('/api/show-all/view/${userId}')}}`
+                    url: `{{url('/api/show-all/view/${userId}')}}`,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -360,20 +360,13 @@
                         $('#state').val(response.data.candidate.state);
                         $('#city').val(response.data.candidate.city);
                         $('#id_mark').val(response.data.candidate.id_mark);
-                        $('#photo').attr('src',response.data.document.photo);
-                        $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data
-                            .document.photo);
-                        $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data
-                            .document.signature);
+                        // $('#photo').attr('src',response.data.document.photo);
+                        $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data.document.photo);
+                        $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data.document.signature);
                         $('#id_proof_type').val(response.data.document.id_proof_type);
-                        $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data
-                            .document.id_proof);
-                        $('#qualiCertificatePreview').attr('src',
-                            '/image/candidate/quali_certificate/' + response.data.document
-                            .quali_certificate);
-                        $('#otherCertificatePreview').attr('src',
-                            '/image/candidate/other_certificate/' + response.data.document
-                            .other_certificate);
+                        $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data.document.id_proof);
+                        $('#qualiCertificatePreview').attr('src','/image/candidate/quali_certificate/' + response.data.document.quali_certificate);
+                        $('#otherCertificatePreview').attr('src','/image/candidate/other_certificate/' + response.data.document.other_certificate);
                         $('#qualification').val(response.data.address.qualification);
                         $('#q_state').val(response.data.address.q_state);
                         $('#board').val(response.data.address.board);
@@ -435,7 +428,7 @@
                             swal("Success", response.message, "success");
                             $('.error').text('');
                             // $("#insertData").trigger("reset");
-                            window.open("/admin/manage-candidate", "_self");
+                            window.open("{{url('/admin/manage-candidate')}}", "_self");
                         },
                         error: function(xhr) {
                             // Clear previous error messages
