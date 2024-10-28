@@ -318,19 +318,23 @@
 </footer> --}}
 
 
-<a href="https://wa.me/9955232260" target="_blank" class="fixed md:bottom-10 bottom-20 right-2 md:right-10 z-20">
+<a href="https://api.whatsapp.com/send?phone=+91-9955232260&text=Welcome To Taskinn Solutions PURNEA, BIHAR" target="_blank" class="fixed md:bottom-10 bottom-20 right-2 md:right-10 z-20">
     <div class="bg-green-500 rounded-full p-5 shadow-lg text-white hover:text-gray-100 hover:bg-green-600">
         <i class="fa-brands fa-whatsapp fa-2xl  " style="line-height: 1;"></i>
     </div>
 </a>
+{{-- <a href="https://wa.me/9955232260" target="_blank" class="fixed md:bottom-10 bottom-20 right-2 md:right-10 z-20">
+    <div class="bg-green-500 rounded-full p-5 shadow-lg text-white hover:text-gray-100 hover:bg-green-600">
+        <i class="fa-brands fa-whatsapp fa-2xl  " style="line-height: 1;"></i>
+    </div>
+</a> --}}
 
 <footer class="bg-gray-900 text-gray-400 py-10 sticky">
     <div class="container mx-auto px-4 md:px-5">
         <div class="flex flex-col md:flex-row justify-between md:gap-10">
             <div class="w-full md:w-1/4 mb-6">
                 <h4 class="text-white text-lg mb-4">About Us</h4>
-                <p class="text-gray-400">Welcome to our Mithila Idli ! We offer the finest cuisine with fresh
-                    ingredients and a welcoming atmosphere.</p>
+                <p class="text-gray-400">Welcome to our Taskinn Solutions ! Connecting people with the right job opportunities to build fulfilling careers.</p>
             </div>
 
             <div class="w-full md:w-1/4 mb-6">

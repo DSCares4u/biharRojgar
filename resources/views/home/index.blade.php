@@ -193,31 +193,10 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
             <h3 class=" font-bold mb-4  text-base">Find Sarkari Jobs</h3>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 w-full font-normal text-sm">
-                <div>
-                    <ul class="space-y-2">
-                        <li>Jobs in Agra</li>
-                        <li>Jobs in Ajmer</li>
-                        <li>Jobs in Asansol</li>
-                        <li>Jobs in Belagavi</li>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="space-y-2 mt-8 md:mt-0">
-                        <li>Jobs in Ahmedabad</li>
-                        <li>Jobs in Aligarh</li>
-                        <li>Jobs in Aurangabad</li>
-                        <li>Jobs in Bengaluru</li>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="space-y-2 mt-8 md:mt-0">
-                        <li>Jobs in Ahmednagar</li>
-                        <li>Jobs in Amritsar</li>
-                        <li>Jobs in Bareilly</li>
-                        <li>Jobs in Bhavnagar</li>
-                    </ul>
-                </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2   w-full font-normal md:text-sm text-xs" id="callingSarkariJob">
+                <a href="" class="hover:underline hover:text-blue-400">
+                    <li>Jobs in Agra</li>
+                </a>
             </div>
             <div class="co mt-10 flex justify-center items-center">
                 <a href="{{ url('/sarkari-job') }}"
@@ -227,34 +206,13 @@
         </div>
         <hr>
 
-        <div class=" max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 mt-10">
+        <div class=" max-w-5xl mx-auto px-4 sm:px-6  lg:px-8 mb-10 mt-10">
             <h3 class=" font-bold mb-4  text-base">Find Private Jobs</h3>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 font-normal text-sm">
-                <div>
-                    <ul class="space-y-2 ">
-                        <li>Jobs in Agra</li>
-                        <li>Jobs in Ajmer</li>
-                        <li>Jobs in Asansol</li>
-                        <li>Jobs in Belagavi</li>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="space-y-2 mt-8 md:mt-0">
-                        <li>Jobs in Ahmedabad</li>
-                        <li>Jobs in Aligarh</li>
-                        <li>Jobs in Aurangabad</li>
-                        <li>Jobs in Bengaluru</li>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="space-y-2 mt-8 md:mt-0 ">
-                        <li>Jobs in Ahmednagar</li>
-                        <li>Jobs in Amritsar</li>
-                        <li>Jobs in Bareilly</li>
-                        <li>Jobs in Bhavnagar</li>
-                    </ul>
-                </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2  font-normal md:text-sm text-xs" id="callingPrivateJob">
+                <a href="" class="hover:underline hover:text-blue-400">
+                    <li>Jobs in Agra</li>
+                </a>
             </div>
             <div class="mt-10 flex justify-center items-center">
                 <a href="{{ url('/private-job') }}"
@@ -264,34 +222,13 @@
         </div>
         <hr>
 
-        <div class=" max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 mt-10">
+        <div class=" max-w-5xl mx-auto px-4 sm:px-6  lg:px-8 mb-10 mt-10">
             <h3 class=" font-bold mb-4  text-base">Sarkari Yojnas</h3>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 font-normal text-sm">
-                <div>
-                    <ul class="space-y-2 ">
-                        <li>Jobs in Agra</li>
-                        <li>Jobs in Ajmer</li>
-                        <li>Jobs in Asansol</li>
-                        <li>Jobs in Belagavi</li>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="space-y-2 mt-8 md:mt-0">
-                        <li>Jobs in Ahmedabad</li>
-                        <li>Jobs in Aligarh</li>
-                        <li>Jobs in Aurangabad</li>
-                        <li>Jobs in Bengaluru</li>
-                    </ul>
-                </div>
-                <div>
-                    <ul class="space-y-2 mt-8 md:mt-0 ">
-                        <li>Jobs in Ahmednagar</li>
-                        <li>Jobs in Amritsar</li>
-                        <li>Jobs in Bareilly</li>
-                        <li>Jobs in Bhavnagar</li>
-                    </ul>
-                </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 font-normal md:text-sm text-xs" id="callingYojna">
+                <a href="" class="hover:underline hover:text-blue-400">
+                    <li>Jobs in Agra</li>
+                </a>
             </div>
             <div class="mt-10 flex justify-center items-center">
                 <a href="{{ url('/sarkari-yojna') }}"
@@ -310,6 +247,87 @@
             item.addEventListener('click', () => {
                 item.classList.toggle('active');
             });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            // Function to fetch and display appointment
+            let callingSarkariJobs = () => {
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('home.sarkari-job.index') }}",
+                    success: function(response) {
+                        let table = $("#callingSarkariJob");
+                        table.empty();
+                        let data = response.data;
+
+                        // Update appointment count
+                        let len = data.length;
+                        $("#counting").html(len);
+
+                        data.forEach((data) => {
+                            table.append(`
+                                <a href="{{ url('/viewSarkariJobForm/${data.id}') }}" class="hover:underline hover:text-blue-400"><li>${data.name}</li></a>
+                            `);
+                        });
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                    }
+                });
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('home.role.index') }}",
+                    success: function(response) {
+                        let table = $("#callingPrivateJob");
+                        table.empty();
+                        let data = response.data;
+
+                        // Update appointment count
+                        let len = data.length;
+                        $("#counting").html(len);
+
+                        data.forEach((data) => {
+                            table.append(`
+                                <a href="{{ url('/viewPrivateJobForm/${data.id}') }}" class="hover:underline hover:text-blue-400"><li>${data.title}</li></a>
+                            `);
+                        });
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                    }
+                });
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{ route('home.yojna.index') }}",
+                    success: function(response) {
+                        let table = $("#callingYojna");
+                        table.empty();
+                        let data = response.data;
+
+                        // Update appointment count
+                        let len = data.length;
+                        $("#counting").html(len);
+
+                        data.forEach((data) => {
+                            table.append(`
+                                <a href="{{ url('/sarkari-yojna-form/${data.id}') }}" class="hover:underline hover:text-blue-400 capitalize text-sm"><li>${data.ename}</li></a>
+                            `);
+                        });
+
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                    }
+                });
+            }
+            callingSarkariJobs();
+           
         });
     </script>
 

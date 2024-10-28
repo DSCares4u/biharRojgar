@@ -2,7 +2,7 @@
 
 @extends('home.homebase')
 @section('content')
-    <div class="flex justify-center items-center  mt-10">
+    <div class="flex justify-center items-center  mt-10 h-screen">
         <div class="bg-white shadow-md border rounded px-8 pt-6 pb-8 w-full max-w-md">
 
             @if (session('success'))
