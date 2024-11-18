@@ -60,7 +60,7 @@
         </div>
     </div> --}}
 
-    <div class="section text-start mt-20 px-4 lg:px-32">
+    <div class="section text-start mt-32 px-4 lg:px-32">
         <p class="text-green-700 font-semibold mb-3 md:mb-5 text-lg md:text-xl tracking-wider">
             BIHAR’S #1 BEST JOB PLATFORM
         </p>

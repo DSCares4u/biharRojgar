@@ -149,6 +149,7 @@ Route::put('/hire-plan/status/{id}',[HirePlanController::class,'updateStatus']);
 Route::put('/hire/status/{id}',[HireController::class,'updateStatus']);
 Route::put('/yojna-category/status/{id}',[YojnaCategoryController::class,'updateStatus']);
 Route::put('/yojna/status/{id}',[YojnaController::class,'updateStatus']);
+Route::put('/manual-job/status/{id}',[JobController::class,'updateStatus']);
 
 Route::get('/home/yojna',[YojnaController::class,'homeIndex'])->name('home.yojna.index');
 Route::get('/home/yojna-category',[YojnaCategoryController::class,'homeIndex'])->name('home.yojna-category.index');

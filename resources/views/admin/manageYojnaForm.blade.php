@@ -106,6 +106,9 @@
                 "info": true,
                 "destroy": true,
                 "dom": '<"search-container"f>t<"bottom"p>',
+                "columnDefs": [{
+                    "orderable": false,
+                    "targets": [1,2,3,4,5] }],
                 "language": {
                     "search": "",
                     "searchPlaceholder": "Search..."
@@ -113,7 +116,7 @@
             });
 
             // Center the search box
-            $('.search-container').addClass('d-flex justify-content-center').css('margin-bottom', '10px');
+            $('.search-container').addClass('d-flex justify-content-center ').css('margin-bottom', '10px');
 
             // Function to fetch and display appointment
             let callingData = () => {
@@ -132,8 +135,8 @@
                         data.forEach((data,index) => {
                             table.append(`
                              <tr class="mt-5">
-                                 <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${index+1}</td> 
-                                 <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.name}</td> 
+                                 <td class="border-b border-gray-200 px-3  py-2 text-sm">${index+1}</td> 
+                                 <td class="border-b border-gray-200 px-3  py-2 text-sm">${data.name}</td> 
                                  <td class="border-b border-gray-200 px-3 text-center py-2 text-sm">${data.yojna.ename}</td> 
                                   <td class="border-b border-gray-200 px-3  flex justify-center py-2 text-sm">
                                         <a href="{{url('/admin/manage/yojna-form/${data.id}')}}"

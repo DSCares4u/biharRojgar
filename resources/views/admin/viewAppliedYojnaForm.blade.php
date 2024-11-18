@@ -1,12 +1,12 @@
 @extends('admin.adminBase')
 @section('content')
     <div class="container mx-auto mt-16">
-        <div class="w-full lg:w-2/3 md:w-8/12 sm:w-11/12 mx-auto">
+        <div class="w-full lg:w-2/3 md:w-full sm:w-11/12 mx-auto">
             <div class="bg-white shadow-lg rounded-lg">
                 <div class="bg-gray-200 px-4 py-2 rounded-t-lg">
                     <h3 class="text-xl font-semibold">Edit Yojna Form</h3>
                 </div>
-                <div class="p-3">
+                <div class="p-3 flex flex-col ">
                     <form id="addData">
                         <div class="mb-4">
                             <label for="name" class="block text-sm font-medium text-gray-700">Candidate's Name</label>
@@ -93,12 +93,15 @@
                         </div>
                         <div class="mb-4">
                             <label for="" class="block text-sm font-medium text-gray-700">Select Category</label>
-                            <select name="yojna_id" id="callingYojna" class="w-1/2 shadow-sm sm:text-sm rounded-md"
+                            <select name="yojna_id" id="callingYojna" class="w-1/2 p-2 shadow-sm sm:text-sm rounded-md"
                                 required></select>
                         </div>
-                        <div class="">
+                        <div class="flex w-1/2 gap-2">
+                            <button type="button"
+                            class="w-1/2 flex delete-btn justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">Delete</button>
                             <button type="submit"
                                 class="w-1/2 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Update Now</button>
+                           
                         </div>
                     </form>
                 </div>
@@ -173,6 +176,28 @@
                         console.error('Error updating Details:', error);
                     }
                 });
+            });
+
+            $(document).on('click', '.delete-btn', function() {
+                    let id = getIdFromUrlPath();
+                    // Confirm deletion
+                    if (confirm("Are you sure you want to delete this Form ?")) {
+                        $.ajax({
+                            type: 'DELETE',
+                            url: `{{url('/api/admin/manage/yojna-form/delete/${id}')}}`,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                console.log('Form deleted successfully:', response);
+                                window.location.href =
+                                "{{url('/admin/manage/yojna-form')}}"; // Redirect to manage page
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error deleting Data:', error);
+                            }
+                        });
+                    }
             });
         });
     </script>

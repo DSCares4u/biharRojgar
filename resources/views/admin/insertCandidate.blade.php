@@ -300,6 +300,26 @@
                                         </div>
                                         
                                     </div>
+                                    <div class="flex gap-3">
+                                        <div class="mb-4 items-center">
+                                            <label for="other_id_proof" class="block text-sm mb-3">Upload Your Other Id (Optional)</label>
+                                            <input type="file" id="other_id_proof" name="other_id_proof">
+                                            <img id="otherIdProofPreview" src="#" alt="id Proof Preview"
+                                                class=" w-24 h-24 object-cover mt-2" />
+                                        </div>
+                                        <div class="mb-4 items-center">
+                                            <label for="other_id_proof_type" class="block text-sm mb-3">Choose other Id Proof (Optional)</label>
+                                            <select name="other_id_proof_type" id="other_id_proof_type"
+                                                class="border py-2 px-5 w-full rounded">
+                                                <option value="">Select</option>
+                                                <option value="aadhar">Aadhar Card</option>
+                                                <option value="pan">Pan Card</option>
+                                                <option value="dl">Driving Licence</option>
+                                                <option value="voter-id">Voter Id Card</option>
+                                            </select>
+                                        </div>
+                                        
+                                    </div>
                                     <div class="mb-4 items-center">
                                         <label for="quali_certificate" class="block text-sm mb-3">Upload Your Latest
                                             Qualification Certificate</label>
@@ -366,8 +386,9 @@
                         $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data
                             .document.signature);
                         $('#id_proof_type').val(response.data.document.id_proof_type);
-                        $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data
-                            .document.id_proof);
+                        $('#other_id_proof_type').val(response.data.document.other_id_proof_type);
+                        $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data.document.id_proof);
+                        $('#otherIdProofPreview').attr('src', '/image/candidate/other_id_proof/' + response.data.document.other_id_proof);
                         $('#qualiCertificatePreview').attr('src',
                             '/image/candidate/quali_certificate/' + response.data.document
                             .quali_certificate);
@@ -407,6 +428,9 @@
             });
             $('#id_proof').change(function() {
                 previewImage(this, '#idProofPreview');
+            });
+            $('#other_id_proof').change(function() {
+                previewImage(this, '#otherIdProofPreview');
             });
             $('#quali_certificate').change(function() {
                 previewImage(this, '#qualiCertificatePreview');

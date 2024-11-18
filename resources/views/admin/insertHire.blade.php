@@ -1,7 +1,7 @@
 @extends('admin.adminBase')
 @section('content')
     <div class="container mx-auto mt-8">
-        <div class="w-full lg:w-2/3 md:w-8/12 sm:w-11/12 mx-auto">
+        <div class="w-full  md:w-full sm:w-11/12 mx-auto">
             <div class="bg-white shadow-lg rounded-lg">
                 <div class="bg-gray-200 px-4 py-2 rounded-t-lg mt-2">
                     <h3 class="text-xl font-semibold mt-2">Add New Hirer</h3>
@@ -33,9 +33,9 @@
                                     <td class="py-1 text-center">
                                         <div class="text-xs text-gray-400">
                                             Min: <input type="number" min="0" name="inputs[0][min_experience]"
-                                                placeholder="0" class="appearance-none border text-black px-1 py-1 w-1/4 text-xs">
+                                                placeholder="0" class="focus:border-none appearance-none border text-black px-1 py-1 w-1/4 text-xs">
                                             Max: <input type="number" min="0" name="inputs[0][max_experience]"
-                                                placeholder="5y" class="appearance-none text-black px-1 border py-1 w-1/4 text-xs">
+                                                placeholder="5y" class="focus:border-none appearance-none text-black px-1 border py-1 w-1/4 text-xs">
                                         </div>
                                     </td>
                                     <td class="py-1 text-xs">
@@ -174,7 +174,7 @@
                         <option value="0">Not Approved</option>
                     </select>
                     <div class="mb-4">
-                        <select name="plan_id" id="callingPlans">
+                        <select name="plan_id" id="callingPlans" class="p-2">
                             <option value="">Select Plan</option>
                         </select>
                     </div>

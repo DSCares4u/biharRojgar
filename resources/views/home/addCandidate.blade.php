@@ -363,7 +363,7 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: `{{url('/api/candidate/view/${userId}')}}` +,
+                    url: `{{url('/api/candidate/view/${userId}')}}`,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
