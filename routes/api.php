@@ -84,6 +84,7 @@ Route::put('/sarkari-job-apply/edit/{id}',[SarkariJobApplyController::class,'upd
 Route::delete('/sarkari-job-apply/delete/{id}',[SarkariJobApplyController::class,'destroy']);
 
 Route::post('/candidate',[CandidateController::class,'store'])->name('candidate.store');
+Route::post('/candidate-all',[CandidateController::class,'storeAll'])->name('candidate.store.all');
 Route::get('/candidate',[CandidateController::class,'index'])->name('candidate.index');
 Route::get('/candidate/view/{id}',[CandidateController::class,'show']);
 Route::put('/candidate/edit/{id}',[CandidateController::class,'update']);

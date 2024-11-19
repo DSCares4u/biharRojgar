@@ -238,16 +238,20 @@
                                 </div>
                                 <div class="border border-gray mt-3 p-4">
                                     <div class="mb-3 items-center w-1/2">
-                                        <label for="experience" class="block text-gray-700 text-sm mb-2">Working Experience</label>
+                                        <label for="experience" class="block text-gray-700 text-sm mb-2">Working
+                                            Experience</label>
                                         <div class="flex items-center">
-                                            <input type="number" id="experience" name="experience" placeholder="" class="shadow appearance-none border py-1 px-2 w-1/6 mr-2">
+                                            <input type="number" id="experience" name="experience" placeholder=""
+                                                class="shadow appearance-none border py-1 px-2 w-1/6 mr-2">
                                             <span class="mr-2">Years</span>
                                         </div>
-                                            <span class="error text-red-500 text-xs font-semibold" id="experienceError"></span>
+                                        <span class="error text-red-500 text-xs font-semibold"
+                                            id="experienceError"></span>
                                     </div>
-                                    
+
                                     <div class="mb-3 flex flex-col">
-                                        <label for="skills" class="block text-gray-700 text-sm mb-2 ">Any Other Diploma Degree</label>
+                                        <label for="skills" class="block text-gray-700 text-sm mb-2 ">Any Other Diploma
+                                            Degree</label>
                                         <input type="text" id="skills" name="skills"placeholder="Eg. abc..."
                                             class="shadow appearance-none border py-1 px-2 w-1/4">
                                         <span class="error text-red-500 text-xs font-semibold " id="skillsError"></span>
@@ -288,7 +292,8 @@
                                                 class=" w-24 h-24 object-cover mt-2" />
                                         </div>
                                         <div class="mb-4 items-center">
-                                            <label for="id_proof_type" class="block text-sm mb-3">Choose Id Proof type</label>
+                                            <label for="id_proof_type" class="block text-sm mb-3">Choose Id Proof
+                                                type</label>
                                             <select name="id_proof_type" id="id_proof_type"
                                                 class="border py-2 px-5 w-full rounded">
                                                 <option value="">Select</option>
@@ -301,13 +306,15 @@
                                     </div>
                                     <div class="flex gap-3">
                                         <div class="mb-4 items-center">
-                                            <label for="id_proof" class="block text-sm mb-3">Upload Another Id Proof (Optional)</label>
+                                            <label for="id_proof" class="block text-sm mb-3">Upload Another Id Proof
+                                                (Optional)</label>
                                             <input type="file" id="other_id_proof" name="other_id_proof">
                                             <img id="otherIdProofPreview" src="#" alt="id Proof Preview"
                                                 class=" w-24 h-24 object-cover mt-2" />
                                         </div>
                                         <div class="mb-4 items-center">
-                                            <label for="other_id_proof_type" class="block text-sm mb-3">Choose Id Proof type (Optional)</label>
+                                            <label for="other_id_proof_type" class="block text-sm mb-3">Choose Id Proof
+                                                type (Optional)</label>
                                             <select name="other_id_proof_type" id="other_id_proof_type"
                                                 class="border py-2 px-5 w-full rounded">
                                                 <option value="">Select</option>
@@ -355,7 +362,7 @@
                 let userId = getIdFromUrlPath();
                 $.ajax({
                     type: 'GET',
-                    url: `{{url('/api/show-all/view/${userId}')}}`,
+                    url: `{{ url('/api/show-all/view/${userId}') }}`,
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
@@ -380,14 +387,22 @@
                         $('#city').val(response.data.candidate.city);
                         $('#id_mark').val(response.data.candidate.id_mark);
                         // $('#photo').attr('src',response.data.document.photo);
-                        $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data.document.photo);
-                        $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data.document.signature);
+                        $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data
+                            .document.photo);
+                        $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data
+                            .document.signature);
                         $('#id_proof_type').val(response.data.document.id_proof_type);
                         $('#other_id_proof_type').val(response.data.document.other_id_proof_type);
-                        $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data.document.id_proof);
-                        $('#otherIdProofPreview').attr('src', '/image/candidate/other_id_proof/' + response.data.document.other_id_proof);
-                        $('#qualiCertificatePreview').attr('src','/image/candidate/quali_certificate/' + response.data.document.quali_certificate);
-                        $('#otherCertificatePreview').attr('src','/image/candidate/other_certificate/' + response.data.document.other_certificate);
+                        $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data
+                            .document.id_proof);
+                        $('#otherIdProofPreview').attr('src', '/image/candidate/other_id_proof/' +
+                            response.data.document.other_id_proof);
+                        $('#qualiCertificatePreview').attr('src',
+                            '/image/candidate/quali_certificate/' + response.data.document
+                            .quali_certificate);
+                        $('#otherCertificatePreview').attr('src',
+                            '/image/candidate/other_certificate/' + response.data.document
+                            .other_certificate);
                         $('#qualification').val(response.data.address.qualification);
                         $('#q_state').val(response.data.address.q_state);
                         $('#board').val(response.data.address.board);
@@ -441,7 +456,7 @@
                     formData.append('user_id', userId);
                     $.ajax({
                         type: 'POST',
-                        url: `{{url('/api/update-all/edit/${userId}')}}`,
+                        url: `{{ url('/api/update-all/edit/${userId}') }}`,
                         data: formData,
                         contentType: false,
                         processData: false,
@@ -452,7 +467,7 @@
                             swal("Success", response.message, "success");
                             $('.error').text('');
                             // $("#insertData").trigger("reset");
-                            window.open("{{url('/admin/manage-candidate')}}", "_self");
+                            window.open("{{ url('/admin/manage-candidate') }}", "_self");
                         },
                         error: function(xhr) {
                             // Clear previous error messages
@@ -498,13 +513,13 @@
                 if (confirm("Are you sure you want to delete this Candidate?")) {
                     $.ajax({
                         type: 'DELETE',
-                        url: `{{url('/api/candidate/delete/${id}')}}`,
+                        url: `{{ url('/api/candidate/delete/${id}') }}`,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         success: function(response) {
                             console.log('Candidate deleted successfully:', response);
-                            window.location.href = "{{url('/admin/manage-candidate')}}";
+                            window.location.href = "{{ url('/admin/manage-candidate') }}";
                         },
                         error: function(xhr, status, error) {
                             console.error('Error deleting Data:', error);

@@ -2,7 +2,7 @@
 @section('content')
     <div class="container mx-auto font-sans ">
         <div class="mx-4 ">
-            <form action=""id="insertData" enctype="multipart/form-data">
+            <form action=""id="addData" enctype="multipart/form-data">
                 <div class="p-5 flex flex-col">
                     <div class="border p-4 border-gray mt-3">
                         <h2 class="text-lg font-semibold mb-2  ">Personal Details</h2>
@@ -268,15 +268,15 @@
                                         <input type="hidden" id="id" name="user_id">
                                         <label for="photo" class="block text-sm mb-3">Upload Your Photo</label>
                                         <input type="file" id="photo" name="photo" class="appearance-none">
-                                        <img id="photoPreview" src="#" alt="Photo Preview"
-                                            class=" w-24 h-24 object-cover mt-2" />
+                                        {{-- <img id="photoPreview" src="#" alt="Photo Preview"
+                                            class=" w-24 h-24 object-cover mt-2" /> --}}
                                         <p id="error-photo" class="text-red-500 text-xs font-semibold error-message"></p>
                                     </div>
                                     <div class="mb-4 items-center">
                                         <label for="signature" class="block text-sm mb-3">Upload Your Signature</label>
                                         <input type="file" id="signature" name="signature">
-                                        <img id="signaturePreview" src="#" alt="Signature Preview"
-                                            class="w-24 h-24 object-cover mt-2" />
+                                        {{-- <img id="signaturePreview" src="#" alt="Signature Preview"
+                                            class="w-24 h-24 object-cover mt-2" /> --}}
                                         <p id="error-signature" class="text-red-500 text-xs font-semibold error-message">
                                         </p>
                                     </div>
@@ -284,8 +284,8 @@
                                         <div class="mb-4 items-center">
                                             <label for="id_proof" class="block text-sm mb-3">Upload Your Id</label>
                                             <input type="file" id="id_proof" name="id_proof">
-                                            <img id="idProofPreview" src="#" alt="id Proof Preview"
-                                                class=" w-24 h-24 object-cover mt-2" />
+                                            {{-- <img id="idProofPreview" src="#" alt="id Proof Preview"
+                                                class=" w-24 h-24 object-cover mt-2" /> --}}
                                         </div>
                                         <div class="mb-4 items-center">
                                             <label for="id_proof_type" class="block text-sm mb-3">Choose Id Proof</label>
@@ -298,14 +298,15 @@
                                                 <option value="voter-id">Voter Id Card</option>
                                             </select>
                                         </div>
-                                        
+                                        <p id="error-id_proof_type" class="text-red-500 text-xs font-semibold error-message">
+
                                     </div>
                                     <div class="flex gap-3">
                                         <div class="mb-4 items-center">
                                             <label for="other_id_proof" class="block text-sm mb-3">Upload Your Other Id (Optional)</label>
                                             <input type="file" id="other_id_proof" name="other_id_proof">
-                                            <img id="otherIdProofPreview" src="#" alt="id Proof Preview"
-                                                class=" w-24 h-24 object-cover mt-2" />
+                                            {{-- <img id="otherIdProofPreview" src="#" alt="id Proof Preview"
+                                                class=" w-24 h-24 object-cover mt-2" /> --}}
                                         </div>
                                         <div class="mb-4 items-center">
                                             <label for="other_id_proof_type" class="block text-sm mb-3">Choose other Id Proof (Optional)</label>
@@ -324,16 +325,16 @@
                                         <label for="quali_certificate" class="block text-sm mb-3">Upload Your Latest
                                             Qualification Certificate</label>
                                         <input type="file" id="quali_certificate" name="quali_certificate">
-                                        <img id="qualiCertificatePreview" src="#" alt="Quali Certificate Preview"
-                                            class="w-24 h-24 object-cover mt-2" />
+                                        {{-- <img id="qualiCertificatePreview" src="#" alt="Quali Certificate Preview"
+                                            class="w-24 h-24 object-cover mt-2" /> --}}
                                     </div>
                                     <div class="mb-4 items-center">
                                         <label for="other_certificate" class="text-sm mb-3 flex">Any Other Certificate <p
                                                 class="text-sm">(i.e. Computer Certificate, Skill Certificate, etc)</p>
                                         </label>
                                         <input type="file" id="other_certificate" name="other_certificate">
-                                        <img id="otherCertificatePreview" src="#" alt="Other Certificate Preview"
-                                            class="w-24 h-24 object-cover mt-2" />
+                                        {{-- <img id="otherCertificatePreview" src="#" alt="Other Certificate Preview"
+                                            class="w-24 h-24 object-cover mt-2" /> --}}
                                     </div>
                                 </div>
                             </div>
@@ -351,7 +352,7 @@
         </div>
     </div>
 
-    <script>
+    {{-- <script>
         $(document).ready(function() {
             function fetchCandidateDetailsAndOpenModal() {
                 let userId = getIdFromUrlPath();
@@ -520,5 +521,43 @@
                 }
             });
         });
-    </script>
+    </script> --}}
+
+<script>
+
+    $(document).ready(function() {
+        //insert application details
+
+        $("#addData").submit(function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                type: "POST",
+                url: "{{ route('candidate.store.all') }}",
+                data: formData,
+                dataType: "JSON",
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(response) {
+                    $('.error').text('');
+                    swal("Success", response.message, "success");
+                    $("#addData").trigger("reset");
+                    window.open("{{url('/admin/manage-candidate')}}", "_self")
+                },
+                error: function(xhr) {
+                            // Clear previous error messages
+                            $('.error').text('');
+
+                            // Display validation errors
+                            if (xhr.responseJSON && xhr.responseJSON.error) {
+                                $.each(xhr.responseJSON.error, function(key, value) {
+                                    $('#' + key + 'Error').text(value[0]);
+                                });
+                            }
+                        }
+            })
+        })
+    })
+</script>
 @endsection

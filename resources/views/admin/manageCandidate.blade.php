@@ -3,7 +3,7 @@
 @section('content')
     <div class="flex-1 flex mt-20 items-center justify-between ">
         <h1 class="text-lg font-semibold  py-2">Manage Candidate (<span id="counting">0</span>)</h1>
-        <a href="{{url('/admin/manage-candidate/register')}}" class="bg-indigo-500 hover:bg-indigo-800 text-white px-3 py-2 rounded">
+        <a href="{{url('/admin/manage-candidate/insert')}}" class="bg-indigo-500 hover:bg-indigo-800 text-white px-3 py-2 rounded">
             <i class="fas fa-plus"></i> Add New Candidate</a>
 
     </div>

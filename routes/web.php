@@ -78,7 +78,8 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin',[AdminController::class,'manageCandidate']);
     Route::get('/admin/manage-candidate',[AdminController::class,'manageCandidate']);
     Route::get('/admin/manage-candidate/register',[AdminController::class,'registerCandidate']);
-    Route::get('/admin/manage-candidate/insert/{id}',[AdminController::class,'insertCandidate']);
+    Route::get('/admin/manage-candidate/insert',[AdminController::class,'insertCandidate']);
+    // Route::get('/admin/manage-candidate/insert/{id}',[AdminController::class,'insertCandidate']);
     Route::get('/admin/manage-candidate/edit/{id}',[AdminController::class,'editCandidate']);
 
     Route::get('/admin/manage-hire',[AdminController::class,'manageHire']);
