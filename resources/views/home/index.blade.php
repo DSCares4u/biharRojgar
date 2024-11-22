@@ -60,7 +60,7 @@
         </div>
     </div> --}}
 
-    <div class="section text-start mt-32 px-4 lg:px-32">
+    <div class="section text-start md:mt-32 mb-5 px-4 lg:px-32">
         <p class="text-green-700 font-semibold mb-3 md:mb-5 text-lg md:text-xl tracking-wider">
             BIHAR’S #1 BEST JOB PLATFORM
         </p>
@@ -72,9 +72,9 @@
         </p>
     </div>
 
-    <div class="flex flex-col lg:flex-row justify-between items-center lg:mx-32 space-y-10 lg:space-y-0">
+    <div class="flex flex-col lg:flex-row justify-between items-center lg:mx-32 md:space-y-10 lg:space-y-0">
         <div
-            class="button flex flex-col sm:flex-row justify-center gap-5 mt-6 lg:mt-0 items-center sm:items-start lg:items-end py-8">
+            class="button flex flex-col sm:flex-row justify-center gap-5 mt-6 lg:mt-0 items-center sm:items-start lg:items-end md:py-8">
             <a href="{{ url('/get-job/t&c') }}" class="flex flex-col items-center group">
                 <button
                     class="text-white bg-yellow-500 p-3 rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 ease-in-out px-10 md:px-12 text-lg md:text-xl">
@@ -95,7 +95,7 @@
             </a>
         </div>
 
-        <div class="image pb-32">
+        <div class="image md:pb-32">
             <img src="{{ asset('/landing.png') }}" class="h-72 sm:h-80 md:h-96 lg:h-96 object-cover" alt="Job Platform">
         </div>
     </div>
@@ -145,7 +145,7 @@
         </div>
     </section>
 
-    <div class="max-w-full mx-auto px-20 bg-white p-10  mt-20 mb-20">
+    <div class="max-w-full mx-auto md:px-20 bg-white md:p-10 p-5  mb-20">
         <h2 class="text-4xl font-normal text-gray-600 mb-4">Frequently Asked Questions (Employer)</h2>
 
         <div class="faq-item border-b border-gray-300 py-4">
