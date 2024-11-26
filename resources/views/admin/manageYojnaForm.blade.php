@@ -21,7 +21,7 @@
             <tbody ></tbody>
             <tfoot>
                 <tr>
-                    <th colspan="10" class="p-3 flex items-center justify-center">
+                    <th colspan="5" class="p-3 flex items-center justify-center">
                         <div id="pagination" class=""></div>
                     </th>
                 </tr>
@@ -113,6 +113,9 @@
                     "search": "",
                     "searchPlaceholder": "Search..."
                 },
+                "drawCallback": function(settings) {
+                    alignTableHeaders();
+                }
             });
 
             // Center the search box
@@ -146,7 +149,7 @@
                              </tr>    
                         `);
                         });
-                        dataTable.clear().rows.add($(table).find('tr')).draw();
+                        dataTable.clear().rows.add($(tableBody).find('tr')).draw();
                     },
                     error: function(xhr, status, error) {
                         console.error('Error:', error);
@@ -154,6 +157,11 @@
                 });
             }
             callingData();
+            function alignTableHeaders() {
+            $('#callingData thead th').each(function(index) {
+                $(this).css('text-align', 'center');
+            });
+        }
         });
     </script>
 
