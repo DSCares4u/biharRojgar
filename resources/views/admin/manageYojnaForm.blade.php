@@ -108,7 +108,7 @@
                 "dom": '<"search-container"f>t<"bottom"p>',
                 "columnDefs": [{
                     "orderable": false,
-                    "targets": [1,2,3,4,5] }],
+                    "targets": [1,2,3] }],
                 "language": {
                     "search": "",
                     "searchPlaceholder": "Search..."

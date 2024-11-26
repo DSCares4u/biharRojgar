@@ -268,78 +268,101 @@
                                 <h2 class="text-lg font-semibold mb-2">Essential Documents</h2>
                                 <hr class="h-1 rounded bg-gray-600 mb-2">
                                 <div class="mt-2">
-                                    <div class="mb-4 items-center">
-                                        <input type="hidden" id="id" name="user_id">
-                                        <label for="photo" class="block text-sm mb-3">Upload Your Photo</label>
-                                        <input type="file" id="photo" src="#" name="photo">
+                                    <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}">
+                                    <div class="mb-4 items-center flex">
+                                        <div class="">
+                                            <label for="photo" class="block text-sm mb-3">Upload Your Photo</label>
+                                            <input type="file" id="photo" name="photo">
+                                            <p id="error-photo" class="text-red-500 text-xs font-semibold error-message">
+                                            </p>
+                                        </div>
                                         <img id="photoPreview" src="#" alt="Photo Preview"
-                                            class=" w-24 h-24 object-cover mt-2" />
-                                        <p id="error-photo" class="text-red-500 text-xs font-semibold error-message"></p>
+                                            class="w-24 h-24 object-cover" />
                                     </div>
-                                    <div class="mb-4 items-center">
-                                        <label for="signature" class="block text-sm mb-3">Upload Your Signature</label>
-                                        <input type="file" id="signature" name="signature">
+                                    <div class="mb-4 items-center flex">
+                                        <div class="">
+                                            <label for="signature" class="block text-sm mb-3">Upload Your Signature</label>
+                                            <input type="file" id="signature" name="signature">
+                                            <p id="error-signature"
+                                                class="text-red-500 text-xs font-semibold error-message">
+                                            </p>
+                                        </div>
                                         <img id="signaturePreview" src="#" alt="Signature Preview"
                                             class="w-24 h-24 object-cover mt-2" />
-                                        <p id="error-signature" class="text-red-500 text-xs font-semibold error-message">
-                                        </p>
+
                                     </div>
-                                    <div class="flex gap-3">
-                                        <div class="mb-4 items-center">
-                                            <label for="id_proof" class="block text-sm mb-3">Upload Id Proof</label>
-                                            <input type="file" id="id_proof" name="id_proof">
+                                    <div class="w-full md:w-1/2 mb-4 items-center">
+                                        <label for="id_proof_type" class="block text-sm mb-3">Choose Id Proof</label>
+                                        <select name="id_proof_type" id="id_proof_type"
+                                            class="border py-2 px-5 w-full rounded">
+                                            <option value="">Select</option>
+                                            <option value="aadhar">Aadhar Card</option>
+                                            <option value="pan">Pan Card</option>
+                                            <option value="dl">Driving Licence</option>
+                                            <option value="voter-id">Voter Id Card</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-wrap ">
+                                        <div class="w-full md:w-1/2 mb-4 items-center flex">
+                                            <div class="">
+                                                <label for="id_proof" class="block text-sm mb-3">Upload Your Id</label>
+                                                <input type="file" id="id_proof" name="id_proof">
+                                            </div>
                                             <img id="idProofPreview" src="#" alt="id Proof Preview"
-                                                class=" w-24 h-24 object-cover mt-2" />
-                                        </div>
-                                        <div class="mb-4 items-center">
-                                            <label for="id_proof_type" class="block text-sm mb-3">Choose Id Proof
-                                                type</label>
-                                            <select name="id_proof_type" id="id_proof_type"
-                                                class="border py-2 px-5 w-full rounded">
-                                                <option value="">Select</option>
-                                                <option value="aadhar">Aadhar Card</option>
-                                                <option value="pan">Pan Card</option>
-                                                <option value="dl">Driving Licence</option>
-                                                <option value="voter-id">Voter Id Card</option>
-                                            </select>
+                                                class="w-24 h-24 object-cover mt-2" />
                                         </div>
                                     </div>
-                                    <div class="flex gap-3">
-                                        <div class="mb-4 items-center">
-                                            <label for="id_proof" class="block text-sm mb-3">Upload Another Id Proof
-                                                (Optional)</label>
-                                            <input type="file" id="other_id_proof" name="other_id_proof">
-                                            <img id="otherIdProofPreview" src="#" alt="id Proof Preview"
-                                                class=" w-24 h-24 object-cover mt-2" />
-                                        </div>
-                                        <div class="mb-4 items-center">
-                                            <label for="other_id_proof_type" class="block text-sm mb-3">Choose Id Proof
-                                                type (Optional)</label>
-                                            <select name="other_id_proof_type" id="other_id_proof_type"
-                                                class="border py-2 px-5 w-full rounded">
-                                                <option value="">Select</option>
-                                                <option value="aadhar">Aadhar Card</option>
-                                                <option value="pan">Pan Card</option>
-                                                <option value="dl">Driving Licence</option>
-                                                <option value="voter-id">Voter Id Card</option>
-                                            </select>
+                                    <div class="w-full md:w-1/2 mb-4 items-center">
+                                        <label for="other_id_proof_type" class="block text-sm mb-3">Choose other Id Proof (optional)</label>
+                                        <select name="other_id_proof_type" id="other_id_proof_type"
+                                            class="border py-2 px-5 w-full rounded">
+                                            <option value="">Select</option>
+                                            <option value="aadhar">Aadhar Card</option>
+                                            <option value="pan">Pan Card</option>
+                                            <option value="dl">Driving Licence</option>
+                                            <option value="voter-id">Voter Id Card</option>
+                                        </select>
+                                    </div>
+                                    <div class="flex flex-wrap ">
+                                        <div class="w-full md:w-1/2 mb-4 items-center flex">
+                                            <div class="">
+                                                <label for="other_id_proof" class="block text-sm mb-3">Upload your other Id (optional)</label>
+                                                <input type="file" id="other_id_proof" name="other_id_proof">
+                                            </div>
+                                            <img id="otherIdProofPreview" src="#" alt="i"
+                                                class="w-24 h-24 object-cover mt-2" />
                                         </div>
                                     </div>
-                                    <div class="mb-4 items-center">
-                                        <label for="quali_certificate" class="block text-sm mb-3">Upload Your Latest
-                                            Qualification Certificate</label>
-                                        <input type="file" id="quali_certificate" name="quali_certificate">
-                                        <img id="qualiCertificatePreview" src="#" alt="Quali Certificate Preview"
+                                    <div class="mb-4 items-center flex">
+                                        <div class="">
+                                            <label for="quali_certificate" class="block text-sm mb-3">Upload Your Latest
+                                                Qualification Certificate</label>
+                                            <input type="file" id="quali_certificate" name="quali_certificate">
+                                        </div>
+                                        <img id="qualiCertificatePreview" src="#" alt=""
                                             class="w-24 h-24 object-cover mt-2" />
                                     </div>
-                                    <div class="mb-4 items-center">
-                                        <label for="other_certificate" class="text-sm mb-3 flex">Any Other Certificate <p
-                                                class="text-sm">(i.e. Computer Certificate, Skill Certificate, etc)</p>
-                                        </label>
-                                        <input type="file" id="other_certificate" name="other_certificate">
-                                        <img id="otherCertificatePreview" src="#" alt="Other Certificate Preview"
+                                    <div class="mb-4 items-center flex">
+                                        <div class="">
+                                            <label for="other_certificate" class="text-sm mb-3">Any Other Certificate
+                                                <p class="text-sm">(i.e. Computer Certificate, Skill Certificate, etc)</p>
+                                            </label>
+                                            <input type="file" id="other_certificate" name="other_certificate" class="mt-5">
+                                        </div>
+                                        <img id="otherCertificatePreview" src="#" alt=""
                                             class="w-24 h-24 object-cover mt-2" />
                                     </div>
+                                    <div class="mb-4 items-center flex">
+                                        <div class="">
+                                            <label for="resume" class="text-sm mb-3">Upload your Resume
+                                                <p class="text-sm">(if available)</p>
+                                            </label>
+                                            <input type="file" id="resume" name="resume" class="mt-5">
+                                        </div>
+                                        <img id="resumePreview" src="#" alt=""
+                                            class="w-24 h-24 object-cover mt-2" />
+                                    </div>
+                                    <div class="mb-4 text-sm text-red-500">Note: If you have not uploaded your Resume then we will create it. (Additional Charges will be taken.)</div>
                                 </div>
                             </div>
                             <div class="flex justify-center gap-5 mt-5">
@@ -386,23 +409,15 @@
                         $('#state').val(response.data.candidate.state);
                         $('#city').val(response.data.candidate.city);
                         $('#id_mark').val(response.data.candidate.id_mark);
-                        // $('#photo').attr('src',response.data.document.photo);
-                        $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data
-                            .document.photo);
-                        $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data
-                            .document.signature);
-                        $('#id_proof_type').val(response.data.document.id_proof_type);
-                        $('#other_id_proof_type').val(response.data.document.other_id_proof_type);
-                        $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data
-                            .document.id_proof);
-                        $('#otherIdProofPreview').attr('src', '/image/candidate/other_id_proof/' +
-                            response.data.document.other_id_proof);
-                        $('#qualiCertificatePreview').attr('src',
-                            '/image/candidate/quali_certificate/' + response.data.document
-                            .quali_certificate);
-                        $('#otherCertificatePreview').attr('src',
-                            '/image/candidate/other_certificate/' + response.data.document
-                            .other_certificate);
+                        $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data.photo);
+                        $('#resumePreview').attr('src', '/image/candidate/resume/' + response.data.resume);
+                        $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data.signature);
+                        $('#id_proof_type').val(response.data.id_proof_type);
+                        $('#other_id_proof_type').val(response.data.other_id_proof_type);
+                        $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data.id_proof);
+                        $('#otherIdProofPreview').attr('src', '/image/candidate/other_id_proof/' + response.data.other_id_proof);
+                        $('#qualiCertificatePreview').attr('src','/image/candidate/quali_certificate/' + response.data.quali_certificate);
+                        $('#otherCertificatePreview').attr('src','/image/candidate/other_certificate/' + response.data.other_certificate);
                         $('#qualification').val(response.data.address.qualification);
                         $('#q_state').val(response.data.address.q_state);
                         $('#board').val(response.data.address.board);
@@ -427,6 +442,9 @@
                 }
             }
 
+            $('#resume').change(function() {
+                previewImage(this, '#resumePreview');
+            });
             $('#photo').change(function() {
                 previewImage(this, '#photoPreview');
             });
@@ -446,6 +464,7 @@
             $('#other_certificate').change(function() {
                 previewImage(this, '#otherCertificatePreview');
             });
+
 
             // Handle form submission
             $('#insertData').submit(function(e) {

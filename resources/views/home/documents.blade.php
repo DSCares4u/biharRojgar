@@ -110,54 +110,111 @@
                                 <h2 class="text-lg font-semibold mb-2">Essential Documents</h2>
                                 <hr class="h-1 rounded bg-gray-600 mb-2">
                                 <div class="mt-2">
-                                    <div class="mb-4 items-center">
-                                        <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}">
-                                        <label for="photo" class="block text-sm mb-3">Upload Your Photo</label>
-                                        <input type="file" id="photo" name="photo">
-                                        <img id="photoPreview" src="#" alt="Photo Preview" class="w-24 h-24 object-cover mt-2" />
-                                        <p id="error-photo" class="text-red-500 text-xs font-semibold error-message"></p>
+                                    <input type="hidden" id="id" name="user_id" value="{{ Auth::id() }}">
+                                    <div class="mb-4 items-center flex">
+                                        <div class="">
+                                            <label for="photo" class="block text-sm mb-3">Upload Your Photo</label>
+                                            <input type="file" id="photo" name="photo">
+                                            <p id="error-photo" class="text-red-500 text-xs font-semibold error-message">
+                                            </p>
+                                        </div>
+                                        <img id="photoPreview" src="#" alt="Photo Preview"
+                                            class="w-24 h-24 object-cover" />
                                     </div>
-                                    <div class="mb-4 items-center">
-                                        <label for="signature" class="block text-sm mb-3">Upload Your Signature</label>
-                                        <input type="file" id="signature" name="signature">
-                                        <img id="signaturePreview" src="#" alt="Signature Preview" class="w-24 h-24 object-cover mt-2" />
-                                        <p id="error-signature" class="text-red-500 text-xs font-semibold error-message"></p>
+                                    <div class="mb-4 items-center flex">
+                                        <div class="">
+                                            <label for="signature" class="block text-sm mb-3">Upload Your Signature</label>
+                                            <input type="file" id="signature" name="signature">
+                                            <p id="error-signature"
+                                                class="text-red-500 text-xs font-semibold error-message">
+                                            </p>
+                                        </div>
+                                        <img id="signaturePreview" src="#" alt="Signature Preview"
+                                            class="w-24 h-24 object-cover mt-2" />
+
+                                    </div>
+                                    <div class="w-full md:w-1/2 mb-4 items-center">
+                                        <label for="id_proof_type" class="block text-sm mb-3">Choose Id Proof</label>
+                                        <select name="id_proof_type" id="id_proof_type"
+                                            class="border py-2 px-5 w-full rounded">
+                                            <option value="">Select</option>
+                                            <option value="aadhar">Aadhar Card</option>
+                                            <option value="pan">Pan Card</option>
+                                            <option value="dl">Driving Licence</option>
+                                            <option value="voter-id">Voter Id Card</option>
+                                        </select>
                                     </div>
                                     <div class="flex flex-wrap ">
-                                        <div class="w-full md:w-1/2 mb-4 items-center">
-                                            <label for="id_proof" class="block text-sm mb-3">Upload Your Id</label>
-                                            <input type="file" id="id_proof" name="id_proof">
-                                            <img id="idProofPreview" src="#" alt="id Proof Preview" class="w-24 h-24 object-cover mt-2" />
-                                        </div>
-                                        <div class="w-full md:w-1/2 mb-4 items-center">
-                                            <label for="id_proof_type" class="block text-sm mb-3">Choose Id Proof</label>
-                                            <select name="id_proof_type" id="id_proof_type" class="border py-2 px-5 w-full rounded">
-                                                <option value="">Select</option>
-                                                <option value="aadhar">Aadhar Card</option>
-                                                <option value="pan">Pan Card</option>
-                                                <option value="dl">Driving Licence</option>
-                                                <option value="voter-id">Voter Id Card</option>
-                                            </select>
+                                        <div class="w-full md:w-1/2 mb-4 items-center flex">
+                                            <div class="">
+                                                <label for="id_proof" class="block text-sm mb-3">Upload Your Id</label>
+                                                <input type="file" id="id_proof" name="id_proof">
+                                            </div>
+                                            <img id="idProofPreview" src="#" alt="id Proof Preview"
+                                                class="w-24 h-24 object-cover mt-2" />
                                         </div>
                                     </div>
-                                    <div class="mb-4 items-center">
-                                        <label for="quali_certificate" class="block text-sm mb-3">Upload Your Latest Qualification Certificate</label>
-                                        <input type="file" id="quali_certificate" name="quali_certificate">
-                                        <img id="qualiCertificatePreview" src="#" alt="Quali Certificate Preview" class="w-24 h-24 object-cover mt-2" />
+                                    <div class="w-full md:w-1/2 mb-4 items-center">
+                                        <label for="other_id_proof_type" class="block text-sm mb-3">Choose other Id Proof (optional)</label>
+                                        <select name="other_id_proof_type" id="other_id_proof_type"
+                                            class="border py-2 px-5 w-full rounded">
+                                            <option value="">Select</option>
+                                            <option value="aadhar">Aadhar Card</option>
+                                            <option value="pan">Pan Card</option>
+                                            <option value="dl">Driving Licence</option>
+                                            <option value="voter-id">Voter Id Card</option>
+                                        </select>
                                     </div>
-                                    <div class="mb-4 items-center">
-                                        <label for="other_certificate" class="text-sm mb-3 flex">Any Other Certificate <p class="text-sm">(i.e. Computer Certificate, Skill Certificate, etc)</p></label>
-                                        <input type="file" id="other_certificate" name="other_certificate">
-                                        <img id="otherCertificatePreview" src="#" alt="Other Certificate Preview" class="w-24 h-24 object-cover mt-2" />
+                                    <div class="flex flex-wrap ">
+                                        <div class="w-full md:w-1/2 mb-4 items-center flex">
+                                            <div class="">
+                                                <label for="other_id_proof" class="block text-sm mb-3">Upload your other Id (optional)</label>
+                                                <input type="file" id="other_id_proof" name="other_id_proof">
+                                            </div>
+                                            <img id="otherIdProofPreview" src="#" alt="i"
+                                                class="w-24 h-24 object-cover mt-2" />
+                                        </div>
                                     </div>
+                                    <div class="mb-4 items-center flex">
+                                        <div class="">
+                                            <label for="quali_certificate" class="block text-sm mb-3">Upload Your Latest
+                                                Qualification Certificate</label>
+                                            <input type="file" id="quali_certificate" name="quali_certificate">
+                                        </div>
+                                        <img id="qualiCertificatePreview" src="#" alt=""
+                                            class="w-24 h-24 object-cover mt-2" />
+                                    </div>
+                                    <div class="mb-4 items-center flex">
+                                        <div class="">
+                                            <label for="other_certificate" class="text-sm mb-3">Any Other Certificate
+                                                <p class="text-sm">(i.e. Computer Certificate, Skill Certificate, etc)</p>
+                                            </label>
+                                            <input type="file" id="other_certificate" name="other_certificate" class="mt-5">
+                                        </div>
+                                        <img id="otherCertificatePreview" src="#" alt=""
+                                            class="w-24 h-24 object-cover mt-2" />
+                                    </div>
+                                    <div class="mb-4 items-center flex">
+                                        <div class="">
+                                            <label for="resume" class="text-sm mb-3">Upload your Resume
+                                                <p class="text-sm">(if available)</p>
+                                            </label>
+                                            <input type="file" id="resume" name="resume" class="mt-5">
+                                        </div>
+                                        <img id="resumePreview" src="#" alt=""
+                                            class="w-24 h-24 object-cover mt-2" />
+                                    </div>
+                                    <div class="mb-4 text-sm text-red-500">Note: If you have not uploaded your Resume then we will create it. (Additional Charges will be taken.)</div>
                                 </div>
                             </div>
                             <div class="button flex justify-between ml-0 lg:ml-10 mt-2">
                                 <div class="previous">
-                                    <a href="{{url('/address')}}" class="bg-blue-500 hover:bg-blue-700 rounded px-3 py-1 text-white">Previous</a>
+                                    <a href="{{ url('/address') }}"
+                                        class="bg-blue-500 hover:bg-blue-700 rounded px-3 py-1 text-white">Previous</a>
                                 </div>
                                 <div class="next">
-                                    <button type="submit" class="bg-green-500 hover:bg-green-600 rounded px-3 py-1 text-white">Submit</button>
+                                    <button type="submit"
+                                        class="bg-green-500 hover:bg-green-600 rounded px-3 py-1 text-white">Submit</button>
                                 </div>
                             </div>
                         </div>
@@ -171,49 +228,48 @@
                         <label for="term1">You must be legally eligible to work in the specified country.</label>
                     </li>
                     <li class="mb-2">
-                        <label for="term2">You agree to undergo any necessary background checks as part of the hiring process.</label>
+                        <label for="term2">You agree to undergo any necessary background checks as part of the hiring
+                            process.</label>
                     </li>
                     <li class="mb-2">
                         <label for="term3">You agree to abide by the company's code of conduct and policies.</label>
                     </li>
                     <li class="mb-2">
-                        <label for="term4">You understand that any false information provided may result in termination of employment.</label>
+                        <label for="term4">You understand that any false information provided may result in termination
+                            of employment.</label>
                     </li>
                     <li class="mb-2">
-                        <label for="term5">You consent to the processing of your personal data for the purpose of this job application.</label>
+                        <label for="term5">You consent to the processing of your personal data for the purpose of this
+                            job application.</label>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    
+
     <script>
         $(document).ready(function() {
             function fetchJobDetailsAndOpenModal(userId) {
                 if (userId) {
                     $.ajax({
                         type: 'GET',
-                        url: `{{url('/api/document/view/${userId}')}}`,
+                        url: `{{ url('/api/document/view/${userId}') }}`,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
                         success: function(response) {
                             console.log(response);
-                            if (response.data) {
+                            if (response.data) { 
                                 $('#id').val(response.data.id);
-                                $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data
-                                    .photo);
-                                $('#signaturePreview').attr('src', '/image/candidate/signature/' +
-                                    response.data.signature);
+                                $('#photoPreview').attr('src', '/image/candidate/photo/' + response.data.photo);
+                                $('#resumePreview').attr('src', '/image/candidate/resume/' + response.data.resume);
+                                $('#signaturePreview').attr('src', '/image/candidate/signature/' + response.data.signature);
                                 $('#id_proof_type').val(response.data.id_proof_type);
-                                $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response
-                                    .data.id_proof);
-                                $('#qualiCertificatePreview').attr('src',
-                                    '/image/candidate/quali_certificate/' + response.data
-                                    .quali_certificate);
-                                $('#otherCertificatePreview').attr('src',
-                                    '/image/candidate/other_certificate/' + response.data
-                                    .other_certificate);
+                                $('#other_id_proof_type').val(response.data.other_id_proof_type);
+                                $('#idProofPreview').attr('src', '/image/candidate/id_proof/' + response.data.id_proof);
+                                $('#otherIdProofPreview').attr('src', '/image/candidate/other_id_proof/' + response.data.other_id_proof);
+                                $('#qualiCertificatePreview').attr('src','/image/candidate/quali_certificate/' + response.data.quali_certificate);
+                                $('#otherCertificatePreview').attr('src','/image/candidate/other_certificate/' + response.data.other_certificate);
                             } else {
                                 console.error('No data found in response.');
                             }
@@ -237,6 +293,9 @@
                 }
             }
 
+            $('#resume').change(function() {
+                previewImage(this, '#resumePreview');
+            });
             $('#photo').change(function() {
                 previewImage(this, '#photoPreview');
             });
@@ -246,6 +305,9 @@
             });
             $('#id_proof').change(function() {
                 previewImage(this, '#idProofPreview');
+            });
+            $('#other_id_proof').change(function() {
+                previewImage(this, '#otherIdProofPreview');
             });
             $('#quali_certificate').change(function() {
                 previewImage(this, '#qualiCertificatePreview');
@@ -266,7 +328,7 @@
                     let formData = new FormData(this);
                     $.ajax({
                         type: 'POST',
-                        url: `{{url('/api/document/edit/${userId}')}}`,
+                        url: `{{ url('/api/document/edit/${userId}') }}`,
                         data: formData,
                         contentType: false,
                         processData: false,

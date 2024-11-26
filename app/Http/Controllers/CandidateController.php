@@ -195,7 +195,7 @@ class CandidateController extends Controller
         'passing_year' => 'required',
         'experience' => 'required|string',
         'skills' => 'required|string',
-        'id_proof_type' => 'required',
+        'other_id_proof_type' => 'required',
         'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         'signature' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         'id_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
@@ -527,6 +527,9 @@ class CandidateController extends Controller
         'id_proof' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         'quali_certificate' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         'other_certificate' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+        'other_id_proof_type' => 'nullable',
+        'other_id_proof' => 'nullable|max:10240',
+        'resume' => 'nullable|max:10240',
     ]);    
 
     if ($validator->fails()) {
@@ -631,6 +634,18 @@ class CandidateController extends Controller
             $document->id_proof = $id_proof;
         }
 
+        if ($request->hasFile('other_id_proof')) {
+            $other_id_proof = "ID" . time() . $randomNumber . "." . $request->other_id_proof->extension();
+            $request->other_id_proof->move(public_path("image/candidate/other_id_proof"), $other_id_proof);
+            $document->other_id_proof = $other_id_proof;
+        }
+
+        if ($request->hasFile('resume')) {
+            $resume = "RES" . time() . $randomNumber . "." . $request->resume->extension();
+            $request->resume->move(public_path("image/candidate/resume"), $resume);
+            $document->resume = $resume;
+        }
+
         if ($request->hasFile('quali_certificate')) {
             $quali_certificate = "QC" . time() . $randomNumber . "." . $request->quali_certificate->extension();
             $request->quali_certificate->move(public_path("image/candidate/quali_certificate"), $quali_certificate);
@@ -645,6 +660,7 @@ class CandidateController extends Controller
 
         $document->update([
             'id_proof_type' => $request->id_proof_type,
+            'other_id_proof_type' => $request->other_id_proof_type,
         ]);
         }else{
             $randomNumber = mt_rand(1000, 9999); 
@@ -668,6 +684,18 @@ class CandidateController extends Controller
             $request->id_proof->move(public_path("image/candidate/id_proof"), $id_proof);
         }
 
+        $other_id_proof = null;
+        if ($request->hasFile('other_id_proof')) {
+            $other_id_proof = "ID" . time() . $randomNumber . "." . $request->other_id_proof->extension();
+            $request->other_id_proof->move(public_path("image/candidate/other_id_proof"), $other_id_proof);
+        }
+
+        $resume = null;
+        if ($request->hasFile('resume')) {
+            $resume = "RES" . time() . $randomNumber . "." . $request->resume->extension();
+            $request->resume->move(public_path("image/candidate/resume"), $resume);
+        }
+
         $quali_certificate = null;
         if ($request->hasFile('quali_certificate')) {
             $quali_certificate = "QU" . time() . $randomNumber . "." . $request->quali_certificate->extension();
@@ -688,6 +716,9 @@ class CandidateController extends Controller
             'quali_certificate' => $quali_certificate,
             'other_certificate' => $other_certificate,
             'user_id' => $request->user_id,
+            'other_id_proof' => $other_id_proof,
+            'resume' => $resume,
+            'other_id_proof_type' => $request->other_id_proof_type,            
         ]);
 
         if ($d_data) {

@@ -128,11 +128,14 @@ class DocumentController extends Controller
     // Validate the request data
     $validator = Validator::make($request->all(), [
         'id_proof_type' => 'required',
+        'other_id_proof_type' => 'nullable',
         'photo' => 'nullable|max:10240',
         'signature' => 'nullable|max:10240',
         'id_proof' => 'nullable|max:10240',
+        'other_id_proof' => 'nullable|max:10240',
         'quali_certificate' => 'nullable|max:10240',
         'other_certificate' => 'nullable|max:10240',
+        'resume' => 'nullable|max:10240',
     ]);
 
     if ($validator->fails()) {
@@ -148,14 +151,20 @@ class DocumentController extends Controller
     // Find the document to update or create a new one
     $job = Document::with('user')->where('user_id', $user_id)->first();
 
+    if($request->resume == Null){
+        $createResume = 1 ;
+    }
+
     // Handle file uploads and update/create job
     try {
         $data = [
             'id_proof_type' => $request->id_proof_type,
-            'user_id'=>$user_id
+            'other_id_proof_type' => $request->other_id_proof_type,
+            'user_id'=>$user_id,
+            'createResume'=>$createResume
         ];
 
-        $fields = ['photo', 'signature', 'id_proof', 'quali_certificate', 'other_certificate'];
+        $fields = ['photo', 'signature', 'id_proof', 'quali_certificate', 'other_certificate', 'other_id_proof', 'resume'];
 
         foreach ($fields as $field) {
             if ($request->hasFile($field)) {
