@@ -223,7 +223,39 @@
             </div>
             <div class="bg-gray-100 p-6 rounded-lg w-full lg:w-4/12 mt-4 lg:mt-0">
                 <h2 class="text-lg font-bold mb-4">Terms and Conditions</h2>
-                <ul class="list-disc list-inside mb-4">
+                <ul class="list-inside list-decimal mb-4 text-sm md:text-base">
+                    <li class="mb-2">
+                        <label for="term1">Taskinn Solutions एक निजी जॉब्स हायरिंग एजेंसी है।</label>
+                    </li>
+                    <li class="mb-2">
+                        <label for="term2">हमारी सेवाएं नियोक्ता और नौकरी तलाशने वालों के बीच संपर्क स्थापित करती हैं।</label>
+                    </li>
+                    <li class="mb-2">
+                        <label for="term3">उपयोगकर्ता को सेवाओं का उपयोग करने के लिए 18 वर्ष या उससे अधिक आयु का होना चाहिए।</label>
+                    </li>
+                    <li class="mb-2">
+                        <label for="term4">उपयोगकर्ता द्वारा प्रदान की गई जानकारी सटीक और सत्य होनी चाहिए।</label>
+                    </li>
+                    <li class="mb-2">
+                        <label for="term5">Taskinn Solutions केवल कनेक्शन स्थापित करने के लिए जिम्मेदार है, नौकरी की गारंटी नहीं देता।</label>
+                    </li>
+                    <li class="mb-2">
+                        <label for="term6">शुल्क और भुगतान से जुड़े नियम वेबसाइट पर स्पष्ट रूप से बताए जाएंगे।</label>
+                    </li>
+                    <li class="mb-2">
+                        <label for="term7">आप पर किसी भी तरह की क़ानूनी कार्यवाही या मुक़दमा नहीं चल रहा हो या पहले कभी चला हो।</label>
+                    </li>
+                    <li class="mb-2">
+                        <label for="term8">आप इस नौकरी के आवेदन के लिए अपने व्यक्तिगत डेटा को हमारे साथ साझा करने की सहमति देते हैं।</label>
+                    </li>
+                    <li class="mb-2">
+                        <label for="term9">आप समझते हैं कि आपके दवारा दी गई गलत जानकारी से आपकी नौकरी आवेदन को रद्द किया जा सकता है।</label>
+                    </li>
+                    <li class="mb-2">
+                        <label for="term10">Taskinn Solutions बिना पूर्व सूचना के शर्तें बदलने का अधिकार रखता है।</label>
+                    </li>
+                </ul>
+                {{-- <ul class="list-disc list-inside mb-4">
                     <li class="mb-2">
                         <label for="term1">You must be legally eligible to work in the specified country.</label>
                     </li>
@@ -242,7 +274,7 @@
                         <label for="term5">You consent to the processing of your personal data for the purpose of this
                             job application.</label>
                     </li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
     </div>

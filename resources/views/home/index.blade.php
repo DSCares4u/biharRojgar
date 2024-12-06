@@ -268,7 +268,7 @@
 
                         data.forEach((data) => {
                             table.append(`
-                                <a href="{{ url('/viewSarkariJobForm/${data.id}') }}" class="hover:underline hover:text-blue-400"><li>${data.name}</li></a>
+                                <a href="{{ url('/sarkari-job') }}" class="hover:underline hover:text-blue-400"><li>${data.name}</li></a>
                             `);
                         });
 
@@ -292,7 +292,7 @@
 
                         data.forEach((data) => {
                             table.append(`
-                                <a href="{{ url('/viewPrivateJobForm/${data.id}') }}" class="hover:underline hover:text-blue-400"><li>${data.title}</li></a>
+                                <a href="{{ url('/private-job') }}" class="hover:underline hover:text-blue-400"><li>${data.title}</li></a>
                             `);
                         });
 

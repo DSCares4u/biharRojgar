@@ -153,6 +153,8 @@ class DocumentController extends Controller
 
     if($request->resume == Null){
         $createResume = 1 ;
+    }else{
+        $createResume = 0;
     }
 
     // Handle file uploads and update/create job
