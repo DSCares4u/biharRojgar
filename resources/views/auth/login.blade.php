@@ -15,16 +15,13 @@
             <h2 class="text-2xl font-semibold text-center text-gray-700 mb-6">Admin Login</h2>
 
             <!-- Display Validation Errors -->
-            @if ($errors->any())
+            {{-- @if ($errors->any())
                 <div class="mb-4">
                     <div class="text-red-600 font-medium">Whoops! Something went wrong.</div>
                     <ul class="mt-2 text-sm text-red-600">
-                        {{-- @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach --}}
                     </ul>
                 </div>
-            @endif
+            @endif --}}
 
             <!-- Login Form -->
             <form method="POST" action="{{ route('admin.login') }}">

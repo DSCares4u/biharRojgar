@@ -15,6 +15,7 @@ class AdminMiddleware
             return $next($request);
         }
 
-        return redirect('/admin/login-page');
+        Auth::logout();
+        return redirect()->route('admin.login')->withErrors(['email' => 'Access denied. Admins only.']);
     }
 }

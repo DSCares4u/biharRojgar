@@ -206,25 +206,30 @@ class UserController extends Controller
         }
     }
 
-    public function adminLogin(Request $req)
-    {
+    public function adminLogin(Request $req){
         if ($req->isMethod("post")) {
             $credentials = $req->validate([
                 'email' => 'required|email',
                 'password' => 'required|min:8',
             ]);
-        
+
             if (Auth::attempt($credentials)) {
                 $req->session()->regenerate();
-        
+
                 if (Auth::user()->isAdmin == 1) {
                     return redirect('/admin');
+                } else {
+                    Auth::logout();
+                    return back()->withErrors(['email' => 'Unauthorized. Admin only.']);
                 }
-            }        
-            return back()->withErrors(['email' => 'Invalid credentials']);
+            } else {
+                return back()->withErrors(['email' => 'Invalid email or password']);
+            }
         }
         return view('auth.login');
     }
+
+    
 
     // public function logout()
     // {
