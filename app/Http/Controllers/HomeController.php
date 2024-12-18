@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Role;
+use App\Models\SarkariJob;
+use App\Models\Yojna;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -89,4 +91,23 @@ class HomeController extends Controller
     public function sarkariYojnaForm(){
         return view('home.sarkariYojnaForm');
     }
+
+    public function search(Request $request)
+{
+    $query = $request->input('search');
+
+    // Example search for Sarkari Jobs, Private Jobs, and Yojnas
+    $sarkariJobs = SarkariJob::where('name', 'like', "%{$query}%")->get(['id', 'name']);
+    $privateJobs = Role::where('title', 'like', "%{$query}%")->get(['id', 'title']);
+    $yojnas = Yojna::where('ename', 'like', "%{$query}%")->get(['id', 'ename']);
+
+    // Return results in JSON format
+    return response()->json([
+        'sarkariJobs' => $sarkariJobs,
+        'privateJobs' => $privateJobs,
+        'yojnas' => $yojnas,
+    ]);
+}
+
+
 }

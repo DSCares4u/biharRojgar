@@ -16,90 +16,53 @@
 </style>
 
 @section('content')
-    {{-- <div class="section text-center mt-8">
-        <h3 class="text-4xl">Bihar's <strong>Largest</strong> Job Portal</h3>
-        <h3 class="text-xl mt-4">Taskinn Solution helps you hire staff in very less time</h3>
-        <div class="image flex justify-center"><img src="/landing.jpg" class="h-96" alt=""></div>
-    </div>
 
-    <div class="button flex justify-center gap-5 mb-20">
-        <a href="/get-job/t&c">
-            <button class="text-white bg-yellow-500 p-2 rounded-lg shadow-lg hover:bg-yellow-600 px-12 text-xl">Apply for Private job</button>
-            <p class="text-center text-blue-500 text-sm mt-1 hover:underline">प्राइवेट नौकरी के लिए आवेदन करे</p>
-        </a>
-        <a href="/hire/t&c">
-            <button class="text-white bg-yellow-500 p-2 rounded-lg shadow-lg hover:bg-yellow-600 px-12 text-xl">Hire a Candidate</button>
-            <p class="text-center text-blue-500 text-sm hover:underline mt-1">कर्मचारी चयन करे</p>
-        </a>       
-    </div> --}}
+    <div class="section text-start md:mt-32 px-4 lg:px-16 flex flex-col md:flex-row md:gap-20 lg:mb-20">
+        <div class="">
+            <p class="text-green-700 font-semibold mb-3 md:mb-5 text-lg md:text-xl tracking-wider">
+                BIHAR’S #1 BEST JOB PLATFORM
+            </p>
+            <h2 class="text-2xl md:text-6xl font-bold leading-tight mb-3 md:mb-5">
+                Your job search ends here
+            </h2>
+            <p class="md:text-2xl text-lg font-light text-gray-700">
+                Discover 50 lakh+ career opportunities
+            </p>
+            <div class="relative mt-4">
+                <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+                <input type="text" placeholder="Search for job"
+                    class="rounded-xl py-2 px-12 md:py-4 w-full font-normal focus:outline-none focus:ring-0 border-none" id="search-box">
+            </div>
+            <ul id="search-results" class=" font-normal mt-4 px-1 mb-2 md:mb-0 md:px-10"></ul>
+            
 
-    {{-- <div class="section text-start mt-20 px-4 mx-32 ">
-
-        <p class="text-green-700 font-semibold md:mb-5 md:text-xl">BIHAR’S #1 BEST JOB PLATFORM </p>
-        <h2 class="md:text-6xl text-xl md:mb-5">Your job search ends here </h2>
-        <p class="md:text-2xl font-normal text-xl"> Discover 50 lakh+ career opportunities</p>
-
-    </div>
-    <div class="flex justify-between mx-32">
-        <div class="button flex flex-col sm:flex-row justify-center gap-5 mt-6 mb-20 items-end py-32">
-            <a href="{{ url('/get-job/t&c') }}" class="flex flex-col items-center">
-                <button
-                    class="text-white bg-yellow-500 p-2 rounded-lg shadow-lg hover:bg-yellow-600 px-12 text-xl sm:text-lg">Apply
-                    for Private job</button>
-                <p class="text-center text-blue-500 text-sm mt-1 hover:underline">प्राइवेट नौकरी के लिए आवेदन करे</p>
-            </a>
-            <a href="{{ url('/hire/t&c') }}" class="flex flex-col items-center">
-                <button
-                    class="text-white bg-yellow-500 p-2 rounded-lg shadow-lg hover:bg-yellow-600 px-12 text-xl sm:text-lg">Hire
-                    a Candidate</button>
-                <p class="text-center text-blue-500 text-sm hover:underline mt-1">कर्मचारी चयन करे</p>
-            </a>
+            <div class="button flex flex-col sm:flex-row justify-center gap-5 lg:mt-14 sm:items-start md:py-8">
+                <a href="{{ url('/get-job/t&c') }}" class="flex flex-col items-center group">
+                    <button
+                        class="text-white bg-yellow-500 p-3 rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 ease-in-out px-10 md:px-12 text-lg md:text-xl">
+                        Apply for Private Job
+                    </button>
+                    <p
+                        class="text-center text-blue-500 text-sm mt-2 group-hover:underline transition duration-300 ease-in-out">
+                        प्राइवेट नौकरी के लिए आवेदन करे
+                    </p>
+                </a>
+                <a href="{{ url('/hire/t&c') }}" class="flex flex-col items-center group">
+                    <button
+                        class="text-white bg-yellow-500 p-3 rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 ease-in-out px-10 md:px-12 text-lg md:text-xl">
+                        Hire a Candidate
+                    </button>
+                    <p
+                        class="text-center text-blue-500 text-sm mt-2 group-hover:underline transition duration-300 ease-in-out">
+                        कर्मचारी चयन करे
+                    </p>
+                </a>
+            </div>
         </div>
-        <div class="image flex justify-end ">
-            <img src="{{ asset('/landing.png') }}" class="h-96 md:h-96 sm:h-48" alt="">
-        </div>
-    </div> --}}
-
-    <div class="section text-start md:mt-32 mb-5 px-4 lg:px-32">
-        <p class="text-green-700 font-semibold mb-3 md:mb-5 text-lg md:text-xl tracking-wider">
-            BIHAR’S #1 BEST JOB PLATFORM
-        </p>
-        <h2 class="text-2xl md:text-6xl font-bold leading-tight mb-3 md:mb-5">
-            Your job search ends here
-        </h2>
-        <p class="md:text-2xl text-lg font-light text-gray-700">
-            Discover 50 lakh+ career opportunities
-        </p>
-    </div>
-
-    <div class="flex flex-col lg:flex-row justify-between items-center lg:mx-32 md:space-y-10 lg:space-y-0">
-        <div
-            class="button flex flex-col sm:flex-row justify-center gap-5 mt-6 lg:mt-0 items-center sm:items-start lg:items-end md:py-8">
-            <a href="{{ url('/get-job/t&c') }}" class="flex flex-col items-center group">
-                <button
-                    class="text-white bg-yellow-500 p-3 rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 ease-in-out px-10 md:px-12 text-lg md:text-xl">
-                    Apply for Private Job
-                </button>
-                <p class="text-center text-blue-500 text-sm mt-2 group-hover:underline transition duration-300 ease-in-out">
-                    प्राइवेट नौकरी के लिए आवेदन करे
-                </p>
-            </a>
-            <a href="{{ url('/hire/t&c') }}" class="flex flex-col items-center group">
-                <button
-                    class="text-white bg-yellow-500 p-3 rounded-lg shadow-lg hover:bg-yellow-600 transition duration-300 ease-in-out px-10 md:px-12 text-lg md:text-xl">
-                    Hire a Candidate
-                </button>
-                <p class="text-center text-blue-500 text-sm mt-2 group-hover:underline transition duration-300 ease-in-out">
-                    कर्मचारी चयन करे
-                </p>
-            </a>
-        </div>
-
-        <div class="image md:pb-32">
+        <div class="flex items-start md:mt-10">
             <img src="{{ asset('/landing.png') }}" class="h-72 sm:h-80 md:h-96 lg:h-96 object-cover" alt="Job Platform">
         </div>
     </div>
-
 
     <section class="py-12 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -193,7 +156,8 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
             <h3 class=" font-bold mb-4  text-base">Find Sarkari Jobs</h3>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-2   w-full font-normal md:text-sm text-xs" id="callingSarkariJob">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2   w-full font-normal md:text-sm text-xs"
+                id="callingSarkariJob">
                 <a href="" class="hover:underline hover:text-blue-400">
                     <li>Jobs in Agra</li>
                 </a>
@@ -237,10 +201,6 @@
             </div>
         </div>
     </div>
-
-
-
-
 
     <script>
         document.querySelectorAll('.faq-item').forEach(item => {
@@ -327,8 +287,89 @@
                 });
             }
             callingSarkariJobs();
-           
+
         });
     </script>
+
+    <script>
+        $(document).ready(function() {
+            const $searchInput = $("#search-box");
+            const $resultsContainer = $("#search-results"); // Ensure a container for displaying results
+
+            // Event listener for search input
+            $searchInput.on("input", function() {
+                const query = $(this).val().trim();
+
+                if (query.length > 2) {
+                    fetchResults(query);
+                } else {
+                    $resultsContainer.html(""); // Clear results if query is too short
+                }
+            });
+
+            function fetchResults(query) {
+                $.ajax({
+                    url: "{{ route('home.search.index') }}", // Laravel route for the search endpoint
+                    type: "POST",
+                    data: {
+                        search: query,
+                        _token: "{{ csrf_token() }}" // Include CSRF token for security
+                    },
+                    success: function(data) {
+                        renderResults(data);
+                    },
+                    error: function(xhr) {
+                        console.error("Error fetching search results:", xhr.responseText);
+                    }
+                });
+            }
+
+            function renderResults(data) {
+                $resultsContainer.html(""); // Clear previous results
+
+                if (!data.sarkariJobs.length && !data.privateJobs.length && !data.yojnas.length) {
+                    $resultsContainer.append("<li>No results found</li>");
+                    return;
+                }
+
+                // Render Sarkari Jobs
+                if (data.sarkariJobs.length) {
+                    // $resultsContainer.append("<h3>Sarkari Jobs:</h3>");
+                    data.sarkariJobs.forEach(job => {
+                        $resultsContainer.append(
+                            `<li><a href="{{ url('/sarkari-job') }}" class="hover:underline hover:text-blue-400">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i>${job.name}
+                     </a></li>`
+                        );
+                    });
+                }
+
+                // Render Private Jobs
+                if (data.privateJobs.length) {
+                    // $resultsContainer.append("<h3>Private Jobs:</h3>");
+                    data.privateJobs.forEach(job => {
+                        $resultsContainer.append(
+                            `<li><a href="{{ url('/private-job') }}" class="hover:underline hover:text-blue-400">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i> ${job.title}
+                     </a></li>`
+                        );
+                    });
+                }
+
+                // Render Yojnas
+                if (data.yojnas.length) {
+                    // $resultsContainer.append("<h3>Yojnas:</h3>");
+                    data.yojnas.forEach(yojna => {
+                        $resultsContainer.append(
+                            `<li><a href="{{ url('/sarkari-yojna-form/${yojna.id}') }}" class="hover:underline hover:text-blue-400">
+                        <i class="fa-solid fa-magnifying-glass text-xs"></i> ${yojna.ename}
+                     </a></li>`
+                        );
+                    });
+                }
+            }
+        });
+    </script>
+
 
 @endsection

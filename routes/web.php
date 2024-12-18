@@ -21,6 +21,7 @@ use App\Http\Controllers\SarkariJobApplyController;
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 
+Route::post('/search-all', [HomeController::class, 'search'])->name('home.search.index');
 
 Route::get('/get-job/t&c',[HomeController::class,'getJobTC']);
 Route::post('/logout', [AuthOtpController::class, 'logout'])->name('logout');
