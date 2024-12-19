@@ -1,5 +1,5 @@
 @extends('home.homebase')
-@section('title', 'Home Page')
+@section('title')
 <style>
     .faq-item {
         cursor: pointer;

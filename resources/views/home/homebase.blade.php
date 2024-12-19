@@ -199,57 +199,7 @@
     @show
 </div>
 
-{{-- <footer class="bg-gray-900 text-gray-400 py-12 z-30">
-    <div class="container mx-auto px-4 md:px-5">
-        <div class="flex justify-between">
-            <!-- About Us Section -->
-            <div class="w-full md:w-1/4 mb-6">
-                <h4 class="text-white text-lg mb-4">About Us</h4>
-                <p class="text-gray-400">Welcome to our Mithila Idli ! We offer the finest cuisine with fresh
-                    ingredients and a welcoming atmosphere.</p>
-            </div>
 
-            <!-- Quick Links Section -->
-            <div class="w-full md:w-1/4 mb-6">
-                <h4 class="text-white text-lg mb-4">Quick Links</h4>
-                <ul class="list-none">
-                    <li><a href="#" class="hover:text-white">Home</a></li>
-                    <li><a href="#" class="hover:text-white">Menu</a></li>
-                    <li><a href="#" class="hover:text-white">About</a></li>
-                    <li><a href="#" class="hover:text-white">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Us Section -->
-            <div class="w-full md:w-1/4 mb-6">
-                <h4 class="text-white text-lg mb-4">Contact Us</h4>
-                <p><i class="fas fa-map-marker-alt mr-2"></i>Panchwati Chowk, Purnea, Bihar</p>
-                <p><i class="fas fa-phone mr-2"></i>(123) 456-7890</p>
-                <p><i class="fas fa-envelope mr-2"></i>info@mithilaidli.com</p>
-            </div>
-
-            <!-- Social Media Section -->
-            <div class="w-full md:w-1/4 mb-6">
-                <h4 class="text-white text-lg mb-4">Follow Us</h4>
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-8 border-t border-gray-700 pt-6 text-center">
-            <p>&copy; 2024 Mithila Idli. All rights reserved.</p>
-        </div>
-    </div>
-</footer> --}}
-{{-- <footer class="bg-gray-800 text-white py-3 fixed bottom-0 w-full mt-10">
-    <div class="container mx-auto flex items-center justify-center px-4">
-        <p>&copy; 2024 Taskinn Solution. All rights reserved.</p>
-    </div>
-</footer> --}}
 
 
 <a href="https://api.whatsapp.com/send?phone=+91-9955232260&text=Welcome To Taskinn Solutions PURNEA, BIHAR"

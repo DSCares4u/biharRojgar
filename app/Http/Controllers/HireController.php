@@ -102,48 +102,61 @@ class HireController extends Controller
         $logo = NULL;
     }
 
-    $hire = Hire::create([
-        'date_of_start' => $request->date_of_start,
-        'city' => $request->city,
-        'state' => $request->state,
-        'description' => $request->description,
-        'company_name' => $request->company_name,
-        'website' => $request->website,
+    $user = User::create([
+        'name' => $request->company_name,
         'mobile' => $request->mobile,
-        'alt_mobile' => $request->alt_mobile,
+        'isHire' => 1,
         'email' => $request->email,
-        'payment_mode' => $request->payment_mode,
-        'hire_plan_id' => $request->plan_id,
-        'logo' => $logo,
     ]);
 
-    if ($hire) {
-        foreach ($request->inputs as $input) {
-            $hire->roles()->create([
-                'profile' => $input['profile'],
-                'title' => $input['title'],
-                'no_of_post' => $input['no_of_post'],
-                'min_experience' => $input['min_experience'],
-                'max_experience' => $input['max_experience'],
-                'gender' => $input['gender'],
-                'preferred_lang' => $input['preferred_lang'],
-                'type' => $input['type'],
-                'qualification' => $input['qualification'],
-                'min_salary' => $input['min_salary'],
-                'max_salary' => $input['max_salary']
-            ]);
+    if($user){
+        $hire = Hire::create([
+            'date_of_start' => $request->date_of_start,
+            'city' => $request->city,
+            'state' => $request->state,
+            'description' => $request->description,
+            'company_name' => $request->company_name,
+            'website' => $request->website,
+            'mobile' => $request->mobile,
+            'alt_mobile' => $request->alt_mobile,
+            'email' => $request->email,
+            'payment_mode' => $request->payment_mode,
+            'hire_plan_id' => $request->plan_id,
+            'logo' => $logo,
+        ]);
+    
+        if ($hire) {
+            foreach ($request->inputs as $input) {
+                $hire->roles()->create([
+                    'profile' => $input['profile'],
+                    'title' => $input['title'],
+                    'no_of_post' => $input['no_of_post'],
+                    'min_experience' => $input['min_experience'],
+                    'max_experience' => $input['max_experience'],
+                    'gender' => $input['gender'],
+                    'preferred_lang' => $input['preferred_lang'],
+                    'type' => $input['type'],
+                    'qualification' => $input['qualification'],
+                    'min_salary' => $input['min_salary'],
+                    'max_salary' => $input['max_salary']
+                ]);
+            }
+    
+            return response()->json([
+                'status' => 200,
+                'message' => "We Will Connect You Soon"
+            ], 200);
         }
-
+    }else{
         return response()->json([
-            'status' => 200,
-            'message' => "We Will Connect You Soon"
-        ], 200);
+            'status' => 500,
+            'message' => "Unable to add your Request"
+        ], 500);
     }
 
-    return response()->json([
-        'status' => 500,
-        'message' => "Unable to add your Request"
-    ], 500);
+    
+
+    
 }
 
 

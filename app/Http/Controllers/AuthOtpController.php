@@ -117,5 +117,4 @@ class AuthOtpController extends Controller
         return redirect()->route('home');
     }
 
-
 }

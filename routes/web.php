@@ -42,7 +42,9 @@ Route::middleware("auth")->group(function (){
       
 });
 
+Route::get('/profile',[HomeController::class,'profile']);
 Route::get('/hire',[HomeController::class,'hire']);
+Route::get('/home-hire',[HomeController::class,'hireHome']);
 Route::get('/hire/t&c',[HomeController::class,'hireTC']);
 Route::get('/hire/pay-later',[HomeController::class,'hirePayLater']);
 
