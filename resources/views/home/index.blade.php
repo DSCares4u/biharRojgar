@@ -22,7 +22,7 @@
             <p class="text-green-700 font-semibold mb-3 md:mb-5 text-lg md:text-xl tracking-wider">
                 BIHAR’S #1 BEST JOB PLATFORM
             </p>
-            <h2 class="text-2xl md:text-6xl font-bold leading-tight mb-3 md:mb-5">
+            <h2 class="text-2xl md:text-5xl font-bold leading-tight mb-3 md:mb-5">
                 Your job search ends here
             </h2>
             <p class="md:text-2xl text-lg font-light text-gray-700">

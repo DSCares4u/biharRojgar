@@ -87,7 +87,7 @@
 
 <body class="roboto-medium bg-gray-100">
 
-    <nav class="bg-[#4834d4] border-gray-200 dark:bg-gray-900 md:fixed w-full md:top-0">
+    <nav class="bg-[#4834d4] border-gray-200 dark:bg-gray-900 md:fixed w-full md:top-0 z-20">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-4">
 
             <button data-collapse-toggle="navbar-user" type="button"
@@ -103,7 +103,8 @@
             </button>
             <a href="{{ url('') }}" class="flex flex-col space-x-3 rtl:space-x-reverse">
                 <span
-                    class="self-center text-3xl font-bold text-white whitespace-nowrap dark:text-white tracking-widest">Taskinn Solutions
+                    class="self-center text-3xl font-bold text-white whitespace-nowrap dark:text-white tracking-widest">Taskinn
+                    Solutions
                 </span>
             </a>
             <div class="hidden w-full md:flex md:w-auto md:order-1 md:justify-between" id="navbar-user">
@@ -193,10 +194,10 @@
     </script>
 
 
- <div class="md:mt-20 mt-8">
-    @yield('content')
+    <div class="md:mt-20 mt-8">
+        @yield('content')
     @show
- </div>
+</div>
 
 {{-- <footer class="bg-gray-900 text-gray-400 py-12 z-30">
     <div class="container mx-auto px-4 md:px-5">
@@ -251,7 +252,8 @@
 </footer> --}}
 
 
-<a href="https://api.whatsapp.com/send?phone=+91-9955232260&text=Welcome To Taskinn Solutions PURNEA, BIHAR" target="_blank" class="fixed md:bottom-10 bottom-20 right-2 md:right-10 z-20">
+<a href="https://api.whatsapp.com/send?phone=+91-9955232260&text=Welcome To Taskinn Solutions PURNEA, BIHAR"
+    target="_blank" class="fixed md:bottom-10 bottom-20 right-2 md:right-10 z-20">
     <div class="bg-green-500 rounded-full p-5 shadow-lg text-white hover:text-gray-100 hover:bg-green-600">
         <i class="fa-brands fa-whatsapp fa-2xl  " style="line-height: 1;"></i>
     </div>
@@ -267,7 +269,8 @@
         <div class="flex flex-col md:flex-row justify-between md:gap-10">
             <div class="w-full md:w-1/4 mb-6">
                 <h4 class="text-white text-lg mb-4">About Us</h4>
-                <p class="text-gray-400">Welcome to our Taskinn Solutions ! Connecting people with the right job opportunities to build fulfilling careers.</p>
+                <p class="text-gray-400">Welcome to our Taskinn Solutions ! Connecting people with the right job
+                    opportunities to build fulfilling careers.</p>
             </div>
 
             <div class="w-full md:w-1/4 mb-6">
