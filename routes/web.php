@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HirerController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthOtpController;
 use App\Http\Controllers\UserController;
@@ -44,7 +45,6 @@ Route::middleware("auth")->group(function (){
 
 Route::get('/profile',[HomeController::class,'profile']);
 Route::get('/hire',[HomeController::class,'hire']);
-Route::get('/home-hire',[HomeController::class,'hireHome']);
 Route::get('/hire/t&c',[HomeController::class,'hireTC']);
 Route::get('/hire/pay-later',[HomeController::class,'hirePayLater']);
 
@@ -125,6 +125,12 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/manage/trash/role',[AdminController::class,'manageRoleTrash']);
     Route::get('/admin/manage/trash/hire',[AdminController::class,'manageHireTrash']);
     Route::get('/admin/manage/trash/hire-plan',[AdminController::class,'manageHirePlanTrash']);
+});
+
+Route::middleware(['hirer'])->group(function () {
+    Route::get('/home-hirer',[HirerController::class,'hirerHome']);
+    Route::get('/hirer/job-post',[HirerController::class,'hirerJob']);
+    Route::get('/hirer/applications',[HirerController::class,'applications']);
 });
 
 

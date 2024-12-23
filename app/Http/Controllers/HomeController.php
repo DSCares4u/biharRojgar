@@ -15,9 +15,6 @@ class HomeController extends Controller
     public function profile(){
         return view('home.profile');
     }
-    public function hireHome(){
-        return view('hirer.home');
-    }
 
     public function register(){
         return view('home.register');

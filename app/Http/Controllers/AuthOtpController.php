@@ -58,47 +58,44 @@ class AuthOtpController extends Controller
         ]);
     }
 
-    public function loginWithOtp(Request $request){
+    public function loginWithOtp(Request $request)
+    {
         $request->validate([
             'user_id' => 'required|exists:users,id',
             'otp' => 'required'
         ]);
-
-        $verificationCode = VerificationCode::where('user_id',$request->user_id)->where('otp',$request->otp)->first();
-
+    
+        $verificationCode = VerificationCode::where('user_id', $request->user_id)
+            ->where('otp', $request->otp)
+            ->first();
+    
         $now = Carbon::now();
-        if(!$verificationCode){
-            return redirect()->back()->with('error','Your Otp Is Not Correct');
-
-        }elseif($verificationCode && $now->isAfter($verificationCode->expire_at)){
-            return redirect()->route('otp.login')->with('error','Your Otp Has been Expired');
+        if (!$verificationCode) {
+            return redirect()->back()->with('error', 'Your OTP is not correct');
+        } elseif ($now->isAfter($verificationCode->expire_at)) {
+            return redirect()->route('otp.login')->with('error', 'Your OTP has expired');
         }
-
+    
         $user = User::whereId($request->user_id)->first();
-
-        // if($user){
-
-        //     $verificationCode->update([
-        //         'expire_at'=>Carbon::now()
-        //     ]);
-
-        //     Auth::login($user);
-        //     return redirect('/add-candidate');
-        // }
-
+    
         if ($user) {
             $verificationCode->update([
                 'expire_at' => Carbon::now()
             ]);
-        
+    
             Auth::login($user);
-        
-            // Redirect back to the previous page or a default page if there's no previous page
-            return redirect()->intended('/add-candidate');
+    
+            // Redirect based on isHirer status
+            if ($user->isHirer == 1) {
+                return redirect()->intended('/home-hirer');
+            } else {
+                return redirect()->intended('/add-candidate');
+            }
         }
-
-        return redirect()->route('otp.login')->with('error','Your Otp is not Correct');
-    }    
+    
+        return redirect()->route('otp.login')->with('error', 'Unable to log in. Please try again.');
+    }
+    
 
      protected function createNewToken($token)
     {
