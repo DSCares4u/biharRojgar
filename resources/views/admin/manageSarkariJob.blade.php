@@ -112,16 +112,18 @@
             $(document).on('change', '.status-toggle', function() {
                 let id = $(this).data('id');
                 let status = $(this).is(':checked') ? 1 : 0;
-                
+
                 $.ajax({
                     type: 'PUT',
-                    url: `{{url('/api/sarkari-job/status/${id}')}}`,
-                    data: { status: status },
+                    url: `{{ url('/api/sarkari-job/status/${id}') }}`,
+                    data: {
+                        status: status
+                    },
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(response) {
-                        console.log(response); 
+                        console.log(response);
                         swal("Success", response.message, "success");
                         // callingSarkariJobs(); 
                     },

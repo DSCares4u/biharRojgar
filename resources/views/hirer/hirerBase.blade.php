@@ -94,19 +94,25 @@
                 <h1 class="text-xl font-bold text-gray-800">Taskinn Solutions</h1>
             </div>
             <nav class="mt-6">
-                <a href="{{url('/home-hirer')}}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                <a href="{{ url('/home-hirer') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                     Dashboard
                 </a>
-                <a href="{{url('/hirer/job-post')}}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                <a href="{{ url('/hirer/job-post') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                     Job Posts
                 </a>
-                <a href="{{url('/hirer/applications')}}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                <a href="{{ url('/hirer/applications') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                     Applications
                 </a>
                 <a href="#" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                     Settings
                 </a>
             </nav>
+            <nav class="fixed bottom-0 ">
+                <a href="#" class="block w-full py-2 px-8 text-gray-700 hover:bg-gray-200">
+                    <i class="fa-solid fa-angles-up"></i> Upgrade plan
+                </a>
+            </nav>
+
         </aside>
 
         <!-- Main Content -->
@@ -142,7 +148,7 @@
     </div>
 </a>
 
-<footer class="bg-gray-900 text-gray-400 py-10 sticky">
+{{-- <footer class="bg-gray-900 text-gray-400 py-10 sticky">
     <div class="container mx-auto px-4 md:px-5">
         <div class="flex flex-col md:flex-row justify-between md:gap-10">
             <div class="w-full md:w-1/4 mb-6">
@@ -155,7 +161,6 @@
                 <h4 class="text-white text-lg mb-4">Quick Links</h4>
                 <ul class="list-none">
                     <li><a href="{{ url('/') }}" class="hover:text-white">Home</a></li>
-                    {{-- <li><a href="#" class="hover:text-white"></a></li> --}}
                     <li><a href="{{ url('brand-story') }}" class="hover:text-white">About</a></li>
                     <li><a href="{{ url('order-now') }}" class="hover:text-white">Contact</a></li>
                 </ul>
@@ -183,7 +188,7 @@
             <p>&copy; 2024 Taskinn Solutions. All rights reserved.</p>
         </div>
     </div>
-</footer>
+</footer> --}}
 
 </body>
 

@@ -77,7 +77,7 @@ Route::get('/get-district-and-state', [JobController::class, 'getDistrictAndStat
 // Route::get('/admin',[AdminController::class,'dashboard']);
 
 
-Route::middleware(['admin'])->group(function () {
+// Route::middleware(['admin'])->group(function () {
     Route::get('/admin',[AdminController::class,'manageCandidate']);
     Route::get('/admin/manage-candidate',[AdminController::class,'manageCandidate']);
     Route::get('/admin/manage-candidate/register',[AdminController::class,'registerCandidate']);
@@ -125,7 +125,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('/admin/manage/trash/role',[AdminController::class,'manageRoleTrash']);
     Route::get('/admin/manage/trash/hire',[AdminController::class,'manageHireTrash']);
     Route::get('/admin/manage/trash/hire-plan',[AdminController::class,'manageHirePlanTrash']);
-});
+// });
 
 Route::middleware(['hirer'])->group(function () {
     Route::get('/home-hirer',[HirerController::class,'hirerHome']);
