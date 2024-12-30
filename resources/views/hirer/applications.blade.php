@@ -15,10 +15,14 @@
                         <th class="px-4 py-2">Status</th>
                         <th class="px-4 py-2">Actions</th>
                     </tr>
-                </thead>
+                </thead>    
+                
+                {{dd($applications)}}
+
                 <tbody>
+                    @foreach ($applications as $item)
                     <tr>
-                        <td class="px-4 py-2">Software Engineer</td>
+                        <td class="px-4 py-2">{{$item}}</td>
                         <td class="px-4 py-2">
                             <span class="bg-green-100 text-green-800 text-sm px-2 py-1 rounded">Shortlisted</span>
                         </td>
@@ -27,16 +31,7 @@
                             <button class="text-red-600 hover:underline ml-2">Reject</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="px-4 py-2">Data Analyst</td>
-                        <td class="px-4 py-2">
-                            <span class="bg-yellow-100 text-yellow-800 text-sm px-2 py-1 rounded">Pending</span>
-                        </td>
-                        <td class="px-4 py-2">
-                            <button class="text-blue-600 hover:underline">View</button>
-                            <button class="text-red-600 hover:underline ml-2">Reject</button>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

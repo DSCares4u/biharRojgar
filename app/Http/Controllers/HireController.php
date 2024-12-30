@@ -6,6 +6,7 @@ use App\Models\Hire;
 use App\Models\Role;
 use App\Models\HirePlan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 
 class HireController extends Controller
@@ -103,6 +104,7 @@ class HireController extends Controller
     }
 
     $hire = Hire::create([
+        'user_id' => Auth::id(),
         'date_of_start' => $request->date_of_start,
         'city' => $request->city,
         'state' => $request->state,

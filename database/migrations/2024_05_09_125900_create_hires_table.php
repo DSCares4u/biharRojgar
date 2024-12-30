@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('hires', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete("cascade");
             $table->string('date_of_start');
             $table->string('city');
             $table->string('state');

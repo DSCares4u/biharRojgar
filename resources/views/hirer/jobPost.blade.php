@@ -12,13 +12,18 @@
                 <thead>
                     <tr class="bg-gray-50">
                         <th class="px-4 py-2">Job Title</th>
+                        <th class="px-4 py-2">Job Profile</th>
+                        <th class="px-4 py-2">No. of Post</th>
                         <th class="px-4 py-2">Status</th>
                         <th class="px-4 py-2">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
+                    @forEach($job->roles as $i => $data)
                     <tr>
-                        <td class="px-4 py-2">Software Engineer</td>
+                        <td class="px-4 py-2">{{$data->profile}}</td>
+                        <td class="px-4 py-2">{{$data->title}}</td>
+                        <td class="px-4 py-2">{{$data->no_of_post}}</td>
                         <td class="px-4 py-2">
                             <span class="bg-green-100 text-green-800 text-sm px-2 py-1 rounded">Shortlisted</span>
                         </td>
@@ -27,16 +32,7 @@
                             <button class="text-red-600 hover:underline ml-2">Reject</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="px-4 py-2">Data Analyst</td>
-                        <td class="px-4 py-2">
-                            <span class="bg-yellow-100 text-yellow-800 text-sm px-2 py-1 rounded">Pending</span>
-                        </td>
-                        <td class="px-4 py-2">
-                            <button class="text-blue-600 hover:underline">View</button>
-                            <button class="text-red-600 hover:underline ml-2">Reject</button>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
