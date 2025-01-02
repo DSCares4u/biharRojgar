@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\HirerController;
@@ -146,5 +147,16 @@ Route::get('/admin/login-page', function () {
 
 Route::match(['get',"post"],'/admin-login',[UserController::class,"adminLogin"])->name("admin.login");
 // Route::post('/logout',[UserController::class,"logout"])->name("logout");
+
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    Artisan::call('optimize:clear');
+
+    return "All Caches are cleared by @Roni";
+});
 
 
