@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hire;
 use App\Models\Role;
+use App\Models\User;
 use App\Models\HirePlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -104,7 +105,6 @@ class HireController extends Controller
     }
 
     $hire = Hire::create([
-        'user_id' => Auth::id(),
         'date_of_start' => $request->date_of_start,
         'city' => $request->city,
         'state' => $request->state,
@@ -139,9 +139,15 @@ class HireController extends Controller
         $user = User::create([
             'name' => $request->company_name,
             'mobile' => $request->mobile,
-            'isHire' => 1,
+            'isHirer' => 1,
             'email' => $request->email,
         ]);
+
+        if($user){
+            $hire->update([
+                'user_id' => $user->id,
+            ]);
+        }
 
         return response()->json([
             'status' => 200,

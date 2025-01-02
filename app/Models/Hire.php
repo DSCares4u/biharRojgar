@@ -21,8 +21,14 @@ class Hire extends Model
         return $this->HasOne(HirePlan::class, 'id', 'hire_plan_id');
     }
 
-    public function roles(): HasMany
+    // public function roles(): HasMany
+    // {
+    //     return $this->hasMany(Role::class);
+    // }
+
+    public function roles()
     {
-        return $this->hasMany(Role::class);
+        return $this->hasMany(Role::class, 'hire_id');
     }
+
 }

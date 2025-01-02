@@ -20,4 +20,10 @@ class Role extends Model
         return $this->HasOne(Hire::class, 'id', 'hire_id');
     }
 
+    public function jobs()
+    {
+        return $this->hasMany(Job::class, 'role_id');
+    }
+
+
 }

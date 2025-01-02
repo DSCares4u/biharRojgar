@@ -432,7 +432,7 @@
                     success: function(response) {
                         swal("Success", response.message, "success");
                         $("#addHirer").trigger("reset");
-                        window.open("/", "_self");
+                        window.open("{{url('')}}", "_self");
                     },
                     error: function(xhr) {
                         if (xhr.status === 422) {
