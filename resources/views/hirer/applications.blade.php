@@ -1,8 +1,11 @@
 @extends('hirer.hirerBase')
 @section('title', 'Application')
-@section('content')<main class="p-6">
+@section('content')
+
+<main class="p-6">
         <!-- Stats Section -->
     <main>
+       
         <!-- Table Section -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <div class="p-4 border-b border-gray-200">
@@ -17,9 +20,9 @@
                     </tr>
                 </thead>    
                 
-                {{dd($applications)}}
 
                 <tbody>
+                    
                     @foreach ($applications as $item)
                     <tr>
                         <td class="px-4 py-2">{{$item}}</td>

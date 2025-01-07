@@ -131,6 +131,10 @@ Route::get('/get-district-and-state', [JobController::class, 'getDistrictAndStat
 Route::middleware(['hirer'])->group(function () {
     Route::get('/home-hirer',[HirerController::class,'hirerHome']);
     Route::get('/hirer/job-post',[HirerController::class,'hirerJob']);
+    Route::get('/hirer/job-post/insert',[HirerController::class,'insertJobRolePage']);
+    Route::get('/hirer/job-post/edit/{id}',[HirerController::class,'showJobRole']);
+    Route::post('/hirer/job-post/insert-form',[HirerController::class,'insertJobRole']);
+    Route::post('/hirer/job-post/edit/{id}',[HirerController::class,'updateJobRole']);
     Route::get('/hirer/applications',[HirerController::class,'applications']);
 });
 

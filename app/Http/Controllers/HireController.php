@@ -301,7 +301,7 @@ public function roleShow($id)
 
     return response()->json([
         'status' => 200,
-        'message' => 'Hiring Updated Successfully'
+        'message' => 'Data Updated Successfully'
     ], 200);
 }
 
