@@ -138,6 +138,7 @@ Route::middleware(['hirer'])->group(function () {
     Route::post('/hirer/job-post/edit/{id}',[HirerController::class,'updateJobRole']);
     Route::post('/hirer/application/edit/{id}',[HirerController::class,'updateApplication']);
     Route::get('/hirer/applications',[HirerController::class,'applications']);
+    Route::get('/hirer/profile',[HirerController::class,'profilePage']);
 });
 
 

@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Auth;
 
 class HirerController extends Controller
 {
+    public function profilePage(){
+        $user = Auth::user();
+    
+        if ($user && $user->isHirer == 1) {
+            $data = Hire::with('hire_plan')->where('user_id', $user->id)->first();
+            return view('hirer.profile', ['data' => $data]);
+        }
+        return redirect()->route('home')->with('error', 'You are not authorized to view this page.');
+    }
+
     public function hirerHome(){
         return view('hirer.home');
     }

@@ -195,29 +195,28 @@
                             <div class="border border-gray-300 rounded-md p-4 flex flex-col items-center">
                                 <div
                                     class="w-24 h-32 border border-gray-400 rounded-md flex items-center justify-center bg-gray-50">
-                                    <!-- Placeholder for uploaded photo -->
-                                    {{-- <span class="text-gray-500 text-sm">Uploaded Photo</span> --}}
-                                    <img src="" alt="">
+                                    <img id="" src="{{ asset('image/candidate/photo/' . $data->photo) }}"
+                                        alt="Photo" class="w-24 h-24 object-cover" />
                                 </div>
                             </div>
                             <p class="text-sm text-gray-500 mt-2">
                                 Passport size Photograph
                             </p>
                         </div>
-
-                        <!-- Uploaded Signature -->
                         <div>
                             <div class="border border-gray-300 rounded-md p-4 flex flex-col items-center">
                                 <div
-                                    class="w-48 h-12 border border-gray-400 rounded-md flex items-center justify-center bg-gray-50">
-                                    <!-- Placeholder for uploaded signature -->
-                                    {{-- <span class="text-gray-500 text-sm">Uploaded Signature</span> --}}
+                                    class="w-24 h-32 border border-gray-400 rounded-md flex items-center justify-center bg-gray-50">
+                                    <img id="" src="{{ asset('image/candidate/photo/' . $data->photo) }}"
+                                        alt="Photo" class="w-24 h-24 object-cover" />
                                 </div>
                             </div>
                             <p class="text-sm text-gray-500 mt-2">
-                                Uploaded Signature
+                                Uploaded Resume
                             </p>
                         </div>
+
+                        <!-- Uploaded Signature -->
                     </div>
                 </div>
             </div>
@@ -293,7 +292,7 @@
                     },
                     success: function(response) {
                         $('#id').val(response.data.id);
-                        $('#photo').val(response.data.photo);
+                        $('#photo').attr('src', '/image/candidate/photo/' + response.data.photo);
                         $('#signature').val(response.data.signature);
                         $('#id_proof_type').val(response.data.id_proof_type);
                         $('#id_proof').val(response.data.id_proof);

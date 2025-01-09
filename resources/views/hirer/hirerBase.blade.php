@@ -104,12 +104,12 @@
                 <a href="{{ url('/hirer/applications') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                     Applications
                 </a>
-                <a href="#" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
-                    Settings
+                <a href="{{url('/hirer/profile')}}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                    Profile Settings
                 </a>
             </nav>
             <nav class="fixed bottom-0 ">
-                <a href="#" class="block w-full py-2 px-8 text-gray-700 hover:bg-gray-200">
+                <a href="{{url('/hirer/profile-plan')}}" class="block w-full py-2 px-8 text-gray-700 hover:bg-gray-200">
                     <i class="fa-solid fa-angles-up"></i> Upgrade plan
                 </a>
             </nav>
