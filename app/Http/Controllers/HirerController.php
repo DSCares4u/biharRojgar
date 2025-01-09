@@ -89,7 +89,7 @@ class HirerController extends Controller
             return redirect()->back()->with('error', 'Role not found');
         }
         else{
-            return view('hirer.editJobPost', ['role',$role]);
+            return view('hirer.editJobPost', ['job' => $role]);
         }
     }
 
@@ -146,32 +146,80 @@ class HirerController extends Controller
         return redirect('')->with('error', 'You are not authorized to view this page.');
     }
 
-    public function applications()
+    public function showApplication($id)
     {
+        $application = Job::with('user', 'role', 'candidate', 'address', 'document')->where('id',$id)->first();
+        if (!$application) {
+            return redirect()->back()->with('error', 'Application not found');
+        }
+        else{
+            return view('hirer.editApplication', ['data' => $application]);
+        }
+    }
+
+    public function updateApplication(Request $request, int $id){
+
+        $validator = Validator::make($request->all(), [
+            'profile' => 'required',
+          
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $user = Auth::user();
 
         if ($user->isHirer == 1) {
+            // $hirerId = Hire::where('user_id',$user->id)->first();
 
-            $hireId = Hire::with('roles')->where('user_id', $user->id)->first();
+            $job = Job::find($id);
+            if (!$job) {
+                return redirect()->back()->with('error', 'Data not found');
+            }
 
-            $roleId = Role::where('hire_id',$hireId->id)->get();
-            
-            // $job = Job::with('user','role','candidate','address','document')->where('role_id',$roleId->id)->orderBy('created_at', 'desc')->get();
+            $job->update([
+                'profile' => $request->profile,
+               
+            ]);
 
-            // if ($hire) {
-                // Retrieve all jobs for this hirer
-                // $applications = $hire->roles->flatMap(function ($role) {
-                //     return $role->jobs;
-                // });
-    
-                return view('hirer.applications', ['applications' => $roleId]);
-            // }
+            if($job){
+                return redirect('/hirer/applications')->with('success', 'Application updated successfully!');    
+            }
+            return redirect()->back()->with('error', 'Something went wrong! Please try again later.');
+
         }
-
-        // Handle cases where the user is not a hirer
-        // return redirect()->route('home')->with('error', 'You are not authorized to view this page.');
+        return redirect('')->with('error', 'You are not authorized to view this page.');
     }
 
+    public function applications()
+    {
+        $user = Auth::user();
+    
+        if ($user->isHirer == 1) {
+    
+            // Get the hirer details and their roles
+            $hire = Hire::with('roles')->where('user_id', $user->id)->first();
+    
+            if (!$hire) {
+                return redirect()->route('home')->with('error', 'Hirer information not found.');
+            }
+    
+            // Get all role IDs for the hirer
+            $roleIds = Role::where('hire_id', $hire->id)->pluck('id')->toArray();
+            
+            // Fetch all jobs matching any of the role IDs
+            $jobs = Job::with('user', 'role', 'candidate', 'address', 'document')
+                ->whereIn('role_id', $roleIds)
+                ->orderBy('created_at', 'desc')
+                ->get();
+    
+            return view('hirer.applications', ['applications' => $jobs]);
+        }
+    
+        return redirect()->route('home')->with('error', 'You are not authorized to view this page.');
+    }
+    
     
 
 

@@ -133,8 +133,10 @@ Route::middleware(['hirer'])->group(function () {
     Route::get('/hirer/job-post',[HirerController::class,'hirerJob']);
     Route::get('/hirer/job-post/insert',[HirerController::class,'insertJobRolePage']);
     Route::get('/hirer/job-post/edit/{id}',[HirerController::class,'showJobRole']);
+    Route::get('/hirer/application/edit/{id}',[HirerController::class,'showApplication']);
     Route::post('/hirer/job-post/insert-form',[HirerController::class,'insertJobRole']);
     Route::post('/hirer/job-post/edit/{id}',[HirerController::class,'updateJobRole']);
+    Route::post('/hirer/application/edit/{id}',[HirerController::class,'updateApplication']);
     Route::get('/hirer/applications',[HirerController::class,'applications']);
 });
 
@@ -162,5 +164,4 @@ Route::get('/clear-cache', function () {
 
     return "All Caches are cleared by @Roni";
 });
-
 

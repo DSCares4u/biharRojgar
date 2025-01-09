@@ -30,12 +30,12 @@
 
     <div class="max-w-4xl mx-auto mt-10 p-6 bg-white shadow-md rounded-md">
         <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Edit Job Posting Form</h2>
-        <form action="{{ url(`/hirer/job-post/edit/{id}`) }}" method="POST">
+        <form action="{{ url('/hirer/job-post/edit/' . $job->id)}}" method="POST">
             @csrf
             <!-- Profile -->
             <div class="mb-4">
                 <label for="profile" class="block text-sm font-medium text-gray-700">Profile</label>
-                <input type="text" id="profile" value="{{ old('profile') }}" name="profile"
+                <input type="text" id="profile" value="{{$job->profile }}" name="profile"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Enter profile name">
                 @error('profile')
@@ -46,7 +46,7 @@
             <!-- Title -->
             <div class="mb-4">
                 <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
-                <input type="text" id="title" value="{{ old('title') }}" name="title"
+                <input type="text" id="title" value="{{$job->title }}" name="title"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Enter job title">
                 @error('title')
@@ -57,7 +57,7 @@
             <!-- No. of Posts -->
             <div class="mb-4">
                 <label for="no_of_post" class="block text-sm font-medium text-gray-700">Number of Posts</label>
-                <input type="number" id="no_of_post" value="{{ old('no_of_post') }}" name="no_of_post"
+                <input type="number" id="no_of_post" value="{{$job->no_of_post }}" name="no_of_post"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Enter number of posts">
                 @error('no_of_post')
@@ -70,7 +70,7 @@
                 <div>
                     <label for="min_experience" class="block text-sm font-medium text-gray-700">Minimum
                         Experience (years)</label>
-                    <input type="number" id="min_experience" value="{{ old('min_experience') }}" name="min_experience"
+                    <input type="number" id="min_experience" value="{{ $job->min_experience }}" name="min_experience"
                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                         placeholder="Min experience">
                     @error('min_experience')
@@ -80,7 +80,7 @@
                 <div>
                     <label for="max_experience" class="block text-sm font-medium text-gray-700">Maximum
                         Experience (years)</label>
-                    <input type="number" id="max_experience" value="{{ old('max_experience') }}" name="max_experience"
+                    <input type="number" id="max_experience" value="{{ $job->max_experience }}" name="max_experience"
                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                         placeholder="Max experience">
                     @error('max_experience')
@@ -92,7 +92,7 @@
                 <div>
                     <label for="min_salary" class="block text-sm font-medium text-gray-700">Minimum
                         Salary</label>
-                    <input type="number" id="min_salary" value="{{ old('min_salary') }}" name="min_salary"
+                    <input type="number" id="min_salary" value="{{ $job->min_salary }}" name="min_salary"
                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                         placeholder="Min experience">
                     @error('min_salary')
@@ -102,7 +102,7 @@
                 <div>
                     <label for="max_salary" class="block text-sm font-medium text-gray-700">Maximum
                         Salary</label>
-                    <input type="number" id="max_experience" value="{{ old('max_salary') }}" name="max_salary"
+                    <input type="number" id="max_experience" value="{{ $job->max_salary }}" name="max_salary"
                         class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                         placeholder="Max salary">
                     @error('max_salary')
@@ -129,7 +129,7 @@
             <div class="mb-4">
                 <label for="preferred_lang" class="block text-sm font-medium text-gray-700">Preferred
                     Language</label>
-                <input type="text" id="preferred_lang" name="preferred_lang"
+                <input type="text" id="preferred_lang"  value="{{ $job->preferred_lang }}" name="preferred_lang"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Enter preferred language">
                 @error('preferred_lang')
@@ -151,7 +151,7 @@
             <!-- Qualification -->
             <div class="mb-4">
                 <label for="qualification" class="block text-sm font-medium text-gray-700">Qualification</label>
-                <input type="text" id="qualification" value="{{ old('qualification') }}" name="qualification"
+                <input type="text" id="qualification" value="{{ $job->qualification }}" name="qualification"
                     class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                     placeholder="Enter qualification">
                 @error('qualification')
