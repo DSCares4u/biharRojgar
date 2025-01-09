@@ -37,8 +37,8 @@
                 <div class="md:w-full space-y-4">
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">Active Plan name :</label>
-                        <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal">
-                            {{ $data->hire_plan->name }}</p>
+                        <a href="#plan_card" class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200"><p class=" font-normal" >
+                            {{ $data->hire_plan->name }}</p></a>
                     </div>
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">Plan Purchase Price :</label>
@@ -139,27 +139,27 @@
         <div
             class=" md:mt-10 mb-10 mx-auto md:w-[50%] w-full bg-white border p-3 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
             <div class="price mt-2 mb-4">
-                <h3 class="text-lg font-semibold">Job Posting Service</h3>
+                <h3 class="text-lg font-semibold">Plan Charge Bill</h3>
             </div>
             <ul id="planCharge">
                 <li class="flex justify-between text-base text-gray-500">
                     <p>Free Localities</p>
-                    <p class="font-bold">Rs. 500</p>
+                    <p class="font-bold">Rs. 0</p>
                 </li>
                 <li class="flex justify-between text-base text-gray-500">
                     <p>Gold Job</p>
-                    <p class="font-bold">Rs. 500</p>
+                    <p class="font-bold">Rs. 0</p>
                 </li>
                 <hr>
                 <li class="flex justify-between text-base text-gray-500">
                     <p>Total Payment</p>
-                    <p class="font-bold">Rs. 1000</p>
+                    <p class="font-bold">Rs. 0</p>
                 </li>
             </ul>
             <div id="payBtn2" class=" flex justify-center items-center">
                 <button type="submit"
                     class="bg-yellow-400 hover:bg-yellow-500 float-left font-semibold rounded focus:outline-none focus:shadow-outline text-black mt-3 py-2 border border-yellow-500 w-full">
-                    Post Job
+                    Buy Now
                 </button>
             </div>
     </div>

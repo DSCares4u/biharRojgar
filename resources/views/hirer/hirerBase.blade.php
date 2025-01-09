@@ -109,7 +109,7 @@
                 </a>
             </nav>
             <nav class="fixed bottom-0 ">
-                <a href="{{url('/hirer/profile-plan')}}" class="block w-full py-2 px-8 text-gray-700 hover:bg-gray-200">
+                <a href="{{url('/hirer/profile#plan_card')}}" class="block w-full py-2 px-8 text-gray-700 hover:bg-gray-200">
                     <i class="fa-solid fa-angles-up"></i> Upgrade plan
                 </a>
             </nav>
