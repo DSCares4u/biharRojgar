@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\SarkariJob;
 use App\Models\Yojna;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,13 @@ class HomeController extends Controller
     }
 
     public function profile(){
-        return view('home.profile');
+        $user = Auth::user();
+    
+        if ($user) {
+            $data = User::with('candidate','document','address')->where('id', $user->id)->first();
+            return view('home.profile', ['data' => $data]);
+        }
+        return redirect()->route('home')->with('error', 'You are not authorized to view this page.');
     }
 
     public function register(){

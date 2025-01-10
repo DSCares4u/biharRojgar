@@ -33,6 +33,8 @@ Route::middleware("auth")->group(function (){
     Route::get('/address',[HomeController::class,'address']);
     Route::get('/documents',[HomeController::class,'documents']);
 
+    // Route::get('/profile',[HomeController::class,'profile']);
+
     Route::get('/manual-form',[HomeController::class,'manualForm']);
 
     Route::get('/viewSarkariJobForm/{id}',[HomeController::class,'viewSarkariJobForm']);
@@ -42,6 +44,10 @@ Route::middleware("auth")->group(function (){
     Route::get('/checkApplicationStatus/{jobId}', [JobController::class, 'checkApplicationStatus'])->name('checkApplicationStatus');
     Route::get('/checkApplicationStatus/{jobId}', [SarkariJobApplyController::class, 'checkApplicationStatus'])->name('checkApplicationStatus');
       
+});
+
+Route::get('/pro', function() {
+    return view('home.Profile-new');
 });
 
 Route::get('/profile',[HomeController::class,'profile']);

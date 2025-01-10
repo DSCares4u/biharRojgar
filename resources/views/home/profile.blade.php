@@ -2,103 +2,258 @@
 @section('title', 'Profile')
 @section('content')
 
-    <div class="min-h-screen bg-gray-100">
+
+    <div class="flex mt-10 bg-gray-300">
+        <!-- Sidebar -->
         <!-- Main Content -->
-        <main class="container mx-auto p-6">
-            <!-- Profile Header -->
-            <div class="bg-white rounded-lg shadow-md p-6 flex items-center space-x-6">
-                <img class="w-24 h-24 rounded-full border border-gray-300" src="https://via.placeholder.com/100"
-                    alt="Profile Photo" />
-                <div>
-                    <h2 class="text-2xl font-semibold text-gray-800">John Doe</h2>
-                    <p class="text-gray-600">Software Engineer</p>
-                    <p class="mt-2 text-gray-500">Passionate about creating innovative solutions and bringing impactful
-                        changes through technology.</p>
-                </div>
-            </div>
+        <div class="flex-1 flex flex-col  ">
+            <!-- Navbar -->
+            <div class="min-h-screen bg-gray-50 p-4 md:p-8">
+                <div class="max-w-7xl mx-auto">
+                    <!-- Header Section -->
+                    <div class="flex justify-between items-center mb-8">
+                        <div>
+                            <h1 class="text-3xl font-bold text-gray-800">Candidate detailed overview</h1>
+                            <p class="text-gray-600 mt-2">Review the submitted details below.</p>
+                        </div>
+                        <a href="{{ url('/add-candidate') }}">
+                            <button
+                                class="flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+                                <i class="fas fa-edit"></i> Edit Details
+                            </button>
+                        </a>
 
-            <!-- Details Section -->
-            <div class="mt-6">
-                <!-- Tabs -->
-                <div class="flex space-x-4 border-b border-gray-200">
-                    <button
-                        class="px-4 py-2 text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-blue-500 focus:outline-none focus:border-blue-500">
-                        <a href="#profile"> Personal Information</a>
-                    </button>
-                    <button
-                        class="px-4 py-2 text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-blue-500 focus:outline-none focus:border-blue-500">
-                        <a href="#skills">Skills</a>
-                    </button>
-                    <button
-                        class="px-4 py-2 text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-blue-500 focus:outline-none focus:border-blue-500">
-                        <a href="#experience">Experience</a>
-                    </button>
-                    {{-- <button class="px-4 py-2 text-gray-600 hover:text-gray-800 border-b-2 border-transparent hover:border-blue-500 focus:outline-none focus:border-blue-500">
-            <a href="#resume">Resume</a>            
-          </button> --}}
-                </div>
+                    </div>
 
-                <!-- Content -->
-                <div class="mt-6">
-                    <!-- Personal Information -->
-                    <section>
-                        <h3 class="text-lg font-semibold text-gray-800">Personal Information</h3>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4" id="profile">
-                            <div>
-                                <p class="text-gray-600">Email</p>
-                                <p class="text-gray-800">john.doe@example.com</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Personal Details Section -->
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center gap-3 mb-4">
+                                <i class="fas fa-user text-teal-600 text-xl"></i>
+                                <img src="" class="h-10  object-contain rounded-full">
+
+                                <h2 class="text-xl font-semibold">Personal Details</h2>
                             </div>
-                            <div>
-                                <p class="text-gray-600">Phone</p>
-                                <p class="text-gray-800">+1 234 567 890</p>
-                            </div>
-                            <div>
-                                <p class="text-gray-600">Location</p>
-                                <p class="text-gray-800">New York, USA</p>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="space-y-1">
+                                    <p class="text-sm text-gray-500">Fullname</p>
+                                    <p class="font-medium capitalize">{{ $data->candidate->name ?? 'N/a' }}</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-sm text-gray-500">Date of Birth</p>
+                                    <p class="font-medium">{{ $data->candidate->dob ?? 'N/a' }}</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-sm text-gray-500">Gender</p>
+                                    <p class="font-medium capitalize">{{ $data->candidate->gender ?? 'N/a' }}</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-sm text-gray-500">Religion</p>
+                                    <p class="font-medium capitalize">{{ $data->candidate->religion ?? 'N/a' }}</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-sm text-gray-500">Father's name</p>
+                                    <p class="font-medium capitalize">{{ $data->candidate->father ?? 'N/a' }}</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-sm text-gray-500">Mother's name</p>
+                                    <p class="font-medium capitalize">{{ $data->candidate->mother ?? 'N/a' }}</p>
+                                </div>
+
+                                <div class="space-y-1">
+                                    <p class="text-sm text-gray-500">Contact Number</p>
+                                    <p class="font-medium">{{ $data->candidate->mobile ?? 'N/a' }}</p>
+                                </div>
+                                <div class="space-y-1">
+                                    <p class="text-sm text-gray-500">Email</p>
+                                    <p class="font-medium">{{ $data->candidate->email ?? 'N/a' }}</p>
+                                </div>
                             </div>
                         </div>
-                    </section>
 
-                    <!-- Skills -->
-                    <section class="mt-6">
-                        <h3 class="text-lg font-semibold text-gray-800">Skills</h3>
-                        <div class="flex flex-wrap gap-2 mt-4" id="skill">
-                            <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">JavaScript</span>
-                            <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">React</span>
-                            <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Node.js</span>
-                            <span class="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Python</span>
+                        <!-- Banking Details Section -->
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+
+                            <div class="flex items-center gap-3 mb-4">
+                                <i class="fas fa-university text-teal-600 text-xl"></i>
+                                <h2 class="text-xl font-semibold">Education Details</h2>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 mt-10">
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-credit-card text-gray-400 mt-1"></i>
+                                    <div class="space-y-1">
+                                        <p class="text-sm text-gray-500">Highest Qualification</p>
+                                        <p class="font-medium">{{ $data->address->qualification ?? 'N/a' }}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-credit-card text-gray-400 mt-1"></i>
+                                    <div class="space-y-1">
+                                        <p class="text-sm text-gray-500">College /Board</p>
+                                        <p class="font-medium">{{ $data->address->board ?? 'N/a' }}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-credit-card text-gray-400 mt-1"></i>
+                                    <div class="space-y-1">
+                                        <p class="text-sm text-gray-500">State</p>
+                                        <p class="font-medium">{{ $data->address->q_state ?? 'N/a' }}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-credit-card text-gray-400 mt-1"></i>
+                                    <div class="space-y-1">
+                                        <p class="text-sm text-gray-500">Passing year</p>
+                                        <p class="font-medium">{{ $data->address->passing_year ?? 'N/a' }}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-credit-card text-gray-400 mt-1"></i>
+                                    <div class="space-y-1">
+                                        <p class="text-sm text-gray-500">Experience</p>
+                                        <p class="font-medium">{{ $data->address->experience ?? 'N/a' }}</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-credit-card text-gray-400 mt-1"></i>
+                                    <div class="space-y-1">
+                                        <p class="text-sm text-gray-500">Skills</p>
+                                        <p class="font-medium">{{ $data->address->skills ?? 'N/a' }}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </section>
 
-                    <!-- Experience -->
-                    <section class="mt-6">
-                        <h3 class="text-lg font-semibold text-gray-800">Experience</h3>
-                        <ul class="mt-4 space-y-4" id="experience">
-                            <li class="bg-white p-4 rounded-lg shadow-md">
-                                <h4 class="text-gray-800 font-semibold">Software Engineer</h4>
-                                <p class="text-gray-600">ABC Tech - Jan 2020 to Present</p>
-                                <p class="text-gray-500 mt-2">Developed and maintained scalable web applications using React
-                                    and Node.js.</p>
-                            </li>
-                            <li class="bg-white p-4 rounded-lg shadow-md">
-                                <h4 class="text-gray-800 font-semibold">Frontend Developer</h4>
-                                <p class="text-gray-600">XYZ Solutions - Jun 2018 to Dec 2019</p>
-                                <p class="text-gray-500 mt-2">Designed user-friendly interfaces and optimized web
-                                    applications for performance.</p>
-                            </li>
-                        </ul>
-                    </section>
+                        <!-- Address Details Section -->
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center gap-3 mb-4">
+                                <i class="fas fa-map-marker-alt text-teal-600 text-xl"></i>
+                                <h2 class="text-xl font-semibold">Address Details</h2>
+                            </div>
+                            <div class="space-y-3 grid grid-cols-2 gap-4 mt-10">
+                                <div>
+                                    <p class="text-sm text-gray-500">Village</p>
+                                    <p class="font-medium capitalize">{{ $data->candidate->village ?? 'N/a' }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Landmark</p>
+                                    <p class="font-medium capitalize">{{ $data->candidate->landark ?? 'N/a' }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Area</p>
+                                    <p class="font-medium capitalize">{{ $data->candidate->area ?? 'N/a' }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">Postal Code</p>
+                                    <p class="font-medium capitalize">{{ $data->candidate->pincode ?? 'N/a' }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">City</p>
+                                    <p class="font-medium capitalize">{{ $data->candidate->city ?? 'N/a' }}</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-500">State</p>
+                                    <p class="font-medium capitalize">{{ $data->candidate->state ?? 'N/a' }}</p>
+                                </div>
+                                {{-- <div>
+                                    <p class="text-sm text-gray-500">Country</p>
+                                    <p class="font-medium">India</p>
+                                </div> --}}
+                            </div>
+                        </div>
 
-                    <!-- Resume -->
-                    {{-- <section class="mt-6">
-            <h3 class="text-lg font-semibold text-gray-800">Resume</h3>
-            <div class="mt-4" id="resume">
-              <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">View Resume</button>
-              <button class="ml-2 bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">Upload Resume</button>
-            </div>
-          </section> --}}
+                        <!-- Documents Section -->
+                        <div class="bg-white p-6 rounded-xl shadow-md">
+                            <div class="flex items-center gap-3 mb-4">
+                                <i class="fas fa-file-alt text-teal-600 text-xl"></i>
+                                <h2 class="text-xl font-semibold">Uploaded Documents</h2>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                    <div>
+                                        <p class="font-medium">Aadhar Card</p>
+                                        <p class="text-sm text-gray-500">
+                                            {{-- {{$investor->aadhar_card}} --}}
+
+                                            <img src="" alt="Company Logo" class="h-20 w-auto">
+                                        </p>
+
+                                        <span class="bg-orange-100 px-3 rounded-xl mt-1 py-1"></span>
+                                    </div>
+                                    {{-- <div class="flex gap-2">
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
+                          <i class="fas fa-download"></i>
+                        </button>
+                      </div> --}}
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                    <div>
+                                        <p class="font-medium">PAN Card</p>
+                                        <p class="text-sm text-gray-500">
+                                            <img src="" alt="Company Logo" class="h-20 w-auto">
+                                        </p>
+                                        <span class="bg-orange-100 px-3 rounded-xl mt-1 py-1"></span>
+
+                                    </div>
+                                    {{-- <div class="flex gap-2">
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
+                          <i class="fas fa-download"></i>
+                        </button>
+                      </div> --}}
+                                </div>
+                                {{-- <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div>
+                        <p class="font-medium">Salary Slip</p>
+                        <p class="text-sm text-gray-500">2024-12-01</p>
+                      </div>
+                      <div class="flex gap-2">
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
+                          <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
+                          <i class="fas fa-download"></i>
+                        </button>
+                      </div>
+                    </div> --}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Documents Section (Optional) -->
+                    <div class="bg-white shadow-lg rounded-lg mt-4 mb-6">
+                        <div class="flex items-center gap-3 p-6">
+                            <i class="fas fa-file-alt text-teal-600 text-xl"></i>
+                            <h4 class="text-lg font-semibold">Additional Documents</h4>
+                        </div>
+                        <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div class="bg-gray-100 p-4 rounded-lg">
+                                <p><strong>Name:</strong> </p>
+                                <a href="" target="_blank" class="text-blue-500 underline">
+                                    View Document
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    {{-- <div class="mt-8 flex flex-wrap gap-4">
+                <button class="flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+                  <i class="fas fa-download"></i> Download All Documents
+                </button>
+                <button class="flex items-center gap-2 bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors">
+                  Submit Final
+                </button>
+              </div> --}}
                 </div>
             </div>
-        </main>
+
+        </div>
     </div>
+
 @endsection
