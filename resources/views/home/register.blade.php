@@ -52,59 +52,6 @@
                 </ul>
             </div>
 
-            <!-- Right Section -->
-            {{-- <div class="lg:w-5/12 mt-8 lg:mt-24 mx-auto lg:mx-0">
-                <div class="shadow-md rounded pt-5 px-8 pb-8 bg-[#006266] max-w-md mx-auto">
-                    <h1 class="text-xl sm:text-2xl font-bold mb-4 text-center text-white">Register</h1>
-                    <form method="POST" action="{{ route('register.store') }}" id="registerUser">
-                        @csrf
-                        <div class="mb-4">
-                            <label for="name" class="block text-white text-sm font-semibold mb-2">Name</label>
-                            <input id="name" type="text" name="name" value="{{ old('name') }}"
-                                autocomplete="name" autofocus
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                            <p id="name-error" class="text-red-500 text-xs hidden"></p>
-                        </div>
-
-                        <div class="mb-4">
-                            <label for="mobile" class="block text-white text-sm font-semibold mb-2">Mobile No.</label>
-                            <input id="mobile" type="tel" name="mobile"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                            <p id="mobile-error" class="text-red-500 text-xs hidden"></p>
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
-                            <input id="email" type="email" name="email"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                            <p id="email-error" class="text-red-500 text-xs hidden"></p>
-                        </div>
-                        <div class="mb-4">
-                            <label for="otp" class="block text-white text-sm font-semibold mb-2">Enter Your OTP:
-                            </label>
-                            <input id="otp" type="number" name="otp"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
-                            <p id="otp-error" class="text-red-500 text-xs hidden"></p>
-                        </div>
-                        <div class="mb-4 flex justify-center">
-                            <button type="submit"
-                                class="bg-green-400 hover:bg-green-300 font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto mb-4 sm:mb-0">
-                                Verify now
-                            </button>
-                        </div>
-
-                        <div class="flex flex-col sm:flex-row items-center justify-between mt-8">
-                            <a href="{{ url('/login') }}"
-                                class="text-white hover:text-gray-300 font-bold rounded focus:outline-none focus:shadow-outline">Already
-                                have an Account?</a>
-                            <button type="submit"
-                                class="bg-[#ffa801] hover:bg-[#ffa601c0] font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto mb-4 sm:mb-0">
-                                Register
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div> --}}
-
             <div class="lg:w-5/12 mt-8 lg:mt-24 mx-auto lg:mx-0">
                 <div class="shadow-md rounded pt-5 px-8 pb-8 bg-[#006266] max-w-md mx-auto">
                     <h1 class="text-xl sm:text-2xl font-bold mb-4 text-center text-white">Register</h1>
@@ -135,7 +82,7 @@
                             <div class="mb-4 flex justify-center">
                                 <button type="button" id="sendOtpButton"
                                     class="bg-green-400 hover:bg-green-300 font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto">
-                                    Send OTP
+                                    Register now
                                 </button>
                             </div>
                         </div>
@@ -165,29 +112,23 @@
         $(document).ready(function() {
             $('#sendOtpButton').on('click', function(e) {
                 e.preventDefault();
-    
+
                 const name = $('#name').val().trim();
                 const email = $('#email').val().trim();
                 const mobile = $('#mobile').val().trim();
-    
-                // Validate form fields
-                if (!name || !email || !mobile) {
-                    swal("Error", "All fields are required!", "error");
-                    return;
-                }
-    
+
                 let formData = new FormData();
                 formData.append('name', name);
                 formData.append('email', email);
                 formData.append('mobile', mobile);
-    
+
                 // Add CSRF token to the headers
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-    
+
                 // Send OTP Request
                 $.ajax({
                     type: "POST",
@@ -198,45 +139,40 @@
                     cache: false,
                     processData: false,
                     success: function(response) {
-                        if (response.success) {
-                            // Hide registration fields and show OTP fields
-                            $('#registration-fields').addClass('hidden');
-                            $('#otp-fields').removeClass('hidden');
-                            swal("Success", response.message, "success");
-                        } else {
-                            swal("Error", response.message, "error");
-                        }
+                        swal("Success", response.message, "success");
+                        $('#registration-fields').addClass('hidden');
+                        $('#otp-fields').removeClass('hidden');
                     },
-                    error: function(xhr) {
-                        swal("Error", xhr.responseJSON?.message || "Something went wrong!", "error");
+                    error: function(xhr, status, error) {
+                        swal("Error", xhr.responseText, "error");
                     }
                 });
             });
-    
+
             // Handle OTP Verification
             $('#registerUser').on('submit', function(e) {
                 e.preventDefault();
-    
+
                 const otp = $('#otp').val().trim();
                 const email = $('#email').val().trim();
-    
+
                 // Validate OTP
                 if (!otp) {
                     swal("Error", "OTP is required!", "error");
                     return;
                 }
-    
+
                 let formData = new FormData();
                 formData.append('otp', otp);
                 formData.append('email', email);
-    
+
                 // Add CSRF token to the headers
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
-    
+
                 // Verify OTP Request
                 $.ajax({
                     type: "POST",
@@ -247,20 +183,14 @@
                     cache: false,
                     processData: false,
                     success: function(response) {
-                        if (response.success) {
-                            swal("Success", response.message, "success").then(() => {
-                                window.location.reload();
-                            });
-                        } else {
-                            swal("Error", response.message, "error");
-                        }
+                        swal("Success", response.message, "success");
                     },
-                    error: function(xhr) {
-                        swal("Error", xhr.responseJSON?.message || "Something went wrong!", "error");
+                    error: function(xhr, status, error) {
+                        swal("Error", xhr.responseText, "error");
                     }
                 });
             });
         });
     </script>
-    
+
 @endsection

@@ -2,32 +2,6 @@
 @section('title', 'Login')
 @section('content')
 
-    @if (session('success'))
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                Swal.fire({
-                    title: 'Success!',
-                    text: "{{ session('success') }}",
-                    icon: 'success',
-                    confirmButtonText: 'OK',
-                    confirmButtonColor: '#3085d6',
-                });
-            });
-        </script>
-    @endif
-    @if ($errors->any())
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                Swal.fire({
-                    title: 'Whoops! Something went wrong.',
-                    icon: 'error',
-                    confirmButtonText: 'OK',
-                    confirmButtonColor: '#d33',
-                });
-            });
-        </script>
-    @endif
-
     <div class=" bg-[#273c75] min-h-screen max-w-screen px-4 py-8">
         <div class="flex flex-col-reverse lg:flex-row">
             <!-- Left Section -->
@@ -76,12 +50,15 @@
                                 </select>
                                 <p id="type-error" class="text-red-500 text-xs hidden"></p>
                             </div>
-                            <div class="mb-4 flex justify-center">
-                                <button type="button" id="sendOtpButton"
-                                    class="bg-green-400 hover:bg-green-300 font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto">
-                                    Send OTP
-                                </button>
-                            </div>
+                                <div class="flex flex-col sm:flex-row items-center justify-between mt-8">
+                                    <a href="{{ url('/register') }}"
+                                        class="text-white hover:text-gray-300 font-bold rounded focus:outline-none focus:shadow-outline">Don't
+                                        have an Account?</a>
+                                    <button type="button" id="sendOtpButton"
+                                        class="bg-[#ffa801] hover:bg-[#ffa601c0] font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto mb-4 sm:mb-0">
+                                        Login now
+                                    </button>
+                                </div>
                         </div>
 
                         <div id="otp-fields" class="hidden">
@@ -99,16 +76,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="flex flex-col sm:flex-row items-center justify-between mt-8">
 
-                            <a href="{{ url('/register') }}"
-                                class="text-white hover:text-gray-300 font-bold rounded focus:outline-none focus:shadow-outline">Don't
-                                have an Account?</a>
-                            <button type="submit"
-                                class="bg-[#ffa801] hover:bg-[#ffa601c0] font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto mb-4 sm:mb-0">
-                                Login now
-                            </button>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -142,18 +110,12 @@
                     cache: false,
                     processData: false,
                     success: function(response) {
-                        if (response.success) {
-                            // Hide registration fields and show OTP fields
-                            $('#login-fields').addClass('hidden');
-                            $('#otp-fields').removeClass('hidden');
-                            swal("Success", response.message, "success");
-                        } else {
-                            swal("Error", response.message, "error");
-                        }
+                        $('#login-fields').addClass('hidden');
+                        $('#otp-fields').removeClass('hidden');
+                        swal("Success", response.message, "success");
                     },
-                    error: function(xhr) {
-                        swal("Error", xhr.responseJSON?.message || "Something went wrong!",
-                            "error");
+                    error: function(xhr, status, error) {
+                        swal("Error", xhr.responseText, "error");
                     }
                 });
             });
@@ -192,17 +154,10 @@
                     cache: false,
                     processData: false,
                     success: function(response) {
-                        if (response.success) {
-                            swal("Success", response.message, "success").then(() => {
-                                window.location.reload();
-                            });
-                        } else {
-                            swal("Error", response.message, "error");
-                        }
+                        swal("Success", response.message, "success");
                     },
-                    error: function(xhr) {
-                        swal("Error", xhr.responseJSON?.message || "Something went wrong!",
-                            "error");
+                    error: function(xhr, status, error) {
+                        swal("Error", xhr.responseText, "error");
                     }
                 });
             });

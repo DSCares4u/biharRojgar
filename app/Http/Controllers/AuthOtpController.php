@@ -33,8 +33,15 @@ class AuthOtpController extends Controller
                 'mobile' => 'required|unique:users,mobile|digits:10|regex:/^[6789][0-9]{9}$/',
             ]);
 
+            // if ($validator->fails()) {
+            //     return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
+            // }
+
             if ($validator->fails()) {
-                return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
+                return response()->json([
+                    'status' => 422,
+                    'error' => $validator->messages()
+                ], 422);
             }
 
             $otp = rand(100000, 999999);
@@ -66,8 +73,15 @@ class AuthOtpController extends Controller
                 'email' => 'required|email',
             ]);
 
+            // if ($validator->fails()) {
+            //     return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
+            // }
+
             if ($validator->fails()) {
-                return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
+                return response()->json([
+                    'status' => 422,
+                    'error' => $validator->messages()
+                ], 422);
             }
 
             $otpRecord = Otp::where('email', $request->email)->first();
@@ -117,8 +131,15 @@ class AuthOtpController extends Controller
             ]);
 
             if ($validator->fails()) {
-                return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
+                return response()->json([
+                    'status' => 422,
+                    'error' => $validator->messages()
+                ], 422);
             }
+
+            // if ($validator->fails()) {
+            //     return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
+            // }
 
             $otp = rand(100000, 999999);
 
@@ -149,8 +170,15 @@ class AuthOtpController extends Controller
                 'email' => 'required|email',
             ]);
 
+            // if ($validator->fails()) {
+            //     return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
+            // }
+
             if ($validator->fails()) {
-                return response()->json(['success' => false, 'message' => $validator->errors()->first()]);
+                return response()->json([
+                    'status' => 422,
+                    'error' => $validator->messages()
+                ], 422);
             }
 
             $otpRecord = Otp::where('email', $request->email)->first();
@@ -174,6 +202,11 @@ class AuthOtpController extends Controller
 
             // Log in the user
             Auth::login($user);
+            if ($user->isHirer == 1) {
+                return redirect()->intended('/home-hirer');
+            } else {
+                return redirect()->intended('/add-candidate');
+            }
 
             // Delete OTP record
             $otpRecord->delete();
