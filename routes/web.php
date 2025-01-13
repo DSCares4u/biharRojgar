@@ -65,15 +65,11 @@ Route::get('/sarkari-job-apply-form',[HomeController::class,'sarkariJobApplyForm
 Route::get('/job-app-forms',[HomeController::class,'jobAppForms']);
 
 Route::get('/register',[HomeController::class,'register']);
+
+Route::post('/register',[AuthOtpController::class,'register'])->name('register.store');
+Route::post('/login',[AuthOtpController::class,'login'])->name('login.store');
+
 Route::get('/login',[HomeController::class,'login']);
-
-Route::controller(AuthOtpController::class)->group(function(){
-
-    Route::get('/otp/login','login')->name('otp.login');
-    Route::post('/otp/generate', 'generate')->name('otp.generate');
-    Route::get('/otp/verification/{user_id}', 'verification')->name('otp.verification');
-    Route::post('/otp/login', 'loginWithOtp')->name('otp.getlogin');
-});
 
 Route::get('/get-district-and-state', [JobController::class, 'getDistrictAndState']);
 

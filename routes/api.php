@@ -31,12 +31,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/check-user', [UserController::class, 'checkUser'])->name('check.user');
-Route::post('/register',[UserController::class,'store'])->name('register.store');
-Route::post('/login',[UserController::class,'login'])->name('login.submit');
-Route::get('/register',[UserController::class,'index'])->name('register.index');
-Route::get('/register/view/{id}',[UserController::class,'show']);
-Route::put('/register/edit/{id}',[UserController::class,'update']);
-Route::delete('/register/delete/{id}',[UserController::class,'destroy']);
+// Route::post('/register',[UserController::class,'store'])->name('register.store');
+// Route::post('/login',[UserController::class,'login'])->name('login.submit');
+// Route::get('/register',[UserController::class,'index'])->name('register.index');
+// Route::get('/register/view/{id}',[UserController::class,'show']);
+// Route::put('/register/edit/{id}',[UserController::class,'update']);
+// Route::delete('/register/delete/{id}',[UserController::class,'destroy']);
 
 Route::post('/hire',[HireController::class,'store'])->name('hire.store');
 Route::get('/hire',[HireController::class,'index'])->name('hire.index');

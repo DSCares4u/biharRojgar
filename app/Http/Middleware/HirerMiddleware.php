@@ -14,6 +14,6 @@ class HirerMiddleware
         }
 
         // Redirect to login page with error message if unauthorized
-        return redirect()->route('otp.login')->with('error', 'Access denied. Only hirers can view this page.');
+        return redirect('/login')->with('error', 'Access denied. Only hirers can view this page.');
     }
 }

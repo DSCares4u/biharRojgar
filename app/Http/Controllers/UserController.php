@@ -28,37 +28,37 @@ class UserController extends Controller
         }
     }
 
-    public function store(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string',                   
-            'mobile' => 'required|unique:users',                   
-        ]);
+    // public function store(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'name' => 'required|string',                   
+    //         'mobile' => 'required|unique:users',                   
+    //     ]);
     
-        if ($validator->fails()) {
-            return response()->json([
-                'status' => 422,
-                'error' => $validator->messages()
-            ], 422);
-        } else {    
-            $user = User::create([
-                'name' => $request->name,                                       
-                'mobile' => $request->mobile,                                       
-            ]);
+    //     if ($validator->fails()) {
+    //         return response()->json([
+    //             'status' => 422,
+    //             'error' => $validator->messages()
+    //         ], 422);
+    //     } else {    
+    //         $user = User::create([
+    //             'name' => $request->name,                                       
+    //             'mobile' => $request->mobile,                                       
+    //         ]);
     
-            if ($user) {
-                return response()->json([
-                    'user_id' => $user->id,
-                    'message' => 'User registered successfully'
-                ]);
-            } else {
-                return response()->json([
-                    'status' => 500,
-                    'message' => "Unable to add your Request"
-                ], 500);
-            }
-        }
-    }
+    //         if ($user) {
+    //             return response()->json([
+    //                 'user_id' => $user->id,
+    //                 'message' => 'User registered successfully'
+    //             ]);
+    //         } else {
+    //             return response()->json([
+    //                 'status' => 500,
+    //                 'message' => "Unable to add your Request"
+    //             ], 500);
+    //         }
+    //     }
+    // }
 
     public function checkUser(Request $request)
     {
