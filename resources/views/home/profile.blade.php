@@ -16,12 +16,21 @@
                             <h1 class="text-3xl font-bold text-gray-800">Candidate detailed overview</h1>
                             <p class="text-gray-600 mt-2">Review the submitted details below.</p>
                         </div>
-                        <a href="{{ url('/add-candidate') }}">
-                            <button
-                                class="flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
-                                <i class="fas fa-edit"></i> Edit Details
-                            </button>
-                        </a>
+                        <div class="flex gap-5">
+                           
+                            <a href="{{ url('/add-candidate') }}">
+                                <button
+                                    class="flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
+                                    <i class="fas fa-edit"></i> Edit Details
+                                </button>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="inline-block">
+                                @csrf
+                                <button type="submit"
+                                    class="px-4 py-2 text-white bg-red-500 rounded-lg hover:bg-red-700"> <i class="fa fa-signout"></i> Logout</button>
+                            </form>
+                        </div>
+
 
                     </div>
 
@@ -36,7 +45,7 @@
                             </div>
                             <div class="grid grid-cols-2 gap-4">
                                 <div class="space-y-1">
-                                    <p class="text-sm text-gray-500">Fullname</p>
+                                    <p class="text-sm text-gray-500">Full name</p>
                                     <p class="font-medium capitalize">{{ $data->candidate->name ?? 'N/a' }}</p>
                                 </div>
                                 <div class="space-y-1">
@@ -171,41 +180,20 @@
                             <div class="space-y-4">
                                 <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                                     <div>
-                                        <p class="font-medium">Aadhar Card</p>
                                         <p class="text-sm text-gray-500">
-                                            {{-- {{$investor->aadhar_card}} --}}
-
-                                            <img src="" alt="Company Logo" class="h-20 w-auto">
-                                        </p>
-
-                                        <span class="bg-orange-100 px-3 rounded-xl mt-1 py-1"></span>
+                                            <img src="{{ $data->document && $data->document->photo ? asset('/image/candidate/photo/' . $data->document->photo) : asset('/image/default-placeholder.png') }}"  alt="Candidate Photo"  class="h-20 w-auto"></p>
+                                        <span class="bg-orange-100 px-3 rounded-xl mt-4 py-1">Profile photo</span>
                                     </div>
-                                    {{-- <div class="flex gap-2">
-                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
-                          <i class="fas fa-eye"></i>
-                        </button>
-                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
-                          <i class="fas fa-download"></i>
-                        </button>
-                      </div> --}}
-                                </div>
-                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                                     <div>
-                                        <p class="font-medium">PAN Card</p>
                                         <p class="text-sm text-gray-500">
-                                            <img src="" alt="Company Logo" class="h-20 w-auto">
-                                        </p>
-                                        <span class="bg-orange-100 px-3 rounded-xl mt-1 py-1"></span>
-
+                                            <img src="{{ $data->document && $data->document->id_proof ? asset('/image/candidate/id_proof/' . $data->document->id_proof) : asset('/image/default-placeholder.png') }}"  alt="Candidate Photo"  class="h-20 w-auto"></p>
+                                        <span class="bg-orange-100 px-3 rounded-xl mt-4 py-1">Id Proof</span>
                                     </div>
-                                    {{-- <div class="flex gap-2">
-                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
-                          <i class="fas fa-eye"></i>
-                        </button>
-                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
-                          <i class="fas fa-download"></i>
-                        </button>
-                      </div> --}}
+                                    <div>
+                                        <p class="text-sm text-gray-500">
+                                            <img src="{{ $data->document && $data->document->other_certificate ? asset('/image/candidate/other_certificate/' . $data->document->other_certificate) : asset('/image/default-placeholder.png') }}"  alt="Candidate Photo"  class="h-20 w-auto"></p>
+                                        <span class="bg-orange-100 px-3 rounded-xl mt-4 py-1">Other Certificate</span>
+                                    </div>
                                 </div>
                                 {{-- <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div>
@@ -226,7 +214,7 @@
                     </div>
 
                     <!-- Additional Documents Section (Optional) -->
-                    <div class="bg-white shadow-lg rounded-lg mt-4 mb-6">
+                    {{-- <div class="bg-white shadow-lg rounded-lg mt-4 mb-6">
                         <div class="flex items-center gap-3 p-6">
                             <i class="fas fa-file-alt text-teal-600 text-xl"></i>
                             <h4 class="text-lg font-semibold">Additional Documents</h4>
@@ -239,7 +227,34 @@
                                 </a>
                             </div>
                         </div>
+                    </div> --}}
+                   
+                    <div class="bg-white shadow-lg rounded-lg mt-4 mb-6">
+                        <div class="flex items-center gap-3 p-6">
+                            <i class="fas fa-file-alt text-teal-600 text-xl"></i>
+                            <h4 class="text-lg font-semibold">Applied Applications</h4>
+                        </div>
+                        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            @foreach ($jobs as $item)
+                           <div class="flex justify-between bg-gray-100 p-2">                           
+                            <div class=" p-4 rounded-lg">
+                                <p><strong>Company name : </strong>{{$item->role->hire->company_name}}</p>
+                                <p class="capitalize"><strong>Address : </strong>{{$item->role->hire->city}}, {{$item->role->hire->state}}</p>
+                                <p><strong>Job profie : </strong>{{$item->role->profile}}</p>
+                                <p><strong>Job title : </strong>{{$item->role->title}}</p>
+                                <p><strong>No. of post : </strong>{{$item->role->no_of_post}}</p>
+                                <p><strong>Job type : </strong>{{$item->role->type}}</p>
+                                <p><strong>Experience : </strong>{{$item->role->min_experience}} - {{$item->role->max_experience}} </p>
+                                <p><strong>Expected Salary : </strong>{{$item->role->min_salary}} - {{$item->role->max_salary}} </p>
+                                <p><strong>Website : </strong> <a href="{{ url($item->role->hire->website) }}" target="_blank" class="text-blue-600 hover:text-blue-500 hover:underline" rel="noopener noreferrer">{{ $item->role->hire->website }}
+                                 </a></p>
+                            </div>
+                            <img src="{{ asset('/image/company/logo/' . $item->role->hire->logo)}}"  alt="Candidate Photo"  class="h-20 w-auto">
+                        </div>
+                            @endforeach
+                        </div>
                     </div>
+                   
 
                     <!-- Action Buttons -->
                     {{-- <div class="mt-8 flex flex-wrap gap-4">

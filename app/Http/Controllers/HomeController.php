@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\SarkariJob;
+use App\Models\Job;
 use App\Models\Yojna;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,7 +20,9 @@ class HomeController extends Controller
     
         if ($user) {
             $data = User::with('candidate','document','address')->where('id', $user->id)->first();
-            return view('home.profile', ['data' => $data]);
+            $jobs = Job::with('role','role.hire')->where('user_id', $user->id)->get();
+
+            return view('home.profile', ['data' => $data,'jobs'=>$jobs]);
         }
         return redirect()->route('home')->with('error', 'You are not authorized to view this page.');
     }

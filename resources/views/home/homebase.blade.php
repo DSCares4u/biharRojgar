@@ -22,7 +22,7 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
 
 
     <title>Taskinn Solution - @yield('title')</title>
@@ -154,6 +154,10 @@
                                 Form</a>
                         </li>
                         <li class="md:hidden">
+                            <a href="{{ url('/profile') }}"
+                                class="inline-block px-4 py-1 text-white bg-green-500 rounded cursor-pointer hover:bg-green-700">
+                                Welcome, {{ Auth::user()->name }}
+                            </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="inline-block">
                                 @csrf
                                 <button type="submit"
@@ -166,22 +170,31 @@
                             <a href="{{ url('/login') }}"
                                 class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Sign In</a>
                         </li>
+                        <li class="md:hidden">
+                            <a href="{{ url('/register') }}"
+                                class="inline-block px-4 py-1 text-white bg-green-500 rounded hover:bg-green-700">Sign up</a>
+                        </li>
                     @endguest
                 </ul>
             </div>
-            <div class="hidden items-center md:flex md:justify-end space-x-4 md:space-x-6 md:order-2">
+            <div class="hidden items-center md:flex md:justify-end space-x-4 md:space-x-6 md:order-3">
                 @auth
-                    <div class="flex space-x-4 md:flex md:justify-end ">
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="inline-block">
+                <div class="flex flex-col items-center">
+                    <a href="{{ url('/profile') }}">
+                    <span class="text-sm text-white font-base">Hi, {{ Auth::user()->name }}</span>
+                </a>
+                </div>
+                        {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="inline-block">
                             @csrf
                             <button type="submit"
                                 class="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-700">Logout</button>
-                        </form>
-                    </div>
+                        </form> --}}
                 @endauth
                 @guest
                     <a href="{{ url('/login') }}"
                         class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Sign In</a>
+                    <a href="{{ url('/register') }}"
+                        class="inline-block px-4 py-1 text-white bg-green-500 rounded hover:bg-green-700">Sign Up</a>
                 @endguest
             </div>
         </div>

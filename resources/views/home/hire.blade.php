@@ -430,9 +430,9 @@
                     cache: false,
                     processData: false,
                     success: function(response) {
-                        swal("Success", response.message, "success");
+                        // swal("Success", response.message, "success");
                         $("#addHirer").trigger("reset");
-                        window.open("{{url('')}}", "_self");
+                        window.open("{{url('/hirer')}}", "_self");
                     },
                     error: function(xhr) {
                         if (xhr.status === 422) {

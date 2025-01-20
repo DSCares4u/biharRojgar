@@ -31,7 +31,7 @@
             <div class="relative mt-4">
                 <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
                 <input type="text" placeholder="Search for job"
-                    class="rounded-xl bg-blue-100 py-2 px-12 md:py-4 w-full font-normal focus:outline-none focus:ring-0 border-none" id="search-box">
+                    class="rounded-xl border border-gray-400 bg-blue-100 py-2 px-12 md:py-4 w-full font-normal focus:outline-none focus:ring-0 " id="search-box">
             </div>
             <ul id="search-results" class=" font-normal mt-4 px-1 mb-2 md:mb-0 md:px-10"></ul>
             

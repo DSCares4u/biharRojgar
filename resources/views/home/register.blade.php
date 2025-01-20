@@ -139,12 +139,14 @@
                     cache: false,
                     processData: false,
                     success: function(response) {
-                        swal("Success", response.message, "success");
+                        // swal("Success", response.message, "success");
                         $('#registration-fields').addClass('hidden');
                         $('#otp-fields').removeClass('hidden');
+                        alert("Success: " + response.message);
                     },
                     error: function(xhr, status, error) {
-                        swal("Error", xhr.responseText, "error");
+                        alert("Error: " + xhr.responseText);
+                        // swal("Error", xhr.responseText, "error");
                     }
                 });
             });
@@ -183,11 +185,15 @@
                     cache: false,
                     processData: false,
                     success: function(response) {
-                        swal("Success", response.message, "success");
+                        alert("Success: " + response.message);
+                        // swal("Success", response.message, "success");
+                        window.open("{{url('/profile')}}", "_self");
                     },
                     error: function(xhr, status, error) {
-                        swal("Error", xhr.responseText, "error");
+                        alert("Error: " + xhr.responseText);
+                        // swal("Error", xhr.responseText, "error");
                     }
+                    
                 });
             });
         });

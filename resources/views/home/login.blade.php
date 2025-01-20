@@ -42,11 +42,11 @@
                             </div>
                             <div class="mb-4">
                                 <label for="email" class="block text-white text-sm font-semibold mb-2">Role</label>
-                                <select name="type" id="type"
+                                <select name="is_hirer" id="is_hirer"
                                     class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                                     <option value="">Select Type</option>
-                                    <option value="candidate">Candidate</option>
-                                    <option value="hirer">Hirer</option>
+                                    <option value="0">Candidate</option>
+                                    <option value="1">Hirer</option>
                                 </select>
                                 <p id="type-error" class="text-red-500 text-xs hidden"></p>
                             </div>
@@ -112,10 +112,12 @@
                     success: function(response) {
                         $('#login-fields').addClass('hidden');
                         $('#otp-fields').removeClass('hidden');
-                        swal("Success", response.message, "success");
+                        alert("Success: " + response.message);
+                        // swal("Success", response.message, "success");
                     },
                     error: function(xhr, status, error) {
-                        swal("Error", xhr.responseText, "error");
+                        alert(xhr.responseText);
+                        // swal("Error", xhr.responseText, "error");
                     }
                 });
             });
@@ -154,10 +156,13 @@
                     cache: false,
                     processData: false,
                     success: function(response) {
-                        swal("Success", response.message, "success");
+                        alert("Success: " + response.message);
+                        // swal("Success", response.message, "success");
+                        window.open("{{url('/profile')}}", "_self");
                     },
                     error: function(xhr, status, error) {
-                        swal("Error", xhr.responseText, "error");
+                        alert(xhr.responseText);
+                        // swal("Error", xhr.responseText, "error");
                     }
                 });
             });

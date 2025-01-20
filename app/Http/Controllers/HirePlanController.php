@@ -15,7 +15,7 @@ class HirePlanController extends Controller
      */
     public function index()
     {
-        $hirePlan = HirePlan::orderBy('created_at', 'desc')->get();
+        $hirePlan = HirePlan::get();
         if ($hirePlan->count() > 0) {
             return response()->json([
                 'status' => 200,
