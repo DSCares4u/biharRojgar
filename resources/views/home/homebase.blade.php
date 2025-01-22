@@ -172,7 +172,7 @@
                         </li>
                         <li class="md:hidden">
                             <a href="{{ url('/register') }}"
-                                class="inline-block px-4 py-1 text-white bg-green-500 rounded hover:bg-green-700">Sign up</a>
+                                class="inline-block px-4 py-1 text-white bg-green-500 rounded hover:bg-green-700">Candidate Login</a>
                         </li>
                     @endguest
                 </ul>
@@ -192,9 +192,9 @@
                 @endauth
                 @guest
                     <a href="{{ url('/login') }}"
-                        class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Sign In</a>
+                        class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Employers Login</a>
                     <a href="{{ url('/register') }}"
-                        class="inline-block px-4 py-1 text-white bg-green-500 rounded hover:bg-green-700">Sign Up</a>
+                        class="inline-block px-4 py-1 text-white bg-green-500 rounded hover:bg-green-700">Candidate Register</a>
                 @endguest
             </div>
         </div>

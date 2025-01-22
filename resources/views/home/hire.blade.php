@@ -20,7 +20,7 @@
                                     <th class="px-4 py-1 text-sm font-normal">Type</th>
                                     <th class="px-4 py-1 text-sm font-normal">Qualification</th>
                                     <th class="px-4 py-1 text-sm font-normal">Salary</th>
-                                    <th class="px-4 py-1 text-sm font-normal">Add / Remove JOBS</th>
+                                    {{-- <th class="px-4 py-1 text-sm font-normal">Add / Remove JOBS</th> --}}
                                 </tr>
                             </thead>
                             <tbody>
@@ -115,11 +115,11 @@
                                                 class="py-2 px-2 text-black border w-1/2 text-sm">
                                         </div>
                                     </td>
-                                    <td class="py-2 flex justify-center mt-4 md:mt-0">
+                                    {{-- <td class="py-2 flex justify-center mt-4 md:mt-0">
                                         <button type="button" name="add"
                                             class="add bg-green-500 px-3 py-1 rounded text-white"><i
                                                 class="fa-solid fa-user-plus"></i></button>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             </tbody>
                         </table>
@@ -450,7 +450,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "{{ route('hire.plan.index') }}",
+                url: "{{ route('home.hire.plan.index') }}",
                 success: function(response) {
                     let select = $("#plan_card");
                     select.empty();

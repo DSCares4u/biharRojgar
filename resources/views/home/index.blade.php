@@ -1,5 +1,5 @@
 @extends('home.homebase')
-@section('title','Home')
+@section('title', 'Home')
 <style>
     .faq-item {
         cursor: pointer;
@@ -31,10 +31,11 @@
             <div class="relative mt-4">
                 <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
                 <input type="text" placeholder="Search for job"
-                    class="rounded-xl border border-gray-400 bg-blue-100 py-2 px-12 md:py-4 w-full font-normal focus:outline-none focus:ring-0 " id="search-box">
+                    class="rounded-xl border border-gray-400 bg-blue-100 py-2 px-12 md:py-4 w-full font-normal focus:outline-none focus:ring-0 "
+                    id="search-box">
             </div>
             <ul id="search-results" class=" font-normal mt-4 px-1 mb-2 md:mb-0 md:px-10"></ul>
-            
+
 
             <div class="button flex flex-col sm:flex-row justify-center gap-5 lg:mt-14 sm:items-start md:py-8">
                 <a href="{{ url('/get-job/t&c') }}" class="flex flex-col items-center group">
@@ -59,7 +60,7 @@
                 </a>
             </div>
         </div>
-        <div class="flex items-start md:mt-10">
+        <div class="flex items-start md:mt-10 md:ml-32">
             <img src="{{ asset('/landing.png') }}" class="h-72 sm:h-80 md:h-96 lg:h-96 object-cover" alt="Job Platform">
         </div>
     </div>
@@ -107,6 +108,129 @@
             </div>
         </div>
     </section>
+
+
+    <div class=" p-6  mb-10">
+        <h2 class="text-3xl font-medium text-gray-600 mb-8 text-center">Choose a job type</h2>
+        <div class="grid grid-cols-6 gap-10 text-center mt-20">
+
+            <!-- Work from home -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="fas fa-house-laptop text-4xl text-gray-600 group-hover:text-blue-600 mb-2"></i>
+                <span class="text-sm font-medium text-gray-600 group-hover:text-blue-600">Work from home</span>
+            </div>
+
+            <!-- Internship -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="fas fa-user-graduate text-4xl text-gray-600 group-hover:text-blue-600 mb-2"></i>
+                <span class="text-sm font-medium text-gray-600 group-hover:text-blue-600">Internship</span>
+            </div>
+
+            <!-- Part time -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="fas fa-clock text-4xl text-gray-600 group-hover:text-blue-600 mb-2"></i>
+                <span class="text-sm font-medium text-gray-600 group-hover:text-blue-600">Part time</span>
+            </div>
+
+            <!-- Full time -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="fas fa-briefcase text-4xl text-gray-600 group-hover:text-blue-600 mb-2"></i>
+                <span class="text-sm font-medium text-gray-600 group-hover:text-blue-600">Full time</span>
+            </div>
+
+            <!-- Government job -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="fas fa-building text-4xl text-gray-600 group-hover:text-blue-600 mb-2"></i>
+                <span class="text-sm font-medium text-gray-600 group-hover:text-blue-600">Government job</span>
+            </div>
+
+            <!-- Work abroad -->
+            <div class="flex flex-col items-center group cursor-pointer">
+                <i class="fas fa-passport text-4xl text-gray-600 group-hover:text-blue-600 mb-2"></i>
+                <span class="text-sm font-medium text-gray-600 group-hover:text-blue-600">Work abroad</span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="py-8 px-4 bg- overflow-hidden ">
+        <h2 class="text-3xl font-medium text-gray-600 mb-8 text-center">Trending job roles on Taskinn</h2>
+        <div class="relative overflow-hidden mt-10">
+            <!-- Scrolling container -->
+            <marquee behavior="" direction="" scrollamount="10" onmouseover="this.stop();" onmouseout="this.start();">
+                <div class="flex items-center gap-4" id="callingPrivateCard">
+                    <!-- Job role card -->
+                    <a href="">
+                        <div
+                            class="flex-none w-72 p-4 bg-white hover:bg-orange-100 border border-gray-300 hover:border-orange-400 rounded-lg shadow-sm hover:shadow-md transition duration-150">
+                            <div class="flex items-center gap-3">
+                                <img src="/path/to/icon.png" alt="Counsellor" class="w-8 h-8">
+                                <div>
+                                    <h3 class="text-sm font-medium text-gray-800 hover:text-orange-800">Counsellor (Career /
+                                        Ed.)</h3>
+                                    <p class="text-xs text-gray-500 hover:text-orange-600">395 openings</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Add more cards as needed -->
+                </div>
+            </marquee>
+            <marquee behavior="" direction="" class="mt-5" onmouseover="this.stop();" onmouseout="this.start();">
+                <div class="flex items-center gap-4" id="callingSarkariCard">
+                    <!-- Job role card -->
+                    <a href="">
+                        <div
+                            class="flex-none w-72 p-4 bg-white hover:bg-orange-100 border border-gray-300 hover:border-orange-400 rounded-lg shadow-sm hover:shadow-md transition duration-150">
+                            <div class="flex items-center gap-3">
+                                <img src="/path/to/icon.png" alt="Counsellor" class="w-8 h-8">
+                                <div>
+                                    <h3 class="text-sm font-medium text-gray-800 hover:text-orange-800">Counsellor (Career
+                                        /
+                                        Ed.)</h3>
+                                    <p class="text-xs text-gray-500 hover:text-orange-600">395 openings</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- Add more cards as needed -->
+                </div>
+            </marquee>
+        </div>
+
+    </div>
+
+
+    <div class="bg-green-50 rounded-lg shadow border p-8 flex items-center justify-between m-20 px-20">
+        <!-- Left Section: Image -->
+        <div class="flex-shrink-0">
+            <img src="{{asset('/landing_.png')}}" alt="People" class="h-96 object-cover rounded-lg">
+        </div>
+
+        <!-- Right Section: Content -->
+        <div class="ml-8 text-center md:text-left">
+            <!-- Tagline -->
+            <div
+                class="bg-green-100 text-green-700 text-base uppercase font-semibold px-3 py-1 rounded-full inline-block mb-4">
+                TASKINN FOR EMPLOYERS
+            </div>
+
+            <!-- Main Text -->
+            <h1 class="text-2xl md:text-7xl font-bold text-green-900 my-10 mb-2">Want to hire?</h1>
+            <p class="text-gray-700 text-lg mb-6">
+                Find the best candidate from 5 crore+ active job seekers!
+            </p>
+            <div class="mt-8">
+                <a href="{{ url('/hire') }}"
+                    class="bg-white text-green-600 px-8 py-2 rounded border border-green-600 hover:bg-green-700 hover:text-white">Post
+                    a
+                    Job →</a>
+            </div>
+        </div>
+
+    </div>
+
 
     <div class="max-w-full mx-auto md:px-20 bg-white md:p-10 p-5  mb-20">
         <h2 class="text-4xl font-normal text-gray-600 mb-4">Frequently Asked Questions (Employer)</h2>
@@ -219,6 +343,8 @@
                     url: "{{ route('home.sarkari-job.index') }}",
                     success: function(response) {
                         let table = $("#callingSarkariJob");
+                        let card = $("#callingSarkariCard");
+                        card.empty();
                         table.empty();
                         let data = response.data;
 
@@ -229,6 +355,26 @@
                         data.forEach((data) => {
                             table.append(`
                                 <a href="{{ url('/sarkari-job') }}" class="hover:underline hover:text-blue-400"><li>${data.name}</li></a>
+                            `);
+
+                            let logo = data.logo ?
+                                `<img src="{{ asset('/image/sarkari/logo/${data.logo}') }}" class="w-8 h-8" alt="">` :
+                                `<div class="w-8 h-8">${data.name.charAt(0)}</div>`;
+                            card.append(`
+                                 <a href="{{ url('/sarkari-job') }}">
+                                    <div
+                                        class="flex-none w-72 p-4 bg-white hover:bg-orange-100 border border-gray-300 hover:border-orange-400 rounded-lg shadow-sm hover:shadow-md transition duration-150">
+                                        <div class="flex items-center gap-3">
+                                            ${logo}
+                                            <div>
+                                                <h3 class="text-sm font-medium text-gray-800 hover:text-orange-800">
+                                                    ${data.name.length > 25 ? data.name.substr(0, 25) + '...' : data.name}
+                                                </h3>
+                                                <p class="text-xs text-gray-500 hover:text-orange-600">${data.no_of_post} openings</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
                             `);
                         });
 
@@ -243,6 +389,8 @@
                     url: "{{ route('home.role.index') }}",
                     success: function(response) {
                         let table = $("#callingPrivateJob");
+                        let card = $("#callingPrivateCard");
+                        card.empty();
                         table.empty();
                         let data = response.data;
 
@@ -253,6 +401,24 @@
                         data.forEach((data) => {
                             table.append(`
                                 <a href="{{ url('/private-job') }}" class="hover:underline hover:text-blue-400"><li>${data.title}</li></a>
+                            `);
+                            let logo = data.hire.logo ?
+                                `<img src="{{ asset('/image/company/logo/${data.hire.logo}') }}" class="w-8 h-8" alt="">` :
+                                `<div class="w-8 h-8">${data.title.charAt(0)}</div>`;
+                            card.append(`
+                                 <a href="{{ url('/private-job') }}">
+                                    <div class="flex-none w-72 p-4 bg-white hover:bg-orange-100 border border-gray-300 hover:border-orange-400 rounded-lg shadow-sm hover:shadow-md transition duration-150">
+                                        <div class="flex items-center gap-3">
+                                            ${logo}
+                                            <div>
+                                                <h3 class="text-sm font-medium text-gray-800 hover:text-orange-800">
+                                                    ${data.title.length > 25 ? data.title.substr(0, 25) + '...' : data.title}
+                                                </h3>
+                                                <p class="text-xs text-gray-500 hover:text-orange-600">${data.no_of_post} openings</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
                             `);
                         });
 
@@ -370,6 +536,9 @@
             }
         });
     </script>
+
+
+
 
 
 @endsection

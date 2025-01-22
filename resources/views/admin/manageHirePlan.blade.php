@@ -147,6 +147,11 @@
                     features: $('#features').val(),
                     price: $('#price').val(),
                 };
+
+                // let features = $("#features").val().split("\n");
+
+                // features = features.filter(feature => feature.trim() !== '');
+                // formData.append('features', JSON.stringify(features));
                 $.ajax({
                     type: 'PUT',
                     url: `{{url('/api/hire-plan/edit/${id}')}}`,

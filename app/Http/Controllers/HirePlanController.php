@@ -29,6 +29,22 @@ class HirePlanController extends Controller
         }
     }
 
+    public function homeHirePlanIndex()
+    {
+        $hirePlan = HirePlan::where('status',1)->get();
+        if ($hirePlan->count() > 0) {
+            return response()->json([
+                'status' => 200,
+                'data' => $hirePlan
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'data' => "No Records found"
+            ], 404);
+        }
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
