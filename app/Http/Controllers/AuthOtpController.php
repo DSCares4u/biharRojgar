@@ -59,7 +59,7 @@ class AuthOtpController extends Controller
 
             try {
                 Mail::send('emails.otp', ['otp' => $otp], function ($message) use ($request) {
-                    $message->to($request->email)->subject('Your OTP for Registration');
+                    $message->to($request->email)->subject('Taskinn Solution OTP for Registration');
                 });
 
                 return response()->json(['success' => true, 'message' => 'OTP sent successfully.']);
@@ -220,13 +220,13 @@ class AuthOtpController extends Controller
 
             // Clear session data
             $request->session()->forget('user_data');
-            // if ($user->isHirer == 1) {
-            //     return redirect()->intended('/home-hirer');
-            // } else {
-            //     return redirect()->intended('/add-candidate');
-            // }
+            if ($user->isHirer == 1) {
+                $hirer = true;
+            } else {
+                $hirer = false;
+            }
 
-            return response()->json(['success' => true, 'message' => 'Login successful.']);
+            return response()->json(['success' => true,'isHirer'=> $hirer, 'message' => 'Login successful.']);
         }
     }
    

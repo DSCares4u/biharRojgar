@@ -87,12 +87,22 @@
                 display: none;
             }
         }
+
+        #loader {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+
+        
     </style>
 </head>
 
 <body class="roboto-medium bg-gray-100">
 
-    <nav class="bg-[#4834d4] border-gray-200 dark:bg-gray-900 md:fixed w-full md:top-0 z-20">
+    <nav class="bg-violet-400 border-gray-200 dark:bg-gray-900 md:fixed w-full md:top-0 z-20">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4 px-4">
 
             <button data-collapse-toggle="navbar-user" type="button"
@@ -107,10 +117,11 @@
                 </svg>
             </button>
             <a href="{{ url('') }}" class="flex flex-col space-x-3 rtl:space-x-reverse">
-                <span
+                <img src="{{asset('/logo.png')}}" alt="" class="h-12 w-24">
+                {{-- <span bg-[#4834d4]
                     class="self-center text-3xl font-bold text-white whitespace-nowrap dark:text-white tracking-widest">Taskinn
                     Solutions
-                </span>
+                </span> --}}
             </a>
             <div class="hidden w-full md:flex md:w-auto md:order-1 md:justify-between" id="navbar-user">
                 <ul
@@ -168,11 +179,11 @@
                     @guest
                         <li class="md:hidden">
                             <a href="{{ url('/login') }}"
-                                class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Sign In</a>
+                                class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Login</a>
                         </li>
                         <li class="md:hidden">
                             <a href="{{ url('/register') }}"
-                                class="inline-block px-4 py-1 text-white bg-green-500 rounded hover:bg-green-700">Candidate Login</a>
+                                class="inline-block px-4 py-1 text-white bg-green-500 rounded hover:bg-green-700">Register</a>
                         </li>
                     @endguest
                 </ul>
@@ -192,9 +203,9 @@
                 @endauth
                 @guest
                     <a href="{{ url('/login') }}"
-                        class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Employers Login</a>
+                        class="inline-block px-4 py-1 text-white bg-blue-500 rounded hover:bg-blue-700">Login</a>
                     <a href="{{ url('/register') }}"
-                        class="inline-block px-4 py-1 text-white bg-green-500 rounded hover:bg-green-700">Candidate Register</a>
+                        class="inline-block px-4 py-1 text-white bg-green-500 rounded hover:bg-green-700">Register</a>
                 @endguest
             </div>
         </div>

@@ -50,15 +50,15 @@
                                 </select>
                                 <p id="type-error" class="text-red-500 text-xs hidden"></p>
                             </div>
-                                <div class="flex flex-col sm:flex-row items-center justify-between mt-8">
-                                    <a href="{{ url('/register') }}"
-                                        class="text-white hover:text-gray-300 font-bold rounded focus:outline-none focus:shadow-outline">Don't
-                                        have an Account?</a>
-                                    <button type="button" id="sendOtpButton"
-                                        class="bg-[#ffa801] hover:bg-[#ffa601c0] font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto mb-4 sm:mb-0">
-                                        Login now
-                                    </button>
-                                </div>
+                            <div class="flex flex-col sm:flex-row items-center justify-between mt-8">
+                                <a href="{{ url('/register') }}"
+                                    class="text-white hover:text-gray-300 font-bold rounded focus:outline-none focus:shadow-outline">Don't
+                                    have an Account?</a>
+                                <button type="button" id="sendOtpButton"
+                                    class="bg-[#ffa801] hover:bg-[#ffa601c0] font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto mb-4 sm:mb-0">
+                                    Login now
+                                </button>
+                            </div>
                         </div>
 
                         <div id="otp-fields" class="hidden">
@@ -78,7 +78,11 @@
                         </div>
 
                     </form>
+                    <div id="loader" style="display: none;">
+                        <img src="{{ asset('loader.gif') }}" alt="Loading..." />
+                    </div>
                 </div>
+               
             </div>
         </div>
     </div>
@@ -87,6 +91,7 @@
         $(document).ready(function() {
             $('#sendOtpButton').on('click', function(e) {
                 e.preventDefault();
+                $('#loader').show();
 
                 const email = $('#email').val().trim();
 
@@ -112,10 +117,12 @@
                     success: function(response) {
                         $('#login-fields').addClass('hidden');
                         $('#otp-fields').removeClass('hidden');
+                        $('#loader').hide();
                         alert("Success: " + response.message);
                         // swal("Success", response.message, "success");
                     },
                     error: function(xhr, status, error) {
+                        $('#loader').hide();
                         alert(xhr.responseText);
                         // swal("Error", xhr.responseText, "error");
                     }
@@ -125,7 +132,7 @@
             // Handle OTP Verification
             $('#loginUser').on('submit', function(e) {
                 e.preventDefault();
-
+                $('#loader').show();
                 const otp = $('#otp').val().trim();
                 const email = $('#email').val().trim();
 
@@ -157,10 +164,15 @@
                     processData: false,
                     success: function(response) {
                         alert("Success: " + response.message);
-                        // swal("Success", response.message, "success");
-                        window.open("{{url('/profile')}}", "_self");
+                        $('#loader').hide();
+                        if (response.isHirer) { // Ensure `isHirer` is returned in the response
+                            window.location.href = "{{ url('/home-hirer') }}";
+                        } else {
+                            window.location.href = "{{ url('/profile') }}";
+                        }
                     },
                     error: function(xhr, status, error) {
+                        $('#loader').hide();
                         alert(xhr.responseText);
                         // swal("Error", xhr.responseText, "error");
                     }

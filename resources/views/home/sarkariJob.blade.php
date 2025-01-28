@@ -14,15 +14,81 @@
             </div>
             <div class="flex flex-col md:flex-row mb-4 w-full">
                 <input type="text" id="searchNameRole" placeholder="Search by Title/ Name"
-                    class="border p-2 w-full md:w-1/2 mr-0 md:mr-2 rounded-lg mb-2 md:mb-0">
+                    class="border font-light p-2 w-full md:w-1/2 mr-0 md:mr-2 rounded-lg mb-2 md:mb-0">
                 <input type="text" id="searchCityState" placeholder="Search by Location"
-                    class="border p-2 w-full md:w-1/2 ml-0 md:ml-2 rounded-lg">
+                    class="border font-light p-2 w-full md:w-1/2 ml-0 md:ml-2 rounded-lg">
                 <button id="searchButton"
                     class="mt-2 md:mt-0 md:ml-2 bg-blue-500 text-white p-2 rounded-lg w-full md:w-auto">Search</button>
             </div>
             <div class="card" id="callingData"></div>
         </div>
-        <div class="flex flex-col w-full md:w-1/4 md:fixed right-2 top-1 mt-6 md:mt-20 ">
+
+        <div class="p-4 bg-white rounded-lg shadow mt-12">
+            <h2 class="text-lg font-semibold mb-4">Filters</h2>
+
+            <!-- Date Posted Filter -->
+            <div class="mb-6">
+                <h3 class="font-medium text-gray-700 mb-2">Date posted</h3>
+                <div class="space-y-2">
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="date-posted" class="text-indigo-600" checked />
+                        <span>All</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="date-posted" class="text-indigo-600" />
+                        <span>Last 24 hours</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="date-posted" class="text-indigo-600" />
+                        <span>Last 3 days</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="date-posted" class="text-indigo-600" />
+                        <span>Last 7 days</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Distance Filter -->
+            <div class="mb-6">
+                <h3 class="font-medium text-gray-700 mb-2">Distance</h3>
+                <div class="space-y-2">
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="distance" class="text-indigo-600" checked />
+                        <span>All</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="distance" class="text-indigo-600" />
+                        <span>Within 5 km</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="distance" class="text-indigo-600" />
+                        <span>Within 10 km</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="distance" class="text-indigo-600" />
+                        <span>Within 20 km</span>
+                    </label>
+                    <label class="flex items-center space-x-2">
+                        <input type="radio" name="distance" class="text-indigo-600" />
+                        <span>Within 50 km</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Salary Filter -->
+            <div>
+                <h3 class="font-medium text-gray-700 mb-2">Salary</h3>
+                <div class="flex items-center space-x-2">
+                    <span class="text-gray-700">₹0</span>
+                    <input type="range" min="0" max="150000"
+                        class="flex-1 h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-indigo-600" />
+                    <span class="text-gray-700">1.5 Lakhs</span>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">Minimum monthly salary</p>
+            </div>
+        </div>
+        {{-- <div class="flex flex-col w-full md:w-1/4 md:fixed right-2 top-1 mt-6 md:mt-20 ">
             <div
                 class="w-full bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 mb-5 md:mb-0">
                 <div class="price mt-2 mb-4">
@@ -59,7 +125,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
 
@@ -116,26 +182,26 @@
                                         <div class="details flex flex-col mt-4 md:flex-row">
                                             <div class="logo w-full md:w-2/12 flex justify-center md:justify-start mb-4 md:mb-0">${logo}</div>
                                             <div class="w-full md:w-6/12 flex flex-col md:ml-4">
-                                                <div class="flex justify-between text-blue-500 font-bold">
+                                                <div class="flex justify-between text-blue-500 font-medium">
                                                     <h5>${job.role}</h5>
                                                 </div>
                                                 <div class="mt-1">
-                                                    <h5 class="text-sm text-gray-500 font-semibold">No. Of Post: ${job.no_of_post}</h5>
+                                                    <h5 class="text-sm text-gray-500 font-medium">No. Of Post: ${job.no_of_post}</h5>
                                                     <div class="mt-1">
-                                                        <h5 class="text-sm text-gray-500 font-semibold">Age: ${job.min_age} - ${job.max_age} Years</h5>
+                                                        <h5 class="text-sm text-gray-500 font-medium">Age: ${job.min_age} - ${job.max_age} Years</h5>
                                                     </div>
                                                     <div class="mt-1">
-                                                        <h5 class="text-sm text-gray-500 font-semibold">Salary: ${job.min_salary} - ${job.max_salary}</h5>
+                                                        <h5 class="text-sm text-gray-500 font-medium">Salary: ${job.min_salary} - ${job.max_salary}</h5>
                                                     </div>
                                                 </div>
                                                 <div class="mt-1">
-                                                    <h5 class="text-sm text-gray-500 font-semibold">Job Type: ${job.job_type} Government</h5>
+                                                    <h5 class="text-sm text-gray-500 font-medium">Job Type: ${job.job_type} Government</h5>
                                                 </div>
                                                 <div class="mt-1">
-                                                    <h5 class="text-sm text-gray-500 font-semibold">Qualification: ${job.qualification}</h5>
+                                                    <h5 class="text-sm text-gray-500 font-medium">Qualification: ${job.qualification}</h5>
                                                 </div>
                                                 <div class="mt-1">
-                                                    <h5 class="text-sm text-gray-500 font-semibold">Skills req: ${job.skills}</h5>
+                                                    <h5 class="text-sm text-gray-500 font-medium">Skills req: ${job.skills}</h5>
                                                 </div>
                                                 <div class="flex justify-between mt-2">
                                                     <div class="mt-1">
@@ -146,9 +212,9 @@
                                             </div>
                                             <div class="w-full md:w-3/12 flex flex-col justify-between">
                                                 <div class="mt-2">
-                                                    <h5 class="text-gray-500 font-semibold">Opening Date: ${job.opening_date}</h5>
-                                                    <h5 class="text-gray-500 font-semibold">Closing Date: ${job.closing_date}</h5>                                                    
-                                                    <h5 class="text-sm text-gray-500 font-semibold">Openings for: ${job.location}</h5>
+                                                    <h5 class="text-gray-500 font-medium">Opening Date: ${job.opening_date}</h5>
+                                                    <h5 class="text-gray-500 font-medium">Closing Date: ${job.closing_date}</h5>                                                    
+                                                    <h5 class="text-sm text-gray-500 font-medium">Openings for: ${job.location}</h5>
                                                 </div>
                                                 <div class="button flex justify-end mt-4 md:mt-0">
                                                     <a href="{{url('/viewSarkariJobForm/${job.id}')}}">

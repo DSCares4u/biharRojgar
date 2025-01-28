@@ -2,8 +2,22 @@
 @section('title', 'Hire')
 @section('content')
 
+    <style>
+        /* Remove spin buttons for number inputs */
+        input[type="number"].no-spin::-webkit-inner-spin-button,
+        input[type="number"].no-spin::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"].no-spin {
+            -moz-appearance: textfield;
+            /* Firefox */
+        }
+    </style>
+
     <div class="container font-sans flex flex-col md:flex-col mb-10">
-        <div class="bg-gray-100 lg:mx-8 border border-gray md:mt-3 w-full md:8/12 lg:w-9/12">
+        <div class="bg-white lg:mx-8 border border-gray md:mt-3 w-full md:8/12 lg:w-9/12">
             <form class="md:p-5 p-2 flex flex-col" id="addHirer">
                 <h2 class="text-lg font-semibold mb-2">Post a job</h2>
                 <div class="flex flex-col border rounded border-gray-300 p-2">
@@ -17,7 +31,7 @@
                                     <th class="px-2 py-1 text-sm font-normal">Experience</th>
                                     <th class="px-4 py-1 text-sm font-normal">Gender</th>
                                     <th class="px-4 py-1 text-sm font-normal">Preferred Language</th>
-                                    <th class="px-4 py-1 text-sm font-normal">Type</th>
+                                    {{-- <th class="px-4 py-1 text-sm font-normal">Type</th> --}}
                                     <th class="px-4 py-1 text-sm font-normal">Qualification</th>
                                     <th class="px-4 py-1 text-sm font-normal">Salary</th>
                                     {{-- <th class="px-4 py-1 text-sm font-normal">Add / Remove JOBS</th> --}}
@@ -43,46 +57,50 @@
                                     </td> --}}
                                     <td class="py-1 text-center">
                                         <div
-                                            class="text-xs text-gray-400 flex flex-col md:flex-row md:items-center md:justify-center">
-                                            <div class="flex flex-row items-center justify-between w-full md:w-auto">
-                                                <span>Min:</span>
-                                                <input type="text" min="0" name="inputs[0][min_experience]"
+                                            class="text-xs text-gray-400 gap-1 flex flex-col md:flex-row md:items-center md:justify-center">
+                                            <div
+                                                class="flex flex-row border items-center justify-between w-full md:w-auto group ">
+                                                <span class="pl-2">Min:</span>
+                                                <input type="number" min="0" name="inputs[0][min_experience]"
                                                     placeholder="0"
-                                                    class="appearance-none border text-black px-1 py-2 w-1/2 text-xs ml-1">
+                                                    class="focus:outline-none appearance-none text-black px-1 py-2 w-1/2 text-xs no-spin" />
                                             </div>
                                             <div
-                                                class="flex flex-row items-center justify-between w-full md:w-auto mt-1 md:mt-0 md:ml-2">
-                                                <span>Max:</span>
-                                                <input type="text" min="0" name="inputs[0][max_experience]"
-                                                    placeholder="5y"
-                                                    class="appearance-none border text-black px-1 py-2 w-1/2 text-xs ml-1">
+                                                class="text-xs text-gray-400 flex flex-col md:flex-row md:items-center md:justify-center">
+                                                <div
+                                                    class="flex flex-row border items-center justify-between w-full md:w-auto group ">
+                                                    <span class="pl-2">Max:</span>
+                                                    <input type="number" min="0" name="inputs[0][max_experience]"
+                                                        placeholder="0"
+                                                        class="focus:outline-none appearance-none text-black px-1 py-2 w-1/2 text-xs no-spin" />
+                                                </div>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="py-1 text-xs">
                                         <select name="inputs[0][gender]"
-                                            class="border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                            class="border text-center py-2 mx-auto w-full text-sm text-gray-400"
                                             id="gender">
-                                            <option value="" class="border text-center w-full">Select</option>
-                                            <option value="male" class="border w-full text-sm">Male</option>
-                                            <option value="female" class="border w-full text-sm">Female</option>
-                                            <option value="male & female" class="border w-full text-sm">Male & Female
+                                            <option value="" class="">Select</option>
+                                            <option value="male" class="">Male</option>
+                                            <option value="female" class="">Female</option>
+                                            <option value="male & female" class="">Male & Female
                                             </option>
-                                            <option value="others" class="border w-full text-sm">Others</option>
+                                            <option value="others" class="">Others</option>
                                         </select>
                                     </td>
                                     <td class="py-1">
                                         <select name="inputs[0][preferred_lang]"
-                                            class="border text-center py-2 px-3 w-full text-sm text-gray-400"
+                                            class="border text-center py-2  w-full mx-auto text-sm text-gray-400"
                                             id="preferred_lang">
-                                            <option value="" class="border text-center w-full">Select</option>
-                                            <option value="english" class="border w-full text-sm">English</option>
-                                            <option value="hindi" class="border w-full text-sm">Hindi</option>
-                                            <option value="hindi english" class="border w-full text-sm ">Hindi + English
+                                            <option value="" class="">Select</option>
+                                            <option value="english" class="">English</option>
+                                            <option value="hindi" class="">Hindi</option>
+                                            <option value="hindi english" class="">Hindi + English
                                             </option>
                                         </select>
                                     </td>
-                                    <td class="py-1">
+                                    {{-- <td class="py-1">
                                         <select name="inputs[0][type]"
                                             class="border text-center py-2 px-2 w-full text-sm text-gray-400"
                                             id="type">
@@ -93,26 +111,26 @@
                                             <option value="work from Home" class="border w-full text-sm">Work From Home
                                             </option>
                                         </select>
-                                    </td>
+                                    </td> --}}
                                     <td class="py-1">
                                         <select name="inputs[0][qualification]"
-                                            class="border text-center py-2 px-2 w-full text-sm text-gray-400"
+                                            class="border text-center mx-auto py-2  w-full text-sm text-gray-400"
                                             id="qualification">
-                                            <option value="" class="border text-center w-full">Select</option>
-                                            <option value="masters" class="border w-full text-sm">Masters</option>
-                                            <option value="graduate" class="border w-full text-sm">Graduate</option>
-                                            <option value="12th Pass" class="border w-full text-sm">12th Pass</option>
-                                            <option value="10th Pass" class="border w-full text-sm">10th Pass</option>
-                                            <option value="below 10th" class="border w-full text-sm">Below 10th</option>
-                                            <option value="others" class="border w-full text-sm">Others</option>
+                                            <option value="" class="">Select</option>
+                                            <option value="masters" class="">Masters</option>
+                                            <option value="graduate" class="">Graduate</option>
+                                            <option value="12th Pass" class="">12th Pass</option>
+                                            <option value="10th Pass" class="">10th Pass</option>
+                                            <option value="below 10th" class="">Below 10th</option>
+                                            <option value="others" class="">Others</option>
                                         </select>
                                     </td>
                                     <td class="py-1 text-center">
                                         <div class="text-xs text-gray-400 flex gap-1">
-                                            <input type="text" name="inputs[0][min_salary]" placeholder="From"
-                                                class="border py-2 px-2 w-1/2 text-black text-sm">
-                                            <input type="text" name="inputs[0][max_salary]" placeholder="To"
-                                                class="py-2 px-2 text-black border w-1/2 text-sm">
+                                            <input type="number" name="inputs[0][min_salary]" placeholder="From"
+                                                class="border no-spin py-2 px-2 w-1/2 text-black text-sm">
+                                            <input type="number" name="inputs[0][max_salary]" placeholder="To"
+                                                class="py-2 no-spin px-2 text-black border w-1/2 text-sm">
                                         </div>
                                     </td>
                                     {{-- <td class="py-2 flex justify-center mt-4 md:mt-0">
@@ -126,19 +144,62 @@
                     </div>
                 </div>
                 <p id="error-roles" class="text-red-500 text-xs mb-4 font-semibold error-message"></p>
+                <div class="mb-4 flex flex-col gap-2">
+                    <label class="block text-sm font-normal text-gray-700">
+                        Job Type <span class="text-red-500">*</span>
+                    </label>
+                    <div class="flex gap-10 text-sm">
+                        <!-- Full Time Jobs -->
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="inputs[0][type]" value="Full time"
+                                class="form-radio h-5 w-5 text-blue-500 border-gray-300 focus:ring-blue-400" /> <span
+                                class="text-gray-700 font-normal">Full Time Jobs</span>
+                        </label>
+
+                        <!-- Part Time Jobs -->
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="inputs[0][type]" value="Part time"
+                                class="form-radio h-5 w-5 text-blue-500 border-gray-300 focus:ring-blue-400" /> <span
+                                class="text-gray-700 font-normal">Part Time Jobs</span>
+                        </label>
+
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="inputs[0][type]" value="Temporary"
+                                class="form-radio h-5 w-5 text-blue-500 border-gray-300 focus:ring-blue-400" /> <span
+                                class="text-gray-700 font-normal">Temporary Job</span>
+                        </label>
+
+                        <!-- Work From Home -->
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="inputs[0][type]" value="Work from home"
+                                class="form-radio h-5 w-5 text-blue-500 border-gray-300 focus:ring-blue-400" /> <span
+                                class="text-gray-700 font-normal">Work From Home</span>
+                        </label>
+
+                        <!-- Internships -->
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="inputs[0][type]" value="Internships"
+                                class="form-radio h-5 w-5 text-blue-500 border-gray-300 focus:ring-blue-400" /> <span
+                                class="text-gray-700 font-normal">Internships</span>
+                        </label>
+
+                    </div>
+                </div>
+
                 <div class="mb-3 flex gap-2">
                     <div class="mb-3  items-center w-1/2 font-normal">
-                        <label for="city" class="block text-gray-700 text-sm mb-2 font-normal">City</label>
+                        <label for="city" class="block text-gray-700 text-sm mb-2 font-normal">City <span
+                                class="text-red-500">*</span></label>
                         <input type="text" id="city" name="city"
-                            class="shadow appearance-none border py-1 px-2 w-full font-normal"placeholder="Purnea"
-                            required>
+                            class="shadow appearance-none border py-1 px-2 w-full font-light"placeholder="Purnea" required>
                         <p id="error-city" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3  items-center w-1/2 font-normal">
                         <label for="state"
-                            class="block text-gray-700 text-sm appearance-none mb-2  px-2 w-full font-normal">State</label>
+                            class="block text-gray-700 text-sm appearance-none mb-2  px-2 w-full font-normal">State <span
+                                class="text-red-500">*</span></label>
                         <select id="state" name="state"
-                            class="shadow appearance-none border py-1 px-2 w-full font-normal">
+                            class="shadow appearance-none border py-1 px-2 w-full font-light">
                             <option value="">Select State</option>
                             <option value="Andhra Pradesh">Andhra Pradesh</option>
                             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -182,9 +243,10 @@
                     </div>
                 </div>
                 <div class="mb-3  items-center font-normal">
-                    <label for="description" class="block text-gray-700 text-sm mb-2 ">Job Description</label>
+                    <label for="description" class="block text-gray-700 text-sm mb-2 ">Job Description <span
+                            class="text-red-500">*</span></label>
                     <textarea name="description" id="description" cols="20" rows="2"placeholder="Type Or Details Of Job Here"
-                        class="shadow appearance-none border py-1 px-2 w-full"></textarea>
+                        class="shadow appearance-none border py-1 px-2 w-full font-light"></textarea>
                     <p id="error-description" class="text-red-500 text-xs font-semibold error-message"></p>
                 </div>
                 <div class="mb-3 flex items-center">
@@ -193,37 +255,44 @@
                 <div class="mb-3 flex gap-2 font-normal">
                     <div class="mb-3 items-center w-1/2">
                         <label for="company_name" class="block text-gray-700 text-sm mb-2 ">Hiring for (Company
-                            name)</label>
+                            name) <span class="text-red-500">*</span></label>
                         <input type="text" id="company_name" name="company_name"
-                            class="shadow appearance-none border py-1 px-2 w-full"placeholder="Abc Pvt. Ltd." required>
+                            class="shadow appearance-none border py-1 px-2 w-full font-light"placeholder="Abc Pvt. Ltd."
+                            required>
                         <p id="error-company_name" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3  items-center w-1/2">
                         <label for="website" class="block text-gray-700 text-sm mb-2 ">Company's Website (if any)</label>
                         <input type="url" id="website" name="website"
-                            class="shadow appearance-none border py-1 px-2 w-full"placeholder="abc.com" required>
+                            class="shadow appearance-none border py-1 px-2 w-full font-light"placeholder="abc.com"
+                            required>
                         <p id="error-website" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                 </div>
                 <div class="mb-3 flex gap-2 font-normal">
                     <div class="mb-3  items-center w-1/2">
-                        <label for="mobile" class="block text-gray-700 text-sm mb-2 ">Phone</label>
+                        <label for="mobile" class="block text-gray-700 text-sm mb-2 ">Phone <span
+                                class="text-red-500">*</span></label>
                         <input type="tel" id="mobile" name="mobile"
-                            class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" required>
+                            class="shadow appearance-none border py-1 px-2 w-full font-light"placeholder="9876543210"
+                            required>
                         <p id="error-mobile" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3  items-center w-1/2">
                         <label for="alt_mobile" class="block text-gray-700 text-sm mb-2 ">Alternate Phone</label>
                         <input type="tel" id="alt_mobile" name="alt_mobile"
-                            class="shadow appearance-none border py-1 px-2 w-full"placeholder="9876543210" required>
+                            class="shadow appearance-none border py-1 px-2 w-full font-light"placeholder="9876543210"
+                            required>
                         <p id="error-alt_mobile" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                 </div>
                 <div class="flex gap-2 items-center font-normal">
                     <div class="mb-3  items-center w-1/2">
-                        <label for="email" class="block text-gray-700 text-sm mb-2 ">Email</label>
+                        <label for="email" class="block text-gray-700 text-sm mb-2 ">Email <span
+                                class="text-red-500">*</span></label>
                         <input type="email" id="email" name="email"
-                            class="shadow appearance-none border py-1 px-2 w-full" placeholder="roni@gmail.com" required>
+                            class="shadow appearance-none border py-1 px-2 w-full font-light" placeholder="roni@gmail.com"
+                            required>
                         <p id="error-email" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                     <div class="mb-3 items-center w-1/2">
@@ -277,18 +346,18 @@
                     <h3 class="text-lg font-semibold">Job Posting Service</h3>
                 </div>
                 <ul id="planCharge">
-                    <li class="flex justify-between text-base text-gray-500">
+                    <li class="flex justify-between text-base text-gray-500 font-medium">
                         <p>Free Localities</p>
-                        <p class="font-bold">Rs. 500</p>
+                        <p class="font-medium">Rs. 500</p>
                     </li>
                     <li class="flex justify-between text-base text-gray-500">
                         <p>Gold Job</p>
-                        <p class="font-bold">Rs. 500</p>
+                        <p class="font-medium">Rs. 500</p>
                     </li>
                     <hr>
                     <li class="flex justify-between text-base text-gray-500">
                         <p>Total Payment</p>
-                        <p class="font-bold">Rs. 1000</p>
+                        <p class="font-medium">Rs. 1000</p>
                     </li>
                 </ul>
                 <div id="payBtn2" class=" flex justify-center items-center">
@@ -432,7 +501,7 @@
                     success: function(response) {
                         // swal("Success", response.message, "success");
                         $("#addHirer").trigger("reset");
-                        window.open("{{url('/hirer')}}", "_self");
+                        window.open("{{ url('/home-hirer') }}", "_self");
                     },
                     error: function(xhr) {
                         if (xhr.status === 422) {
@@ -464,21 +533,46 @@
 
                         // Map each feature to an HTML list item and join them into a single string
                         let features = featuresArray.map(feature =>
-                            `<li class="flex font-medium text-[13px] mt-2overflow-y-hidden"><img src="{{ url('/icons/correct.png') }}" class="h-4 mr-2 mt-1" alt="">${feature}</li>`
+                            `<li class="flex font-light text-[12px] mt-2overflow-y-hidden"><img src="{{ url('/icons/correct.png') }}" class="h-4 mr-2 mt-1" alt="">${feature}</li>`
                         ).join('');
 
+                        let Line = '';
+                        let Background = '';
+
+                        if (plan.price == '0') {
+                            Line = `<div class="line bg-green-500 mt-10">
+                                        <hr class="h-2">
+                                    </div>`;
+                            Background = `bg-white hover:bg-green-200`;
+                        } else if (plan.price == '266') {
+                            Line = `<div class="line bg-orange-500 mt-10">
+                                        <hr class="h-2">
+                                    </div>`;
+                            Background = `bg-white hover:bg-orange-200`;
+                        } else {
+                            Line = `<div class="line bg-blue-500 mt-10">
+                                        <hr class="h-2">
+                                    </div>`;
+                            Background = `bg-white hover:bg-blue-100`;
+                        }
+
                         select.append(`
-                                <label class="md:w-[25%] md:h-[350px] w-[200px] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer">
+                                <label class="md:w-[25%] ${Background}  md:h-[350px] w-[200px] h-[300px]  border border-[#006266] p-2 rounded shadow cursor-pointer">
                                     <input type="radio" name="plan_id" value="${plan.id}" data-plan-name="${plan.name}" data-plan-charge="${plan.price}" class="hidden" />
                                     <div class="price flex justify-between">
-                                        <h3 class="text-lg font-semibold">${plan.name}</h3>
-                                        <h3 class="text-lg font-semibold">Rs. ${plan.price}</h3>
+                                        <div>
+                                            <h3 class="text-lg font-medium">${plan.name}</h3>
+                                            <h3 class="text-sm font-light">Most Popular</h3>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-lg font-medium">₹ ${plan.price}</h3>
+                                            <h3 class="text-sm font-light">Unlimited</h3>
+                                            </div>
                                     </div>
-                                    <div class="line bg-orange-500 mt-20">
-                                        <hr class="h-2">
-                                    </div>
+                                    <a herf='' class='text-xs text-blue-400 hover:text-blue-600'>See Preview</a>
+                                    ${Line}
                                     <ul class="mt-3 ">
-                                        <li class="text-gray-600 text-[13px]">Normal x applications</li>
+                                        <li class="text-gray-600 text-[13px]">Features : </li>
                                         ${features}
                                     </ul>
                                 </label>
@@ -489,8 +583,10 @@
                     document.querySelectorAll('#plan_card label').forEach(label => {
                         label.addEventListener('click', () => {
                             document.querySelectorAll('#plan_card label').forEach(l => l
-                                .classList.remove('border-orange-500'));
+                                .classList.remove('border-orange-500',
+                                    'bg-teal-100'));
                             label.classList.add('border-orange-500');
+                            label.classList.add('bg-teal-100');
                             label.querySelector('input[type="radio"]').checked = true;
                             updatePlanDetails(label);
                         });
@@ -511,18 +607,18 @@
 
                 // Update the fee display
                 $('#planCharge').html(`
-                        <li class="flex justify-between text-base text-gray-500">
+                        <li class="flex justify-between text-base text-gray-500 font-medium">
                             <p>${PlanName}</p>
-                            <p class="font-bold">Rs. ${PlanFee}</p>
+                            <p class="font-medium">Rs. ${PlanFee}</p>
                         </li>
                         <li class="flex justify-between text-base text-gray-500">
                             <p>Platform Fees</p>
-                            <p class="font-bold">Rs. ${Platform}</p>
+                            <p class="font-medium">Rs. ${Platform}</p>
                         </li>
                         <hr>
                         <li class="flex justify-between text-base text-gray-500">
                             <p>Total Payment</p>
-                            <p class="font-bold">Rs. ${PlanFee + Platform}</p>
+                            <p class="font-medium">Rs. ${PlanFee + Platform}</p>
                         </li>
                     `);
 

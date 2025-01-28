@@ -2,90 +2,95 @@
 @section('title', 'Private Job')
 @section('content')
 
-    {{-- <div class="container p-2 bg-gray-100  rounded-lg mb-10 ">
-        <div class="heading mb-6 w-[70%]">
-            <h2 class="text-2xl font-semibold">Private Job</h2>
-            <p class="text-sm text-red-500 mt-4 font-medium">To avoid last minute rush, you are advised to submit your online
-                application much before the last date. RRBs shall not be responsible if applicants are not able to submit
-                their online application including payment of fee within the last date for any reason whatsoever.</p>
-        </div>
-        <div class="flex mx-10">
-            <div class="flex flex-col">
-                <div class="flex mb-4 w-1/2">
-                    <input type="text" id="searchNameRole" placeholder="Search by Company/Profile/Title "
-                        class="border p-2 w-1/2 mr-2 rounded-lg">
-                    <input type="text" id="searchCityState" placeholder="Search by Location"
-                        class="border p-2 w-1/2 ml-2 rounded-lg">
-                    <button id="searchButton" class="ml-2 bg-blue-500 text-white p-2 rounded-lg">Search</button>
-                </div>
-                <div id="searchResults" class="mt-4"></div>
-                <div class=" w-3/4 " id="callingHire"></div>
-            </div>
-            <div class="z-20">
-                <div class="w-1/4 fixed right-5 top-1 mt-20">
-                    <div class="w-[100%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
-                        <div class="price mt-2 mb-4">
-                            <h3 class="text-lg font-semibold">Our Services</h3>
-                            <div class="line bg-blue-500">
-                                <hr class="h-1">
-                            </div>
-                            <div class="flex flex-col text-sm mt-3">
-                                <a href="" class="mt-3 font-semibold">Manpower Recruitment</a>
-                                <a href="" class="mt-3 font-semibold">Placement Recruitment</a>
-                                <a href="" class="mt-3 font-semibold">Career Consultant</a>
-                                <a href="" class="mt-3 font-semibold">Job Placement</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class=" mt-5 w-[100%] bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 ">
-                        <div class="price mt-2 mb-4">
-                            <h3 class="text-lg font-semibold">Contact Us</h3>
-                            <div class="line bg-blue-500">
-                                <hr class="h-1">
-                            </div>
-                            <div class="flex flex-col  mt-3">
-                                <h3 href="" class="mt-2 text-sm font-medium">Taskinn Solution</h3>
-                                <hr class="mt-2">
-                                <h3 href="" class="mt-2 font-normal text-xs">Near Panchwati Chowk</h3>
-                                <h3 href="" class=" font-normal text-xs">Professor Colony, Rambagh</h3>
-                                <h3 href="" class=" font-normal text-xs">Purnea Bihar - 854301, India
-                                </h3>
-                                <hr class="mt-2 mb-2">
-                                <h3 class="text-sm"><strong>Mobile : </strong> +91-8677889960, 8268222299</h3>
-                                <hr class="mt-2 mb-2">
-                                <h3 class="text-sm"><strong>Call Us : </strong> 08677889960</h3>
-                                <hr class="mt-2 mb-2">
-                                <h3 class="text-sm"><strong>E-mail : </strong> taskinnsolution@gmail.com</h3>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <div class="container p-2 bg-gray-100 rounded-lg mb-10">
-        <div class="heading mb-6 w-full md:w-[70%]">
+    <div class="container p-2 rounded-lg mb-10 ">
+        <div class="heading mb-6 w-full md:w-full">
             <h2 class="md:text-2xl text-xl font-semibold">Private Job</h2>
             <p class="md:text-sm text-xs text-red-500 mt-4 font-medium ">To avoid last minute rush, you are advised to submit
                 your online
                 application much before the last date. RRBs shall not be responsible if applicants are not able to submit
                 their online application including payment of fee within the last date for any reason whatsoever.</p>
         </div>
-        <div class="flex flex-col md:flex-row mx-4 md:mx-10 ">
+        <div class="flex flex-col w-full md:justify-between  md:flex-row mx-4 md:mx-10 ">
             <div class="flex flex-col w-full md:w-3/4">
                 <div class="flex flex-col md:flex-row mb-4 w-full">
                     <input type="text" id="searchNameRole" placeholder="Search by Company/Profile/Title"
-                        class="border p-2 w-full md:w-1/2 mr-0 md:mr-2 rounded-lg mb-2 md:mb-0">
+                        class="border p-2 font-light w-full md:w-1/2 mr-0 md:mr-2 rounded-lg mb-2 md:mb-0">
                     <input type="text" id="searchCityState" placeholder="Search by Location"
-                        class="border p-2 w-full md:w-1/2 ml-0 md:ml-2 rounded-lg ">
+                        class="border p-2 font-light w-full md:w-1/2 ml-0 md:ml-2 rounded-lg ">
                     <button id="searchButton"
                         class="mt-2 md:mt-0 md:ml-2 bg-blue-500 text-white p-2 rounded-lg w-full md:w-auto">Search</button>
                 </div>
                 <div id="searchResults" class="mt-4"></div>
                 <div class="w-full" id="callingHire"></div>
             </div>
-            <div class="flex flex-col w-full md:w-1/4 md:fixed right-5 top-1 mt-6 md:mt-20 ">
+
+            <div class="p-4 bg-white rounded-lg shadow mt-12">
+                <h2 class="text-lg font-semibold mb-4">Filters</h2>
+
+                <!-- Date Posted Filter -->
+                <div class="mb-6">
+                    <h3 class="font-medium text-gray-700 mb-2">Date posted</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="date-posted" class="text-indigo-600" checked />
+                            <span>All</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="date-posted" class="text-indigo-600" />
+                            <span>Last 24 hours</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="date-posted" class="text-indigo-600" />
+                            <span>Last 3 days</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="date-posted" class="text-indigo-600" />
+                            <span>Last 7 days</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Distance Filter -->
+                <div class="mb-6">
+                    <h3 class="font-medium text-gray-700 mb-2">Distance</h3>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="distance" class="text-indigo-600" checked />
+                            <span>All</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="distance" class="text-indigo-600" />
+                            <span>Within 5 km</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="distance" class="text-indigo-600" />
+                            <span>Within 10 km</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="distance" class="text-indigo-600" />
+                            <span>Within 20 km</span>
+                        </label>
+                        <label class="flex items-center space-x-2">
+                            <input type="radio" name="distance" class="text-indigo-600" />
+                            <span>Within 50 km</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Salary Filter -->
+                <div>
+                    <h3 class="font-medium text-gray-700 mb-2">Salary</h3>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-gray-700">₹0</span>
+                        <input type="range" min="0" max="150000"
+                            class="flex-1 h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-indigo-600" />
+                        <span class="text-gray-700">1.5 Lakhs</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-2">Minimum monthly salary</p>
+                </div>
+            </div>
+
+            {{-- <div class="flex flex-col w-full md:w-1/4 md:fixed right-5 top-1 mt-6 md:mt-20 ">
                 <div
                     class="w-full bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 mb-5 md:mb-0">
                     <div class="price mt-2 mb-4">
@@ -122,7 +127,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 
