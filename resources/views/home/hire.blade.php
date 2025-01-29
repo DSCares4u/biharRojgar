@@ -301,7 +301,7 @@
                         <p id="error-logo" class="text-red-500 text-xs font-semibold error-message"></p>
                     </div>
                 </div>
-                <div class="mb-4 flex gap-2 " id="plan_card">
+                <div class="mb-4 flex gap-2 md:mt-8" id="plan_card">
                     <label
                         class="md:w-[25%] md:h-[350px] w-[200px] h-[300px] bg-white border border-[#006266] p-2 rounded shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer"
                         data-plan="free">
@@ -369,6 +369,27 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal (Hidden by Default) -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg p-6 w-96 shadow-lg">
+            <div class="flex justify-between">
+                <h2 id="modalTitle" class="text-xl font-normal mb-4">Plan Features</h2>
+                <h2 id="modalPrice" class="text-xl font-normal mb-4">Plan Price</h2>
+            </div>
+            <p class="text-gray-700">This plan includes the following features:</p>
+            <ul id="modalFeatures" class="list-disc list-inside text-gray-600 mt-2">
+                <!-- Features will be added dynamically here -->
+            </ul>
+            <div class="flex justify-end mt-4">
+                <button id="closeModal" class="bg-red-500 text-white px-4 py-2 rounded-lg">Close</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
 
     <script>
         $(document).ready(function() {
@@ -562,14 +583,19 @@
                                     <div class="price flex justify-between">
                                         <div>
                                             <h3 class="text-lg font-medium">${plan.name}</h3>
-                                            <h3 class="text-sm font-light">Most Popular</h3>
+                                            <h3 class="text-sm font-light" >Most Popular</h3>
                                         </div>
                                         <div>
                                             <h3 class="text-lg font-medium">₹ ${plan.price}</h3>
                                             <h3 class="text-sm font-light">Unlimited</h3>
                                             </div>
                                     </div>
-                                    <a herf='' class='text-xs text-blue-400 hover:text-blue-600'>See Preview</a>
+                                     <button type='button' class='openModal text-xs text-blue-400 hover:text-blue-600' 
+                                        data-features="${cleanedFeatures}" 
+                                        data-name="${plan.name}"
+                                        data-price="${plan.price}">
+                                        See Preview
+                                    </button>
                                     ${Line}
                                     <ul class="mt-3 ">
                                         <li class="text-gray-600 text-[13px]">Features : </li>
@@ -642,6 +668,46 @@
             //     </a>
             // `);
             }
+
+            document.addEventListener("click", function(event) {
+                if (event.target.classList.contains("openModal")) {
+                    // Get plan name & features from button data attributes
+                    const planName = event.target.getAttribute("data-name");
+                    const planPrice = event.target.getAttribute("data-price");
+                    const features = event.target.getAttribute("data-features").split(",");
+
+                    // Set modal title
+                    document.getElementById("modalTitle").innerText = planName;
+                    document.getElementById("modalPrice").innerText = `₹${planPrice}`;
+                    // Generate features list dynamically
+                    const featureList = document.getElementById("modalFeatures");
+                    featureList.innerHTML = ""; // Clear old content
+                    features.forEach(feature => {
+                        featureList.innerHTML += `<li class="text-gray-600 text-sm flex items-center">
+                            <img src="{{ url('/icons/correct.png') }}" class="h-4 mr-2 mt-1" alt="">${feature}
+                        </li>`;
+                                });
+
+                    // Show the modal
+                    document.getElementById("modal").classList.remove("hidden");
+                }
+            });
+
+            // Close modal when clicking the close button
+            document.getElementById("closeModal").addEventListener("click", function() {
+                document.getElementById("modal").classList.add("hidden");
+            });
+
+            // Close modal when clicking outside the modal
+            window.addEventListener("click", function(event) {
+                const modal = document.getElementById("modal");
+                if (event.target === modal) {
+                    modal.classList.add("hidden");
+                }
+            });
+
         });
     </script>
+
+
 @endsection

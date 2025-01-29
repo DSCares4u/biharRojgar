@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container p-2 rounded-lg mb-10 ">
-        <div class="heading mb-6 w-full md:w-full">
+        <div class="heading mb-6 w-full md:w-4/5">
             <h2 class="md:text-2xl text-xl font-semibold">Private Job</h2>
             <p class="md:text-sm text-xs text-red-500 mt-4 font-medium ">To avoid last minute rush, you are advised to submit
                 your online
@@ -23,7 +23,7 @@
                 <div id="searchResults" class="mt-4"></div>
                 <div class="w-full" id="callingHire"></div>
             </div>
-
+{{-- 
             <div class="p-4 bg-white rounded-lg shadow mt-12">
                 <h2 class="text-lg font-semibold mb-4">Filters</h2>
 
@@ -88,9 +88,9 @@
                     </div>
                     <p class="text-sm text-gray-500 mt-2">Minimum monthly salary</p>
                 </div>
-            </div>
+            </div> --}}
 
-            {{-- <div class="flex flex-col w-full md:w-1/4 md:fixed right-5 top-1 mt-6 md:mt-20 ">
+            <div class="flex flex-col w-full md:w-1/4 md:fixed right-5 top-1 mt-6 md:mt-20 ">
                 <div
                     class="w-full bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 mb-5 md:mb-0">
                     <div class="price mt-2 mb-4">
@@ -127,7 +127,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 

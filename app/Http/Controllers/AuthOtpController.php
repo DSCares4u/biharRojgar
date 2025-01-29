@@ -230,42 +230,42 @@ class AuthOtpController extends Controller
         }
     }
    
-    public function reSendOtp()
-    {
-        $this->validate([
-            'email' => 'required|email|exists:users,email',
-            'password' => 'required|min:8',
-        ]);
+    // public function reSendOtp()
+    // {
+    //     $this->validate([
+    //         'email' => 'required|email|exists:users,email',
+    //         'password' => 'required|min:8',
+    //     ]);
 
-        $user = User::where('email', $this->email)->first();
+    //     $user = User::where('email', $this->email)->first();
 
-        if ($user && Hash::check($this->password, $user->password)) {
-            $otp = rand(100000, 999999);
+    //     if ($user && Hash::check($this->password, $user->password)) {
+    //         $otp = rand(100000, 999999);
 
-            OTP::updateOrCreate(
-                ['email' => $this->email],
-                [
-                    'otp' => $otp,
-                    'expires_at' => Carbon::now()->addMinutes(10),
-                ]
-            );
+    //         OTP::updateOrCreate(
+    //             ['email' => $this->email],
+    //             [
+    //                 'otp' => $otp,
+    //                 'expires_at' => Carbon::now()->addMinutes(10),
+    //             ]
+    //         );
 
-            // Send OTP to email
-            try {
-                Mail::raw("Your OTP is: $otp", function ($message) {
-                    $message->to($this->email)
-                        ->subject('Your OTP for Login');
-                });
-                $this->isToggleOtp = true;
-                $this->inputDisabled = true;
-                $this->showOtpMessage = true;
-                $this->resendOtpMessage = true;
-            } catch (\Exception $e) {
-                session()->flash('error', 'Failed to send OTP. Please try again.');
-            }
-        } else {
-            session()->flash('error', 'Invalid email or password.');
-        }
-    }   
+    //         // Send OTP to email
+    //         try {
+    //             Mail::raw("Your OTP is: $otp", function ($message) {
+    //                 $message->to($this->email)
+    //                     ->subject('Your OTP for Login');
+    //             });
+    //             $this->isToggleOtp = true;
+    //             $this->inputDisabled = true;
+    //             $this->showOtpMessage = true;
+    //             $this->resendOtpMessage = true;
+    //         } catch (\Exception $e) {
+    //             session()->flash('error', 'Failed to send OTP. Please try again.');
+    //         }
+    //     } else {
+    //         session()->flash('error', 'Invalid email or password.');
+    //     }
+    // }   
 
 }

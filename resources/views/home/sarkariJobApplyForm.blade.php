@@ -1,4 +1,5 @@
-{{-- @extends('home.homebase')
+{{-- 
+@extends('home.homebase')
 @section('title', 'Job Application')
 @section('content')
     <div class="container mx-auto font-sans ">
@@ -197,4 +198,5 @@
             })
         })
     </script>
-@endsection --}}
+@endsection
+ --}}

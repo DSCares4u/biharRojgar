@@ -40,43 +40,37 @@
                     </label>
                     <label class="flex items-center space-x-2">
                         <input type="radio" name="date-posted" class="text-indigo-600" />
-                        <span>Last 3 days</span>
+                        <span>Last week</span>
                     </label>
                     <label class="flex items-center space-x-2">
                         <input type="radio" name="date-posted" class="text-indigo-600" />
-                        <span>Last 7 days</span>
+                        <span>Last month</span>
                     </label>
                 </div>
             </div>
 
             <!-- Distance Filter -->
             <div class="mb-6">
-                <h3 class="font-medium text-gray-700 mb-2">Distance</h3>
+                <h3 class="font-medium text-gray-700 mb-2">Location</h3>
                 <div class="space-y-2">
                     <label class="flex items-center space-x-2">
                         <input type="radio" name="distance" class="text-indigo-600" checked />
                         <span>All</span>
                     </label>
-                    <label class="flex items-center space-x-2">
-                        <input type="radio" name="distance" class="text-indigo-600" />
-                        <span>Within 5 km</span>
-                    </label>
-                    <label class="flex items-center space-x-2">
-                        <input type="radio" name="distance" class="text-indigo-600" />
-                        <span>Within 10 km</span>
-                    </label>
-                    <label class="flex items-center space-x-2">
-                        <input type="radio" name="distance" class="text-indigo-600" />
-                        <span>Within 20 km</span>
-                    </label>
-                    <label class="flex items-center space-x-2">
-                        <input type="radio" name="distance" class="text-indigo-600" />
-                        <span>Within 50 km</span>
-                    </label>
                 </div>
             </div>
 
             <!-- Salary Filter -->
+            <div class="mb-">
+                <h3 class="font-medium text-gray-700 mb-2">Experience</h3>
+                <div class="flex items-center space-x-2">
+                    <span class="text-gray-700">₹0</span>
+                    <input type="range" min="0" max="5"
+                        class="flex-1 h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-indigo-600" />
+                    <span class="text-gray-700">5</span>
+                </div>
+                <p class="text-sm text-gray-500 mt-2">Minimum monthly salary</p>
+            </div>
             <div>
                 <h3 class="font-medium text-gray-700 mb-2">Salary</h3>
                 <div class="flex items-center space-x-2">
@@ -140,8 +134,6 @@
                             table.empty();
 
                             let data = response.data;
-                            console.log(data);
-
                             data = data.filter(job => {
                                 let matchNameRole = true;
                                 let matchCityState = true;
@@ -292,9 +284,7 @@
                                         `);
                                         },
                                         error: function(xhr, status, error) {
-                                            console.error(
-                                                'Error checking application status:',
-                                                error);
+                                            console.error('Error checking application status:',error);
                                         }
                                     });
                                 }
