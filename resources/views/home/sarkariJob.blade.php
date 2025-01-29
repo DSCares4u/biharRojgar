@@ -23,7 +23,7 @@
             <div class="card" id="callingData"></div>
         </div>
 
-        <div class="p-4 bg-white rounded-lg shadow mt-12">
+        {{-- <div class="p-4 bg-white rounded-lg shadow mt-12">
             <h2 class="text-lg font-semibold mb-4">Filters</h2>
 
             <!-- Date Posted Filter -->
@@ -81,8 +81,8 @@
                 </div>
                 <p class="text-sm text-gray-500 mt-2">Minimum monthly salary</p>
             </div>
-        </div>
-        {{-- <div class="flex flex-col w-full md:w-1/4 md:fixed right-2 top-1 mt-6 md:mt-20 ">
+        </div> --}}
+        <div class="flex flex-col w-full md:w-1/4 md:fixed right-2 top-5 mt-6 md:mt-20 ">
             <div
                 class="w-full bg-white border p-2 rounded shadow-lg dark:bg-gray-800 dark:border-gray-700 mb-5 md:mb-0">
                 <div class="price mt-2 mb-4">
@@ -119,7 +119,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
     </div>
 
 

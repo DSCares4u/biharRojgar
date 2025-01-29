@@ -2,7 +2,7 @@
 @section('title', 'Login')
 @section('content')
 
-    <div class=" bg-[#273c75] min-h-screen max-w-screen px-4 py-8">
+    <div class=" bg-gradient-to-b from-[#0E3B4C] to-black min-h-screen max-w-screen px-4 py-8">
         <div class="flex flex-col-reverse lg:flex-row">
             <!-- Left Section -->
             <div class="lg:w-7/12 mx-auto lg:mx-8 mt-10">
@@ -28,22 +28,23 @@
 
             <!-- Right Section -->
             <div class="lg:w-5/12 mt-8 lg:mt-24 mx-auto lg:mx-0">
-                <div class="shadow-md rounded pt-5 px-8 pb-8 bg-[#006266] max-w-md mx-auto">
-                    <h1 class="text-xl sm:text-2xl font-bold mb-4 text-center text-white">Login</h1>
+                <div class="shadow-md rounded pt-5 px-8 pb-8 bg-white max-w-md mx-auto">
+                    <h1 class="text-xl sm:text-2xl font-medium mb-4  text-black">Login</h1>
+                    <p class="text-base font-normal text-gray-800">Login to Taskinn Solutions</p>
                     <form id="loginUser">
                         @csrf
                         <div id="login-fields">
                             <div class="mb-4">
                                 <label for="email" class="block text-white text-sm font-semibold mb-2">Email</label>
                                 <input id="email" type="email" name="email"
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    class="shadow appearance-none font-normal border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-black focus:shadow-outline bg-gray-100"
                                     placeholder="Enter your email">
                                 <p id="email-error" class="text-red-500 text-xs hidden"></p>
                             </div>
                             <div class="mb-4">
                                 <label for="email" class="block text-white text-sm font-semibold mb-2">Role</label>
                                 <select name="is_hirer" id="is_hirer"
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    class="shadow appearance-none font-normal bg-gray-100 border rounded w-full py-2 px-3 text-gray-400 leading-tight focus:outline-black focus:shadow-outline">
                                     <option value="">Select Type</option>
                                     <option value="0">Candidate</option>
                                     <option value="1">Hirer</option>
@@ -52,10 +53,10 @@
                             </div>
                             <div class="flex flex-col sm:flex-row items-center justify-between mt-8">
                                 <a href="{{ url('/register') }}"
-                                    class="text-white hover:text-gray-300 font-bold rounded focus:outline-none focus:shadow-outline">Don't
-                                    have an Account?</a>
+                                    class="text-black hover:text-blue-600 font-normal hover:underline rounded focus:outline-none focus:shadow-outline">Don't
+                                    have an Account? Create now</a>
                                 <button type="button" id="sendOtpButton"
-                                    class="bg-[#ffa801] hover:bg-[#ffa601c0] font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto mb-4 sm:mb-0">
+                                    class="bg-white outline outline-[#0E3B4C] hover:bg-[#0E3B4C] hover:text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto mb-4 sm:mb-0">
                                     Login now
                                 </button>
                             </div>
