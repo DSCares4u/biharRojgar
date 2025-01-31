@@ -57,6 +57,7 @@ Route::patch('/hire-role/restore/{id}',[HireController::class,'roleRestore']);
 
 Route::post('/hire-plan',[HirePlanController::class,'store'])->name('hire.plan.store');
 Route::get('/hire-plan',[HirePlanController::class,'index'])->name('hire.plan.index');
+Route::get('/candidate-plan',[HirePlanController::class,'candidateIndex'])->name('candidate.plan.index');
 Route::get('/hire-plan/view/{id}',[HirePlanController::class,'show']);
 Route::put('/hire-plan/edit/{id}',[HirePlanController::class,'update']);
 Route::delete('/hire-plan/delete/{id}',[HirePlanController::class,'destroy']);
@@ -157,3 +158,4 @@ Route::get('/home/yojna-category',[YojnaCategoryController::class,'homeIndex'])-
 Route::get('/home/sarkari-job',[SarkariJobController::class,'homeIndex'])->name('home.sarkari-job.index');
 Route::get('/home/private-job/role',[HireController::class,'homeRoleIndex'])->name('home.role.index');
 Route::get('/home/hire-plan',[HirePlanController::class,'homeHirePlanIndex'])->name('home.hire.plan.index');
+Route::get('/home/candidate-plan',[HirePlanController::class,'homeCandidatePlanIndex'])->name('home.candidate.plan.index');

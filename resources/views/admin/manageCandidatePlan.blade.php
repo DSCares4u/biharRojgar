@@ -1,9 +1,9 @@
 @extends('admin.adminBase')
 @section('content')
     <div class="flex-1 flex mt-20 items-center justify-between ">
-        <h1 class="text-lg font-semibold  py-2">Manage Hirer Plans (<span id="counting">0</span>)</h1>
-        <a href="{{url('/admin/manage-hire/plan/insert')}}" class="bg-indigo-500 hover:bg-indigo-800 text-white px-3 py-2 rounded">
-            <i class="fas fa-plus"></i>Add New Hirer plan</a>
+        <h1 class="text-lg font-semibold  py-2">Manage Candidate Plans (<span id="counting">0</span>)</h1>
+        <a href="{{url('/admin/manage-candidate/plan/insert')}}" class="bg-indigo-500 hover:bg-indigo-800 text-white px-3 py-2 rounded">
+            <i class="fas fa-plus"></i>Add New plan</a>
     </div>
     <div class="overflow-x-auto">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -84,7 +84,7 @@
             let callingPlans = () => {
                 $.ajax({
                     type: "GET",
-                    url: "{{ route('hire.plan.index') }}",
+                    url: "{{ route('candidate.plan.index') }}",
                     success: function(response) {
                         let table = $("#callingPlan");
                         table.empty();

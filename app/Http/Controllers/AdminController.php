@@ -54,6 +54,14 @@ class AdminController extends Controller
         return view('admin.manageHirePlan');
     }
 
+    public function insertCandidatePlan(){
+        return view('admin.insertCandidatePlan');
+    }
+
+    public function manageCandidatePlan(){
+        return view('admin.manageCandidatePlan');
+    }
+
     public function manageYojna(){
         return view('admin.manageYojna');
     }

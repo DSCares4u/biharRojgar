@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\HirePlan;
 use Illuminate\Http\Request;
-use Validator;
+use Illuminate\Support\Facades\Validator;
+
 class HirePlanController extends Controller
 
 {
@@ -15,7 +16,23 @@ class HirePlanController extends Controller
      */
     public function index()
     {
-        $hirePlan = HirePlan::get();
+        $hirePlan = HirePlan::where('isCandidate',0)->get();
+        if ($hirePlan->count() > 0) {
+            return response()->json([
+                'status' => 200,
+                'data' => $hirePlan
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'data' => "No Records found"
+            ], 404);
+        }
+    }
+
+    public function candidateIndex()
+    {
+        $hirePlan = HirePlan::where('isCandidate',1)->get();
         if ($hirePlan->count() > 0) {
             return response()->json([
                 'status' => 200,
@@ -31,7 +48,23 @@ class HirePlanController extends Controller
 
     public function homeHirePlanIndex()
     {
-        $hirePlan = HirePlan::where('status',1)->get();
+        $hirePlan = HirePlan::where('status',1)->where('isCandidate',0)->get();
+        if ($hirePlan->count() > 0) {
+            return response()->json([
+                'status' => 200,
+                'data' => $hirePlan
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'data' => "No Records found"
+            ], 404);
+        }
+    }
+
+    public function homeCandidatePlanIndex()
+    {
+        $hirePlan = HirePlan::where('status',1)->where('isCandidate',1)->get();
         if ($hirePlan->count() > 0) {
             return response()->json([
                 'status' => 200,
@@ -64,6 +97,7 @@ class HirePlanController extends Controller
                 'name' => $request->name,
                 'features' => $request->features,
                 'price' => $request->price,                              
+                'isCandidate' => $request->isCandidate,                              
             ]);
     
             if ($hirePlan) {
