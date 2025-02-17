@@ -9,7 +9,7 @@
         <!-- Table Section -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <div class="p-4 border-b border-gray-200">
-                <h3 class="text-lg font-semibold">Recent Applications</h3>
+                <h3 class="text-lg font-semibold">Rejected Applications</h3>
             </div>
             <table class="w-full text-left table-auto">
                 <thead>
@@ -27,13 +27,9 @@
                     <tr>
                         <td class="px-4 py-2">{{$item->user->name}}</td>
                         <td class="px-4 py-2">{{$item->role->title}}</td>
+                        
                         <td class="px-4 py-2">
-                            <span class="bg-green-100 text-blue-800 text-sm px-2 py-1 rounded">Approved</span>
-                            {{-- <select class="ml-2 border border-gray-300 text-sm px-2 py-1 rounded">
-                                <option value="">Select</option>
-                                <option value="approve">Approve</option>
-                                <option value="reject">Reject</option>
-                            </select> --}}
+                            <span class="bg-red-100 text-black text-sm px-2 py-1 rounded">Rejected</span>
                         </td>
                         <td class="px-4 py-2">{{$item->created_at}}</td>
                         <td class="px-4 py-2">

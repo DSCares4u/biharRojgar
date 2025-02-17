@@ -202,6 +202,35 @@ class HirerController extends Controller
         return redirect('')->with('error', 'You are not authorized to view this page.');
     }
 
+    public function hirerPlans()
+    {
+        return view('hirer.plans');
+        // $user = Auth::user();
+    
+        // if ($user->isHirer == 1) {
+    
+        //     // Get the hirer details and their roles
+        //     $hire = Hire::with('roles')->where('user_id', $user->id)->first();
+    
+        //     if (!$hire) {
+        //         return redirect()->route('home')->with('error', 'Hirer information not found.');
+        //     }
+    
+        //     // Get all role IDs for the hirer
+        //     $roleIds = Role::where('hire_id', $hire->id)->pluck('id')->toArray();
+            
+        //     // Fetch all jobs matching any of the role IDs
+        //     $jobs = Job::with('user', 'role', 'candidate', 'address', 'document')
+        //         ->whereIn('role_id', $roleIds)
+        //         ->orderBy('created_at', 'desc')
+        //         ->get();
+    
+        //     return view('hirer.applications', ['applications' => $jobs]);
+        // }
+    
+        // return redirect()->route('home')->with('error', 'You are not authorized to view this page.');
+    }
+
     public function applications()
     {
         $user = Auth::user();
@@ -225,6 +254,61 @@ class HirerController extends Controller
                 ->get();
     
             return view('hirer.applications', ['applications' => $jobs]);
+        }
+    
+        return redirect()->route('home')->with('error', 'You are not authorized to view this page.');
+    }
+    public function pendingApplications()
+    {
+        $user = Auth::user();
+    
+        if ($user->isHirer == 1) {
+    
+            // Get the hirer details and their roles
+            $hire = Hire::with('roles')->where('user_id', $user->id)->first();
+    
+            if (!$hire) {
+                return redirect()->route('home')->with('error', 'Hirer information not found.');
+            }
+    
+            // Get all role IDs for the hirer
+            $roleIds = Role::where('hire_id', $hire->id)->pluck('id')->toArray();
+            
+            // Fetch all jobs matching any of the role IDs
+            $jobs = Job::with('user', 'role', 'candidate', 'address', 'document')
+                ->whereIn('role_id', $roleIds)
+                ->orderBy('created_at', 'desc')
+                ->get();
+    
+            return view('hirer.pending-applications', ['applications' => $jobs]);
+        }
+    
+        return redirect()->route('home')->with('error', 'You are not authorized to view this page.');
+    }
+
+    public function rejectedApplications()
+    {
+        $user = Auth::user();
+    
+        if ($user->isHirer == 1) {
+    
+            // Get the hirer details and their roles
+            $hire = Hire::with('roles')->where('user_id', $user->id)->first();
+    
+            if (!$hire) {
+                return redirect()->route('home')->with('error', 'Hirer information not found.');
+            }
+    
+            // Get all role IDs for the hirer
+            $roleIds = Role::where('hire_id', $hire->id)->pluck('id')->toArray();
+            
+            // Fetch all jobs matching any of the role IDs
+            $jobs = Job::with('user', 'role', 'candidate', 'address', 'document')
+                ->whereIn('role_id', $roleIds)
+                ->orderBy('created_at', 'desc')
+                ->get();
+    
+            return view('hirer.rejected-applications', ['applications' => $jobs]);
         }
     
         return redirect()->route('home')->with('error', 'You are not authorized to view this page.');

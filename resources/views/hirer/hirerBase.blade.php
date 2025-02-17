@@ -90,26 +90,38 @@
     <div class="min-h-screen flex bg-gray-100">
 
         <!-- Sidebar -->
-        <aside class="w-64 bg-white shadow-md ">
-            <div class="p-4">
-                <h1 class="text-xl font-bold text-gray-800">Taskinn Solutions</h1>
-            </div>
-            <nav class="mt-6">
-                <a href="{{ url('/home-hirer') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+        <aside class="w-64 bg-white shadow-md flex flex-col justify-between fixed h-screen">
+
+            <nav class="">
+                <div class="p-4">
+                    <h1 class="text-xl font-bold text-gray-800">Taskinn Solutions</h1>
+                </div>
+                <a href="{{ url('/home-hirer') }}" class="block py-2 px-8 mt-6 text-gray-700 hover:bg-gray-200">
                     Dashboard
                 </a>
                 <a href="{{ url('/hirer/job-post') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                     Job Posts
                 </a>
-                <a href="{{ url('/hirer/applications') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
-                    Applications
+                <a href="{{ url('/hirer/pending-applications') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                    Pending Applications
                 </a>
-                <a href="{{url('/hirer/profile')}}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                <a href="{{ url('/hirer/applications') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                    Approved Applications
+                </a>
+                <a href="{{ url('/hirer/rejected-applications') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                    Rejected Applications
+                </a>
+                <a href="{{ url('/hirer/plans') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                    Plans Available
+                </a>
+               
+            </nav>
+            <nav class="pb-3 ">
+                <a href="{{ url('/hirer/profile') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                     Profile Settings
                 </a>
-            </nav>
-            <nav class="fixed bottom-0 ">
-                <a href="{{url('/hirer/profile#plan_card')}}" class="block w-full py-2 px-8 text-gray-700 hover:bg-gray-200">
+                <a href="{{ url('/hirer/profile#plan_card') }}"
+                    class="block w-full py-2 px-8 text-gray-700 hover:bg-gray-200">
                     <i class="fa-solid fa-angles-up"></i> Upgrade plan
                 </a>
             </nav>
@@ -133,13 +145,13 @@
 
             <!-- Dashboard Content -->
 
-            <div class="md:mt-20 mt-8">
+            <div class=" md:ml-72 md:mt-20 mt-8">
                 @yield('content')
-            @show
-        </div>
+                @show
+            </div>
 
+        </div>
     </div>
-</div>
 
 
 <a href="https://api.whatsapp.com/send?phone=+91-9955232260&text=Welcome To Taskinn Solutions PURNEA, BIHAR"

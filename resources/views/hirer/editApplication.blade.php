@@ -51,10 +51,10 @@
     </div> --}}
 
     <div class="container mb-20 flex flex-col justify-center mx-auto">
-        <div id="printable-area" class="container w-full lg:w-[70%] mx-auto bg-blue-50 shadow-lg border border-gray-400">
-            <h1 class="text-xl sm:text-3xl font-bold text-center mb-1 text-white bg-teal-500 p-2">माता कलावती देवी फाउंडेशन
+        <div id="printable-area" class="container w-full lg:w-[70%] mx-auto bg-blue-50 border">
+            {{-- <h1 class="text-xl sm:text-3xl font-bold text-center mb-1 text-white bg-teal-500 p-2">माता कलावती देवी फाउंडेशन
             </h1>
-            <p class="text-lg sm:text-xl text-center underline text-white bg-blue-500 p-2">JOB APPLICATION FORM</p>
+            <p class="text-lg sm:text-xl text-center underline text-white bg-blue-500 p-2">JOB APPLICATION FORM</p> --}}
 
             <div class="p-4">
                 <!-- Personal Details -->
@@ -65,55 +65,55 @@
                         <div class="flex w-full">
                             <label class="w-2/4 font-medium text-gray-700 text-sm">1. Name (As per Aadhar Card) / नाम (आधार
                                 कार्ड अनुसार) :</label>
-                            <p class="w-2/4  capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                            <p class="w-2/4  capitalize text-sm p-1      font-normal"
                                 id="name"></p>
                         </div>
                         <div class="flex w-full">
                             <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">2. Father's Name / पिता का नाम
                                 :</label>
-                            <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                            <p class="w-2/4 capitalize text-sm p-1      font-normal"
                                 id="father"></p>
                         </div>
                         <div class="flex w-full">
                             <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">3. Mother's Name / माता का नाम
                                 :</label>
-                            <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                            <p class="w-2/4 capitalize text-sm p-1      font-normal"
                                 id="mother"></p>
                         </div>
                         <div class="flex w-full">
                             <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">4. D.O.B. / जन्म तिथि :</label>
-                            <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                            <p class="w-2/4 capitalize text-sm p-1      font-normal"
                                 id="dob"></p>
                         </div>
                         <div class="flex w-full">
                             <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">5. Gender / लिंग :</label>
-                            <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                            <p class="w-2/4 capitalize text-sm p-1      font-normal"
                                 id="gender"></p>
                         </div>
                         <div class="flex w-full">
                             <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">6. Marital Status / वैवाहिक स्थिति
                                 :</label>
-                            <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                            <p class="w-2/4 capitalize text-sm p-1      font-normal"
                                 id="marital"></p>
                         </div>
                         <div class="flex w-full">
                             <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">7. Religion / धर्म :</label>
-                            <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                            <p class="w-2/4 capitalize text-sm p-1      font-normal"
                                 id="religion"></p>
                         </div>
                         <div class="flex w-full">
                             <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">8. Category / वर्ग :</label>
-                            <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                            <p class="w-2/4 capitalize text-sm p-1      font-normal"
                                 id="community"></p>
                         </div>
                         <div class="flex w-full">
                             <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">9. Mobile No. / मोबाइल नं :</label>
-                            <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                            <p class="w-2/4 capitalize text-sm p-1      font-normal"
                                 id="mobile"></p>
                         </div>
                         <div class="flex w-full">
                             <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">10. Email ID / ईमेल आईडी :</label>
-                            <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                            <p class="w-2/4 capitalize text-sm p-1      font-normal"
                                 id="email"></p>
                         </div>
                     </div>
@@ -125,32 +125,32 @@
                 <div class="md:w-full space-y-4">
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">11. Landmark :</label>
-                        <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                        <p class="w-2/4 capitalize text-sm p-1      font-normal"
                             id="landmark"></p>
                     </div>
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">12. Village / गांव :</label>
-                        <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                        <p class="w-2/4 capitalize text-sm p-1      font-normal"
                             id="village"></p>
                     </div>
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">13. Post Office / डाक घर :</label>
-                        <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                        <p class="w-2/4 capitalize text-sm p-1      font-normal"
                             id="area"></p>
                     </div>
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">14. PIN Code / पिन कोड :</label>
-                        <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                        <p class="w-2/4 capitalize text-sm p-1      font-normal"
                             id="pincode"></p>
                     </div>
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">15. District / जिला :</label>
-                        <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                        <p class="w-2/4 capitalize text-sm p-1      font-normal"
                             id="city"></p>
                     </div>
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">16. State / राज्य :</label>
-                        <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                        <p class="w-2/4 capitalize text-sm p-1      font-normal"
                             id="state"></p>
                     </div>
                 </div>
@@ -162,22 +162,22 @@
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">18. Last Qualification / अंतिम शिक्षा
                             :</label>
-                        <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                        <p class="w-2/4 capitalize text-sm p-1      font-normal"
                             id="qualification"></p>
                     </div>
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">19. Board / University :</label>
-                        <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                        <p class="w-2/4 capitalize text-sm p-1      font-normal"
                             id="board"></p>
                     </div>
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">20. Experience :</label>
-                        <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                        <p class="w-2/4 capitalize text-sm p-1      font-normal"
                             id="experience"></p>
                     </div>
                     <div class="flex w-full">
                         <label class="w-2/4 font-medium p-1 text-gray-700 text-sm">21. Skills :</label>
-                        <p class="w-2/4 capitalize text-sm p-1 border border-gray-400 bg-gray-200 font-normal"
+                        <p class="w-2/4 capitalize text-sm p-1      font-normal"
                             id="skills"></p>
                     </div>
                 </div>
@@ -194,7 +194,7 @@
                         <div>
                             <div class="border border-gray-300 rounded-md p-4 flex flex-col items-center">
                                 <div
-                                    class="w-24 h-32 border border-gray-400 rounded-md flex items-center justify-center bg-gray-50">
+                                    class="w-24 h-32    rounded-md flex items-center justify-center bg-gray-50">
                                     <img id="" src="{{ asset('image/candidate/photo/' . $data->photo) }}"
                                         alt="Photo" class="w-24 h-24 object-cover" />
                                 </div>
@@ -206,7 +206,7 @@
                         <div>
                             <div class="border border-gray-300 rounded-md p-4 flex flex-col items-center">
                                 <div
-                                    class="w-24 h-32 border border-gray-400 rounded-md flex items-center justify-center bg-gray-50">
+                                    class="w-24 h-32    rounded-md flex items-center justify-center bg-gray-50">
                                     <img id="" src="{{ asset('image/candidate/photo/' . $data->photo) }}"
                                         alt="Photo" class="w-24 h-24 object-cover" />
                                 </div>

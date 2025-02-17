@@ -67,7 +67,7 @@
                                 <label for="otp" class="block text-white text-sm font-semibold mb-2">Enter Your
                                     OTP</label>
                                 <input id="otp" type="number" name="otp"
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your Otp">
                                 <p id="otp-error" class="text-red-500 text-xs hidden"></p>
                             </div>
                             <div class="mb-4 flex justify-center">
@@ -119,13 +119,13 @@
                         $('#login-fields').addClass('hidden');
                         $('#otp-fields').removeClass('hidden');
                         $('#loader').hide();
-                        alert("Success: " + response.message);
-                        // swal("Success", response.message, "success");
+                        // alert("Success: " + response.message);
+                        swal("Success", response.message, "success");
                     },
                     error: function(xhr, status, error) {
                         $('#loader').hide();
-                        alert(xhr.responseText);
-                        // swal("Error", xhr.responseText, "error");
+                        // alert(xhr.responseText);
+                         swal("Error", xhr.responseText, "error");
                     }
                 });
             });
@@ -164,7 +164,8 @@
                     cache: false,
                     processData: false,
                     success: function(response) {
-                        alert("Success: " + response.message);
+                        swal("Success", response.message, "success");
+                        // alert("Success: " + response.message);
                         $('#loader').hide();
                         if (response.isHirer) { // Ensure `isHirer` is returned in the response
                             window.location.href = "{{ url('/home-hirer') }}";
@@ -174,8 +175,8 @@
                     },
                     error: function(xhr, status, error) {
                         $('#loader').hide();
-                        alert(xhr.responseText);
-                        // swal("Error", xhr.responseText, "error");
+                        // alert(xhr.responseText);
+                        swal("Error", xhr.responseText, "error");
                     }
                 });
             });
