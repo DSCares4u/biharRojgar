@@ -146,6 +146,7 @@ Route::middleware(['hirer'])->group(function () {
     Route::get('/hirer/rejected-applications',[HirerController::class,'rejectedApplications']);
     Route::get('/hirer/profile',[HirerController::class,'profilePage']);
     Route::get('/hirer/plans',[HirerController::class,'hirerPlans']);
+    Route::post('/hirer/update-job-status/{id}',[HirerController::class,'updateJobStatus'])->name('update-job-status');
 });
 
 

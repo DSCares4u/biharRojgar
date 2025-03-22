@@ -14,6 +14,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CandidateController;
 use App\Http\Controllers\AddressController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\HirerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -152,6 +153,8 @@ Route::put('/hire/status/{id}',[HireController::class,'updateStatus']);
 Route::put('/yojna-category/status/{id}',[YojnaCategoryController::class,'updateStatus']);
 Route::put('/yojna/status/{id}',[YojnaController::class,'updateStatus']);
 Route::put('/manual-job/status/{id}',[JobController::class,'updateStatus']);
+
+Route::put('/manual-job/remarks/{id}',[HirerController::class,'updateRemarks'])->name('hirer.remarks');
 
 Route::get('/home/yojna',[YojnaController::class,'homeIndex'])->name('home.yojna.index');
 Route::get('/home/yojna-category',[YojnaCategoryController::class,'homeIndex'])->name('home.yojna-category.index');
